@@ -1,0 +1,116 @@
+header markers:
+  -- ****
+remark markers:
+  --
+end markers:
+  -- ****
+options:
+  --src src
+  --doc docs
+  --html
+  --multidoc
+  --index
+  --documenttitle "TASHY2 v8.6.0 code documentation"
+  --syntaxcolors
+  --sections
+  --toc
+  --masterindex "Index,index"
+  --sourceindex "Source files,sources"
+headertypes:
+  h Packages robo_packages 7
+  a Tasks robo_tasks 6
+  t Types robo_types 5
+  s Records robo_records 4
+  d Constants robo_constants 3
+  v Variables robo_variables 2
+  e Exceptions robo_exceptions 1
+  f Subprograms robo_subprograms 0
+item order:
+  FUNCTION
+  SOURCE
+  OPTIONS
+  PARAMETERS
+  RESULT
+  OUTPUT
+  EXAMPLE
+  SEE ALSO
+  COMMANDS
+  NOTES
+  TODO
+  HISTORY
+source items:
+  EXAMPLE
+keywords:
+  abort
+  abs
+  abstract
+  accept
+  access
+  aliased
+  all
+  and
+  array
+  at
+  begin
+  body
+  case
+  constant
+  declare
+  delay
+  delta
+  digits
+  do
+  else
+  elsif
+  end
+  entry
+  exception
+  exit
+  for
+  function
+  generic
+  goto
+  if
+  in
+  interface
+  is
+  limited
+  loop
+  mod
+  new
+  not
+  null
+  of
+  or
+  others
+  out
+  overriding
+  package
+  pragma
+  private
+  procedure
+  protected
+  raise
+  range
+  record
+  rem
+  renames
+  requeue
+  return
+  reverse
+  select
+  separate
+  some
+  subtype
+  synchronized
+  tagged
+  task
+  terminate
+  then
+  type
+  until
+  use
+  when
+  while
+  with
+  xor
