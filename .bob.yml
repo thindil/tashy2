@@ -1,0 +1,111 @@
+version: 2.0
+- command:
+   name: setup
+   execute:
+      - scripts/setup.tcl
+   description: Open configuration UI
+   flags:
+      - unixonly
+- command:
+   name: setup
+   execute:
+      - wish scripts\setup.tcl
+   description: Open configuration UI
+   flags:
+      - windowsonly
+- command:
+   name: autosetup
+   execute:
+      - scripts/setup.tcl auto
+   description: Auto configure build variables
+   flags:
+      - unixonly
+- command:
+   name: autosetup
+   execute:
+      - wish scripts\setup.tcl auto
+   description: Auto configure build variables
+   flags:
+      - windowsonly
+- command:
+   name: install
+   execute:
+      - gprinstall -f -P tashy2.gpr --create-missing-dirs -XLIBRARY_TYPE=static --build-var=LIBRARY_TYPE --build-name=static
+      - gprinstall -f -P tashy2.gpr --create-missing-dirs -XLIBRARY_TYPE=relocatable --build-var=LIBRARY_TYPE --build-name=relocatable
+   description: Install the library for use with GNAT
+   flags:
+      - unixonly
+- command:
+   name: build
+   execute:
+      - gprbuild -P tashy2.gpr -XLIBRARY_TYPE=static
+      - gprbuild -P tashy2.gpr -XLIBRARY_TYPE=relocatable
+   description: Build the library
+   flags:
+      - unixonly
+- command:
+   name: install
+   execute:
+      - gprinstall -f -P tashy2.gpr --create-missing-dirs -XLIBRARY_TYPE=static --build-var=LIBRARY_TYPE --build-name=static
+   description: Install the library for use with GNAT
+   flags:
+      - windowsonly
+- command:
+   name: build
+   execute:
+      - gprbuild -P tashy2.gpr -XLIBRARY_TYPE=static
+   description: Build the library
+   flags:
+      - windowsonly
+- command:
+   name: clean
+   execute:
+      - scripts/clean.tcl
+   description: Clear compilation of the library.
+   flags:
+      - unixonly
+- command:
+   name: clean
+   execute:
+      - tclsh scripts\clean.tcl
+   description: Clear compilation of the library.
+   flags:
+      - windowsonly
+- command:
+   name: docs
+   execute:
+      - scripts/generatedocs.tcl
+   description: Generate code documentation (default dark theme)
+   flags:
+      - unixonly
+- command:
+   name: docs
+   execute:
+      - tclsh scripts\generatedocs.tcl
+   description: Generate code documentation (default dark theme)
+   flags:
+      - windowsonly
+- command:
+   name: uninstall
+   execute:
+      - gprinstall --uninstall -P tashy2.gpr
+   description: Uninstall the library for use with GNAT
+- command:
+   name: docslight
+   execute:
+      - scripts/generatedocs.tcl scripts/robodocada.rc docs scripts/robodoclight.css
+   description: Generate code documentation (with light theme)
+   flags:
+      - unixonly
+- command:
+   name: docslight
+   execute:
+      - tclsh scripts\generatedocs.tcl scripts\robodocada.rc docs scripts\robodoclight.css
+   description: Generate code documentation (with light theme)
+   flags:
+      - windowsonly
+- command:
+   name: pretty
+   execute:
+      - gnatpp -P tashy2.gpr
+   description: Pretty print Tashy source code
