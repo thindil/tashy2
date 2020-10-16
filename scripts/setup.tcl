@@ -161,3 +161,26 @@ if {[lindex $argv 0] == "auto"} {
    Save
    exit
 }
+
+# Create GUI
+proc SaveGUI {} {
+   Save
+}
+wm title    . "TASHY2 $tashy2_version Setup"
+wm iconname . "TASHY2 Setup"
+pack [ttk::label .information -text "This program, setup.tcl, customizes the TASHY2 $tashy2_version installation by\
+   creating the file $gprfile. Setup.tcl guesses \"reasonable\"\
+   values for the macros, but you may have to edit them.  After you're\
+   happy with the macro values, press \"Save\" to save the files." -wraplength 500]
+ttk::labelframe .modules -text "Select modules"
+pack [ttk::radiobutton .modules.all -text "Everything" -value "all" -variable buildoption] -fill x
+pack [ttk::radiobutton .modules.tcl -text "Tcl and one from the list below" -value "tcl" -variable buildoption] -fill x
+pack [ttk::checkbutton .modules.msgcat -text "msgcat" -variable installmsgcat] -anchor w -padx 20
+pack [ttk::radiobutton .modules.select -text "Tcl, Tk and one from the list below" -value "tcltk" -variable buildoption]
+pack [ttk::checkbutton .modules.tklib -text "Tklib" -variable installtklib] -anchor w -padx 20
+pack [ttk::checkbutton .modules.msgcat2 -text "msgcat" -variable installmsgcat] -anchor w -padx 20
+pack .modules
+
+
+pack [ttk::button .save -text Save -command {SaveGUI;exit}] -side left
+pack [ttk::button .cancel -text Cancel -command exit] -side right
