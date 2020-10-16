@@ -1,5 +1,5 @@
 --  The withed 'tashy2_options.gpr' is created by running the script
---  'setup.tcl' in the parent directory.
+--  'scripts/setup.tcl' in the parent directory.
 
 with "tashy2_options";
 
@@ -12,7 +12,7 @@ project Tashy2 is
 
    for Languages use ("ada");
 
-   for Source_Dirs use Tash_Options.Source_Files;
+   for Source_Dirs use Tashy2_Options.Source_Files;
    for Object_Dir use "obj/" & Library_Type;
    for Library_Kind use Library_Type;
    for Library_Dir use "lib/" & Library_Type;
@@ -26,11 +26,11 @@ project Tashy2 is
    end Builder;
 
    package Compiler is
-      for Default_Switches ("ada") use Tash_Options.Compiler_Options;
+      for Default_Switches ("ada") use Tashy2_Options.Compiler_Options;
    end Compiler;
 
    package Linker is
-      for Linker_Options use Tash_Options.Linker_Options;
+      for Linker_Options use Tashy2_Options.Linker_Options;
    end Linker;
 
     package Pretty_Printer is
@@ -42,4 +42,4 @@ project Tashy2 is
                 "-j0");
     end Pretty_Printer;
 
-end Tashy;
+end Tashy2;
