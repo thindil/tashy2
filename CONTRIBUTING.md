@@ -74,15 +74,15 @@ header:
     10 function GetRandom(Min, Max: Integer) return Integer;
     11 -- ****
 
-1 - Documentation header. TASHY uses `-- ****[letter]* [package]/[itemname]`
+1 - Documentation header. TASHY2 uses `-- ****[letter]* [package]/[itemname]`
 format for documentation headers.
 
 2-9 - Documentation. For all available options, please refer to ROBODoc
-documentation. TASHY uses `-- ` for start all documentation lines.
+documentation. TASHY2 uses `-- ` for start all documentation lines.
 
 10 - Source code of item.
 
-11 - Documentation footer. TASHY uses `-- ****` for closing documentation.
+11 - Documentation footer. TASHY2 uses `-- ****` for closing documentation.
 
 How to generate the code documentation is described in main *README.md* file.
 
