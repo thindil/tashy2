@@ -164,6 +164,28 @@ if {[lindex $argv 0] == "auto"} {
 
 # Create GUI
 proc SaveGUI {} {
+   global tashvar library_switches tcl_version tk_version
+   foreach name {PLATFORM OS TCLSH TCLHOME TCL_INCLUDE TCL_LIBRARY TK_LIBRARY AARGS} {
+      set tashvar($name) [.options.[string tolower $name] get]
+   }
+   set library_switches ""
+   set tclhome $tashvar(TCLHOME)
+   switch $tashvar(PLATFORM) {
+      "windows" {
+         regsub {\.} $tcl_version {} tcl_short_version
+         regsub {\.} $tk_version  {} tk_short_version
+         append library_switches "-L$tclhome/lib "
+         set tail " "
+         if {![file exists [file join $tclhome lib tcl$tk_short_version.lib]]} {
+            set tail "t "
+         }
+         append library_switches "-ltcl$tcl_short_version$tail"
+         append library_switches "-ltk$tk_short_version$tail"
+      }
+      "unix" {
+         append library_switches " -ltcl$tcl_version -ltk$tk_version"
+      }
+   }
    Save
 }
 wm title    . "TASHY2 $tashy2_version Setup"
@@ -180,7 +202,14 @@ pack [ttk::radiobutton .modules.select -text "Tcl, Tk and one from the list belo
 pack [ttk::checkbutton .modules.tklib -text "Tklib" -variable installtklib] -anchor w -padx 20
 pack [ttk::checkbutton .modules.msgcat2 -text "msgcat" -variable installmsgcat] -anchor w -padx 20
 pack .modules
-
-
+ttk::frame .options
+set row 0
+foreach name {PLATFORM OS TCLSH TCLHOME TCL_INCLUDE TCL_LIBRARY TK_LIBRARY AARGS} {
+   grid [ttk::label .options.[string tolower $name]-label -text "$name:"] -sticky w
+   grid [ttk::entry .options.[string tolower $name]] -row $row -column 1
+   .options.[string tolower $name] insert end $tashvar($name)
+   incr row
+}
+pack .options
 pack [ttk::button .save -text Save -command {SaveGUI;exit}] -side left
 pack [ttk::button .cancel -text Cancel -command exit] -side right
