@@ -92,7 +92,9 @@ proc Save {} {
       } else {
          set tashvar(SOURCES) "\"src\""
       }
-      set library_switches [string range $library_switches 0 [string first "-ltk" $library_switches]-1]
+      if {[string first "-ltk" $library_switches] > -1} {
+         set library_switches [string range $library_switches 0 [string first "-ltk" $library_switches]-1]
+      }
    } elseif {$buildoption != "all"} {
       set sources "\"src\", \"src/tk\""
       if {$installtklib == 1} {
