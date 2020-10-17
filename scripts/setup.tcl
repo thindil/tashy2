@@ -108,29 +108,49 @@ proc Save {} {
    CreateGprFile
 }
 
-# Try to find all paths for Tcl/Tk libraries
-set tclhome [file dirname [file dirname [info nameofexecutable]]]
-set library_switches ""
-switch $tcl_platform(platform) {
-   "windows" {
-      regsub {\.} $tcl_version {} tcl_short_version
-      regsub {\.} $tk_version  {} tk_short_version
-      append library_switches "-L$tclhome/lib "
-      set tail " "
-      if {![file exists [file join $tclhome lib tcl$tk_short_version.lib]]} {
-         set tail "t "
-      }
-      append library_switches "-ltcl$tcl_short_version$tail"
-      append library_switches "-ltk$tk_short_version$tail"
-   }
-   "unix" {
-      append library_switches "-ltcl$tcl_version -ltk$tk_version"
-   }
-}
 set tashvar(PLATFORM) $tcl_platform(platform)
 set tashvar(OS) $tcl_platform(os)
-set tashvar(AARGS) "-O2 -gnatafoE -gnatwaL"
-set tashvar(LINKER) $library_switches
+if {[catch {open tashy2_options.gpr r} fid]} {
+   # Try to find all paths for Tcl/Tk libraries
+   set tclhome [file dirname [file dirname [info nameofexecutable]]]
+   set library_switches ""
+   switch $tcl_platform(platform) {
+      "windows" {
+         regsub {\.} $tcl_version {} tcl_short_version
+         regsub {\.} $tk_version  {} tk_short_version
+         append library_switches "-L$tclhome/lib "
+         set tail " "
+         if {![file exists [file join $tclhome lib tcl$tk_short_version.lib]]} {
+            set tail "t "
+         }
+         append library_switches "-ltcl$tcl_short_version$tail"
+         append library_switches "-ltk$tk_short_version$tail"
+      }
+      "unix" {
+         append library_switches "-ltcl$tcl_version -ltk$tk_version"
+      }
+   }
+   set tashvar(AARGS) "-O2 -gnatafoE -gnatwaL"
+   set tashvar(LINKER) $library_switches
+} else {
+   set number 0
+   set getline false
+   while {[gets $fid line] >= 0} {
+      if {[regexp {\(} $line]} {
+         set getline true
+         set value ""
+      }
+      if {[regexp {\);} $line]} {
+         puts $value
+         set getline false
+         incr number
+      }
+      if {$getline} {
+         set value [string cat $value $line]
+      }
+   }
+   close $fid
+}
 
 # Auto configure the library options
 if {[lindex $argv 0] == "auto"} {
