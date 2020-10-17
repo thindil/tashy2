@@ -87,8 +87,6 @@ proc CreateGprFile {} {
 proc Save {} {
    global tashvar buildoption library_switches installtklib installmsgcat
    if {$buildoption == "tcl"} {
-      set tashvar(TK_VERSION) ""
-      set tashvar(TK_LIBRARY) ""
       if {$installmsgcat == 1} {
          set tashvar(SOURCES) "\"src\", \"src/msgcat\""
       } else {
@@ -111,22 +109,12 @@ proc Save {} {
 }
 
 # Try to find all paths for Tcl/Tk libraries
-set exec_suffix ""
 set tclhome [file dirname [file dirname [info nameofexecutable]]]
-set tcl_include [file join $tclhome include]
-if {![file exists [file join $tcl_include tcl.h]]} {
-   set tcl_include [file join $tcl_include [file tail $tcl_library]]
-}
 set library_switches ""
 switch $tcl_platform(platform) {
    "windows" {
       regsub {\.} $tcl_version {} tcl_short_version
       regsub {\.} $tk_version  {} tk_short_version
-      set tclsh "tclsh${tcl_short_version}"
-      set libtcl ""
-      set tcldll "tcl${tcl_short_version}.dll"
-      set libtk ""
-      set tkdll  "tk${tk_short_version}.dll"
       append library_switches "-L$tclhome/lib "
       set tail " "
       if {![file exists [file join $tclhome lib tcl$tk_short_version.lib]]} {
@@ -134,27 +122,15 @@ switch $tcl_platform(platform) {
       }
       append library_switches "-ltcl$tcl_short_version$tail"
       append library_switches "-ltk$tk_short_version$tail"
-      set exec_suffix ".exe"
    }
    "unix" {
-      set tclsh "tclsh"
-      set dynlib [info sharedlibextension]
-      set libtcl "$tclhome/lib/libtcl${tcl_version}$dynlib"
-      set libtk  "$tclhome/lib/libtk${tk_version}$dynlib"
-      append library_switches " -ltcl$tcl_version -ltk$tk_version"
+      append library_switches "-ltcl$tcl_version -ltk$tk_version"
    }
 }
 set tashvar(PLATFORM) $tcl_platform(platform)
 set tashvar(OS) $tcl_platform(os)
-set tashvar(TCLSH) "$tclsh"
-set tashvar(TCLHOME) "$tclhome"
-set tashvar(TCL_INCLUDE) "-I$tcl_include"
-set tashvar(TCL_VERSION) "$tcl_version"
-set tashvar(TCL_LIBRARY) "$libtcl"
-set tashvar(TK_VERSION) "$tk_version"
-set tashvar(TK_LIBRARY) "$libtk"
 set tashvar(AARGS) "-O2 -gnatafoE -gnatwaL"
-set tashvar(EXE) "$exec_suffix"
+set tashvar(LINKER) $library_switches
 
 # Auto configure the library options
 if {[lindex $argv 0] == "auto"} {
@@ -165,27 +141,10 @@ if {[lindex $argv 0] == "auto"} {
 # Create GUI
 proc SaveGUI {} {
    global tashvar library_switches tcl_version tk_version
-   foreach name {PLATFORM OS TCLSH TCLHOME TCL_INCLUDE TCL_LIBRARY TK_LIBRARY AARGS} {
+   foreach name {PLATFORM OS AARGS LINKER} {
       set tashvar($name) [.options.[string tolower $name] get]
    }
-   set library_switches ""
-   set tclhome $tashvar(TCLHOME)
-   switch $tashvar(PLATFORM) {
-      "windows" {
-         regsub {\.} $tcl_version {} tcl_short_version
-         regsub {\.} $tk_version  {} tk_short_version
-         append library_switches "-L$tclhome/lib "
-         set tail " "
-         if {![file exists [file join $tclhome lib tcl$tk_short_version.lib]]} {
-            set tail "t "
-         }
-         append library_switches "-ltcl$tcl_short_version$tail"
-         append library_switches "-ltk$tk_short_version$tail"
-      }
-      "unix" {
-         append library_switches " -ltcl$tcl_version -ltk$tk_version"
-      }
-   }
+   set library_switches $tashvar(LINKER)
    Save
 }
 wm title    . "TASHY2 $tashy2_version Setup"
@@ -204,9 +163,9 @@ pack [ttk::checkbutton .modules.msgcat2 -text "msgcat" -variable installmsgcat] 
 pack .modules
 ttk::frame .options
 set row 0
-foreach name {PLATFORM OS TCLSH TCLHOME TCL_INCLUDE TCL_LIBRARY TK_LIBRARY AARGS} {
+foreach name {PLATFORM OS AARGS LINKER} {
    grid [ttk::label .options.[string tolower $name]-label -text "$name:"] -sticky w
-   grid [ttk::entry .options.[string tolower $name]] -row $row -column 1
+   grid [ttk::entry .options.[string tolower $name] -width 30] -row $row -column 1
    .options.[string tolower $name] insert end $tashvar($name)
    incr row
 }
