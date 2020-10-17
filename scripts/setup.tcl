@@ -108,8 +108,6 @@ proc Save {} {
    CreateGprFile
 }
 
-set tashvar(PLATFORM) $tcl_platform(platform)
-set tashvar(OS) $tcl_platform(os)
 if {[catch {open tashy2_options.gpr r} fid]} {
    # Try to find all paths for Tcl/Tk libraries
    set tclhome [file dirname [file dirname [info nameofexecutable]]]
@@ -141,12 +139,30 @@ if {[catch {open tashy2_options.gpr r} fid]} {
          set value ""
       }
       if {[regexp {\);} $line]} {
-         puts $value
          set getline false
+         if {[string first "tk\"" $line] > -1} {
+            set buildoption "tcltk"
+         } elseif {[string first "src\"" $line] > -1} {
+            set buildoption "tcl"
+         }
+         if {[string first "msgcat\"" $line] > -1} {
+            set installmsgcat 1
+         }
+         if {[string first "tklib\"" $line] > -1} {
+            set installtklib 1
+         }
+         switch $number {
+            2 {
+               set tashvar(AARGS) $value
+            }
+            3 {
+               set tashvar(LINKER) $value
+            }
+         }
          incr number
       }
-      if {$getline} {
-         set value [string cat $value $line]
+      if {$getline && [string first "(" $line] == -1} {
+         set value [string trim [string cat $value " " [string trim [regsub -all (\"|,)+ $line {}]]]]
       }
    }
    close $fid
@@ -161,7 +177,7 @@ if {[lindex $argv 0] == "auto"} {
 # Create GUI
 proc SaveGUI {} {
    global tashvar library_switches tcl_version tk_version
-   foreach name {PLATFORM OS AARGS LINKER} {
+   foreach name {AARGS LINKER} {
       set tashvar($name) [.options.[string tolower $name] get]
    }
    set library_switches $tashvar(LINKER)
@@ -183,7 +199,7 @@ pack [ttk::checkbutton .modules.msgcat2 -text "msgcat" -variable installmsgcat] 
 pack .modules
 ttk::frame .options
 set row 0
-foreach name {PLATFORM OS AARGS LINKER} {
+foreach name {AARGS LINKER} {
    grid [ttk::label .options.[string tolower $name]-label -text "$name:"] -sticky w
    grid [ttk::entry .options.[string tolower $name] -width 30] -row $row -column 1
    .options.[string tolower $name] insert end $tashvar($name)
