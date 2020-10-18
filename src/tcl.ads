@@ -72,6 +72,46 @@ package Tcl is
      (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter);
    -- ****
 
+   ---------------------------------------
+   -- Manipulating the Tcl commands result
+   ---------------------------------------
+
+   -- ****t* Tcl/Result_Types
+   -- FUNCTION
+   -- Type of the Tcl commands result
+   -- SOURCE
+   type Result_Types is (TCL_STATIC, TCL_VOLATILE, TCL_DYNAMIC);
+   for Result_Types use (TCL_STATIC => 0, TCL_VOLATILE => 1, TCL_DYNAMIC => 3);
+   -- ****
+
+   -- ****f* Tcl/Tcl_GetStringResult
+   -- FUNCTION
+   -- Get the result of last Tcl command as string
+   -- PARAMETERS
+   -- Interpreter - Tcl interpreter from which the result will be taken. By
+   --               default it is current default Tcl interpreter.
+   -- RESULT
+   -- String with the result of the last Tcl command
+   -- SOURCE
+   function Tcl_GetStringResult
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String;
+     -- ****
+
+     -- ****f* Tcl/Tcl_SetResult
+     -- FUNCTION
+     -- Set Tcl result value
+     -- PARAMETERS
+     -- Result      - String which will be set as Tcl result
+     -- Result_Type - Type of the result. Can be only TCL_STATIC, TCL_VOLATILE
+     --               or TCL_DYNAMIC
+     -- Interpreter - Tcl interpreter on which the result will be set. By
+     --               default it is current default Tcl interpreter.
+     -- SOURCE
+   procedure Tcl_SetResult
+     (Result: String; Result_Type: Result_Types := TCL_STATIC;
+      Interpreter: Tcl_Interpreter := Get_Interpreter);
+   -- ****
+
 private
 
    -- ****it* Tcl/Tcl_Interpreter_Record

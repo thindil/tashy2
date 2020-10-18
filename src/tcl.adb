@@ -76,4 +76,28 @@ package body Tcl is
       end if;
    end Tcl_Eval;
 
+   function Tcl_GetStringResult
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+      function TclGetStringResult
+        (interp: Tcl_Interpreter) return chars_ptr with
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_GetStringResult";
+   begin
+      return Value(TclGetStringResult(Interpreter));
+   end Tcl_GetStringResult;
+
+   procedure Tcl_SetResult
+     (Result: String; Result_Type: Result_Types := TCL_STATIC;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      procedure TclSetResult
+        (interp: Tcl_Interpreter; result: chars_ptr; freeProc: int) with
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_SetResult";
+   begin
+      TclSetResult
+        (Interpreter, New_String(Result), Result_Types'Pos(Result_Type));
+   end Tcl_SetResult;
+
 end Tcl;
