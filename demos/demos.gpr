@@ -1,0 +1,43 @@
+with "../tashy2";
+
+project demos is
+
+   for Main use ("helloworld.adb");
+   for Source_Dirs use ("src/**");
+   for Object_Dir use "obj";
+   for Exec_Dir use "bin";
+
+   for Create_Missing_Dirs use "True";
+
+   package Builder is
+      for Default_Switches("ada") use ("-j0", "-gnat2012", "-g");
+      for Global_Configuration_Pragmas use "../gnat.adc";
+   end Builder;
+
+   package Binder is
+      for Default_Switches("ada") use ("-E", "-shared");
+   end Binder;
+
+   package Compiler is
+      for Default_Switches ("ada") use ("-gnatwa",
+         "-fstack-check",
+         "-gnatVa",
+         "-gnatU",
+         "-gnatf",
+         "-gnateE");
+   end Compiler;
+
+   package Linker is
+      for Default_Switches ("ada") use ("-no-pie", "-lmagic");
+   end Linker;
+
+   package Pretty_Printer is
+      for Default_Switches("ada") use ("--RM-style-spacing",
+         "--no-separate-loop-then",
+         "--no-separate-is",
+         "-rnb",
+         "--comments-unchanged",
+         "-j0");
+   end Pretty_Printer;
+
+end demos;
