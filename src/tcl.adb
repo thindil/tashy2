@@ -58,7 +58,7 @@ package body Tcl is
          External_Name => "Tcl_Init";
    begin
       if Tcl_Init(Interpreter) = Return_Codes'Pos(TCL_ERROR) then
-         raise Tcl_Exception;
+         raise Tcl_Exception with Tcl_GetStringResult;
       end if;
    end Tcl_Init;
 
@@ -72,7 +72,7 @@ package body Tcl is
    begin
       if TclEval(Interpreter, New_String(Script)) =
         Return_Codes'Pos(TCL_ERROR) then
-         raise Tcl_Exception;
+         raise Tcl_Exception with Tcl_GetStringResult;
       end if;
    end Tcl_Eval;
 
