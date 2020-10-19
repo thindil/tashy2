@@ -97,7 +97,7 @@ package body Tcl is
          External_Name => "Tcl_SetResult";
    begin
       TclSetResult
-        (Interpreter, New_String(Result), Result_Types'Pos(Result_Type));
+        (Interpreter, New_String(Result), Result_Types'Enum_Rep(Result_Type));
    end Tcl_SetResult;
 
 end Tcl;
