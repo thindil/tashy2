@@ -19,6 +19,14 @@
 package Tcl is
 -- ****
 
+   -- ****e* Tcl/Tcl_Exception
+   -- FUNCTION
+   -- Standard TASHY2 exception. Raised when something bad happens (mostly
+   -- when TCL_ERROR arrive)
+   -- SOURCE
+   Tcl_Exception: exception;
+   -- ****
+
    type Tcl_Interpreter is private;
 
    type Return_Codes is private;
