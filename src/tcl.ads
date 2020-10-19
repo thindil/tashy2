@@ -69,7 +69,8 @@ package Tcl is
    --               By default it is current default Tcl interpreter
    -- SOURCE
    procedure Tcl_Eval
-     (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter);
+     (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Script'Length > 0;
    -- ****
 
    ---------------------------------------
@@ -109,7 +110,8 @@ package Tcl is
      -- SOURCE
    procedure Tcl_SetResult
      (Result: String; Result_Type: Result_Types := TCL_STATIC;
-      Interpreter: Tcl_Interpreter := Get_Interpreter);
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Result'Length > 0;
    -- ****
 
 private
@@ -125,7 +127,7 @@ private
    -- FUNCTION
    -- Pointer to the selected Tcl interpreter
    -- SOURCE
-   type Tcl_Interpreter is access all Tcl_Interpreter_Record;
+   type Tcl_Interpreter is access Tcl_Interpreter_Record;
    -- ****
 
    -- ****t* Tcl/Return_Codes
