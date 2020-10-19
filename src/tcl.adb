@@ -24,14 +24,6 @@ package body Tcl is
    Default_Interpreter: Tcl_Interpreter;
    -- ****
 
-   -- ****ie* Tcl/Tcl_Exception
-   -- FUNCTION
-   -- Standard TASHY2 exception. Raised when something bad happens (mostly
-   -- when TCL_ERROR arrive)
-   -- SOURCE
-   Tcl_Exception: exception;
-   -- ****
-
    function Create_Interpreter
      (Default: Boolean := True) return Tcl_Interpreter is
       function Tcl_CreateInterp return Tcl_Interpreter with
