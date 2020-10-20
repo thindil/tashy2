@@ -30,16 +30,24 @@ package body Tcl is
          Import => True,
          Convention => C,
          External_Name => "Tcl_CreateInterp";
+      Interpreter: constant Tcl_Interpreter := Tcl_CreateInterp;
    begin
+      if Interpreter = null then
+         raise Tcl_Exception with "Failed to create Tcl interpreter";
+      end if;
       if Default then
-         Default_Interpreter := Tcl_CreateInterp;
+         Default_Interpreter := Interpreter;
          return Default_Interpreter;
       end if;
-      return Tcl_CreateInterp;
+      return Interpreter;
    end Create_Interpreter;
 
    function Get_Interpreter return Tcl_Interpreter is
    begin
+      if Default_Interpreter = null then
+         raise Tcl_Exception
+           with "Default Tcl interpreter is not created yet.";
+      end if;
       return Default_Interpreter;
    end Get_Interpreter;
 
