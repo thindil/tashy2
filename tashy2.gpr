@@ -42,4 +42,13 @@ project Tashy2 is
                 "-j0");
     end Pretty_Printer;
 
+   package GnatTest is
+      for Tests_Dir use "../../tests";
+      for Harness_Dir use "../../tests/driver";
+      for GnatTest_Switches use ("--omit-sloc",
+         "--test-case-only",
+         "--passed-tests=hide",
+         "--exit-status=on");
+   end GnatTest;
+
 end Tashy2;
