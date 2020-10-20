@@ -98,7 +98,8 @@ package Tcl is
    -- SOURCE
    procedure Tcl_Eval
      (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Script'Length > 0;
+      Pre => Script'Length > 0,
+      Test_Case => ("Test_Tcl_Eval", Nominal);
       -- ****
 
    ---------------------------------------
@@ -169,7 +170,8 @@ package Tcl is
    -- Ada.Text_IO.Put_Line(Tcl_GetStringResult);
    -- SOURCE
    function Tcl_GetStringResult
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String;
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Test_Case => ("Test_Tcl_GetStringResult", Robustness);
      -- ****
 
      -- ****f* Tcl/Tcl.Tcl_SetResult
@@ -190,7 +192,8 @@ package Tcl is
    procedure Tcl_SetResult
      (Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Result'Length > 0;
+      Pre => Result'Length > 0,
+      Test_Case => ("Test_Tcl_SetResult", Nominal);
    -- ****
 
 private
