@@ -52,12 +52,12 @@ package body Tcl is
    end Get_Interpreter;
 
    procedure Tcl_Init(Interpreter: Tcl_Interpreter) is
-      function Tcl_Init(interp: Tcl_Interpreter) return int with
+      function TclInit(interp: Tcl_Interpreter) return int with
          Import => True,
          Convention => C,
          External_Name => "Tcl_Init";
    begin
-      if Tcl_Init(Interpreter) = int(TCL_ERROR) then
+      if TclInit(Interpreter) = int(TCL_ERROR) then
          raise Tcl_Exception with Tcl_GetStringResult;
       end if;
    end Tcl_Init;
