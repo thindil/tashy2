@@ -49,7 +49,7 @@ package body Tcl is
          Convention => C,
          External_Name => "Tcl_Init";
    begin
-      if Tcl_Init(Interpreter) = Return_Codes'Pos(TCL_ERROR) then
+      if Tcl_Init(Interpreter) = int(TCL_ERROR) then
          raise Tcl_Exception with Tcl_GetStringResult;
       end if;
    end Tcl_Init;
@@ -62,8 +62,7 @@ package body Tcl is
          Convention => C,
          External_Name => "Tcl_Eval";
    begin
-      if TclEval(Interpreter, New_String(Script)) =
-        Return_Codes'Pos(TCL_ERROR) then
+      if TclEval(Interpreter, New_String(Script)) = int(TCL_ERROR) then
          raise Tcl_Exception with Tcl_GetStringResult;
       end if;
    end Tcl_Eval;

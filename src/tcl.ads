@@ -31,8 +31,6 @@ package Tcl is
 
    type Tcl_Interpreter is private;
 
-   type Return_Codes is private;
-
    --------------------------------
    -- Initialization of Tcl binding
    --------------------------------
@@ -121,6 +119,41 @@ package Tcl is
    for Result_Types use (TCL_STATIC => 0, TCL_VOLATILE => 1, TCL_DYNAMIC => 3);
    -- ****
 
+   -- ****d* Tcl/Tcl.TCL_OK
+   -- FUNCTION
+   -- Standard Tcl command return value on success
+   -- SOURCE
+   TCL_OK: constant Natural := 0;
+   -- ****
+
+   -- ****d* Tcl/Tcl.TCL_ERROR
+   -- FUNCTION
+   -- Tcl command was unsuccessful
+   -- SOURCE
+   TCL_ERROR: constant Positive := 1;
+   -- ****
+
+   -- ****d* Tcl/Tcl.TCL_RETURN
+   -- FUNCTION
+   -- Tcl command behaves as Tcl command return
+   -- SOURCE
+   TCL_RETURN: constant Positive := 2;
+   -- ****
+
+   -- ****d* Tcl/Tcl.TCL_BREAK
+   -- FUNCTION
+   -- Tcl command behaves as Tcl command break
+   -- SOURCE
+   TCL_BREAK: constant Positive := 3;
+   -- ****
+
+   -- ****d* Tcl/Tcl.TCL_CONTINUE
+   -- FUNCTION
+   -- Tcl commmand behaves as Tcl command continue
+   -- SOURCE
+   TCL_CONTINUE: constant Positive := 4;
+   -- ****
+
    -- ****f* Tcl/Tcl.Tcl_GetStringResult
    -- FUNCTION
    -- Get the result of last Tcl command as string
@@ -178,16 +211,6 @@ private
    -- 8.6.0 - Added
    -- SOURCE
    type Tcl_Interpreter is access Tcl_Interpreter_Record;
-   -- ****
-
-   -- ****t* Tcl/Tcl.Return_Codes
-   -- FUNCTION
-   -- Tcl return codes returned by scripts or API
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   type Return_Codes is
-     (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE);
    -- ****
 
 end Tcl;
