@@ -1,0 +1,9 @@
+with "../tashy2.gpr";
+
+project PrettyTests is
+
+   for Source_Dirs use (".");
+
+   package Pretty_Printer renames Tashy2.Pretty_Printer;
+
+end PrettyTests;
