@@ -14,10 +14,10 @@ TASHY2 is short from Tcl Ada SHell Younger version 2. It is derivate of
 [TASHY](https://github.com/thindil/tashy)
 
 **IMPORTANT:** TASHY2 is not compatible with TASHY. At this moment it is at
-very early stage of the development, pre-alpha stage. Also this is now
+very early stage of the development, pre-alpha stage. Also, this is now
 mostly a playground thus don't expect too much soon :)
 
-TASHY2 is the Ada 2012 binding to Tcl/Tk. It allow to use Tcl code in Ada code
+TASHY2 is the Ada 2012 binding to Tcl/Tk. It allows using Tcl code in Ada code
 and vice versa. Included bindings:
 
 * Tcl - It is the base binding. Allow use Tcl scripts in the Ada code.
@@ -26,7 +26,7 @@ and vice versa. Included bindings:
   yet.
 * Tklib - Requires Tcl and Tk bindings. Allows use additional packages for
   Tk GUI in the Ada code. Not started yet.
-* Msgcat - Requires Tcl binding. Allows create multi-language text messages.
+* Msgcat - Requires Tcl binding. Allows creating multi-language text messages.
   Not started yet.
 
 ## Build the library from sources
@@ -38,7 +38,7 @@ To build you need:
   project. This last is the recommended option because it is the best tested.
 
 * Tcl/Tk library. Should be available in every Linux distribution. For
-  Windows it is recommended to use the MagicSplat version:
+  Windows, it is recommended to use the MagicSplat version:
 
   https://www.magicsplat.com/tcl-installer/index.html
 
@@ -50,14 +50,14 @@ To build you need:
   by yourself or copy needed libraries there.
 
 * If you want Tklib library binding, you will be need this library too. Should
-  be available in every Linux distribution. For Windows it is included in the
+  be available in every Linux distribution. For Windows, it is included in the
   MagicSplat and ActiveState versions. It isn't needed to build TASHY, only to
   use its binding.
 
 If you have all the required packages, navigate to the main directory(where
 this file is) to compile and type in the console:
 
-1. `scripts/setup.tcl` to setup all configuration needed for compilation.
+1. `scripts/setup.tcl` to set up all configuration needed for compilation.
    On Windows it will be `wish scripts\setup.tcl`. If you want to use default
    settings (like include all other bindings), you can use auto setup by
    adding parameter `auto`. You need to run this script only the first time
@@ -76,7 +76,7 @@ this file is) to compile and type in the console:
 If you have installed [Bob](https://github.com/thindil/bob) you can use it in
 that way:
 
-1. `bob setup` to setup all configuration needed for compilation. If you want
+1. `bob setup` to set up all configuration needed for compilation. If you want
     to use default settings (like include all other bindings), you can use
     auto setup by typing `bob autosetup`. You need to run this command only
     the first time when you compile the library on the selected platform. If
@@ -143,7 +143,7 @@ to generate the documentation with the light theme.
 
 ## Contributing to the project
 
-For detailed informations about contributing to the project (bugs reporting,
+For detailed information about contributing to the project (bugs reporting,
 ideas propositions, code conduct, etc), see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Licenses
