@@ -7,12 +7,12 @@ find any bug in the library, please report it at
 
 ### Some general hints about reporting bugs
 
-- In "Title" field try write short but not too general description of
+- In "Title" field try to write short but not too general description of
   problem. Good example: "The library crash when opening directory". Bad
   example: "The library crashes often."
-- In body/comment field try write that much informations about problem as
-  possible. In most cases more informations is better than less. General rule
-  of good problem report is give enough informations which allow to reproduce
+- In body/comment field try to write that much information about problem as
+  possible. In most cases more information is better than less. General rule
+  of good problem report is give enough information which allow reproducing
   problem by other people. It may be in form of steps which are needed for
   cause problem.
 
@@ -30,18 +30,18 @@ Body:
 If you want to talk/propose changes in any existing the library feature, feel
 free to contact me via issues tracker or mail (addresses of both you can find
 at top of this file). General rule about propositions is same as for bugs
-reports - please, try write that much informations as possible. This help us
+reports - please, try to write that much information as possible. This help us
 all better understand purpose of your changes.
 
 ## Code propositions
 
-### General informations
+### General information
 
 If you want to start help in the library development, please consider starts
 from something easy like fixing bugs. Before you been want to add new feature
 to the library, please contact with me by issues tracker or mail, addresses
 of both are at top of this file. Same as with features proposition - your code
-may "collide" with my work and it this moment you may just lost time by
+may "collide" with my work and it this moment you may just lose time by
 working on it. So it is better that we first discuss your proposition. In any
 other case, fell free to fix my code.
 
@@ -58,7 +58,7 @@ which automatically format source code to project coding standard. Proper
 
 The program uses [ROBODoc](https://rfsber.home.xs4all.nl/Robo/) for generating
 code documentation. When you write your own code, please add proper header
-documentation to it. If you use Vim/NeoVim, easiest way is to use plugin
+documentation to it. If you use Vim/NeoVim, the easiest way is to use plugin
 [RoboVim](https://github.com/thindil/robovim). Example of documentation
 header:
 
