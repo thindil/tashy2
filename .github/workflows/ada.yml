@@ -2,27 +2,30 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
-  build:
+  tests:
 
     runs-on: ubuntu-latest
 
-    container: ghcr.io/thindil/gnat
+    container: ghcr.io/thindil/adabuild
 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Installing Tcl/Tk development libraries and their dependencies
-      run: |
-        apt-get update
-        apt-get install -y tcl-dev tk-dev
-
-    - name: Build
+    - name: Generate the tests
       run: |
          scripts/setup.tcl auto
-         gprbuild -P tashy2.gpr
+         gnattest -P tashy2.gpr
+
+    - name: Build the tests
+      run: gprbuild -P tests/driver/test_driver.gpr
+
+    - name: Run the test
+      run: |
+         cd tests/driver
+         ./test_runner
