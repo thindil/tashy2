@@ -8,7 +8,7 @@ package body Tcl.Test_Data is
    procedure Set_Up(Gnattest_T: in out Test) is
       pragma Unreferenced(Gnattest_T);
    begin
-      null;
+      Tcl_Init(Create_Interpreter);
    end Set_Up;
 
    procedure Tear_Down(Gnattest_T: in out Test) is

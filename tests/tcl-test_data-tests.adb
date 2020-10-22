@@ -70,8 +70,8 @@ package body Tcl.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_Eval("expr 2 + 2");
+      Assert(Tcl_GetStringResult = "4", "Failed to evaluate Tcl code.");
 
 --  begin read only
    end Test_Tcl_Eval_test_tcl_eval;
@@ -109,8 +109,8 @@ package body Tcl.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_SetResult("2");
+      Assert(Tcl_GetStringResult = "2", "Failed to get Tcl result");
 
 --  begin read only
    end Test_Tcl_GetStringResult_test_tcl_getstringresult;
@@ -160,8 +160,8 @@ package body Tcl.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_SetResult("2");
+      Assert(Tcl_GetStringResult = "2", "Failed to set Tcl result");
 
 --  begin read only
    end Test_Tcl_SetResult_test_tcl_setresult;
