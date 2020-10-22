@@ -13,7 +13,6 @@
 -- limitations under the License.
 
 with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Strings; use Interfaces.C.Strings;
 
 package body Tcl.Commands is
 
