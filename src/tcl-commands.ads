@@ -12,14 +12,12 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Interfaces.C.Strings; use Interfaces.C.Strings;
 with System; use System;
 
 package Tcl.Commands is
 
-   -- FIXME: Warning about uncontstrained array in foreign caller
-
-   type Arguments_Array is array(Positive range <>) of Unbounded_String;
+   type Arguments_Array is new chars_ptr;
 
    type Tcl_CmdProc is access function
      (ClientData: System.Address := Null_Address; Interpreter: Tcl_Interpreter;
