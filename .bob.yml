@@ -130,7 +130,7 @@ version: 2.0
 - command:
    name: tests
    execute:
-      - gprbuild -P tests/driver/test_driver.gpr
+      - gprbuild -p -P tests/driver/test_driver.gpr
       - cd tests/driver
       - ./test_runner
    description: Build and run Tashy2 unit tests
