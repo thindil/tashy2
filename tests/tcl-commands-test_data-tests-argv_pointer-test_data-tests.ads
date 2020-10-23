@@ -4,14 +4,14 @@
 --  begin read only
 with Gnattest_Generated;
 
-package Tcl.Commands.Test_Data.Tests is
+package Tcl.Commands.Test_Data.Tests.Argv_Pointer.Test_Data.Tests is
 
    type Test is new GNATtest_Generated.GNATtest_Standard.Tcl.Commands.Test_Data
-     .Test with
+     .Tests
+     .Argv_Pointer
+     .Test_Data
+     .New_Test with
    null record;
 
-   procedure Test_Tcl_CreateCommand_323eac_b11b8b(Gnattest_T: in out Test);
-   --  tcl-commands.ads:39:4:Tcl_CreateCommand:Test_Tcl_CreateCommand
-
-end Tcl.Commands.Test_Data.Tests;
+end Tcl.Commands.Test_Data.Tests.Argv_Pointer.Test_Data.Tests;
 --  end read only
