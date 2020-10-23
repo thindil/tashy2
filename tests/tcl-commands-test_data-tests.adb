@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Text_IO;
+
 --  begin read only
 --  end read only
 package body Tcl.Commands.Test_Data.Tests is
@@ -27,22 +29,26 @@ package body Tcl.Commands.Test_Data.Tests is
 --  end read only
 
    function My_Proc
-     (ClientData: System.Address := Null_Address; Interpreter: Tcl_Interpreter;
-      Argc: Positive; Argv: Arguments_Array) return Natural with
+     (ClientData: System.Address; Interpreter: Tcl_Interpreter; Argc: Positive;
+      Argv: Argv_Pointer.Pointer) return Natural with
       Convention => C;
    function My_Proc
-     (ClientData: System.Address := Null_Address; Interpreter: Tcl_Interpreter;
-      Argc: Positive; Argv: Arguments_Array) return Natural is
+     (ClientData: System.Address; Interpreter: Tcl_Interpreter; Argc: Positive;
+      Argv: Argv_Pointer.Pointer) return Natural is
    begin
-      Tcl_Eval("puts {hello world from MyProc}");
+      Ada.Text_IO.Put_Line("Arguments:" & Positive'Image(Argc));
+      for I in 0 .. Argc - 1 loop
+         Ada.Text_IO.Put_Line(Natural'Image(I) & ": " & Get_Argument(Argv, I));
+      end loop;
       return TCL_OK;
    end My_Proc;
 
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Tcl_CreateCommand_dc7e4e_b11b8b
-     (Interpreter: Tcl_Interpreter; Command_Name: String; Proc: Tcl_CmdProc;
+   function Wrap_Test_Tcl_CreateCommand_323eac_b11b8b
+     (Command_Name: String; Proc: Tcl_CmdProc;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
       DeleteProc: Tcl_CmdDeleteProc := null) return Tcl_Command is
    begin
       begin
@@ -55,9 +61,9 @@ package body Tcl.Commands.Test_Data.Tests is
                "req_sloc(tcl-commands.ads:0):Test_Tcl_CreateCommand test requirement violated");
       end;
       declare
-         Test_Tcl_CreateCommand_dc7e4e_b11b8b_Result: constant Tcl_Command :=
+         Test_Tcl_CreateCommand_323eac_b11b8b_Result: constant Tcl_Command :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Commands.Tcl_CreateCommand
-             (Interpreter, Command_Name, Proc, DeleteProc);
+             (Command_Name, Proc, Interpreter, DeleteProc);
       begin
          begin
             pragma Assert(True);
@@ -68,24 +74,25 @@ package body Tcl.Commands.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-commands.ads:0:):Test_Tcl_CreateCommand test commitment violated");
          end;
-         return Test_Tcl_CreateCommand_dc7e4e_b11b8b_Result;
+         return Test_Tcl_CreateCommand_323eac_b11b8b_Result;
       end;
-   end Wrap_Test_Tcl_CreateCommand_dc7e4e_b11b8b;
+   end Wrap_Test_Tcl_CreateCommand_323eac_b11b8b;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_CreateCommand_test_tcl_createcommand
      (Gnattest_T: in out Test);
-   procedure Test_Tcl_CreateCommand_dc7e4e_b11b8b
+   procedure Test_Tcl_CreateCommand_323eac_b11b8b
      (Gnattest_T: in out Test) renames
      Test_Tcl_CreateCommand_test_tcl_createcommand;
---  id:2.2/dc7e4ecb1448985b/Tcl_CreateCommand/1/0/test_tcl_createcommand/
+--  id:2.2/323eacae65f8ec1f/Tcl_CreateCommand/1/0/test_tcl_createcommand/
    procedure Test_Tcl_CreateCommand_test_tcl_createcommand
      (Gnattest_T: in out Test) is
       function Tcl_CreateCommand
-        (Interpreter: Tcl_Interpreter; Command_Name: String; Proc: Tcl_CmdProc;
+        (Command_Name: String; Proc: Tcl_CmdProc;
+         Interpreter: Tcl_Interpreter := Get_Interpreter;
          DeleteProc: Tcl_CmdDeleteProc := null) return Tcl_Command renames
-        Wrap_Test_Tcl_CreateCommand_dc7e4e_b11b8b;
+        Wrap_Test_Tcl_CreateCommand_323eac_b11b8b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -93,10 +100,12 @@ package body Tcl.Commands.Test_Data.Tests is
    begin
 
       Assert
-        (Tcl_CreateCommand(Get_Interpreter, "MyProc", My_Proc'Access) /=
+        (Tcl_CreateCommand("MyProc", My_Proc'Access) /=
          Tcl_Command(Null_Address),
          "Failed to create a new Tcl command");
-      Tcl_Eval("MyProc");
+      Tcl_Eval("MyProc asd");
+      Tcl_Eval("MyProc ads sdf");
+      Tcl_Eval("MyProc {Asd asfd} wer sdgfdgfd");
 
 --  begin read only
    end Test_Tcl_CreateCommand_test_tcl_createcommand;
