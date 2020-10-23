@@ -12,28 +12,35 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Interfaces.C; use Interfaces.C;
+with Interfaces.C.Pointers;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 with System; use System;
 
 package Tcl.Commands is
 
-   type Arguments_Array is new chars_ptr;
+   package Argv_Pointer is new Interfaces.C.Pointers(Index => size_t,
+      Element => chars_ptr, Element_Array => chars_ptr_array,
+      Default_Terminator => Null_Ptr);
 
    type Tcl_CmdProc is access function
-     (ClientData: System.Address := Null_Address; Interpreter: Tcl_Interpreter;
-      Argc: Positive; Argv: Arguments_Array) return Natural with
+     (ClientData: System.Address; Interpreter: Tcl_Interpreter; Argc: Positive;
+      Argv: Argv_Pointer.Pointer) return Natural with
       Convention => C;
 
-   type Tcl_CmdDeleteProc is access procedure
-     (ClientData: System.Address := Null_Address) with
+   type Tcl_CmdDeleteProc is access procedure(ClientData: System.Address) with
       Convention => C;
 
    type Tcl_Command is new System.Address;
 
    function Tcl_CreateCommand
-     (Interpreter: Tcl_Interpreter; Command_Name: String; Proc: Tcl_CmdProc;
+     (Command_Name: String; Proc: Tcl_CmdProc;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
       DeleteProc: Tcl_CmdDeleteProc := null) return Tcl_Command with
       Pre => Command_Name'Length > 0,
       Test_Case => ("Test_Tcl_CreateCommand", Nominal);
+
+   function Get_Argument
+     (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String;
 
 end Tcl.Commands;
