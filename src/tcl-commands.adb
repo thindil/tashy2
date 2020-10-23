@@ -12,13 +12,13 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Interfaces.C; use Interfaces.C;
-
 package body Tcl.Commands is
 
    function Tcl_CreateCommand
-     (Interpreter: Tcl_Interpreter; Command_Name: String; Proc: Tcl_CmdProc;
+     (Command_Name: String; Proc: Tcl_CmdProc;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
       DeleteProc: Tcl_CmdDeleteProc := null) return Tcl_Command is
+
       function TclCreateCommand
         (interp: Tcl_Interpreter; cmdName: chars_ptr; proc: Tcl_CmdProc;
          ClientData: System.Address; deleteproc: Tcl_CmdDeleteProc)
@@ -26,10 +26,17 @@ package body Tcl.Commands is
          Import => True,
          Convention => C,
          External_Name => "Tcl_CreateCommand";
+
    begin
       return TclCreateCommand
           (Interpreter, New_String(Command_Name), Proc, Null_Address,
            DeleteProc);
    end Tcl_CreateCommand;
+
+   function Get_Argument
+     (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String is
+   begin
+      return Value(Argv_Pointer.Value(Arguments_Pointer)(size_t(Index)));
+   end Get_Argument;
 
 end Tcl.Commands;
