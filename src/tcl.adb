@@ -21,7 +21,7 @@ package body Tcl is
    -- FUNCTION
    -- Pointer to the default Tcl interpreter
    -- SOURCE
-   Default_Interpreter: Tcl_Interpreter;
+   Default_Interpreter: Tcl_Interpreter := Null_Interpreter;
    -- ****
 
    function Create_Interpreter
@@ -32,7 +32,7 @@ package body Tcl is
          External_Name => "Tcl_CreateInterp";
       Interpreter: constant Tcl_Interpreter := Tcl_CreateInterp;
    begin
-      if Interpreter = null then
+      if Interpreter = Null_Interpreter then
          raise Tcl_Exception with "Failed to create Tcl interpreter";
       end if;
       if Default then
@@ -44,7 +44,7 @@ package body Tcl is
 
    function Get_Interpreter return Tcl_Interpreter is
    begin
-      if Default_Interpreter = null then
+      if Default_Interpreter = Null_Interpreter then
          raise Tcl_Exception
            with "Default Tcl interpreter is not created yet.";
       end if;
