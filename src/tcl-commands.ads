@@ -31,6 +31,8 @@ package Tcl.Commands is
    -- ****t* Commands/Argv_Pointer
    -- FUNCTION
    -- Used to store arguments of the selected Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    package Argv_Pointer is new Interfaces.C.Pointers(Index => size_t,
       Element => chars_ptr, Element_Array => chars_ptr_array,
@@ -49,6 +51,8 @@ package Tcl.Commands is
    --               The first element is always the name of invoked procedure
    -- RESULT
    -- Should be one of TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Tcl_CmdProc is access function
      (ClientData: System.Address; Interpreter: Tcl_Interpreter; Argc: Positive;
@@ -62,6 +66,8 @@ package Tcl.Commands is
       -- deleted.
       -- PARAMETERS
       -- ClientData - Generally unused
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    type Tcl_CmdDeleteProc is access procedure(ClientData: System.Address) with
       Convention => C;
@@ -70,6 +76,8 @@ package Tcl.Commands is
       -- ****t* Commands/Tcl_Command
       -- FUNCTION
       -- The pointer to a Tcl command
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    type Tcl_Command is new System.Address;
    -- ****
@@ -86,6 +94,11 @@ package Tcl.Commands is
    --                Default value is null
    -- RESULT
    -- The pointer to the newly created Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Add command MyProc with Ada function My_Command as code on default interpreter without deleting code
+   -- My_Command: constant Tcl_Command := Tcl_CreateCommand("MyProc", My_Command'Access);
    -- SOURCE
    function Tcl_CreateCommand
      (Command_Name: String; Proc: Tcl_CmdProc;
@@ -108,6 +121,11 @@ package Tcl.Commands is
       -- Index             - Index of the argument to take
       -- RESULT
       -- The selected argument from the list
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of the Tcl command (always the first argument) from My_Arguments pointer
+      -- Proc_Name: constant String := Get_Argument(My_Arguments, 0);
       -- SOURCE
    function Get_Argument
      (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String;
