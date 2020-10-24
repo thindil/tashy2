@@ -22,8 +22,8 @@ and vice versa. Included bindings:
 
 * Tcl - It is the base binding. Allow use Tcl scripts in the Ada code.
   If you need any binding here, please [open an issue](https://github.com/thindil/tashy2/issues/new) with it.
-* Tk - Requires Tcl binding. Allows use Tk GUI in the Ada code. Not started
-  yet.
+* Tk - Requires Tcl binding. Allows use Tk GUI in the Ada code. If you need
+  any binding here, please [open an issue](https://github.com/thindil/tashy2/issues/new) with it.
 * Tklib - Requires Tcl and Tk bindings. Allows use additional packages for
   Tk GUI in the Ada code. Not started yet.
 * Msgcat - Requires Tcl binding. Allows creating multi-language text messages.
