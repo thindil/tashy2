@@ -12,6 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with System;
+
 -- ****h* Tcl/Tcl
 -- FUNCTION
 -- Provides binding to Tcl API
@@ -29,7 +31,24 @@ package Tcl is
    Tcl_Exception: exception;
    -- ****
 
-   type Tcl_Interpreter is private;
+   -- ****t* Tcl/Tcl.Tcl_Interpreter
+   -- FUNCTION
+   -- Pointer to the selected Tcl interpreter
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Tcl_Interpreter is new System.Address;
+   -- ****
+
+   -- ****d* Tcl/Null_Interpreter
+   -- FUNCTION
+   -- Not set Tcl interterpreter
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   Null_Interpreter: constant Tcl_Interpreter :=
+     Tcl_Interpreter(System.Null_Address);
+   -- ****
 
    --------------------------------
    -- Initialization of Tcl binding
@@ -76,7 +95,8 @@ package Tcl is
    -- -- Initialize Tcl on the new Tcl interpreter
    -- Tcl_Init(Create_Interpreter);
    -- SOURCE
-   procedure Tcl_Init(Interpreter: Tcl_Interpreter);
+   procedure Tcl_Init(Interpreter: Tcl_Interpreter) with
+      Pre => Interpreter /= Null_Interpreter;
    -- ****
 
    -------------------------
@@ -98,7 +118,7 @@ package Tcl is
    -- SOURCE
    procedure Tcl_Eval
      (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Script'Length > 0,
+      Pre => Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Tcl_Eval", Nominal);
       -- ****
 
@@ -181,7 +201,8 @@ package Tcl is
    -- SOURCE
    function Tcl_GetStringResult
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
-      Test_Case => ("Test_Tcl_GetStringResult", Robustness);
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Tcl_GetStringResult", Nominal);
      -- ****
 
      -- ****f* Tcl/Tcl.Tcl_SetResult
@@ -202,28 +223,8 @@ package Tcl is
    procedure Tcl_SetResult
      (Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Result'Length > 0,
+      Pre => Result'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Tcl_SetResult", Nominal);
-   -- ****
-
-private
-
-   -- ****it* Tcl/Tcl.Tcl_Interpreter_Record
-   -- FUNCTION
-   -- Used to store data about the selected Tcl interpreter
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   type Tcl_Interpreter_Record is null record;
-   -- ****
-
-   -- ****t* Tcl/Tcl.Tcl_Interpreter
-   -- FUNCTION
-   -- Pointer to the selected Tcl interpreter
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   type Tcl_Interpreter is access Tcl_Interpreter_Record;
    -- ****
 
 end Tcl;
