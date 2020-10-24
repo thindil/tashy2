@@ -123,6 +123,8 @@ package Tcl is
    -- ****d* Tcl/Tcl.TCL_OK
    -- FUNCTION
    -- Standard Tcl command return value on success
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    TCL_OK: constant Natural := 0;
    -- ****
@@ -130,6 +132,8 @@ package Tcl is
    -- ****d* Tcl/Tcl.TCL_ERROR
    -- FUNCTION
    -- Tcl command was unsuccessful
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    TCL_ERROR: constant Positive := 1;
    -- ****
@@ -137,6 +141,8 @@ package Tcl is
    -- ****d* Tcl/Tcl.TCL_RETURN
    -- FUNCTION
    -- Tcl command behaves as Tcl command return
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    TCL_RETURN: constant Positive := 2;
    -- ****
@@ -144,6 +150,8 @@ package Tcl is
    -- ****d* Tcl/Tcl.TCL_BREAK
    -- FUNCTION
    -- Tcl command behaves as Tcl command break
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    TCL_BREAK: constant Positive := 3;
    -- ****
@@ -151,6 +159,8 @@ package Tcl is
    -- ****d* Tcl/Tcl.TCL_CONTINUE
    -- FUNCTION
    -- Tcl commmand behaves as Tcl command continue
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    TCL_CONTINUE: constant Positive := 4;
    -- ****
