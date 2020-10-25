@@ -37,7 +37,8 @@ package Tk is
    -- -- Initalize Tk library on the default Tcl interpreter
    -- Tk_Init;
    -- SOURCE
-   procedure Tk_Init(Interpreter: Tcl_Interpreter := Get_Interpreter);
+   procedure Tk_Init(Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Interpreter /= Null_Interpreter;
    -- ****
 
    -- ****f* Tk/Tk_MainLoop
