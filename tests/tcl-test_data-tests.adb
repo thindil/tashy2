@@ -29,11 +29,11 @@ package body Tcl.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Tcl_Eval_6f41cd_190200
+   procedure Wrap_Test_Tcl_Eval_6f41cd_386758
      (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert(Script'Length > 0);
+         pragma Assert(Script'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -51,19 +51,19 @@ package body Tcl.Test_Data.Tests is
               (False,
                "ens_sloc(tcl.ads:0:):Test_Tcl_Eval test commitment violated");
       end;
-   end Wrap_Test_Tcl_Eval_6f41cd_190200;
+   end Wrap_Test_Tcl_Eval_6f41cd_386758;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_Eval_test_tcl_eval(Gnattest_T: in out Test);
-   procedure Test_Tcl_Eval_6f41cd_190200(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Eval_6f41cd_386758(Gnattest_T: in out Test) renames
      Test_Tcl_Eval_test_tcl_eval;
 --  id:2.2/6f41cdb0dd725e03/Tcl_Eval/1/0/test_tcl_eval/
    procedure Test_Tcl_Eval_test_tcl_eval(Gnattest_T: in out Test) is
       procedure Tcl_Eval
         (Script: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Tcl_Eval_6f41cd_190200;
+        Wrap_Test_Tcl_Eval_6f41cd_386758;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -78,23 +78,41 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Tcl_GetStringResult_ee4e01_95aef3
+   function Wrap_Test_Tcl_GetStringResult_ee4e01_91e609
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl.ads:0):Test_Tcl_GetStringResult test requirement violated");
+      end;
       declare
-         Test_Tcl_GetStringResult_ee4e01_95aef3_Result: constant String :=
+         Test_Tcl_GetStringResult_ee4e01_91e609_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_GetStringResult
              (Interpreter);
       begin
-         return Test_Tcl_GetStringResult_ee4e01_95aef3_Result;
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl.ads:0:):Test_Tcl_GetStringResult test commitment violated");
+         end;
+         return Test_Tcl_GetStringResult_ee4e01_91e609_Result;
       end;
-   end Wrap_Test_Tcl_GetStringResult_ee4e01_95aef3;
+   end Wrap_Test_Tcl_GetStringResult_ee4e01_91e609;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_GetStringResult_test_tcl_getstringresult
      (Gnattest_T: in out Test);
-   procedure Test_Tcl_GetStringResult_ee4e01_95aef3
+   procedure Test_Tcl_GetStringResult_ee4e01_91e609
      (Gnattest_T: in out Test) renames
      Test_Tcl_GetStringResult_test_tcl_getstringresult;
 --  id:2.2/ee4e0178367aacb7/Tcl_GetStringResult/1/0/test_tcl_getstringresult/
@@ -102,7 +120,7 @@ package body Tcl.Test_Data.Tests is
      (Gnattest_T: in out Test) is
       function Tcl_GetStringResult
         (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
-        Wrap_Test_Tcl_GetStringResult_ee4e01_95aef3;
+        Wrap_Test_Tcl_GetStringResult_ee4e01_91e609;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -117,12 +135,12 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Tcl_SetResult_e87522_8ece1f
+   procedure Wrap_Test_Tcl_SetResult_e87522_5a72b9
      (Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert(Result'Length > 0);
+         pragma Assert(Result'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -141,19 +159,19 @@ package body Tcl.Test_Data.Tests is
               (False,
                "ens_sloc(tcl.ads:0:):Test_Tcl_SetResult test commitment violated");
       end;
-   end Wrap_Test_Tcl_SetResult_e87522_8ece1f;
+   end Wrap_Test_Tcl_SetResult_e87522_5a72b9;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_SetResult_test_tcl_setresult(Gnattest_T: in out Test);
-   procedure Test_Tcl_SetResult_e87522_8ece1f(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_SetResult_e87522_5a72b9(Gnattest_T: in out Test) renames
      Test_Tcl_SetResult_test_tcl_setresult;
 --  id:2.2/e875226c0ec21ff5/Tcl_SetResult/1/0/test_tcl_setresult/
    procedure Test_Tcl_SetResult_test_tcl_setresult(Gnattest_T: in out Test) is
       procedure Tcl_SetResult
         (Result: String; Result_Type: Result_Types := TCL_STATIC;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Tcl_SetResult_e87522_8ece1f;
+        Wrap_Test_Tcl_SetResult_e87522_5a72b9;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
