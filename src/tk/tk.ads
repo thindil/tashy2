@@ -38,7 +38,8 @@ package Tk is
    -- Tk_Init;
    -- SOURCE
    procedure Tk_Init(Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Interpreter /= Null_Interpreter;
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Tk_Init", Nominal);
    -- ****
 
    -- ****f* Tk/Tk_MainLoop
