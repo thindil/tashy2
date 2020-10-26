@@ -35,13 +35,6 @@ package body Tk.Widget is
       return TkInterp(int(Widget.Tk_Window));
    end Tk_Interp;
 
-   function Get_Options
-     (Widget: Tk_Widget'Class; Options_Names: String := "") return String is
-   begin
-      Tcl_Eval(Tk_PathName(Widget) & " configure " & Options_Names);
-      return Tcl_GetStringResult(Tk_Interp(Widget));
-   end Get_Options;
-
    procedure Configure(Widget: Tk_Widget'Class; Options: String) is
    begin
       null;
