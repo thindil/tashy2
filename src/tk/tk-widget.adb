@@ -41,27 +41,33 @@ package body Tk.Widget is
       Convention => C,
       External_Name => "Tk_GetOption";
 
-   function Get_Option(Widget: Tk_Widget'Class; Name: String) return String is
+   function Get_Option
+     (Widget: Tk_Widget'Class; Name: String; Class: String := "")
+      return String is
    begin
       return Value
           (Tk_GetOption
-             (int(Widget.Tk_Window), New_String(Name), New_String(Name)));
+             (int(Widget.Tk_Window), New_String(Name), New_String(Class)));
    end Get_Option;
 
-   function Get_Option(Widget: Tk_Widget'Class; Name: String) return Integer is
+   function Get_Option
+     (Widget: Tk_Widget'Class; Name: String; Class: String := "")
+      return Integer is
    begin
       return Integer'Value
           (Value
              (Tk_GetOption
-                (int(Widget.Tk_Window), New_String(Name), New_String(Name))));
+                (int(Widget.Tk_Window), New_String(Name), New_String(Class))));
    end Get_Option;
 
-   function Get_Option(Widget: Tk_Widget'Class; Name: String) return Float is
+   function Get_Option
+     (Widget: Tk_Widget'Class; Name: String; Class: String := "")
+      return Float is
    begin
       return Float'Value
           (Value
              (Tk_GetOption
-                (int(Widget.Tk_Window), New_String(Name), New_String(Name))));
+                (int(Widget.Tk_Window), New_String(Name), New_String(Class))));
    end Get_Option;
 
    procedure Configure(Widget: Tk_Widget'Class; Options: String) is

@@ -46,14 +46,18 @@ package Tk.Widget is
      (Widget: Tk_Widget'Class) return Widget_Options is abstract;
 
    function Get_Option
-     (Widget: Tk_Widget'Class; Name: String) return String with
+     (Widget: Tk_Widget'Class; Name: String; Class: String := "")
+      return String with
       Pre => Name'Length > 0;
 
    function Get_Option
-     (Widget: Tk_Widget'Class; Name: String) return Integer with
+     (Widget: Tk_Widget'Class; Name: String; Class: String := "")
+      return Integer with
       Pre => Name'Length > 0;
 
-   function Get_Option(Widget: Tk_Widget'Class; Name: String) return Float with
+   function Get_Option
+     (Widget: Tk_Widget'Class; Name: String; Class: String := "")
+      return Float with
       Pre => Name'Length > 0;
 
    procedure Configure(Widget: Tk_Widget'Class; Options: String) with
