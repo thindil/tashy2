@@ -12,13 +12,18 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+
 package Tk.Widget is
 
    type Tk_Widget is abstract tagged record
       Tk_Window: Integer;
    end record;
 
-   type Widget_Options is abstract tagged null record;
+   type Widget_Options is abstract tagged record
+      Cursor: Unbounded_String;
+      Take_Focus: Boolean;
+   end record;
 
    function Create
      (Path_Name: String; Options: Widget_Options'Class;
