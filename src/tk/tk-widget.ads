@@ -40,6 +40,17 @@ package Tk.Widget is
    function Get_Options
      (Widget: Tk_Widget'Class) return Widget_Options is abstract;
 
+   function Get_Option
+     (Widget: Tk_Widget'Class; Name: String) return String with
+      Pre => Name'Length > 0;
+
+   function Get_Option
+     (Widget: Tk_Widget'Class; Name: String) return Integer with
+      Pre => Name'Length > 0;
+
+   function Get_Option(Widget: Tk_Widget'Class; Name: String) return Float with
+      Pre => Name'Length > 0;
+
    procedure Configure(Widget: Tk_Widget'Class; Options: String) with
       Pre => Options'Length > 0;
 

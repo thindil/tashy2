@@ -35,6 +35,35 @@ package body Tk.Widget is
       return TkInterp(int(Widget.Tk_Window));
    end Tk_Interp;
 
+   function Tk_GetOption
+     (tkwin: int; name, class: chars_ptr) return chars_ptr with
+      Import => True,
+      Convention => C,
+      External_Name => "Tk_GetOption";
+
+   function Get_Option(Widget: Tk_Widget'Class; Name: String) return String is
+   begin
+      return Value
+          (Tk_GetOption
+             (int(Widget.Tk_Window), New_String(Name), New_String(Name)));
+   end Get_Option;
+
+   function Get_Option(Widget: Tk_Widget'Class; Name: String) return Integer is
+   begin
+      return Integer'Value
+          (Value
+             (Tk_GetOption
+                (int(Widget.Tk_Window), New_String(Name), New_String(Name))));
+   end Get_Option;
+
+   function Get_Option(Widget: Tk_Widget'Class; Name: String) return Float is
+   begin
+      return Float'Value
+          (Value
+             (Tk_GetOption
+                (int(Widget.Tk_Window), New_String(Name), New_String(Name))));
+   end Get_Option;
+
    procedure Configure(Widget: Tk_Widget'Class; Options: String) is
    begin
       null;
