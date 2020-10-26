@@ -38,7 +38,7 @@ package Tk.Widget is
       return Tk_Widget is abstract;
 
    function Get_Options
-     (Widget: Tk_Widget'Class; Options_Names: String := "") return String;
+     (Widget: Tk_Widget'Class) return Widget_Options is abstract;
 
    procedure Configure(Widget: Tk_Widget'Class; Options: String) with
       Pre => Options'Length > 0;
