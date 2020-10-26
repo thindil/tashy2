@@ -45,4 +45,9 @@ package Tk.Widget is
 
    procedure Destroy(Widget: in out Tk_Widget'Class);
 
+   procedure Execute_Widget_Command
+     (Widget: Tk_Widget'Class; Command_Name: String;
+      Options: String := "") with
+      Pre => Command_Name'Length > 0;
+
 end Tk.Widget;
