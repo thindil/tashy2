@@ -72,18 +72,26 @@ package body Tk.Widget is
 
    procedure Configure(Widget: Tk_Widget'Class; Options: String) is
    begin
-      null;
+      Tcl_Eval
+        (Tk_PathName(Widget) & " configure " & Options, Tk_Interp(Widget));
    end Configure;
 
    procedure Destroy(Widget: in out Tk_Widget'Class) is
+      procedure Tk_DestroyWindow(tkwin: int) with
+         Import => True,
+         Convention => C,
+         External_Name => "Tk_DestroyWindow";
    begin
-      null;
+      Tk_DestroyWindow(int(Widget.Tk_Window));
+      Widget.Tk_Window := 0;
    end Destroy;
 
    procedure Execute_Widget_Command
      (Widget: Tk_Widget'Class; Command_Name: String; Options: String := "") is
    begin
-      null;
+      Tcl_Eval
+        (Tk_PathName(Widget) & " " & Command_Name & " " & Options,
+         Tk_Interp(Widget));
    end Execute_Widget_Command;
 
 end Tk.Widget;
