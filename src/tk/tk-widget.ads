@@ -52,6 +52,10 @@ package Tk.Widget is
    end record;
    -- ****
 
+   ---------------------------
+   -- Creating a new Tk widget
+   ---------------------------
+
    -- ****f* Widget/Widget.Create_(function)
    -- FUNCTION
    -- Abstract function to create a widget. All Tk widgets should implement
@@ -96,13 +100,54 @@ package Tk.Widget is
       Interpreter: Tcl_Interpreter := Get_Interpreter) is abstract;
       -- ****
 
-   function Tk_PathName(Widget: Tk_Widget'Class) return String;
-
-   function Tk_Interp(Widget: Tk_Widget'Class) return Tcl_Interpreter;
-
+   -- ****f* Widget/Widget.Get_Widget
+   -- FUNCTION
+   -- Abstract function to get existing Tk widget from its Tk path name and
+   -- on the seelcted interpreter. All Tk widgets should implement their own
+   -- version of the function
+   -- PARAMETERS
+   -- Path_Name   - Full Tk path name for the selected widget
+   -- Interpreter - Tcl interpreter on which the selected widget is. Default
+   --               value is default Tcl interpreter
+   -- RESULT
+   -- Tk_Widget with specified path name on the selected Tcl interpreter
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget is abstract;
+      -- ****
+
+      ---------------------------------
+      -- Getting info about a Tk widget
+      ---------------------------------
+
+      -- ****f* Widget/Widget.Tk_PathName
+      -- FUNCTION
+      -- Get the full Tk path name of the selected Tk widget
+      -- PARAMETERS
+      -- Widget - Tk widget which path name will be taken
+      -- RESULT
+      -- Full Tk path name of the selected Tk widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
+   function Tk_PathName(Widget: Tk_Widget'Class) return String;
+   -- ****
+
+   -- ****f* Widget/Widget.Tk_Interp
+   -- FUNCTION
+   -- Get Tcl interpreter on which the selected Tk widget exists
+   -- PARAMETERS
+   -- Widget - Tk widget which Tcl interpreter will be taken
+   -- RESULT
+   -- Tcl interpreter of the selected Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Tk_Interp(Widget: Tk_Widget'Class) return Tcl_Interpreter;
+   -- ****
 
    function Get_Options
      (Widget: Tk_Widget'Class) return Widget_Options is abstract;
