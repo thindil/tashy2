@@ -14,25 +14,87 @@
 
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
+-- ****h* Tk/Widget
+-- FUNCTION
+-- Provide code for manipulate Tk widgets. Parent of the all widget.
+-- SOURCE
 package Tk.Widget is
+-- ****
 
+   -- ****s* Widget/Widget.Tk_Widget
+   -- FUNCTION
+   -- Abstract record to store data about widgets. All Tk widgets should be
+   -- children of this record
+   -- PARAMETERS
+   -- Tk_Window - Identifier of the Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Tk_Widget is abstract tagged record
       Tk_Window: Integer := 0;
    end record;
+   -- ****
 
+   -- ****s* Widget/Widget.Widget_Options
+   -- FUNCTION
+   -- Abstract records to store available options and their values for widgets.
+   -- All Tk widgets options should be children of this record
+   -- PARAMETERS
+   -- Cursor     - Name of the cursor to set for the selected Tk widget
+   -- Take_Focus - Can be "1", "0", empty string or Tcl script which will
+   --              return "1", "0" or empty string
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Widget_Options is abstract tagged record
       Cursor: Unbounded_String := Null_Unbounded_String;
       Take_Focus: Unbounded_String := Null_Unbounded_String;
    end record;
+   -- ****
 
+   -- ****f* Widget/Widget.Create_(function)
+   -- FUNCTION
+   -- Abstract function to create a widget. All Tk widgets should implement
+   -- their own version of the function
+   -- PARAMETERS
+   -- Path_Name   - Full Tk path for the newly created Tk widget
+   -- Options     - Tk options for the newly created Tk widget
+   -- Interpreter - Tcl interpreter on which the widget will be created.
+   --               Default value is default Tcl interpreter
+   -- RESULT
+   -- The newly created Tk_Widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SEE ALSO
+   -- Widget.Create_(procedure)
+   -- SOURCE
    function Create
      (Path_Name: String; Options: Widget_Options'Class;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget is abstract;
+      -- ****
 
+      -- ****f* Widget/Widget.Create_(procedure)
+      -- FUNCTION
+      -- Abstract function to create a widget. All Tk widgets should implement
+      -- their own version of the function
+      -- PARAMETERS
+      -- Widget      - Tk_Widget which will be created
+      -- Path_Name   - Full Tk path for the newly created Tk widget
+      -- Options     - Tk options for the newly created Tk widget
+      -- Interpreter - Tcl interpreter on which the widget will be created.
+      --               Default value is default Tcl interpreter
+      -- OUTPUT
+      -- The newly created Tk_Widget as Widget parameter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SEE ALSO
+      -- Widget.Create_(function)
+      -- SOURCE
    procedure Create
      (Widget: out Tk_Widget; Path_Name: String; Options: Widget_Options'Class;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is abstract;
+      -- ****
 
    function Tk_PathName(Widget: Tk_Widget'Class) return String;
 
