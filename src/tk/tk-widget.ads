@@ -17,12 +17,12 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package Tk.Widget is
 
    type Tk_Widget is abstract tagged record
-      Tk_Window: Integer;
+      Tk_Window: Integer := 0;
    end record;
 
    type Widget_Options is abstract tagged record
-      Cursor: Unbounded_String;
-      Take_Focus: Boolean;
+      Cursor: Unbounded_String := Null_Unbounded_String;
+      Take_Focus: Unbounded_String := Null_Unbounded_String;
    end record;
 
    function Create
