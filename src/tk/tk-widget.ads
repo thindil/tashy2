@@ -149,23 +149,85 @@ package Tk.Widget is
    function Tk_Interp(Widget: Tk_Widget'Class) return Tcl_Interpreter;
    -- ****
 
+   -- ****f* Widget/Widget.Get_Options
+   -- FUNCTION
+   -- Abstract function to get values of all available options for the
+   -- selected Tk widget. All Tk widgets should implement their own
+   -- version of the function.
+   -- PARAMETERS
+   -- Widget - Tk widget which options will be taken
+   -- RESULT
+   -- Widget specific Widget_Options record with all options and their
+   -- values for the selected Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    function Get_Options
      (Widget: Tk_Widget'Class) return Widget_Options is abstract;
+     -- ****
 
+     -- ****f* Widget/Widget.Get_Option_(String)
+     -- FUNCTION
+     -- Get value of the selected option for the selected Tk widget
+     -- PARAMETERS
+     -- Widget - Tk widget which option's value will be taken
+     -- Name   - Name of the option which value will be taken
+     -- Class  - Class of the option which value will be taken. Can be empty.
+     --          Default value is empty.
+     -- RESULT
+     -- String with value of the selected option for the selected Tk widget
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SEE ALSO
+     -- Widget.Get_Option_(Integer) and Widget.Get_Option_(Float)
+     -- SOURCE
    function Get_Option
      (Widget: Tk_Widget'Class; Name: String; Class: String := "")
       return String with
       Pre => Name'Length > 0;
+      -- ****
 
+     -- ****f* Widget/Widget.Get_Option_(Integer)
+     -- FUNCTION
+     -- Get value of the selected option for the selected Tk widget
+     -- PARAMETERS
+     -- Widget - Tk widget which option's value will be taken
+     -- Name   - Name of the option which value will be taken
+     -- Class  - Class of the option which value will be taken. Can be empty.
+     --          Default value is empty.
+     -- RESULT
+     -- Integer value of the selected option for the selected Tk widget
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SEE ALSO
+     -- Widget.Get_Option_(String) and Widget.Get_Option_(Float)
+     -- SOURCE
    function Get_Option
      (Widget: Tk_Widget'Class; Name: String; Class: String := "")
       return Integer with
       Pre => Name'Length > 0;
+      -- ****
 
+     -- ****f* Widget/Widget.Get_Option_(Float)
+     -- FUNCTION
+     -- Get value of the selected option for the selected Tk widget
+     -- PARAMETERS
+     -- Widget - Tk widget which option's value will be taken
+     -- Name   - Name of the option which value will be taken
+     -- Class  - Class of the option which value will be taken. Can be empty.
+     --          Default value is empty.
+     -- RESULT
+     -- Float value of the selected option for the selected Tk widget
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SEE ALSO
+     -- Widget.Get_Option_(String) and Widget.Get_Option_(Integer)
+     -- SOURCE
    function Get_Option
      (Widget: Tk_Widget'Class; Name: String; Class: String := "")
       return Float with
       Pre => Name'Length > 0;
+      -- ****
 
    procedure Configure(Widget: Tk_Widget'Class; Options: String) with
       Pre => Options'Length > 0;
