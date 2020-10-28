@@ -132,6 +132,9 @@ package Tk.Widget is
       -- Full Tk path name of the selected Tk widget
       -- HISTORY
       -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the Tk path name of widget My_Button
+      -- Path_Name: constant String := Tk_PathName(My_Button);
       -- SOURCE
    function Tk_PathName(Widget: Tk_Widget'Class) return String;
    -- ****
@@ -145,6 +148,9 @@ package Tk.Widget is
    -- Tcl interpreter of the selected Tk widget
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the Tcl interpreter of widget My_Label
+   -- Interpreter: constant Tcl_Interpreter := Tk_Interp(My_Label);
    -- SOURCE
    function Tk_Interp(Widget: Tk_Widget'Class) return Tcl_Interpreter;
    -- ****
@@ -178,6 +184,9 @@ package Tk.Widget is
      -- String with value of the selected option for the selected Tk widget
      -- HISTORY
      -- 8.6.0 - Added
+     -- EXAMPLE
+     -- -- Get the value of text option for My_Label widget
+     -- Text: constant String := Get_Option(My_Label, "text");
      -- SEE ALSO
      -- Widget.Get_Option_(Integer) and Widget.Get_Option_(Float)
      -- SOURCE
@@ -199,6 +208,9 @@ package Tk.Widget is
      -- Integer value of the selected option for the selected Tk widget
      -- HISTORY
      -- 8.6.0 - Added
+     -- EXAMPLE
+     -- -- Get the value of width option for My_Frame widget
+     -- Width: constant Integer := Get_Option(My_Frame, "width");
      -- SEE ALSO
      -- Widget.Get_Option_(String) and Widget.Get_Option_(Float)
      -- SOURCE
@@ -220,6 +232,9 @@ package Tk.Widget is
      -- Float value of the selected option for the selected Tk widget
      -- HISTORY
      -- 8.6.0 - Added
+     -- EXAMPLE
+     -- -- Get the value of maximum option for My_ProgressBar widget
+     -- Maximum: constant Float := Get_Option(My_ProgressBar, "maximum");
      -- SEE ALSO
      -- Widget.Get_Option_(String) and Widget.Get_Option_(Integer)
      -- SOURCE
@@ -229,14 +244,66 @@ package Tk.Widget is
       Pre => Name'Length > 0;
       -- ****
 
+      -- ****f* Widget/Widget.Configure
+      -- FUNCTION
+      -- Set a new value(s) for the selected option(s) in the selected Tk
+      -- widget
+      -- PARAMETERS
+      -- Widget  - Tk widget which option(s) will be set
+      -- Options - List of pairs option value which will be set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the option text value to hello world for My_Label widget
+      -- Configure(My_Label, "-text {hello world}");
+      -- SOURCE
    procedure Configure(Widget: Tk_Widget'Class; Options: String) with
       Pre => Options'Length > 0;
+      -- ****
 
+      --------------------------------
+      -- Destroy or delete a Tk widget
+      --------------------------------
+
+      -- ****f* Widget/Widget.Destroy
+      -- FUNCTION
+      -- Destroy the selected Tk widget and everything what is related to it,
+      -- like children, events, etc
+      -- PARAMETERS
+      -- Widget - Tk widget to destroy
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Destroy My_Label widget
+      -- Destroy(My_Label);
+      -- SOURCE
    procedure Destroy(Widget: in out Tk_Widget'Class);
+   -- ****
 
+   ----------------
+   -- Miscellaneous
+   ----------------
+
+   -- ****f* Widget/Widget.Execute_Widget_Command
+   -- FUNCTION
+   -- Execute the selected command on the selected widget. Generally the
+   -- function shouldn't be used, use it only when the selected Tk widget
+   -- command isn't implemented. If you want to get result of the command,
+   -- use Tcl_GetStringResult function.
+   -- PARAMETERS
+   -- Widget       - Tk widget on which the command will be executed
+   -- Command_Name - Tk command which will be executed
+   -- Options      - Option for the selected Tk command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Set text on My_Button to click me
+   -- Execute_Widget_Command(My_Button, "text", "{click me}");
+   -- SOURCE
    procedure Execute_Widget_Command
      (Widget: Tk_Widget'Class; Command_Name: String;
       Options: String := "") with
       Pre => Command_Name'Length > 0;
+      -- ****
 
 end Tk.Widget;
