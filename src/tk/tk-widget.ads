@@ -35,8 +35,7 @@ package Tk.Widget is
    end record;
    -- ****
 
-   type Directions is (N, NE, E, SE, S, SW, W, NW, CENTER);
-   type Place is (NONE, BOTTOM, TOP, LEFT, RIGHT, CENTER);
+   type Relief_Type is (NONE, RAISED, SUNKEN, FLAT, RIDGE, SOLID, GROOVE);
 
    -- ****s* Widget/Widget.Widget_Options
    -- FUNCTION
@@ -46,9 +45,14 @@ package Tk.Widget is
    -- Ttk - If True, the widget options are for Ttk widget, otherwise for old
    --       type of widgets
    -- OPTIONS
-   -- Cursor     - Name of the cursor to set for the selected Tk widget
-   -- Take_Focus - Can be "1", "0", empty string or Tcl script which will
-   --              return "1", "0" or empty string
+   -- Cursor       - Name of the cursor to set for the selected Tk widget
+   -- Take_Focus   - Can be "1", "0", empty string or Tcl script which will
+   --                return "1", "0" or empty string
+   -- Border_Width - The width of the border of the selected Tk Widget. Only
+   --                non-ttk widgets
+   -- Relief       - Type of 3D effect for the Tk widget. Only non-ttk widgets
+   -- Class        - Class of the selected Ttk widget
+   -- Style        - Style for the selected Ttk widget
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -57,17 +61,11 @@ package Tk.Widget is
       Take_Focus: Unbounded_String := Null_Unbounded_String;
       case Ttk is
          when False =>
-            Active_Background: Unbounded_String := Null_Unbounded_String;
-            Active_Foreground: Unbounded_String := Null_Unbounded_String;
-            Anchor: Directions := CENTER;
-            Background: Unbounded_String := Null_Unbounded_String;
-            Bitmap: Unbounded_String := Null_Unbounded_String;
             Border_Width: Unbounded_String := Null_Unbounded_String;
-            Compound: Place := NONE;
-            Disabled_Foreground: Unbounded_String := Null_Unbounded_String;
-            Font: Unbounded_String := Null_Unbounded_String;
+            Relief: Relief_Type := NONE;
          when True =>
-            null;
+            Class: Unbounded_String := Null_Unbounded_String;
+            Style: Unbounded_String := Null_Unbounded_String;
       end case;
    end record;
    -- ****
