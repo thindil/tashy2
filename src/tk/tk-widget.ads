@@ -35,7 +35,34 @@ package Tk.Widget is
    end record;
    -- ****
 
+   -- ****t* Widget/Widget.Relief_Type
+   -- FUNCTION
+   -- Type of Tk widget 3D effect
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Relief_Type is (NONE, RAISED, SUNKEN, FLAT, RIDGE, SOLID, GROOVE);
+   -- ****
+
+   -- ****t* Widget/Tk.Pixel_Unit
+   -- FUNCTION
+   -- Type of possible screen distance units
+   -- SOURCE
+   type Pixel_Unit is (PIXEL, 'c', 'i', 'm', 'p');
+   -- ****
+
+   -- ****s* Widget/Tk.Pixel_Data
+   -- FUNCTION
+   -- Data structure to store information about pixel
+   -- PARAMETERS
+   -- Value      - Value of screen distance for the pixel
+   -- Value_Unit - Type of screen distance unit. Default are pixels
+   -- SOURCE
+   type Pixel_Data is record
+      Value: Float := 1.0;
+      Value_Unit: Pixel_Unit := PIXEL;
+   end record;
+   -- ****
 
    -- ****s* Widget/Widget.Widget_Options
    -- FUNCTION
@@ -61,7 +88,7 @@ package Tk.Widget is
       Take_Focus: Unbounded_String := Null_Unbounded_String;
       case Ttk is
          when False =>
-            Border_Width: Unbounded_String := Null_Unbounded_String;
+            Border_Width: Pixel_Data;
             Relief: Relief_Type := NONE;
          when True =>
             Class: Unbounded_String := Null_Unbounded_String;
