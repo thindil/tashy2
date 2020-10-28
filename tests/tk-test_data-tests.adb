@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+
 --  begin read only
 --  end read only
 package body Tk.Test_Data.Tests is
@@ -69,6 +71,10 @@ package body Tk.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Tk_Init;
       Assert(True, "This test can only crash");
 
