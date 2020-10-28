@@ -35,20 +35,40 @@ package Tk.Widget is
    end record;
    -- ****
 
+   type Directions is (N, NE, E, SE, S, SW, W, NW, CENTER);
+   type Place is (NONE, BOTTOM, TOP, LEFT, RIGHT, CENTER);
+
    -- ****s* Widget/Widget.Widget_Options
    -- FUNCTION
    -- Abstract records to store available options and their values for widgets.
    -- All Tk widgets options should be children of this record
    -- PARAMETERS
+   -- Ttk - If True, the widget options are for Ttk widget, otherwise for old
+   --       type of widgets
+   -- OPTIONS
    -- Cursor     - Name of the cursor to set for the selected Tk widget
    -- Take_Focus - Can be "1", "0", empty string or Tcl script which will
    --              return "1", "0" or empty string
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Widget_Options is abstract tagged record
+   type Widget_Options(Ttk: Boolean) is abstract tagged record
       Cursor: Unbounded_String := Null_Unbounded_String;
       Take_Focus: Unbounded_String := Null_Unbounded_String;
+      case Ttk is
+         when False =>
+            Active_Background: Unbounded_String := Null_Unbounded_String;
+            Active_Foreground: Unbounded_String := Null_Unbounded_String;
+            Anchor: Directions := CENTER;
+            Background: Unbounded_String := Null_Unbounded_String;
+            Bitmap: Unbounded_String := Null_Unbounded_String;
+            Border_Width: Unbounded_String := Null_Unbounded_String;
+            Compound: Place := NONE;
+            Disabled_Foreground: Unbounded_String := Null_Unbounded_String;
+            Font: Unbounded_String := Null_Unbounded_String;
+         when True =>
+            null;
+      end case;
    end record;
    -- ****
 
