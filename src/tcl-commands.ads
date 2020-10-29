@@ -28,7 +28,7 @@ package Tcl.Commands is
    -- Creating a new Tcl command
    -----------------------------
 
-   -- ****t* Commands/Argv_Pointer
+   -- ****t* Commands/Commands.Argv_Pointer
    -- FUNCTION
    -- Used to store arguments of the selected Tcl command
    -- HISTORY
@@ -46,7 +46,7 @@ package Tcl.Commands is
    subtype Tcl_Command_Result is Natural range 0 .. 4;
    -- ****
 
-   -- ****t* Commands/Tcl_CmdProc
+   -- ****t* Commands/Commands.Tcl_CmdProc
    -- FUNCTION
    -- The Ada code which will be executed when the selected command will be
    -- invoked.
@@ -67,7 +67,7 @@ package Tcl.Commands is
       Convention => C;
       -- ****
 
-      -- ****t* Commands/Tcl_CmdDeleteProc
+      -- ****t* Commands/Commands.Tcl_CmdDeleteProc
       -- FUNCTION
       -- The Ada code which will be executed when the selected command will be
       -- deleted.
@@ -80,7 +80,7 @@ package Tcl.Commands is
       Convention => C;
       -- ****
 
-      -- ****t* Commands/Tcl_Command
+      -- ****t* Commands/Commands.Tcl_Command
       -- FUNCTION
       -- The pointer to a Tcl command
       -- HISTORY
@@ -89,7 +89,7 @@ package Tcl.Commands is
    type Tcl_Command is new System.Address;
    -- ****
 
-   -- ****f* Commands/Tcl_CreateCommand
+   -- ****f* Commands/Commands.Tcl_CreateCommand
    -- FUNCTION
    -- Add a new Tcl command to the selected Tcl interpreter
    -- PARAMETERS
@@ -119,7 +119,7 @@ package Tcl.Commands is
       -- Manipulating a Tcl command arguments
       -----------------------------------------
 
-      -- ****f* Commands/Get_Argument
+      -- ****f* Commands/Commands.Get_Argument
       -- FUNCTION
       -- Get the selected argument from the arguments list
       -- PARAMETERS
