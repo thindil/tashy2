@@ -59,7 +59,7 @@ package Tk.Widget is
    -- Value_Unit - Type of screen distance unit. Default are pixels
    -- SOURCE
    type Pixel_Data is record
-      Value: Float := 1.0;
+      Value: Float range -1.0 .. Float'Last := -1.0;
       Value_Unit: Pixel_Unit := PIXEL;
    end record;
    -- ****
