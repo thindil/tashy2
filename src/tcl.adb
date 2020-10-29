@@ -17,7 +17,7 @@ with Interfaces.C.Strings; use Interfaces.C.Strings;
 
 package body Tcl is
 
-   -- ****iv* Tcl/Default_Interpreter
+   -- ****iv* Tcl/Tcl.Default_Interpreter
    -- FUNCTION
    -- Pointer to the default Tcl interpreter
    -- SOURCE
