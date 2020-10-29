@@ -25,7 +25,7 @@ package Tk is
    -- Initialization of Tk binding
    -------------------------------
 
-   -- ****f* Tk/Tk_Init
+   -- ****f* Tk/Tk.Tk_Init
    -- FUNCTION
    -- Initialize the Tk library on the selected Tcl interpreter
    -- PARAMETERS
@@ -42,7 +42,7 @@ package Tk is
       Test_Case => ("Test_Tk_Init", Nominal);
    -- ****
 
-   -- ****f* Tk/Tk_MainLoop
+   -- ****f* Tk/Tk.Tk_MainLoop
    -- FUNCTION
    -- Loop for events until all windows are destroyed
    -- HISTORY
