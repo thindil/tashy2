@@ -39,6 +39,13 @@ package Tcl.Commands is
       Default_Terminator => Null_Ptr);
    -- ****
 
+   -- ****t* Commands/Commands.Tcl_Command_Result
+   -- FUNCTION
+   -- Used as result of Tcl_CmdProc type
+   -- SOURCE
+   subtype Tcl_Command_Result is Natural range 0 .. 4;
+   -- ****
+
    -- ****t* Commands/Tcl_CmdProc
    -- FUNCTION
    -- The Ada code which will be executed when the selected command will be
@@ -56,7 +63,7 @@ package Tcl.Commands is
    -- SOURCE
    type Tcl_CmdProc is access function
      (ClientData: System.Address; Interpreter: Tcl_Interpreter; Argc: Positive;
-      Argv: Argv_Pointer.Pointer) return Natural with
+      Argv: Argv_Pointer.Pointer) return Tcl_Command_Result with
       Convention => C;
       -- ****
 
