@@ -223,21 +223,18 @@ package Tk.Widget is
      -- PARAMETERS
      -- Widget - Tk widget which option's value will be taken
      -- Name   - Name of the option which value will be taken
-     -- Class  - Class of the option which value will be taken. Can be empty.
-     --          Default value is empty.
      -- RESULT
      -- String with value of the selected option for the selected Tk widget
      -- HISTORY
      -- 8.6.0 - Added
      -- EXAMPLE
      -- -- Get the value of text option for My_Label widget
-     -- Text: constant String := Get_Option(My_Label, "text");
+     -- Text: constant String := Get_Option(My_Label, "-text");
      -- SEE ALSO
      -- Widget.Get_Option_(Integer) and Widget.Get_Option_(Float)
      -- SOURCE
    function Get_Option
-     (Widget: Tk_Widget'Class; Name: String; Class: String := "")
-      return String with
+     (Widget: Tk_Widget'Class; Name: String) return String with
       Pre => Name'Length > 0;
       -- ****
 
@@ -247,21 +244,18 @@ package Tk.Widget is
      -- PARAMETERS
      -- Widget - Tk widget which option's value will be taken
      -- Name   - Name of the option which value will be taken
-     -- Class  - Class of the option which value will be taken. Can be empty.
-     --          Default value is empty.
      -- RESULT
      -- Integer value of the selected option for the selected Tk widget
      -- HISTORY
      -- 8.6.0 - Added
      -- EXAMPLE
      -- -- Get the value of width option for My_Frame widget
-     -- Width: constant Integer := Get_Option(My_Frame, "width");
+     -- Width: constant Integer := Get_Option(My_Frame, "-width");
      -- SEE ALSO
      -- Widget.Get_Option_(String) and Widget.Get_Option_(Float)
      -- SOURCE
    function Get_Option
-     (Widget: Tk_Widget'Class; Name: String; Class: String := "")
-      return Integer with
+     (Widget: Tk_Widget'Class; Name: String) return Integer with
       Pre => Name'Length > 0;
       -- ****
 
@@ -271,21 +265,17 @@ package Tk.Widget is
      -- PARAMETERS
      -- Widget - Tk widget which option's value will be taken
      -- Name   - Name of the option which value will be taken
-     -- Class  - Class of the option which value will be taken. Can be empty.
-     --          Default value is empty.
      -- RESULT
      -- Float value of the selected option for the selected Tk widget
      -- HISTORY
      -- 8.6.0 - Added
      -- EXAMPLE
      -- -- Get the value of maximum option for My_ProgressBar widget
-     -- Maximum: constant Float := Get_Option(My_ProgressBar, "maximum");
+     -- Maximum: constant Float := Get_Option(My_ProgressBar, "-maximum");
      -- SEE ALSO
      -- Widget.Get_Option_(String) and Widget.Get_Option_(Integer)
      -- SOURCE
-   function Get_Option
-     (Widget: Tk_Widget'Class; Name: String; Class: String := "")
-      return Float with
+   function Get_Option(Widget: Tk_Widget'Class; Name: String) return Float with
       Pre => Name'Length > 0;
       -- ****
 
