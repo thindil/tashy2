@@ -11,7 +11,7 @@ package Tcl.Commands.Test_Data.Tests is
    null record;
 
    procedure Test_Tcl_CreateCommand_323eac_b11b8b(Gnattest_T: in out Test);
-   --  tcl-commands.ads:103:4:Tcl_CreateCommand:Test_Tcl_CreateCommand
+   --  tcl-commands.ads:110:4:Tcl_CreateCommand:Test_Tcl_CreateCommand
 
 end Tcl.Commands.Test_Data.Tests;
 --  end read only

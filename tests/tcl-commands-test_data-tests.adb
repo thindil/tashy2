@@ -30,11 +30,11 @@ package body Tcl.Commands.Test_Data.Tests is
 
    function My_Proc
      (ClientData: System.Address; Interpreter: Tcl_Interpreter; Argc: Positive;
-      Argv: Argv_Pointer.Pointer) return Natural with
+      Argv: Argv_Pointer.Pointer) return Tcl_Command_Result with
       Convention => C;
    function My_Proc
      (ClientData: System.Address; Interpreter: Tcl_Interpreter; Argc: Positive;
-      Argv: Argv_Pointer.Pointer) return Natural is
+      Argv: Argv_Pointer.Pointer) return Tcl_Command_Result is
    begin
       Ada.Text_IO.Put_Line("Arguments:" & Positive'Image(Argc));
       for I in 0 .. Argc - 1 loop
