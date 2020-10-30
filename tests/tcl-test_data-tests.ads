@@ -14,10 +14,10 @@ package Tcl.Test_Data.Tests is
    --  tcl.ads:119:4:Tcl_Eval:Test_Tcl_Eval
 
    procedure Test_Tcl_GetStringResult_ee4e01_91e609(Gnattest_T: in out Test);
-   --  tcl.ads:202:4:Tcl_GetStringResult:Test_Tcl_GetStringResult
+   --  tcl.ads:171:4:Tcl_GetStringResult:Test_Tcl_GetStringResult
 
    procedure Test_Tcl_SetResult_e87522_5a72b9(Gnattest_T: in out Test);
-   --  tcl.ads:223:4:Tcl_SetResult:Test_Tcl_SetResult
+   --  tcl.ads:192:4:Tcl_SetResult:Test_Tcl_SetResult
 
 end Tcl.Test_Data.Tests;
 --  end read only
