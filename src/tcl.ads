@@ -140,49 +140,18 @@ package Tcl is
    for Result_Types use (TCL_STATIC => 0, TCL_VOLATILE => 1, TCL_DYNAMIC => 3);
    -- ****
 
-   -- ****d* Tcl/Tcl.TCL_OK
+   -- ****t* Tcl/Tcl_Results
    -- FUNCTION
-   -- Standard Tcl command return value on success
-   -- HISTORY
-   -- 8.6.0 - Added
+   -- Used as return Tcl result for commands
+   -- OPTIONS
+   -- TCL_OK       - Used when a command finished successfuly. Standard result
+   -- TCL_ERROR    - Used when a command meet a problem
+   -- TCL_RETURN   - Used when a command want to emulate Tcl command return
+   -- TCL_BREAK    - Used when a command want to emulate Tcl command break
+   -- TCL_CONTINUE - Used when a command want to emulate Tcl command continue
    -- SOURCE
-   TCL_OK: constant Natural := 0;
-   -- ****
-
-   -- ****d* Tcl/Tcl.TCL_ERROR
-   -- FUNCTION
-   -- Tcl command was unsuccessful
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   TCL_ERROR: constant Positive := 1;
-   -- ****
-
-   -- ****d* Tcl/Tcl.TCL_RETURN
-   -- FUNCTION
-   -- Tcl command behaves as Tcl command return
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   TCL_RETURN: constant Positive := 2;
-   -- ****
-
-   -- ****d* Tcl/Tcl.TCL_BREAK
-   -- FUNCTION
-   -- Tcl command behaves as Tcl command break
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   TCL_BREAK: constant Positive := 3;
-   -- ****
-
-   -- ****d* Tcl/Tcl.TCL_CONTINUE
-   -- FUNCTION
-   -- Tcl commmand behaves as Tcl command continue
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   TCL_CONTINUE: constant Positive := 4;
+   type Tcl_Results is
+     (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE);
    -- ****
 
    -- ****f* Tcl/Tcl.Tcl_GetStringResult

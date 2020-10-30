@@ -22,7 +22,7 @@ package body Tk is
          Convention => C,
          External_Name => "Tk_Init";
    begin
-      if TkInit(Interpreter) = int(TCL_ERROR) then
+      if TkInit(Interpreter) = int(Tcl_Results'Pos(TCL_ERROR)) then
          raise Tcl_Exception with Tcl_GetStringResult;
       end if;
    end Tk_Init;
