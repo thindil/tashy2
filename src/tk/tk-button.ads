@@ -18,7 +18,7 @@ package Tk.Button is
 
    type Tk_Button is new Tk_Widget with null record;
 
-   type Button_Options is new Widget_Options(False) with null record;
+   type Button_Options is new Widget_Options (False) with null record;
 
    function Create
      (Path_Name: String; Options: Widget_Options'Class;
