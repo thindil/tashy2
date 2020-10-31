@@ -18,12 +18,12 @@ with Interfaces.C.Strings; use Interfaces.C.Strings;
 package body Tk.Widget is
 
    function Tk_PathName(Widget: Tk_Widget'Class) return String is
-      function TkPathName(tkwin: int) return chars_ptr with
+      function Get_PathName(tkwin: int) return chars_ptr with
          Import => True,
          Convention => C,
-         External_Name => "Tk_PathName";
+         External_Name => "Get_PathName";
    begin
-      return Value(TkPathName(int(Widget.Tk_Window)));
+      return Value(Get_PathName(int(Widget.Tk_Window)));
    end Tk_PathName;
 
    function Tk_Interp(Widget: Tk_Widget'Class) return Tcl_Interpreter is
