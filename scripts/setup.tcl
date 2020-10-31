@@ -68,6 +68,12 @@ proc CreateGprFile {} {
    \"[join $tashvar(AARGS) "\",\n      \""]\"
    );
 
+   --  These are the C compiler options used to build Tashy2.
+   C_Compiler_Options :=
+   (
+   \"[join $tashvar(CARGS) "\",\n      \""]\"
+   );
+
    --  These options determine the location of the system's Tcl, Tk
    --  libraries.
    Linker_Options :=
@@ -132,6 +138,12 @@ if {[catch {open tashy2_options.gpr r} fid]} {
    }
    set tashvar(AARGS) "-O2 -gnatafoE -gnatwaL"
    set tashvar(LINKER) $library_switches
+   set tclhome [file dirname [file dirname [info nameofexecutable]]]
+   set tcl_include [file join $tclhome include]
+   if {![file exists [file join $tcl_include tcl.h]]} {
+      set tcl_include [file join $tcl_include [file tail $tcl_library]]
+   }
+   set tashvar(CARGS) "-O2 -I$tcl_include"
 } else {
    set number 0
    set getline false
@@ -158,6 +170,9 @@ if {[catch {open tashy2_options.gpr r} fid]} {
                set tashvar(AARGS) $value
             }
             3 {
+               set tashvar(CARGS) $value
+            }
+            4 {
                set tashvar(LINKER) $value
             }
          }
@@ -179,7 +194,7 @@ if {[lindex $argv 0] == "auto"} {
 # Create GUI
 proc SaveGUI {} {
    global tashvar library_switches tcl_version tk_version
-   foreach name {AARGS LINKER} {
+   foreach name {AARGS CARGS LINKER} {
       set tashvar($name) [.options.[string tolower $name] get]
    }
    set library_switches $tashvar(LINKER)
@@ -201,7 +216,7 @@ pack [ttk::checkbutton .modules.msgcat2 -text "msgcat" -variable installmsgcat] 
 pack .modules
 ttk::frame .options
 set row 0
-foreach name {AARGS LINKER} {
+foreach name {AARGS CARGS LINKER} {
    grid [ttk::label .options.[string tolower $name]-label -text "$name:"] -sticky w
    grid [ttk::entry .options.[string tolower $name] -width 30] -row $row -column 1
    .options.[string tolower $name] insert end $tashvar($name)
