@@ -10,7 +10,7 @@ project Tashy2 is
 
    for Library_Name use "tashy2";
 
-   for Languages use ("ada");
+   for Languages use ("ada", "c");
 
    for Source_Dirs use Tashy2_Options.Source_Files;
    for Object_Dir use "obj/" & Library_Type;
@@ -27,6 +27,7 @@ project Tashy2 is
 
    package Compiler is
       for Default_Switches ("ada") use Tashy2_Options.Compiler_Options;
+      for Default_Switches ("c") use Tashy2_Options.C_Compiler_Options;
    end Compiler;
 
    package Linker is
