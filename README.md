@@ -118,6 +118,7 @@ https://thindil.github.io/tashy2/
 * FUNCTION   - general information what the subprogram is doing
 * SOURCE     - declaration of the subprogram
 * PARAMETERS - detailed information about the subprogram parameters
+* OPTIONS    - list of options/values in enumerations
 * RESULT     - value returned by the function
 * OUTPUT     - value returned by the procedure
 * HISTORY    - list of main changes to the subprogram
