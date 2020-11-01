@@ -12,14 +12,18 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Interfaces.C; use Interfaces.C;
+with Interfaces.C.Strings; use Interfaces.C.Strings;
+with Tk.MainWindow; use Tk.MainWindow;
+
 package body Tk.Button is
 
    function Create
      (Path_Name: String; Options: Widget_Options'Class;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button is
-      New_Button: Tk_Button;
    begin
-      return New_Button;
+      Tcl_Eval("button " & Path_Name, Interpreter);
+      return Get_Widget(Path_Name, Interpreter);
    end Create;
 
    procedure Create
@@ -32,9 +36,14 @@ package body Tk.Button is
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Button is
-      Button: Tk_Button;
    begin
-      return Button;
+      return Button: Tk_Button do
+         Button.Tk_Window :=
+           Integer
+             (Tk_NameToWindow
+                (Interpreter, New_String(Path_Name),
+                 int(Get_Main_Window(Interpreter).Tk_Window)));
+      end return;
    end Get_Widget;
 
    function Get_Options(Widget: Tk_Widget'Class) return Button_Options is

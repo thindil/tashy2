@@ -12,13 +12,16 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Tk.Widget; use Tk.Widget;
 
 package Tk.Button is
 
    type Tk_Button is new Tk_Widget with null record;
 
-   type Button_Options is new Widget_Options (False) with null record;
+   type Button_Options is new Widget_Options (False) with record
+      Text: Unbounded_String := Null_Unbounded_String;
+   end record;
 
    function Create
      (Path_Name: String; Options: Widget_Options'Class;
