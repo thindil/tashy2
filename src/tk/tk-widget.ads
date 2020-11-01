@@ -13,6 +13,8 @@
 -- limitations under the License.
 
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Interfaces.C; use Interfaces.C;
+with Interfaces.C.Strings; use Interfaces.C.Strings;
 
 -- ****h* Tk/Widget
 -- FUNCTION
@@ -199,6 +201,24 @@ package Tk.Widget is
    -- SOURCE
    function Tk_Interp(Widget: Tk_Widget'Class) return Tcl_Interpreter;
    -- ****
+
+   -- ****f* Widget/Widget.Tk_NameToWindow
+   -- FUNCTION
+   -- Get the Tk_Window from the selected Tk path name. Generally
+   -- Widget.Get_Widget should be used instead of this.
+   -- PARAMETERS
+   -- interp   - Tcl interpreter on which the window will be taken
+   -- pathName - Tk path name for the window
+   -- tkwin    - The main window in Tk hiearchy for the window
+   -- RESULT
+   -- Token for the selected Tk_Window
+   -- SOURCE
+   function Tk_NameToWindow
+     (interp: Tcl_Interpreter; pathName: chars_ptr; tkwin: int) return int with
+      Import => True,
+      Convention => C,
+      External_Name => "Tk_NameToWindow";
+      -- ****
 
    -- ****f* Widget/Widget.Get_Options
    -- FUNCTION
