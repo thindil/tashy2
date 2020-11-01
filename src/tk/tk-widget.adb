@@ -12,9 +12,6 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Strings; use Interfaces.C.Strings;
-
 package body Tk.Widget is
 
    function Tk_PathName(Widget: Tk_Widget'Class) return String is
