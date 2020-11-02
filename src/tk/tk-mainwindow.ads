@@ -16,6 +16,7 @@ with Tk.TopLevel; use Tk.TopLevel;
 
 package Tk.MainWindow is
 
-   function Get_Main_Window(Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
+   function Get_Main_Window
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
 
 end Tk.MainWindow;

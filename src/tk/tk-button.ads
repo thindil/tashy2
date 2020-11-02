@@ -17,24 +17,20 @@ with Tk.Widget; use Tk.Widget;
 
 package Tk.Button is
 
-   type Tk_Button is new Tk_Widget with null record;
+   type Tk_Button is new Tk_Widget;
 
-   type Button_Options is new Widget_Options (False) with record
+   type Button_Options is new Widget_Options (Ttk => False) with record
       Text: Unbounded_String := Null_Unbounded_String;
    end record;
 
    function Create
-     (Path_Name: String; Options: Widget_Options'Class;
+     (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button;
 
    procedure Create
-     (Widget: out Tk_Button; Path_Name: String; Options: Widget_Options'Class;
+     (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter);
 
-   function Get_Widget
-     (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_Button;
-
-   function Get_Options(Widget: Tk_Widget'Class) return Button_Options;
+   function Get_Options(Widget: Tk_Button) return Button_Options;
 
 end Tk.Button;
