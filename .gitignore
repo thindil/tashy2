@@ -2,3 +2,4 @@ tashy2_options.gpr
 lib
 obj
 tests/driver/*
+demos/bin
