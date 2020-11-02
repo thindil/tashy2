@@ -15,7 +15,7 @@
 package body Tk.TopLevel is
 
    function Create
-     (Path_Name: String; Options: Widget_Options'Class;
+     (Path_Name: String; Options: TopLevel_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
       New_TopLevel: Tk_TopLevel;
    begin
@@ -24,21 +24,13 @@ package body Tk.TopLevel is
    end Create;
 
    procedure Create
-     (Widget: out Tk_TopLevel; Path_Name: String; Options: Widget_Options'Class;
+     (Widget: out Tk_TopLevel; Path_Name: String; Options: TopLevel_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Widget := Create(Path_Name, Options, Interpreter);
    end Create;
 
-   function Get_Widget
-     (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_TopLevel is
-      TopLevel: Tk_TopLevel;
-   begin
-      return TopLevel;
-   end Get_Widget;
-
-   function Get_Options(Widget: Tk_Widget'Class) return TopLevel_Options is
+   function Get_Options(Widget: Tk_TopLevel) return TopLevel_Options is
       Options: TopLevel_Options;
    begin
       return Options;

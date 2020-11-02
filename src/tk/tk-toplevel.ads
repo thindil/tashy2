@@ -16,22 +16,18 @@ with Tk.Widget; use Tk.Widget;
 
 package Tk.TopLevel is
 
-   type Tk_TopLevel is new Tk_Widget with null record;
+   type Tk_TopLevel is new Tk_Widget;
 
    type TopLevel_Options is new Widget_Options (False) with null record;
 
    function Create
-     (Path_Name: String; Options: Widget_Options'Class;
+     (Path_Name: String; Options: TopLevel_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
 
    procedure Create
-     (Widget: out Tk_TopLevel; Path_Name: String; Options: Widget_Options'Class;
+     (Widget: out Tk_TopLevel; Path_Name: String; Options: TopLevel_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter);
 
-   function Get_Widget
-     (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_TopLevel;
-
-   function Get_Options(Widget: Tk_Widget'Class) return TopLevel_Options;
+   function Get_Options(Widget: Tk_TopLevel) return TopLevel_Options;
 
 end Tk.TopLevel;
