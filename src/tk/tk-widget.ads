@@ -13,8 +13,6 @@
 -- limitations under the License.
 
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
-with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Strings; use Interfaces.C.Strings;
 
 -- ****h* Tk/Widget
 -- FUNCTION
@@ -25,16 +23,11 @@ package Tk.Widget is
 
    -- ****s* Widget/Widget.Tk_Widget
    -- FUNCTION
-   -- Abstract record to store data about widgets. All Tk widgets should be
-   -- children of this record
-   -- PARAMETERS
-   -- Tk_Window - Identifier of the Tk widget
+   -- The identifier of the Tk Widget.
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Tk_Widget is abstract tagged record
-      Tk_Window: Integer := 0;
-   end record;
+   type Tk_Widget is new Integer;
    -- ****
 
    -- ****t* Widget/Widget.Relief_Type
@@ -99,59 +92,14 @@ package Tk.Widget is
    end record;
    -- ****
 
-   ---------------------------
-   -- Creating a new Tk widget
-   ---------------------------
-
-   -- ****f* Widget/Widget.Create_(function)
-   -- FUNCTION
-   -- Abstract function to create a widget. All Tk widgets should implement
-   -- their own version of the function
-   -- PARAMETERS
-   -- Path_Name   - Full Tk path for the newly created Tk widget
-   -- Options     - Tk options for the newly created Tk widget
-   -- Interpreter - Tcl interpreter on which the widget will be created.
-   --               Default value is default Tcl interpreter
-   -- RESULT
-   -- The newly created Tk_Widget
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SEE ALSO
-   -- Widget.Create_(procedure)
-   -- SOURCE
-   function Create
-     (Path_Name: String; Options: Widget_Options'Class;
-      Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_Widget is abstract;
-      -- ****
-
-      -- ****f* Widget/Widget.Create_(procedure)
-      -- FUNCTION
-      -- Abstract function to create a widget. All Tk widgets should implement
-      -- their own version of the function
-      -- PARAMETERS
-      -- Widget      - Tk_Widget which will be created
-      -- Path_Name   - Full Tk path for the newly created Tk widget
-      -- Options     - Tk options for the newly created Tk widget
-      -- Interpreter - Tcl interpreter on which the widget will be created.
-      --               Default value is default Tcl interpreter
-      -- OUTPUT
-      -- The newly created Tk_Widget as Widget parameter
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- SEE ALSO
-      -- Widget.Create_(function)
-      -- SOURCE
-   procedure Create
-     (Widget: out Tk_Widget; Path_Name: String; Options: Widget_Options'Class;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) is abstract;
-      -- ****
+   ---------------------------------
+   -- Getting info about a Tk widget
+   ---------------------------------
 
    -- ****f* Widget/Widget.Get_Widget
    -- FUNCTION
-   -- Abstract function to get existing Tk widget from its Tk path name and
-   -- on the seelcted interpreter. All Tk widgets should implement their own
-   -- version of the function
+   -- Get existing Tk widget from its Tk path name and on the seelcted
+   -- interpreter.
    -- PARAMETERS
    -- Path_Name   - Full Tk path name for the selected widget
    -- Interpreter - Tcl interpreter on which the selected widget is. Default
@@ -163,12 +111,8 @@ package Tk.Widget is
    -- SOURCE
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_Widget is abstract;
+      return Tk_Widget;
       -- ****
-
-      ---------------------------------
-      -- Getting info about a Tk widget
-      ---------------------------------
 
       -- ****f* Widget/Widget.Tk_PathName
       -- FUNCTION
@@ -183,7 +127,7 @@ package Tk.Widget is
       -- -- Get the Tk path name of widget My_Button
       -- Path_Name: constant String := Tk_PathName(My_Button);
       -- SOURCE
-   function Tk_PathName(Widget: Tk_Widget'Class) return String;
+   function Tk_PathName(Widget: Tk_Widget) return String;
    -- ****
 
    -- ****f* Widget/Widget.Tk_Interp
@@ -199,43 +143,8 @@ package Tk.Widget is
    -- -- Get the Tcl interpreter of widget My_Label
    -- Interpreter: constant Tcl_Interpreter := Tk_Interp(My_Label);
    -- SOURCE
-   function Tk_Interp(Widget: Tk_Widget'Class) return Tcl_Interpreter;
+   function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter;
    -- ****
-
-   -- ****f* Widget/Widget.Tk_NameToWindow
-   -- FUNCTION
-   -- Get the Tk_Window from the selected Tk path name. Generally
-   -- Widget.Get_Widget should be used instead of this.
-   -- PARAMETERS
-   -- interp   - Tcl interpreter on which the window will be taken
-   -- pathName - Tk path name for the window
-   -- tkwin    - The main window in Tk hiearchy for the window
-   -- RESULT
-   -- Token for the selected Tk_Window
-   -- SOURCE
-   function Tk_NameToWindow
-     (interp: Tcl_Interpreter; pathName: chars_ptr; tkwin: int) return int with
-      Import => True,
-      Convention => C,
-      External_Name => "Tk_NameToWindow";
-      -- ****
-
-   -- ****f* Widget/Widget.Get_Options
-   -- FUNCTION
-   -- Abstract function to get values of all available options for the
-   -- selected Tk widget. All Tk widgets should implement their own
-   -- version of the function.
-   -- PARAMETERS
-   -- Widget - Tk widget which options will be taken
-   -- RESULT
-   -- Widget specific Widget_Options record with all options and their
-   -- values for the selected Tk widget
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   function Get_Options
-     (Widget: Tk_Widget'Class) return Widget_Options is abstract;
-     -- ****
 
      -- ****f* Widget/Widget.Get_Option_(String)
      -- FUNCTION
@@ -253,8 +162,7 @@ package Tk.Widget is
      -- SEE ALSO
      -- Widget.Get_Option_(Integer) and Widget.Get_Option_(Float)
      -- SOURCE
-   function Get_Option
-     (Widget: Tk_Widget'Class; Name: String) return String with
+   function Get_Option(Widget: Tk_Widget; Name: String) return String with
       Pre => Name'Length > 0;
       -- ****
 
@@ -274,8 +182,7 @@ package Tk.Widget is
      -- SEE ALSO
      -- Widget.Get_Option_(String) and Widget.Get_Option_(Float)
      -- SOURCE
-   function Get_Option
-     (Widget: Tk_Widget'Class; Name: String) return Integer with
+   function Get_Option(Widget: Tk_Widget; Name: String) return Integer with
       Pre => Name'Length > 0;
       -- ****
 
@@ -295,7 +202,7 @@ package Tk.Widget is
      -- SEE ALSO
      -- Widget.Get_Option_(String) and Widget.Get_Option_(Integer)
      -- SOURCE
-   function Get_Option(Widget: Tk_Widget'Class; Name: String) return Float with
+   function Get_Option(Widget: Tk_Widget; Name: String) return Float with
       Pre => Name'Length > 0;
       -- ****
 
@@ -312,7 +219,7 @@ package Tk.Widget is
       -- -- Set the option text value to hello world for My_Label widget
       -- Configure(My_Label, "-text {hello world}");
       -- SOURCE
-   procedure Configure(Widget: Tk_Widget'Class; Options: String) with
+   procedure Configure(Widget: Tk_Widget; Options: String) with
       Pre => Options'Length > 0;
       -- ****
 
@@ -332,7 +239,7 @@ package Tk.Widget is
       -- -- Destroy My_Label widget
       -- Destroy(My_Label);
       -- SOURCE
-   procedure Destroy(Widget: in out Tk_Widget'Class);
+   procedure Destroy(Widget: in out Tk_Widget);
    -- ****
 
    ----------------
@@ -356,8 +263,7 @@ package Tk.Widget is
    -- Execute_Widget_Command(My_Button, "text", "{click me}");
    -- SOURCE
    procedure Execute_Widget_Command
-     (Widget: Tk_Widget'Class; Command_Name: String;
-      Options: String := "") with
+     (Widget: Tk_Widget; Command_Name: String; Options: String := "") with
       Pre => Command_Name'Length > 0;
       -- ****
 
