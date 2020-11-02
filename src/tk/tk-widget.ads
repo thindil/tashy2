@@ -63,32 +63,16 @@ package Tk.Widget is
    -- FUNCTION
    -- Abstract records to store available options and their values for widgets.
    -- All Tk widgets options should be children of this record
-   -- PARAMETERS
-   -- Ttk - If True, the widget options are for Ttk widget, otherwise for old
-   --       type of widgets
    -- OPTIONS
    -- Cursor       - Name of the cursor to set for the selected Tk widget
    -- Take_Focus   - Can be "1", "0", empty string or Tcl script which will
    --                return "1", "0" or empty string
-   -- Border_Width - The width of the border of the selected Tk Widget. Only
-   --                non-ttk widgets
-   -- Relief       - Type of 3D effect for the Tk widget. Only non-ttk widgets
-   -- Class        - Class of the selected Ttk widget
-   -- Style        - Style for the selected Ttk widget
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Widget_Options(Ttk: Boolean) is abstract tagged record
+   type Widget_Options is abstract tagged record
       Cursor: Unbounded_String := Null_Unbounded_String;
       Take_Focus: Unbounded_String := Null_Unbounded_String;
-      case Ttk is
-         when False =>
-            Border_Width: Pixel_Data;
-            Relief: Relief_Type := NONE;
-         when True =>
-            Class: Unbounded_String := Null_Unbounded_String;
-            Style: Unbounded_String := Null_Unbounded_String;
-      end case;
    end record;
    -- ****
 
