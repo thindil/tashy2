@@ -13,7 +13,7 @@ begin
    Tk_Init;
 
    -- Create button
-   Button := Create(".button", (Ttk => False, Text => To_Unbounded_String("Click me"), others => <>));
+   Button := Create(".button", (Text => To_Unbounded_String("Click me"), others => <>));
 
    Ada.Text_IO.Put_Line(Tk_Button'Image(Button));
 
