@@ -19,8 +19,10 @@ package Tk.Button is
 
    type Tk_Button is new Tk_Widget;
 
-   type Button_Options is new Widget_Options (Ttk => False) with record
-      Text: Unbounded_String := Null_Unbounded_String;
+   type Button_Options is new Widget_Options with record
+      Border_Width: Pixel_Data;
+      Relief: Relief_Type;
+      Text: Unbounded_String;
    end record;
 
    function Create

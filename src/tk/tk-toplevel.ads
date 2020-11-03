@@ -18,7 +18,10 @@ package Tk.TopLevel is
 
    type Tk_TopLevel is new Tk_Widget;
 
-   type TopLevel_Options is new Widget_Options (False) with null record;
+   type TopLevel_Options is new Widget_Options with record
+      Border_Width: Pixel_Data;
+      Relief: Relief_Type;
+   end record;
 
    function Create
      (Path_Name: String; Options: TopLevel_Options;
