@@ -23,11 +23,11 @@ package Tk.TopLevel is
       Relief: Relief_Type;
    end record;
 
-   function Create
+   function TopLevel_New
      (Path_Name: String; Options: TopLevel_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
 
-   procedure Create
+   procedure TopLevel_New
      (Widget: out Tk_TopLevel; Path_Name: String; Options: TopLevel_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter);
 
