@@ -14,20 +14,20 @@
 
 package body Tk.Button is
 
-   function Create
+   function Button_New
      (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button is
    begin
       Tcl_Eval("button " & Path_Name, Interpreter);
       return Get_Widget(Path_Name, Interpreter);
-   end Create;
+   end Button_New;
 
-   procedure Create
+   procedure Button_New
      (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Widget := Create(Path_Name, Options, Interpreter);
-   end Create;
+      Widget := Button_New(Path_Name, Options, Interpreter);
+   end Button_New;
 
    function Get_Options(Widget: Tk_Button) return Button_Options is
       Options: Button_Options;
