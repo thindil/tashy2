@@ -166,7 +166,8 @@ package Tk.Widget is
      -- SEE ALSO
      -- Widget.Get_Option_(String) and Widget.Get_Option_(Float)
      -- SOURCE
-   function Get_Option(Widget: Tk_Widget; Name: String) return Integer with
+   function Get_Option(Widget: Tk_Widget; Name: String) return Integer is
+     (Integer'Value(Get_Option(Widget, Name))) with
       Pre => Name'Length > 0;
       -- ****
 
@@ -186,7 +187,8 @@ package Tk.Widget is
      -- SEE ALSO
      -- Widget.Get_Option_(String) and Widget.Get_Option_(Integer)
      -- SOURCE
-   function Get_Option(Widget: Tk_Widget; Name: String) return Float with
+   function Get_Option(Widget: Tk_Widget; Name: String) return Float is
+     (Float'Value(Get_Option(Widget, Name))) with
       Pre => Name'Length > 0;
       -- ****
 
