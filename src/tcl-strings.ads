@@ -48,7 +48,8 @@ package Tcl.Strings is
    -- SOURCE
    function To_Tcl_String
      (Source: String; Evaluate: Boolean := False) return Tcl_String with
-      Pre => Source'Length > 0;
+      Pre => Source'Length > 0,
+      Test_Case => ("Test_To_Tcl_String", Nominal);
       -- ****
 
 end Tcl.Strings;
