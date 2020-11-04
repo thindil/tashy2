@@ -58,16 +58,6 @@ package body Tk.Widget is
       return Tcl_GetStringResult(Tk_Interp(Widget));
    end Get_Option;
 
-   function Get_Option(Widget: Tk_Widget; Name: String) return Integer is
-   begin
-      return Integer'Value(Get_Option(Widget, Name));
-   end Get_Option;
-
-   function Get_Option(Widget: Tk_Widget; Name: String) return Float is
-   begin
-      return Float'Value(Get_Option(Widget, Name));
-   end Get_Option;
-
    procedure Configure(Widget: Tk_Widget; Options: String) is
    begin
       Tcl_Eval
