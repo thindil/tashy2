@@ -27,8 +27,7 @@ package body Tcl.Strings is
       end if;
       if Evaluate then
          loop
-            Element_Index :=
-              Index(New_String, """", Element_Index);
+            Element_Index := Index(New_String, """", Element_Index);
             exit when Element_Index = 0;
             Insert(New_String, Element_Index, "\");
             Element_Index := Element_Index + 2;
