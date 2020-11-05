@@ -1,6 +1,6 @@
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Text_IO;
 with Tcl; use Tcl;
+with Tcl.Strings; use Tcl.Strings;
 with Tk; use Tk;
 with Tk.Button; use Tk.Button;
 
@@ -13,8 +13,8 @@ begin
    Tk_Init;
 
    -- Create button
-   Button := Button_New(".button", (Text => To_Unbounded_String("Click me"), others => <>));
+   Button := Button_New(".button", (Text => To_Tcl_String("Click me"), others => <>));
 
-   Ada.Text_IO.Put_Line(Tk_Button'Image(Button));
+   Ada.Text_IO.Put_Line(Get_Option(Button, "-text"));
 
 end HelloWorld;
