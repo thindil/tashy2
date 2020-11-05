@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
 package Tk.Button is
@@ -21,8 +22,8 @@ package Tk.Button is
 
    type Button_Options is new Widget_Options with record
       Border_Width: Pixel_Data;
-      Relief: Relief_Type;
-      Text: Unbounded_String;
+      Relief: Relief_Type := NONE;
+      Text: Tcl_String;
    end record;
 
    function Button_New

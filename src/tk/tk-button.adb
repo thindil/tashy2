@@ -14,11 +14,49 @@
 
 package body Tk.Button is
 
+   -- ****if* Button/Button.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Button_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Button_Options) return String is
+      -- ****
+      Options_String: Unbounded_String;
+   begin
+      if Length(Options.Cursor) > 0 then
+         Append(Options_String, "-cursor " & To_String(Options.Cursor));
+      end if;
+      if Length(Options.Take_Focus) > 0 then
+         Append(Options_String, " -takefocus " & To_String(Options.Take_Focus));
+      end if;
+      if Options.Border_Width.Value > -1.0 then
+         Append
+           (Options_String,
+            "-borderwidth" & Float'Image(Options.Border_Width.Value) &
+            Pixel_Unit'Image(Options.Border_Width.Value_Unit));
+      end if;
+      if Options.Relief /= NONE then
+         Append
+           (Options_String, " -relief " & Relief_Type'Image(Options.Relief));
+      end if;
+      if Length(Options.Text) > 0 then
+         Append(Options_String, " -text " & To_String(Options.Text));
+      end if;
+      return To_String(Options_String);
+   end Options_To_String;
+
    function Button_New
      (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button is
    begin
-      Tcl_Eval("button " & Path_Name, Interpreter);
+      Tcl_Eval
+        ("button " & Path_Name & " " & Options_To_String(Options),
+         Interpreter);
       return Get_Widget(Path_Name, Interpreter);
    end Button_New;
 
