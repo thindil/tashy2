@@ -26,11 +26,11 @@ package Tk.Button is
       Text: Tcl_String;
    end record;
 
-   function Button_New
+   function Create
      (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button;
 
-   procedure Button_New
+   procedure Create
      (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter);
 

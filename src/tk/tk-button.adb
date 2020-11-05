@@ -32,7 +32,8 @@ package body Tk.Button is
          Append(Options_String, "-cursor " & To_String(Options.Cursor));
       end if;
       if Length(Options.Take_Focus) > 0 then
-         Append(Options_String, " -takefocus " & To_String(Options.Take_Focus));
+         Append
+           (Options_String, " -takefocus " & To_String(Options.Take_Focus));
       end if;
       if Options.Border_Width.Value > -1.0 then
          Append
@@ -50,7 +51,7 @@ package body Tk.Button is
       return To_String(Options_String);
    end Options_To_String;
 
-   function Button_New
+   function Create
      (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button is
    begin
@@ -58,14 +59,14 @@ package body Tk.Button is
         ("button " & Path_Name & " " & Options_To_String(Options),
          Interpreter);
       return Get_Widget(Path_Name, Interpreter);
-   end Button_New;
+   end Create;
 
-   procedure Button_New
+   procedure Create
      (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Widget := Button_New(Path_Name, Options, Interpreter);
-   end Button_New;
+      Widget := Create(Path_Name, Options, Interpreter);
+   end Create;
 
    function Get_Options(Widget: Tk_Button) return Button_Options is
       Options: Button_Options;
