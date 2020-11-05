@@ -9,11 +9,12 @@ procedure HelloWorld is
 begin
    -- Initialize Tcl interpreter
    Tcl_Init(Create_Interpreter);
+
    -- Initialize the Tk library
    Tk_Init;
 
    -- Create button
-   Button := Button_New(".button", (Text => To_Tcl_String("Click me"), others => <>));
+   Button := Create(".button", (Text => To_Tcl_String("Click me"), others => <>));
 
    Ada.Text_IO.Put_Line(Get_Option(Button, "-text"));
 
