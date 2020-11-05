@@ -75,10 +75,11 @@ package body Tk.Widget is
    end Destroy;
 
    procedure Execute_Widget_Command
-     (Widget: Tk_Widget; Command_Name: String; Options: String := "") is
+     (Widget: Tk_Widget; Command_Name: String;
+      Options: Tcl_String := To_Tcl_String("")) is
    begin
       Tcl_Eval
-        (Tk_PathName(Widget) & " " & Command_Name & " " & Options,
+        (Tk_PathName(Widget) & " " & Command_Name & " " & To_String(Options),
          Tk_Interp(Widget));
    end Execute_Widget_Command;
 

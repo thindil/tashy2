@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Tcl.Strings; use Tcl.Strings;
 
 -- ****h* Tk/Widget
 -- FUNCTION
@@ -71,8 +71,8 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Widget_Options is abstract tagged record
-      Cursor: Unbounded_String := Null_Unbounded_String;
-      Take_Focus: Unbounded_String := Null_Unbounded_String;
+      Cursor: Tcl_String;
+      Take_Focus: Tcl_String;
    end record;
    -- ****
 
@@ -246,10 +246,11 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Set text on My_Button to click me
-   -- Execute_Widget_Command(My_Button, "text", "{click me}");
+   -- Execute_Widget_Command(My_Button, "text", To_Tcl_String("click me"));
    -- SOURCE
    procedure Execute_Widget_Command
-     (Widget: Tk_Widget; Command_Name: String; Options: String := "") with
+     (Widget: Tk_Widget; Command_Name: String;
+      Options: Tcl_String := To_Tcl_String("")) with
       Pre => Command_Name'Length > 0;
       -- ****
 
