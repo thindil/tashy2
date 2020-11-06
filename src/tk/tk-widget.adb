@@ -58,12 +58,6 @@ package body Tk.Widget is
       return Tcl_GetStringResult(Tk_Interp(Widget));
    end Get_Option;
 
-   procedure Configure(Widget: Tk_Widget; Options: String) is
-   begin
-      Tcl_Eval
-        (Tk_PathName(Widget) & " configure " & Options, Tk_Interp(Widget));
-   end Configure;
-
    procedure Destroy(Widget: in out Tk_Widget) is
       procedure Tk_DestroyWindow(tkwin: int) with
          Import => True,
