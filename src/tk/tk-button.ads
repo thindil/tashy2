@@ -12,7 +12,6 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
@@ -35,5 +34,7 @@ package Tk.Button is
       Interpreter: Tcl_Interpreter := Get_Interpreter);
 
    function Get_Options(Widget: Tk_Button) return Button_Options;
+
+   procedure Configure(Widget: Tk_Button; Options: Button_Options);
 
 end Tk.Button;
