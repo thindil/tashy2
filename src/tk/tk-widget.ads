@@ -192,23 +192,6 @@ package Tk.Widget is
       Pre => Name'Length > 0;
       -- ****
 
-      -- ****f* Widget/Widget.Configure
-      -- FUNCTION
-      -- Set a new value(s) for the selected option(s) in the selected Tk
-      -- widget
-      -- PARAMETERS
-      -- Widget  - Tk widget which option(s) will be set
-      -- Options - List of pairs option value which will be set
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Set the option text value to hello world for My_Label widget
-      -- Configure(My_Label, "-text {hello world}");
-      -- SOURCE
-   procedure Configure(Widget: Tk_Widget; Options: String) with
-      Pre => Options'Length > 0;
-      -- ****
-
       --------------------------------
       -- Destroy or delete a Tk widget
       --------------------------------
