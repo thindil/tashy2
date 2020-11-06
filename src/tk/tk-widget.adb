@@ -55,7 +55,7 @@ package body Tk.Widget is
    function Get_Option(Widget: Tk_Widget; Name: String) return String is
    begin
       Tcl_Eval(Tk_PathName(Widget) & " cget " & Name, Tk_Interp(Widget));
-      return Tcl_GetStringResult(Tk_Interp(Widget));
+      return Tcl_GetResult(Tk_Interp(Widget));
    end Get_Option;
 
    procedure Destroy(Widget: in out Tk_Widget) is
