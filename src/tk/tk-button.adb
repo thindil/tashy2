@@ -12,6 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+
 package body Tk.Button is
 
    -- ****if* Button/Button.Options_To_String
@@ -73,5 +75,11 @@ package body Tk.Button is
    begin
       return Options;
    end Get_Options;
+
+   procedure Configure(Widget: Tk_Button; Options: Button_Options) is
+   begin
+      Execute_Widget_Command
+        (Tk_Widget(Widget), "configure", Options_To_String(Options));
+   end Configure;
 
 end Tk.Button;
