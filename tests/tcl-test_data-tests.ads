@@ -13,8 +13,8 @@ package Tcl.Test_Data.Tests is
    procedure Test_Tcl_Eval_6f41cd_386758(Gnattest_T: in out Test);
    --  tcl.ads:119:4:Tcl_Eval:Test_Tcl_Eval
 
-   procedure Test_Tcl_GetStringResult_ee4e01_91e609(Gnattest_T: in out Test);
-   --  tcl.ads:171:4:Tcl_GetStringResult:Test_Tcl_GetStringResult
+   procedure Test_Tcl_GetResult_3875a5_b83d43(Gnattest_T: in out Test);
+   --  tcl.ads:171:4:Tcl_GetResult:Test_Tcl_GetResult
 
    procedure Test_Tcl_SetResult_e87522_5a72b9(Gnattest_T: in out Test);
    --  tcl.ads:192:4:Tcl_SetResult:Test_Tcl_SetResult
