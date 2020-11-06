@@ -154,7 +154,7 @@ package Tcl is
      (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE);
    -- ****
 
-   -- ****f* Tcl/Tcl.Tcl_GetStringResult
+   -- ****f* Tcl/Tcl.Tcl_GetResult
    -- FUNCTION
    -- Get the result of last Tcl command as string
    -- PARAMETERS
@@ -166,12 +166,12 @@ package Tcl is
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Print the result of the last Tcl command on the default Tcl interpreter
-   -- Ada.Text_IO.Put_Line(Tcl_GetStringResult);
+   -- Ada.Text_IO.Put_Line(Tcl_GetResult);
    -- SOURCE
-   function Tcl_GetStringResult
+   function Tcl_GetResult
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Tcl_GetStringResult", Nominal);
+      Test_Case => ("Test_Tcl_GetResult", Nominal);
      -- ****
 
      -- ****f* Tcl/Tcl.Tcl_SetResult

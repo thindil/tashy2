@@ -23,7 +23,7 @@ package body Tk is
          External_Name => "Tk_Init";
    begin
       if TkInit(Interpreter) = int(Tcl_Results'Pos(TCL_ERROR)) then
-         raise Tcl_Exception with Tcl_GetStringResult;
+         raise Tcl_Exception with Tcl_GetResult;
       end if;
    end Tk_Init;
 
