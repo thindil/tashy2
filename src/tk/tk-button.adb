@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Button is
@@ -45,7 +46,8 @@ package body Tk.Button is
       end if;
       if Options.Relief /= NONE then
          Append
-           (Options_String, " -relief " & Relief_Type'Image(Options.Relief));
+           (Options_String,
+            " -relief " & To_Lower(Relief_Type'Image(Options.Relief)));
       end if;
       if Length(Options.Text) > 0 then
          Append(Options_String, " -text " & To_String(Options.Text));
