@@ -45,6 +45,9 @@ package Tcl.Strings is
    -- string
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert text hello world to literal Tcl string
+   -- My_String: constant Tcl_String := To_Tcl_String("hello world");
    -- SOURCE
    function To_Tcl_String
      (Source: String; Evaluate: Boolean := False) return Tcl_String with
