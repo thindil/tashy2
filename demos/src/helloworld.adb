@@ -1,4 +1,3 @@
-with Ada.Text_IO;
 with Tcl; use Tcl;
 with Tcl.Strings; use Tcl.Strings;
 with Tk; use Tk;
@@ -13,9 +12,13 @@ begin
    -- Initialize the Tk library
    Tk_Init;
 
-   -- Create button
-   Button := Create(".button", (Text => To_Tcl_String("Click me"), others => <>));
+   -- Create the button with text Quit which will be closing the application
+   Button := Create(".button", (Text => To_Tcl_String("Quit"), others => <>));
+   Execute_Widget_Command(Button, "configure", "-command exit");
+   -- Add the button to the main window
+   Tcl_Eval("grid " & Tk_PathName(Button));
 
-   Ada.Text_IO.Put_Line(Get_Option(Button, "-text"));
+   -- Start the main Tk event loop
+   Tk_MainLoop;
 
 end HelloWorld;
