@@ -154,7 +154,7 @@ package Tcl is
      (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE);
    -- ****
 
-   -- ****f* Tcl/Tcl.Tcl_GetResult
+   -- ****f* Tcl/Tcl.Tcl_GetResult_(String)
    -- FUNCTION
    -- Get the result of last Tcl command as string
    -- PARAMETERS
@@ -172,6 +172,46 @@ package Tcl is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Tcl_GetResult", Nominal);
+     -- ****
+
+   -- ****f* Tcl/Tcl.Tcl_GetResult_(Integer)
+   -- FUNCTION
+   -- Get the result of last Tcl command as integer
+   -- PARAMETERS
+   -- Interpreter - Tcl interpreter from which the result will be taken. By
+   --               default it is current default Tcl interpreter.
+   -- RESULT
+   -- Integer value the result of the last Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the result of the last Tcl command on the default Tcl interpreter
+   -- Result := constant Integer := Tcl_GetResult;
+   -- SOURCE
+   function Tcl_GetResult
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer is
+     (Integer'Value(Tcl_GetResult(Interpreter))) with
+      Pre => Interpreter /= Null_Interpreter;
+     -- ****
+
+   -- ****f* Tcl/Tcl.Tcl_GetResult_(Float)
+   -- FUNCTION
+   -- Get the result of last Tcl command as float
+   -- PARAMETERS
+   -- Interpreter - Tcl interpreter from which the result will be taken. By
+   --               default it is current default Tcl interpreter.
+   -- RESULT
+   -- Float value of the result of the last Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the result of the last Tcl command on the default Tcl interpreter
+   -- Result := constant Float := Tcl_GetResult;
+   -- SOURCE
+   function Tcl_GetResult
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Float is
+     (Float'Value(Tcl_GetResult(Interpreter))) with
+      Pre => Interpreter /= Null_Interpreter;
      -- ****
 
      -- ****f* Tcl/Tcl.Tcl_SetResult
