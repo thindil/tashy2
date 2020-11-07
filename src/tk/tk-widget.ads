@@ -90,6 +90,9 @@ package Tk.Widget is
    --               value is default Tcl interpreter
    -- RESULT
    -- Tk_Widget with specified path name on the selected Tcl interpreter
+   -- EXAMPLE
+   -- -- Get the Tk Widget ID for .mybutton pathname widget on the default Tcl interpreter
+   -- My_Button: constant Tk_Widget := Get_Widget(".mybutton");
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
