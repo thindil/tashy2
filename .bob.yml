@@ -109,6 +109,7 @@ version: 2.0
    execute:
       - gnatpp -P tashy2.gpr
       - gnatpp -P tests/prettytests.gpr
+      - gnatpp -P demos/demos.gpr
    description: Pretty print Tashy2 source code
 - command:
    name: demos
@@ -141,3 +142,8 @@ version: 2.0
    execute:
       - gnatpp -P tests/prettytests.gpr
    description: Pretty print unit tests source code
+- command:
+   name: prettydemos
+   execute:
+      - gnatpp -P demos/demos.gpr
+   description: Pretty print demos source code
