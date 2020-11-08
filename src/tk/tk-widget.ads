@@ -46,6 +46,13 @@ package Tk.Widget is
    type Pixel_Unit is (PIXEL, 'c', 'i', 'm', 'p');
    -- ****
 
+   -- ****t* Tk.Widget/Widget.Directions_Type
+   -- FUNCTION
+   -- Type of possible directions for various widgets configuration options
+   -- SOURCE
+   type Directions_Type is (NONE, N, NE, E, SE, S, SW, W, NW, CENTER);
+   -- ****
+
    -- ****s* Widget/Tk.Pixel_Data
    -- FUNCTION
    -- Data structure to store information about pixel
