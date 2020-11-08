@@ -20,6 +20,10 @@ package Tk.Button is
    type Tk_Button is new Tk_Widget;
 
    type Button_Options is new Widget_Options with record
+      Active_Background: Tcl_String;
+      Active_Foreground: Tcl_String;
+      Anchor: Directions_Type := NONE;
+      Bitmap: Tcl_String;
       Border_Width: Pixel_Data;
       Command: Tcl_String;
       Font: Tcl_String;
