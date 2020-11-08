@@ -21,6 +21,9 @@ package Tk.Button is
 
    type Button_Options is new Widget_Options with record
       Border_Width: Pixel_Data;
+      Command: Tcl_String;
+      Font: Tcl_String;
+      Image: Tcl_String;
       Relief: Relief_Type := NONE;
       Text: Tcl_String;
    end record;
