@@ -31,23 +31,32 @@ package body Tk.Button is
       -- ****
       Options_String: Unbounded_String;
    begin
-      if Length(Options.Cursor) > 0 then
-         Append(Options_String, "-cursor " & To_String(Options.Cursor));
-      end if;
-      if Length(Options.Take_Focus) > 0 then
-         Append
-           (Options_String, " -takefocus " & To_String(Options.Take_Focus));
-      end if;
       if Options.Border_Width.Value > -1.0 then
          Append
            (Options_String,
             "-borderwidth" & Float'Image(Options.Border_Width.Value) &
             Pixel_Unit'Image(Options.Border_Width.Value_Unit));
       end if;
+      if Length(Options.Command) > 0 then
+         Append(Options_String, " -command " & To_String(Options.Command));
+      end if;
+      if Length(Options.Cursor) > 0 then
+         Append(Options_String, "-cursor " & To_String(Options.Cursor));
+      end if;
+      if Length(Options.Font) > 0 then
+         Append(Options_String, " -font " & To_String(Options.Font));
+      end if;
+      if Length(Options.Image) > 0 then
+         Append(Options_String, " -image " & To_String(Options.Command));
+      end if;
       if Options.Relief /= NONE then
          Append
            (Options_String,
             " -relief " & To_Lower(Relief_Type'Image(Options.Relief)));
+      end if;
+      if Length(Options.Take_Focus) > 0 then
+         Append
+           (Options_String, " -takefocus " & To_String(Options.Take_Focus));
       end if;
       if Length(Options.Text) > 0 then
          Append(Options_String, " -text " & To_String(Options.Text));
