@@ -37,6 +37,24 @@ package body Tk.Button is
             "-borderwidth" & Float'Image(Options.Border_Width.Value) &
             Pixel_Unit'Image(Options.Border_Width.Value_Unit));
       end if;
+      if Length(Options.Active_Foreground) > 0 then
+         Append
+           (Options_String,
+            " -activeforeground " & To_String(Options.Active_Foreground));
+      end if;
+      if Length(Options.Active_Background) > 0 then
+         Append
+           (Options_String,
+            " -activebackground " & To_String(Options.Active_Background));
+      end if;
+      if Options.Anchor /= NONE then
+         Append
+           (Options_String,
+            " -anchor " & To_Lower(Directions_Type'Image(Options.Anchor)));
+      end if;
+      if Length(Options.Bitmap) > 0 then
+         Append(Options_String, " -bitmap " & To_String(Options.Bitmap));
+      end if;
       if Length(Options.Command) > 0 then
          Append(Options_String, " -command " & To_String(Options.Command));
       end if;
