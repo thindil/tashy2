@@ -36,21 +36,24 @@ package Tk.Widget is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Relief_Type is (NONE, RAISED, SUNKEN, FLAT, RIDGE, SOLID, GROOVE);
+   type Relief_Type is (NONE, RAISED, SUNKEN, FLAT, RIDGE, SOLID, GROOVE) with
+      Default_Value => NONE;
    -- ****
 
    -- ****t* Widget/Tk.Pixel_Unit
    -- FUNCTION
    -- Type of possible screen distance units
    -- SOURCE
-   type Pixel_Unit is (PIXEL, C, I, M, P);
+   type Pixel_Unit is (PIXEL, C, I, M, P) with
+      Default_Value => PIXEL;
    -- ****
 
    -- ****t* Tk.Widget/Widget.Directions_Type
    -- FUNCTION
    -- Type of possible directions for various widgets configuration options
    -- SOURCE
-   type Directions_Type is (NONE, N, NE, E, SE, S, SW, W, NW, CENTER);
+   type Directions_Type is (NONE, N, NE, E, SE, S, SW, W, NW, CENTER) with
+      Default_Value => NONE;
    -- ****
 
    type Positive_Float is digits 2 range -1.0 .. Float'Last with
