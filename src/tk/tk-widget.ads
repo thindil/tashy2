@@ -43,7 +43,7 @@ package Tk.Widget is
    -- FUNCTION
    -- Type of possible screen distance units
    -- SOURCE
-   type Pixel_Unit is (PIXEL, 'c', 'i', 'm', 'p');
+   type Pixel_Unit is (PIXEL, C, I, M, P);
    -- ****
 
    -- ****t* Tk.Widget/Widget.Directions_Type
@@ -53,6 +53,9 @@ package Tk.Widget is
    type Directions_Type is (NONE, N, NE, E, SE, S, SW, W, NW, CENTER);
    -- ****
 
+   type Positive_Float is digits 2 range -1.0 .. Float'Last with
+      Default_Value => -1.0;
+
    -- ****s* Widget/Tk.Pixel_Data
    -- FUNCTION
    -- Data structure to store information about pixel
@@ -61,7 +64,7 @@ package Tk.Widget is
    -- Value_Unit - Type of screen distance unit. Default are pixels
    -- SOURCE
    type Pixel_Data is record
-      Value: Float range -1.0 .. Float'Last := -1.0;
+      Value: Positive_Float;
       Value_Unit: Pixel_Unit := PIXEL;
    end record;
    -- ****
