@@ -14,7 +14,6 @@
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
-with ada.text_io;
 
 package body Tk.Button is
 
@@ -32,12 +31,6 @@ package body Tk.Button is
       -- ****
       Options_String: Unbounded_String;
    begin
-      if Options.Border_Width.Value > -1.0 then
-         Append
-           (Options_String,
-            "-borderwidth" & Positive_Float'Image(Options.Border_Width.Value) &
-            To_Lower(Pixel_Unit'Image(Options.Border_Width.Value_Unit)));
-      end if;
       if Length(Options.Active_Foreground) > 0 then
          Append
            (Options_String,
@@ -55,6 +48,12 @@ package body Tk.Button is
       end if;
       if Length(Options.Bitmap) > 0 then
          Append(Options_String, " -bitmap " & To_String(Options.Bitmap));
+      end if;
+      if Options.Border_Width.Value > -1.0 then
+         Append
+           (Options_String,
+            "-borderwidth" & Positive_Float'Image(Options.Border_Width.Value) &
+            To_Lower(Pixel_Unit'Image(Options.Border_Width.Value_Unit)));
       end if;
       if Length(Options.Command) > 0 then
          Append(Options_String, " -command " & To_String(Options.Command));
