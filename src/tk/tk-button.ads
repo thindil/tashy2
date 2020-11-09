@@ -22,13 +22,13 @@ package Tk.Button is
    type Button_Options is new Widget_Options with record
       Active_Background: Tcl_String;
       Active_Foreground: Tcl_String;
-      Anchor: Directions_Type := NONE;
+      Anchor: Directions_Type;
       Bitmap: Tcl_String;
       Border_Width: Pixel_Data;
       Command: Tcl_String;
       Font: Tcl_String;
       Image: Tcl_String;
-      Relief: Relief_Type := NONE;
+      Relief: Relief_Type;
       Text: Tcl_String;
    end record;
 
