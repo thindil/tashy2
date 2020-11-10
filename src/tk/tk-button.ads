@@ -26,6 +26,8 @@ package Tk.Button is
       Bitmap: Tcl_String;
       Border_Width: Pixel_Data;
       Command: Tcl_String;
+      Compound: Place_Type;
+      Disabled_Foreground: Tcl_String;
       Font: Tcl_String;
       Image: Tcl_String;
       Relief: Relief_Type;
