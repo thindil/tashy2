@@ -73,6 +73,15 @@ package Tk.Widget is
       Default_Value => EMPTY;
       -- ****
 
+      -- ****t* Tk.Widget/Widget.Extended_Boolean
+      -- FUNCTION
+      -- Type used for set boolean values of various widgets configuration
+      -- options
+      -- SOURCE
+   type Extended_Boolean is (FALSE, TRUE, NONE) with
+      Default_Value => NONE;
+      -- ****
+
    -- ****s* Widget/Tk.Pixel_Data
    -- FUNCTION
    -- Data structure to store information about pixel
