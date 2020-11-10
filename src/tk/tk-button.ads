@@ -29,6 +29,10 @@ package Tk.Button is
       Compound: Place_Type;
       Disabled_Foreground: Tcl_String;
       Font: Tcl_String;
+      Foreground: Tcl_String;
+      Highlight_Background: Tcl_String;
+      Highlight_Color: Tcl_String;
+      Highlight_Thickness: Pixel_Data;
       Image: Tcl_String;
       Relief: Relief_Type;
       Text: Tcl_String;

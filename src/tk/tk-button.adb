@@ -67,10 +67,35 @@ package body Tk.Button is
          Append(Options_String, "-cursor " & To_String(Options.Cursor));
       end if;
       if Length(Options.Disabled_Foreground) > 0 then
-         Append(Options_String, "-disabledforeground " & To_String(Options.Disabled_Foreground));
+         Append
+           (Options_String,
+            "-disabledforeground " & To_String(Options.Disabled_Foreground));
       end if;
       if Length(Options.Font) > 0 then
          Append(Options_String, " -font " & To_String(Options.Font));
+      end if;
+      if Length(Options.Foreground) > 0 then
+         Append
+           (Options_String, " -foreground " & To_String(Options.Foreground));
+      end if;
+      if Length(Options.Highlight_Background) > 0 then
+         Append
+           (Options_String,
+            " -highlightbackground " &
+            To_String(Options.Highlight_Background));
+      end if;
+      if Length(Options.Highlight_Color) > 0 then
+         Append
+           (Options_String,
+            " -highlightcolor " & To_String(Options.Highlight_Color));
+      end if;
+      if Options.Highlight_Thickness.Value > -1.0 then
+         Append
+           (Options_String,
+            "-highlightthickness" &
+            Positive_Float'Image(Options.Highlight_Thickness.Value) &
+            To_Lower
+              (Pixel_Unit'Image(Options.Highlight_Thickness.Value_Unit)));
       end if;
       if Length(Options.Image) > 0 then
          Append(Options_String, " -image " & To_String(Options.Command));
