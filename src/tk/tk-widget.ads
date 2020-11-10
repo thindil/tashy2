@@ -73,12 +73,20 @@ package Tk.Widget is
       Default_Value => EMPTY;
       -- ****
 
-      -- ****t* Tk.Widget/Widget.Extended_Boolean
+      -- ****t* Widget/Widget.Extended_Boolean
       -- FUNCTION
       -- Type used for set boolean values of various widgets configuration
       -- options
       -- SOURCE
    type Extended_Boolean is (FALSE, TRUE, NONE) with
+      Default_Value => NONE;
+      -- ****
+
+      -- ****t* Widget/Widget.Justify_Type
+      -- FUNCTION
+      -- Type used to set text justify option of various widgets
+      -- SOURCE
+   type Justify_Type is (NONE, LEFT, CENTER, RIGHT) with
       Default_Value => NONE;
       -- ****
 
