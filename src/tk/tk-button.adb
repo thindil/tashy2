@@ -58,8 +58,16 @@ package body Tk.Button is
       if Length(Options.Command) > 0 then
          Append(Options_String, " -command " & To_String(Options.Command));
       end if;
+      if Options.Compound /= EMPTY then
+         Append
+           (Options_String,
+            " -compound " & To_Lower(Place_Type'Image(Options.Compound)));
+      end if;
       if Length(Options.Cursor) > 0 then
          Append(Options_String, "-cursor " & To_String(Options.Cursor));
+      end if;
+      if Length(Options.Disabled_Foreground) > 0 then
+         Append(Options_String, "-disabledforeground " & To_String(Options.Disabled_Foreground));
       end if;
       if Length(Options.Font) > 0 then
          Append(Options_String, " -font " & To_String(Options.Font));
