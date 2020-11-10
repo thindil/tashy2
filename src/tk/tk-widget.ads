@@ -40,7 +40,7 @@ package Tk.Widget is
       Default_Value => NONE;
    -- ****
 
-   -- ****t* Widget/Tk.Pixel_Unit
+   -- ****t* Widget/Widget.Pixel_Unit
    -- FUNCTION
    -- Type of possible screen distance units
    -- SOURCE
@@ -48,16 +48,30 @@ package Tk.Widget is
       Default_Value => PIXEL;
    -- ****
 
-   -- ****t* Tk.Widget/Widget.Directions_Type
+   -- ****t* Widget/Widget.Directions_Type
    -- FUNCTION
    -- Type of possible directions for various widgets configuration options
    -- SOURCE
    type Directions_Type is (NONE, N, NE, E, SE, S, SW, W, NW, CENTER) with
       Default_Value => NONE;
-   -- ****
+      -- ****
 
+      -- ****t* Widget/Widget.Positive_Float
+      -- FUNCTION
+      -- Type used for positive float values, value -1 means empty value
+      -- SOURCE
    type Positive_Float is digits 2 range -1.0 .. Float'Last with
       Default_Value => -1.0;
+      -- ****
+
+      -- ****t* Widget/Widget.Place_Type
+      -- FUNCTION
+      -- Type of possible place directions for various widgets configuration
+      -- options
+      -- SOURCE
+   type Place_Type is (EMPTY, NONE, BOTTOM, TOP, LEFT, RIGHT, CENTER) with
+      Default_Value => EMPTY;
+      -- ****
 
    -- ****s* Widget/Tk.Pixel_Data
    -- FUNCTION
