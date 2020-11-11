@@ -99,6 +99,14 @@ package Tk.Widget is
       Default_Value => -1;
       -- ****
 
+      -- ****t* Widget/Widget.State_Type
+      -- FUNCTION
+      -- Type used to set the state of the selected widget
+      -- SOURCE
+   type State_Type is (NORMAL, ACTIVE, DISABLED, NONE) with
+      Default_Value => NONE;
+      -- ****
+
       -- ****s* Widget/Tk.Pixel_Data
       -- FUNCTION
       -- Data structure to store information about pixel
