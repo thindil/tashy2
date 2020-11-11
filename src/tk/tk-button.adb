@@ -105,10 +105,29 @@ package body Tk.Button is
            (Options_String,
             " -justify " & To_Lower(Justify_Type'Image(Options.Justify)));
       end if;
+      if Options.PadX > -1 then
+         Append
+           (Options_String, " -padx" & Extended_Natural'Image(Options.PadX));
+      end if;
+      if Options.PadY > -1 then
+         Append
+           (Options_String, " -pady" & Extended_Natural'Image(Options.PadY));
+      end if;
       if Options.Relief /= NONE then
          Append
            (Options_String,
             " -relief " & To_Lower(Relief_Type'Image(Options.Relief)));
+      end if;
+      if Options.Repeat_Delay > -1 then
+         Append
+           (Options_String,
+            " -repeatdelay" & Extended_Natural'Image(Options.Repeat_Delay));
+      end if;
+      if Options.Repeat_Interval > -1 then
+         Append
+           (Options_String,
+            " -repeatinterval" &
+            Extended_Natural'Image(Options.Repeat_Interval));
       end if;
       if Length(Options.Take_Focus) > 0 then
          Append
@@ -116,6 +135,21 @@ package body Tk.Button is
       end if;
       if Length(Options.Text) > 0 then
          Append(Options_String, " -text " & To_String(Options.Text));
+      end if;
+      if Length(Options.Text_Variable) > 0 then
+         Append
+           (Options_String,
+            " -textvariable " & To_String(Options.Text_Variable));
+      end if;
+      if Options.Underline > -1 then
+         Append
+           (Options_String,
+            " -underline" & Extended_Natural'Image(Options.Underline));
+      end if;
+      if Options.Wrap_Length > -1 then
+         Append
+           (Options_String,
+            " -wraplength" & Extended_Natural'Image(Options.Wrap_Length));
       end if;
       return To_String(Options_String);
    end Options_To_String;
