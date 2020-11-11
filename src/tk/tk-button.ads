@@ -34,6 +34,7 @@ package Tk.Button is
       Highlight_Color: Tcl_String;
       Highlight_Thickness: Pixel_Data;
       Image: Tcl_String;
+      Justify: Justify_Type;
       Relief: Relief_Type;
       Text: Tcl_String;
    end record;

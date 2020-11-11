@@ -100,6 +100,11 @@ package body Tk.Button is
       if Length(Options.Image) > 0 then
          Append(Options_String, " -image " & To_String(Options.Command));
       end if;
+      if Options.Justify /= NONE then
+         Append
+           (Options_String,
+            " -justify " & To_Lower(Justify_Type'Image(Options.Justify)));
+      end if;
       if Options.Relief /= NONE then
          Append
            (Options_String,
