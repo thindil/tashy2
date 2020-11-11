@@ -90,13 +90,22 @@ package Tk.Widget is
       Default_Value => NONE;
       -- ****
 
-   -- ****s* Widget/Tk.Pixel_Data
-   -- FUNCTION
-   -- Data structure to store information about pixel
-   -- PARAMETERS
-   -- Value      - Value of screen distance for the pixel
-   -- Value_Unit - Type of screen distance unit. Default are pixels
-   -- SOURCE
+      -- ****t* Widget/Widget.Extended_Natural
+      -- FUNCTION
+      -- Type used for set non-negative values for various widgets
+      -- configuration options
+      -- SOURCE
+   type Extended_Natural is new Integer range -1 .. Integer'Last with
+      Default_Value => -1;
+      -- ****
+
+      -- ****s* Widget/Tk.Pixel_Data
+      -- FUNCTION
+      -- Data structure to store information about pixel
+      -- PARAMETERS
+      -- Value      - Value of screen distance for the pixel
+      -- Value_Unit - Type of screen distance unit. Default are pixels
+      -- SOURCE
    type Pixel_Data is record
       Value: Positive_Float;
       Value_Unit: Pixel_Unit := PIXEL;
