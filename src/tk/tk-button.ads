@@ -35,8 +35,15 @@ package Tk.Button is
       Highlight_Thickness: Pixel_Data;
       Image: Tcl_String;
       Justify: Justify_Type;
+      PadX: Extended_Natural;
+      PadY: Extended_Natural;
       Relief: Relief_Type;
+      Repeat_Delay: Extended_Natural;
+      Repeat_Interval: Extended_Natural;
       Text: Tcl_String;
+      Text_Variable: Tcl_String;
+      Underline: Extended_Natural;
+      Wrap_Length: Extended_Natural;
    end record;
 
    function Create
