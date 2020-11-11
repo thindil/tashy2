@@ -66,6 +66,11 @@ package body Tk.Button is
       if Length(Options.Cursor) > 0 then
          Append(Options_String, "-cursor " & To_String(Options.Cursor));
       end if;
+      if Options.Default /= NONE then
+         Append
+           (Options_String,
+            " -default " & To_Lower(State_Type'Image(Options.Default)));
+      end if;
       if Length(Options.Disabled_Foreground) > 0 then
          Append
            (Options_String,
@@ -77,6 +82,11 @@ package body Tk.Button is
       if Length(Options.Foreground) > 0 then
          Append
            (Options_String, " -foreground " & To_String(Options.Foreground));
+      end if;
+      if Options.Height > -1 then
+         Append
+           (Options_String,
+            " -height" & Extended_Natural'Image(Options.Height));
       end if;
       if Length(Options.Highlight_Background) > 0 then
          Append
@@ -104,6 +114,12 @@ package body Tk.Button is
          Append
            (Options_String,
             " -justify " & To_Lower(Justify_Type'Image(Options.Justify)));
+      end if;
+      if Options.Over_Relief /= NONE then
+         Append
+           (Options_String,
+            " -overrelief " &
+            To_Lower(Relief_Type'Image(Options.Over_Relief)));
       end if;
       if Options.PadX > -1 then
          Append
@@ -133,6 +149,11 @@ package body Tk.Button is
          Append
            (Options_String, " -takefocus " & To_String(Options.Take_Focus));
       end if;
+      if Options.State /= NONE then
+         Append
+           (Options_String,
+            " -state " & To_Lower(State_Type'Image(Options.State)));
+      end if;
       if Length(Options.Text) > 0 then
          Append(Options_String, " -text " & To_String(Options.Text));
       end if;
@@ -145,6 +166,10 @@ package body Tk.Button is
          Append
            (Options_String,
             " -underline" & Extended_Natural'Image(Options.Underline));
+      end if;
+      if Options.Width > -1 then
+         Append
+           (Options_String, " -width" & Extended_Natural'Image(Options.Width));
       end if;
       if Options.Wrap_Length > -1 then
          Append
