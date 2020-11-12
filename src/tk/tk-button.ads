@@ -31,15 +31,15 @@ package Tk.Button is
       Disabled_Foreground: Tcl_String;
       Font: Tcl_String;
       Foreground: Tcl_String;
-      Height: Extended_Natural;
+      Height: Pixel_Data;
       Highlight_Background: Tcl_String;
       Highlight_Color: Tcl_String;
       Highlight_Thickness: Pixel_Data;
       Image: Tcl_String;
       Justify: Justify_Type;
       Over_Relief: Relief_Type;
-      PadX: Extended_Natural;
-      PadY: Extended_Natural;
+      PadX: Pixel_Data;
+      PadY: Pixel_Data;
       Relief: Relief_Type;
       Repeat_Delay: Extended_Natural;
       Repeat_Interval: Extended_Natural;
@@ -47,8 +47,8 @@ package Tk.Button is
       Text: Tcl_String;
       Text_Variable: Tcl_String;
       Underline: Extended_Natural;
-      Width: Extended_Natural;
-      Wrap_Length: Extended_Natural;
+      Width: Pixel_Data;
+      Wrap_Length: Pixel_Data;
    end record;
 
    function Create
