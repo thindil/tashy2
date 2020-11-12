@@ -53,28 +53,56 @@ package body Tk.Button is
                To_Lower(Pixel_Unit'Image(Value.Value_Unit)));
          end if;
       end Option_Image;
+      procedure Option_Image(Name: String; Value: Relief_Type) is
+      begin
+         if Value /= NONE then
+            Append
+              (Options_String,
+               " -" & Name & " " & To_Lower(Relief_Type'Image(Value)));
+         end if;
+      end Option_Image;
+      procedure Option_Image(Name: String; Value: State_Type) is
+      begin
+         if Value /= NONE then
+            Append
+               (Options_String,
+               " -" & Name & " " & To_Lower(State_Type'Image(Value)));
+         end if;
+      end Option_Image;
+      procedure Option_Image(Name: String; Value: Directions_Type) is
+      begin
+         if Value /= NONE then
+            Append
+               (Options_String,
+               " -" & Name & " " & To_Lower(Directions_Type'Image(Value)));
+         end if;
+      end Option_Image;
+      procedure Option_Image(Name: String; Value: Place_Type) is
+      begin
+         if Value /= NONE then
+            Append
+               (Options_String,
+               " -" & Name & " " & To_Lower(Place_Type'Image(Value)));
+         end if;
+      end Option_Image;
+      procedure Option_Image(Name: String; Value: Justify_Type) is
+      begin
+         if Value /= NONE then
+            Append
+               (Options_String,
+               " -" & Name & " " & To_Lower(Justify_Type'Image(Value)));
+         end if;
+      end Option_Image;
    begin
       Option_Image("activeforeground", Options.Active_Foreground);
       Option_Image("activebackground", Options.Active_Background);
-      if Options.Anchor /= NONE then
-         Append
-           (Options_String,
-            " -anchor " & To_Lower(Directions_Type'Image(Options.Anchor)));
-      end if;
+      Option_Image("anchor", Options.Anchor);
       Option_Image("bitmap", Options.Bitmap);
       Option_Image("borderwidth", Options.Border_Width);
       Option_Image("command", Options.Command);
-      if Options.Compound /= EMPTY then
-         Append
-           (Options_String,
-            " -compound " & To_Lower(Place_Type'Image(Options.Compound)));
-      end if;
+      Option_Image("compound", Options.Compound);
       Option_Image("cursor", Options.Cursor);
-      if Options.Default /= NONE then
-         Append
-           (Options_String,
-            " -default " & To_Lower(State_Type'Image(Options.Default)));
-      end if;
+      Option_Image("default", Options.Default);
       Option_Image("disabledforeground", Options.Disabled_Foreground);
       Option_Image("font", Options.Font);
       Option_Image("foreground", Options.Foreground);
@@ -83,32 +111,15 @@ package body Tk.Button is
       Option_Image("highlightcolot", Options.Highlight_Color);
       Option_Image("highlighthickness", Options.Highlight_Thickness);
       Option_Image("image", Options.Image);
-      if Options.Justify /= NONE then
-         Append
-           (Options_String,
-            " -justify " & To_Lower(Justify_Type'Image(Options.Justify)));
-      end if;
-      if Options.Over_Relief /= NONE then
-         Append
-           (Options_String,
-            " -overrelief " &
-            To_Lower(Relief_Type'Image(Options.Over_Relief)));
-      end if;
+      Option_Image("justify", Options.Justify);
+      Option_Image("overrelief", Options.Over_Relief);
       Option_Image("padx", Options.PadX);
       Option_Image("pady", Options.PadY);
-      if Options.Relief /= NONE then
-         Append
-           (Options_String,
-            " -relief " & To_Lower(Relief_Type'Image(Options.Relief)));
-      end if;
+      Option_Image("relief", Options.Relief);
       Option_Image("repeatdelay", Options.Repeat_Delay);
       Option_Image("repeatiterval", Options.Repeat_Interval);
       Option_Image("takefocus", Options.Take_Focus);
-      if Options.State /= NONE then
-         Append
-           (Options_String,
-            " -state " & To_Lower(State_Type'Image(Options.State)));
-      end if;
+      Option_Image("state", Options.State);
       Option_Image("text", Options.Text);
       Option_Image("textvariable", Options.Text_Variable);
       Option_Image("underline", Options.Underline);
