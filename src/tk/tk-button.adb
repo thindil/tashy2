@@ -30,75 +30,57 @@ package body Tk.Button is
    function Options_To_String(Options: Button_Options) return String is
       -- ****
       Options_String: Unbounded_String;
+      procedure Option_Image(Name: String; Value: Tcl_String) is
+      begin
+         if Length(Value) > 0 then
+            Append(Options_String, " -" & Name & " " & To_String(Value));
+         end if;
+      end Option_Image;
+      procedure Option_Image(Name: String; Value: Extended_Natural) is
+      begin
+         if Value > -1 then
+            Append
+              (Options_String,
+               " -" & Name & " " & Extended_Natural'Image(Value));
+         end if;
+      end Option_Image;
    begin
-      if Length(Options.Active_Foreground) > 0 then
-         Append
-           (Options_String,
-            " -activeforeground " & To_String(Options.Active_Foreground));
-      end if;
-      if Length(Options.Active_Background) > 0 then
-         Append
-           (Options_String,
-            " -activebackground " & To_String(Options.Active_Background));
-      end if;
+      Option_Image("activeforeground", Options.Active_Foreground);
+      Option_Image("activebackground", Options.Active_Background);
       if Options.Anchor /= NONE then
          Append
            (Options_String,
             " -anchor " & To_Lower(Directions_Type'Image(Options.Anchor)));
       end if;
-      if Length(Options.Bitmap) > 0 then
-         Append(Options_String, " -bitmap " & To_String(Options.Bitmap));
-      end if;
+      Option_Image("bitmap", Options.Bitmap);
       if Options.Border_Width.Value > -1.0 then
          Append
            (Options_String,
             "-borderwidth" & Positive_Float'Image(Options.Border_Width.Value) &
             To_Lower(Pixel_Unit'Image(Options.Border_Width.Value_Unit)));
       end if;
-      if Length(Options.Command) > 0 then
-         Append(Options_String, " -command " & To_String(Options.Command));
-      end if;
+      Option_Image("command", Options.Command);
       if Options.Compound /= EMPTY then
          Append
            (Options_String,
             " -compound " & To_Lower(Place_Type'Image(Options.Compound)));
       end if;
-      if Length(Options.Cursor) > 0 then
-         Append(Options_String, "-cursor " & To_String(Options.Cursor));
-      end if;
+      Option_Image("cursor", Options.Cursor);
       if Options.Default /= NONE then
          Append
            (Options_String,
             " -default " & To_Lower(State_Type'Image(Options.Default)));
       end if;
-      if Length(Options.Disabled_Foreground) > 0 then
-         Append
-           (Options_String,
-            "-disabledforeground " & To_String(Options.Disabled_Foreground));
-      end if;
-      if Length(Options.Font) > 0 then
-         Append(Options_String, " -font " & To_String(Options.Font));
-      end if;
-      if Length(Options.Foreground) > 0 then
-         Append
-           (Options_String, " -foreground " & To_String(Options.Foreground));
-      end if;
+      Option_Image("disabledforeground", Options.Disabled_Foreground);
+      Option_Image("font", Options.Font);
+      Option_Image("foreground", Options.Foreground);
       if Options.Height > -1 then
          Append
            (Options_String,
             " -height" & Extended_Natural'Image(Options.Height));
       end if;
-      if Length(Options.Highlight_Background) > 0 then
-         Append
-           (Options_String,
-            " -highlightbackground " &
-            To_String(Options.Highlight_Background));
-      end if;
-      if Length(Options.Highlight_Color) > 0 then
-         Append
-           (Options_String,
-            " -highlightcolor " & To_String(Options.Highlight_Color));
-      end if;
+      Option_Image("highlightbackground", Options.Highlight_Background);
+      Option_Image("highlightcolot", Options.Highlight_Color);
       if Options.Highlight_Thickness.Value > -1.0 then
          Append
            (Options_String,
@@ -107,9 +89,7 @@ package body Tk.Button is
             To_Lower
               (Pixel_Unit'Image(Options.Highlight_Thickness.Value_Unit)));
       end if;
-      if Length(Options.Image) > 0 then
-         Append(Options_String, " -image " & To_String(Options.Command));
-      end if;
+      Option_Image("image", Options.Image);
       if Options.Justify /= NONE then
          Append
            (Options_String,
@@ -134,39 +114,17 @@ package body Tk.Button is
            (Options_String,
             " -relief " & To_Lower(Relief_Type'Image(Options.Relief)));
       end if;
-      if Options.Repeat_Delay > -1 then
-         Append
-           (Options_String,
-            " -repeatdelay" & Extended_Natural'Image(Options.Repeat_Delay));
-      end if;
-      if Options.Repeat_Interval > -1 then
-         Append
-           (Options_String,
-            " -repeatinterval" &
-            Extended_Natural'Image(Options.Repeat_Interval));
-      end if;
-      if Length(Options.Take_Focus) > 0 then
-         Append
-           (Options_String, " -takefocus " & To_String(Options.Take_Focus));
-      end if;
+      Option_Image("repeatdelay", Options.Repeat_Delay);
+      Option_Image("repeatiterval", Options.Repeat_Interval);
+      Option_Image("takefocus", Options.Take_Focus);
       if Options.State /= NONE then
          Append
            (Options_String,
             " -state " & To_Lower(State_Type'Image(Options.State)));
       end if;
-      if Length(Options.Text) > 0 then
-         Append(Options_String, " -text " & To_String(Options.Text));
-      end if;
-      if Length(Options.Text_Variable) > 0 then
-         Append
-           (Options_String,
-            " -textvariable " & To_String(Options.Text_Variable));
-      end if;
-      if Options.Underline > -1 then
-         Append
-           (Options_String,
-            " -underline" & Extended_Natural'Image(Options.Underline));
-      end if;
+      Option_Image("text", Options.Text);
+      Option_Image("textvariable", Options.Text_Variable);
+      Option_Image("underline", Options.Underline);
       if Options.Width > -1 then
          Append
            (Options_String, " -width" & Extended_Natural'Image(Options.Width));
