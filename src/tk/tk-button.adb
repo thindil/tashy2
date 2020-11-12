@@ -74,10 +74,11 @@ package body Tk.Button is
       Option_Image("disabledforeground", Options.Disabled_Foreground);
       Option_Image("font", Options.Font);
       Option_Image("foreground", Options.Foreground);
-      if Options.Height > -1 then
+      if Options.Height.Value > -1.0 then
          Append
            (Options_String,
-            " -height" & Extended_Natural'Image(Options.Height));
+            " -height" & Positive_Float'Image(Options.Height.Value) &
+            To_Lower(Pixel_Unit'Image(Options.Height.Value_Unit)));
       end if;
       Option_Image("highlightbackground", Options.Highlight_Background);
       Option_Image("highlightcolot", Options.Highlight_Color);
@@ -101,13 +102,17 @@ package body Tk.Button is
             " -overrelief " &
             To_Lower(Relief_Type'Image(Options.Over_Relief)));
       end if;
-      if Options.PadX > -1 then
+      if Options.PadX.Value > -1.0 then
          Append
-           (Options_String, " -padx" & Extended_Natural'Image(Options.PadX));
+           (Options_String,
+            " -padx" & Positive_Float'Image(Options.PadX.Value) &
+            To_Lower(Pixel_Unit'Image(Options.PadX.Value_Unit)));
       end if;
-      if Options.PadY > -1 then
+      if Options.PadY.Value > -1.0 then
          Append
-           (Options_String, " -pady" & Extended_Natural'Image(Options.PadY));
+           (Options_String,
+            " -pady" & Positive_Float'Image(Options.PadY.Value) &
+            To_Lower(Pixel_Unit'Image(Options.PadY.Value_Unit)));
       end if;
       if Options.Relief /= NONE then
          Append
@@ -125,14 +130,17 @@ package body Tk.Button is
       Option_Image("text", Options.Text);
       Option_Image("textvariable", Options.Text_Variable);
       Option_Image("underline", Options.Underline);
-      if Options.Width > -1 then
-         Append
-           (Options_String, " -width" & Extended_Natural'Image(Options.Width));
-      end if;
-      if Options.Wrap_Length > -1 then
+      if Options.Width.Value > -1.0 then
          Append
            (Options_String,
-            " -wraplength" & Extended_Natural'Image(Options.Wrap_Length));
+            " -width" & Positive_Float'Image(Options.Width.Value) &
+            To_Lower(Pixel_Unit'Image(Options.Width.Value_Unit)));
+      end if;
+      if Options.Wrap_Length.Value > -1.0 then
+         Append
+           (Options_String,
+            " -wraplength" & Positive_Float'Image(Options.Wrap_Length.Value) &
+            To_Lower(Pixel_Unit'Image(Options.Wrap_Length.Value_Unit)));
       end if;
       return To_String(Options_String);
    end Options_To_String;
