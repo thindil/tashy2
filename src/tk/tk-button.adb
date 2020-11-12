@@ -44,6 +44,15 @@ package body Tk.Button is
                " -" & Name & " " & Extended_Natural'Image(Value));
          end if;
       end Option_Image;
+      procedure Option_Image(Name: String; Value: Pixel_Data) is
+      begin
+         if Value.Value > -1.0 then
+            Append
+              (Options_String,
+               "-" & Name & Positive_Float'Image(Value.Value) &
+               To_Lower(Pixel_Unit'Image(Value.Value_Unit)));
+         end if;
+      end Option_Image;
    begin
       Option_Image("activeforeground", Options.Active_Foreground);
       Option_Image("activebackground", Options.Active_Background);
@@ -53,12 +62,7 @@ package body Tk.Button is
             " -anchor " & To_Lower(Directions_Type'Image(Options.Anchor)));
       end if;
       Option_Image("bitmap", Options.Bitmap);
-      if Options.Border_Width.Value > -1.0 then
-         Append
-           (Options_String,
-            "-borderwidth" & Positive_Float'Image(Options.Border_Width.Value) &
-            To_Lower(Pixel_Unit'Image(Options.Border_Width.Value_Unit)));
-      end if;
+      Option_Image("borderwidth", Options.Border_Width);
       Option_Image("command", Options.Command);
       if Options.Compound /= EMPTY then
          Append
@@ -74,22 +78,10 @@ package body Tk.Button is
       Option_Image("disabledforeground", Options.Disabled_Foreground);
       Option_Image("font", Options.Font);
       Option_Image("foreground", Options.Foreground);
-      if Options.Height.Value > -1.0 then
-         Append
-           (Options_String,
-            " -height" & Positive_Float'Image(Options.Height.Value) &
-            To_Lower(Pixel_Unit'Image(Options.Height.Value_Unit)));
-      end if;
+      Option_Image("height", Options.Height);
       Option_Image("highlightbackground", Options.Highlight_Background);
       Option_Image("highlightcolot", Options.Highlight_Color);
-      if Options.Highlight_Thickness.Value > -1.0 then
-         Append
-           (Options_String,
-            "-highlightthickness" &
-            Positive_Float'Image(Options.Highlight_Thickness.Value) &
-            To_Lower
-              (Pixel_Unit'Image(Options.Highlight_Thickness.Value_Unit)));
-      end if;
+      Option_Image("highlighthickness", Options.Highlight_Thickness);
       Option_Image("image", Options.Image);
       if Options.Justify /= NONE then
          Append
@@ -102,18 +94,8 @@ package body Tk.Button is
             " -overrelief " &
             To_Lower(Relief_Type'Image(Options.Over_Relief)));
       end if;
-      if Options.PadX.Value > -1.0 then
-         Append
-           (Options_String,
-            " -padx" & Positive_Float'Image(Options.PadX.Value) &
-            To_Lower(Pixel_Unit'Image(Options.PadX.Value_Unit)));
-      end if;
-      if Options.PadY.Value > -1.0 then
-         Append
-           (Options_String,
-            " -pady" & Positive_Float'Image(Options.PadY.Value) &
-            To_Lower(Pixel_Unit'Image(Options.PadY.Value_Unit)));
-      end if;
+      Option_Image("padx", Options.PadX);
+      Option_Image("pady", Options.PadY);
       if Options.Relief /= NONE then
          Append
            (Options_String,
@@ -130,18 +112,8 @@ package body Tk.Button is
       Option_Image("text", Options.Text);
       Option_Image("textvariable", Options.Text_Variable);
       Option_Image("underline", Options.Underline);
-      if Options.Width.Value > -1.0 then
-         Append
-           (Options_String,
-            " -width" & Positive_Float'Image(Options.Width.Value) &
-            To_Lower(Pixel_Unit'Image(Options.Width.Value_Unit)));
-      end if;
-      if Options.Wrap_Length.Value > -1.0 then
-         Append
-           (Options_String,
-            " -wraplength" & Positive_Float'Image(Options.Wrap_Length.Value) &
-            To_Lower(Pixel_Unit'Image(Options.Wrap_Length.Value_Unit)));
-      end if;
+      Option_Image("width", Options.Width);
+      Option_Image("wraplength", Options.Wrap_Length);
       return To_String(Options_String);
    end Options_To_String;
 
