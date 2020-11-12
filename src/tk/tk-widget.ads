@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Tcl.Strings; use Tcl.Strings;
 
 -- ****h* Tk/Widget
@@ -255,6 +256,38 @@ package Tk.Widget is
      (Float'Value(Get_Option(Widget, Name))) with
       Pre => Name'Length > 0;
       -- ****
+
+   procedure Option_Image
+     (Name: String; Value: Tcl_String;
+      Options_String: in out Unbounded_String);
+
+   procedure Option_Image
+     (Name: String; Value: Extended_Natural;
+      Options_String: in out Unbounded_String);
+
+   procedure Option_Image
+     (Name: String; Value: Pixel_Data;
+      Options_String: in out Unbounded_String);
+
+   procedure Option_Image
+     (Name: String; Value: Relief_Type;
+      Options_String: in out Unbounded_String);
+
+   procedure Option_Image
+     (Name: String; Value: State_Type;
+      Options_String: in out Unbounded_String);
+
+   procedure Option_Image
+     (Name: String; Value: Directions_Type;
+      Options_String: in out Unbounded_String);
+
+   procedure Option_Image
+     (Name: String; Value: Place_Type;
+      Options_String: in out Unbounded_String);
+
+   procedure Option_Image
+     (Name: String; Value: Justify_Type;
+      Options_String: in out Unbounded_String);
 
       --------------------------------
       -- Destroy or delete a Tk widget
