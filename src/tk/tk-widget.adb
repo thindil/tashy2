@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 with Tk.MainWindow; use Tk.MainWindow;
@@ -57,6 +58,88 @@ package body Tk.Widget is
       Tcl_Eval(Tk_PathName(Widget) & " cget " & Name, Tk_Interp(Widget));
       return Tcl_GetResult(Tk_Interp(Widget));
    end Get_Option;
+
+   procedure Option_Image
+     (Name: String; Value: Tcl_String; Options_String: in out Unbounded_String) is
+   begin
+      if Length(Value) > 0 then
+         Append(Options_String, " -" & Name & " " & To_String(Value));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Extended_Natural;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value > -1 then
+         Append
+           (Options_String, " -" & Name & " " & Extended_Natural'Image(Value));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Pixel_Data; Options_String: in out Unbounded_String) is
+   begin
+      if Value.Value > -1.0 then
+         Append
+           (Options_String,
+            "-" & Name & Positive_Float'Image(Value.Value) &
+            To_Lower(Pixel_Unit'Image(Value.Value_Unit)));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Relief_Type;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value /= NONE then
+         Append
+           (Options_String,
+            " -" & Name & " " & To_Lower(Relief_Type'Image(Value)));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: State_Type; Options_String: in out Unbounded_String) is
+   begin
+      if Value /= NONE then
+         Append
+           (Options_String,
+            " -" & Name & " " & To_Lower(State_Type'Image(Value)));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Directions_Type;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value /= NONE then
+         Append
+           (Options_String,
+            " -" & Name & " " & To_Lower(Directions_Type'Image(Value)));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Place_Type; Options_String: in out Unbounded_String) is
+   begin
+      if Value /= EMPTY then
+         Append
+           (Options_String,
+            " -" & Name & " " & To_Lower(Place_Type'Image(Value)));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Justify_Type;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value /= NONE then
+         Append
+           (Options_String,
+            " -" & Name & " " & To_Lower(Justify_Type'Image(Value)));
+      end if;
+   end Option_Image;
 
    procedure Destroy(Widget: in out Tk_Widget) is
       procedure Tk_DestroyWindow(tkwin: int) with
