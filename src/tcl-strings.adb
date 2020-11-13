@@ -12,8 +12,6 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Maps; use Ada.Strings.Maps;
-
 package body Tcl.Strings is
 
    function To_Tcl_String
@@ -35,12 +33,6 @@ package body Tcl.Strings is
          Insert(New_String, 1, """");
          Append(New_String, """");
       else
-         loop
-            Element_Index := Index(New_String, To_Set("{}\"), Element_Index);
-            exit when Element_Index = 0;
-            Insert(New_String, Element_Index, "\");
-            Element_Index := Element_Index + 2;
-         end loop;
          Insert(New_String, 1, "{");
          Append(New_String, "}");
       end if;
