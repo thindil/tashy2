@@ -96,7 +96,16 @@ package body Tk.Button is
       return Options: Button_Options do
          Options.Active_Background := Option_Value("activebackground");
          Options.Active_Foreground := Option_Value("activeforeground");
+         Options.Bitmap := Option_Value("bitmap");
+         Options.Command := Option_Value("command");
+         Options.Disabled_Foreground := Option_Value("disabledforeground");
+         Options.Font := Option_Value("font");
+         Options.Foreground := Option_Value("foreground");
+         Options.Highlight_Background := Option_Value("highlightbackground");
+         Options.Highlight_Color := Option_Value("highlightcolor");
+         Options.Image := Option_Value("image");
          Options.Text := Option_Value("text");
+         Options.Text_Variable := Option_Value("textvariable");
       end return;
    end Get_Options;
 
