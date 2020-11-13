@@ -257,37 +257,55 @@ package Tk.Widget is
       Pre => Name'Length > 0;
       -- ****
 
+      -- ****f* Widget/Widget.Option_Image
+      -- FUNCTION
+      -- Allow to convert the selected widget's option to Unbounded_String
+      -- which can be used in creating or configuring the widget.
+      -- PARAMETERS
+      -- Name           - The name of the selected widget's option
+      -- Value          - The value of the selected widget's option which will
+      --                  be converted to Unbounded_String
+      -- Options_String - String with currently set options for the selected
+      --                  widget
+      -- OUTPUT
+      -- If Value has default value for the selected type, then return
+      -- unmodified Options_String. Otherwise append the proper Tk
+      -- configuration option to the Options_String.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the text option to hello world in My_Options string
+      -- declare
+      --    My_Options: Unbounded_String;
+      -- begin
+      --    Options_String("text", To_Tcl_String("hello world"));
+      -- end;
+      -- SOURCE
    procedure Option_Image
      (Name: String; Value: Tcl_String;
       Options_String: in out Unbounded_String);
-
    procedure Option_Image
      (Name: String; Value: Extended_Natural;
       Options_String: in out Unbounded_String);
-
    procedure Option_Image
      (Name: String; Value: Pixel_Data;
       Options_String: in out Unbounded_String);
-
    procedure Option_Image
      (Name: String; Value: Relief_Type;
       Options_String: in out Unbounded_String);
-
    procedure Option_Image
      (Name: String; Value: State_Type;
       Options_String: in out Unbounded_String);
-
    procedure Option_Image
      (Name: String; Value: Directions_Type;
       Options_String: in out Unbounded_String);
-
    procedure Option_Image
      (Name: String; Value: Place_Type;
       Options_String: in out Unbounded_String);
-
    procedure Option_Image
      (Name: String; Value: Justify_Type;
       Options_String: in out Unbounded_String);
+   -- ****
 
       --------------------------------
       -- Destroy or delete a Tk widget
