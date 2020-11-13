@@ -87,9 +87,17 @@ package body Tk.Button is
    end Create;
 
    function Get_Options(Widget: Tk_Button) return Button_Options is
-      Options: Button_Options;
+      function Option_Value(Name: String) return Tcl_String is
+      begin
+         Execute_Widget_Command(Widget, "cget", "-" & Name);
+         return To_Tcl_String(Tcl_GetResult(Tk_Interp(Widget)));
+      end Option_Value;
    begin
-      return Options;
+      return Options: Button_Options do
+         Options.Active_Background := Option_Value("activebackground");
+         Options.Active_Foreground := Option_Value("activeforeground");
+         Options.Text := Option_Value("text");
+      end return;
    end Get_Options;
 
    procedure Configure(Widget: Tk_Button; Options: Button_Options) is
