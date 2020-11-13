@@ -55,4 +55,20 @@ package Tcl.Strings is
       Test_Case => ("Test_To_Tcl_String", Nominal);
       -- ****
 
+      -- ****f* Strings/Strings.To_Ada_String
+      -- FUNCTION
+      -- Convert Tcl_String to Ada String
+      -- PARAMETERS
+      -- Source - Tcl_String which will be converted to Ada String
+      -- RESULT
+      -- A new String with removed starting and ending braces or quotes signs
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Convert Tcl_String {hello world} to Ada String
+      -- My_String: constant String := To_String(To_Tcl_String("hello world"));
+      -- SOURCE
+   function To_Ada_String(Source: Tcl_String) return String;
+   -- ****
+
 end Tcl.Strings;

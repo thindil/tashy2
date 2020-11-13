@@ -12,6 +12,10 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Maps; use Ada.Strings.Maps;
+
+with ada.text_io;
+
 package body Tcl.Strings is
 
    function To_Tcl_String
@@ -38,5 +42,23 @@ package body Tcl.Strings is
       end if;
       return New_String;
    end To_Tcl_String;
+
+   function To_Ada_String(Source: Tcl_String) return String is
+      New_String: Tcl_String := Source;
+      Element_Index: Natural := 1;
+   begin
+      if Element(New_String, 1) = '{' then
+         Trim(New_String, To_Set("{"), To_Set("}"));
+      elsif Element(New_String, 1) = '"' then
+         Trim(New_String, To_Set(""""), To_Set(""""));
+         loop
+            Element_Index := Index(New_String, "\""", Element_Index);
+            exit when Element_Index = 0;
+            Delete(New_String, Element_Index, Element_Index);
+            Element_Index := Element_Index + 1;
+         end loop;
+      end if;
+      return Slice(New_String, 1, Length(New_String));
+   end To_Ada_String;
 
 end Tcl.Strings;
