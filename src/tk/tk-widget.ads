@@ -195,68 +195,6 @@ package Tk.Widget is
    function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter;
    -- ****
 
-     -- ****f* Widget/Widget.Get_Option_(String)
-     -- FUNCTION
-     -- Get value of the selected option for the selected Tk widget
-     -- PARAMETERS
-     -- Widget - Tk widget which option's value will be taken
-     -- Name   - Name of the option which value will be taken
-     -- RESULT
-     -- String with value of the selected option for the selected Tk widget
-     -- HISTORY
-     -- 8.6.0 - Added
-     -- EXAMPLE
-     -- -- Get the value of text option for My_Label widget
-     -- Text: constant String := Get_Option(My_Label, "-text");
-     -- SEE ALSO
-     -- Widget.Get_Option_(Integer) and Widget.Get_Option_(Float)
-     -- SOURCE
-   function Get_Option(Widget: Tk_Widget; Name: String) return String with
-      Pre => Name'Length > 0;
-      -- ****
-
-     -- ****f* Widget/Widget.Get_Option_(Integer)
-     -- FUNCTION
-     -- Get value of the selected option for the selected Tk widget
-     -- PARAMETERS
-     -- Widget - Tk widget which option's value will be taken
-     -- Name   - Name of the option which value will be taken
-     -- RESULT
-     -- Integer value of the selected option for the selected Tk widget
-     -- HISTORY
-     -- 8.6.0 - Added
-     -- EXAMPLE
-     -- -- Get the value of width option for My_Frame widget
-     -- Width: constant Integer := Get_Option(My_Frame, "-width");
-     -- SEE ALSO
-     -- Widget.Get_Option_(String) and Widget.Get_Option_(Float)
-     -- SOURCE
-   function Get_Option(Widget: Tk_Widget; Name: String) return Integer is
-     (Integer'Value(Get_Option(Widget, Name))) with
-      Pre => Name'Length > 0;
-      -- ****
-
-     -- ****f* Widget/Widget.Get_Option_(Float)
-     -- FUNCTION
-     -- Get value of the selected option for the selected Tk widget
-     -- PARAMETERS
-     -- Widget - Tk widget which option's value will be taken
-     -- Name   - Name of the option which value will be taken
-     -- RESULT
-     -- Float value of the selected option for the selected Tk widget
-     -- HISTORY
-     -- 8.6.0 - Added
-     -- EXAMPLE
-     -- -- Get the value of maximum option for My_ProgressBar widget
-     -- Maximum: constant Float := Get_Option(My_ProgressBar, "-maximum");
-     -- SEE ALSO
-     -- Widget.Get_Option_(String) and Widget.Get_Option_(Integer)
-     -- SOURCE
-   function Get_Option(Widget: Tk_Widget; Name: String) return Float is
-     (Float'Value(Get_Option(Widget, Name))) with
-      Pre => Name'Length > 0;
-      -- ****
-
       -- ****f* Widget/Widget.Option_Image
       -- FUNCTION
       -- Allow to convert the selected widget's option to Unbounded_String
@@ -305,6 +243,25 @@ package Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Justify_Type;
       Options_String: in out Unbounded_String);
+   -- ****
+
+   -- ****f* Widget/Widget.Option_Value
+   -- FUNCTION
+   -- Allow convert the selected widget's option from Tcl string value to
+   -- proper Widget_Options field value. It is mostly used in the widgets
+   -- Get_Options funcion
+   -- PARAMETERS
+   -- Widget - Tk_Widget which option will be get
+   -- Name   - The name of the option to get
+   -- RESULT
+   -- Tcl string value converted to the proper Ada binding type
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the value of option text in My_Button widget
+   -- Text: constant Tcl_String := Option_Value(My_Button, "text");
+   -- SOURCE
+   function Option_Value(Widget: Tk_Widget; Name: String) return Tcl_String;
    -- ****
 
       --------------------------------
