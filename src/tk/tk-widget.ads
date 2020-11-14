@@ -262,6 +262,8 @@ package Tk.Widget is
    -- Text: constant Tcl_String := Option_Value(My_Button, "text");
    -- SOURCE
    function Option_Value(Widget: Tk_Widget; Name: String) return Tcl_String;
+   function Option_Value
+     (Widget: Tk_Widget; Name: String) return Directions_Type;
    -- ****
 
       --------------------------------

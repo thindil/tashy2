@@ -145,6 +145,13 @@ package body Tk.Widget is
       return To_Tcl_String(Tcl_GetResult(Tk_Interp(Widget)));
    end Option_Value;
 
+   function Option_Value
+     (Widget: Tk_Widget; Name: String) return Directions_Type is
+   begin
+      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      return Directions_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+   end Option_Value;
+
    procedure Destroy(Widget: in out Tk_Widget) is
       procedure Tk_DestroyWindow(tkwin: int) with
          Import => True,
