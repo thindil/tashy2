@@ -264,6 +264,7 @@ package Tk.Widget is
    function Option_Value(Widget: Tk_Widget; Name: String) return Tcl_String;
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Directions_Type;
+   function Option_Value(Widget: Tk_Widget; Name: String) return Pixel_Data;
    -- ****
 
       --------------------------------

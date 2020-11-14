@@ -152,6 +152,25 @@ package body Tk.Widget is
       return Directions_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
    end Option_Value;
 
+   function Option_Value(Widget: Tk_Widget; Name: String) return Pixel_Data is
+      Result: Pixel_Data;
+   begin
+      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      declare
+         Value: constant String := Tcl_GetResult(Tk_Interp(Widget));
+      begin
+         if not Is_Digit(Value(Value'Last)) then
+            Result.Value :=
+              Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
+            Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
+         else
+            Result.Value := Positive_Float'Value(Value);
+            Result.Value_Unit := PIXEL;
+         end if;
+      end;
+      return Result;
+   end Option_Value;
+
    procedure Destroy(Widget: in out Tk_Widget) is
       procedure Tk_DestroyWindow(tkwin: int) with
          Import => True,
