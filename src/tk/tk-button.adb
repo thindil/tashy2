@@ -91,6 +91,7 @@ package body Tk.Button is
       return Options: Button_Options do
          Options.Active_Background := Option_Value(Widget, "activebackground");
          Options.Active_Foreground := Option_Value(Widget, "activeforeground");
+         Options.Anchor := Option_Value(Widget, "anchor");
          Options.Bitmap := Option_Value(Widget, "bitmap");
          Options.Command := Option_Value(Widget, "command");
          Options.Disabled_Foreground :=
