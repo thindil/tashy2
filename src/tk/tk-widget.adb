@@ -53,14 +53,9 @@ package body Tk.Widget is
       return TkInterp(int(Widget));
    end Tk_Interp;
 
-   function Get_Option(Widget: Tk_Widget; Name: String) return String is
-   begin
-      Tcl_Eval(Tk_PathName(Widget) & " cget " & Name, Tk_Interp(Widget));
-      return Tcl_GetResult(Tk_Interp(Widget));
-   end Get_Option;
-
    procedure Option_Image
-     (Name: String; Value: Tcl_String; Options_String: in out Unbounded_String) is
+     (Name: String; Value: Tcl_String;
+      Options_String: in out Unbounded_String) is
    begin
       if Length(Value) > 0 then
          Append(Options_String, " -" & Name & " " & To_String(Value));
@@ -78,7 +73,8 @@ package body Tk.Widget is
    end Option_Image;
 
    procedure Option_Image
-     (Name: String; Value: Pixel_Data; Options_String: in out Unbounded_String) is
+     (Name: String; Value: Pixel_Data;
+      Options_String: in out Unbounded_String) is
    begin
       if Value.Value > -1.0 then
          Append
@@ -100,7 +96,8 @@ package body Tk.Widget is
    end Option_Image;
 
    procedure Option_Image
-     (Name: String; Value: State_Type; Options_String: in out Unbounded_String) is
+     (Name: String; Value: State_Type;
+      Options_String: in out Unbounded_String) is
    begin
       if Value /= NONE then
          Append
@@ -121,7 +118,8 @@ package body Tk.Widget is
    end Option_Image;
 
    procedure Option_Image
-     (Name: String; Value: Place_Type; Options_String: in out Unbounded_String) is
+     (Name: String; Value: Place_Type;
+      Options_String: in out Unbounded_String) is
    begin
       if Value /= EMPTY then
          Append
@@ -140,6 +138,12 @@ package body Tk.Widget is
             " -" & Name & " " & To_Lower(Justify_Type'Image(Value)));
       end if;
    end Option_Image;
+
+   function Option_Value(Widget: Tk_Widget; Name: String) return Tcl_String is
+   begin
+      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      return To_Tcl_String(Tcl_GetResult(Tk_Interp(Widget)));
+   end Option_Value;
 
    procedure Destroy(Widget: in out Tk_Widget) is
       procedure Tk_DestroyWindow(tkwin: int) with

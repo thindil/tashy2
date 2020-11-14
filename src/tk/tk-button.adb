@@ -87,25 +87,22 @@ package body Tk.Button is
    end Create;
 
    function Get_Options(Widget: Tk_Button) return Button_Options is
-      function Option_Value(Name: String) return Tcl_String is
-      begin
-         Execute_Widget_Command(Widget, "cget", "-" & Name);
-         return To_Tcl_String(Tcl_GetResult(Tk_Interp(Widget)));
-      end Option_Value;
    begin
       return Options: Button_Options do
-         Options.Active_Background := Option_Value("activebackground");
-         Options.Active_Foreground := Option_Value("activeforeground");
-         Options.Bitmap := Option_Value("bitmap");
-         Options.Command := Option_Value("command");
-         Options.Disabled_Foreground := Option_Value("disabledforeground");
-         Options.Font := Option_Value("font");
-         Options.Foreground := Option_Value("foreground");
-         Options.Highlight_Background := Option_Value("highlightbackground");
-         Options.Highlight_Color := Option_Value("highlightcolor");
-         Options.Image := Option_Value("image");
-         Options.Text := Option_Value("text");
-         Options.Text_Variable := Option_Value("textvariable");
+         Options.Active_Background := Option_Value(Widget, "activebackground");
+         Options.Active_Foreground := Option_Value(Widget, "activeforeground");
+         Options.Bitmap := Option_Value(Widget, "bitmap");
+         Options.Command := Option_Value(Widget, "command");
+         Options.Disabled_Foreground :=
+           Option_Value(Widget, "disabledforeground");
+         Options.Font := Option_Value(Widget, "font");
+         Options.Foreground := Option_Value(Widget, "foreground");
+         Options.Highlight_Background :=
+           Option_Value(Widget, "highlightbackground");
+         Options.Highlight_Color := Option_Value(Widget, "highlightcolor");
+         Options.Image := Option_Value(Widget, "image");
+         Options.Text := Option_Value(Widget, "text");
+         Options.Text_Variable := Option_Value(Widget, "textvariable");
       end return;
    end Get_Options;
 
