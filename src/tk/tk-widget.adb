@@ -177,6 +177,12 @@ package body Tk.Widget is
       return Place_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
    end Option_Value;
 
+   function Option_Value(Widget: Tk_Widget; Name: String) return State_Type is
+   begin
+      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      return State_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+   end Option_Value;
+
    procedure Destroy(Widget: in out Tk_Widget) is
       procedure Tk_DestroyWindow(tkwin: int) with
          Import => True,
