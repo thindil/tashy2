@@ -96,6 +96,7 @@ package body Tk.Button is
          Options.Border_Width := Option_Value(Widget, "borderwidth");
          Options.Command := Option_Value(Widget, "command");
          Options.Compound := Option_Value(Widget, "compound");
+         Options.Default := Option_Value(Widget, "default");
          Options.Disabled_Foreground :=
            Option_Value(Widget, "disabledforeground");
          Options.Font := Option_Value(Widget, "font");
@@ -108,6 +109,7 @@ package body Tk.Button is
          Options.Image := Option_Value(Widget, "image");
          Options.PadX := Option_Value(Widget, "padx");
          Options.PadY := Option_Value(Widget, "pady");
+         Options.State := Option_Value(Widget, "state");
          Options.Text := Option_Value(Widget, "text");
          Options.Text_Variable := Option_Value(Widget, "textvariable");
          Options.Width := Option_Value(Widget, "width");
