@@ -95,6 +95,7 @@ package body Tk.Button is
          Options.Bitmap := Option_Value(Widget, "bitmap");
          Options.Border_Width := Option_Value(Widget, "borderwidth");
          Options.Command := Option_Value(Widget, "command");
+         Options.Compound := Option_Value(Widget, "compound");
          Options.Disabled_Foreground :=
            Option_Value(Widget, "disabledforeground");
          Options.Font := Option_Value(Widget, "font");
