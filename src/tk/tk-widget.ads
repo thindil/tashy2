@@ -268,6 +268,7 @@ package Tk.Widget is
    function Option_Value(Widget: Tk_Widget; Name: String) return Place_Type;
    function Option_Value(Widget: Tk_Widget; Name: String) return State_Type;
    function Option_Value(Widget: Tk_Widget; Name: String) return Justify_Type;
+   function Option_Value(Widget: Tk_Widget; Name: String) return Relief_Type;
    -- ****
 
       --------------------------------
