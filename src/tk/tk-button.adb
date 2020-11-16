@@ -113,9 +113,12 @@ package body Tk.Button is
          Options.PadX := Option_Value(Widget, "padx");
          Options.PadY := Option_Value(Widget, "pady");
          Options.Relief := Option_Value(Widget, "relief");
+         Options.Repeat_Delay := Option_Value(Widget, "repeaddelay");
+         Options.Repeat_Interval := Option_Value(Widget, "repeatinterval");
          Options.State := Option_Value(Widget, "state");
          Options.Text := Option_Value(Widget, "text");
          Options.Text_Variable := Option_Value(Widget, "textvariable");
+         Options.Underline := Option_Value(Widget, "underline");
          Options.Width := Option_Value(Widget, "width");
          Options.Wrap_Length := Option_Value(Widget, "wraplength");
       end return;
