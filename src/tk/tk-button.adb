@@ -105,11 +105,14 @@ package body Tk.Button is
          Options.Highlight_Background :=
            Option_Value(Widget, "highlightbackground");
          Options.Highlight_Color := Option_Value(Widget, "highlightcolor");
-         Options.Highlight_Thickness := Option_Value(Widget, "highlightthickness");
+         Options.Highlight_Thickness :=
+           Option_Value(Widget, "highlightthickness");
          Options.Image := Option_Value(Widget, "image");
          Options.Justify := Option_Value(Widget, "justify");
+         Options.Over_Relief := Option_Value(Widget, "overrelief");
          Options.PadX := Option_Value(Widget, "padx");
          Options.PadY := Option_Value(Widget, "pady");
+         Options.Relief := Option_Value(Widget, "relief");
          Options.State := Option_Value(Widget, "state");
          Options.Text := Option_Value(Widget, "text");
          Options.Text_Variable := Option_Value(Widget, "textvariable");
