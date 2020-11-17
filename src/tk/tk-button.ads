@@ -39,6 +39,7 @@ package Tk.Button is
    -- Anchor               - The direction in which a button text or image is
    --                        positioned. For example, NW means display in top-left
    --                        corner of the button
+   -- Background           - Normal Background color of the button
    -- Bitmap               - The name of the bitmap to display on button
    -- Border_Width         - The width of the button's border
    -- Command              - The Tcl command which will be executed when the
@@ -49,15 +50,17 @@ package Tk.Button is
    -- Default              - Specifies the state for the default ring
    -- Disabled_Foreground  - Foreground color when the button is disabled
    -- Font                 - The Tk font which will be used to draw text on the button
-   -- Foreground           -
-   -- Height               -
-   -- Highlight_Background -
-   -- Highlight_Color      -
-   -- Highlight_Thickness  -
-   -- Image                -
-   -- Justify              -
-   -- Over_Relief          -
-   -- PadX                 -
+   -- Foreground           - Normal foreground color of the button
+   -- Height               - Height of the button. For images, it is in pixels, for text
+   --                        in lines
+   -- Highlight_Background - Highlight traversal region background color for the button
+   -- Highlight_Color      - Highlight traversal rectangle color for the button
+   -- Highlight_Thickness  - The width of highlight traversal rectangle for the button
+   -- Image                - Tk image used to display on the button
+   -- Justify              - Justification of the button's text
+   -- Over_Relief          - Alternative relief for the button when the mouse cursor is
+   --                        over the button
+   -- PadX                 - Extra space requested for the button in X-direction
    -- PadY                 -
    -- Relief               -
    -- Repeat_Delay         -
