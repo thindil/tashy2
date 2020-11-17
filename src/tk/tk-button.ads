@@ -15,10 +15,60 @@
 with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
+-- ****h* Tk/Button
+-- FUNCTION
+-- Provides code for manipulate Tk widget button
+-- SOURCE
 package Tk.Button is
+-- ****
 
+   -- ****t* Button/Button.Tk_Button
+   -- FUNCTION
+   -- The Tk indetifier of the button
+   -- SOURCE
    type Tk_Button is new Tk_Widget;
+   -- ****
 
+   -- ****s* Tk.Button/Button_Options
+   -- FUNCTION
+   -- Data structure for all available options for the Tk button
+   -- OPTIONS
+   -- Active_Background    - Background color when button is active (mouse is
+   --                        over the button)
+   -- Active_Foreground    - Foreground color when button is active
+   -- Anchor               - The direction in which a button text or image is
+   --                        positioned. For example, NW means display in top-left
+   --                        corner of the button
+   -- Bitmap               - The name of the bitmap to display on button
+   -- Border_Width         - The width of the button's border
+   -- Command              - The Tcl command which will be executed when the
+   --                        button was pressed
+   -- Compound             - Specifies if the button should display image and text
+   --                        in the same time. If yes (other value than NONE or EMPTY),
+   --                        then mean position of image related to the text
+   -- Default              - Specifies the state for the default ring
+   -- Disabled_Foreground  - Foreground color when the button is disabled
+   -- Font                 - The Tk font which will be used to draw text on the button
+   -- Foreground           -
+   -- Height               -
+   -- Highlight_Background -
+   -- Highlight_Color      -
+   -- Highlight_Thickness  -
+   -- Image                -
+   -- Justify              -
+   -- Over_Relief          -
+   -- PadX                 -
+   -- PadY                 -
+   -- Relief               -
+   -- Repeat_Delay         -
+   -- Repeat_Interval      -
+   -- State                -
+   -- Text                 -
+   -- Text_Variable        -
+   -- Underline            -
+   -- Width                -
+   -- Wrap_Length          -
+   -- SOURCE
    type Button_Options is new Widget_Options with record
       Active_Background: Tcl_String;
       Active_Foreground: Tcl_String;
@@ -50,6 +100,7 @@ package Tk.Button is
       Width: Pixel_Data;
       Wrap_Length: Pixel_Data;
    end record;
+   -- ****
 
    function Create
      (Path_Name: String; Options: Button_Options;
