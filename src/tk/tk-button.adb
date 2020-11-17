@@ -35,6 +35,7 @@ package body Tk.Button is
       Option_Image
         ("activebackground", Options.Active_Background, Options_String);
       Option_Image("anchor", Options.Anchor, Options_String);
+      Option_Image("background", Options.Background, Options_String);
       Option_Image("bitmap", Options.Bitmap, Options_String);
       Option_Image("borderwidth", Options.Border_Width, Options_String);
       Option_Image("command", Options.Command, Options_String);
@@ -92,6 +93,7 @@ package body Tk.Button is
          Options.Active_Background := Option_Value(Widget, "activebackground");
          Options.Active_Foreground := Option_Value(Widget, "activeforeground");
          Options.Anchor := Option_Value(Widget, "anchor");
+         Options.Background := Option_Value(Widget, "background");
          Options.Bitmap := Option_Value(Widget, "bitmap");
          Options.Border_Width := Option_Value(Widget, "borderwidth");
          Options.Command := Option_Value(Widget, "command");

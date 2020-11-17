@@ -73,6 +73,7 @@ package Tk.Button is
       Active_Background: Tcl_String;
       Active_Foreground: Tcl_String;
       Anchor: Directions_Type;
+      Background: Tcl_String;
       Bitmap: Tcl_String;
       Border_Width: Pixel_Data;
       Command: Tcl_String;
