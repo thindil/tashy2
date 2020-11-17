@@ -24,7 +24,7 @@ package Tk.Widget is
 
    -- ****s* Widget/Widget.Tk_Widget
    -- FUNCTION
-   -- The identifier of the Tk Widget.
+   -- The identifier of the Tk Widget
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -111,7 +111,7 @@ package Tk.Widget is
       -- ****s* Widget/Tk.Pixel_Data
       -- FUNCTION
       -- Data structure to store information about pixel
-      -- PARAMETERS
+      -- OPTIONS
       -- Value      - Value of screen distance for the pixel
       -- Value_Unit - Type of screen distance unit. Default are pixels
       -- SOURCE
