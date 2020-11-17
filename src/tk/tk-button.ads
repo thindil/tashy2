@@ -61,16 +61,20 @@ package Tk.Button is
    -- Over_Relief          - Alternative relief for the button when the mouse cursor is
    --                        over the button
    -- PadX                 - Extra space requested for the button in X-direction
-   -- PadY                 -
-   -- Relief               -
-   -- Repeat_Delay         -
-   -- Repeat_Interval      -
-   -- State                -
-   -- Text                 -
-   -- Text_Variable        -
-   -- Underline            -
-   -- Width                -
-   -- Wrap_Length          -
+   -- PadY                 - Extra space requested for the button in Y-direction
+   -- Relief               - 3-D effect desired for the button
+   -- Repeat_Delay         - Amount of miliseconds before key or button begins auto-repeat
+   --                        on the button
+   -- Repeat_Interval      - Amount of miliseconds between auto-repeat
+   -- State                - The current state of the button
+   -- Text                 - The text displayed on the button
+   -- Text_Variable        - The Tcl variable which value will be used the text on the button
+   -- Underline            - The index of the character in the button text which will be
+   --                        underlined. The index starts from 0
+   -- Width                - Width of the button. For images, it is in pixels, for text in
+   --                        characters
+   -- Wrap_Length          - The maximum length of the text on the button. If text is longer,
+   --                        will be wrapped on the next line
    -- SOURCE
    type Button_Options is new Widget_Options with record
       Active_Background: Tcl_String;
