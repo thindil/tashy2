@@ -13,11 +13,10 @@ begin
    Tk_Init;
 
    -- Create the button with text Quit which will be closing the application
-   Button :=
-     Create
-       (".button",
-        (Text => To_Tcl_String("Quit"), Command => To_Tcl_String("exit"),
-         others => <>));
+   Create
+     (Button, ".button",
+      (Text => To_Tcl_String("Quit"), Command => To_Tcl_String("exit"),
+       others => <>));
    -- Add the button to the main window
    Tcl_Eval("grid " & Tk_PathName(Button));
 
