@@ -25,11 +25,13 @@ package Tk.Button is
    -- ****t* Button/Button.Tk_Button
    -- FUNCTION
    -- The Tk indetifier of the button
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Tk_Button is new Tk_Widget;
    -- ****
 
-   -- ****s* Tk.Button/Button_Options
+   -- ****s* Tk.Button/Button.Button_Options
    -- FUNCTION
    -- Data structure for all available options for the Tk button
    -- OPTIONS
@@ -75,6 +77,8 @@ package Tk.Button is
    --                        characters
    -- Wrap_Length          - The maximum length of the text on the button. If text is longer,
    --                        will be wrapped on the next line
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Button_Options is new Widget_Options with record
       Active_Background: Tcl_String;
@@ -110,13 +114,56 @@ package Tk.Button is
    end record;
    -- ****
 
+   -- ****f* Button/Button.Create_(function)
+   -- FUNCTION
+   -- Create a new Tk button widget with the selected pathname and options
+   -- PARAMETERS
+   -- Path_Name   - Tk pathname for the newly created button
+   -- Options     - Options for the newly created button
+   -- Interpreter - Tcl interpreter on which the button will be created. Can
+   --               be empty. Default value is the default Tcl interpreter
+   -- RESULT
+   -- The Tk identifier of the newly created button widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Create the button with pathname .mybutton, text Quit and quitting from
+   -- -- the program on activate
+   -- My_Button: constant Tk_Button := Create(".mybutton", (Text => To_Tcl_String("Quit"),
+   --                                  Command => To_Tcl_String("exit"), others => <>));
+   -- SOURCE
    function Create
      (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button;
+      -- ****
 
+      -- ****f* Button/Button.Create_(procedure)
+      -- FUNCTION
+      -- Create a new Tk button widget with the selected pathname and options
+      -- PARAMETERS
+      -- Widget      - Tk_Button identifier which will be returned
+      -- Path_Name   - Tk pathname for the newly created button
+      -- Options     - Options for the newly created button
+      -- Interpreter - Tcl interpreter on which the button will be created. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- OUTPUT
+      -- The Widget parameter as Tk identifier of the newly created button widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Create the button with pathname .mybutton, text Quit and quitting from
+      -- -- the program on activate
+      -- declare
+      --    My_Button: Tk_Button;
+      -- begin
+      --    Create(My_Button, ".mybutton", (Text => To_Tcl_String("Quit"),
+      --           Command => To_Tcl_String("exit"), others => <>));
+      -- end;
+      -- SOURCE
    procedure Create
      (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter);
+   -- ****
 
    function Get_Options(Widget: Tk_Button) return Button_Options;
 
