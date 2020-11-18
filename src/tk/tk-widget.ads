@@ -44,6 +44,8 @@ package Tk.Widget is
    -- ****t* Widget/Widget.Pixel_Unit
    -- FUNCTION
    -- Type of possible screen distance units
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Pixel_Unit is (PIXEL, C, I, M, P) with
       Default_Value => PIXEL;
@@ -52,6 +54,8 @@ package Tk.Widget is
    -- ****t* Widget/Widget.Directions_Type
    -- FUNCTION
    -- Type of possible directions for various widgets configuration options
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Directions_Type is (NONE, N, NE, E, SE, S, SW, W, NW, CENTER) with
       Default_Value => NONE;
@@ -60,6 +64,8 @@ package Tk.Widget is
       -- ****t* Widget/Widget.Positive_Float
       -- FUNCTION
       -- Type used for positive float values, value -1 means empty value
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    type Positive_Float is digits 2 range -1.0 .. Float'Last with
       Default_Value => -1.0;
@@ -69,6 +75,8 @@ package Tk.Widget is
       -- FUNCTION
       -- Type of possible place directions for various widgets configuration
       -- options
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    type Place_Type is (EMPTY, NONE, BOTTOM, TOP, LEFT, RIGHT, CENTER) with
       Default_Value => EMPTY;
@@ -78,6 +86,8 @@ package Tk.Widget is
       -- FUNCTION
       -- Type used for set boolean values of various widgets configuration
       -- options
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    type Extended_Boolean is (FALSE, TRUE, NONE) with
       Default_Value => NONE;
@@ -86,6 +96,8 @@ package Tk.Widget is
       -- ****t* Widget/Widget.Justify_Type
       -- FUNCTION
       -- Type used to set text justify option of various widgets
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    type Justify_Type is (NONE, LEFT, CENTER, RIGHT) with
       Default_Value => NONE;
@@ -95,6 +107,8 @@ package Tk.Widget is
       -- FUNCTION
       -- Type used for set non-negative values for various widgets
       -- configuration options
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    type Extended_Natural is new Integer range -1 .. Integer'Last with
       Default_Value => -1;
@@ -103,6 +117,8 @@ package Tk.Widget is
       -- ****t* Widget/Widget.State_Type
       -- FUNCTION
       -- Type used to set the state of the selected widget
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    type State_Type is (NORMAL, ACTIVE, DISABLED, NONE) with
       Default_Value => NONE;
@@ -114,6 +130,8 @@ package Tk.Widget is
       -- OPTIONS
       -- Value      - Value of screen distance for the pixel
       -- Value_Unit - Type of screen distance unit. Default are pixels
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    type Pixel_Data is record
       Value: Positive_Float;
@@ -152,11 +170,11 @@ package Tk.Widget is
    --               value is default Tcl interpreter
    -- RESULT
    -- Tk_Widget with specified path name on the selected Tcl interpreter
+   -- HISTORY
+   -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Get the Tk Widget ID for .mybutton pathname widget on the default Tcl interpreter
    -- My_Button: constant Tk_Widget := Get_Widget(".mybutton");
-   -- HISTORY
-   -- 8.6.0 - Added
    -- SOURCE
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
