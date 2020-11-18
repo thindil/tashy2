@@ -14,8 +14,6 @@
 
 with Ada.Strings.Maps; use Ada.Strings.Maps;
 
-with ada.text_io;
-
 package body Tcl.Strings is
 
    function To_Tcl_String
