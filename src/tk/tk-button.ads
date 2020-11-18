@@ -165,8 +165,35 @@ package Tk.Button is
       Interpreter: Tcl_Interpreter := Get_Interpreter);
    -- ****
 
+   -- ****f* Button/Button.Get_Options
+   -- FUNCTION
+   -- Get all values of Tk options of the selected button
+   -- PARAMETERS
+   -- Widget - Tk_Button which options' values will be taken
+   -- RESULT
+   -- Button_Options record with values of the selected button options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get all values of option of button with pathname .mybutton
+   -- My_Button_Options: constant Butt_Options := Get_Options(Get_Widget(".mybutton"));
+   -- SOURCE
    function Get_Options(Widget: Tk_Button) return Button_Options;
+   -- ****
 
+   -- ****f* Button/Button.Configure
+   -- FUNCTION
+   -- Set the selected options for the selected button
+   -- PARAMETERS
+   -- Widget  - Tk_Button which options will be set
+   -- Options - The record with new values for the button options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Disable button with pathname .mybutton
+   -- Configure(Get_Widget(".mybutton"), (State => DISABLED, others => <>));
+   -- SOURCE
    procedure Configure(Widget: Tk_Button; Options: Button_Options);
+   -- ****
 
 end Tk.Button;
