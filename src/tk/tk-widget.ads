@@ -31,6 +31,13 @@ package Tk.Widget is
    type Tk_Widget is new Integer;
    -- ****
 
+   -- ****d* Tk.Widget/Null_Widget
+   -- FUNCTION
+   -- Not created or not existing Tk widget
+   -- SOURCE
+   Null_Widget: constant Tk_Widget := 0;
+   -- ****
+
    -- ****t* Widget/Widget.Relief_Type
    -- FUNCTION
    -- Type of Tk widget 3D effect
