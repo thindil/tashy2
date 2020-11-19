@@ -17,7 +17,7 @@ package Tcl.Test_Data.Tests is
    --  tcl.ads:171:4:Tcl_GetResult:Test_Tcl_GetResult
 
    procedure Test_Tcl_SetResult_e87522_5a72b9(Gnattest_T: in out Test);
-   --  tcl.ads:192:4:Tcl_SetResult:Test_Tcl_SetResult
+   --  tcl.ads:232:4:Tcl_SetResult:Test_Tcl_SetResult
 
 end Tcl.Test_Data.Tests;
 --  end read only
