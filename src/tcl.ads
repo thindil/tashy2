@@ -40,7 +40,7 @@ package Tcl is
    type Tcl_Interpreter is new System.Address;
    -- ****
 
-   -- ****d* Tcl/Null_Interpreter
+   -- ****d* Tcl/Tcl.Null_Interpreter
    -- FUNCTION
    -- Not set Tcl interterpreter
    -- HISTORY
@@ -140,7 +140,7 @@ package Tcl is
    for Result_Types use (TCL_STATIC => 0, TCL_VOLATILE => 1, TCL_DYNAMIC => 3);
    -- ****
 
-   -- ****t* Tcl/Tcl_Results
+   -- ****t* Tcl/Tcl.Tcl_Results
    -- FUNCTION
    -- Used as return Tcl result for commands
    -- OPTIONS
@@ -234,12 +234,16 @@ package Tcl is
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Result'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Tcl_SetResult", Nominal);
-   -- ****
+      -- ****
 
-   ---------------------------------
-   -- Manipulating the Tcl variables
-   ---------------------------------
+      ---------------------------------
+      -- Manipulating the Tcl variables
+      ---------------------------------
 
+      -- ****t* Tcl/Tcl.Variables_Flags
+      -- FUNCTION
+      -- Available flags for manipulation of Tcl variables
+      -- SOURCE
    type Variables_Flags is
      (NONE, TCL_GLOBAL_ONLY, TCL_NAMESPACE_ONLY, TCL_APPEND_VALUE,
       TCL_LIST_ELEMENT, TCL_LEAVE_ERR_MSG);
@@ -247,12 +251,38 @@ package Tcl is
    for Variables_Flags use (NONE => 16#0000#, TCL_GLOBAL_ONLY => 16#0001#,
       TCL_NAMESPACE_ONLY => 16#0002#, TCL_APPEND_VALUE => 16#0004#,
       TCL_LIST_ELEMENT => 16#0008#, TCL_LEAVE_ERR_MSG => 16#0200#);
+   -- ****
 
+   -- ****t* Tcl/Tcl.Flags_Array
+   -- FUNCTION
+   -- Used as to set flags for Tcl variables manipulation subprograms
+   -- SOURCE
    type Flags_Array is array(Positive range <>) of Variables_Flags;
+   -- ****
 
+   -- ****f* Tcl/Tcl.Tcl_SetVar
+   -- FUNCTION
+   -- Set value for the selected Tcl variable
+   -- PARAMETERS
+   -- Var_Name    - Name of the Tcl variable to set. If contains open and
+   --               close parenthesis it will be treated as index of the item
+   --               in the array. Cannot be empty.
+   -- New_Value   - A new value for the selected Tcl variable to set. Cannot
+   --               empty.
+   -- Interpreter - Tcl interpreter on which the result will be set. By
+   --               default it is current default Tcl interpreter.
+   -- Flags       - Array of flags used in setting variable. Can be empty.
+   --               Default value is one element array NONE
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Set the value of the Tcl variable $myvar to 2 on default Tcl interpreter
+   -- Tcl_SetVar("myvar", "2");
+   -- SOURCE
    procedure Tcl_SetVar
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE));
+   -- ****
 
 end Tcl;
