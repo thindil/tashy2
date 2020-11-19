@@ -236,4 +236,23 @@ package Tcl is
       Test_Case => ("Test_Tcl_SetResult", Nominal);
    -- ****
 
+   ---------------------------------
+   -- Manipulating the Tcl variables
+   ---------------------------------
+
+   type Variables_Flags is
+     (NONE, TCL_GLOBAL_ONLY, TCL_NAMESPACE_ONLY, TCL_APPEND_VALUE,
+      TCL_LIST_ELEMENT, TCL_LEAVE_ERR_MSG);
+
+   for Variables_Flags use (NONE => 16#0000#, TCL_GLOBAL_ONLY => 16#0001#,
+      TCL_NAMESPACE_ONLY => 16#0002#, TCL_APPEND_VALUE => 16#0004#,
+      TCL_LIST_ELEMENT => 16#0008#, TCL_LEAVE_ERR_MSG => 16#0200#);
+
+   type Flags_Array is array(Positive range <>) of Variables_Flags;
+
+   procedure Tcl_SetVar
+     (Var_Name, New_Value: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE));
+
 end Tcl;
