@@ -100,4 +100,48 @@ package body Tcl is
         (Interpreter, New_String(Result), Result_Types'Enum_Rep(Result_Type));
    end Tcl_SetResult;
 
+   -- ****if* Tcl/Tcl.Create_Flag
+   -- FUNCTION
+   -- Create C flag for the manipulating Tcl variables
+   -- PARAMETERS
+   -- Flags - Ada array with flags which will be added to the Tcl variable
+   --         manipulation subprogram
+   -- RESULT
+   -- C flag from the selected array
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Create_Flag(Flags: Flags_Array) return int is
+      -- ****
+      type Unsigned_Integer is mod 2**Integer'Size;
+      Flag: Unsigned_Integer :=
+        Unsigned_Integer(Variables_Flags'Enum_Rep(Flags(1)));
+   begin
+      for I in 2 .. Flags'Last loop
+         Flag := Flag or Unsigned_Integer(Variables_Flags'Enum_Rep(Flags(I)));
+      end loop;
+      return int(Flag);
+   end Create_Flag;
+
+   procedure Tcl_SetVar
+     (Var_Name, New_Value: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) is
+      function TclSetVar
+        (interp: Tcl_Interpreter; varName, newValue: chars_ptr; flags: int)
+         return chars_ptr with
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_SetVar";
+      Result: constant String :=
+        Value
+          (TclSetVar
+             (Interpreter, New_String(Var_Name), New_String(New_Value),
+              Create_Flag(Flags)));
+   begin
+      if Result'Length = 0 then
+         raise Tcl_Exception with "Can't set " & Var_Name & " to " & New_Value;
+      end if;
+   end Tcl_SetVar;
+
 end Tcl;
