@@ -282,7 +282,8 @@ package Tcl is
    procedure Tcl_SetVar
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := (1 => NONE));
+      Flags: Flags_Array := (1 => NONE)) with
+      Pre => Var_Name'Length > 0 and New_Value'Length > 0;
    -- ****
 
 end Tcl;
