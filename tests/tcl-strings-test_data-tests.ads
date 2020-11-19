@@ -11,7 +11,7 @@ package Tcl.Strings.Test_Data.Tests is
    null record;
 
    procedure Test_To_Tcl_String_05e111_b689e2(Gnattest_T: in out Test);
-   --  tcl-strings.ads:49:4:To_Tcl_String:Test_To_Tcl_String
+   --  tcl-strings.ads:52:4:To_Tcl_String:Test_To_Tcl_String
 
 end Tcl.Strings.Test_Data.Tests;
 --  end read only
