@@ -284,6 +284,34 @@ package Tcl is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
       Pre => Var_Name'Length > 0 and New_Value'Length > 0;
+      -- ****
+
+      -- ****f* Tcl/Tcl.Tcl_SetVar2
+      -- FUNCTION
+      -- Set value for the selected Tcl variable in the selected array
+      -- PARAMETERS
+      -- Array_Name  - Name of the Tcl array in which the value will be set.
+      --               Cannot be empty.
+      -- Index_Name  - Name of the index of element in the Tcl array which
+      --               the value will be set. Cannot be empty.
+      -- New_Value   - A new value for the selected Tcl variable to set.
+      --               Cannot empty.
+      -- Interpreter - Tcl interpreter on which the result will be set. By
+      --               default it is current default Tcl interpreter.
+      -- Flags       - Array of flags used in setting variable. Can be empty.
+      --               Default value is one element array NONE
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the value of the third element in Tcl array $myarray to 5 on default Tcl interpreter
+      -- Tcl_SetVar2("myarray", "2", "5");
+      -- SOURCE
+   procedure Tcl_SetVar2
+     (Array_Name, Index_Name, New_Value: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) with
+      Pre => Array_Name'Length > 0 and Index_Name'Length > 0 and
+      New_Value'Length > 0;
    -- ****
 
 end Tcl;
