@@ -391,4 +391,94 @@ package Tcl is
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter;
      -- ****
 
+      -- ****f* Tcl/Tcl.Tcl_GetVar2_(String)
+      -- FUNCTION
+      -- Get the value for the selected Tcl variable in the selected array as String
+      -- PARAMETERS
+      -- Var_Name    - Name of the Tcl variable to get. If contains open and
+      --               close parenthesis it will be treated as index of the item
+      --               in the array. Cannot be empty.
+      -- Index_Name  - Name of the index of element in the Tcl array which
+      --               the value will be get. Cannot be empty.
+      -- Interpreter - Tcl interpreter on which the result will be get. By
+      --               default it is current default Tcl interpreter.
+      -- Flags       - Array of flags used in getting variable. Can be empty.
+      --               Default value is one element array NONE
+      -- RESULT
+      -- String with the value of the selected Tcl array element variable
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the value of the third element in the Tcl array $myarray on default Tcl interpreter
+      -- Value: constant String := Tcl_GetVar2("myarray", "2");
+      -- SOURCE
+   function Tcl_GetVar2
+     (Var_Name, Index_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) return String with
+      Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
+      Interpreter /= Null_Interpreter;
+      -- ****
+
+      -- ****f* Tcl/Tcl.Tcl_GetVar_(Integer)
+      -- FUNCTION
+      -- Get the value for the selected Tcl variable as an Integer
+      -- PARAMETERS
+      -- Var_Name    - Name of the Tcl variable to get. If contains open and
+      --               close parenthesis it will be treated as index of the item
+      --               in the array. Cannot be empty.
+      -- Index_Name  - Name of the index of element in the Tcl array which
+      --               the value will be get. Cannot be empty.
+      -- Interpreter - Tcl interpreter on which the result will be get. By
+      --               default it is current default Tcl interpreter.
+      -- Flags       - Array of flags used in getting variable. Can be empty.
+      --               Default value is one element array NONE
+      -- RESULT
+      -- Integer with the value of the selected Tcl varible
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the value of the third element in the Tcl array $myarray on default Tcl interpreter
+      -- Value: constant Integer := Tcl_GetVar2("myarray", "2");
+      -- SOURCE
+   function Tcl_GetVar2
+     (Var_Name, Index_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) return Integer is
+     (Integer'Value
+        (Tcl_GetVar2(Var_Name, Index_Name, Interpreter, Flags))) with
+      Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
+      Interpreter /= Null_Interpreter;
+     -- ****
+
+     -- ****f* Tcl/Tcl.Tcl_GetVar_(Float)
+     -- FUNCTION
+     -- Get the value for the selected Tcl variable as a Float
+     -- PARAMETERS
+     -- Var_Name    - Name of the Tcl variable to get. If contains open and
+     --               close parenthesis it will be treated as index of the item
+     --               in the array. Cannot be empty.
+      -- Index_Name  - Name of the index of element in the Tcl array which
+      --               the value will be get. Cannot be empty.
+     -- Interpreter - Tcl interpreter on which the result will be get. By
+     --               default it is current default Tcl interpreter.
+     -- Flags       - Array of flags used in getting variable. Can be empty.
+     --               Default value is one element array NONE
+     -- RESULT
+     -- Float with the value of the selected Tcl varible
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- EXAMPLE
+      -- -- Get the value of the third element in the Tcl array $myarray on default Tcl interpreter
+      -- Value: constant Float := Tcl_GetVar2("myarray", "2");
+   -- SOURCE
+   function Tcl_GetVar2
+     (Var_Name, Index_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) return Float is
+     (Float'Value(Tcl_GetVar2(Var_Name, Index_Name, Interpreter, Flags))) with
+      Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
+      Interpreter /= Null_Interpreter;
+     -- ****
+
 end Tcl;
