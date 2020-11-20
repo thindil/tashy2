@@ -167,4 +167,18 @@ package body Tcl is
       end if;
    end Tcl_SetVar2;
 
+   function Tcl_GetVar
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) return String is
+      function TclGetVar
+        (interp: Tcl_Interpreter; varName: chars_ptr; flags: int)
+         return chars_ptr with
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_GetVar";
+   begin
+      return Value
+          (TclGetVar(Interpreter, New_String(Var_Name), Create_Flag(Flags)));
+   end Tcl_GetVar;
+
 end Tcl;
