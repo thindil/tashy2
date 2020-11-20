@@ -198,4 +198,20 @@ package body Tcl is
               Create_Flag(Flags)));
    end Tcl_GetVar2;
 
+   procedure Tcl_UnsetVar
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) is
+      function TclUnsetVar
+        (interp: Tcl_Interpreter; varName: chars_ptr; flags: int)
+         return int with
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_UnsetVar";
+   begin
+      if TclUnsetVar(Interpreter, New_String(Var_Name), Create_Flag(Flags)) =
+        int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
+         raise Tcl_Exception with "Can't unset " & Var_Name;
+      end if;
+   end Tcl_UnsetVar;
+
 end Tcl;
