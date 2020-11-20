@@ -214,4 +214,24 @@ package body Tcl is
       end if;
    end Tcl_UnsetVar;
 
+   procedure Tcl_UnsetVar2
+     (Var_Name, Index_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) is
+      function TclUnsetVar2
+        (interp: Tcl_Interpreter; varName, indexName: chars_ptr; flags: int)
+         return int with
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_UnsetVar2";
+   begin
+      if TclUnsetVar2
+          (Interpreter, New_String(Var_Name), New_String(Index_Name),
+           Create_Flag(Flags)) =
+        int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
+         raise Tcl_Exception
+           with "Can't unset element " & Index_Name & " in array " & Var_Name;
+      end if;
+   end Tcl_UnsetVar2;
+
 end Tcl;
