@@ -144,4 +144,27 @@ package body Tcl is
       end if;
    end Tcl_SetVar;
 
+   procedure Tcl_SetVar2
+     (Array_Name, Index_Name, New_Value: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) is
+      function TclSetVar2
+        (interp: Tcl_Interpreter; name1, name2, newValue: chars_ptr;
+         flags: int) return chars_ptr with
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_SetVar2";
+      Result: constant String :=
+        Value
+          (TclSetVar2
+             (Interpreter, New_String(Array_Name), New_String(Index_Name),
+              New_String(New_Value), Create_Flag(Flags)));
+   begin
+      if Result'Length = 0 then
+         raise Tcl_Exception
+           with "Can't set element " & Index_Name & " to " & New_Value &
+           " in array " & Array_Name;
+      end if;
+   end Tcl_SetVar2;
+
 end Tcl;
