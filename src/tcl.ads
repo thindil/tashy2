@@ -481,4 +481,27 @@ package Tcl is
       Interpreter /= Null_Interpreter;
      -- ****
 
+      -- ****f* Tcl/Tcl.Tcl_UnsetVar
+      -- FUNCTION
+      -- Delete the selected Tcl variable
+      -- PARAMETERS
+      -- Var_Name    - Name of the Tcl variable to delete. If contains open and
+      --               close parenthesis it will be treated as index of the item
+      --               in the array. Cannot be empty.
+      -- Interpreter - Tcl interpreter on which the variable will be deleted. By
+      --               default it is current default Tcl interpreter.
+      -- Flags       - Array of flags used in deleting variable. Can be empty.
+      --               Default value is one element array NONE
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Delete the Tcl variable $myvar on default Tcl interpreter
+      -- Tcl_UnsetVar("myvar");
+      -- SOURCE
+   procedure Tcl_UnsetVar
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := (1 => NONE)) with
+      Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter;
+      -- ****
+
 end Tcl;
