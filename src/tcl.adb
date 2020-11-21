@@ -176,9 +176,14 @@ package body Tcl is
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetVar";
+      Result: constant chars_ptr :=
+        TclGetVar(Interpreter, New_String(Var_Name), Create_Flag(Flags));
    begin
-      return Value
-          (TclGetVar(Interpreter, New_String(Var_Name), Create_Flag(Flags)));
+      if Result = Null_Ptr then
+         raise Tcl_Exception
+           with "Can't get value of Tcl variable '" & Var_Name & "'";
+      end if;
+      return Value(Result);
    end Tcl_GetVar;
 
    function Tcl_GetVar2
