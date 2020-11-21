@@ -283,7 +283,8 @@ package Tcl is
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
-      Pre => Var_Name'Length > 0 and New_Value'Length > 0;
+      Pre => Var_Name'Length > 0 and New_Value'Length > 0,
+      Test_Case => ("Test_Tcl_SetVar", Nominal);
       -- ****
 
       -- ****f* Tcl/Tcl.Tcl_SetVar2
@@ -311,7 +312,8 @@ package Tcl is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
       Pre => Array_Name'Length > 0 and Index_Name'Length > 0 and
-      New_Value'Length > 0;
+      New_Value'Length > 0,
+      Test_Case => ("Test_Tcl_SetVar2", Nominal);
       -- ****
 
       -- ****f* Tcl/Tcl.Tcl_GetVar_(String)
@@ -336,7 +338,8 @@ package Tcl is
    function Tcl_GetVar
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return String with
-      Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter;
+      Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Tcl_GetVar", Nominal);
       -- ****
 
       -- ****f* Tcl/Tcl.Tcl_GetVar_(Integer)
@@ -417,7 +420,8 @@ package Tcl is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return String with
       Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
-      Interpreter /= Null_Interpreter;
+      Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Tcl_GetVar2", Nominal);
       -- ****
 
       -- ****f* Tcl/Tcl.Tcl_GetVar2_(Integer)
@@ -501,7 +505,8 @@ package Tcl is
    procedure Tcl_UnsetVar
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
-      Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter;
+      Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Tcl_UnsetVar", Nominal);
       -- ****
 
       -- ****f* Tcl/Tcl.Tcl_UnsetVar2
@@ -524,9 +529,12 @@ package Tcl is
       -- Tcl_UnsetVar("myarray", "2");
       -- SOURCE
    procedure Tcl_UnsetVar2
-     (Var_Name, Index_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Var_Name, Index_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
-      Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and Interpreter /= Null_Interpreter;
+      Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
+      Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Tcl_UnsetVar2", Nominal);
       -- ****
 
 end Tcl;
