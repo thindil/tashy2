@@ -283,8 +283,9 @@ package body Tcl.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_SetVar2("myarray", "0" ,"2");
+      Tcl_Eval("expr 2 + $myarray(0)");
+      Assert(Tcl_GetResult = 4, "Failed to set value of Tcl first element in 'myarray'");
 
 --  begin read only
    end Test_Tcl_SetVar2_test_tcl_setvar2;
