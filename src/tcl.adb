@@ -196,11 +196,17 @@ package body Tcl is
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetVar2";
+      Result: constant chars_ptr :=
+        TclGetVar2
+          (Interpreter, New_String(Var_Name), New_String(Index_Name),
+           Create_Flag(Flags));
    begin
-      return Value
-          (TclGetVar2
-             (Interpreter, New_String(Var_Name), New_String(Index_Name),
-              Create_Flag(Flags)));
+      if Result = Null_Ptr then
+         raise Tcl_Exception
+           with "Can't get value of the element '" & Index_Name &
+           "' of Tcl array '" & Var_Name & "'";
+      end if;
+      return Value(Result);
    end Tcl_GetVar2;
 
    procedure Tcl_UnsetVar
