@@ -343,6 +343,13 @@ package body Tcl.Test_Data.Tests is
 
       Tcl_SetVar("myvar", "test");
       Assert(Tcl_GetVar("myvar") = "test", "Failed to get value of variable 'myvar'");
+      begin
+         Assert(Tcl_GetVar("nonexistingvariable") = "nonexistingvalue", "");
+         Assert(False, "Failed to handle non-existing Tcl variable.");
+      exception
+         when Tcl_Exception =>
+            null;
+      end;
 
 --  begin read only
    end Test_Tcl_GetVar_test_tcl_getvar;
