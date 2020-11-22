@@ -467,8 +467,14 @@ package body Tcl.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_SetVar("myvar", "2");
+      Tcl_UnsetVar("myvar");
+      begin
+         Assert(Tcl_GetVar("myvar") = "2", "Failed to remove Tcl variable");
+      exception
+         when Tcl_Exception =>
+            null;
+      end;
 
 --  begin read only
    end Test_Tcl_UnsetVar_test_tcl_unsetvar;
