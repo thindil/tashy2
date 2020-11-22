@@ -475,6 +475,13 @@ package body Tcl.Test_Data.Tests is
          when Tcl_Exception =>
             null;
       end;
+      begin
+         Tcl_UnsetVar("myvar2");
+         Assert(False, "Failed to handle removing non-existing Tcl variable");
+      exception
+         when Tcl_Exception =>
+            null;
+      end;
 
 --  begin read only
    end Test_Tcl_UnsetVar_test_tcl_unsetvar;
