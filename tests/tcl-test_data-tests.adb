@@ -410,6 +410,13 @@ package body Tcl.Test_Data.Tests is
 
       Tcl_SetVar2("myarray", "0" ,"test");
       Assert(Tcl_GetVar2("myarray", "0") = "test", "Failed to get value of the first element of array 'myarray'");
+      begin
+         Assert(Tcl_GetVar2("nonexistingarray", "0") = "nonexistingvalue", "");
+         Assert(False, "Failed to handle non-existing Tcl variable.");
+      exception
+         when Tcl_Exception =>
+            null;
+      end;
 
 --  begin read only
    end Test_Tcl_GetVar2_test_tcl_getvar2;
