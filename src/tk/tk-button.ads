@@ -134,7 +134,9 @@ package Tk.Button is
    -- SOURCE
    function Create
      (Path_Name: String; Options: Button_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button with
+      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Post => Create'Result /= Tk_Button(Null_Widget);
       -- ****
 
       -- ****f* Button/Button.Create_(procedure)
@@ -162,7 +164,9 @@ package Tk.Button is
       -- SOURCE
    procedure Create
      (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter);
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Post => Widget /= Tk_Button(Null_Widget);
    -- ****
 
    -- ****f* Button/Button.Get_Options
@@ -178,7 +182,8 @@ package Tk.Button is
    -- -- Get all values of option of button with pathname .mybutton
    -- My_Button_Options: constant Butt_Options := Get_Options(Get_Widget(".mybutton"));
    -- SOURCE
-   function Get_Options(Widget: Tk_Button) return Button_Options;
+   function Get_Options(Widget: Tk_Button) return Button_Options with
+      Pre => Widget /= Tk_Button(Null_Widget);
    -- ****
 
    -- ****f* Button/Button.Configure
@@ -193,19 +198,25 @@ package Tk.Button is
    -- -- Disable button with pathname .mybutton
    -- Configure(Get_Widget(".mybutton"), (State => DISABLED, others => <>));
    -- SOURCE
-   procedure Configure(Widget: Tk_Button; Options: Button_Options);
+   procedure Configure(Widget: Tk_Button; Options: Button_Options) with
+      Pre => Widget /= Tk_Button(Null_Widget);
    -- ****
 
-   procedure Flash(Widget: Tk_Button);
+   procedure Flash(Widget: Tk_Button) with
+      Pre => Widget /= Tk_Button(Null_Widget);
 
-   procedure Invoke(Widget: Tk_Button);
+   procedure Invoke(Widget: Tk_Button) with
+      Pre => Widget /= Tk_Button(Null_Widget);
 
-   function Invoke(Widget: Tk_Button) return String;
+   function Invoke(Widget: Tk_Button) return String with
+      Pre => Widget /= Tk_Button(Null_Widget);
 
    function Invoke(Widget: Tk_Button) return Integer is
-     (Integer'Value(Invoke(Widget)));
+     (Integer'Value(Invoke(Widget))) with
+      Pre => Widget /= Tk_Button(Null_Widget);
 
    function Invoke(Widget: Tk_Button) return Float is
-     (Float'Value(Invoke(Widget)));
+     (Float'Value(Invoke(Widget))) with
+      Pre => Widget /= Tk_Button(Null_Widget);
 
 end Tk.Button;
