@@ -131,6 +131,10 @@ package Tk.Button is
    -- -- the program on activate
    -- My_Button: constant Tk_Button := Create(".mybutton", (Text => To_Tcl_String("Quit"),
    --                                  Command => To_Tcl_String("exit"), others => <>));
+   -- SEE ALSO
+   -- Button.Create_(procedure)
+   -- COMMANDS
+   -- button Path_Name Options
    -- SOURCE
    function Create
      (Path_Name: String; Options: Button_Options;
@@ -161,6 +165,10 @@ package Tk.Button is
       --    Create(My_Button, ".mybutton", (Text => To_Tcl_String("Quit"),
       --           Command => To_Tcl_String("exit"), others => <>));
       -- end;
+      -- SEE ALSO
+      -- Button.Create_(function)
+      -- COMMANDS
+      -- button Path_Name Options
       -- SOURCE
    procedure Create
      (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
@@ -181,6 +189,10 @@ package Tk.Button is
       -- EXAMPLE
       -- -- Get all values of option of button with pathname .mybutton
       -- My_Button_Options: constant Butt_Options := Get_Options(Get_Widget(".mybutton"));
+      -- SEE ALSO
+      -- Button.Configure
+      -- COMMANDS
+      -- Widget configure
       -- SOURCE
    function Get_Options(Widget: Tk_Button) return Button_Options with
       Pre => Widget /= Tk_Button(Null_Widget);
@@ -197,6 +209,10 @@ package Tk.Button is
       -- EXAMPLE
       -- -- Disable button with pathname .mybutton
       -- Configure(Get_Widget(".mybutton"), (State => DISABLED, others => <>));
+      -- SEE ALSO
+      -- Button.Get_Options
+      -- COMMANDS
+      -- Widget configure Options
       -- SOURCE
    procedure Configure(Widget: Tk_Button; Options: Button_Options) with
       Pre => Widget /= Tk_Button(Null_Widget);
@@ -212,6 +228,8 @@ package Tk.Button is
       -- EXAMPLE
       -- -- Flash the Tk_Button My_Button
       -- Flash(My_Button);
+      -- COMMANDS
+      -- Widget flash
       -- SOURCE
    procedure Flash(Widget: Tk_Button) with
       Pre => Widget /= Tk_Button(Null_Widget);
