@@ -167,56 +167,126 @@ package Tk.Button is
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Widget /= Tk_Button(Null_Widget);
-   -- ****
+      -- ****
 
-   -- ****f* Button/Button.Get_Options
-   -- FUNCTION
-   -- Get all values of Tk options of the selected button
-   -- PARAMETERS
-   -- Widget - Tk_Button which options' values will be taken
-   -- RESULT
-   -- Button_Options record with values of the selected button options
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- EXAMPLE
-   -- -- Get all values of option of button with pathname .mybutton
-   -- My_Button_Options: constant Butt_Options := Get_Options(Get_Widget(".mybutton"));
-   -- SOURCE
+      -- ****f* Button/Button.Get_Options
+      -- FUNCTION
+      -- Get all values of Tk options of the selected button
+      -- PARAMETERS
+      -- Widget - Tk_Button which options' values will be taken
+      -- RESULT
+      -- Button_Options record with values of the selected button options
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get all values of option of button with pathname .mybutton
+      -- My_Button_Options: constant Butt_Options := Get_Options(Get_Widget(".mybutton"));
+      -- SOURCE
    function Get_Options(Widget: Tk_Button) return Button_Options with
       Pre => Widget /= Tk_Button(Null_Widget);
-   -- ****
+      -- ****
 
-   -- ****f* Button/Button.Configure
-   -- FUNCTION
-   -- Set the selected options for the selected button
-   -- PARAMETERS
-   -- Widget  - Tk_Button which options will be set
-   -- Options - The record with new values for the button options
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- EXAMPLE
-   -- -- Disable button with pathname .mybutton
-   -- Configure(Get_Widget(".mybutton"), (State => DISABLED, others => <>));
-   -- SOURCE
+      -- ****f* Button/Button.Configure
+      -- FUNCTION
+      -- Set the selected options for the selected button
+      -- PARAMETERS
+      -- Widget  - Tk_Button which options will be set
+      -- Options - The record with new values for the button options
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Disable button with pathname .mybutton
+      -- Configure(Get_Widget(".mybutton"), (State => DISABLED, others => <>));
+      -- SOURCE
    procedure Configure(Widget: Tk_Button; Options: Button_Options) with
       Pre => Widget /= Tk_Button(Null_Widget);
-   -- ****
+      -- ****
 
+      -- ****f* Button/Button.Flash
+      -- FUNCTION
+      -- Flash the button. Does nothing if button state is disabled.
+      -- PARAMETERS
+      -- Widget - Tk_Button to flash
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Flash the Tk_Button My_Button
+      -- Flash(My_Button);
+      -- SOURCE
    procedure Flash(Widget: Tk_Button) with
       Pre => Widget /= Tk_Button(Null_Widget);
+      -- ****
 
+      -- ****f* Button/Button.Invoke_(procedure)
+      -- FUNCTION
+      -- Invoke the Tcl command associated with the selected button. Does
+      -- nothing if the button state is disabled.
+      -- PARAMETERS
+      -- Widget - Tk_Button which the command will be invoked
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Invoke the Tcl command of the Tk_Button My_Button
+      -- Invoke(My_Button);
+      -- SOURCE
    procedure Invoke(Widget: Tk_Button) with
       Pre => Widget /= Tk_Button(Null_Widget);
+      -- ****
 
+      -- ****f* Button/Button.Invoke_(function_and_string_result)
+      -- FUNCTION
+      -- Invoke the Tcl command associated with the selected button. Does
+      -- nothing if the button state is disabled.
+      -- PARAMETERS
+      -- Widget - Tk_Button which the command will be invoked
+      -- RESULT
+      -- The string with the return value of the associated Tcl command.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Invoke the Tcl command of the Tk_Button My_Button
+      -- Result: constant String := Invoke(My_Button);
+      -- SOURCE
    function Invoke(Widget: Tk_Button) return String with
       Pre => Widget /= Tk_Button(Null_Widget);
+      -- ****
 
+      -- ****f* Button/Button.Invoke_(function_and_integer_result)
+      -- FUNCTION
+      -- Invoke the Tcl command associated with the selected button. Does
+      -- nothing if the button state is disabled.
+      -- PARAMETERS
+      -- Widget - Tk_Button which the command will be invoked
+      -- RESULT
+      -- The integer return value of the associated Tcl command.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Invoke the Tcl command of the Tk_Button My_Button
+      -- Result: constant Integer := Invoke(My_Button);
+      -- SOURCE
    function Invoke(Widget: Tk_Button) return Integer is
      (Integer'Value(Invoke(Widget))) with
       Pre => Widget /= Tk_Button(Null_Widget);
+      -- ****
 
+      -- ****f* Button/Button.Invoke_(function_and_float_result)
+      -- FUNCTION
+      -- Invoke the Tcl command associated with the selected button. Does
+      -- nothing if the button state is disabled.
+      -- PARAMETERS
+      -- Widget - Tk_Button which the command will be invoked
+      -- RESULT
+      -- The float return value of the associated Tcl command.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Invoke the Tcl command of the Tk_Button My_Button
+      -- Result: constant Float := Invoke(My_Button);
+      -- SOURCE
    function Invoke(Widget: Tk_Button) return Float is
      (Float'Value(Invoke(Widget))) with
       Pre => Widget /= Tk_Button(Null_Widget);
+      -- ****
 
 end Tk.Button;
