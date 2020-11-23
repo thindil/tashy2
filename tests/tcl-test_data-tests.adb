@@ -535,8 +535,21 @@ package body Tcl.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_SetVar2("myarray", "0", "2");
+      Tcl_UnsetVar2("myarray", "0");
+      begin
+         Assert(Tcl_GetVar2("myarray", "0") = "2", "Failed to remove the element from the Tcl array");
+      exception
+         when Tcl_Exception =>
+            null;
+      end;
+      begin
+         Tcl_UnsetVar2("myarray", "0");
+         Assert(False, "Failed to handle removing non-existing element from Tcl array");
+      exception
+         when Tcl_Exception =>
+            null;
+      end;
 
 --  begin read only
    end Test_Tcl_UnsetVar2_test_tcl_unsetvar2;
