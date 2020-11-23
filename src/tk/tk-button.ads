@@ -196,4 +196,16 @@ package Tk.Button is
    procedure Configure(Widget: Tk_Button; Options: Button_Options);
    -- ****
 
+   procedure Flash(Widget: Tk_Button);
+
+   procedure Invoke(Widget: Tk_Button);
+
+   function Invoke(Widget: Tk_Button) return String;
+
+   function Invoke(Widget: Tk_Button) return Integer is
+     (Integer'Value(Invoke(Widget)));
+
+   function Invoke(Widget: Tk_Button) return Float is
+     (Float'Value(Invoke(Widget)));
+
 end Tk.Button;

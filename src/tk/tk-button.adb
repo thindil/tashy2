@@ -128,8 +128,23 @@ package body Tk.Button is
 
    procedure Configure(Widget: Tk_Button; Options: Button_Options) is
    begin
-      Execute_Widget_Command
-        (Tk_Widget(Widget), "configure", Options_To_String(Options));
+      Execute_Widget_Command(Widget, "configure", Options_To_String(Options));
    end Configure;
+
+   procedure Flash(Widget: Tk_Button) is
+   begin
+      Execute_Widget_Command(Widget, "flash");
+   end Flash;
+
+   procedure Invoke(Widget: Tk_Button) is
+   begin
+      Execute_Widget_Command(Widget, "invoke");
+   end Invoke;
+
+   function Invoke(Widget: Tk_Button) return String is
+   begin
+      Invoke(Widget);
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end Invoke;
 
 end Tk.Button;
