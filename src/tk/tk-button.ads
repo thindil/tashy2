@@ -28,7 +28,7 @@ package Tk.Button is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Tk_Button is new Tk_Widget;
+   subtype Tk_Button is Tk_Widget;
    -- ****
 
    -- ****s* Button/Button.Button_Options
@@ -140,7 +140,7 @@ package Tk.Button is
      (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Tk_Button(Null_Widget);
+      Post => Create'Result /= Null_Widget;
       -- ****
 
       -- ****f* Button/Button.Create_(procedure)
@@ -174,7 +174,7 @@ package Tk.Button is
      (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Widget /= Tk_Button(Null_Widget);
+      Post => Widget /= Null_Widget;
       -- ****
 
       -- ****f* Button/Button.Get_Options
@@ -195,7 +195,7 @@ package Tk.Button is
       -- Widget configure
       -- SOURCE
    function Get_Options(Widget: Tk_Button) return Button_Options with
-      Pre => Widget /= Tk_Button(Null_Widget);
+      Pre => Widget /= Null_Widget;
       -- ****
 
       -- ****f* Button/Button.Configure
@@ -215,7 +215,7 @@ package Tk.Button is
       -- Widget configure Options
       -- SOURCE
    procedure Configure(Widget: Tk_Button; Options: Button_Options) with
-      Pre => Widget /= Tk_Button(Null_Widget);
+      Pre => Widget /= Null_Widget;
       -- ****
 
       -- ****f* Button/Button.Flash
@@ -232,7 +232,7 @@ package Tk.Button is
       -- Widget flash
       -- SOURCE
    procedure Flash(Widget: Tk_Button) with
-      Pre => Widget /= Tk_Button(Null_Widget);
+      Pre => Widget /= Null_Widget;
       -- ****
 
       -- ****f* Button/Button.Invoke_(procedure)
@@ -253,7 +253,7 @@ package Tk.Button is
       -- Widget invoke
       -- SOURCE
    procedure Invoke(Widget: Tk_Button) with
-      Pre => Widget /= Tk_Button(Null_Widget);
+      Pre => Widget /= Null_Widget;
       -- ****
 
       -- ****f* Button/Button.Invoke_(function_and_string_result)
@@ -276,7 +276,7 @@ package Tk.Button is
       -- Widget invoke
       -- SOURCE
    function Invoke(Widget: Tk_Button) return String with
-      Pre => Widget /= Tk_Button(Null_Widget);
+      Pre => Widget /= Null_Widget;
       -- ****
 
       -- ****f* Button/Button.Invoke_(function_and_integer_result)
@@ -300,7 +300,7 @@ package Tk.Button is
       -- SOURCE
    function Invoke(Widget: Tk_Button) return Integer is
      (Integer'Value(Invoke(Widget))) with
-      Pre => Widget /= Tk_Button(Null_Widget);
+      Pre => Widget /= Null_Widget;
       -- ****
 
       -- ****f* Button/Button.Invoke_(function_and_float_result)
@@ -324,7 +324,7 @@ package Tk.Button is
       -- SOURCE
    function Invoke(Widget: Tk_Button) return Float is
      (Float'Value(Invoke(Widget))) with
-      Pre => Widget /= Tk_Button(Null_Widget);
+      Pre => Widget /= Null_Widget;
       -- ****
 
 end Tk.Button;
