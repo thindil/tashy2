@@ -31,7 +31,7 @@ package Tk.Widget is
    type Tk_Widget is new Integer;
    -- ****
 
-   -- ****d* Tk.Widget/Null_Widget
+   -- ****d* Widget/Widget.Null_Widget
    -- FUNCTION
    -- Not created or not existing Tk widget
    -- SOURCE
@@ -241,7 +241,7 @@ package Tk.Widget is
       -- declare
       --    My_Options: Unbounded_String;
       -- begin
-      --    Options_String("text", To_Tcl_String("hello world"));
+      --    Option_Image("text", To_Tcl_String("hello world"), My_Options);
       -- end;
       -- SOURCE
    procedure Option_Image
@@ -297,22 +297,24 @@ package Tk.Widget is
    function Option_Value(Widget: Tk_Widget; Name: String) return Extended_Natural;
    -- ****
 
-      --------------------------------
-      -- Destroy or delete a Tk widget
-      --------------------------------
+   --------------------------------
+   -- Destroy or delete a Tk widget
+   --------------------------------
 
-      -- ****f* Widget/Widget.Destroy
-      -- FUNCTION
-      -- Destroy the selected Tk widget and everything what is related to it,
-      -- like children, events, etc
-      -- PARAMETERS
-      -- Widget - Tk widget to destroy
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Destroy My_Label widget
-      -- Destroy(My_Label);
-      -- SOURCE
+   -- ****f* Widget/Widget.Destroy
+   -- FUNCTION
+   -- Destroy the selected Tk widget and everything what is related to it,
+   -- like children, events, etc
+   -- PARAMETERS
+   -- Widget - Tk widget to destroy
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Destroy My_Label widget
+   -- Destroy(My_Label);
+   -- COMMANDS
+   -- destroy Widget
+   -- SOURCE
    procedure Destroy(Widget: in out Tk_Widget);
    -- ****
 
