@@ -31,7 +31,7 @@ package Tk.Button is
    type Tk_Button is new Tk_Widget;
    -- ****
 
-   -- ****s* Tk.Button/Button.Button_Options
+   -- ****s* Button/Button.Button_Options
    -- FUNCTION
    -- Data structure for all available options for the Tk button
    -- OPTIONS
@@ -246,6 +246,11 @@ package Tk.Button is
       -- EXAMPLE
       -- -- Invoke the Tcl command of the Tk_Button My_Button
       -- Invoke(My_Button);
+      -- SEE ALSO
+      -- Button.Invoke_(function_and_string_result), Button.Invoke_(function_and_integer_result),
+      -- Button.Invoke_(function_and_float_result)
+      -- COMMANDS
+      -- Widget invoke
       -- SOURCE
    procedure Invoke(Widget: Tk_Button) with
       Pre => Widget /= Tk_Button(Null_Widget);
@@ -264,6 +269,11 @@ package Tk.Button is
       -- EXAMPLE
       -- -- Invoke the Tcl command of the Tk_Button My_Button
       -- Result: constant String := Invoke(My_Button);
+      -- SEE ALSO
+      -- Button.Invoke_(procedure), Button.Invoke_(function_and_integer_result),
+      -- Button.Invoke_(function_and_float_result)
+      -- COMMANDS
+      -- Widget invoke
       -- SOURCE
    function Invoke(Widget: Tk_Button) return String with
       Pre => Widget /= Tk_Button(Null_Widget);
@@ -282,6 +292,11 @@ package Tk.Button is
       -- EXAMPLE
       -- -- Invoke the Tcl command of the Tk_Button My_Button
       -- Result: constant Integer := Invoke(My_Button);
+      -- SEE ALSO
+      -- Button.Invoke_(function_and_string_result), Button.Invoke_(procedure),
+      -- Button.Invoke_(function_and_float_result)
+      -- COMMANDS
+      -- Widget invoke
       -- SOURCE
    function Invoke(Widget: Tk_Button) return Integer is
      (Integer'Value(Invoke(Widget))) with
@@ -301,6 +316,11 @@ package Tk.Button is
       -- EXAMPLE
       -- -- Invoke the Tcl command of the Tk_Button My_Button
       -- Result: constant Float := Invoke(My_Button);
+      -- SEE ALSO
+      -- Button.Invoke_(function_and_string_result), Button.Invoke_(function_and_integer_result),
+      -- Button.Invoke_(procedure)
+      -- COMMANDS
+      -- Widget invoke
       -- SOURCE
    function Invoke(Widget: Tk_Button) return Float is
      (Float'Value(Invoke(Widget))) with
