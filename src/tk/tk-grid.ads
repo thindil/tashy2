@@ -27,6 +27,12 @@ package Tk.Grid is
       ColumnSpan: Tcl_String;
       In_Master: Tcl_String;
       IPadX: Pixel_Data;
+      IPadY: Pixel_Data;
+      PadX: Pad_Array;
+      PadY: Pad_Array;
+      Row: Extended_Natural;
+      RowSpan: Tcl_String;
+      Sticky: Directions_Type;
    end record;
 
    procedure Add(Widget: Tk_Widget; Options: Grid_Options := Grid_Options'(others => <>));
