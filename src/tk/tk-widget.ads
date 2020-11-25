@@ -164,6 +164,14 @@ package Tk.Widget is
    end record;
    -- ****
 
+   -- ****t* Widget/Widget.Widgets_Array
+   -- FUNCTION
+   -- Array of Tk_Widgets. Used mostly in commands which allow to set a few
+   -- widgets as parameters
+   -- SOURCE
+   type Widgets_Array is array (Positive range <>) of Tk_Widget;
+   -- ****
+
    ---------------------------------
    -- Getting info about a Tk widget
    ---------------------------------
