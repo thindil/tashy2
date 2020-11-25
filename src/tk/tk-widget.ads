@@ -172,6 +172,13 @@ package Tk.Widget is
    type Widgets_Array is array (Positive range <>) of Tk_Widget;
    -- ****
 
+   -- ****t* Widget/Widget.Pad_Array
+   -- FUNCTION
+   -- Array used mostly for setting padding in grid and pack geometry managers
+   -- SOURCE
+   type Pad_Array is array (1 .. 2) of Pixel_Data;
+   -- ****
+
    ---------------------------------
    -- Getting info about a Tk widget
    ---------------------------------
