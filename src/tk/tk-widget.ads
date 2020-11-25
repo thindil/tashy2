@@ -186,7 +186,8 @@ package Tk.Widget is
    -- SOURCE
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_Widget;
+      return Tk_Widget with
+      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter;
       -- ****
 
       -- ****f* Widget/Widget.Tk_PathName
@@ -202,7 +203,8 @@ package Tk.Widget is
       -- -- Get the Tk path name of widget My_Button
       -- Path_Name: constant String := Tk_PathName(My_Button);
       -- SOURCE
-   function Tk_PathName(Widget: Tk_Widget) return String;
+   function Tk_PathName(Widget: Tk_Widget) return String with
+      Pre => Widget /= Null_Widget;
    -- ****
 
    -- ****f* Widget/Widget.Tk_Interp
@@ -218,7 +220,8 @@ package Tk.Widget is
    -- -- Get the Tcl interpreter of widget My_Label
    -- Interpreter: constant Tcl_Interpreter := Tk_Interp(My_Label);
    -- SOURCE
-   function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter;
+   function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter with
+      Pre => Widget /= Null_Widget;
    -- ****
 
       -- ****f* Widget/Widget.Option_Image
@@ -247,28 +250,36 @@ package Tk.Widget is
       -- SOURCE
    procedure Option_Image
      (Name: String; Value: Tcl_String;
-      Options_String: in out Unbounded_String);
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    procedure Option_Image
      (Name: String; Value: Extended_Natural;
-      Options_String: in out Unbounded_String);
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    procedure Option_Image
      (Name: String; Value: Pixel_Data;
-      Options_String: in out Unbounded_String);
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    procedure Option_Image
      (Name: String; Value: Relief_Type;
-      Options_String: in out Unbounded_String);
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    procedure Option_Image
      (Name: String; Value: State_Type;
-      Options_String: in out Unbounded_String);
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    procedure Option_Image
      (Name: String; Value: Directions_Type;
-      Options_String: in out Unbounded_String);
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    procedure Option_Image
      (Name: String; Value: Place_Type;
-      Options_String: in out Unbounded_String);
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    procedure Option_Image
      (Name: String; Value: Justify_Type;
-      Options_String: in out Unbounded_String);
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    -- ****
 
    -- ****f* Widget/Widget.Option_Value
@@ -287,16 +298,30 @@ package Tk.Widget is
    -- -- Get the value of option text in My_Button widget
    -- Text: constant Tcl_String := Option_Value(My_Button, "text");
    -- SOURCE
-   function Option_Value(Widget: Tk_Widget; Name: String) return Tcl_String;
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Directions_Type;
-   function Option_Value(Widget: Tk_Widget; Name: String) return Pixel_Data;
-   function Option_Value(Widget: Tk_Widget; Name: String) return Place_Type;
-   function Option_Value(Widget: Tk_Widget; Name: String) return State_Type;
-   function Option_Value(Widget: Tk_Widget; Name: String) return Justify_Type;
-   function Option_Value(Widget: Tk_Widget; Name: String) return Relief_Type;
+     (Widget: Tk_Widget; Name: String) return Tcl_String with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Extended_Natural;
+     (Widget: Tk_Widget; Name: String) return Directions_Type with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
+   function Option_Value
+     (Widget: Tk_Widget; Name: String) return Pixel_Data with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
+   function Option_Value
+     (Widget: Tk_Widget; Name: String) return Place_Type with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
+   function Option_Value
+     (Widget: Tk_Widget; Name: String) return State_Type with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
+   function Option_Value
+     (Widget: Tk_Widget; Name: String) return Justify_Type with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
+   function Option_Value
+     (Widget: Tk_Widget; Name: String) return Relief_Type with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
+   function Option_Value
+     (Widget: Tk_Widget; Name: String) return Extended_Natural with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
    -- ****
 
    --------------------------------
@@ -342,7 +367,7 @@ package Tk.Widget is
    -- SOURCE
    procedure Execute_Widget_Command
      (Widget: Tk_Widget; Command_Name: String; Options: String := "") with
-      Pre => Command_Name'Length > 0;
+      Pre => Widget /= Null_Widget and Command_Name'Length > 0;
       -- ****
 
 end Tk.Widget;
