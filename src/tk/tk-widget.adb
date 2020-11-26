@@ -13,6 +13,8 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings; use Ada.Strings;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 with Tk.MainWindow; use Tk.MainWindow;
@@ -136,6 +138,27 @@ package body Tk.Widget is
          Append
            (Options_String,
             " -" & Name & " " & To_Lower(Justify_Type'Image(Value)));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Pad_Array;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value(1).Value > -1.0 then
+         if Value(2).Value > -1.0 then
+            Append
+               (Options_String,
+               "-" & Name & " {" & Trim(Positive_Float'Image(Value(1).Value), Left) &
+               To_Lower(Pixel_Unit'Image(Value(1).Value_Unit)) &
+               Positive_Float'Image(Value(2).Value) &
+               To_Lower(Pixel_Unit'Image(Value(2).Value_Unit)) & "}");
+         else
+            Append
+               (Options_String,
+               "-" & Name & Positive_Float'Image(Value(1).Value) &
+               To_Lower(Pixel_Unit'Image(Value(1).Value_Unit)));
+         end if;
       end if;
    end Option_Image;
 
