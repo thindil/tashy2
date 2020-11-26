@@ -28,8 +28,8 @@ package Tk.Grid is
       In_Master: Tcl_String;
       IPadX: Pixel_Data;
       IPadY: Pixel_Data;
-      PadX: Pad_Array;
-      PadY: Pad_Array;
+      PadX: Pad_Array := (others => <>);
+      PadY: Pad_Array := (others => <>);
       Row: Extended_Natural;
       RowSpan: Tcl_String;
       Sticky: Directions_Type;
