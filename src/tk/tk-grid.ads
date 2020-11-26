@@ -32,7 +32,7 @@ package Tk.Grid is
       PadY: Pad_Array := (others => <>);
       Row: Extended_Natural;
       RowSpan: Tcl_String;
-      Sticky: Directions_Type;
+      Sticky: Tcl_String;
    end record;
 
    procedure Add(Widget: Tk_Widget; Options: Grid_Options := Grid_Options'(others => <>));
