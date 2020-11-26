@@ -295,6 +295,10 @@ package Tk.Widget is
      (Name: String; Value: Justify_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0;
+   procedure Option_Image
+     (Name: String; Value: Pad_Array;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    -- ****
 
    -- ****f* Widget/Widget.Option_Value
