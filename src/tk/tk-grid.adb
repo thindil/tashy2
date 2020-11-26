@@ -35,6 +35,11 @@ package body Tk.Grid is
       Option_Image("in", Options.In_Master, Options_String);
       Option_Image("ipadx", Options.IPadX, Options_String);
       Option_Image("ipady", Options.IPadY, Options_String);
+      Option_Image("padx", Options.PadX, Options_String);
+      Option_Image("pady", Options.PadY, Options_String);
+      Option_Image("row", Options.Row, Options_String);
+      Option_Image("rowspan", Options.RowSpan, Options_String);
+      Option_Image("sticky", Options.Sticky, Options_String);
       return To_String(Options_String);
    end Options_To_String;
 
