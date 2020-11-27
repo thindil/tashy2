@@ -42,4 +42,10 @@ package Tk.Grid is
      (Widgets: Widgets_Array;
       Options: Grid_Options := Grid_Options'(others => <>));
 
+   procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) with
+      Pre => Master /= Null_Widget and New_Direction /= NONE;
+
+   function Anchor(Master: Tk_Widget) return Directions_Type with
+      Pre => Master /= Null_Widget;
+
 end Tk.Grid;

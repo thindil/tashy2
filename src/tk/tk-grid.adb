@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Grid is
@@ -64,5 +65,18 @@ package body Tk.Grid is
         ("grid" & To_String(Widgets_Names) & Options_To_String(Options),
          Tk_Interp(Widgets(1)));
    end Add;
+
+   procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) is
+   begin
+      Tcl_Eval
+        ("grid anchor " & Tk_PathName(Master) & " " &
+         To_Lower(Directions_Type'Image(New_Direction)));
+   end Anchor;
+
+   function Anchor(Master: Tk_Widget) return Directions_Type is
+   begin
+      Tcl_Eval("grid anchor " & Tk_PathName(Master));
+      return Directions_Type'Value(Tcl_GetResult);
+   end Anchor;
 
 end Tk.Grid;
