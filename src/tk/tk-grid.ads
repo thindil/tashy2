@@ -35,6 +35,11 @@ package Tk.Grid is
       Sticky: Tcl_String;
    end record;
 
-   procedure Add(Widget: Tk_Widget; Options: Grid_Options := Grid_Options'(others => <>));
+   procedure Add
+     (Widget: Tk_Widget; Options: Grid_Options := Grid_Options'(others => <>));
+
+   procedure Add
+     (Widgets: Widgets_Array;
+      Options: Grid_Options := Grid_Options'(others => <>));
 
 end Tk.Grid;

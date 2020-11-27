@@ -52,4 +52,17 @@ package body Tk.Grid is
          Tk_Interp(Widget));
    end Add;
 
+   procedure Add
+     (Widgets: Widgets_Array;
+      Options: Grid_Options := Grid_Options'(others => <>)) is
+      Widgets_Names: Unbounded_String;
+   begin
+      for Widget of Widgets loop
+         Append(Widgets_Names, " " & Tk_PathName(Widget));
+      end loop;
+      Tcl_Eval
+        ("grid" & To_String(Widgets_Names) & Options_To_String(Options),
+         Tk_Interp(Widgets(1)));
+   end Add;
+
 end Tk.Grid;
