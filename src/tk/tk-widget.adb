@@ -148,14 +148,15 @@ package body Tk.Widget is
       if Value(1).Value > -1.0 then
          if Value(2).Value > -1.0 then
             Append
-               (Options_String,
-               "-" & Name & " {" & Trim(Positive_Float'Image(Value(1).Value), Left) &
+              (Options_String,
+               "-" & Name & " {" &
+               Trim(Positive_Float'Image(Value(1).Value), Left) &
                To_Lower(Pixel_Unit'Image(Value(1).Value_Unit)) &
                Positive_Float'Image(Value(2).Value) &
                To_Lower(Pixel_Unit'Image(Value(2).Value_Unit)) & "}");
          else
             Append
-               (Options_String,
+              (Options_String,
                "-" & Name & Positive_Float'Image(Value(1).Value) &
                To_Lower(Pixel_Unit'Image(Value(1).Value_Unit)));
          end if;
