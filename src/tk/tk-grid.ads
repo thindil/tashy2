@@ -35,6 +35,13 @@ package Tk.Grid is
       Sticky: Tcl_String;
    end record;
 
+   type Column_Options is record
+      MinSize: Pixel_Data;
+      Weight: Extended_Natural;
+      Uniform: Tcl_String;
+      Pad: Pixel_Data;
+   end record;
+
    procedure Add
      (Widget: Tk_Widget; Options: Grid_Options := Grid_Options'(others => <>));
 
@@ -52,5 +59,8 @@ package Tk.Grid is
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return BBox_Array with
       Pre => Master /= Null_Widget;
+
+   procedure Column_Configure
+     (Master: Tk_Widget; Index: Tcl_String; Options: Column_Options);
 
 end Tk.Grid;
