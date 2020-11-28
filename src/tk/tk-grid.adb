@@ -154,4 +154,49 @@ package body Tk.Grid is
          To_String(Index) & " " & Column_Options_To_String(Options));
    end Column_Configure;
 
+   function Get_Column_Options
+     (Master: Tk_Widget; Index: Tcl_String) return Column_Options is
+      function Get_Value(Name: String) return Pixel_Data is
+         Result: Pixel_Data;
+      begin
+         Tcl_Eval
+           ("grid columnconfigure " & Tk_PathName(Master) & " " &
+            To_String(Index) & " " & Name);
+         declare
+            Value: constant String := Tcl_GetResult(Tk_Interp(Master));
+         begin
+            if not Is_Digit(Value(Value'Last)) then
+               Result.Value :=
+                 Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
+               Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
+            else
+               Result.Value := Positive_Float'Value(Value);
+               Result.Value_Unit := PIXEL;
+            end if;
+         end;
+         return Result;
+      end Get_Value;
+      function Get_Value(Name: String) return Tcl_String is
+      begin
+         Tcl_Eval
+           ("grid columnconfigure " & Tk_PathName(Master) & " " &
+            To_String(Index) & " " & Name);
+         return To_Tcl_String(Tcl_GetResult(Tk_Interp(Master)));
+      end Get_Value;
+      function Get_Value(Name: String) return Extended_Natural is
+      begin
+         Tcl_Eval
+           ("grid columnconfigure " & Tk_PathName(Master) & " " &
+            To_String(Index) & " " & Name);
+         return Extended_Natural'Value(Tcl_GetResult(Tk_Interp(Master)));
+      end Get_Value;
+   begin
+      return Options: Column_Options do
+         Options.MinSize := Get_Value("minsize");
+         Options.Weight := Get_Value("weight");
+         Options.Uniform := Get_Value("uniform");
+         Options.Pad := Get_Value("pad");
+      end return;
+   end Get_Column_Options;
+
 end Tk.Grid;
