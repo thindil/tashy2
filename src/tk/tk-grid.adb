@@ -14,6 +14,7 @@
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with GNAT.String_Split; use GNAT.String_Split;
 
 package body Tk.Grid is
 
@@ -78,5 +79,50 @@ package body Tk.Grid is
       Tcl_Eval("grid anchor " & Tk_PathName(Master));
       return Directions_Type'Value(Tcl_GetResult);
    end Anchor;
+
+   function BBox
+     (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
+      return BBox_Array is
+      Options: Unbounded_String;
+      Tokens: Slice_Set;
+   begin
+      if Column > -1 then
+         Append(Options, Extended_Natural'Image(Column));
+      end if;
+      if Row > -1 then
+         if Column = -1 then
+            raise Tcl_Exception with "Column value not specified";
+         end if;
+         Append(Options, Extended_Natural'Image(Row));
+      end if;
+      if Column2 > -1 then
+         if Column = -1 then
+            raise Tcl_Exception with "Column value not specified";
+         end if;
+         if Row = -1 then
+            raise Tcl_Exception with "Row value not specified";
+         end if;
+         Append(Options, Extended_Natural'Image(Column2));
+      end if;
+      if Row2 > -1 then
+         if Column = -1 then
+            raise Tcl_Exception with "Column value not specified";
+         end if;
+         if Row = -1 then
+            raise Tcl_Exception with "Row value not specified";
+         end if;
+         if Column2 = -1 then
+            raise Tcl_Exception with "Column2 value not specified";
+         end if;
+         Append(Options, Extended_Natural'Image(Row2));
+      end if;
+      Tcl_Eval("grid bbox " & Tk_PathName(Master) & To_String(Options));
+      Create(Tokens, Tcl_GetResult, " ");
+      return Coords: BBox_Array do
+         for I in 1 .. 4 loop
+            Coords(I) := Natural'Value(Slice(Tokens, Slice_Number(I)));
+         end loop;
+      end return;
+   end BBox;
 
 end Tk.Grid;
