@@ -48,4 +48,9 @@ package Tk.Grid is
    function Anchor(Master: Tk_Widget) return Directions_Type with
       Pre => Master /= Null_Widget;
 
+   function BBox
+     (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
+      return BBox_Array with
+      Pre => Master /= Null_Widget;
+
 end Tk.Grid;
