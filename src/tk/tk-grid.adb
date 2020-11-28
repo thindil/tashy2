@@ -199,4 +199,11 @@ package body Tk.Grid is
       end return;
    end Get_Column_Options;
 
+   procedure Configure(Widget: Tk_Widget; Options: Grid_Options) is
+   begin
+      Tcl_Eval
+        ("grid configure " & Tk_PathName(Widget) & " " &
+         Options_To_String(Options));
+   end Configure;
+
 end Tk.Grid;
