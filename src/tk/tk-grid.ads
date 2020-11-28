@@ -63,4 +63,7 @@ package Tk.Grid is
    procedure Column_Configure
      (Master: Tk_Widget; Index: Tcl_String; Options: Column_Options);
 
+   function Get_Column_Options
+     (Master: Tk_Widget; Index: Tcl_String) return Column_Options;
+
 end Tk.Grid;
