@@ -179,6 +179,13 @@ package Tk.Widget is
    type Pad_Array is array(1 .. 2) of Pixel_Data;
    -- ****
 
+   -- ****t* Tk.Widget/BBox_Array
+   -- FUNCTION
+   -- Array used mostly for take result of BBox commands of various Tk_Widgets
+   -- SOURCE
+   type BBox_Array is array(1 .. 4) of Natural;
+   -- ****
+
    ---------------------------------
    -- Getting info about a Tk widget
    ---------------------------------
