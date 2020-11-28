@@ -125,4 +125,33 @@ package body Tk.Grid is
       end return;
    end BBox;
 
+   -- ****if* Grid/Grid.Column_Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Column_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Column_Options_To_String(Options: Column_Options) return String is
+      -- ****
+      Options_String: Unbounded_String;
+   begin
+      Option_Image("minsize", Options.MinSize, Options_String);
+      Option_Image("columnspan", Options.Weight, Options_String);
+      Option_Image("uniform", Options.Uniform, Options_String);
+      Option_Image("pad", Options.Pad, Options_String);
+      return To_String(Options_String);
+   end Column_Options_To_String;
+
+   procedure Column_Configure
+     (Master: Tk_Widget; Index: Tcl_String; Options: Column_Options) is
+   begin
+      Tcl_Eval
+        ("grid columnconfigure " & Tk_PathName(Master) & " " &
+         To_String(Index) & " " & Column_Options_To_String(Options));
+   end Column_Configure;
+
 end Tk.Grid;
