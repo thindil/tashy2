@@ -82,4 +82,7 @@ package Tk.Grid is
       Pre => Widget in '-' | 'x' | '^' and
       Options /= Grid_Options'(others => <>);
 
+   procedure Configure(Widgets: String; Options: Grid_Options) with
+      Pre => Widgets'Length > 0 and Options /= Grid_Options'(others => <>);
+
 end Tk.Grid;
