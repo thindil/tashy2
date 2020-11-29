@@ -85,4 +85,7 @@ package Tk.Grid is
    procedure Configure(Widgets: String; Options: Grid_Options) with
       Pre => Widgets'Length > 0 and Options /= Grid_Options'(others => <>);
 
+   function Get_Options(Widget: Tk_Widget) return Grid_Options with
+      Pre => Widget /= Null_Widget;
+
 end Tk.Grid;
