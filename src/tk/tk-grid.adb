@@ -151,7 +151,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid columnconfigure " & Tk_PathName(Master) & " " &
-         To_String(Index) & " " & Column_Options_To_String(Options));
+         To_String(Index) & Column_Options_To_String(Options));
    end Column_Configure;
 
    function Get_Column_Options
@@ -202,8 +202,19 @@ package body Tk.Grid is
    procedure Configure(Widget: Tk_Widget; Options: Grid_Options) is
    begin
       Tcl_Eval
-        ("grid configure " & Tk_PathName(Widget) & " " &
-         Options_To_String(Options));
+        ("grid configure " & Tk_PathName(Widget) & Options_To_String(Options));
+   end Configure;
+
+   procedure Configure(Widgets: Widgets_Array; Options: Grid_Options) is
+      Widgets_Names: Unbounded_String;
+   begin
+      for Widget of Widgets loop
+         Append(Widgets_Names, " " & Tk_PathName(Widget));
+      end loop;
+      Tcl_Eval
+        ("grid configure " & To_String(Widgets_Names) &
+         Options_To_String(Options),
+         Tk_Interp(Widgets(1)));
    end Configure;
 
 end Tk.Grid;

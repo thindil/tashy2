@@ -68,4 +68,6 @@ package Tk.Grid is
 
    procedure Configure(Widget: Tk_Widget; Options: Grid_Options);
 
+   procedure Configure(Widgets: Widgets_Array; Options: Grid_Options);
+
 end Tk.Grid;
