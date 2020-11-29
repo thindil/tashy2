@@ -43,11 +43,14 @@ package Tk.Grid is
    end record;
 
    procedure Add
-     (Widget: Tk_Widget; Options: Grid_Options := Grid_Options'(others => <>));
+     (Widget: Tk_Widget;
+      Options: Grid_Options := Grid_Options'(others => <>)) with
+      Pre => Widget /= Null_Widget;
 
    procedure Add
      (Widgets: Widgets_Array;
-      Options: Grid_Options := Grid_Options'(others => <>));
+      Options: Grid_Options := Grid_Options'(others => <>)) with
+      Pre => Widgets'Length > 0;
 
    procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) with
       Pre => Master /= Null_Widget and New_Direction /= NONE;
@@ -61,13 +64,18 @@ package Tk.Grid is
       Pre => Master /= Null_Widget;
 
    procedure Column_Configure
-     (Master: Tk_Widget; Index: Tcl_String; Options: Column_Options);
+     (Master: Tk_Widget; Index: Tcl_String; Options: Column_Options) with
+      Pre => Master /= Null_Widget and
+      Options /= Column_Options'(others => <>);
 
    function Get_Column_Options
-     (Master: Tk_Widget; Index: Tcl_String) return Column_Options;
+     (Master: Tk_Widget; Index: Tcl_String) return Column_Options with
+      Pre => Master /= Null_Widget and Length(Index) > 0;
 
-   procedure Configure(Widget: Tk_Widget; Options: Grid_Options);
+   procedure Configure(Widget: Tk_Widget; Options: Grid_Options) with
+      Pre => Widget /= Null_Widget and Options /= Grid_Options'(others => <>);
 
-   procedure Configure(Widgets: Widgets_Array; Options: Grid_Options);
+   procedure Configure(Widgets: Widgets_Array; Options: Grid_Options) with
+      Pre => Widgets'Length > 0 and Options /= Grid_Options'(others => <>);
 
 end Tk.Grid;
