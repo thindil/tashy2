@@ -217,11 +217,6 @@ package body Tk.Grid is
          Tk_Interp(Widgets(1)));
    end Configure;
 
-   procedure Configure(Widget: Character; Options: Grid_Options) is
-   begin
-      Tcl_Eval("grid configure " & Widget & Options_To_String(Options));
-   end Configure;
-
    procedure Configure(Widgets: String; Options: Grid_Options) is
    begin
       Tcl_Eval("grid configure " & Widgets & Options_To_String(Options));
