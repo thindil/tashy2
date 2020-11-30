@@ -221,7 +221,7 @@ package body Tk.Grid is
    -- FUNCTION
    -- Get the grid the selected option's value
    -- PARAMETERS
-   -- Widget - Tk pathname for widget(s) or character(s) 'x', '-', '^'
+   -- Widget - Widget which options will be get
    -- Name   - Name of the grid option to get
    -- RESULT
    -- Converted to the proper type value of the selected option in the
@@ -229,9 +229,9 @@ package body Tk.Grid is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   function Get_Grid_Option(Widget, Name: String) return Tcl_String is
+   function Get_Grid_Option(Widget: Tk_Widget; Name: String) return Tcl_String is
    begin
-      Tcl_Eval("grid configure " & Widget & " -" & Name);
+      Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
       return To_Tcl_String(Tcl_GetResult);
    end Get_Grid_Option;
    -- ****
@@ -239,7 +239,7 @@ package body Tk.Grid is
    function Get_Options(Widget: Tk_Widget) return Grid_Options is
    begin
       return Options: Grid_Options do
-         Options.Column := Get_Grid_Option(Tk_PathName(Widget), "column");
+         Options.Column := Get_Grid_Option(Widget, "column");
       end return;
    end Get_Options;
 
