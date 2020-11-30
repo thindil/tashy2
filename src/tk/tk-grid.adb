@@ -217,26 +217,12 @@ package body Tk.Grid is
          Tk_Interp(Widgets(1)));
    end Configure;
 
-   -- ****if* Grid/Grid.Get_Grid_Option
-   -- FUNCTION
-   -- Get the grid the selected option's value
-   -- PARAMETERS
-   -- Widget - Widget which options will be get
-   -- Name   - Name of the grid option to get
-   -- RESULT
-   -- Converted to the proper type value of the selected option in the
-   -- selected grid
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   function Get_Grid_Option(Widget: Tk_Widget; Name: String) return Tcl_String is
-   begin
-      Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
-      return To_Tcl_String(Tcl_GetResult);
-   end Get_Grid_Option;
-   -- ****
-
    function Get_Options(Widget: Tk_Widget) return Grid_Options is
+      function Get_Grid_Option(Widget: Tk_Widget; Name: String) return Tcl_String is
+      begin
+         Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
+         return To_Tcl_String(Tcl_GetResult);
+      end Get_Grid_Option;
    begin
       return Options: Grid_Options do
          Options.Column := Get_Grid_Option(Widget, "column");
