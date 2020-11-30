@@ -225,7 +225,8 @@ package body Tk.Grid is
       end Get_Grid_Option;
    begin
       return Options: Grid_Options do
-         Options.Column := Get_Grid_Option(Widget, "column");
+         Options.In_Master := Get_Grid_Option(Widget, "in");
+         Options.Sticky := Get_Grid_Option(Widget, "sticky");
       end return;
    end Get_Options;
 
