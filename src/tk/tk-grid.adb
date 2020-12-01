@@ -228,21 +228,35 @@ package body Tk.Grid is
          Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
          return Extended_Natural'Value(Tcl_GetResult(Tk_Interp(Widget)));
       end Get_Grid_Option;
-      function Get_Grid_Option(Name: String) return Pixel_Data is
+      function Pixel_Data_Value(Value: String) return Pixel_Data is
          Result: Pixel_Data;
+      begin
+         if not Is_Digit(Value(Value'Last)) then
+            Result.Value :=
+              Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
+            Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
+         else
+            Result.Value := Positive_Float'Value(Value);
+            Result.Value_Unit := PIXEL;
+         end if;
+         return Result;
+      end Pixel_Data_Value;
+      function Get_Grid_Option(Name: String) return Pixel_Data is
+      begin
+         Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
+         return Pixel_Data_Value(Tcl_GetResult(Tk_Interp(Widget)));
+      end Get_Grid_Option;
+      function Get_Grid_Option(Name: String) return Pad_Array is
+         Result: Pad_Array := (others => Pixel_Data'(others => <>));
       begin
          Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
          declare
-            Value: constant String := Tcl_GetResult(Tk_Interp(Widget));
+            Tokens: Slice_Set;
          begin
-            if not Is_Digit(Value(Value'Last)) then
-               Result.Value :=
-                  Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
-                  Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
-            else
-               Result.Value := Positive_Float'Value(Value);
-               Result.Value_Unit := PIXEL;
-            end if;
+            Create(Tokens, Tcl_GetResult(Tk_Interp(Widget)), " ");
+            for I in 1 .. Slice_Count(Tokens) loop
+               Result(Positive(I)) := Pixel_Data_Value(Slice(Tokens, 1));
+            end loop;
          end;
          return Result;
       end Get_Grid_Option;
@@ -253,6 +267,8 @@ package body Tk.Grid is
          Options.In_Master := Get_Grid_Option("in");
          Options.IPadX := Get_Grid_Option("ipadx");
          Options.IPadY := Get_Grid_Option("ipady");
+         Options.PadX := Get_Grid_Option("padx");
+         Options.PadY := Get_Grid_Option("pady");
          Options.Row := Get_Grid_Option("row");
          Options.RowSpan := Get_Grid_Option("rowspan");
          Options.Sticky := Get_Grid_Option("sticky");
