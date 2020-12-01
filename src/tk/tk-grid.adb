@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with GNAT.String_Split; use GNAT.String_Split;
 
@@ -218,16 +219,14 @@ package body Tk.Grid is
    end Configure;
 
    function Get_Options(Widget: Tk_Widget) return Grid_Options is
-      function Get_Grid_Option(Name: String) return Tcl_String is
-      begin
-         Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
-         return To_Tcl_String(Tcl_GetResult);
-      end Get_Grid_Option;
-      function Get_Grid_Option(Name: String) return Extended_Natural is
-      begin
-         Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
-         return Extended_Natural'Value(Tcl_GetResult(Tk_Interp(Widget)));
-      end Get_Grid_Option;
+      Options_Names: constant array(1 .. 10) of Unbounded_String :=
+        (To_Unbounded_String("-in"), To_Unbounded_String("-column"),
+         To_Unbounded_String("-row"), To_Unbounded_String("-columnspan"),
+         To_Unbounded_String("-rowspan"), To_Unbounded_String("-ipadx"),
+         To_Unbounded_String("-ipady"), To_Unbounded_String("-padx"),
+         To_Unbounded_String("-pady"), To_Unbounded_String("-sticky"));
+      Options: Grid_Options := Grid_Options'(others => <>);
+      StartIndex, EndIndex: Positive;
       function Pixel_Data_Value(Value: String) return Pixel_Data is
          Result: Pixel_Data;
       begin
@@ -241,38 +240,65 @@ package body Tk.Grid is
          end if;
          return Result;
       end Pixel_Data_Value;
-      function Get_Grid_Option(Name: String) return Pixel_Data is
-      begin
-         Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
-         return Pixel_Data_Value(Tcl_GetResult(Tk_Interp(Widget)));
-      end Get_Grid_Option;
-      function Get_Grid_Option(Name: String) return Pad_Array is
+      function Pad_Array_Value(Value: String) return Pad_Array is
          Result: Pad_Array := (others => Pixel_Data'(others => <>));
+         Tokens: Slice_Set;
       begin
-         Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
-         declare
-            Tokens: Slice_Set;
-         begin
-            Create(Tokens, Tcl_GetResult(Tk_Interp(Widget)), " ");
-            for I in 1 .. Slice_Count(Tokens) loop
-               Result(Positive(I)) := Pixel_Data_Value(Slice(Tokens, 1));
-            end loop;
-         end;
+         Create(Tokens, Value, " ");
+         for I in 1 .. Slice_Count(Tokens) loop
+            Result(Positive(I)) := Pixel_Data_Value(Slice(Tokens, 1));
+         end loop;
          return Result;
-      end Get_Grid_Option;
+      end Pad_Array_Value;
    begin
-      return Options: Grid_Options do
-         Options.Column := Get_Grid_Option("column");
-         Options.ColumnSpan := Get_Grid_Option("columnspan");
-         Options.In_Master := Get_Grid_Option("in");
-         Options.IPadX := Get_Grid_Option("ipadx");
-         Options.IPadY := Get_Grid_Option("ipady");
-         Options.PadX := Get_Grid_Option("padx");
-         Options.PadY := Get_Grid_Option("pady");
-         Options.Row := Get_Grid_Option("row");
-         Options.RowSpan := Get_Grid_Option("rowspan");
-         Options.Sticky := Get_Grid_Option("sticky");
-      end return;
+      Tcl_Eval("grid info " & Tk_PathName(Widget), Tk_Interp(Widget));
+      declare
+         Result: constant String := Tcl_GetResult(Tk_Interp(Widget));
+      begin
+         for I in Options_Names'Range loop
+            StartIndex :=
+              Index(Result, To_String(Options_Names(I))) +
+              Length(Options_Names(I));
+            if I < Options_Names'Last then
+               EndIndex := Index(Result, To_String(Options_Names(I + 1))) - 1;
+            else
+               EndIndex := Result'Length;
+            end if;
+            case I is
+               when 1 =>
+                  Options.In_Master :=
+                    To_Tcl_String(Result(StartIndex .. EndIndex));
+               when 2 =>
+                  Options.Column :=
+                    Extended_Natural'Value(Result(StartIndex .. EndIndex));
+               when 3 =>
+                  Options.Row :=
+                    Extended_Natural'Value(Result(StartIndex .. EndIndex));
+               when 4 =>
+                  Options.ColumnSpan :=
+                    Extended_Natural'Value(Result(StartIndex .. EndIndex));
+               when 5 =>
+                  Options.RowSpan :=
+                    Extended_Natural'Value(Result(StartIndex .. EndIndex));
+               when 6 =>
+                  Options.IPadX :=
+                    Pixel_Data_Value(Result(StartIndex .. EndIndex));
+               when 7 =>
+                  Options.IPadY :=
+                    Pixel_Data_Value(Result(StartIndex .. EndIndex));
+               when 8 =>
+                  Options.PadX :=
+                    Pad_Array_Value(Result(StartIndex .. EndIndex));
+               when 9 =>
+                  Options.PadY :=
+                    Pad_Array_Value(Result(StartIndex .. EndIndex));
+               when 10 =>
+                  Options.Sticky :=
+                    To_Tcl_String(Result(StartIndex .. EndIndex));
+            end case;
+         end loop;
+      end;
+      return Options;
    end Get_Options;
 
 end Tk.Grid;
