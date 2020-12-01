@@ -218,15 +218,24 @@ package body Tk.Grid is
    end Configure;
 
    function Get_Options(Widget: Tk_Widget) return Grid_Options is
-      function Get_Grid_Option(Widget: Tk_Widget; Name: String) return Tcl_String is
+      function Get_Grid_Option(Name: String) return Tcl_String is
       begin
          Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
          return To_Tcl_String(Tcl_GetResult);
       end Get_Grid_Option;
+      function Get_Grid_Option(Name: String) return Extended_Natural is
+      begin
+         Tcl_Eval("grid configure " & Tk_PathName(Widget) & " -" & Name);
+         return Extended_Natural'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      end Get_Grid_Option;
    begin
       return Options: Grid_Options do
-         Options.In_Master := Get_Grid_Option(Widget, "in");
-         Options.Sticky := Get_Grid_Option(Widget, "sticky");
+         Options.Column := Get_Grid_Option("column");
+         Options.ColumnSpan := Get_Grid_Option("columnspan");
+         Options.In_Master := Get_Grid_Option("in");
+         Options.Row := Get_Grid_Option("row");
+         Options.RowSpan := Get_Grid_Option("rowspan");
+         Options.Sticky := Get_Grid_Option("sticky");
       end return;
    end Get_Options;
 
