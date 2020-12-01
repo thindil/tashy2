@@ -23,15 +23,15 @@ package Tk.Grid is
 -- ****
 
    type Grid_Options is record
-      Column: Tcl_String;
-      ColumnSpan: Tcl_String;
+      Column: Extended_Natural;
+      ColumnSpan: Extended_Natural;
       In_Master: Tcl_String;
       IPadX: Pixel_Data;
       IPadY: Pixel_Data;
       PadX: Pad_Array := (others => <>);
       PadY: Pad_Array := (others => <>);
       Row: Extended_Natural;
-      RowSpan: Tcl_String;
+      RowSpan: Extended_Natural;
       Sticky: Tcl_String;
    end record;
 
