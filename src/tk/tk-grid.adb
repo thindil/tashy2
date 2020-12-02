@@ -51,7 +51,7 @@ package body Tk.Grid is
       Options: Grid_Options := Grid_Options'(others => <>)) is
    begin
       Tcl_Eval
-        ("grid " & Tk_PathName(Widget) & Options_To_String(Options),
+        ("grid " & Tk_PathName(Widget) & " " & Options_To_String(Options),
          Tk_Interp(Widget));
    end Add;
 
@@ -64,7 +64,7 @@ package body Tk.Grid is
          Append(Widgets_Names, " " & Tk_PathName(Widget));
       end loop;
       Tcl_Eval
-        ("grid" & To_String(Widgets_Names) & Options_To_String(Options),
+        ("grid" & To_String(Widgets_Names) & " " & Options_To_String(Options),
          Tk_Interp(Widgets(1)));
    end Add;
 
