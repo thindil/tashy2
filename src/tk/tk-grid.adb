@@ -244,7 +244,11 @@ package body Tk.Grid is
          Result: Pad_Array := (others => Pixel_Data'(others => <>));
          Tokens: Slice_Set;
       begin
-         Create(Tokens, Value, " ");
+         if Value(Value'First) /= '{' then
+            Create(Tokens, Value, " ");
+         else
+            Create(Tokens, Value(Value'First + 1 .. Value'Last - 1), " ");
+         end if;
          for I in 1 .. Slice_Count(Tokens) loop
             Result(Positive(I)) := Pixel_Data_Value(Slice(Tokens, 1));
          end loop;
