@@ -218,7 +218,7 @@ package body Tk.Grid is
          Tk_Interp(Widgets(1)));
    end Configure;
 
-   function Get_Options(Widget: Tk_Widget) return Grid_Options is
+   function Info(Widget: Tk_Widget) return Grid_Options is
       Options_Names: constant array(1 .. 10) of Unbounded_String :=
         (To_Unbounded_String("-in"), To_Unbounded_String("-column"),
          To_Unbounded_String("-row"), To_Unbounded_String("-columnspan"),
@@ -258,11 +258,11 @@ package body Tk.Grid is
          for I in Options_Names'Range loop
             StartIndex :=
               Index(Result, To_String(Options_Names(I))) +
-              Length(Options_Names(I));
+              Length(Options_Names(I)) + 1;
             if I < Options_Names'Last then
-               EndIndex := Index(Result, To_String(Options_Names(I + 1))) - 1;
+               EndIndex := Index(Result, To_String(Options_Names(I + 1))) - 2;
             else
-               EndIndex := Result'Length;
+               EndIndex := Result'Last;
             end if;
             case I is
                when 1 =>
@@ -299,6 +299,6 @@ package body Tk.Grid is
          end loop;
       end;
       return Options;
-   end Get_Options;
+   end Info;
 
 end Tk.Grid;
