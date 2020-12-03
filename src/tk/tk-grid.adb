@@ -231,19 +231,6 @@ package body Tk.Grid is
          To_Unbounded_String("-pady"), To_Unbounded_String("-sticky"));
       Options: Grid_Options := Grid_Options'(others => <>);
       StartIndex, EndIndex: Positive;
-      function Pixel_Data_Value(Value: String) return Pixel_Data is
-         Result: Pixel_Data;
-      begin
-         if not Is_Digit(Value(Value'Last)) then
-            Result.Value :=
-              Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
-            Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
-         else
-            Result.Value := Positive_Float'Value(Value);
-            Result.Value_Unit := PIXEL;
-         end if;
-         return Result;
-      end Pixel_Data_Value;
       function Pad_Array_Value(Value: String) return Pad_Array is
          Result: Pad_Array := (others => Pixel_Data'(others => <>));
          Tokens: Slice_Set;
