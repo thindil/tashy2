@@ -223,6 +223,15 @@ package body Tk.Grid is
       Tcl_Eval("grid forget " & Tk_PathName(Widget));
    end Forget;
 
+   procedure Forget(Widgets: Widgets_Array) is
+      Widgets_Names: Unbounded_String;
+   begin
+      for Widget of Widgets loop
+         Append(Widgets_Names, " " & Tk_PathName(Widget));
+      end loop;
+      Tcl_Eval("grid forget " & To_String(Widgets_Names));
+   end Forget;
+
    function Info(Widget: Tk_Widget) return Grid_Options is
       Options_Names: constant array(1 .. 10) of Unbounded_String :=
         (To_Unbounded_String("-in"), To_Unbounded_String("-column"),
