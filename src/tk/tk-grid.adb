@@ -58,13 +58,10 @@ package body Tk.Grid is
    procedure Add
      (Widgets: Widgets_Array;
       Options: Grid_Options := Grid_Options'(others => <>)) is
-      Widgets_Names: Unbounded_String;
    begin
-      for Widget of Widgets loop
-         Append(Widgets_Names, " " & Tk_PathName(Widget));
-      end loop;
       Tcl_Eval
-        ("grid" & To_String(Widgets_Names) & " " & Options_To_String(Options),
+        ("grid" & Widgets_Array_Image(Widgets) & " " &
+         Options_To_String(Options),
          Tk_Interp(Widgets(1)));
    end Add;
 
@@ -207,13 +204,9 @@ package body Tk.Grid is
    end Configure;
 
    procedure Configure(Widgets: Widgets_Array; Options: Grid_Options) is
-      Widgets_Names: Unbounded_String;
    begin
-      for Widget of Widgets loop
-         Append(Widgets_Names, " " & Tk_PathName(Widget));
-      end loop;
       Tcl_Eval
-        ("grid configure " & To_String(Widgets_Names) &
+        ("grid configure " & Widgets_Array_Image(Widgets) &
          Options_To_String(Options),
          Tk_Interp(Widgets(1)));
    end Configure;
@@ -224,12 +217,9 @@ package body Tk.Grid is
    end Forget;
 
    procedure Forget(Widgets: Widgets_Array) is
-      Widgets_Names: Unbounded_String;
    begin
-      for Widget of Widgets loop
-         Append(Widgets_Names, " " & Tk_PathName(Widget));
-      end loop;
-      Tcl_Eval("grid forget " & To_String(Widgets_Names));
+      Tcl_Eval
+        ("grid forget " & Widgets_Array_Image(Widgets), Tk_Interp(Widgets(1)));
    end Forget;
 
    function Info(Widget: Tk_Widget) return Grid_Options is
