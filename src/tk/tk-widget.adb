@@ -30,6 +30,20 @@ package body Tk.Widget is
       return To_String(Widgets_Names);
    end Widgets_Array_Image;
 
+   function Pixel_Data_Value(Value: String) return Pixel_Data is
+      Result: Pixel_Data;
+   begin
+      if not Is_Digit(Value(Value'Last)) then
+         Result.Value :=
+            Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
+            Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
+      else
+         Result.Value := Positive_Float'Value(Value);
+         Result.Value_Unit := PIXEL;
+      end if;
+      return Result;
+   end Pixel_Data_Value;
+
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget is

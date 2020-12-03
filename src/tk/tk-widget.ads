@@ -190,7 +190,7 @@ package Tk.Widget is
    -- Various functions to convert types to String
    -----------------------------------------------
 
-   -- ****f* Tk.Widget/Widgets_Array_Image
+   -- ****f* Widget/Widget.Widgets_Array_Image
    -- FUNCTION
    -- Convert Widgets_Array to Ada String
    -- PARAMETERS
@@ -205,6 +205,28 @@ package Tk.Widget is
    -- SOURCE
    function Widgets_Array_Image(Widgets: Widgets_Array) return String with
       Pre => Widgets'Length > 0;
+      -- ****
+
+      ---------------------------------------------------------
+      -- Various functions to convert String to Tk.Widget types
+      ---------------------------------------------------------
+
+      -- ****f* Widget/Widget.Pixel_Data_Value
+      -- FUNCTION
+      -- Convert Ada String to Pixel_Data
+      -- PARAMETERS
+      -- Value - String which will be converted to Pixel_Data
+      -- RESULT
+      -- Pixel_Data with value converted from String
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Convert string 2c to Pixel_Data
+      -- Pixel: constant Pixel_Data := Pixel_Data_Value("2c");
+      -- SOURCE
+   function Pixel_Data_Value(Value: String) return Pixel_Data with
+      Pre => Value'Length > 0;
+      -- ****
 
    ---------------------------------
    -- Getting info about a Tk widget
