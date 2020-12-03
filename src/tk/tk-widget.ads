@@ -186,6 +186,26 @@ package Tk.Widget is
    type BBox_Array is array(1 .. 4) of Natural;
    -- ****
 
+   -----------------------------------------------
+   -- Various functions to convert types to String
+   -----------------------------------------------
+
+   -- ****f* Tk.Widget/Widgets_Array_Image
+   -- FUNCTION
+   -- Convert Widgets_Array to Ada String
+   -- PARAMETERS
+   -- Widgets - Widgets_Array which will be converted
+   -- RESULT
+   -- Ada String with Tk path names of the widgets
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the Tk path names of widgets My_Button and My_Label
+   -- Widgets_Names: constant String := Widgets_Array_Image((My_Button, My_Label));
+   -- SOURCE
+   function Widgets_Array_Image(Widgets: Widgets_Array) return String with
+      Pre => Widgets'Length > 0;
+
    ---------------------------------
    -- Getting info about a Tk widget
    ---------------------------------

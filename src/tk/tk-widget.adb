@@ -21,6 +21,15 @@ with Tk.MainWindow; use Tk.MainWindow;
 
 package body Tk.Widget is
 
+   function Widgets_Array_Image(Widgets: Widgets_Array) return String is
+      Widgets_Names: Unbounded_String;
+   begin
+      for Widget of Widgets loop
+         Append(Widgets_Names, " " & Tk_PathName(Widget));
+      end loop;
+      return To_String(Widgets_Names);
+   end Widgets_Array_Image;
+
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget is
