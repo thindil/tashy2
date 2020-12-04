@@ -283,4 +283,19 @@ package body Tk.Grid is
       return Options;
    end Info;
 
+   function Location
+     (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array is
+      Tokens: Slice_Set;
+   begin
+      Tcl_Eval
+        ("grid location " & Tk_PathName(Master) &
+         Positive_Float'Image(X.Value) &
+         To_Lower(Pixel_Unit'Image(X.Value_Unit)) &
+         Positive_Float'Image(Y.Value) &
+         To_Lower(Pixel_Unit'Image(Y.Value_Unit)));
+      Create(Tokens, Tcl_GetResult(Tk_Interp(Master)), " ");
+      return (Extended_Natural'Value(Slice(Tokens, 1)),
+         Extended_Natural'Value(Slice(Tokens, 2)));
+   end Location;
+
 end Tk.Grid;

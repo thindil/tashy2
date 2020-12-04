@@ -42,6 +42,8 @@ package Tk.Grid is
       Pad: Pixel_Data;
    end record;
 
+   type Result_Array is array (1 .. 2) of Extended_Natural;
+
    procedure Add
      (Widget: Tk_Widget;
       Options: Grid_Options := Grid_Options'(others => <>)) with
@@ -86,5 +88,8 @@ package Tk.Grid is
 
    function Info(Widget: Tk_Widget) return Grid_Options with
       Pre => Widget /= Null_Widget;
+
+   function Location(Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array with
+      Pre => Master /= Null_Widget and X.Value > -1.0 and Y.Value > -1.0;
 
 end Tk.Grid;
