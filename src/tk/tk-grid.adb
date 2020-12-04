@@ -155,24 +155,11 @@ package body Tk.Grid is
    function Get_Column_Options
      (Master: Tk_Widget; Index: Tcl_String) return Column_Options is
       function Get_Value(Name: String) return Pixel_Data is
-         Result: Pixel_Data;
       begin
          Tcl_Eval
            ("grid columnconfigure " & Tk_PathName(Master) & " " &
             To_String(Index) & " " & Name);
-         declare
-            Value: constant String := Tcl_GetResult(Tk_Interp(Master));
-         begin
-            if not Is_Digit(Value(Value'Last)) then
-               Result.Value :=
-                 Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
-               Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
-            else
-               Result.Value := Positive_Float'Value(Value);
-               Result.Value_Unit := PIXEL;
-            end if;
-         end;
-         return Result;
+         return Pixel_Data_Value(Tcl_GetResult(Tk_Interp(Master)));
       end Get_Value;
       function Get_Value(Name: String) return Tcl_String is
       begin
