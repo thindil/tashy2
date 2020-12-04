@@ -92,4 +92,10 @@ package Tk.Grid is
    function Location(Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array with
       Pre => Master /= Null_Widget and X.Value > -1.0 and Y.Value > -1.0;
 
+   procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) with
+      Pre => Master /= Null_Widget;
+
+   function Propagate(Master: Tk_Widget) return Boolean with
+      Pre => Master /= Null_Widget;
+
 end Tk.Grid;

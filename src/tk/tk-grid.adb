@@ -298,4 +298,21 @@ package body Tk.Grid is
          Extended_Natural'Value(Slice(Tokens, 2)));
    end Location;
 
+   procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) is
+   begin
+      Tcl_Eval
+        ("grid propagate " & Tk_PathName(Master) & " " &
+         To_Lower(Boolean'Image(Enable)));
+   end Propagate;
+
+   function Propagate(Master: Tk_Widget) return Boolean is
+   begin
+      Tcl_Eval("grid propagate" & Tk_PathName(Master));
+      if Tcl_GetResult(Tk_Interp(Master)) = 1 then
+         return True;
+      else
+         return False;
+      end if;
+   end Propagate;
+
 end Tk.Grid;
