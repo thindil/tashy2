@@ -149,7 +149,23 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid columnconfigure " & Tk_PathName(Master) & " " &
-         To_String(Child_Name) & Column_Options_To_String(Options));
+         To_String(Child_Name) & " " & Column_Options_To_String(Options));
+   end Column_Configure;
+
+   procedure Column_Configure
+     (Master, Child: Tk_Widget; Options: Column_Options) is
+   begin
+      Tcl_Eval
+        ("grid columnconfigure " & Tk_PathName(Master) & " " &
+         Tk_PathName(Child) & " " & Column_Options_To_String(Options));
+   end Column_Configure;
+
+   procedure Column_Configure
+     (Master: Tk_Widget; Column: Natural; Options: Column_Options) is
+   begin
+      Tcl_Eval
+        ("grid columnconfigure " & Tk_PathName(Master) &
+         Natural'Image(Column) & " " & Column_Options_To_String(Options));
    end Column_Configure;
 
    function Get_Column_Options
