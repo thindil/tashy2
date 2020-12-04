@@ -145,11 +145,11 @@ package body Tk.Grid is
    end Column_Options_To_String;
 
    procedure Column_Configure
-     (Master: Tk_Widget; Index: Tcl_String; Options: Column_Options) is
+     (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) is
    begin
       Tcl_Eval
         ("grid columnconfigure " & Tk_PathName(Master) & " " &
-         To_String(Index) & Column_Options_To_String(Options));
+         To_String(Child_Name) & Column_Options_To_String(Options));
    end Column_Configure;
 
    function Get_Column_Options
