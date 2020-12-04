@@ -42,7 +42,7 @@ package Tk.Grid is
       Pad: Pixel_Data;
    end record;
 
-   type Result_Array is array (1 .. 2) of Extended_Natural;
+   type Result_Array is array(1 .. 2) of Extended_Natural;
 
    procedure Add
      (Widget: Tk_Widget;
@@ -66,8 +66,8 @@ package Tk.Grid is
       Pre => Master /= Null_Widget;
 
    procedure Column_Configure
-     (Master: Tk_Widget; Index: Tcl_String; Options: Column_Options) with
-      Pre => Master /= Null_Widget and
+     (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
+      Pre => Master /= Null_Widget and Length(Child_Name) > 0 and
       Options /= Column_Options'(others => <>);
 
    function Get_Column_Options
@@ -89,7 +89,8 @@ package Tk.Grid is
    function Info(Widget: Tk_Widget) return Grid_Options with
       Pre => Widget /= Null_Widget;
 
-   function Location(Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array with
+   function Location
+     (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array with
       Pre => Master /= Null_Widget and X.Value > -1.0 and Y.Value > -1.0;
 
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) with
