@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with GNAT.String_Split; use GNAT.String_Split;
@@ -261,6 +262,19 @@ package body Tk.Grid is
          Options.Uniform := Get_Value(Master, "uniform", "column", Index);
          Options.Pad := Get_Value(Master, "pad", "column", Index);
       end return;
+   end Get_Column_Options;
+
+   function Get_Column_Options
+     (Master, Child: Tk_Widget) return Column_Options is
+   begin
+      return Get_Column_Options(Master, To_Tcl_String(Tk_PathName(Child)));
+   end Get_Column_Options;
+
+   function Get_Column_Options
+     (Master: Tk_Widget; Column: Natural) return Column_Options is
+   begin
+      return Get_Column_Options
+          (Master, To_Tcl_String(Trim(Natural'Image(Column), Left)));
    end Get_Column_Options;
 
    procedure Configure(Widget: Tk_Widget; Options: Grid_Options) is
