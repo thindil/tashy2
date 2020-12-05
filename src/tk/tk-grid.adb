@@ -168,35 +168,98 @@ package body Tk.Grid is
          Natural'Image(Column) & " " & Column_Options_To_String(Options));
    end Column_Configure;
 
+   -- ****if* Grid/Grid.Get_Value_(Pixel_Data)
+   -- FUNCTION
+   -- Get the value of the selected column or row configuration
+   -- PARAMETERS
+   -- Master     - Tk_Widget which is master of the selected grid geometry
+   --              manager
+   -- Name       - Name of the option to get
+   -- ConfigType - Type of config. Can be column or row
+   -- Index      - Index of the column or row which option will be get can
+   --              be widget Tk pathname, index or `all`
+   -- RESULT
+   -- Pixel_Data structure with value of the selected option
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SEE ALSO
+   -- Grid.Get_Value_(Tcl_String), Grid.Get_Value_(Extended_Natural)
+   -- SOURCE
+   function Get_Value
+     (Master: Tk_Widget; Name, ConfigType: String; Index: Tcl_String)
+      return Pixel_Data is
+      -- ****
+   begin
+      Tcl_Eval
+        ("grid " & ConfigType & "configure " & Tk_PathName(Master) & " " &
+         To_String(Index) & " -" & Name);
+      return Pixel_Data_Value(Tcl_GetResult(Tk_Interp(Master)));
+   end Get_Value;
+
+   -- ****if* Grid/Grid.Get_Value_(Tcl_String)
+   -- FUNCTION
+   -- Get the value of the selected column or row configuration
+   -- PARAMETERS
+   -- Master     - Tk_Widget which is master of the selected grid geometry
+   --              manager
+   -- Name       - Name of the option to get
+   -- ConfigType - Type of config. Can be column or row
+   -- Index      - Index of the column or row which option will be get can
+   --              be widget Tk pathname, index or `all`
+   -- RESULT
+   -- Tcl_String with value of the selected option
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SEE ALSO
+   -- Grid.Get_Value_(Pixel_Data), Grid.Get_Value_(Extended_Natural)
+   -- SOURCE
+   function Get_Value
+     (Master: Tk_Widget; Name, ConfigType: String; Index: Tcl_String)
+      return Tcl_String is
+      -- ****
+   begin
+      Tcl_Eval
+        ("grid " & ConfigType & "configure " & Tk_PathName(Master) & " " &
+         To_String(Index) & " -" & Name);
+      return To_Tcl_String(Tcl_GetResult(Tk_Interp(Master)));
+   end Get_Value;
+
+   -- ****if* Grid/Grid.Get_Value_(Extended_Natural)
+   -- FUNCTION
+   -- Get the value of the selected column or row configuration
+   -- PARAMETERS
+   -- Master     - Tk_Widget which is master of the selected grid geometry
+   --              manager
+   -- Name       - Name of the option to get
+   -- ConfigType - Type of config. Can be column or row
+   -- Index      - Index of the column or row which option will be get can
+   --              be widget Tk pathname, index or `all`
+   -- RESULT
+   -- Extended_Natural with value of the selected option
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SEE ALSO
+   -- Grid.Get_Value_(Pixel_Data), Grid.Get_Value_(Tcl_String)
+   -- SOURCE
+   function Get_Value
+     (Master: Tk_Widget; Name, ConfigType: String; Index: Tcl_String)
+      return Extended_Natural is
+      -- ****
+   begin
+      Tcl_Eval
+        ("grid " & ConfigType & "configure " & Tk_PathName(Master) & " " &
+         To_String(Index) & " -" & Name);
+      return Extended_Natural'Value(Tcl_GetResult(Tk_Interp(Master)));
+   end Get_Value;
+
    function Get_Column_Options
      (Master: Tk_Widget; Index: Tcl_String) return Column_Options is
-      function Get_Value(Name: String) return Pixel_Data is
-      begin
-         Tcl_Eval
-           ("grid columnconfigure " & Tk_PathName(Master) & " " &
-            To_String(Index) & " " & Name);
-         return Pixel_Data_Value(Tcl_GetResult(Tk_Interp(Master)));
-      end Get_Value;
-      function Get_Value(Name: String) return Tcl_String is
-      begin
-         Tcl_Eval
-           ("grid columnconfigure " & Tk_PathName(Master) & " " &
-            To_String(Index) & " " & Name);
-         return To_Tcl_String(Tcl_GetResult(Tk_Interp(Master)));
-      end Get_Value;
-      function Get_Value(Name: String) return Extended_Natural is
-      begin
-         Tcl_Eval
-           ("grid columnconfigure " & Tk_PathName(Master) & " " &
-            To_String(Index) & " " & Name);
-         return Extended_Natural'Value(Tcl_GetResult(Tk_Interp(Master)));
-      end Get_Value;
    begin
       return Options: Column_Options do
-         Options.MinSize := Get_Value("minsize");
-         Options.Weight := Get_Value("weight");
-         Options.Uniform := Get_Value("uniform");
-         Options.Pad := Get_Value("pad");
+         Options.MinSize := Get_Value(Master, "minsize", "column", Index);
+         Options.Weight := Get_Value(Master, "weight", "column", Index);
+         Options.Uniform := Get_Value(Master, "uniform", "column", Index);
+         Options.Pad := Get_Value(Master, "pad", "column", Index);
       end return;
    end Get_Column_Options;
 
