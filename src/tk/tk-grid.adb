@@ -432,4 +432,27 @@ package body Tk.Grid is
          " " & Column_Options_To_String(Options));
    end Row_Configure;
 
+   function Get_Row_Options
+     (Master: Tk_Widget; Index: Tcl_String) return Column_Options is
+   begin
+      return Options: Column_Options do
+         Options.MinSize := Get_Value(Master, "minsize", "row", Index);
+         Options.Weight := Get_Value(Master, "weight", "row", Index);
+         Options.Uniform := Get_Value(Master, "uniform", "row", Index);
+         Options.Pad := Get_Value(Master, "pad", "row", Index);
+      end return;
+   end Get_Row_Options;
+
+   function Get_Row_Options(Master, Child: Tk_Widget) return Column_Options is
+   begin
+      return Get_Row_Options(Master, To_Tcl_String(Tk_PathName(Child)));
+   end Get_Row_Options;
+
+   function Get_Row_Options
+     (Master: Tk_Widget; Row: Natural) return Column_Options is
+   begin
+      return Get_Row_Options
+          (Master, To_Tcl_String(Trim(Natural'Image(Row), Left)));
+   end Get_Row_Options;
+
 end Tk.Grid;
