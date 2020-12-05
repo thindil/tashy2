@@ -408,4 +408,28 @@ package body Tk.Grid is
       end if;
    end Propagate;
 
+   procedure Row_Configure
+     (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) is
+   begin
+      Tcl_Eval
+        ("grid rowconfigure " & Tk_PathName(Master) & " " &
+         To_String(Child_Name) & " " & Column_Options_To_String(Options));
+   end Row_Configure;
+
+   procedure Row_Configure
+     (Master, Child: Tk_Widget; Options: Column_Options) is
+   begin
+      Tcl_Eval
+        ("grid rowconfigure " & Tk_PathName(Master) & " " &
+         Tk_PathName(Child) & " " & Column_Options_To_String(Options));
+   end Row_Configure;
+
+   procedure Row_Configure
+     (Master: Tk_Widget; Row: Natural; Options: Column_Options) is
+   begin
+      Tcl_Eval
+        ("grid rowconfigure " & Tk_PathName(Master) & Natural'Image(Row) &
+         " " & Column_Options_To_String(Options));
+   end Row_Configure;
+
 end Tk.Grid;
