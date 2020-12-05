@@ -144,4 +144,10 @@ package Tk.Grid is
      (Master: Tk_Widget; Row: Natural) return Column_Options with
       Pre => Master /= Null_Widget;
 
+   procedure Remove(Widget: Tk_Widget) with
+      Pre => Widget /= Null_Widget;
+
+   procedure Remove(Widgets: Widgets_Array) with
+      Pre => Widgets'Length > 0;
+
 end Tk.Grid;

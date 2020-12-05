@@ -455,4 +455,15 @@ package body Tk.Grid is
           (Master, To_Tcl_String(Trim(Natural'Image(Row), Left)));
    end Get_Row_Options;
 
+   procedure Remove(Widget: Tk_Widget) is
+   begin
+      Tcl_Eval("grid remove " & Tk_PathName(Widget));
+   end Remove;
+
+   procedure Remove(Widgets: Widgets_Array) is
+   begin
+      Tcl_Eval
+        ("grid remove " & Widgets_Array_Image(Widgets), Tk_Interp(Widgets(1)));
+   end Remove;
+
 end Tk.Grid;
