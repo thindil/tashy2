@@ -132,4 +132,16 @@ package Tk.Grid is
       Pre => Master /= Null_Widget and
       Options /= Column_Options'(others => <>);
 
+   function Get_Row_Options
+     (Master: Tk_Widget; Index: Tcl_String) return Column_Options with
+      Pre => Master /= Null_Widget and Length(Index) > 0;
+
+   function Get_Row_Options
+     (Master, Child: Tk_Widget) return Column_Options with
+      Pre => Master /= Null_Widget and Child /= Null_Widget;
+
+   function Get_Row_Options
+     (Master: Tk_Widget; Row: Natural) return Column_Options with
+      Pre => Master /= Null_Widget;
+
 end Tk.Grid;
