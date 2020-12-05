@@ -117,4 +117,19 @@ package Tk.Grid is
    function Propagate(Master: Tk_Widget) return Boolean with
       Pre => Master /= Null_Widget;
 
+   procedure Row_Configure
+     (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
+      Pre => Master /= Null_Widget and Length(Child_Name) > 0 and
+      Options /= Column_Options'(others => <>);
+
+   procedure Row_Configure
+     (Master, Child: Tk_Widget; Options: Column_Options) with
+      Pre => Master /= Null_Widget and Child /= Null_Widget and
+      Options /= Column_Options'(others => <>);
+
+   procedure Row_Configure
+     (Master: Tk_Widget; Row: Natural; Options: Column_Options) with
+      Pre => Master /= Null_Widget and
+      Options /= Column_Options'(others => <>);
+
 end Tk.Grid;
