@@ -70,12 +70,13 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid anchor " & Tk_PathName(Master) & " " &
-         To_Lower(Directions_Type'Image(New_Direction)));
+         To_Lower(Directions_Type'Image(New_Direction)),
+         Tk_Interp(Master));
    end Anchor;
 
    function Anchor(Master: Tk_Widget) return Directions_Type is
    begin
-      Tcl_Eval("grid anchor " & Tk_PathName(Master));
+      Tcl_Eval("grid anchor " & Tk_PathName(Master), Tk_Interp(Master));
       return Directions_Type'Value(Tcl_GetResult);
    end Anchor;
 
@@ -115,7 +116,9 @@ package body Tk.Grid is
          end if;
          Append(Options, Extended_Natural'Image(Row2));
       end if;
-      Tcl_Eval("grid bbox " & Tk_PathName(Master) & To_String(Options));
+      Tcl_Eval
+        ("grid bbox " & Tk_PathName(Master) & To_String(Options),
+         Tk_Interp(Master));
       Create(Tokens, Tcl_GetResult, " ");
       return Coords: BBox_Array do
          for I in 1 .. 4 loop
@@ -150,7 +153,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid columnconfigure " & Tk_PathName(Master) & " " &
-         To_String(Child_Name) & " " & Column_Options_To_String(Options));
+         To_String(Child_Name) & " " & Column_Options_To_String(Options),
+         Tk_Interp(Master));
    end Column_Configure;
 
    procedure Column_Configure
@@ -158,7 +162,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid columnconfigure " & Tk_PathName(Master) & " " &
-         Tk_PathName(Child) & " " & Column_Options_To_String(Options));
+         Tk_PathName(Child) & " " & Column_Options_To_String(Options),
+         Tk_Interp(Master));
    end Column_Configure;
 
    procedure Column_Configure
@@ -166,7 +171,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid columnconfigure " & Tk_PathName(Master) &
-         Natural'Image(Column) & " " & Column_Options_To_String(Options));
+         Natural'Image(Column) & " " & Column_Options_To_String(Options),
+         Tk_Interp(Master));
    end Column_Configure;
 
    -- ****if* Grid/Grid.Get_Value_(Pixel_Data)
@@ -193,7 +199,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid " & ConfigType & "configure " & Tk_PathName(Master) & " " &
-         To_String(Index) & " -" & Name);
+         To_String(Index) & " -" & Name,
+         Tk_Interp(Master));
       return Pixel_Data_Value(Tcl_GetResult(Tk_Interp(Master)));
    end Get_Value;
 
@@ -221,7 +228,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid " & ConfigType & "configure " & Tk_PathName(Master) & " " &
-         To_String(Index) & " -" & Name);
+         To_String(Index) & " -" & Name,
+         Tk_Interp(Master));
       return To_Tcl_String(Tcl_GetResult(Tk_Interp(Master)));
    end Get_Value;
 
@@ -249,7 +257,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid " & ConfigType & "configure " & Tk_PathName(Master) & " " &
-         To_String(Index) & " -" & Name);
+         To_String(Index) & " -" & Name,
+         Tk_Interp(Master));
       return Extended_Natural'Value(Tcl_GetResult(Tk_Interp(Master)));
    end Get_Value;
 
@@ -280,7 +289,8 @@ package body Tk.Grid is
    procedure Configure(Widget: Tk_Widget; Options: Grid_Options) is
    begin
       Tcl_Eval
-        ("grid configure " & Tk_PathName(Widget) & Options_To_String(Options));
+        ("grid configure " & Tk_PathName(Widget) & Options_To_String(Options),
+         Tk_Interp(Widget));
    end Configure;
 
    procedure Configure(Widgets: Widgets_Array; Options: Grid_Options) is
@@ -293,7 +303,7 @@ package body Tk.Grid is
 
    procedure Forget(Widget: Tk_Widget) is
    begin
-      Tcl_Eval("grid forget " & Tk_PathName(Widget));
+      Tcl_Eval("grid forget " & Tk_PathName(Widget), Tk_Interp(Widget));
    end Forget;
 
    procedure Forget(Widgets: Widgets_Array) is
@@ -385,7 +395,8 @@ package body Tk.Grid is
          Positive_Float'Image(X.Value) &
          To_Lower(Pixel_Unit'Image(X.Value_Unit)) &
          Positive_Float'Image(Y.Value) &
-         To_Lower(Pixel_Unit'Image(Y.Value_Unit)));
+         To_Lower(Pixel_Unit'Image(Y.Value_Unit)),
+         Tk_Interp(Master));
       Create(Tokens, Tcl_GetResult(Tk_Interp(Master)), " ");
       return (Extended_Natural'Value(Slice(Tokens, 1)),
          Extended_Natural'Value(Slice(Tokens, 2)));
@@ -395,12 +406,13 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid propagate " & Tk_PathName(Master) & " " &
-         To_Lower(Boolean'Image(Enable)));
+         To_Lower(Boolean'Image(Enable)),
+         Tk_Interp(Master));
    end Propagate;
 
    function Propagate(Master: Tk_Widget) return Boolean is
    begin
-      Tcl_Eval("grid propagate" & Tk_PathName(Master));
+      Tcl_Eval("grid propagate" & Tk_PathName(Master), Tk_Interp(Master));
       if Tcl_GetResult(Tk_Interp(Master)) = 1 then
          return True;
       else
@@ -413,7 +425,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid rowconfigure " & Tk_PathName(Master) & " " &
-         To_String(Child_Name) & " " & Column_Options_To_String(Options));
+         To_String(Child_Name) & " " & Column_Options_To_String(Options),
+         Tk_Interp(Master));
    end Row_Configure;
 
    procedure Row_Configure
@@ -421,7 +434,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid rowconfigure " & Tk_PathName(Master) & " " &
-         Tk_PathName(Child) & " " & Column_Options_To_String(Options));
+         Tk_PathName(Child) & " " & Column_Options_To_String(Options),
+         Tk_Interp(Master));
    end Row_Configure;
 
    procedure Row_Configure
@@ -429,7 +443,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         ("grid rowconfigure " & Tk_PathName(Master) & Natural'Image(Row) &
-         " " & Column_Options_To_String(Options));
+         " " & Column_Options_To_String(Options),
+         Tk_Interp(Master));
    end Row_Configure;
 
    function Get_Row_Options
@@ -457,7 +472,7 @@ package body Tk.Grid is
 
    procedure Remove(Widget: Tk_Widget) is
    begin
-      Tcl_Eval("grid remove " & Tk_PathName(Widget));
+      Tcl_Eval("grid remove " & Tk_PathName(Widget), Tk_Interp(Widget));
    end Remove;
 
    procedure Remove(Widgets: Widgets_Array) is
