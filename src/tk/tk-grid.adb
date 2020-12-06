@@ -490,4 +490,26 @@ package body Tk.Grid is
          Extended_Natural'Value(Slice(Tokens, 2)));
    end Size;
 
+   function Slaves
+     (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
+      return Widgets_Array is
+      Tokens: Slice_Set;
+      Options: Unbounded_String := Null_Unbounded_String;
+   begin
+      if Row > -1 then
+         Append(Options, " -row" & Extended_Natural'Image(Row));
+      end if;
+      if Column > -1 then
+         Append(Options, " -column" & Extended_Natural'Image(Column));
+      end if;
+      Tcl_Eval("grid slaves " & Tk_PathName(Master) & To_String(Options));
+      Create(Tokens, Tcl_GetResult(Tk_Interp(Master)), " ");
+      return Widgets: Widgets_Array(1 .. Natural(Slice_Count(Tokens))) do
+         for I in 1 .. Slice_Count(Tokens) loop
+            Widgets(Positive(I)) :=
+              Get_Widget(Slice(Tokens, I), Tk_Interp(Master));
+         end loop;
+      end return;
+   end Slaves;
+
 end Tk.Grid;

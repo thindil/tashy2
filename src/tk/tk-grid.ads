@@ -153,4 +153,9 @@ package Tk.Grid is
    function Size(Master: Tk_Widget) return Result_Array with
       Pre => Master /= Null_Widget;
 
+   function Slaves
+     (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
+      return Widgets_Array with
+      Pre => Master /= Null_Widget;
+
 end Tk.Grid;
