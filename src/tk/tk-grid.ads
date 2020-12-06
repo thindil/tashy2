@@ -22,6 +22,24 @@ with Tk.Widget; use Tk.Widget;
 package Tk.Grid is
 -- ****
 
+   -- ****s* Grid/Grid.Grid_Options
+   -- FUNCTION
+   -- Data structure for all available grid slaves options
+   -- OPTIONS
+   -- Column     - Index of column in which the widget will be placed.
+   --              Index starts from zero.
+   -- ColumnSpan - Amount of columns which the widget will be occupy.
+   -- In_Master  -
+   -- IPadX      -
+   -- IPadY      -
+   -- PadX       -
+   -- PadY       -
+   -- Row        -
+   -- RowSpan    -
+   -- Sticky     -
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Grid_Options is record
       Column: Extended_Natural;
       ColumnSpan: Extended_Natural;
