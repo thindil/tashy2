@@ -481,4 +481,13 @@ package body Tk.Grid is
         ("grid remove " & Widgets_Array_Image(Widgets), Tk_Interp(Widgets(1)));
    end Remove;
 
+   function Size(Master: Tk_Widget) return Result_Array is
+      Tokens: Slice_Set;
+   begin
+      Tcl_Eval("grid size " & Tk_PathName(Master), Tk_Interp(Master));
+      Create(Tokens, Tcl_GetResult(Tk_Interp(Master)), " ");
+      return (Extended_Natural'Value(Slice(Tokens, 1)),
+         Extended_Natural'Value(Slice(Tokens, 2)));
+   end Size;
+
 end Tk.Grid;
