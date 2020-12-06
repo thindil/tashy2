@@ -348,6 +348,10 @@ package Tk.Widget is
      (Name: String; Value: Pad_Array;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0;
+   procedure Option_Image
+     (Name: String; Value: Tk_Widget;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
    -- ****
 
    -- ****f* Widget/Widget.Option_Value

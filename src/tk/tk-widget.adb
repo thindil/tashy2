@@ -186,6 +186,17 @@ package body Tk.Widget is
       end if;
    end Option_Image;
 
+   procedure Option_Image
+     (Name: String; Value: Tk_Widget;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value /= Null_Widget then
+         Append
+           (Options_String,
+            " -" & Name & " " & Tk_PathName(Value));
+      end if;
+   end Option_Image;
+
    function Option_Value(Widget: Tk_Widget; Name: String) return Tcl_String is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
