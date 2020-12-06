@@ -150,4 +150,7 @@ package Tk.Grid is
    procedure Remove(Widgets: Widgets_Array) with
       Pre => Widgets'Length > 0;
 
+   function Size(Master: Tk_Widget) return Result_Array with
+      Pre => Master /= Null_Widget;
+
 end Tk.Grid;
