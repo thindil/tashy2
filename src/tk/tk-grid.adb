@@ -352,7 +352,8 @@ package body Tk.Grid is
             case I is
                when 1 =>
                   Options.In_Master :=
-                    To_Tcl_String(Result(StartIndex .. EndIndex));
+                    Get_Widget
+                      (Result(StartIndex .. EndIndex), Tk_Interp(Widget));
                when 2 =>
                   Options.Column :=
                     Extended_Natural'Value(Result(StartIndex .. EndIndex));

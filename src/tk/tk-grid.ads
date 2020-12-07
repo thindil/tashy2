@@ -43,7 +43,7 @@ package Tk.Grid is
    type Grid_Options is record
       Column: Extended_Natural;
       ColumnSpan: Extended_Natural;
-      In_Master: Tcl_String;
+      In_Master: Tk_Widget;
       IPadX: Pixel_Data;
       IPadY: Pixel_Data;
       PadX: Pad_Array := (others => <>);
