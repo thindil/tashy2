@@ -26,17 +26,21 @@ package Tk.Grid is
    -- FUNCTION
    -- Data structure for all available grid slaves options
    -- OPTIONS
-   -- Column     - Index of column in which the widget will be placed.
-   --              Index starts from zero.
-   -- ColumnSpan - Amount of columns which the widget will be occupy.
-   -- In_Master  -
-   -- IPadX      -
-   -- IPadY      -
-   -- PadX       -
-   -- PadY       -
-   -- Row        -
-   -- RowSpan    -
-   -- Sticky     -
+   -- Column     - Index of column in which the widget is placed. Index
+   --              starts from zero
+   -- ColumnSpan - Amount of columns which the widget occupy
+   -- In_Master  - Tk_Widget which is the master for the selected widget
+   -- IPadX      - Amount of internal horizontal padding for the widget
+   -- IPadY      - Amount of internal vertical padding for the widget
+   -- PadX       - Amount of external horizontal padding for the widget. The
+   --              first value is left padding, second right padding
+   -- PadY       - Amount of external vertical padding for the widget. The
+   --              first value is top padding, the second is bottom padding
+   -- Row        - Index of row in which the widget is placed. Index starts
+   --              from zero.
+   -- RowSpan    - Amount of rows which the widget occupy
+   -- Sticky     - Position (or stretch) the widget in the selected directions.
+   --              Possible values are combinations of 'n', 's', 'w' and 'e'
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
