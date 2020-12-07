@@ -168,6 +168,8 @@ package Tk.Widget is
    -- FUNCTION
    -- Array of Tk_Widgets. Used mostly in commands which allow to set a few
    -- widgets as parameters
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Widgets_Array is array(Positive range <>) of Tk_Widget;
    -- ****
@@ -175,6 +177,8 @@ package Tk.Widget is
    -- ****t* Widget/Widget.Pad_Array
    -- FUNCTION
    -- Array used mostly for setting padding in grid and pack geometry managers
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Pad_Array is array(1 .. 2) of Pixel_Data;
    -- ****
@@ -182,6 +186,8 @@ package Tk.Widget is
    -- ****t* Tk.Widget/BBox_Array
    -- FUNCTION
    -- Array used mostly for take result of BBox commands of various Tk_Widgets
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type BBox_Array is array(1 .. 4) of Natural;
    -- ****
