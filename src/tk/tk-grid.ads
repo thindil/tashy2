@@ -56,15 +56,37 @@ package Tk.Grid is
       RowSpan: Extended_Natural;
       Sticky: Tcl_String;
    end record;
+   -- ****
 
+   -- ****s* Grid/Grid.Column_Options
+   -- FUNCTION
+   -- Data structure for all available grid rows and columns options
+   -- OPTIONS
+   -- MinSize - Minimum size of the selected rows or columns
+   -- Weight  - Weigth of the selected rows or columns. 0 means no resize,
+   --           2 means that selected rows or columns will grow twice the rate
+   --           as rows or columns with weight 1.
+   -- Uniform - Name of the uniform group to which rows or columns belong
+   -- Pad     - Padding added to the largest widget in rows or columns
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Column_Options is record
       MinSize: Pixel_Data;
       Weight: Extended_Natural;
       Uniform: Tcl_String;
       Pad: Pixel_Data;
    end record;
+   -- ****
 
+   -- ****t* Grid/Grid.Result_Array
+   -- FUNCTION
+   -- Array used mostly as a return value for some functions
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Result_Array is array(1 .. 2) of Extended_Natural;
+   -- ****
 
    procedure Add
      (Widget: Tk_Widget;
