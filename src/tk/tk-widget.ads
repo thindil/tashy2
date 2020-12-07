@@ -22,7 +22,7 @@ with Tcl.Strings; use Tcl.Strings;
 package Tk.Widget is
 -- ****
 
-   -- ****s* Widget/Widget.Tk_Widget
+   -- ****t* Widget/Widget.Tk_Widget
    -- FUNCTION
    -- The identifier of the Tk Widget
    -- HISTORY
