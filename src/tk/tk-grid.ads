@@ -92,7 +92,8 @@ package Tk.Grid is
    -- FUNCTION
    -- Add the selected Tk_Widget to the grid geometry manager
    -- PARAMETERS
-   -- Widget  - Tk_Widget which will be added to the grid
+   -- Widget  - Tk_Widget which will be added to the grid. Must be existing
+   --           widget.
    -- Options - Grid_Options for the selected widget. Can be empty. Default
    --           value is empty
    -- HISTORY
@@ -139,8 +140,9 @@ package Tk.Grid is
       -- Set how to place the grid withing the master when no row or column
       -- has any weight.
       -- PARAMETERS
-      -- Master        - Tk_Widget which is master widget for the grid
-      -- New_Direction - New direction for the anchor
+      -- Master        - Tk_Widget which is master widget for the grid. Must
+      --                 be existing widget
+      -- New_Direction - New direction for the anchor. Cannot be set to NONE.
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -159,7 +161,7 @@ package Tk.Grid is
       -- FUNCTION
       -- Get the current anchor value for the selected grid geometry manager
       -- PARAMETERS
-      -- Master - Tk_Widget in which the grid is
+      -- Master - Tk_Widget in which the grid is. Must be existing widget
       -- RESULT
       -- Direction_Type with value of current the grid anchor
       -- EXAMPLE
