@@ -88,15 +88,47 @@ package Tk.Grid is
    type Result_Array is array(1 .. 2) of Extended_Natural;
    -- ****
 
+   -- ****f* Grid/Grid.Add_(single_widget)
+   -- FUNCTION
+   -- Add the selected Tk_Widget to the grid geometry manager
+   -- PARAMETERS
+   -- Widget  - Tk_Widget which will be added to the grid
+   -- Options - Grid_Options for the selected widget. Can be empty. Default
+   --           value is empty
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Add My_Label widget to the grid which will be occupy two rows
+   -- Add(My_Label, (RowSpan => 2, others => <>));
+   -- SEE ALSO
+   -- Grid.Add_(many_widgets)
+   -- SOURCE
    procedure Add
      (Widget: Tk_Widget;
       Options: Grid_Options := Grid_Options'(others => <>)) with
       Pre => Widget /= Null_Widget;
+      -- ****
 
+      -- ****f* Grid/Grid.Add_(many_widget)
+      -- FUNCTION
+      -- Add the selected Tk_Widgets to the grid geometry manager
+      -- PARAMETERS
+      -- Widgets - The array of Tk_Widgets which will be added to the grid
+      -- Options - Grid_Options for the selected widgets. Can be empty. Default
+      --           value is empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Add My_Label and My_Button widgets to the grid
+      -- Add((My_Label, My_Button));
+      -- SEE ALSO
+      -- Grid.Add_(single_widgets)
+      -- SOURCE
    procedure Add
      (Widgets: Widgets_Array;
       Options: Grid_Options := Grid_Options'(others => <>)) with
       Pre => Widgets'Length > 0;
+      -- ****
 
    procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) with
       Pre => Master /= Null_Widget and New_Direction /= NONE;
