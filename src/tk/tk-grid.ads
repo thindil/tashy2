@@ -102,6 +102,8 @@ package Tk.Grid is
    -- Add(My_Label, (RowSpan => 2, others => <>));
    -- SEE ALSO
    -- Grid.Add_(many_widgets)
+   -- COMMANDS
+   -- grid slave ?options?
    -- SOURCE
    procedure Add
      (Widget: Tk_Widget;
@@ -123,6 +125,8 @@ package Tk.Grid is
       -- Add((My_Label, My_Button));
       -- SEE ALSO
       -- Grid.Add_(single_widgets)
+      -- COMMANDS
+      -- grid slave ?slave ...? ?options?
       -- SOURCE
    procedure Add
      (Widgets: Widgets_Array;
@@ -144,6 +148,8 @@ package Tk.Grid is
       -- Anchor(My_Frame, W);
       -- SEE ALSO
       -- Grid.Anchor_(function)
+      -- COMMANDS
+      -- grid anchor master new_direction
       -- SOURCE
    procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) with
       Pre => Master /= Null_Widget and New_Direction /= NONE;
@@ -161,6 +167,8 @@ package Tk.Grid is
       -- Anchor(My_Frame);
       -- SEE ALSO
       -- Grid.Anchor_(procedure)
+      -- COMMANDS
+      -- grid anchor master
       -- SOURCE
    function Anchor(Master: Tk_Widget) return Directions_Type with
       Pre => Master /= Null_Widget;
