@@ -130,11 +130,41 @@ package Tk.Grid is
       Pre => Widgets'Length > 0;
       -- ****
 
+      -- ****f* Grid/Grid.Anchor_(procedure)
+      -- FUNCTION
+      -- Set how to place the grid withing the master when no row or column
+      -- has any weight.
+      -- PARAMETERS
+      -- Master        - Tk_Widget which is master widget for the grid
+      -- New_Direction - New direction for the anchor
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set anchor of grid in My_Frame widget to west
+      -- Anchor(My_Frame, W);
+      -- SEE ALSO
+      -- Grid.Anchor_(function)
+      -- SOURCE
    procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) with
       Pre => Master /= Null_Widget and New_Direction /= NONE;
+      -- ****
 
+      -- ****f* Grid/Grid.Anchor_(function)
+      -- FUNCTION
+      -- Get the current anchor value for the selected grid geometry manager
+      -- PARAMETERS
+      -- Master - Tk_Widget in which the grid is
+      -- RESULT
+      -- Direction_Type with value of current the grid anchor
+      -- EXAMPLE
+      -- -- Get anchor of grid in My_Frame widget to west
+      -- Anchor(My_Frame);
+      -- SEE ALSO
+      -- Grid.Anchor_(procedure)
+      -- SOURCE
    function Anchor(Master: Tk_Widget) return Directions_Type with
       Pre => Master /= Null_Widget;
+      -- ****
 
    function BBox
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
