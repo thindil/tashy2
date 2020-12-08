@@ -174,10 +174,43 @@ package Tk.Grid is
       Pre => Master /= Null_Widget;
       -- ****
 
+      -- ****f* Tk.Grid/BBox
+      -- FUNCTION
+      -- Get the bounding box of the selected grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- Column  - The starting column for the bounding box of the grid.
+      --           Default value is -1 (as empty). If Column has other than
+      --           default value, Row must be specified too
+      -- Row     - The starting row for the bounding box of the grid. Default
+      --           value is -1 (as empty). If Row has other than default
+      --           value, Column must be specified too
+      -- Column2 - The ending column for the bounding box of the grid. Default
+      --           value is -1 (as empty). If Column2 has other than default
+      --           value, Column, Row and Row2 must be specified too
+      -- Row2    - The ending column for the bounding box of the grid. Default
+      --           value is -1 (as empty). If Row2 has other than default
+      --           value, Column, Row and Column2 must be specified too
+      -- RESULT
+      -- BBox_Array with 4 values. The first two are staring point (x, y) of
+      -- the bounding box, the third is width and the fourth is height of the
+      -- bounding box. If Column and Row are specified, then return the
+      -- bouding box of the selected cell. If Column, Row, Column2 and Row2
+      -- are specified then return the bouding box of the selected columns and
+      -- rows.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the bounding box of grid in My_Frame widget
+      -- Bounding_Box: constant BBox_Array := BBox(My_Frame);
+      -- COMMANDS
+      -- grid bbox master ?column row? ?column2 row2?
+      -- SOURCE
    function BBox
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return BBox_Array with
       Pre => Master /= Null_Widget;
+      -- ****
 
    procedure Column_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
