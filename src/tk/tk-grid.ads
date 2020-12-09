@@ -379,7 +379,7 @@ package Tk.Grid is
       Pre => Widget /= Null_Widget and Options /= Grid_Options'(others => <>);
       -- ****
 
-      -- ****f* Grid/Grid.Configure_(many_widget)
+      -- ****f* Grid/Grid.Configure_(many_widgets)
       -- FUNCTION
       -- Configure the selected widgets in the grid
       -- PARAMETERS
@@ -399,11 +399,43 @@ package Tk.Grid is
       Pre => Widgets'Length > 0 and Options /= Grid_Options'(others => <>);
       -- ****
 
+      -- ****f* Grid/Grid.Forget_(single_widget)
+      -- FUNCTION
+      -- Remove the selected widget from the grid and unmap its window. The
+      -- grid configuration for the widget will be removed too.
+      -- PARAMETERS
+      -- Widget - Tk_Widget to remove. Must be existing widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Remove My_Label from grid
+      -- Forget(My_Label);
+      -- SEE ALSO
+      -- Grid.Forget_(many_widgets), Grid.Remove_(single_widget),
+      -- Grid.Remove_(many_widgets)
+      -- SOURCE
    procedure Forget(Widget: Tk_Widget) with
       Pre => Widget /= Null_Widget;
+      -- ****
 
+      -- ****f* Grid/Grid.Forget_(many_widgets)
+      -- FUNCTION
+      -- Remove the selected widgets from the grid and unmap its window. The
+      -- grid configuration for the widget will be removed too.
+      -- PARAMETERS
+      -- Widgets - Widgets_Array of widgets to remove. All widgets must exist
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Remove My_Label and My_Button from grid
+      -- Forget((My_Label, My_Button));
+      -- SEE ALSO
+      -- Grid.Forget_(single_widget), Grid.Remove_(single_widget),
+      -- Grid.Remove_(many_widgets)
+      -- SOURCE
    procedure Forget(Widgets: Widgets_Array) with
       Pre => Widgets'Length > 0;
+      -- ****
 
    function Info(Widget: Tk_Widget) return Grid_Options with
       Pre => Widget /= Null_Widget;
