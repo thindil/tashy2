@@ -214,20 +214,77 @@ package Tk.Grid is
       Pre => Master /= Null_Widget;
       -- ****
 
+      -- ****f* Grid/Grid.Column_Configure_(child_name)
+      -- FUNCTION
+      -- Configure the selected column in the selected grid
+      -- PARAMETERS
+      -- Master     - Tk_Widget in which the grid is. Must be existing widget
+      -- Child_Name - The name of the child widget which column will be
+      --              configured. Cannot be empty
+      -- Options    - Column_Options to set. Cannot be empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the weight of grid in My_Frame where .myframe.mybutton is to 1
+      -- Column_Configure(My_Frame, To_Tcl_String(".myframe.mybutton"), (Weight => 1, others => <>));
+      -- COMMANDS
+      -- grid columnconfigure master child_name options
+      -- SEE ALSO
+      -- Grid.Column_Configure_(child), Grid.Column_Configure_(column_number)
+      -- SOURCE
    procedure Column_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
       Pre => Master /= Null_Widget and Length(Child_Name) > 0 and
       Options /= Column_Options'(others => <>);
+      -- ****
 
+      -- ****f* Grid/Grid.Column_Configure_(child)
+      -- FUNCTION
+      -- Configure the selected column in the selected grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- Child   - The child widget which column will be configured. Must be
+      --           existing widget.
+      -- Options - Column_Options to set. Cannot be empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the weight of grid in My_Frame where My_Button2 is to 2
+      -- Column_Configure(My_Frame, My_Button2, (Weight => 2, others => <>));
+      -- COMMANDS
+      -- grid columnconfigure master child options
+      -- SEE ALSO
+      -- Grid.Column_Configure_(child_name), Grid.Column_Configure_(column_number)
+      -- SOURCE
    procedure Column_Configure
      (Master, Child: Tk_Widget; Options: Column_Options) with
       Pre => Master /= Null_Widget and Child /= Null_Widget and
       Options /= Column_Options'(others => <>);
+      -- ****
 
+      -- ****f* Grid/Grid.Column_Configure_(column_number)
+      -- FUNCTION
+      -- Configure the selected column in the selected grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- Column  - The number of column which will be configured. Columns
+      --           indexes starts from 0
+      -- Options - Column_Options to set. Cannot be empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the weight of the third column in grid in My_Frame to 3
+      -- Column_Configure(My_Frame, 2, (Weight => 3, others => <>));
+      -- COMMANDS
+      -- grid columnconfigure master column options
+      -- SEE ALSO
+      -- Grid.Column_Configure_(child_name), Grid.Column_Configure_(child)
+      -- SOURCE
    procedure Column_Configure
      (Master: Tk_Widget; Column: Natural; Options: Column_Options) with
       Pre => Master /= Null_Widget and
       Options /= Column_Options'(others => <>);
+      -- ****
 
    function Get_Column_Options
      (Master: Tk_Widget; Index: Tcl_String) return Column_Options with
