@@ -359,11 +359,45 @@ package Tk.Grid is
       Pre => Master /= Null_Widget;
       -- ****
 
+      -- ****f* Grid/Grid.Configure_(single_widget)
+      -- FUNCTION
+      -- Configure the selected widget in the grid
+      -- PARAMETERS
+      -- Widget  - Tk_Widget which will be configured. Must be existing widget
+      -- Options - Grid_Options to set. Cannot be empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Move My_Label widget to the second row
+      -- Configure(My_Label, (Row => 1, others => <>));
+      -- COMMANDS
+      -- grid configure widget options
+      -- SEE ALSO
+      -- Grid.Configure_(many_widgets)
+      -- SOURCE
    procedure Configure(Widget: Tk_Widget; Options: Grid_Options) with
       Pre => Widget /= Null_Widget and Options /= Grid_Options'(others => <>);
+      -- ****
 
+      -- ****f* Grid/Grid.Configure_(many_widget)
+      -- FUNCTION
+      -- Configure the selected widgets in the grid
+      -- PARAMETERS
+      -- Widget  - Widgets_Array with widgets to configure. All widgets must be exist
+      -- Options - Grid_Options to set. Cannot be empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Move My_Label and My_Button widgets to the second row
+      -- Configure((My_Label, My_Button), (Row => 1, others => <>));
+      -- COMMANDS
+      -- grid configure widgets options
+      -- SEE ALSO
+      -- Grid.Configure_(single_widget)
+      -- SOURCE
    procedure Configure(Widgets: Widgets_Array; Options: Grid_Options) with
       Pre => Widgets'Length > 0 and Options /= Grid_Options'(others => <>);
+      -- ****
 
    procedure Forget(Widget: Tk_Widget) with
       Pre => Widget /= Null_Widget;
