@@ -263,13 +263,13 @@ package body Tk.Grid is
    end Get_Value;
 
    function Get_Column_Options
-     (Master: Tk_Widget; Index: Tcl_String) return Column_Options is
+     (Master: Tk_Widget; Child_Name: Tcl_String) return Column_Options is
    begin
       return Options: Column_Options do
-         Options.MinSize := Get_Value(Master, "minsize", "column", Index);
-         Options.Weight := Get_Value(Master, "weight", "column", Index);
-         Options.Uniform := Get_Value(Master, "uniform", "column", Index);
-         Options.Pad := Get_Value(Master, "pad", "column", Index);
+         Options.MinSize := Get_Value(Master, "minsize", "column", Child_Name);
+         Options.Weight := Get_Value(Master, "weight", "column", Child_Name);
+         Options.Uniform := Get_Value(Master, "uniform", "column", Child_Name);
+         Options.Pad := Get_Value(Master, "pad", "column", Child_Name);
       end return;
    end Get_Column_Options;
 
