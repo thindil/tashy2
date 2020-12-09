@@ -287,8 +287,8 @@ package Tk.Grid is
       -- ****
 
    function Get_Column_Options
-     (Master: Tk_Widget; Index: Tcl_String) return Column_Options with
-      Pre => Master /= Null_Widget and Length(Index) > 0;
+     (Master: Tk_Widget; Child_Name: Tcl_String) return Column_Options with
+      Pre => Master /= Null_Widget and Length(Child_Name) > 0;
 
    function Get_Column_Options
      (Master, Child: Tk_Widget) return Column_Options with
