@@ -437,8 +437,23 @@ package Tk.Grid is
       Pre => Widgets'Length > 0;
       -- ****
 
+      -- ****f* Grid/Grid.Info
+      -- FUNCTION
+      -- Get the grid configuration options for the selected widget
+      -- PARAMETERS
+      -- Widget - Tk_Widget which grid configuration options will be get.
+      --          Must be existing widget
+      -- RESULT
+      -- Grid_Options with all grid options for the selected widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the grid options for the My_Label widget
+      -- Options: constant String := Info(My_Label);
+      -- SOURCE
    function Info(Widget: Tk_Widget) return Grid_Options with
       Pre => Widget /= Null_Widget;
+      -- ****
 
    function Location
      (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array with
