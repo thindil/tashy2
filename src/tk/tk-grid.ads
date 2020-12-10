@@ -484,11 +484,43 @@ package Tk.Grid is
       Pre => Master /= Null_Widget and X.Value > -1.0 and Y.Value > -1.0;
       -- ****
 
+      -- ****f* Tk.Grid/Propagate_(procedure)
+      -- FUNCTION
+      -- Set the propagation state for the selected grid in Master widget
+      -- PARAMETERS
+      -- Master - Tk_Widget in which the grid is. Must be existing widget
+      -- Enable - If true, enable propagation, otherwise disable it
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Disable propagation in My_Frame window grid
+      -- Propagate(My_Frame, False);
+      -- SEE ALSO
+      -- Propagate_(function)
+      -- SOURCE
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) with
       Pre => Master /= Null_Widget;
+      -- ****
 
+      -- ****f* Tk.Grid/Propagate_(function)
+      -- FUNCTION
+      -- Get the propagation state for the selected grid in Master widget
+      -- PARAMETERS
+      -- Master - Tk_Widget in which the grid is. Must be existing widget
+      -- RESULT
+      -- True if propagation is enabled for the grid, otherwise false. The
+      -- propagation is by default enabled.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the propagation state for My_Frame window grid
+      -- Is_Enabled: constant Boolean := Propagate(My_Frame);
+      -- SEE ALSO
+      -- Propagate_(procedure)
+      -- SOURCE
    function Propagate(Master: Tk_Widget) return Boolean with
       Pre => Master /= Null_Widget;
+      -- ****
 
    procedure Row_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
