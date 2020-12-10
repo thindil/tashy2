@@ -455,9 +455,34 @@ package Tk.Grid is
       Pre => Widget /= Null_Widget;
       -- ****
 
+      -- ****f* Grid/Grid.Location
+      -- FUNCTION
+      -- Get the column and row at the selected location in the selected
+      -- window
+      -- PARAMETERS
+      -- Master - Tk_Widget in which the grid is. Must be existing widget
+      -- X      - X coordinate of point relative to the Master window
+      -- Y      - Y coordinate of point relative to the Master window
+      -- RESULT
+      -- Result_Array with the first value as column number and the second
+      -- value as row number. If location is above, return -1 for row, if
+      -- to the left of grid, return -1 for column.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the column at point (10, 10) in My_Frame window grid
+      -- declare
+      --    Values: constant Result_Array := Location(My_Frame, (10, PIXEL), (10, PIXEL));
+      --    Column, Row: Extended_Natural;
+      -- begin
+      --    Column := Values(1);
+      --    Row := Values(2);
+      -- end;
+      -- SOURCE
    function Location
      (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array with
       Pre => Master /= Null_Widget and X.Value > -1.0 and Y.Value > -1.0;
+      -- ****
 
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) with
       Pre => Master /= Null_Widget;
