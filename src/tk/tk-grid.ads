@@ -522,20 +522,77 @@ package Tk.Grid is
       Pre => Master /= Null_Widget;
       -- ****
 
+      -- ****f* Grid/Grid.Row_Configure_(child_name)
+      -- FUNCTION
+      -- Configure the selected row in the selected grid
+      -- PARAMETERS
+      -- Master     - Tk_Widget in which the grid is. Must be existing widget
+      -- Child_Name - The name of the child widget which row will be
+      --              configured. Cannot be empty
+      -- Options    - Column_Options to set. Cannot be empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the weight of grid in My_Frame where .myframe.mybutton is to 1
+      -- Row_Configure(My_Frame, To_Tcl_String(".myframe.mybutton"), (Weight => 1, others => <>));
+      -- COMMANDS
+      -- grid rowconfigure master child_name options
+      -- SEE ALSO
+      -- Grid.Row_Configure_(child), Grid.Row_Configure_(row_number)
+      -- SOURCE
    procedure Row_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
       Pre => Master /= Null_Widget and Length(Child_Name) > 0 and
       Options /= Column_Options'(others => <>);
+      -- ****
 
+      -- ****f* Grid/Grid.Row_Configure_(child)
+      -- FUNCTION
+      -- Configure the selected row in the selected grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- Child   - The child widget which row will be configured. Must be
+      --           existing widget.
+      -- Options - Column_Options to set. Cannot be empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the weight of grid in My_Frame where My_Button2 is to 2
+      -- Row_Configure(My_Frame, My_Button2, (Weight => 2, others => <>));
+      -- COMMANDS
+      -- grid rowconfigure master child options
+      -- SEE ALSO
+      -- Grid.Row_Configure_(child_name), Grid.Row_Configure_(row_number)
+      -- SOURCE
    procedure Row_Configure
      (Master, Child: Tk_Widget; Options: Column_Options) with
       Pre => Master /= Null_Widget and Child /= Null_Widget and
       Options /= Column_Options'(others => <>);
+      -- ****
 
+      -- ****f* Grid/Grid.Row_Configure_(row_number)
+      -- FUNCTION
+      -- Configure the selected row in the selected grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- Row     - The number of row which will be configured. Rows
+      --           indexes starts from 0
+      -- Options - Column_Options to set. Cannot be empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the weight of the third row in grid in My_Frame to 3
+      -- Row_Configure(My_Frame, 2, (Weight => 3, others => <>));
+      -- COMMANDS
+      -- grid rowconfigure master row options
+      -- SEE ALSO
+      -- Grid.Row_Configure_(child_name), Grid.Row_Configure_(child)
+      -- SOURCE
    procedure Row_Configure
      (Master: Tk_Widget; Row: Natural; Options: Column_Options) with
       Pre => Master /= Null_Widget and
       Options /= Column_Options'(others => <>);
+      -- ****
 
    function Get_Row_Options
      (Master: Tk_Widget; Index: Tcl_String) return Column_Options with
