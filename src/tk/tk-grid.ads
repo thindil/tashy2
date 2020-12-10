@@ -104,7 +104,7 @@ package Tk.Grid is
    -- SEE ALSO
    -- Grid.Add_(many_widgets)
    -- COMMANDS
-   -- grid slave ?options?
+   -- grid widget ?options?
    -- SOURCE
    procedure Add
      (Widget: Tk_Widget;
@@ -127,7 +127,7 @@ package Tk.Grid is
       -- SEE ALSO
       -- Grid.Add_(single_widgets)
       -- COMMANDS
-      -- grid slave ?slave ...? ?options?
+      -- grid widget ?widget ...? ?options?
       -- SOURCE
    procedure Add
      (Widgets: Widgets_Array;
@@ -410,6 +410,8 @@ package Tk.Grid is
       -- EXAMPLE
       -- -- Remove My_Label from grid
       -- Forget(My_Label);
+      -- COMMANDS
+      -- grid forget widget
       -- SEE ALSO
       -- Grid.Forget_(many_widgets), Grid.Remove_(single_widget),
       -- Grid.Remove_(many_widgets)
@@ -429,6 +431,8 @@ package Tk.Grid is
       -- EXAMPLE
       -- -- Remove My_Label and My_Button from grid
       -- Forget((My_Label, My_Button));
+      -- COMMANDS
+      -- grid forget widgets
       -- SEE ALSO
       -- Grid.Forget_(single_widget), Grid.Remove_(single_widget),
       -- Grid.Remove_(many_widgets)
@@ -450,6 +454,8 @@ package Tk.Grid is
       -- EXAMPLE
       -- -- Get the grid options for the My_Label widget
       -- Options: constant String := Info(My_Label);
+      -- COMMANDS
+      -- grid info widget
       -- SOURCE
    function Info(Widget: Tk_Widget) return Grid_Options with
       Pre => Widget /= Null_Widget;
@@ -478,6 +484,8 @@ package Tk.Grid is
       --    Column := Values(1);
       --    Row := Values(2);
       -- end;
+      -- COMMANDS
+      -- grid location master x y
       -- SOURCE
    function Location
      (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array with
@@ -497,6 +505,8 @@ package Tk.Grid is
       -- Propagate(My_Frame, False);
       -- SEE ALSO
       -- Propagate_(function)
+      -- COMMANDS
+      -- grid propagate master boolean
       -- SOURCE
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) with
       Pre => Master /= Null_Widget;
@@ -517,6 +527,8 @@ package Tk.Grid is
       -- Is_Enabled: constant Boolean := Propagate(My_Frame);
       -- SEE ALSO
       -- Propagate_(procedure)
+      -- COMMANDS
+      -- grid propagate master
       -- SOURCE
    function Propagate(Master: Tk_Widget) return Boolean with
       Pre => Master /= Null_Widget;
