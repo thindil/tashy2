@@ -606,17 +606,78 @@ package Tk.Grid is
       Options /= Column_Options'(others => <>);
       -- ****
 
+      -- ****f* Grid/Grid.Get_Row_Options_(child_name)
+      -- FUNCTION
+      -- Get the configuration options of the selected row in the selected grid
+      -- PARAMETERS
+      -- Master     - Tk_Widget in which the grid is. Must be existing widget
+      -- Child_Name - The name of the child widget which row configuration
+      --              will be get. If set to "all", get configuration for all
+      --              rows. Cannot be empty
+      -- RESULT
+      -- Column_Options record with all configuration options values
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the configuration options of .myframe.mybutton in My_Frame grid
+      -- Options: constant Column_Options := Get_Row_Options(My_Frame, To_Tcl_String(".myframe.mybutton"));
+      -- COMMANDS
+      -- grid rowconfigure master child_name
+      -- SEE ALSO
+      -- Grid.Get_Row_Options_(child), Grid.Get_Row_Options_(row_number)
+      -- SOURCE
    function Get_Row_Options
      (Master: Tk_Widget; Index: Tcl_String) return Column_Options with
       Pre => Master /= Null_Widget and Length(Index) > 0;
+      -- ****
 
+      -- ****f* Grid/Grid.Get_Row_Options_(child)
+      -- FUNCTION
+      -- Get the configuration options of the selected row in the selected grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- Child   - The child widget which row options will be get. Must be
+      --           existing widget.
+      -- RESULT
+      -- Column_Options record with all configuration options values
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the configuration options of My_Button in My_Frame grid
+      -- Options: constant Column_Options := Get_Row_Options(My_Frame, My_Button);
+      -- COMMANDS
+      -- grid rowconfigure master child
+      -- SEE ALSO
+      -- Grid.Get_Row_Options_(child_name), Grid.Get_Row_Options_(row_number)
+      -- SOURCE
    function Get_Row_Options
      (Master, Child: Tk_Widget) return Column_Options with
       Pre => Master /= Null_Widget and Child /= Null_Widget;
+      -- ****
 
+      -- ****f* Grid/Grid.Get_Row_Options_(row_number)
+      -- FUNCTION
+      -- Get the configuration options of the selected row in the selected grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- Row     - The number of row which options will be get. Rows
+      --           indexes starts from 0
+      -- RESULT
+      -- Column_Options record with all configuration options values
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the configuration options of the second row in My_Frame grid
+      -- Options: constant Column_Options := Get_Row_Options(My_Frame, 1);
+      -- COMMANDS
+      -- grid rowconfigure master row
+      -- SEE ALSO
+      -- Grid.Get_Row_Options_(child_name), Grid.Get_Row_Options_(child)
+      -- SOURCE
    function Get_Row_Options
      (Master: Tk_Widget; Row: Natural) return Column_Options with
       Pre => Master /= Null_Widget;
+      -- ****
 
    procedure Remove(Widget: Tk_Widget) with
       Pre => Widget /= Null_Widget;
