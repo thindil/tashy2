@@ -15,7 +15,10 @@ TASHY2 is short from Tcl Ada SHell Younger version 2. It is derivate of
 
 **IMPORTANT:** TASHY2 is not compatible with TASHY. At this moment it is at
 very early stage of the development, pre-alpha stage. Also, this is now
-mostly a playground thus don't expect too much soon :)
+mostly a playground thus don't expect too much soon :) If you read this
+file on Github: **please don't send pull requests here**. All will be
+automatically closed. Any code propositions should go to the [Fossil](https://www.laeran.pl/repositories/tashy2)
+repository.
 
 TASHY2 is the Ada 2012 binding to Tcl/Tk. It allows using Tcl code in Ada code
 and vice versa. Included bindings:
