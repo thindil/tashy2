@@ -1,15 +1,16 @@
 ## Bugs reporting
 
 Bugs are not only problems or the library crashes, but also typos. If you
-find any bug in the library, please report it at
-<https://github.com/thindil/tashy2/issues> or if you prefer, on mail
-<thindil@laeran.pl>
+found any bug in the library, please report it at <https://www.laeran.pl/repositories/tashy2/ticket>
 
 ### Some general hints about reporting bugs
 
-- In "Title" field try to write short but not too general description of
-  problem. Good example: "The library crash when opening directory". Bad
-  example: "The library crashes often."
+- In "One-line summary" field try to write short but not too general
+  description of problem. Good example: "The library crash when opening
+  directory". Bad example: "The library crashes often."
+- Type: Select the type of ticket which in your opinion fits it best.
+- Version: The version of the library. For the development version, please
+  use word `trunk`
 - In body/comment field try to write that much information about problem as
   possible. In most cases more information is better than less. General rule
   of good problem report is give enough information which allow reproducing
@@ -18,7 +19,10 @@ find any bug in the library, please report it at
 
 ### Example of bug report:
 
-Title: "The library crashed when trying to run Tcl script"
+One-line summary: "The library crashed when trying to run Tcl script"
+
+Type: Code_Defect
+Version: trunk
 
 Body:
 
@@ -28,10 +32,10 @@ Body:
 ## Features propositions
 
 If you want to talk/propose changes in any existing the library feature, feel
-free to contact me via issues tracker or mail (addresses of both you can find
-at top of this file). General rule about propositions is same as for bugs
-reports - please, try to write that much information as possible. This help us
-all better understand purpose of your changes.
+free to contact me via [project page](https://www.laeran.pl/repositories/tashy2/).
+General rule about propositions is same as for bugs reports - please, try to
+write that much information as possible. This help us all better understand
+purpose of your changes.
 
 ## Code propositions
 
@@ -39,11 +43,10 @@ all better understand purpose of your changes.
 
 If you want to start help in the library development, please consider starts
 from something easy like fixing bugs. Before you been want to add new feature
-to the library, please contact with me by issues tracker or mail, addresses
-of both are at top of this file. Same as with features proposition - your code
-may "collide" with my work and it this moment you may just lose time by
-working on it. So it is better that we first discuss your proposition. In any
-other case, fell free to fix my code.
+to the library, please contact with me by [project page](https://www.laeran.pl/repositories/tashy2/).
+Same as with features proposition - your code may "collide" with my work and
+it this moment you may just lose time by working on it. So it is better that
+we first discuss your proposition. In any other case, fell free to fix my code.
 
 ### Coding standard
 
@@ -88,7 +91,8 @@ How to generate the code documentation is described in main *README.md* file.
 
 ### Code submission
 
-Preferred way to submit your code is clone repository and then open new pull
-proposal at <https://github.com/thindil/tashy2/compare>. But if you prefer,
-you can send your code by mail too (email address is at top of this file). In
-that situation, please append to your mail patch file with changes.
+Preferred way to submit your code is to use [tickets](https://www.laeran.pl/repositories/tashy2/ticket)
+on the project page. Please attach to that ticket file with diff changes,
+the best if done with command `fossil diff`. But any other diff program will
+works. In that situation, please add information which program was used to
+create the diff file.
