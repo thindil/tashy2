@@ -24,9 +24,9 @@ TASHY2 is the Ada 2012 binding to Tcl/Tk. It allows using Tcl code in Ada code
 and vice versa. Included bindings:
 
 * Tcl - It is the base binding. Allow use Tcl scripts in the Ada code.
-  If you need any binding here, please [open an issue](https://github.com/thindil/tashy2/issues/new) with it.
+  If you need any binding here, please [open a ticket](https://www.laeran.pl/repositories/tashy2/ticket) with it.
 * Tk - Requires Tcl binding. Allows use Tk GUI in the Ada code. If you need
-  any binding here, please [open an issue](https://github.com/thindil/tashy2/issues/new) with it.
+  any binding here, please [open a ticket](https://www.laeran.pl/repositories/tashy2/ticket) with it.
 * Tklib - Requires Tcl and Tk bindings. Allows use additional packages for
   Tk GUI in the Ada code. Not started yet.
 * Msgcat - Requires Tcl binding. Allows creating multi-language text messages.
@@ -112,9 +112,7 @@ TASHY2 versioning is in X.Y.Z schema where:
 
 ## Documentation
 
-For the latest release, the library code documentation is available online at:
-
-https://thindil.github.io/tashy2/
+The code documentation (for released versions) is available at the project page.
 
 ### Documentation sections
 
@@ -153,10 +151,6 @@ ideas propositions, code conduct, etc), see [CONTRIBUTING.md](CONTRIBUTING.md)
 ## Licenses
 
 TASHY2 is available under [Apache 2.0](LICENSE-2.0.txt) license
-
-## TODO
-
-The whole TODO list you can find [here](https://github.com/thindil/tashy2/projects/1)
 
 ----
 
