@@ -1,17 +1,17 @@
 ## Bugs reporting
 
 Bugs are not only problems or the library crashes, but also typos. If you
-found any bug in the library, please report it at <https://www.laeran.pl/repositories/tashy2/ticket>
+found any bug in the library, please report it at <https://www.laeran.pl/repositories/tashy2/ticket>.
 
 ### Some general hints about reporting bugs
 
-- In "One-line summary" field try to write short but not too general
+* In "One-line summary" field try to write short but not too general
   description of problem. Good example: "The library crash when opening
   directory". Bad example: "The library crashes often."
-- Type: Select the type of ticket which in your opinion fits it best.
-- Version: The version of the library. For the development version, please
+* Type: Select the type of ticket which in your opinion fits it best.
+* Version: The version of the library. For the development version, please
   use word `trunk`
-- In body/comment field try to write that much information about problem as
+* In body/comment field try to write that much information about problem as
   possible. In most cases more information is better than less. General rule
   of good problem report is give enough information which allow reproducing
   problem by other people. It may be in form of steps which are needed for
@@ -33,7 +33,7 @@ Body:
 
 If you want to talk/propose changes in any existing the library feature, feel
 free to contact me via [project page](https://www.laeran.pl/repositories/tashy2/).
-General rule about propositions is same as for bugs reports - please, try to
+General rule about propositions is same as for bugs reports: please, try to
 write that much information as possible. This help us all better understand
 purpose of your changes.
 
@@ -44,7 +44,7 @@ purpose of your changes.
 If you want to start help in the library development, please consider starts
 from something easy like fixing bugs. Before you been want to add new feature
 to the library, please contact with me by [project page](https://www.laeran.pl/repositories/tashy2/).
-Same as with features proposition - your code may "collide" with my work and
+Same as with features proposition: your code may "collide" with my work and
 it this moment you may just lose time by working on it. So it is better that
 we first discuss your proposition. In any other case, fell free to fix my code.
 
@@ -94,5 +94,5 @@ How to generate the code documentation is described in main *README.md* file.
 Preferred way to submit your code is to use [tickets](https://www.laeran.pl/repositories/tashy2/ticket)
 on the project page. Please attach to that ticket file with diff changes,
 the best if done with command `fossil diff`. But any other diff program will
-works. In that situation, please add information which program was used to
+work. In that situation, please add information which program was used to
 create the diff file.
