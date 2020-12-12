@@ -679,11 +679,51 @@ package Tk.Grid is
       Pre => Master /= Null_Widget;
       -- ****
 
+      -- ****f* Grid/Grid.Remove_(single_widget)
+      -- FUNCTION
+      -- Remove the selected widget from the grid and unmap its window. The
+      -- grid configuration for the widget will not be removed thus if the
+      -- widget will be added to the same grid again, it will be using
+      -- the previous configuration instead of default.
+      -- PARAMETERS
+      -- Widget - Tk_Widget to remove. Must be existing widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Remove My_Label from grid
+      -- Remove(My_Label);
+      -- COMMANDS
+      -- grid remove widget
+      -- SEE ALSO
+      -- Grid.Forget_(single_widget), Grid.Forget_(many_widget2),
+      -- Grid.Remove_(many_widgets)
+      -- SOURCE
    procedure Remove(Widget: Tk_Widget) with
       Pre => Widget /= Null_Widget;
+      -- ****
 
+      -- ****f* Grid/Grid.Remove_(many_widgets)
+      -- FUNCTION
+      -- Remove the selected widgets from the grid and unmap their windows.
+      -- The grid configuration for the widgets will not be removed thus if
+      -- the widgets will be added to the same grid again, they will be using
+      -- the previous configuration instead of default.
+      -- PARAMETERS
+      -- Widgets - Widgets_Array of widgets to remove. All widgets must exist
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Remove My_Label and My_Button from grid
+      -- Remove((My_Label, My_Button));
+      -- COMMANDS
+      -- grid remove widgets
+      -- SEE ALSO
+      -- Grid.Forget_(single_widget), Grid.Forget_(many_widgets),
+      -- Grid.Remove_(single_widget)
+      -- SOURCE
    procedure Remove(Widgets: Widgets_Array) with
       Pre => Widgets'Length > 0;
+      -- ****
 
    function Size(Master: Tk_Widget) return Result_Array with
       Pre => Master /= Null_Widget;
