@@ -745,9 +745,29 @@ package Tk.Grid is
       Pre => Master /= Null_Widget;
       -- ****
 
+      -- ****f* Grid/Grid.Slaves
+      -- FUNCTION
+      -- Get the widgets which are in Master grid
+      -- PARAMETERS
+      -- Master - Tk_Widget in which the grid is. Must be existing widget
+      -- Row    - The row number from which widgets will be taken. Default
+      --          value is -1 (take widgets from all rows).
+      -- Column - The column number from which widgets will be taken. Default
+      --          value is -1 (take widgets from all columns).
+      -- RESULT
+      -- WidgetS_Array with Tk_Widgets from the Master grid
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get all widgets from the grid in My_Frame widget
+      -- Widgets: constant Widgets_Array := Slaves(My_Frame);
+      -- COMMANDS
+      -- grid slaves master ?-row row? ?-column column?
+      -- SOURCE
    function Slaves
      (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
       return Widgets_Array with
       Pre => Master /= Null_Widget;
+      -- ****
 
 end Tk.Grid;
