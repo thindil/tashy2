@@ -725,8 +725,25 @@ package Tk.Grid is
       Pre => Widgets'Length > 0;
       -- ****
 
+      -- ****f* Grid/Grid.Size
+      -- FUNCTION
+      -- Get the size in columns then rows of the selected grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- RESULT
+      -- The Result_Array with two values: the first is amount of columns in
+      -- the grid, the second is amount of rows in the grid
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the size of the grid in My_Frame widget
+      -- Grid_Size: constant Result_Array := Size(My_Frame);
+      -- COMMANDS
+      -- grid size master
+      -- SOURCE
    function Size(Master: Tk_Widget) return Result_Array with
       Pre => Master /= Null_Widget;
+      -- ****
 
    function Slaves
      (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
