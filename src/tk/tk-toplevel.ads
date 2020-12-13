@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
 package Tk.TopLevel is
@@ -20,6 +21,11 @@ package Tk.TopLevel is
 
    type TopLevel_Options is new Widget_Options with record
       Border_Width: Pixel_Data;
+      Highlight_Background: Tcl_String;
+      Highlight_Color: Tcl_String;
+      Highlight_Thickness: Pixel_Data;
+      PadX: Pixel_Data;
+      PadY: Pixel_Data;
       Relief: Relief_Type;
    end record;
 
