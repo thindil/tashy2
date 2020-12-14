@@ -362,7 +362,39 @@ package Tk.Widget is
      (Name: String; Value: Extended_Boolean;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0;
-   -- ****
+      -- ****
+
+      -- ****f* Widget/Widget.Option_Image_(Integer)
+      -- FUNCTION
+      -- Allow to convert the selected widget's option to Unbounded_String
+      -- which can be used in creating or configuring the widget.
+      -- PARAMETERS
+      -- Name           - The name of the selected widget's option
+      -- Value          - The value of the selected widget's option which will
+      --                  be converted to Unbounded_String
+      -- Options_String - String with currently set options for the selected
+      --                  widget
+      -- Base           - Type of result number, 10 for decimal, 16 for
+      --                  hexadecimal
+      -- OUTPUT
+      -- If Value has default value for the selected type, then return
+      -- unmodified Options_String. Otherwise append the proper Tk
+      -- configuration option to the Options_String.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the option use to hexadecimal 1 in My_Options string
+      -- declare
+      --    My_Options: Unbounded_String;
+      -- begin
+      --    Option_Image("use", 1, My_Options, 16);
+      -- end;
+      -- SOURCE
+   procedure Option_Image
+     (Name: String; Value: Integer;
+      Options_String: in out Unbounded_String; Base: Positive := 10) with
+      Pre => Name'Length > 0 and Base in 10 | 16;
+      -- ****
 
    -- ****f* Widget/Widget.Option_Value
    -- FUNCTION

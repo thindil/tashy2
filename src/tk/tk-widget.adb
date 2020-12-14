@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Interfaces.C; use Interfaces.C;
@@ -203,6 +204,26 @@ package body Tk.Widget is
          Append(Options_String, " -" & Name & " 0");
       elsif Value = TRUE then
          Append(Options_String, " -" & Name & " 1");
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Integer;
+     Options_String: in out Unbounded_String; Base: Positive := 10) is
+     Hex_Value: String(1 .. 32);
+   begin
+      if Value /= 0 then
+         Append
+           (Options_String, " -" & Name);
+         case Base is
+            when 10 =>
+               Append(Options_String, Integer'Image(Value));
+            when 16 =>
+               Put(Hex_Value, Value, 16);
+               Append(Options_String, " 0x" & Trim(Hex_Value, Both));
+            when others =>
+               null;
+         end case;
       end if;
    end Option_Image;
 
