@@ -20,13 +20,18 @@ package Tk.TopLevel is
    type Tk_TopLevel is new Tk_Widget;
 
    type TopLevel_Options is new Widget_Options with record
+      Background: Tcl_String;
       Border_Width: Pixel_Data;
+      Class: Tcl_String;
+      Height: Pixel_Data;
       Highlight_Background: Tcl_String;
       Highlight_Color: Tcl_String;
       Highlight_Thickness: Pixel_Data;
+      Menu: Tk_Widget;
       PadX: Pixel_Data;
       PadY: Pixel_Data;
       Relief: Relief_Type;
+      Width: Pixel_Data;
    end record;
 
    function TopLevel_New
