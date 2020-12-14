@@ -22,7 +22,6 @@ package Tk.TopLevel is
    type TopLevel_Options is new Widget_Options with record
       Background: Tcl_String;
       Border_Width: Pixel_Data;
-      Class: Tcl_String;
       Height: Pixel_Data;
       Highlight_Background: Tcl_String;
       Highlight_Color: Tcl_String;
@@ -34,14 +33,23 @@ package Tk.TopLevel is
       Width: Pixel_Data;
    end record;
 
+   type TopLevel_Create_Options is new TopLevel_Options with record
+      Class: Tcl_String;
+      Color_Map: Tcl_String;
+      Container: Extended_Boolean;
+      Screen: Tcl_String;
+      Use_Container: Integer;
+      Visual: Tcl_String;
+   end record;
+
    function TopLevel_New
-     (Path_Name: String; Options: TopLevel_Options;
+     (Path_Name: String; Options: TopLevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
 
    procedure TopLevel_New
-     (Widget: out Tk_TopLevel; Path_Name: String; Options: TopLevel_Options;
+     (Widget: out Tk_TopLevel; Path_Name: String; Options: TopLevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter);
 
-   function Get_Options(Widget: Tk_TopLevel) return TopLevel_Options;
+   function Get_Options(Widget: Tk_TopLevel) return TopLevel_Create_Options;
 
 end Tk.TopLevel;
