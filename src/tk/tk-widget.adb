@@ -35,8 +35,8 @@ package body Tk.Widget is
    begin
       if not Is_Digit(Value(Value'Last)) then
          Result.Value :=
-            Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
-            Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
+           Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
+         Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
       else
          Result.Value := Positive_Float'Value(Value);
          Result.Value_Unit := PIXEL;
@@ -191,9 +191,18 @@ package body Tk.Widget is
       Options_String: in out Unbounded_String) is
    begin
       if Value /= Null_Widget then
-         Append
-           (Options_String,
-            " -" & Name & " " & Tk_PathName(Value));
+         Append(Options_String, " -" & Name & " " & Tk_PathName(Value));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Extended_Boolean;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value = FALSE then
+         Append(Options_String, " -" & Name & " 0");
+      elsif Value = TRUE then
+         Append(Options_String, " -" & Name & " 1");
       end if;
    end Option_Image;
 
