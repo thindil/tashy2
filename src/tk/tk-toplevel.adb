@@ -58,10 +58,11 @@ package body Tk.TopLevel is
    function TopLevel_New
      (Path_Name: String; Options: TopLevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
-      New_TopLevel: Tk_TopLevel;
    begin
-      -- TODO: add creating a TopLevel
-      return New_TopLevel;
+      Tcl_Eval
+        ("toplevel " & Path_Name & " " & Options_To_String(Options),
+         Interpreter);
+      return Get_Widget(Path_Name, Interpreter);
    end TopLevel_New;
 
    procedure TopLevel_New
