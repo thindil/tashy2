@@ -208,19 +208,22 @@ package body Tk.Widget is
    end Option_Image;
 
    procedure Option_Image
-     (Name: String; Value: Integer;
-     Options_String: in out Unbounded_String; Base: Positive := 10) is
-     Hex_Value: String(1 .. 32);
+     (Name: String; Value: Integer; Options_String: in out Unbounded_String;
+      Base: Positive := 10) is
+      Hex_Value: String(1 .. 32);
+      New_Value: Unbounded_String;
    begin
       if Value /= 0 then
-         Append
-           (Options_String, " -" & Name);
+         Append(Options_String, " -" & Name);
          case Base is
             when 10 =>
                Append(Options_String, Integer'Image(Value));
             when 16 =>
                Put(Hex_Value, Value, 16);
-               Append(Options_String, " 0x" & Trim(Hex_Value, Both));
+               New_Value := To_Unbounded_String(Trim(Hex_Value, Both));
+               Append
+                 (Options_String,
+                  " 0x" & Slice(New_Value, 4, Length(New_Value) - 1));
             when others =>
                null;
          end case;
