@@ -49,7 +49,7 @@ package body Tk.TopLevel is
       Option_Image("relief", Options.Relief, Options_String);
       Option_Image("screen", Options.Screen, Options_String);
       Option_Image("takefocus", Options.Take_Focus, Options_String);
-      --Option_Image("use", Options.Use_Container, Options_String);
+      Option_Image("use", Options.Use_Container, Options_String, 16);
       Option_Image("visual", Options.Visual, Options_String);
       Option_Image("width", Options.Width, Options_String);
       return To_String(Options_String);
