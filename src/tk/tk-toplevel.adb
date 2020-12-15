@@ -74,9 +74,21 @@ package body Tk.TopLevel is
    end TopLevel_New;
 
    function Get_Options(Widget: Tk_TopLevel) return TopLevel_Create_Options is
-      Options: TopLevel_Create_Options;
    begin
-      return Options;
+      return Options: TopLevel_Create_Options do
+         Options.Background := Option_Value(Widget, "background");
+         Options.Border_Width := Option_Value(Widget, "borderwidth");
+         Options.Height := Option_Value(Widget, "height");
+         Options.Highlight_Background :=
+           Option_Value(Widget, "highlightbackground");
+         Options.Highlight_Color := Option_Value(Widget, "highlightcolor");
+         Options.Highlight_Thickness :=
+           Option_Value(Widget, "highlightthickness");
+         Options.PadX := Option_Value(Widget, "padx");
+         Options.PadY := Option_Value(Widget, "pady");
+         Options.Relief := Option_Value(Widget, "relief");
+         Options.Width := Option_Value(Widget, "width");
+      end return;
    end Get_Options;
 
 end Tk.TopLevel;
