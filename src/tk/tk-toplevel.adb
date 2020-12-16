@@ -78,6 +78,8 @@ package body Tk.TopLevel is
       return Options: TopLevel_Create_Options do
          Options.Background := Option_Value(Widget, "background");
          Options.Border_Width := Option_Value(Widget, "borderwidth");
+         Options.Class := Option_Value(Widget, "class");
+         Options.Color_Map := Option_Value(Widget, "colormap");
          Options.Height := Option_Value(Widget, "height");
          Options.Highlight_Background :=
            Option_Value(Widget, "highlightbackground");
