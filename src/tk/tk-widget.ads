@@ -391,8 +391,8 @@ package Tk.Widget is
       -- end;
       -- SOURCE
    procedure Option_Image
-     (Name: String; Value: Integer;
-      Options_String: in out Unbounded_String; Base: Positive := 10) with
+     (Name: String; Value: Integer; Options_String: in out Unbounded_String;
+      Base: Positive := 10) with
       Pre => Name'Length > 0 and Base in 10 | 16;
       -- ****
 
@@ -435,6 +435,9 @@ package Tk.Widget is
       Pre => Widget /= Null_Widget and Name'Length > 0;
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Extended_Natural with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
+   function Option_Value
+     (Widget: Tk_Widget; Name: String) return Extended_Boolean with
       Pre => Widget /= Null_Widget and Name'Length > 0;
    -- ****
 
