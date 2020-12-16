@@ -26,7 +26,7 @@ package Tk.TopLevel is
       Highlight_Background: Tcl_String;
       Highlight_Color: Tcl_String;
       Highlight_Thickness: Pixel_Data;
-      Menu: Tk_Widget;
+      Menu: Tcl_String;
       PadX: Pixel_Data;
       PadY: Pixel_Data;
       Relief: Relief_Type;
