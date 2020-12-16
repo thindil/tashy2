@@ -80,6 +80,8 @@ package body Tk.TopLevel is
          Options.Border_Width := Option_Value(Widget, "borderwidth");
          Options.Class := Option_Value(Widget, "class");
          Options.Color_Map := Option_Value(Widget, "colormap");
+         Options.Container := Option_Value(Widget, "container");
+         Options.Cursor := Option_Value(Widget, "cursor");
          Options.Height := Option_Value(Widget, "height");
          Options.Highlight_Background :=
            Option_Value(Widget, "highlightbackground");
