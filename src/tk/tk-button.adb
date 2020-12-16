@@ -98,6 +98,7 @@ package body Tk.Button is
          Options.Border_Width := Option_Value(Widget, "borderwidth");
          Options.Command := Option_Value(Widget, "command");
          Options.Compound := Option_Value(Widget, "compound");
+         Options.Cursor := Option_Value(Widget, "cursor");
          Options.Default := Option_Value(Widget, "default");
          Options.Disabled_Foreground :=
            Option_Value(Widget, "disabledforeground");
@@ -118,6 +119,7 @@ package body Tk.Button is
          Options.Repeat_Delay := Option_Value(Widget, "repeaddelay");
          Options.Repeat_Interval := Option_Value(Widget, "repeatinterval");
          Options.State := Option_Value(Widget, "state");
+         Options.Take_Focus := Option_Value(Widget, "takefocus");
          Options.Text := Option_Value(Widget, "text");
          Options.Text_Variable := Option_Value(Widget, "textvariable");
          Options.Underline := Option_Value(Widget, "underline");
