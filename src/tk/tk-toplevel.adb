@@ -100,4 +100,25 @@ package body Tk.TopLevel is
       end return;
    end Get_Options;
 
+   procedure Configure(Widget: Tk_TopLevel; Options: TopLevel_Options) is
+      Options_String: Unbounded_String;
+   begin
+      Option_Image("background", Options.Background, Options_String);
+      Option_Image("borderwidth", Options.Border_Width, Options_String);
+      Option_Image("cursor", Options.Cursor, Options_String);
+      Option_Image("height", Options.Height, Options_String);
+      Option_Image
+        ("highlightbackground", Options.Highlight_Background, Options_String);
+      Option_Image("highlightcolot", Options.Highlight_Color, Options_String);
+      Option_Image
+        ("highlighthickness", Options.Highlight_Thickness, Options_String);
+      Option_Image("menu", Options.Menu, Options_String);
+      Option_Image("padx", Options.PadX, Options_String);
+      Option_Image("pady", Options.PadY, Options_String);
+      Option_Image("relief", Options.Relief, Options_String);
+      Option_Image("takefocus", Options.Take_Focus, Options_String);
+      Option_Image("width", Options.Width, Options_String);
+      Execute_Widget_Command(Widget, "configure", To_String(Options_String));
+   end Configure;
+
 end Tk.TopLevel;
