@@ -88,9 +88,12 @@ package body Tk.TopLevel is
          Options.Highlight_Color := Option_Value(Widget, "highlightcolor");
          Options.Highlight_Thickness :=
            Option_Value(Widget, "highlightthickness");
+         Options.Menu := Option_Value(Widget, "menu");
          Options.PadX := Option_Value(Widget, "padx");
          Options.PadY := Option_Value(Widget, "pady");
          Options.Relief := Option_Value(Widget, "relief");
+         Options.Screen := Option_Value(Widget, "screen");
+         Options.Take_Focus := Option_Value(Widget, "takefocus");
          Options.Width := Option_Value(Widget, "width");
       end return;
    end Get_Options;
