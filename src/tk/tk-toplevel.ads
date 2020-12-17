@@ -33,6 +33,8 @@ package Tk.TopLevel is
       Width: Pixel_Data;
    end record;
 
+   procedure Configure(Widget: Tk_TopLevel; Options: TopLevel_Options);
+
    type TopLevel_Create_Options is new TopLevel_Options with record
       Class: Tcl_String;
       Color_Map: Tcl_String;
