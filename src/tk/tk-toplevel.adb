@@ -94,6 +94,8 @@ package body Tk.TopLevel is
          Options.Relief := Option_Value(Widget, "relief");
          Options.Screen := Option_Value(Widget, "screen");
          Options.Take_Focus := Option_Value(Widget, "takefocus");
+         Options.Use_Container := Option_Value(Widget, "use");
+         Options.Visual := Option_Value(Widget, "visual");
          Options.Width := Option_Value(Widget, "width");
       end return;
    end Get_Options;
