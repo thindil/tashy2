@@ -16,19 +16,9 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.TopLevel is
 
-   -- ****if* TopLevel/TopLevel.Options_To_String
-   -- FUNCTION
-   -- Convert Ada structure to Tcl command
-   -- PARAMETERS
-   -- Options - Ada TopLevel_Create_Options to convert
-   -- RESULT
-   -- String with Tcl command options
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   function Options_To_String
-     (Options: TopLevel_Create_Options) return String is
-      -- ****
+   function TopLevel_New
+     (Path_Name: String; Options: TopLevel_Create_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
       Options_String: Unbounded_String;
    begin
       Option_Image("background", Options.Background, Options_String);
@@ -52,15 +42,8 @@ package body Tk.TopLevel is
       Option_Image("use", Options.Use_Container, Options_String, 16);
       Option_Image("visual", Options.Visual, Options_String);
       Option_Image("width", Options.Width, Options_String);
-      return To_String(Options_String);
-   end Options_To_String;
-
-   function TopLevel_New
-     (Path_Name: String; Options: TopLevel_Create_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
-   begin
       Tcl_Eval
-        ("toplevel " & Path_Name & " " & Options_To_String(Options),
+        ("toplevel " & Path_Name & " " & To_String(Options_String),
          Interpreter);
       return Get_Widget(Path_Name, Interpreter);
    end TopLevel_New;
