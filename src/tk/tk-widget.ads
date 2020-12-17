@@ -439,6 +439,8 @@ package Tk.Widget is
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Extended_Boolean with
       Pre => Widget /= Null_Widget and Name'Length > 0;
+   function Option_Value(Widget: Tk_Widget; Name: String) return Integer with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
    -- ****
 
    --------------------------------
