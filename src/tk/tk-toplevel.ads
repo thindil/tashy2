@@ -15,7 +15,12 @@
 with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
+-- ****h* Tk/TopLevel
+-- FUNCTION
+-- Provides code for manipulate Tk widget toplevel
+-- SOURCE
 package Tk.TopLevel is
+-- ****
 
    subtype Tk_TopLevel is Tk_Widget;
 
