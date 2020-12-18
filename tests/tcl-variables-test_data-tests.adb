@@ -130,9 +130,11 @@ package body Tcl.Variables.Test_Data.Tests is
 
    begin
 
-      Tcl_SetVar2("myarray", "0" ,"2");
+      Tcl_SetVar2("myarray", "0", "2");
       Tcl_Eval("expr 2 + $myarray(0)");
-      Assert(Tcl_GetResult = 4, "Failed to set value of Tcl first element in 'myarray'");
+      Assert
+        (Tcl_GetResult = 4,
+         "Failed to set value of Tcl first element in 'myarray'");
 
 --  begin read only
    end Test_Tcl_SetVar2_test_tcl_setvar2;
@@ -189,7 +191,9 @@ package body Tcl.Variables.Test_Data.Tests is
    begin
 
       Tcl_SetVar("myvar", "test");
-      Assert(Tcl_GetVar("myvar") = "test", "Failed to get value of variable 'myvar'");
+      Assert
+        (Tcl_GetVar("myvar") = "test",
+         "Failed to get value of variable 'myvar'");
       begin
          Assert(Tcl_GetVar("nonexistingvariable") = "nonexistingvalue", "");
          Assert(False, "Failed to handle non-existing Tcl variable.");
@@ -255,8 +259,10 @@ package body Tcl.Variables.Test_Data.Tests is
 
    begin
 
-      Tcl_SetVar2("myarray", "0" ,"test");
-      Assert(Tcl_GetVar2("myarray", "0") = "test", "Failed to get value of the first element of array 'myarray'");
+      Tcl_SetVar2("myarray", "0", "test");
+      Assert
+        (Tcl_GetVar2("myarray", "0") = "test",
+         "Failed to get value of the first element of array 'myarray'");
       begin
          Assert(Tcl_GetVar2("nonexistingarray", "0") = "nonexistingvalue", "");
          Assert(False, "Failed to handle non-existing Tcl variable.");
@@ -385,14 +391,18 @@ package body Tcl.Variables.Test_Data.Tests is
       Tcl_SetVar2("myarray", "0", "2");
       Tcl_UnsetVar2("myarray", "0");
       begin
-         Assert(Tcl_GetVar2("myarray", "0") = "2", "Failed to remove the element from the Tcl array");
+         Assert
+           (Tcl_GetVar2("myarray", "0") = "2",
+            "Failed to remove the element from the Tcl array");
       exception
          when Tcl_Exception =>
             null;
       end;
       begin
          Tcl_UnsetVar2("myarray", "0");
-         Assert(False, "Failed to handle removing non-existing element from Tcl array");
+         Assert
+           (False,
+            "Failed to handle removing non-existing element from Tcl array");
       exception
          when Tcl_Exception =>
             null;
