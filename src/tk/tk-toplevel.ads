@@ -49,7 +49,8 @@ package Tk.TopLevel is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
 
    procedure TopLevel_New
-     (Widget: out Tk_TopLevel; Path_Name: String; Options: TopLevel_Create_Options;
+     (Widget: out Tk_TopLevel; Path_Name: String;
+      Options: TopLevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter);
 
    function Get_Options(Widget: Tk_TopLevel) return TopLevel_Create_Options;
