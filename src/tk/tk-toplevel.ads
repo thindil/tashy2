@@ -17,7 +17,7 @@ with Tk.Widget; use Tk.Widget;
 
 package Tk.TopLevel is
 
-   type Tk_TopLevel is new Tk_Widget;
+   subtype Tk_TopLevel is Tk_Widget;
 
    type TopLevel_Options is new Widget_Options with record
       Background: Tcl_String;
