@@ -31,6 +31,22 @@ package Tk.TopLevel is
    subtype Tk_TopLevel is Tk_Widget;
    -- ****
 
+   -- ****s* TopLevel/TopLevel.TopLevel_Options
+   -- FUNCTION
+   -- Data structure for all available options for the Tk toplevel which can
+   -- be changed after creation of a widget
+   -- OPTIONS
+   -- Background           - Normal Background color of the toplevel
+   -- Border_Width         - The width of the toplevel's border
+   -- Height               - Height of the toplevel. For images, it is in
+   --                        pixels, for text in lines
+   -- Highlight_Background - Highlight traversal region background color for
+   --                        the toplevel
+   -- Highlight_Color      - Highlight traversal rectangle color for the
+   --                        toplevel
+   -- Highlight_Thickness  - The width of highlight traversal rectangle for the
+   --                        toplevel
+   -- SOURCE
    type TopLevel_Options is new Widget_Options with record
       Background: Tcl_String;
       Border_Width: Pixel_Data;
