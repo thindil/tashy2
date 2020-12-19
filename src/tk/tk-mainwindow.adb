@@ -12,18 +12,16 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Interfaces.C; use Interfaces.C;
-
 package body Tk.MainWindow is
 
    function Get_Main_Window
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
-      function Tk_MainWindow(interp: Tcl_Interpreter) return int with
+      function Tk_MainWindow(interp: Tcl_Interpreter) return Tk_TopLevel with
          Import => True,
          Convention => C,
          External_Name => "Tk_MainWindow";
    begin
-      return Tk_TopLevel(Tk_MainWindow(Interpreter));
+      return Tk_MainWindow(Interpreter);
    end Get_Main_Window;
 
 end Tk.MainWindow;
