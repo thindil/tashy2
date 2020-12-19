@@ -49,34 +49,32 @@ package body Tk.Widget is
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget is
       function Tk_NameToWindow
-        (interp: Tcl_Interpreter; pathName: chars_ptr; tkwin: int)
-         return int with
+        (interp: Tcl_Interpreter; pathName: chars_ptr; tkwin: Tk_Widget)
+         return Tk_Widget with
          Import => True,
          Convention => C,
          External_Name => "Tk_NameToWindow";
    begin
-      return Tk_Widget
-          (Tk_NameToWindow
-             (Interpreter, New_String(Path_Name),
-              int(Get_Main_Window(Interpreter))));
+      return Tk_NameToWindow
+          (Interpreter, New_String(Path_Name), Get_Main_Window(Interpreter));
    end Get_Widget;
 
    function Tk_PathName(Widget: Tk_Widget) return String is
-      function Get_PathName(tkwin: int) return chars_ptr with
+      function Get_PathName(tkwin: Tk_Widget) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Get_PathName";
    begin
-      return Value(Get_PathName(int(Widget)));
+      return Value(Get_PathName(Widget));
    end Tk_PathName;
 
    function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter is
-      function TkInterp(tkwin: int) return Tcl_Interpreter with
+      function TkInterp(tkwin: Tk_Widget) return Tcl_Interpreter with
          Import => True,
          Convention => C,
          External_Name => "Tk_Interp";
    begin
-      return TkInterp(int(Widget));
+      return TkInterp(Widget);
    end Tk_Interp;
 
    procedure Option_Image
@@ -295,13 +293,13 @@ package body Tk.Widget is
    end Option_Value;
 
    procedure Destroy(Widget: in out Tk_Widget) is
-      procedure Tk_DestroyWindow(tkwin: int) with
+      procedure Tk_DestroyWindow(tkwin: Tk_Widget) with
          Import => True,
          Convention => C,
          External_Name => "Tk_DestroyWindow";
    begin
-      Tk_DestroyWindow(int(Widget));
-      Widget := 0;
+      Tk_DestroyWindow(Widget);
+      Widget := Null_Widget;
    end Destroy;
 
    procedure Execute_Widget_Command

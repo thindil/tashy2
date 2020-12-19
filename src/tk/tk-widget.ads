@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with System;
 with Tcl.Strings; use Tcl.Strings;
 
 -- ****h* Tk/Widget
@@ -28,15 +29,14 @@ package Tk.Widget is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Tk_Widget is new Integer with
-      Default_Value => 0;
+   type Tk_Widget is new System.Address;
    -- ****
 
    -- ****d* Widget/Widget.Null_Widget
    -- FUNCTION
    -- Not created or not existing Tk widget
    -- SOURCE
-   Null_Widget: constant Tk_Widget := 0;
+   Null_Widget: constant Tk_Widget := Tk_Widget(System.Null_Address);
    -- ****
 
    -- ****t* Widget/Widget.Relief_Type
