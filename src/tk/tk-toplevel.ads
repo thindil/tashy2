@@ -38,14 +38,19 @@ package Tk.TopLevel is
    -- OPTIONS
    -- Background           - Normal Background color of the toplevel
    -- Border_Width         - The width of the toplevel's border
-   -- Height               - Height of the toplevel. For images, it is in
-   --                        pixels, for text in lines
+   -- Height               - Height of the toplevel.
    -- Highlight_Background - Highlight traversal region background color for
    --                        the toplevel
    -- Highlight_Color      - Highlight traversal rectangle color for the
    --                        toplevel
    -- Highlight_Thickness  - The width of highlight traversal rectangle for the
    --                        toplevel
+   -- Menu                 - Menu widget which will be used as menubar in the
+   --                        toplevel
+   -- PadX                 - Extra space requested for the toplevel in X-direction
+   -- PadY                 - Extra space requested for the toplevel in Y-direction
+   -- Relief               - 3-D effect desired for the toplevel
+   -- Width                - Width of the toplevel
    -- SOURCE
    type TopLevel_Options is new Widget_Options with record
       Background: Tcl_String;
@@ -60,6 +65,7 @@ package Tk.TopLevel is
       Relief: Relief_Type;
       Width: Pixel_Data;
    end record;
+   -- ****
 
    procedure Configure(Widget: Tk_TopLevel; Options: TopLevel_Options);
 
