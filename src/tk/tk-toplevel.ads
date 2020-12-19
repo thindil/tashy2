@@ -22,7 +22,14 @@ with Tk.Widget; use Tk.Widget;
 package Tk.TopLevel is
 -- ****
 
+   -- ****t* TopLevel/TopLevel.Tk_Button
+   -- FUNCTION
+   -- The Tk indetifier of the toplevel
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    subtype Tk_TopLevel is Tk_Widget;
+   -- ****
 
    type TopLevel_Options is new Widget_Options with record
       Background: Tcl_String;
