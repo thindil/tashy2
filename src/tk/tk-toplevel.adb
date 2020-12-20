@@ -71,7 +71,9 @@ package body Tk.TopLevel is
          Options.Highlight_Color := Option_Value(Widget, "highlightcolor");
          Options.Highlight_Thickness :=
            Option_Value(Widget, "highlightthickness");
-         Options.Menu := Option_Value(Widget, "menu");
+         Options.Menu :=
+           Get_Widget
+             (To_Ada_String(Option_Value(Widget, "menu")), Tk_Interp(Widget));
          Options.PadX := Option_Value(Widget, "padx");
          Options.PadY := Option_Value(Widget, "pady");
          Options.Relief := Option_Value(Widget, "relief");
