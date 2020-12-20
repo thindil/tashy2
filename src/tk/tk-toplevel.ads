@@ -67,7 +67,24 @@ package Tk.TopLevel is
    end record;
    -- ****
 
+   -- ****f* TopLevel/TopLevel.Configure
+   -- FUNCTION
+   -- Set the selected options for the selected toplevel
+   -- PARAMETERS
+   -- Widget  - Tk_Toplevel which options will be set
+   -- Options - The record with new values for the button options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Set background to black for toplevel My_Dialog
+   -- Configure(My_Dialog, (Background => To_Tcl_String("black"), others => <>));
+   -- SEE ALSO
+   -- TopLevel.Get_Options
+   -- COMMANDS
+   -- Widget configure Options
+   -- SOURCE
    procedure Configure(Widget: Tk_TopLevel; Options: TopLevel_Options);
+   -- ****
 
    type TopLevel_Create_Options is new TopLevel_Options with record
       Class: Tcl_String;
