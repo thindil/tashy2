@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tk.Menu; use Tk.Menu;
 with Tk.Widget; use Tk.Widget;
 
 -- ****h* Tk/TopLevel
@@ -59,7 +60,7 @@ package Tk.TopLevel is
       Highlight_Background: Tcl_String;
       Highlight_Color: Tcl_String;
       Highlight_Thickness: Pixel_Data;
-      Menu: Tcl_String;
+      Menu: Tk_Menu;
       PadX: Pixel_Data;
       PadY: Pixel_Data;
       Relief: Relief_Type;
