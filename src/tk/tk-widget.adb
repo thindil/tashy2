@@ -292,6 +292,12 @@ package body Tk.Widget is
       return Integer'Value(Tcl_GetResult(Tk_Interp(Widget)));
    end Option_Value;
 
+   function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Widget is
+   begin
+      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      return Get_Widget(Tcl_GetResult(Tk_Interp(Widget)), Tk_Interp(Widget));
+   end Option_Value;
+
    procedure Destroy(Widget: in out Tk_Widget) is
       procedure Tk_DestroyWindow(tkwin: Tk_Widget) with
          Import => True,
