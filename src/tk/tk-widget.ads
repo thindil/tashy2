@@ -183,13 +183,20 @@ package Tk.Widget is
    type Pad_Array is array(1 .. 2) of Pixel_Data;
    -- ****
 
-   -- ****t* Tk.Widget/BBox_Array
+   -- ****t* Widget/BBox_Array
    -- FUNCTION
    -- Array used mostly for take result of BBox commands of various Tk_Widgets
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    type BBox_Array is array(1 .. 4) of Natural;
+   -- ****
+
+   -- ****t* Widget/Widget.Tk_Window
+   -- FUNCTION
+   -- The window manager identifier for Tk_Widget
+   -- SOURCE
+   type Tk_Window is new System.Address;
    -- ****
 
    -----------------------------------------------
@@ -292,7 +299,23 @@ package Tk.Widget is
    -- SOURCE
    function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter with
       Pre => Widget /= Null_Widget;
-   -- ****
+      -- ****
+
+      -- ****f* Widget/Widget.Tk_Window_Id
+      -- FUNCTION
+      -- Get the window manager identifier for the selected Tk_Widget
+      -- PARAMETERS
+      -- Widget - Tk widget which identifier will be get
+      -- RESULT
+      -- The window manager identifier for the selected widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the window manager identifier of widget My_Dialog
+      -- Window: constant Tk_Window := Tk_Window_Id(My_Dialog);
+      -- SOURCE
+   function Tk_Window_Id(Widget: Tk_Widget) return Tk_Window with
+      Pre => Widget /= Null_Widget;
 
       -- ****f* Widget/Widget.Option_Image
       -- FUNCTION
