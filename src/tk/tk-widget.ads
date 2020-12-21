@@ -392,6 +392,10 @@ package Tk.Widget is
      (Name: String; Value: Extended_Boolean;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0;
+   procedure Option_Image
+     (Name: String; Value: Tk_Window;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0;
       -- ****
 
       -- ****f* Widget/Widget.Option_Image_(Integer)

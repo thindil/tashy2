@@ -18,6 +18,7 @@ with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
+with System.Address_Image;
 with Tk.MainWindow; use Tk.MainWindow;
 
 package body Tk.Widget is
@@ -211,6 +212,19 @@ package body Tk.Widget is
          Append(Options_String, " -" & Name & " 0");
       elsif Value = TRUE then
          Append(Options_String, " -" & Name & " 1");
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Tk_Window;
+      Options_String: in out Unbounded_String) is
+      New_Value: constant String :=
+        System.Address_Image(System.Address(Value));
+   begin
+      if Value /= Null_Window then
+         Append
+           (Options_String,
+            " -" & Name & " 0x" & New_Value(4 .. New_Value'Length - 1));
       end if;
    end Option_Image;
 
