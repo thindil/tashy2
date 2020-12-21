@@ -199,6 +199,13 @@ package Tk.Widget is
    type Tk_Window is new System.Address;
    -- ****
 
+   -- ****d* Widget/Widget.Null_Window
+   -- FUNCTION
+   -- Not created or not existing Tk window
+   -- SOURCE
+   Null_Window: constant Tk_Window := Tk_Window(System.Null_Address);
+   -- ****
+
    -----------------------------------------------
    -- Various functions to convert types to String
    -----------------------------------------------
