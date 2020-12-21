@@ -18,7 +18,7 @@
 
 #include <tk.h>
 
-/* ****f* tk-macros/Get_PathName
+/* ****f* tk-macros/tk-macros.Get_PathName
 * FUNCTION
 * Get the Tk path name for the selected Tk_Window
 * PARAMETERS
@@ -32,3 +32,16 @@ char* Get_PathName(Tk_Window tkwin)
 }
 /* **** */
 
+/* ****f* tk-macros/tk-macros.Get_Window_Id
+* FUNCTION
+* Get the window manager identifier for the selected Tk_Window
+* PARAMETERS
+* tkwin - Tk_Window which identifier will be returned
+* RESULT
+* The window manager identifier of the selected Tk_Window
+* SOURCE */
+Window Get_Window_Id(Tk_Window tkwin)
+{
+   return Tk_WindowId(tkwin);
+}
+/* **** */
