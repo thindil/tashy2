@@ -77,6 +77,15 @@ package body Tk.Widget is
       return TkInterp(Widget);
    end Tk_Interp;
 
+   function Tk_Window_Id(Widget: Tk_Widget) return Tk_Window is
+      function TkWindowId(tkwin: Tk_Widget) return Tk_Window with
+         Import => True,
+         Convention => C,
+         External_Name => "Tk_WindowId";
+   begin
+      return TkWindowId(Widget);
+   end Tk_Window_Id;
+
    procedure Option_Image
      (Name: String; Value: Tcl_String;
       Options_String: in out Unbounded_String) is
