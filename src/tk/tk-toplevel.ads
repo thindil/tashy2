@@ -60,7 +60,7 @@ package Tk.TopLevel is
       Highlight_Background: Tcl_String;
       Highlight_Color: Tcl_String;
       Highlight_Thickness: Pixel_Data;
-      Menu: Tk_Menu;
+      Menu: Tk_Menu := Null_Widget;
       PadX: Pixel_Data;
       PadY: Pixel_Data;
       Relief: Relief_Type;
@@ -87,6 +87,20 @@ package Tk.TopLevel is
    procedure Configure(Widget: Tk_TopLevel; Options: TopLevel_Options);
    -- ****
 
+   -- ****s* TopLevel/TopLevel.TopLevel_Create_Options
+   -- FUNCTION
+   -- Data structure for additional toplevel widget options which can be set
+   -- only during creating a widget
+   -- OPTIONS
+   -- Class         - The name of the class for the widget
+   -- Color_Map     - The name of the color map used by the widget. Can be
+   --                 `new` or name of the color map from another widget
+   -- Container     - If true, the widget will be used as container for another
+   --                 embedded application
+   -- Screen        - The name of the screen on which the widget will be placed
+   -- Use_Container -
+   -- Visual        -
+   -- SOURCE
    type TopLevel_Create_Options is new TopLevel_Options with record
       Class: Tcl_String;
       Color_Map: Tcl_String;
@@ -95,6 +109,7 @@ package Tk.TopLevel is
       Use_Container: Integer;
       Visual: Tcl_String;
    end record;
+   -- ****
 
    function TopLevel_New
      (Path_Name: String; Options: TopLevel_Create_Options;
