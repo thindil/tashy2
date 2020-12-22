@@ -98,8 +98,8 @@ package Tk.TopLevel is
    -- Container     - If true, the widget will be used as container for another
    --                 embedded application
    -- Screen        - The name of the screen on which the widget will be placed
-   -- Use_Container -
-   -- Visual        -
+   -- Use_Container - Tk_Window which will be used as container for the widget
+   -- Visual        - Type of visual information for the widget
    -- SOURCE
    type TopLevel_Create_Options is new TopLevel_Options with record
       Class: Tcl_String;
