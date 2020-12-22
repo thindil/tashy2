@@ -111,11 +111,11 @@ package Tk.TopLevel is
    end record;
    -- ****
 
-   function TopLevel_New
+   function Create
      (Path_Name: String; Options: TopLevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
 
-   procedure TopLevel_New
+   procedure Create
      (Widget: out Tk_TopLevel; Path_Name: String;
       Options: TopLevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter);
