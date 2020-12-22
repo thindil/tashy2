@@ -16,7 +16,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.TopLevel is
 
-   function TopLevel_New
+   function Create
      (Path_Name: String; Options: TopLevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
       Options_String: Unbounded_String;
@@ -46,15 +46,15 @@ package body Tk.TopLevel is
         ("toplevel " & Path_Name & " " & To_String(Options_String),
          Interpreter);
       return Get_Widget(Path_Name, Interpreter);
-   end TopLevel_New;
+   end Create;
 
-   procedure TopLevel_New
+   procedure Create
      (Widget: out Tk_TopLevel; Path_Name: String;
       Options: TopLevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Widget := TopLevel_New(Path_Name, Options, Interpreter);
-   end TopLevel_New;
+      Widget := Create(Path_Name, Options, Interpreter);
+   end Create;
 
    function Get_Options(Widget: Tk_TopLevel) return TopLevel_Create_Options is
    begin
