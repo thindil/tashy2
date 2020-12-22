@@ -82,7 +82,7 @@ package body Tk.Widget is
       function TkWindowId(tkwin: Tk_Widget) return Tk_Window with
          Import => True,
          Convention => C,
-         External_Name => "Tk_WindowId";
+         External_Name => "Get_Window_Id";
    begin
       return TkWindowId(Widget);
    end Tk_Window_Id;
@@ -319,6 +319,14 @@ package body Tk.Widget is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
       return Get_Widget(Tcl_GetResult(Tk_Interp(Widget)), Tk_Interp(Widget));
+   end Option_Value;
+
+   function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Window is
+   begin
+      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      return Tk_Window
+          (System'To_Address
+             (Integer'Value("16#" & Tcl_GetResult(Tk_Interp(Widget)) & "#")));
    end Option_Value;
 
    procedure Destroy(Widget: in out Tk_Widget) is

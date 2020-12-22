@@ -477,6 +477,8 @@ package Tk.Widget is
       Pre => Widget /= Null_Widget and Name'Length > 0;
    function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Widget with
       Pre => Widget /= Null_Widget and Name'Length > 0;
+   function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Window with
+      Pre => Widget /= Null_Widget and Name'Length > 0;
    -- ****
 
    --------------------------------
