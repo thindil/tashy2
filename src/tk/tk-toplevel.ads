@@ -137,10 +137,36 @@ package Tk.TopLevel is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
       -- ****
 
+      -- ****f* TopLevel/TopLevel.Create_(procedure)
+      -- FUNCTION
+      -- Create a new Tk toplevel widget with the selected pathname and options
+      -- PARAMETERS
+      -- Widget      - Tk_TopLevel identifier which will be returned
+      -- Path_Name   - Tk pathname for the newly created toplevel
+      -- Options     - Options for the newly created toplevel
+      -- Interpreter - Tcl interpreter on which the toplelve will be created. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- OUTPUT
+      -- The Widget parameter as Tk identifier of the newly created toplevel widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Create the toplevel with pathname .mydialog
+      -- declare
+      --    My_Dialog: Tk_Dialog;
+      -- begin
+      --    Create(My_Dialog, ".mydialog", TopLevel_Create_Options'(others => <>));
+      -- end;
+      -- SEE ALSO
+      -- TopLevel.Create_(function)
+      -- COMMANDS
+      -- toplevel Path_Name Options
+      -- SOURCE
    procedure Create
      (Widget: out Tk_TopLevel; Path_Name: String;
       Options: TopLevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter);
+   -- ****
 
    function Get_Options(Widget: Tk_TopLevel) return TopLevel_Create_Options;
 
