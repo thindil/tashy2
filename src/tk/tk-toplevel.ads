@@ -168,6 +168,23 @@ package Tk.TopLevel is
       Interpreter: Tcl_Interpreter := Get_Interpreter);
    -- ****
 
+   -- ****f* TopLevel/TopLevel.Get_Options
+   -- FUNCTION
+   -- Get all values of Tk options of the selected toplevel
+   -- PARAMETERS
+   -- Widget - Tk_TopLevel which options' values will be taken
+   -- RESULT
+   -- TopLevel_Create_Options record with values of the selected toplevel
+   -- options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get all values of option of topplevel with pathname .mydialog
+   -- My_Dialog_Options: constant TopLevel_Create_Options := Get_Options(Get_Widget(".mydialog"));
+   -- COMMANDS
+   -- Widget configure
+   -- SOURCE
    function Get_Options(Widget: Tk_TopLevel) return TopLevel_Create_Options;
+   -- ****
 
 end Tk.TopLevel;
