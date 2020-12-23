@@ -188,7 +188,7 @@ package Tk.Button is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get all values of option of button with pathname .mybutton
-      -- My_Button_Options: constant Butt_Options := Get_Options(Get_Widget(".mybutton"));
+      -- My_Button_Options: constant Button_Options := Get_Options(Get_Widget(".mybutton"));
       -- SEE ALSO
       -- Button.Configure
       -- COMMANDS
