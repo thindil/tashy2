@@ -106,7 +106,7 @@ package Tk.TopLevel is
       Color_Map: Tcl_String;
       Container: Extended_Boolean;
       Screen: Tcl_String;
-      Use_Container: Tk_Window;
+      Use_Container: Tk_Window := Null_Window;
       Visual: Tcl_String;
    end record;
    -- ****
