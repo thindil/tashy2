@@ -224,7 +224,8 @@ package Tk.Widget is
    -- Widgets_Names: constant String := Widgets_Array_Image((My_Button, My_Label));
    -- SOURCE
    function Widgets_Array_Image(Widgets: Widgets_Array) return String with
-      Pre => Widgets'Length > 0;
+      Pre => Widgets'Length > 0,
+      Test_Case => ("Test_Widgets_Array_Image", Nominal);
       -- ****
 
       ---------------------------------------------------------
@@ -245,7 +246,8 @@ package Tk.Widget is
       -- Pixel: constant Pixel_Data := Pixel_Data_Value("2c");
       -- SOURCE
    function Pixel_Data_Value(Value: String) return Pixel_Data with
-      Pre => Value'Length > 0;
+      Pre => Value'Length > 0,
+      Test_Case => ("Test_Pixel_Data_Value", Nominal);
       -- ****
 
    ---------------------------------
@@ -271,7 +273,8 @@ package Tk.Widget is
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter;
+      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Get_Widget", Nominal);
       -- ****
 
       -- ****f* Widget/Widget.Tk_PathName
@@ -288,7 +291,8 @@ package Tk.Widget is
       -- Path_Name: constant String := Tk_PathName(My_Button);
       -- SOURCE
    function Tk_PathName(Widget: Tk_Widget) return String with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Tk_PathName", Nominal);
    -- ****
 
    -- ****f* Widget/Widget.Tk_Interp
@@ -305,7 +309,8 @@ package Tk.Widget is
    -- Interpreter: constant Tcl_Interpreter := Tk_Interp(My_Label);
    -- SOURCE
    function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Tk_Interp", Nominal);
       -- ****
 
       -- ****f* Widget/Widget.Tk_Window_Id
@@ -322,7 +327,8 @@ package Tk.Widget is
       -- Window: constant Tk_Window := Tk_Window_Id(My_Dialog);
       -- SOURCE
    function Tk_Window_Id(Widget: Tk_Widget) return Tk_Window with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Tk_Window_Id", Nominal);
 
       -- ****f* Widget/Widget.Option_Image
       -- FUNCTION
@@ -351,51 +357,63 @@ package Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Tcl_String;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Tcl_String", Nominal);
    procedure Option_Image
      (Name: String; Value: Extended_Natural;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Extended_Natural", Nominal);
    procedure Option_Image
      (Name: String; Value: Pixel_Data;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Pixed_Data", Nominal);
    procedure Option_Image
      (Name: String; Value: Relief_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Relief_Type", Nominal);
    procedure Option_Image
      (Name: String; Value: State_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_State_Type", Nominal);
    procedure Option_Image
      (Name: String; Value: Directions_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Directions_Type", Nominal);
    procedure Option_Image
      (Name: String; Value: Place_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Place_Type", Nominal);
    procedure Option_Image
      (Name: String; Value: Justify_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Justify_Type", Nominal);
    procedure Option_Image
      (Name: String; Value: Pad_Array;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Pad_Array", Nominal);
    procedure Option_Image
      (Name: String; Value: Tk_Widget;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Tk_Widget", Nominal);
    procedure Option_Image
      (Name: String; Value: Extended_Boolean;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Extended_Boolean", Nominal);
    procedure Option_Image
      (Name: String; Value: Tk_Window;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0;
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Tk_Window", Nominal);
       -- ****
 
       -- ****f* Widget/Widget.Option_Image_(Integer)
