@@ -445,7 +445,8 @@ package Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Integer; Options_String: in out Unbounded_String;
       Base: Positive := 10) with
-      Pre => Name'Length > 0 and Base in 10 | 16;
+      Pre => Name'Length > 0 and Base in 10 | 16,
+      Test_Case => ("Test_Option_Image_Integer", Nominal);
       -- ****
 
    -- ****f* Widget/Widget.Option_Value
@@ -466,37 +467,49 @@ package Tk.Widget is
    -- SOURCE
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Tcl_String with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Tcl_String", Nominal);
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Directions_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Direction_Type", Nominal);
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Pixel_Data with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Pixel_Data", Nominal);
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Place_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Place_Type", Nominal);
    function Option_Value
      (Widget: Tk_Widget; Name: String) return State_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_State_Type", Nominal);
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Justify_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Justify_Type", Nominal);
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Relief_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Relief_Type", Nominal);
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Extended_Natural with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Extended_Natural", Nominal);
    function Option_Value
      (Widget: Tk_Widget; Name: String) return Extended_Boolean with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Extended_Boolean", Nominal);
    function Option_Value(Widget: Tk_Widget; Name: String) return Integer with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Integer", Nominal);
    function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Widget with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Tk_Widget", Nominal);
    function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Window with
-      Pre => Widget /= Null_Widget and Name'Length > 0;
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Tk_Window", Nominal);
    -- ****
 
    --------------------------------
@@ -517,7 +530,8 @@ package Tk.Widget is
    -- COMMANDS
    -- destroy Widget
    -- SOURCE
-   procedure Destroy(Widget: in out Tk_Widget);
+   procedure Destroy(Widget: in out Tk_Widget) with
+      Test_Case => ("Test_Destroy", Robustness);
    -- ****
 
    ----------------
@@ -542,7 +556,8 @@ package Tk.Widget is
    -- SOURCE
    procedure Execute_Widget_Command
      (Widget: Tk_Widget; Command_Name: String; Options: String := "") with
-      Pre => Widget /= Null_Widget and Command_Name'Length > 0;
+      Pre => Widget /= Null_Widget and Command_Name'Length > 0,
+      Test_Case => ("Test_Execute_Widget_Command", Nominal);
       -- ****
 
 end Tk.Widget;
