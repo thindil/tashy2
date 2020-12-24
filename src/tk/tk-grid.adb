@@ -61,7 +61,7 @@ package body Tk.Grid is
       Options: Grid_Options := Grid_Options'(others => <>)) is
    begin
       Tcl_Eval
-        ("grid" & Widgets_Array_Image(Widgets) & " " &
+        ("grid " & Widgets_Array_Image(Widgets) & " " &
          Options_To_String(Options),
          Tk_Interp(Widgets(1)));
    end Add;
