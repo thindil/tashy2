@@ -27,9 +27,9 @@ package body Tk.Widget is
       Widgets_Names: Unbounded_String;
    begin
       for Widget of Widgets loop
-         Append(Widgets_Names, " " & Tk_PathName(Widget));
+         Append(Widgets_Names, Tk_PathName(Widget) & " ");
       end loop;
-      return To_String(Widgets_Names);
+      return Trim(To_String(Widgets_Names), Right);
    end Widgets_Array_Image;
 
    function Pixel_Data_Value(Value: String) return Pixel_Data is
