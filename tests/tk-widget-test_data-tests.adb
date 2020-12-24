@@ -15,6 +15,9 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tk.Button; use Tk.Button;
+
 --  begin read only
 --  end read only
 package body Tk.Widget.Test_Data.Tests is
@@ -75,11 +78,20 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button1: Tk_Button;
+      Button2: Tk_Button;
+      Widgets: Widgets_Array(1 .. 2);
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button1, ".mybutton1", Button_Options'(others => <>));
+      Create(Button2, ".mybutton2", Button_Options'(others => <>));
+      Widgets := (Button1, Button2);
+      Assert(Widgets_Array_Image(Widgets) = ".mybutton1 mybutton2", "Invalid image for Widgets_Array");
 
 --  begin read only
    end Test_Widgets_Array_Image_test_widgets_array_image;
