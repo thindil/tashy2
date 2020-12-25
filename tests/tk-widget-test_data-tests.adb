@@ -91,7 +91,11 @@ package body Tk.Widget.Test_Data.Tests is
       Create(Button1, ".mybutton1", Button_Options'(others => <>));
       Create(Button2, ".mybutton2", Button_Options'(others => <>));
       Widgets := (Button1, Button2);
-      Assert(Widgets_Array_Image(Widgets) = ".mybutton1 mybutton2", "Invalid image for Widgets_Array");
+      Assert
+        (Widgets_Array_Image(Widgets) = ".mybutton1 .mybutton2",
+         "Invalid image for Widgets_Array");
+      Destroy(Button1);
+      Destroy(Button2);
 
 --  begin read only
    end Test_Widgets_Array_Image_test_widgets_array_image;
