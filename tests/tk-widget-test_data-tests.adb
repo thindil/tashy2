@@ -225,6 +225,9 @@ package body Tk.Widget.Test_Data.Tests is
       Assert
         (Tk_PathName(Button) = ".mybutton",
          "Failed to get the proper widget with Get_Widget.");
+      Destroy(Button);
+      Button := Get_Widget(".mybutton2");
+      Destroy(Button);
 
 --  begin read only
    end Test_Get_Widget_test_get_widget;
@@ -324,11 +327,18 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".mybutton", Button_Options'(others => <>));
+      Assert
+        (Tk_Interp(Button) /= Null_Interpreter,
+         "Failed to get Tk interpreter for the selected widget.");
 
 --  begin read only
    end Test_Tk_Interp_test_tk_interp;
