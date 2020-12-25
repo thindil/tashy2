@@ -147,11 +147,18 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Pixel: Pixel_Data;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Pixel := Pixel_Data_Value("2c");
+      Assert
+        (Pixel.Value = 2.0 and Pixel.Value_Unit = C,
+         "Invalid value for pixel data from string conversion.");
 
 --  begin read only
    end Test_Pixel_Data_Value_test_pixel_data_value;
