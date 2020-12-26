@@ -101,8 +101,7 @@ package body Tk.Widget is
       Options_String: in out Unbounded_String) is
    begin
       if Value > -1 then
-         Append
-           (Options_String, " -" & Name & " " & Extended_Natural'Image(Value));
+         Append(Options_String, " -" & Name & Extended_Natural'Image(Value));
       end if;
    end Option_Image;
 
