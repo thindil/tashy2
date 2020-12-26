@@ -152,10 +152,6 @@ package body Tk.Widget.Test_Data.Tests is
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
       Pixel := Pixel_Data_Value("2c");
       Assert
         (Pixel.Value = 2.0 and Pixel.Value_Unit = C,
@@ -459,11 +455,14 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image("myoption", To_Tcl_String("myvalue"), Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption myvalue",
+         "Failed to get image for Tcl_String option");
 
 --  begin read only
    end Test_1_Option_Image_test_option_image_tcl_string;
@@ -512,11 +511,14 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image("myoption", Extended_Natural(10), Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption 10",
+         "Failed to get image for Extended_Natural option");
 
 --  begin read only
    end Test_2_Option_Image_test_option_image_extended_natural;
