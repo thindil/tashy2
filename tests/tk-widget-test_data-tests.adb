@@ -575,7 +575,7 @@ package body Tk.Widget.Test_Data.Tests is
         ("myoption", Pixel_Data'(Value => 2.0, Value_Unit => C),
          Options_String);
       Assert
-        (To_String(Options_String) = " -myoption 2c",
+        (To_String(Options_String) = " -myoption 2.00c",
          "Failed to get image for Pixel_Data option");
 
 --  begin read only
