@@ -22,10 +22,5 @@ jobs:
          scripts/setup.tcl auto
          gnattest -P tashy2.gpr
 
-    - name: Build the tests
-      run: gprbuild -p -P tests/driver/test_driver.gpr
-
-    - name: Run the test
-      run: |
-         cd tests/driver
-         ./test_runner
+    - name: Build and run the tests
+      run: scripts/tests.tcl
