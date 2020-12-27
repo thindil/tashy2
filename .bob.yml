@@ -103,12 +103,10 @@ version: 3.0
 - command:
    name: tests
    execute:
-      - gprbuild -p -P tests/driver/test_driver.gpr
-      - cd tests/driver
-      - ./test_runner
+      - tclsh scripts/tests.tcl
    description: Build and run Tashy2 unit tests
    flags:
-      - unixonly
+      - unixpath
 - command:
    name: prettytests
    execute:
@@ -124,4 +122,4 @@ version: 3.0
    execute:
       - fossil sync
       - fossil git export
-   description: Update remove Fossil repository and its Git mirror
+   description: Update remote Fossil repository and its Git mirror
