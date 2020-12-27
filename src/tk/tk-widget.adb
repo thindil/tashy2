@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
@@ -108,11 +109,15 @@ package body Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Pixel_Data;
       Options_String: in out Unbounded_String) is
+      ValueString: String(1 .. 255);
    begin
       if Value.Value > -1.0 then
+         Put
+           (To => ValueString, Item => Float(Value.Value),
+            Aft => Positive_Float'Digits, Exp => 0);
          Append
            (Options_String,
-            "-" & Name & Positive_Float'Image(Value.Value) &
+            " -" & Name & " " & Trim(ValueString, Both) &
             To_Lower(Pixel_Unit'Image(Value.Value_Unit)));
       end if;
    end Option_Image;
