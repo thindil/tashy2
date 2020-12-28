@@ -905,11 +905,15 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image
+        ("myoption", Pad_Array'((2.0, PIXEL), (5.0, PIXEL)), Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption {2 5}",
+         "Failed to get image for Pad_Array option");
 
 --  begin read only
    end Test_9_Option_Image_test_option_image_pad_array;
