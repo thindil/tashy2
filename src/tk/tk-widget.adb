@@ -47,6 +47,19 @@ package body Tk.Widget is
       return Result;
    end Pixel_Data_Value;
 
+   function Pixel_Data_Image(Value: Pixel_Data) return String is
+      ValueString: String(1 .. 255);
+   begin
+      Put
+        (To => ValueString, Item => Float(Value.Value),
+         Aft => Positive_Float'Digits, Exp => 0);
+      if Value.Value_Unit /= PIXEL then
+         return Trim(ValueString, Both) &
+           To_Lower(Pixel_Unit'Image(Value.Value_Unit));
+      end if;
+      return Trim(ValueString, Both);
+   end Pixel_Data_Image;
+
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget is

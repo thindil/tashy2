@@ -250,6 +250,22 @@ package Tk.Widget is
       Test_Case => ("Test_Pixel_Data_Value", Nominal);
       -- ****
 
+      -- ****f* Widget/Widget.Pixel_Data_Image
+      -- FUNCTION
+      -- Convert Pixel_Data to Ada String
+      -- PARAMETERS
+      -- Value - Pixel_Data which will be converted to String
+      -- RESULT
+      -- String with value converted from Pixel_Data
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Convert Pixel_Data 2.0 PIXEL to String
+      -- PixelString: constant String := Pixel_Data_Image(Pixel_Data'(2.0, PIXEL));
+      -- SOURCE
+   function Pixel_Data_Image(Value: Pixel_Data) return String;
+   -- ****
+
    ---------------------------------
    -- Getting info about a Tk widget
    ---------------------------------
