@@ -122,16 +122,9 @@ package body Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Pixel_Data;
       Options_String: in out Unbounded_String) is
-      ValueString: String(1 .. 255);
    begin
       if Value.Value > -1.0 then
-         Put
-           (To => ValueString, Item => Float(Value.Value),
-            Aft => Positive_Float'Digits, Exp => 0);
-         Append
-           (Options_String,
-            " -" & Name & " " & Trim(ValueString, Both) &
-            To_Lower(Pixel_Unit'Image(Value.Value_Unit)));
+         Append(Options_String, " -" & Name & " " & Pixel_Data_Image(Value));
       end if;
    end Option_Image;
 
@@ -195,20 +188,12 @@ package body Tk.Widget is
       Options_String: in out Unbounded_String) is
    begin
       if Value(1).Value > -1.0 then
+         Append
+           (Options_String, " -" & Name & " {" & Pixel_Data_Image(Value(1)));
          if Value(2).Value > -1.0 then
-            Append
-              (Options_String,
-               "-" & Name & " {" &
-               Trim(Positive_Float'Image(Value(1).Value), Left) &
-               To_Lower(Pixel_Unit'Image(Value(1).Value_Unit)) &
-               Positive_Float'Image(Value(2).Value) &
-               To_Lower(Pixel_Unit'Image(Value(2).Value_Unit)) & "}");
-         else
-            Append
-              (Options_String,
-               "-" & Name & Positive_Float'Image(Value(1).Value) &
-               To_Lower(Pixel_Unit'Image(Value(1).Value_Unit)));
+            Append(Options_String, " " & Pixel_Data_Image(Value(2)));
          end if;
+         Append(Options_String, "}");
       end if;
    end Option_Image;
 
