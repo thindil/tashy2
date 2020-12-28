@@ -625,11 +625,14 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image("myoption", RAISED, Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption raised",
+         "Failed to get image for Relief_Type option");
 
 --  begin read only
    end Test_4_Option_Image_test_option_image_relief_type;
@@ -678,11 +681,14 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image("myoption", ACTIVE, Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption active",
+         "Failed to get image for State_Type option");
 
 --  begin read only
    end Test_5_Option_Image_test_option_image_state_type;
@@ -731,11 +737,14 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image("myoption", SE, Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption se",
+         "Failed to get image for Directions_Type option");
 
 --  begin read only
    end Test_6_Option_Image_test_option_image_directions_type;
@@ -784,11 +793,14 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image("myoption", BOTTOM, Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption bottom",
+         "Failed to get image for Place_Type option");
 
 --  begin read only
    end Test_7_Option_Image_test_option_image_place_type;
@@ -837,11 +849,14 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image("myoption", Justify_Type'(CENTER), Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption center",
+         "Failed to get image for Justify_Type option");
 
 --  begin read only
    end Test_8_Option_Image_test_option_image_justify_type;
