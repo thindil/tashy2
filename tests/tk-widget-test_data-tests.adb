@@ -912,7 +912,7 @@ package body Tk.Widget.Test_Data.Tests is
       Option_Image
         ("myoption", Pad_Array'((2.0, PIXEL), (5.0, PIXEL)), Options_String);
       Assert
-        (To_String(Options_String) = " -myoption {2 5}",
+        (To_String(Options_String) = " -myoption {2.00 5.00}",
          "Failed to get image for Pad_Array option");
 
 --  begin read only
