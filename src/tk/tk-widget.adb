@@ -16,6 +16,7 @@ with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Strings; use Ada.Strings;
+with Ada.Strings.Maps; use Ada.Strings.Maps;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
@@ -226,7 +227,8 @@ package body Tk.Widget is
       if Value /= Null_Window then
          Append
            (Options_String,
-            " -" & Name & " 0x" & New_Value(4 .. New_Value'Length - 1));
+            " -" & Name & " 0x" &
+            Trim(To_Lower(New_Value), To_Set('0'), Null_Set));
       end if;
    end Option_Image;
 
