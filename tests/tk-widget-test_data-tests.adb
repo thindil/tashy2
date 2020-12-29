@@ -1150,11 +1150,14 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image("myoption", Integer(10), Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption 10",
+         "Failed to get image for Integer option");
 
 --  begin read only
    end Test_13_Option_Image_test_option_image_integer;
@@ -1206,11 +1209,21 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Result: Tcl_String;
+      Button: Tk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".mybutton", Button_Options'(Text => To_Tcl_String("Test"), others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Result := Option_Value(Button, "text");
+      Assert(Result = To_Tcl_String("Test"), "Failed to get value for Tcl_String widget option");
+      Destroy(Button);
 
 --  begin read only
    end Test_1_Option_Value_test_option_value_tcl_string;
@@ -1262,11 +1275,21 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Result: Directions_Type;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".mybutton", Button_Options'(Anchor => N, others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Result := Option_Value(Button, "anchor");
+      Assert(Result = N, "Failed to get value for Directions_Type widget option");
+      Destroy(Button);
 
 --  begin read only
    end Test_2_Option_Value_test_option_value_direction_type;
@@ -1318,11 +1341,21 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Result: Pixel_Data;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".mybutton", Button_Options'(Border_Width => (2.0, PIXEL), others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Result := Option_Value(Button, "borderwidth");
+      Assert(Result = (2.0, PIXEL), "Failed to get value for Pixel_Data widget option");
+      Destroy(Button);
 
 --  begin read only
    end Test_3_Option_Value_test_option_value_pixel_data;
@@ -1374,11 +1407,21 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Result: Place_Type;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".mybutton", Button_Options'(Compound => BOTTOM, others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Result := Option_Value(Button, "compound");
+      Assert(Result = BOTTOM, "Failed to get value for Place_Type widget option");
+      Destroy(Button);
 
 --  begin read only
    end Test_4_Option_Value_test_option_value_place_type;
