@@ -16,6 +16,7 @@ with System.Assertions;
 --  end read only
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
+with System.Address_Image;
 with Tk.Button; use Tk.Button;
 with Tk.Grid; use Tk.Grid;
 
@@ -962,11 +963,23 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".mybutton", Button_Options'(others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Option_Image("myoption", Button, Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption .mybutton",
+         "Failed to get image for Tk_Widget option");
+      Destroy(Button);
 
 --  begin read only
    end Test_10_Option_Image_test_option_image_tk_widget;
@@ -1015,11 +1028,14 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Option_Image("myoption", True, Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption 1",
+         "Failed to get image for Extended_Boolean option");
 
 --  begin read only
    end Test_11_Option_Image_test_option_image_extended_boolean;
@@ -1068,11 +1084,24 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".mybutton", Button_Options'(others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Option_Image("myoption", Tk_Window_Id(Button), Options_String);
+      Tcl_Eval("winfo id .mybutton");
+      Assert
+        (To_String(Options_String) = " -myoption " & Tcl_GetResult,
+         "Failed to get image for Tk_Widget option " & Tcl_GetResult & " " & To_String(Options_String));
+      Destroy(Button);
 
 --  begin read only
    end Test_12_Option_Image_test_option_image_tk_window;
