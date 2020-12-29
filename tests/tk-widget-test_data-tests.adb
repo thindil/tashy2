@@ -1032,7 +1032,7 @@ package body Tk.Widget.Test_Data.Tests is
 
    begin
 
-      Option_Image("myoption", True, Options_String);
+      Option_Image("myoption", TRUE, Options_String);
       Assert
         (To_String(Options_String) = " -myoption 1",
          "Failed to get image for Extended_Boolean option");
@@ -1100,7 +1100,7 @@ package body Tk.Widget.Test_Data.Tests is
       Tcl_Eval("winfo id .mybutton");
       Assert
         (To_String(Options_String) = " -myoption " & Tcl_GetResult,
-         "Failed to get image for Tk_Widget option " & Tcl_GetResult & " " & To_String(Options_String));
+         "Failed to get image for Tk_Widget option");
       Destroy(Button);
 
 --  begin read only
