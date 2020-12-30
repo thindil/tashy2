@@ -19,6 +19,7 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 with System.Address_Image;
 with Tk.Button; use Tk.Button;
 with Tk.Grid; use Tk.Grid;
+with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
 
 --  begin read only
@@ -1787,62 +1788,6 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_f2311c_4bf929
-     (Widget: Tk_Widget; Name: String) return Integer is
-   begin
-      begin
-         pragma Assert(Widget /= Null_Widget and Name'Length > 0);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-widget.ads:0):Test_Option_Value_Integer test requirement violated");
-      end;
-      declare
-         Test_Option_Value_f2311c_4bf929_Result: constant Integer :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
-             (Widget, Name);
-      begin
-         begin
-            pragma Assert(True);
-            null;
-         exception
-            when System.Assertions.Assert_Failure =>
-               AUnit.Assertions.Assert
-                 (False,
-                  "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Integer test commitment violated");
-         end;
-         return Test_Option_Value_f2311c_4bf929_Result;
-      end;
-   end Wrap_Test_Option_Value_f2311c_4bf929;
---  end read only
-
---  begin read only
-   procedure Test_10_Option_Value_test_option_value_integer
-     (Gnattest_T: in out Test);
-   procedure Test_Option_Value_f2311c_4bf929(Gnattest_T: in out Test) renames
-     Test_10_Option_Value_test_option_value_integer;
---  id:2.2/f2311c8d530f5ad5/Option_Value/0/0/test_option_value_integer/
-   procedure Test_10_Option_Value_test_option_value_integer
-     (Gnattest_T: in out Test) is
-      function Option_Value
-        (Widget: Tk_Widget; Name: String) return Integer renames
-        Wrap_Test_Option_Value_f2311c_4bf929;
---  end read only
-
-      pragma Unreferenced(Gnattest_T);
-
-   begin
-
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
-
---  begin read only
-   end Test_10_Option_Value_test_option_value_integer;
---  end read only
-
---  begin read only
    function Wrap_Test_Option_Value_6c79cd_a1c7ae
      (Widget: Tk_Widget; Name: String) return Tk_Widget is
    begin
@@ -1875,12 +1820,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_11_Option_Value_test_option_value_tk_widget
+   procedure Test_10_Option_Value_test_option_value_tk_widget
      (Gnattest_T: in out Test);
    procedure Test_Option_Value_6c79cd_a1c7ae(Gnattest_T: in out Test) renames
-     Test_11_Option_Value_test_option_value_tk_widget;
+     Test_10_Option_Value_test_option_value_tk_widget;
 --  id:2.2/6c79cde7e8b52cd2/Option_Value/0/0/test_option_value_tk_widget/
-   procedure Test_11_Option_Value_test_option_value_tk_widget
+   procedure Test_10_Option_Value_test_option_value_tk_widget
      (Gnattest_T: in out Test) is
       function Option_Value
         (Widget: Tk_Widget; Name: String) return Tk_Widget renames
@@ -1895,7 +1840,7 @@ package body Tk.Widget.Test_Data.Tests is
         (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_11_Option_Value_test_option_value_tk_widget;
+   end Test_10_Option_Value_test_option_value_tk_widget;
 --  end read only
 
 --  begin read only
@@ -1931,12 +1876,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_12_Option_Value_test_option_value_tk_window
+   procedure Test_11_Option_Value_test_option_value_tk_window
      (Gnattest_T: in out Test);
    procedure Test_Option_Value_eba58c_92636b(Gnattest_T: in out Test) renames
-     Test_12_Option_Value_test_option_value_tk_window;
+     Test_11_Option_Value_test_option_value_tk_window;
 --  id:2.2/eba58cc5c22700dd/Option_Value/0/0/test_option_value_tk_window/
-   procedure Test_12_Option_Value_test_option_value_tk_window
+   procedure Test_11_Option_Value_test_option_value_tk_window
      (Gnattest_T: in out Test) is
       function Option_Value
         (Widget: Tk_Widget; Name: String) return Tk_Window renames
@@ -1951,7 +1896,7 @@ package body Tk.Widget.Test_Data.Tests is
         (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_12_Option_Value_test_option_value_tk_window;
+   end Test_11_Option_Value_test_option_value_tk_window;
 --  end read only
 
 --  begin read only
