@@ -19,6 +19,7 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 with System.Address_Image;
 with Tk.Button; use Tk.Button;
 with Tk.Grid; use Tk.Grid;
+with Tk.TopLevel; use Tk.TopLevel;
 
 --  begin read only
 --  end read only
@@ -1218,11 +1219,15 @@ package body Tk.Widget.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create(Button, ".mybutton", Button_Options'(Text => To_Tcl_String("Test"), others => <>));
+      Create
+        (Button, ".mybutton",
+         Button_Options'(Text => To_Tcl_String("Test"), others => <>));
       Add(Button);
       Tcl_Eval("update");
       Result := Option_Value(Button, "text");
-      Assert(Result = To_Tcl_String("Test"), "Failed to get value for Tcl_String widget option");
+      Assert
+        (Result = To_Tcl_String("Test"),
+         "Failed to get value for Tcl_String widget option");
       Destroy(Button);
 
 --  begin read only
@@ -1288,7 +1293,8 @@ package body Tk.Widget.Test_Data.Tests is
       Add(Button);
       Tcl_Eval("update");
       Result := Option_Value(Button, "anchor");
-      Assert(Result = N, "Failed to get value for Directions_Type widget option");
+      Assert
+        (Result = N, "Failed to get value for Directions_Type widget option");
       Destroy(Button);
 
 --  begin read only
@@ -1350,11 +1356,15 @@ package body Tk.Widget.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create(Button, ".mybutton", Button_Options'(Border_Width => (2.0, PIXEL), others => <>));
+      Create
+        (Button, ".mybutton",
+         Button_Options'(Border_Width => (2.0, PIXEL), others => <>));
       Add(Button);
       Tcl_Eval("update");
       Result := Option_Value(Button, "borderwidth");
-      Assert(Result = (2.0, PIXEL), "Failed to get value for Pixel_Data widget option");
+      Assert
+        (Result = (2.0, PIXEL),
+         "Failed to get value for Pixel_Data widget option");
       Destroy(Button);
 
 --  begin read only
@@ -1416,11 +1426,14 @@ package body Tk.Widget.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create(Button, ".mybutton", Button_Options'(Compound => BOTTOM, others => <>));
+      Create
+        (Button, ".mybutton",
+         Button_Options'(Compound => BOTTOM, others => <>));
       Add(Button);
       Tcl_Eval("update");
       Result := Option_Value(Button, "compound");
-      Assert(Result = BOTTOM, "Failed to get value for Place_Type widget option");
+      Assert
+        (Result = BOTTOM, "Failed to get value for Place_Type widget option");
       Destroy(Button);
 
 --  begin read only
@@ -1473,11 +1486,24 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Result: State_Type;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Button_Options'(Default => ACTIVE, others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Result := Option_Value(Button, "default");
+      Assert
+        (Result = ACTIVE, "Failed to get value for State_Type widget option");
+      Destroy(Button);
 
 --  begin read only
    end Test_5_Option_Value_test_option_value_state_type;
@@ -1529,11 +1555,25 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Result: Justify_Type;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Button_Options'(Justify => CENTER, others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Result := Option_Value(Button, "justify");
+      Assert
+        (Result = CENTER,
+         "Failed to get value for Justify_Type widget option");
+      Destroy(Button);
 
 --  begin read only
    end Test_6_Option_Value_test_option_value_justify_type;
@@ -1585,11 +1625,23 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Result: Relief_Type;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton", Button_Options'(Relief => RAISED, others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Result := Option_Value(Button, "relief");
+      Assert
+        (Result = RAISED, "Failed to get value for Relief_Type widget option");
+      Destroy(Button);
 
 --  begin read only
    end Test_7_Option_Value_test_option_value_relief_type;
@@ -1641,11 +1693,25 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Result: Extended_Natural;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Button_Options'(Repeat_Delay => 10, others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Result := Option_Value(Button, "repeatdelay");
+      Assert
+        (Result = 10,
+         "Failed to get value for Extended_Natural widget option");
+      Destroy(Button);
 
 --  begin read only
    end Test_8_Option_Value_test_option_value_extended_natural;
@@ -1697,11 +1763,24 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Tk_TopLevel;
+      Result: Extended_Boolean;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Widget, ".mydialog",
+         TopLevel_Create_Options'(Container => TRUE, others => <>));
+      Tcl_Eval("update");
+      Result := Option_Value(Widget, "container");
+      Assert
+        (Result = True,
+         "Failed to get value for Extended_Boolean widget option");
+      Destroy(Widget);
 
 --  begin read only
    end Test_9_Option_Value_test_option_value_extended_boolean;
