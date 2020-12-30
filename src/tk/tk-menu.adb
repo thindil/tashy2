@@ -12,24 +12,21 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Tk.Widget; use Tk.Widget;
-
-package Tk.Menu is
-
-   subtype Tk_Menu is Tk_Widget;
-
-   type Menu_Options is new Widget_Options with null record;
+package body Tk.Menu is
 
    function Create
      (Path_Name: String; Options: Menu_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu is
+   begin
+      Tcl_Eval("button " & Path_Name & " ", Interpreter);
+      return Get_Widget(Path_Name, Interpreter);
+   end Create;
 
    procedure Create
      (Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Widget /= Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   begin
+      Widget := Create(Path_Name, Options, Interpreter);
+   end Create;
 
 end Tk.Menu;
