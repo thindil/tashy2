@@ -317,12 +317,6 @@ package body Tk.Widget is
       end if;
    end Option_Value;
 
-   function Option_Value(Widget: Tk_Widget; Name: String) return Integer is
-   begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Integer'Value(Tcl_GetResult(Tk_Interp(Widget)));
-   end Option_Value;
-
    function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Widget is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
