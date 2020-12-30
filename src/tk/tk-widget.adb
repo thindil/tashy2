@@ -310,7 +310,11 @@ package body Tk.Widget is
      (Widget: Tk_Widget; Name: String) return Extended_Boolean is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Extended_Boolean'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      if Tcl_GetResult = 1 then
+         return True;
+      else
+         return False;
+      end if;
    end Option_Value;
 
    function Option_Value(Widget: Tk_Widget; Name: String) return Integer is
