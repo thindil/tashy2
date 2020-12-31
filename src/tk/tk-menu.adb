@@ -17,8 +17,9 @@ package body Tk.Menu is
    function Create
      (Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu is
+      pragma Unreferenced(Options);
    begin
-      Tcl_Eval("button " & Path_Name & " ", Interpreter);
+      Tcl_Eval("menu " & Path_Name & " ", Interpreter);
       return Get_Widget(Path_Name, Interpreter);
    end Create;
 
