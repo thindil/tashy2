@@ -311,9 +311,9 @@ package body Tk.Widget is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
       if Tcl_GetResult = 1 then
-         return True;
+         return TRUE;
       else
-         return False;
+         return FALSE;
       end if;
    end Option_Value;
 
@@ -324,11 +324,13 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Window is
+      Result: Unbounded_String;
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Result := To_Unbounded_String(String'(Tcl_GetResult(Tk_Interp(Widget))));
       return Tk_Window
           (System'To_Address
-             (Integer'Value("16#" & Tcl_GetResult(Tk_Interp(Widget)) & "#")));
+             (Integer'Value("16#" & Slice(Result, 3, Length(Result)) & "#")));
    end Option_Value;
 
    procedure Destroy(Widget: in out Tk_Widget) is
