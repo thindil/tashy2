@@ -1833,11 +1833,27 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Tk_TopLevel;
+      Menu: Tk_Menu;
+      Result: Tk_Widget;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Create
+        (Widget, ".mydialog",
+         TopLevel_Create_Options'(Menu => Menu, others => <>));
+      Tcl_Eval("update");
+      Result := Option_Value(Widget, "menu");
+      Assert
+        (Result = Menu,
+         "Failed to get value for Tk_Widget widget option");
+      Destroy(Widget);
+      Destroy(Menu);
 
 --  begin read only
    end Test_10_Option_Value_test_option_value_tk_widget;
