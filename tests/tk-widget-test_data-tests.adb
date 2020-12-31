@@ -1849,9 +1849,7 @@ package body Tk.Widget.Test_Data.Tests is
          TopLevel_Create_Options'(Menu => Menu, others => <>));
       Tcl_Eval("update");
       Result := Option_Value(Widget, "menu");
-      Assert
-        (Result = Menu,
-         "Failed to get value for Tk_Widget widget option");
+      Assert(Result = Menu, "Failed to get value for Tk_Widget widget option");
       Destroy(Widget);
       Destroy(Menu);
 
@@ -1916,11 +1914,12 @@ package body Tk.Widget.Test_Data.Tests is
       end if;
       Create
         (TopWidget, ".mydialog",
-         TopLevel_Create_Options'(Container => True, others => <>));
+         TopLevel_Create_Options'(Container => TRUE, others => <>));
       Tcl_Eval("update");
       Create
         (ChildWidget, ".mychild",
-         TopLevel_Create_Options'(Use_Container => Tk_Window_Id(TopWidget), others => <>));
+         TopLevel_Create_Options'
+           (Use_Container => Tk_Window_Id(TopWidget), others => <>));
       Result := Option_Value(ChildWidget, "use");
       Assert
         (Result = Tk_Window_Id(TopWidget),
@@ -1950,11 +1949,13 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button, ".mybutton", Button_Options'(others => <>));
+      Destroy(Button);
+      Assert(Button = Null_Widget, "Failed to destroy Tk_Widget");
 
 --  begin read only
    end Test_Destroy_test_destroy;
@@ -2003,11 +2004,17 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create
+        (Button, ".mybutton",
+         Button_Options'(Text => To_Tcl_String("Quit"), others => <>));
+      Execute_Widget_Command(Button, "cget", "-text");
+      Assert
+        (Tcl_GetResult = "Quit",
+         "Failed to execute Tcl command on the selected Tk_Widget.");
 
 --  begin read only
    end Test_Execute_Widget_Command_test_execute_widget_command;
