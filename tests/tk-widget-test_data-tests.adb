@@ -1953,6 +1953,10 @@ package body Tk.Widget.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Create(Button, ".mybutton", Button_Options'(others => <>));
       Destroy(Button);
       Assert(Button = Null_Widget, "Failed to destroy Tk_Widget");
@@ -2008,6 +2012,10 @@ package body Tk.Widget.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Create
         (Button, ".mybutton",
          Button_Options'(Text => To_Tcl_String("Quit"), others => <>));
