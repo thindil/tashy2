@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -140,7 +140,8 @@ package Tk.Button is
      (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget;
+      Post => Create'Result /= Null_Widget,
+      Test_Case => ("Test_Create_Button1", Nominal);
       -- ****
 
       -- ****f* Button/Button.Create_(procedure)
@@ -174,7 +175,8 @@ package Tk.Button is
      (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Widget /= Null_Widget;
+      Post => Widget /= Null_Widget,
+      Test_Case => ("Test_Create_Button2", Nominal);
       -- ****
 
       -- ****f* Button/Button.Get_Options
@@ -195,7 +197,8 @@ package Tk.Button is
       -- Widget configure
       -- SOURCE
    function Get_Options(Widget: Tk_Button) return Button_Options with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Get_Options_Button", Nominal);
       -- ****
 
       -- ****f* Button/Button.Configure
@@ -215,7 +218,8 @@ package Tk.Button is
       -- Widget configure Options
       -- SOURCE
    procedure Configure(Widget: Tk_Button; Options: Button_Options) with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Configure_Button", Nominal);
       -- ****
 
       -- ****f* Button/Button.Flash
@@ -232,7 +236,8 @@ package Tk.Button is
       -- Widget flash
       -- SOURCE
    procedure Flash(Widget: Tk_Button) with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Flash_Button", Nominal);
       -- ****
 
       -- ****f* Button/Button.Invoke_(procedure)
@@ -253,7 +258,8 @@ package Tk.Button is
       -- Widget invoke
       -- SOURCE
    procedure Invoke(Widget: Tk_Button) with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Invoke_Button1", Nominal);
       -- ****
 
       -- ****f* Button/Button.Invoke_(function_and_string_result)
@@ -276,7 +282,8 @@ package Tk.Button is
       -- Widget invoke
       -- SOURCE
    function Invoke(Widget: Tk_Button) return String with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Invoke_Button2", Nominal);
       -- ****
 
       -- ****f* Button/Button.Invoke_(function_and_integer_result)
@@ -300,7 +307,8 @@ package Tk.Button is
       -- SOURCE
    function Invoke(Widget: Tk_Button) return Integer is
      (Integer'Value(Invoke(Widget))) with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Invoke_Button3", Nominal);
       -- ****
 
       -- ****f* Button/Button.Invoke_(function_and_float_result)
@@ -324,7 +332,8 @@ package Tk.Button is
       -- SOURCE
    function Invoke(Widget: Tk_Button) return Float is
      (Float'Value(Invoke(Widget))) with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Invoke_Button4", Nominal);
       -- ****
 
 end Tk.Button;
