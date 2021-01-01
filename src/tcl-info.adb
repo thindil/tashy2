@@ -18,7 +18,7 @@ package body Tcl.Info is
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
    begin
-      Tcl_Eval("info " & Var_Name, Interpreter);
+      Tcl_Eval("info exists " & Var_Name, Interpreter);
       if Tcl_GetResult(Interpreter) = 1 then
          return True;
       end if;
