@@ -16,6 +16,7 @@ with System.Assertions;
 --  end read only
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tcl.Info; use Tcl.Info;
 
 --  begin read only
 --  end read only
@@ -71,7 +72,7 @@ package body Tk.Test_Data.Tests is
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
+      if Value("DISPLAY", "")'Length = 0 or else Info.Exists("tk_version") then
          Assert(True, "No display, can't test");
          return;
       end if;
