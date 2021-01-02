@@ -33,7 +33,9 @@ package Tcl.Info is
    -- SOURCE
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean;
+      return Boolean with
+      Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Exists", Nominal);
       -- ****
 
 end Tcl.Info;
