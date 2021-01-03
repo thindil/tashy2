@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with Tcl.Variables; use Tcl.Variables;
+
 --  begin read only
 --  end read only
 package body Tcl.Info.Test_Data.Tests is
@@ -78,8 +80,11 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_SetVar("myvar", "2");
+      Assert(Info.Exists("myvar"), "Failed to find existing variable.");
+      Assert
+        (not Info.Exists("randomnamevar"),
+         "Failed to not find non existing variable.");
 
 --  begin read only
    end Test_Exists_test_info_exists;
