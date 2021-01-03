@@ -3,6 +3,9 @@
 --  automatically. Contents of this package can be modified in any way
 --  except for sections surrounded by a 'read only' marker.
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tcl.Info; use Tcl.Info;
+
 package body Tk.Button.Button_Options_Test_Data is
 
    Local_Button_Options: aliased GNATtest_Generated.GNATtest_Standard.Tk.Button
@@ -18,6 +21,10 @@ package body Tk.Button.Button_Options_Test_Data is
            .Test_Widget_Options
            (Gnattest_T));
       Gnattest_T.Fixture := Local_Button_Options'Access;
+      if Value("DISPLAY", "")'Length = 0 or else Info.Exists("tk_version") then
+         return;
+      end if;
+      Tk_Init;
    end Set_Up;
 
    procedure Tear_Down(Gnattest_T: in out Test_Button_Options) is
