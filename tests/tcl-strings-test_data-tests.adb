@@ -87,6 +87,41 @@ package body Tcl.Strings.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_To_Ada_String_9fab6f_7961da
+     (Source: Tcl_String) return String is
+   begin
+      declare
+         Test_To_Ada_String_9fab6f_7961da_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Strings.To_Ada_String
+             (Source);
+      begin
+         return Test_To_Ada_String_9fab6f_7961da_Result;
+      end;
+   end Wrap_Test_To_Ada_String_9fab6f_7961da;
+--  end read only
+
+--  begin read only
+   procedure Test_To_Ada_String_test_to_ada_string(Gnattest_T: in out Test);
+   procedure Test_To_Ada_String_9fab6f_7961da(Gnattest_T: in out Test) renames
+     Test_To_Ada_String_test_to_ada_string;
+--  id:2.2/9fab6f9320249ad5/To_Ada_String/1/0/test_to_ada_string/
+   procedure Test_To_Ada_String_test_to_ada_string(Gnattest_T: in out Test) is
+      function To_Ada_String(Source: Tcl_String) return String renames
+        Wrap_Test_To_Ada_String_9fab6f_7961da;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_To_Ada_String_test_to_ada_string;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

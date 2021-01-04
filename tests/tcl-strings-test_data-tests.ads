@@ -13,5 +13,8 @@ package Tcl.Strings.Test_Data.Tests is
    procedure Test_To_Tcl_String_05e111_b689e2(Gnattest_T: in out Test);
    --  tcl-strings.ads:52:4:To_Tcl_String:Test_To_Tcl_String
 
+   procedure Test_To_Ada_String_9fab6f_7961da(Gnattest_T: in out Test);
+   --  tcl-strings.ads:71:4:To_Ada_String:Test_To_Ada_String
+
 end Tcl.Strings.Test_Data.Tests;
 --  end read only
