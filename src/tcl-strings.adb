@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -45,6 +45,9 @@ package body Tcl.Strings is
       New_String: Tcl_String := Source;
       Element_Index: Natural := 1;
    begin
+      if Length(Source) = 0 then
+         return "";
+      end if;
       if Element(New_String, 1) = '{' then
          Trim(New_String, To_Set("{"), To_Set("}"));
       elsif Element(New_String, 1) = '"' then
