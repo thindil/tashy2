@@ -114,8 +114,12 @@ package body Tcl.Strings.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (To_Ada_String(To_Tcl_String("test evaluate")) = "test evaluate",
+         "Failed to convert Tcl_String to Ada String.");
+      Assert
+        (To_Ada_String(To_Tcl_String("")) = "",
+         "Failed to convert empty Tcl_String to Ada String");
 
 --  begin read only
    end Test_To_Ada_String_test_to_ada_string;
