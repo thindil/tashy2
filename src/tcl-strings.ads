@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -68,7 +68,8 @@ package Tcl.Strings is
       -- -- Convert Tcl_String {hello world} to Ada String
       -- My_String: constant String := To_String(To_Tcl_String("hello world"));
       -- SOURCE
-   function To_Ada_String(Source: Tcl_String) return String;
+   function To_Ada_String(Source: Tcl_String) return String with
+      Test_Case => ("Test_To_Ada_String", Robustness);
    -- ****
 
 end Tcl.Strings;
