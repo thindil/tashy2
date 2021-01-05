@@ -1639,9 +1639,12 @@ package body Tk.Widget.Test_Data.Tests is
         (Button, ".mybutton", Button_Options'(Relief => RAISED, others => <>));
       Add(Button);
       Tcl_Eval("update");
-      Result := Option_Value(Button, "relief");
       Assert
-        (Result = RAISED, "Failed to get value for Relief_Type widget option");
+        (Option_Value(Button, "relief") = RAISED,
+         "Failed to get value for Relief_Type widget option");
+      Assert
+        (Option_Value(Button, "overrelief") = Relief_Type'(NONE),
+         "Failed to get value for empty Relief_Type widget option");
       Destroy(Button);
 
 --  begin read only
