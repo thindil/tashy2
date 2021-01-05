@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -296,7 +296,15 @@ package body Tk.Widget is
    function Option_Value(Widget: Tk_Widget; Name: String) return Relief_Type is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Relief_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      declare
+         Result: constant String := Tcl_GetResult(Tk_Interp(Widget));
+      begin
+         if Result'Length > 0 then
+            return Relief_Type'Value(Result);
+         else
+            return NONE;
+         end if;
+      end;
    end Option_Value;
 
    function Option_Value
