@@ -28,6 +28,7 @@ package body Tk.Button.Button_Options_Test_Data is
    end Set_Up;
 
    procedure Tear_Down(Gnattest_T: in out Test_Button_Options) is
+      Button: Tk_Button;
    begin
       GNATtest_Generated.GNATtest_Standard.Tk.Widget.Widget_Options_Test_Data
         .Widget_Options_Tests
@@ -37,6 +38,13 @@ package body Tk.Button.Button_Options_Test_Data is
            .Widget_Options_Tests
            .Test_Widget_Options
            (Gnattest_T));
+      if Value("DISPLAY", "")'Length = 0 then
+         return;
+      end if;
+      Button := Get_Widget(".mybutton");
+      if Button /= Null_Widget then
+         Destroy(Button);
+      end if;
    end Tear_Down;
 
 end Tk.Button.Button_Options_Test_Data;
