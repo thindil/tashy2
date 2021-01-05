@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -116,7 +116,7 @@ package body Tk.Button is
          Options.PadX := Option_Value(Widget, "padx");
          Options.PadY := Option_Value(Widget, "pady");
          Options.Relief := Option_Value(Widget, "relief");
-         Options.Repeat_Delay := Option_Value(Widget, "repeaddelay");
+         Options.Repeat_Delay := Option_Value(Widget, "repeatdelay");
          Options.Repeat_Interval := Option_Value(Widget, "repeatinterval");
          Options.State := Option_Value(Widget, "state");
          Options.Take_Focus := Option_Value(Widget, "takefocus");
