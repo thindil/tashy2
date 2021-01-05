@@ -203,11 +203,23 @@ package body Tk.Button.Button_Options_Test_Data.Button_Options_Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Options: Button_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Button_Options'(Text => To_Tcl_String("Quit"), others => <>));
+      Options := Get_Options(Button);
+      Assert
+        (Options.Text = To_Tcl_String("Quit"),
+         "Failed to get button options.");
+      Destroy(Button);
 
 --  begin read only
    end Test_Get_Options_test_get_options_button;
