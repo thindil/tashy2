@@ -72,6 +72,7 @@ package body Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      TopLevel: Tk_TopLevel;
 
    begin
 
@@ -79,8 +80,11 @@ package body Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(TopLevel, ".mydialog", TopLevel_Create_Options'(others => <>));
+      Configure(TopLevel, TopLevel_Options'(Relief => RAISED, others => <>));
+      Assert
+        (Option_Value(TopLevel, "relief") = RAISED,
+         "Failed to set new value for toplevel option.");
 
 --  begin read only
    end Test_Configure_test_configure_toplevel;
