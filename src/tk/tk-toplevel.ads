@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -84,7 +84,9 @@ package Tk.TopLevel is
    -- COMMANDS
    -- Widget configure Options
    -- SOURCE
-   procedure Configure(Widget: Tk_TopLevel; Options: TopLevel_Options);
+   procedure Configure(Widget: Tk_TopLevel; Options: TopLevel_Options) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Configure_TopLevel", Nominal);
    -- ****
 
    -- ****s* TopLevel/TopLevel.TopLevel_Create_Options
@@ -134,7 +136,10 @@ package Tk.TopLevel is
    -- SOURCE
    function Create
      (Path_Name: String; Options: TopLevel_Create_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel with
+      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Post => Create'Result /= Null_Widget,
+      Test_Case => ("Test_Create_TopLevel1", Nominal);
       -- ****
 
       -- ****f* TopLevel/TopLevel.Create_(procedure)
@@ -165,7 +170,10 @@ package Tk.TopLevel is
    procedure Create
      (Widget: out Tk_TopLevel; Path_Name: String;
       Options: TopLevel_Create_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter);
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Post => Widget /= Null_Widget,
+      Test_Case => ("Test_Create_TopLevel2", Nominal);
    -- ****
 
    -- ****f* TopLevel/TopLevel.Get_Options
@@ -184,7 +192,10 @@ package Tk.TopLevel is
    -- COMMANDS
    -- Widget configure
    -- SOURCE
-   function Get_Options(Widget: Tk_TopLevel) return TopLevel_Create_Options;
+   function Get_Options
+     (Widget: Tk_TopLevel) return TopLevel_Create_Options with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Get_Options_TopLevel", Nominal);
    -- ****
 
 end Tk.TopLevel;
