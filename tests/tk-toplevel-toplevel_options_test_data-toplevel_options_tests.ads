@@ -12,5 +12,9 @@ package Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests is
      .Test_TopLevel_Options with
    null record;
 
+   procedure Test_Configure_0076be_7763e3
+     (Gnattest_T: in out Test_TopLevel_Options);
+   --  tk-toplevel.ads:87:4:Configure:Test_Configure_TopLevel
+
 end Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests;
 --  end read only
