@@ -29,11 +29,11 @@ package body Tcl.Strings.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_To_Tcl_String_05e111_b689e2
+   function Wrap_Test_To_Tcl_String_05e111_cc0b40
      (Source: String; Evaluate: Boolean := False) return Tcl_String is
    begin
       begin
-         pragma Assert(Source'Length > 0);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -42,7 +42,7 @@ package body Tcl.Strings.Test_Data.Tests is
                "req_sloc(tcl-strings.ads:0):Test_To_Tcl_String test requirement violated");
       end;
       declare
-         Test_To_Tcl_String_05e111_b689e2_Result: constant Tcl_String :=
+         Test_To_Tcl_String_05e111_cc0b40_Result: constant Tcl_String :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Strings.To_Tcl_String
              (Source, Evaluate);
       begin
@@ -55,20 +55,20 @@ package body Tcl.Strings.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-strings.ads:0:):Test_To_Tcl_String test commitment violated");
          end;
-         return Test_To_Tcl_String_05e111_b689e2_Result;
+         return Test_To_Tcl_String_05e111_cc0b40_Result;
       end;
-   end Wrap_Test_To_Tcl_String_05e111_b689e2;
+   end Wrap_Test_To_Tcl_String_05e111_cc0b40;
 --  end read only
 
 --  begin read only
    procedure Test_To_Tcl_String_test_to_tcl_string(Gnattest_T: in out Test);
-   procedure Test_To_Tcl_String_05e111_b689e2(Gnattest_T: in out Test) renames
+   procedure Test_To_Tcl_String_05e111_cc0b40(Gnattest_T: in out Test) renames
      Test_To_Tcl_String_test_to_tcl_string;
 --  id:2.2/05e11147f5a156d7/To_Tcl_String/1/0/test_to_tcl_string/
    procedure Test_To_Tcl_String_test_to_tcl_string(Gnattest_T: in out Test) is
       function To_Tcl_String
         (Source: String; Evaluate: Boolean := False) return Tcl_String renames
-        Wrap_Test_To_Tcl_String_05e111_b689e2;
+        Wrap_Test_To_Tcl_String_05e111_cc0b40;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
