@@ -332,13 +332,19 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Window is
-      Result: Unbounded_String;
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
-      Result := To_Unbounded_String(String'(Tcl_GetResult(Tk_Interp(Widget))));
-      return Tk_Window
-          (System'To_Address
-             (Integer'Value("16#" & Slice(Result, 3, Length(Result)) & "#")));
+      declare
+         Result: constant String := Tcl_GetResult(Tk_Interp(Widget));
+      begin
+         if Result'Length > 0 then
+            return Tk_Window
+               (System'To_Address
+                  (Integer'Value("16#" & Result(3 .. Result'Last) & "#")));
+         else
+            return Null_Window;
+         end if;
+      end;
    end Option_Value;
 
    procedure Destroy(Widget: in out Tk_Widget) is
