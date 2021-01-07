@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -109,7 +109,8 @@ package Tk.Grid is
    procedure Add
      (Widget: Tk_Widget;
       Options: Grid_Options := Grid_Options'(others => <>)) with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Add1", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Add_(many_widget)
@@ -132,7 +133,8 @@ package Tk.Grid is
    procedure Add
      (Widgets: Widgets_Array;
       Options: Grid_Options := Grid_Options'(others => <>)) with
-      Pre => Widgets'Length > 0;
+      Pre => Widgets'Length > 0,
+      Test_Case => ("Test_Add2", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Anchor_(procedure)
@@ -154,7 +156,8 @@ package Tk.Grid is
       -- grid anchor master new_direction
       -- SOURCE
    procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) with
-      Pre => Master /= Null_Widget and New_Direction /= NONE;
+      Pre => Master /= Null_Widget and New_Direction /= NONE,
+      Test_Case => ("Test_Anchor1", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Anchor_(function)
@@ -173,7 +176,8 @@ package Tk.Grid is
       -- grid anchor master
       -- SOURCE
    function Anchor(Master: Tk_Widget) return Directions_Type with
-      Pre => Master /= Null_Widget;
+      Pre => Master /= Null_Widget,
+      Test_Case => ("Test_Anchor2", Nominal);
       -- ****
 
       -- ****f* Tk.Grid/BBox
@@ -211,7 +215,8 @@ package Tk.Grid is
    function BBox
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return BBox_Array with
-      Pre => Master /= Null_Widget;
+      Pre => Master /= Null_Widget,
+      Test_Case => ("Test_BBox", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Column_Configure_(child_name)
@@ -235,7 +240,8 @@ package Tk.Grid is
    procedure Column_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
       Pre => Master /= Null_Widget and Length(Child_Name) > 0 and
-      Options /= Column_Options'(others => <>);
+      Options /= Column_Options'(others => <>),
+      Test_Case => ("Test_Column_Configure1", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Column_Configure_(child)
@@ -259,7 +265,8 @@ package Tk.Grid is
    procedure Column_Configure
      (Master, Child: Tk_Widget; Options: Column_Options) with
       Pre => Master /= Null_Widget and Child /= Null_Widget and
-      Options /= Column_Options'(others => <>);
+      Options /= Column_Options'(others => <>),
+      Test_Case => ("Test_Column_Configure2", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Column_Configure_(column_number)
@@ -283,7 +290,8 @@ package Tk.Grid is
    procedure Column_Configure
      (Master: Tk_Widget; Column: Natural; Options: Column_Options) with
       Pre => Master /= Null_Widget and
-      Options /= Column_Options'(others => <>);
+      Options /= Column_Options'(others => <>),
+      Test_Case => ("Test_Column_Configure3", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Get_Column_Options_(child_name)
@@ -308,7 +316,8 @@ package Tk.Grid is
       -- SOURCE
    function Get_Column_Options
      (Master: Tk_Widget; Child_Name: Tcl_String) return Column_Options with
-      Pre => Master /= Null_Widget and Length(Child_Name) > 0;
+      Pre => Master /= Null_Widget and Length(Child_Name) > 0,
+      Test_Case => ("Test_Get_Column_Options1", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Get_Column_Options_(child)
@@ -332,7 +341,8 @@ package Tk.Grid is
       -- SOURCE
    function Get_Column_Options
      (Master, Child: Tk_Widget) return Column_Options with
-      Pre => Master /= Null_Widget and Child /= Null_Widget;
+      Pre => Master /= Null_Widget and Child /= Null_Widget,
+      Test_Case => ("Test_Get_Column_Options2", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Get_Column_Options_(column_number)
@@ -356,7 +366,8 @@ package Tk.Grid is
       -- SOURCE
    function Get_Column_Options
      (Master: Tk_Widget; Column: Natural) return Column_Options with
-      Pre => Master /= Null_Widget;
+      Pre => Master /= Null_Widget,
+      Test_Case => ("Test_Get_Column_Options3", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Configure_(single_widget)
