@@ -82,6 +82,7 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      TopLevel: Tk_TopLevel := Null_Widget;
 
    begin
 
@@ -89,8 +90,9 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(TopLevel, ".mydialog", TopLevel_Create_Options'(others => <>));
+      Assert(TopLevel /= Null_Widget, "Failed to create a new toplevel.");
+      Destroy(TopLevel);
 
 --  begin read only
    end Test_1_Create_test_create_toplevel1;
@@ -143,6 +145,7 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      TopLevel: Tk_TopLevel := Null_Widget;
 
    begin
 
@@ -150,8 +153,9 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      TopLevel := Create(".mydialog", TopLevel_Create_Options'(others => <>));
+      Assert(TopLevel /= Null_Widget, "Failed to create a new toplevel.");
+      Destroy(TopLevel);
 
 --  begin read only
    end Test_2_Create_test_create_toplevel2;
@@ -204,6 +208,8 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      TopLevel: Tk_TopLevel;
+      Options: TopLevel_Create_Options;
 
    begin
 
@@ -211,8 +217,12 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create
+        (TopLevel, ".mydialog",
+         TopLevel_Create_Options'(Relief => RAISED, others => <>));
+      Options := Get_Options(TopLevel);
+      Assert(Options.Relief = RAISED, "Failed to get toplevel options.");
+      Destroy(TopLevel);
 
 --  begin read only
    end Test_Get_Options_test_get_options_toplevel;
