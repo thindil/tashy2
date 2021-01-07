@@ -1928,6 +1928,11 @@ package body Tk.Widget.Test_Data.Tests is
         (Result = Tk_Window_Id(TopWidget),
          "Failed to get value for Tk_Window widget option");
       Destroy(TopWidget);
+      Create(TopWidget, ".mydialog", TopLevel_Create_Options'(others => <>));
+      Assert
+        (Option_Value(TopWidget, "use") = Null_Window,
+         "Failed to get empty value for Tk_Window widget option");
+      Destroy(TopWidget);
       Destroy(ChildWidget);
 
 --  begin read only
