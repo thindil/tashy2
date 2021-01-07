@@ -3,6 +3,8 @@
 --  automatically. Contents of this package can be modified in any way
 --  except for sections surrounded by a 'read only' marker.
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+
 package body Tk.TopLevel.TopLevel_Options_Test_Data is
 
    Local_TopLevel_Options: aliased GNATtest_Generated.GNATtest_Standard.Tk
@@ -22,6 +24,7 @@ package body Tk.TopLevel.TopLevel_Options_Test_Data is
    end Set_Up;
 
    procedure Tear_Down(Gnattest_T: in out Test_TopLevel_Options) is
+      TopLevel: Tk_TopLevel;
    begin
       GNATtest_Generated.GNATtest_Standard.Tk.Widget.Widget_Options_Test_Data
         .Widget_Options_Tests
@@ -31,6 +34,13 @@ package body Tk.TopLevel.TopLevel_Options_Test_Data is
            .Widget_Options_Tests
            .Test_Widget_Options
            (Gnattest_T));
+      if Value("DISPLAY", "")'Length = 0 then
+         return;
+      end if;
+      TopLevel := Get_Widget(".mydialog");
+      if TopLevel /= Null_Widget then
+         Destroy(TopLevel);
+      end if;
    end Tear_Down;
 
 end Tk.TopLevel.TopLevel_Options_Test_Data;
