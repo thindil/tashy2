@@ -2031,6 +2031,7 @@ package body Tk.Widget.Test_Data.Tests is
       Assert
         (Tcl_GetResult = "Quit",
          "Failed to execute Tcl command on the selected Tk_Widget.");
+      Destroy(Button);
 
 --  begin read only
    end Test_Execute_Widget_Command_test_execute_widget_command;
