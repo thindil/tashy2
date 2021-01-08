@@ -16,6 +16,8 @@ with System.Assertions;
 --  end read only
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tk.Button; use Tk.Button;
+with Tk.MainWindow; use Tk.MainWindow;
 
 --  begin read only
 --  end read only
@@ -70,6 +72,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
 
    begin
 
@@ -77,8 +80,10 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button, ".mybutton", Button_Options'(others => <>));
+      Add(Button);
+      Assert(Size(Get_Main_Window) = (1, 1), "Failed to add widget to grid.");
+      Destroy(Button);
 
 --  begin read only
    end Test_1_Add_test_add1;
