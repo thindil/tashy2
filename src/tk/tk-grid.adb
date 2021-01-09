@@ -263,27 +263,26 @@ package body Tk.Grid is
    end Get_Value;
 
    function Get_Column_Options
-     (Master: Tk_Widget; Child_Name: Tcl_String) return Column_Options is
-   begin
-      return Options: Column_Options do
-         Options.MinSize := Get_Value(Master, "minsize", "column", Child_Name);
-         Options.Weight := Get_Value(Master, "weight", "column", Child_Name);
-         Options.Uniform := Get_Value(Master, "uniform", "column", Child_Name);
-         Options.Pad := Get_Value(Master, "pad", "column", Child_Name);
-      end return;
-   end Get_Column_Options;
-
-   function Get_Column_Options
-     (Master, Child: Tk_Widget) return Column_Options is
-   begin
-      return Get_Column_Options(Master, To_Tcl_String(Tk_PathName(Child)));
-   end Get_Column_Options;
-
-   function Get_Column_Options
      (Master: Tk_Widget; Column: Natural) return Column_Options is
    begin
-      return Get_Column_Options
-          (Master, To_Tcl_String(Trim(Natural'Image(Column), Left)));
+      return Options: Column_Options do
+         Options.MinSize :=
+           Get_Value
+             (Master, "minsize", "column",
+              To_Tcl_String(Trim(Natural'Image(Column), Left)));
+         Options.Weight :=
+           Get_Value
+             (Master, "weight", "column",
+              To_Tcl_String(Trim(Natural'Image(Column), Left)));
+         Options.Uniform :=
+           Get_Value
+             (Master, "uniform", "column",
+              To_Tcl_String(Trim(Natural'Image(Column), Left)));
+         Options.Pad :=
+           Get_Value
+             (Master, "pad", "column",
+              To_Tcl_String(Trim(Natural'Image(Column), Left)));
+      end return;
    end Get_Column_Options;
 
    procedure Configure(Widget: Tk_Widget; Options: Grid_Options) is

@@ -294,58 +294,7 @@ package Tk.Grid is
       Test_Case => ("Test_Column_Configure3", Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Get_Column_Options_(child_name)
-      -- FUNCTION
-      -- Get the configuration options of the selected column in the selected grid
-      -- PARAMETERS
-      -- Master     - Tk_Widget in which the grid is. Must be existing widget
-      -- Child_Name - The name of the child widget which column configuration
-      --              will be get. If set to "all", get configuration for all
-      --              columns. Cannot be empty
-      -- RESULT
-      -- Column_Options record with all configuration options values
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Get the configuration options of .myframe.mybutton in My_Frame grid
-      -- Options: constant Column_Options := Get_Column_Options(My_Frame, To_Tcl_String(".myframe.mybutton"));
-      -- COMMANDS
-      -- grid columnconfigure master child_name
-      -- SEE ALSO
-      -- Grid.Get_Column_Options_(child), Grid.Get_Column_Options_(column_number)
-      -- SOURCE
-   function Get_Column_Options
-     (Master: Tk_Widget; Child_Name: Tcl_String) return Column_Options with
-      Pre => Master /= Null_Widget and Length(Child_Name) > 0,
-      Test_Case => ("Test_Get_Column_Options1", Nominal);
-      -- ****
-
-      -- ****f* Grid/Grid.Get_Column_Options_(child)
-      -- FUNCTION
-      -- Get the configuration options of the selected column in the selected grid
-      -- PARAMETERS
-      -- Master  - Tk_Widget in which the grid is. Must be existing widget
-      -- Child   - The child widget which column options will be get. Must be
-      --           existing widget.
-      -- RESULT
-      -- Column_Options record with all configuration options values
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Get the configuration options of My_Button in My_Frame grid
-      -- Options: constant Column_Options := Get_Column_Options(My_Frame, My_Button);
-      -- COMMANDS
-      -- grid columnconfigure master child
-      -- SEE ALSO
-      -- Grid.Get_Column_Options_(child_name), Grid.Get_Column_Options_(column_number)
-      -- SOURCE
-   function Get_Column_Options
-     (Master, Child: Tk_Widget) return Column_Options with
-      Pre => Master /= Null_Widget and Child /= Null_Widget,
-      Test_Case => ("Test_Get_Column_Options2", Nominal);
-      -- ****
-
-      -- ****f* Grid/Grid.Get_Column_Options_(column_number)
+      -- ****f* Grid/Grid.Get_Column_Options
       -- FUNCTION
       -- Get the configuration options of the selected column in the selected grid
       -- PARAMETERS
@@ -361,13 +310,11 @@ package Tk.Grid is
       -- Options: constant Column_Options := Get_Column_Options(My_Frame, 1);
       -- COMMANDS
       -- grid columnconfigure master column
-      -- SEE ALSO
-      -- Grid.Get_Column_Options_(child_name), Grid.Get_Column_Options_(child)
       -- SOURCE
    function Get_Column_Options
      (Master: Tk_Widget; Column: Natural) return Column_Options with
       Pre => Master /= Null_Widget,
-      Test_Case => ("Test_Get_Column_Options3", Nominal);
+      Test_Case => ("Test_Get_Column_Options", Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Configure_(single_widget)
