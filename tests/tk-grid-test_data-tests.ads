@@ -34,68 +34,62 @@ package Tk.Grid.Test_Data.Tests is
    procedure Test_Column_Configure_86279e_2e0251(Gnattest_T: in out Test);
    --  tk-grid.ads:290:4:Column_Configure:Test_Column_Configure3
 
-   procedure Test_Get_Column_Options_02d8cd_93c021(Gnattest_T: in out Test);
-   --  tk-grid.ads:317:4:Get_Column_Options:Test_Get_Column_Options1
-
-   procedure Test_Get_Column_Options_3907c1_97f573(Gnattest_T: in out Test);
-   --  tk-grid.ads:342:4:Get_Column_Options:Test_Get_Column_Options2
-
-   procedure Test_Get_Column_Options_22be63_704ef0(Gnattest_T: in out Test);
-   --  tk-grid.ads:367:4:Get_Column_Options:Test_Get_Column_Options3
+   procedure Test_Get_Column_Options_22be63_f54751(Gnattest_T: in out Test);
+   --  tk-grid.ads:314:4:Get_Column_Options:Test_Get_Column_Options
 
    procedure Test_Configure_c67185_affd8d(Gnattest_T: in out Test);
-   --  tk-grid.ads:389:4:Configure:Test_Configure1
+   --  tk-grid.ads:336:4:Configure:Test_Configure1
 
    procedure Test_Configure_f31b66_5acddf(Gnattest_T: in out Test);
-   --  tk-grid.ads:410:4:Configure:Test_Configure2
+   --  tk-grid.ads:357:4:Configure:Test_Configure2
 
    procedure Test_Forget_7f8bc2_733820(Gnattest_T: in out Test);
-   --  tk-grid.ads:432:4:Forget:Test_Forget1
+   --  tk-grid.ads:379:4:Forget:Test_Forget1
 
    procedure Test_Forget_41161d_27199d(Gnattest_T: in out Test);
-   --  tk-grid.ads:454:4:Forget:Test_Forget2
+   --  tk-grid.ads:401:4:Forget:Test_Forget2
 
    procedure Test_Info_5c8f4b_40cc67(Gnattest_T: in out Test);
-   --  tk-grid.ads:475:4:Info:Test_Info
+   --  tk-grid.ads:422:4:Info:Test_Info
 
    procedure Test_Location_01f15c_74cec4(Gnattest_T: in out Test);
-   --  tk-grid.ads:506:4:Location:Test_Location
+   --  tk-grid.ads:453:4:Location:Test_Location
 
    procedure Test_Propagate_eff519_e08f8c(Gnattest_T: in out Test);
-   --  tk-grid.ads:528:4:Propagate:Test_Propagate1
+   --  tk-grid.ads:475:4:Propagate:Test_Propagate1
 
    procedure Test_Propagate_306472_142129(Gnattest_T: in out Test);
-   --  tk-grid.ads:551:4:Propagate:Test_Propagate2
+   --  tk-grid.ads:498:4:Propagate:Test_Propagate2
 
    procedure Test_Row_Configure_cd10c1_511651(Gnattest_T: in out Test);
-   --  tk-grid.ads:574:4:Row_Configure:Test_Row_Configure1
+   --  tk-grid.ads:521:4:Row_Configure:Test_Row_Configure1
 
    procedure Test_Row_Configure_0a2e60_b77dc7(Gnattest_T: in out Test);
-   --  tk-grid.ads:599:4:Row_Configure:Test_Row_Configure2
+   --  tk-grid.ads:546:4:Row_Configure:Test_Row_Configure2
 
    procedure Test_Row_Configure_7261aa_7ae33c(Gnattest_T: in out Test);
-   --  tk-grid.ads:624:4:Row_Configure:Test_Row_Configure3
+   --  tk-grid.ads:571:4:Row_Configure:Test_Row_Configure3
 
    procedure Test_Get_Row_Options_f06da0_afca59(Gnattest_T: in out Test);
-   --  tk-grid.ads:651:4:Get_Row_Options:Test_Get_Row_Options1
+   --  tk-grid.ads:598:4:Get_Row_Options:Test_Get_Row_Options1
 
    procedure Test_Get_Row_Options_ad0ab6_b76bf6(Gnattest_T: in out Test);
-   --  tk-grid.ads:676:4:Get_Row_Options:Test_Get_Row_Options2
+   --  tk-grid.ads:623:4:Get_Row_Options:Test_Get_Row_Options2
 
    procedure Test_Get_Row_Options_192829_db509c(Gnattest_T: in out Test);
-   --  tk-grid.ads:701:4:Get_Row_Options:Test_Get_Row_Options3
+   --  tk-grid.ads:648:4:Get_Row_Options:Test_Get_Row_Options3
 
    procedure Test_Remove_cf1782_6e3cf8(Gnattest_T: in out Test);
-   --  tk-grid.ads:726:4:Remove:Test_Remove1
+   --  tk-grid.ads:673:4:Remove:Test_Remove1
 
    procedure Test_Remove_4f07d4_13d0b1(Gnattest_T: in out Test);
-   --  tk-grid.ads:750:4:Remove:Test_Remove2
+   --  tk-grid.ads:697:4:Remove:Test_Remove2
 
    procedure Test_Size_ec983b_a60758(Gnattest_T: in out Test);
-   --  tk-grid.ads:771:4:Size:Test_Size
+   --  tk-grid.ads:718:4:Size:Test_Size
 
    procedure Test_Slaves_3ea16d_8c1fbf(Gnattest_T: in out Test);
-   --  tk-grid.ads:795:4:Slaves:Test_Slaves
+   --  tk-grid.ads:742:4:Slaves:Test_Slaves
 
 end Tk.Grid.Test_Data.Tests;
 --  end read only
