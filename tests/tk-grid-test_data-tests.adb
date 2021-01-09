@@ -506,130 +506,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Column_Options_02d8cd_93c021
-     (Master: Tk_Widget; Child_Name: Tcl_String) return Column_Options is
-   begin
-      begin
-         pragma Assert(Master /= Null_Widget and Length(Child_Name) > 0);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-grid.ads:0):Test_Get_Column_Options1 test requirement violated");
-      end;
-      declare
-         Test_Get_Column_Options_02d8cd_93c021_Result: constant Column_Options :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Column_Options
-             (Master, Child_Name);
-      begin
-         begin
-            pragma Assert(True);
-            null;
-         exception
-            when System.Assertions.Assert_Failure =>
-               AUnit.Assertions.Assert
-                 (False,
-                  "ens_sloc(tk-grid.ads:0:):Test_Get_Column_Options1 test commitment violated");
-         end;
-         return Test_Get_Column_Options_02d8cd_93c021_Result;
-      end;
-   end Wrap_Test_Get_Column_Options_02d8cd_93c021;
---  end read only
-
---  begin read only
-   procedure Test_1_Get_Column_Options_test_get_column_options1
-     (Gnattest_T: in out Test);
-   procedure Test_Get_Column_Options_02d8cd_93c021
-     (Gnattest_T: in out Test) renames
-     Test_1_Get_Column_Options_test_get_column_options1;
---  id:2.2/02d8cd9f16af9f26/Get_Column_Options/1/0/test_get_column_options1/
-   procedure Test_1_Get_Column_Options_test_get_column_options1
-     (Gnattest_T: in out Test) is
-      function Get_Column_Options
-        (Master: Tk_Widget; Child_Name: Tcl_String)
-         return Column_Options renames
-        Wrap_Test_Get_Column_Options_02d8cd_93c021;
---  end read only
-
-      pragma Unreferenced(Gnattest_T);
-
-   begin
-
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
-
---  begin read only
-   end Test_1_Get_Column_Options_test_get_column_options1;
---  end read only
-
---  begin read only
-   function Wrap_Test_Get_Column_Options_3907c1_97f573
-     (Master, Child: Tk_Widget) return Column_Options is
-   begin
-      begin
-         pragma Assert(Master /= Null_Widget and Child /= Null_Widget);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-grid.ads:0):Test_Get_Column_Options2 test requirement violated");
-      end;
-      declare
-         Test_Get_Column_Options_3907c1_97f573_Result: constant Column_Options :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Column_Options
-             (Master, Child);
-      begin
-         begin
-            pragma Assert(True);
-            null;
-         exception
-            when System.Assertions.Assert_Failure =>
-               AUnit.Assertions.Assert
-                 (False,
-                  "ens_sloc(tk-grid.ads:0:):Test_Get_Column_Options2 test commitment violated");
-         end;
-         return Test_Get_Column_Options_3907c1_97f573_Result;
-      end;
-   end Wrap_Test_Get_Column_Options_3907c1_97f573;
---  end read only
-
---  begin read only
-   procedure Test_2_Get_Column_Options_test_get_column_options2
-     (Gnattest_T: in out Test);
-   procedure Test_Get_Column_Options_3907c1_97f573
-     (Gnattest_T: in out Test) renames
-     Test_2_Get_Column_Options_test_get_column_options2;
---  id:2.2/3907c1538c70aea7/Get_Column_Options/0/0/test_get_column_options2/
-   procedure Test_2_Get_Column_Options_test_get_column_options2
-     (Gnattest_T: in out Test) is
-      function Get_Column_Options
-        (Master, Child: Tk_Widget) return Column_Options renames
-        Wrap_Test_Get_Column_Options_3907c1_97f573;
---  end read only
-
-      pragma Unreferenced(Gnattest_T);
-
-   begin
-
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
-
---  begin read only
-   end Test_2_Get_Column_Options_test_get_column_options2;
---  end read only
-
---  begin read only
-   function Wrap_Test_Get_Column_Options_22be63_704ef0
+   function Wrap_Test_Get_Column_Options_22be63_f54751
      (Master: Tk_Widget; Column: Natural) return Column_Options is
    begin
       begin
@@ -639,10 +516,10 @@ package body Tk.Grid.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-grid.ads:0):Test_Get_Column_Options3 test requirement violated");
+               "req_sloc(tk-grid.ads:0):Test_Get_Column_Options test requirement violated");
       end;
       declare
-         Test_Get_Column_Options_22be63_704ef0_Result: constant Column_Options :=
+         Test_Get_Column_Options_22be63_f54751_Result: constant Column_Options :=
            GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Column_Options
              (Master, Column);
       begin
@@ -653,25 +530,25 @@ package body Tk.Grid.Test_Data.Tests is
             when System.Assertions.Assert_Failure =>
                AUnit.Assertions.Assert
                  (False,
-                  "ens_sloc(tk-grid.ads:0:):Test_Get_Column_Options3 test commitment violated");
+                  "ens_sloc(tk-grid.ads:0:):Test_Get_Column_Options test commitment violated");
          end;
-         return Test_Get_Column_Options_22be63_704ef0_Result;
+         return Test_Get_Column_Options_22be63_f54751_Result;
       end;
-   end Wrap_Test_Get_Column_Options_22be63_704ef0;
+   end Wrap_Test_Get_Column_Options_22be63_f54751;
 --  end read only
 
 --  begin read only
-   procedure Test_3_Get_Column_Options_test_get_column_options3
+   procedure Test_Get_Column_Options_test_get_column_options
      (Gnattest_T: in out Test);
-   procedure Test_Get_Column_Options_22be63_704ef0
+   procedure Test_Get_Column_Options_22be63_f54751
      (Gnattest_T: in out Test) renames
-     Test_3_Get_Column_Options_test_get_column_options3;
---  id:2.2/22be6327e6c5ccd3/Get_Column_Options/0/0/test_get_column_options3/
-   procedure Test_3_Get_Column_Options_test_get_column_options3
+     Test_Get_Column_Options_test_get_column_options;
+--  id:2.2/22be6327e6c5ccd3/Get_Column_Options/1/0/test_get_column_options/
+   procedure Test_Get_Column_Options_test_get_column_options
      (Gnattest_T: in out Test) is
       function Get_Column_Options
         (Master: Tk_Widget; Column: Natural) return Column_Options renames
-        Wrap_Test_Get_Column_Options_22be63_704ef0;
+        Wrap_Test_Get_Column_Options_22be63_f54751;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -686,7 +563,7 @@ package body Tk.Grid.Test_Data.Tests is
         (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_3_Get_Column_Options_test_get_column_options3;
+   end Test_Get_Column_Options_test_get_column_options;
 --  end read only
 
 --  begin read only
