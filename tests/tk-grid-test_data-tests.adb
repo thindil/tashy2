@@ -129,6 +129,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button1: Tk_Button;
+      Button2: Tk_Button;
 
    begin
 
@@ -136,8 +138,12 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button1, ".mybutton", Button_Options'(others => <>));
+      Create(Button2, ".mybutton2", Button_Options'(others => <>));
+      Add((Button1, Button2));
+      Assert(Size(Get_Main_Window) = (2, 1), "Failed to add widgets to grid.");
+      Destroy(Button1);
+      Destroy(Button2);
 
 --  begin read only
    end Test_2_Add_test_add2;
@@ -189,8 +195,9 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Anchor(Get_Main_Window, CENTER);
+      Assert
+        (Anchor(Get_Main_Window) = CENTER, "Failed to set anchor for grid.");
 
 --  begin read only
    end Test_1_Anchor_test_anchor1;
@@ -245,8 +252,8 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (Anchor(Get_Main_Window) = CENTER, "Failed to get anchor for grid.");
 
 --  begin read only
    end Test_2_Anchor_test_anchor2;
@@ -305,8 +312,9 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (BBox(Get_Main_Window) = (0, 0, 0, 0),
+         "Failed to get bounding box of the widget.");
 
 --  begin read only
    end Test_BBox_test_bbox;
@@ -357,6 +365,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Options: Column_Options;
 
    begin
 
@@ -364,8 +374,16 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button, ".mybutton", Button_Options'(others => <>));
+      Add(Button);
+      Column_Configure
+        (Get_Main_Window, To_Tcl_String(Tk_PathName(Button)),
+         Column_Options'(Weight => 5, others => <>));
+      Options := Get_Column_Options(Get_Main_Window, 0);
+      Assert
+        (Options.Weight = 5,
+         "Failed to set column options with child name for grid.");
+      Destroy(Button);
 
 --  begin read only
    end Test_1_Column_Configure_test_column_configure1;
