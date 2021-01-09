@@ -142,7 +142,7 @@ package body Tk.Grid is
       Options_String: Unbounded_String;
    begin
       Option_Image("minsize", Options.MinSize, Options_String);
-      Option_Image("columnspan", Options.Weight, Options_String);
+      Option_Image("weight", Options.Weight, Options_String);
       Option_Image("uniform", Options.Uniform, Options_String);
       Option_Image("pad", Options.Pad, Options_String);
       return To_String(Options_String);
