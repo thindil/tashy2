@@ -339,8 +339,8 @@ package body Tk.Widget is
       begin
          if Result'Length > 0 then
             return Tk_Window
-               (System'To_Address
-                  (Integer'Value("16#" & Result(3 .. Result'Last) & "#")));
+                (System'To_Address
+                   (Integer'Value("16#" & Result(3 .. Result'Last) & "#")));
          else
             return Null_Window;
          end if;
