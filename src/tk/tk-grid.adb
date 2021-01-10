@@ -412,7 +412,7 @@ package body Tk.Grid is
 
    function Propagate(Master: Tk_Widget) return Boolean is
    begin
-      Tcl_Eval("grid propagate" & Tk_PathName(Master), Tk_Interp(Master));
+      Tcl_Eval("grid propagate " & Tk_PathName(Master), Tk_Interp(Master));
       if Tcl_GetResult(Tk_Interp(Master)) = 1 then
          return True;
       else
