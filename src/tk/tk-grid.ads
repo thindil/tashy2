@@ -441,7 +441,7 @@ package Tk.Grid is
       -- EXAMPLE
       -- -- Get the column at point (10, 10) in My_Frame window grid
       -- declare
-      --    Values: constant Result_Array := Location(My_Frame, (10, PIXEL), (10, PIXEL));
+      --    Values: constant Result_Array := Location(My_Frame, (10.0, PIXEL), (10.0, PIXEL));
       --    Column, Row: Extended_Natural;
       -- begin
       --    Column := Values(1);
