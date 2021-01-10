@@ -982,8 +982,8 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Propagate(Get_Main_Window, False);
+      Assert(not Propagate(Get_Main_Window), "Failed to set propagation for grid.");
 
 --  begin read only
    end Test_1_Propagate_test_propagate1;
