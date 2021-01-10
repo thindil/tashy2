@@ -195,7 +195,7 @@ package body Tk.Grid is
    function Get_Value
      (Master: Tk_Widget; Name, ConfigType: String; Index: Tcl_String)
       return Pixel_Data is
-      -- ****
+   -- ****
    begin
       Tcl_Eval
         ("grid " & ConfigType & "configure " & Tk_PathName(Master) & " " &
@@ -224,7 +224,7 @@ package body Tk.Grid is
    function Get_Value
      (Master: Tk_Widget; Name, ConfigType: String; Index: Tcl_String)
       return Tcl_String is
-      -- ****
+   -- ****
    begin
       Tcl_Eval
         ("grid " & ConfigType & "configure " & Tk_PathName(Master) & " " &
@@ -253,7 +253,7 @@ package body Tk.Grid is
    function Get_Value
      (Master: Tk_Widget; Name, ConfigType: String; Index: Tcl_String)
       return Extended_Natural is
-      -- ****
+   -- ****
    begin
       Tcl_Eval
         ("grid " & ConfigType & "configure " & Tk_PathName(Master) & " " &
