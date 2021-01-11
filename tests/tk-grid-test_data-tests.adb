@@ -1038,8 +1038,8 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Propagate(Get_Main_Window);
+      Assert(Propagate(Get_Main_Window), "Failed to set propagation for grid.");
 
 --  begin read only
    end Test_2_Propagate_test_propagate2;
@@ -1088,6 +1088,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Options: Column_Options;
 
    begin
 
@@ -1095,8 +1097,16 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button, ".mybutton", Button_Options'(others => <>));
+      Add(Button);
+      Row_Configure
+        (Get_Main_Window, To_Tcl_String(Tk_PathName(Button)),
+         Column_Options'(Weight => 5, others => <>));
+      Options := Get_Row_Options(Get_Main_Window, 0);
+      Assert
+        (Options.Weight = 5,
+         "Failed to set row options with child name for grid.");
+      Destroy(Button);
 
 --  begin read only
    end Test_1_Row_Configure_test_row_configure1;
