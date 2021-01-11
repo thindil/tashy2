@@ -983,7 +983,9 @@ package body Tk.Grid.Test_Data.Tests is
          return;
       end if;
       Propagate(Get_Main_Window, False);
-      Assert(not Propagate(Get_Main_Window), "Failed to set propagation for grid.");
+      Assert
+        (not Propagate(Get_Main_Window),
+         "Failed to set propagation for grid.");
 
 --  begin read only
    end Test_1_Propagate_test_propagate1;
@@ -1039,7 +1041,8 @@ package body Tk.Grid.Test_Data.Tests is
          return;
       end if;
       Propagate(Get_Main_Window);
-      Assert(Propagate(Get_Main_Window), "Failed to set propagation for grid.");
+      Assert
+        (Propagate(Get_Main_Window), "Failed to set propagation for grid.");
 
 --  begin read only
    end Test_2_Propagate_test_propagate2;
@@ -1225,129 +1228,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Row_Options_f06da0_afca59
-     (Master: Tk_Widget; Index: Tcl_String) return Column_Options is
-   begin
-      begin
-         pragma Assert(Master /= Null_Widget and Length(Index) > 0);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-grid.ads:0):Test_Get_Row_Options1 test requirement violated");
-      end;
-      declare
-         Test_Get_Row_Options_f06da0_afca59_Result: constant Column_Options :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Row_Options
-             (Master, Index);
-      begin
-         begin
-            pragma Assert(True);
-            null;
-         exception
-            when System.Assertions.Assert_Failure =>
-               AUnit.Assertions.Assert
-                 (False,
-                  "ens_sloc(tk-grid.ads:0:):Test_Get_Row_Options1 test commitment violated");
-         end;
-         return Test_Get_Row_Options_f06da0_afca59_Result;
-      end;
-   end Wrap_Test_Get_Row_Options_f06da0_afca59;
---  end read only
-
---  begin read only
-   procedure Test_1_Get_Row_Options_test_get_row_options1
-     (Gnattest_T: in out Test);
-   procedure Test_Get_Row_Options_f06da0_afca59
-     (Gnattest_T: in out Test) renames
-     Test_1_Get_Row_Options_test_get_row_options1;
---  id:2.2/f06da00ef3fd3889/Get_Row_Options/1/0/test_get_row_options1/
-   procedure Test_1_Get_Row_Options_test_get_row_options1
-     (Gnattest_T: in out Test) is
-      function Get_Row_Options
-        (Master: Tk_Widget; Index: Tcl_String) return Column_Options renames
-        Wrap_Test_Get_Row_Options_f06da0_afca59;
---  end read only
-
-      pragma Unreferenced(Gnattest_T);
-
-   begin
-
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
-
---  begin read only
-   end Test_1_Get_Row_Options_test_get_row_options1;
---  end read only
-
---  begin read only
-   function Wrap_Test_Get_Row_Options_ad0ab6_b76bf6
-     (Master, Child: Tk_Widget) return Column_Options is
-   begin
-      begin
-         pragma Assert(Master /= Null_Widget and Child /= Null_Widget);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-grid.ads:0):Test_Get_Row_Options2 test requirement violated");
-      end;
-      declare
-         Test_Get_Row_Options_ad0ab6_b76bf6_Result: constant Column_Options :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Row_Options
-             (Master, Child);
-      begin
-         begin
-            pragma Assert(True);
-            null;
-         exception
-            when System.Assertions.Assert_Failure =>
-               AUnit.Assertions.Assert
-                 (False,
-                  "ens_sloc(tk-grid.ads:0:):Test_Get_Row_Options2 test commitment violated");
-         end;
-         return Test_Get_Row_Options_ad0ab6_b76bf6_Result;
-      end;
-   end Wrap_Test_Get_Row_Options_ad0ab6_b76bf6;
---  end read only
-
---  begin read only
-   procedure Test_2_Get_Row_Options_test_get_row_options2
-     (Gnattest_T: in out Test);
-   procedure Test_Get_Row_Options_ad0ab6_b76bf6
-     (Gnattest_T: in out Test) renames
-     Test_2_Get_Row_Options_test_get_row_options2;
---  id:2.2/ad0ab6d4166abad9/Get_Row_Options/0/0/test_get_row_options2/
-   procedure Test_2_Get_Row_Options_test_get_row_options2
-     (Gnattest_T: in out Test) is
-      function Get_Row_Options
-        (Master, Child: Tk_Widget) return Column_Options renames
-        Wrap_Test_Get_Row_Options_ad0ab6_b76bf6;
---  end read only
-
-      pragma Unreferenced(Gnattest_T);
-
-   begin
-
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
-
---  begin read only
-   end Test_2_Get_Row_Options_test_get_row_options2;
---  end read only
-
---  begin read only
-   function Wrap_Test_Get_Row_Options_192829_db509c
+   function Wrap_Test_Get_Row_Options_192829_8edf28
      (Master: Tk_Widget; Row: Natural) return Column_Options is
    begin
       begin
@@ -1357,10 +1238,10 @@ package body Tk.Grid.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-grid.ads:0):Test_Get_Row_Options3 test requirement violated");
+               "req_sloc(tk-grid.ads:0):Test_Get_Row_Options test requirement violated");
       end;
       declare
-         Test_Get_Row_Options_192829_db509c_Result: constant Column_Options :=
+         Test_Get_Row_Options_192829_8edf28_Result: constant Column_Options :=
            GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Row_Options
              (Master, Row);
       begin
@@ -1371,40 +1252,36 @@ package body Tk.Grid.Test_Data.Tests is
             when System.Assertions.Assert_Failure =>
                AUnit.Assertions.Assert
                  (False,
-                  "ens_sloc(tk-grid.ads:0:):Test_Get_Row_Options3 test commitment violated");
+                  "ens_sloc(tk-grid.ads:0:):Test_Get_Row_Options test commitment violated");
          end;
-         return Test_Get_Row_Options_192829_db509c_Result;
+         return Test_Get_Row_Options_192829_8edf28_Result;
       end;
-   end Wrap_Test_Get_Row_Options_192829_db509c;
+   end Wrap_Test_Get_Row_Options_192829_8edf28;
 --  end read only
 
 --  begin read only
-   procedure Test_3_Get_Row_Options_test_get_row_options3
+   procedure Test_Get_Row_Options_test_get_row_options
      (Gnattest_T: in out Test);
-   procedure Test_Get_Row_Options_192829_db509c
+   procedure Test_Get_Row_Options_192829_8edf28
      (Gnattest_T: in out Test) renames
-     Test_3_Get_Row_Options_test_get_row_options3;
---  id:2.2/192829f3d87ab7ca/Get_Row_Options/0/0/test_get_row_options3/
-   procedure Test_3_Get_Row_Options_test_get_row_options3
+     Test_Get_Row_Options_test_get_row_options;
+--  id:2.2/192829f3d87ab7ca/Get_Row_Options/1/0/test_get_row_options/
+   procedure Test_Get_Row_Options_test_get_row_options
      (Gnattest_T: in out Test) is
       function Get_Row_Options
         (Master: Tk_Widget; Row: Natural) return Column_Options renames
-        Wrap_Test_Get_Row_Options_192829_db509c;
+        Wrap_Test_Get_Row_Options_192829_8edf28;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
       AUnit.Assertions.Assert
         (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_3_Get_Row_Options_test_get_row_options3;
+   end Test_Get_Row_Options_test_get_row_options;
 --  end read only
 
 --  begin read only
