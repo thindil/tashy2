@@ -70,26 +70,20 @@ package Tk.Grid.Test_Data.Tests is
    procedure Test_Row_Configure_7261aa_7ae33c(Gnattest_T: in out Test);
    --  tk-grid.ads:571:4:Row_Configure:Test_Row_Configure3
 
-   procedure Test_Get_Row_Options_f06da0_afca59(Gnattest_T: in out Test);
-   --  tk-grid.ads:598:4:Get_Row_Options:Test_Get_Row_Options1
-
-   procedure Test_Get_Row_Options_ad0ab6_b76bf6(Gnattest_T: in out Test);
-   --  tk-grid.ads:623:4:Get_Row_Options:Test_Get_Row_Options2
-
-   procedure Test_Get_Row_Options_192829_db509c(Gnattest_T: in out Test);
-   --  tk-grid.ads:648:4:Get_Row_Options:Test_Get_Row_Options3
+   procedure Test_Get_Row_Options_192829_8edf28(Gnattest_T: in out Test);
+   --  tk-grid.ads:595:4:Get_Row_Options:Test_Get_Row_Options
 
    procedure Test_Remove_cf1782_6e3cf8(Gnattest_T: in out Test);
-   --  tk-grid.ads:673:4:Remove:Test_Remove1
+   --  tk-grid.ads:620:4:Remove:Test_Remove1
 
    procedure Test_Remove_4f07d4_13d0b1(Gnattest_T: in out Test);
-   --  tk-grid.ads:697:4:Remove:Test_Remove2
+   --  tk-grid.ads:644:4:Remove:Test_Remove2
 
    procedure Test_Size_ec983b_a60758(Gnattest_T: in out Test);
-   --  tk-grid.ads:718:4:Size:Test_Size
+   --  tk-grid.ads:665:4:Size:Test_Size
 
    procedure Test_Slaves_3ea16d_8c1fbf(Gnattest_T: in out Test);
-   --  tk-grid.ads:742:4:Slaves:Test_Slaves
+   --  tk-grid.ads:689:4:Slaves:Test_Slaves
 
 end Tk.Grid.Test_Data.Tests;
 --  end read only
