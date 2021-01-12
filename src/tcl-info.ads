@@ -35,6 +35,8 @@ package Tcl.Info is
    --               taken
    -- Interpreter - Tcl interpreter on which arguments names will be taken. By
    --               default it is current default Tcl interpreter.
+   -- RESULT
+   -- Array with list of names of arguments for the selected Tcl procedure
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
@@ -55,6 +57,8 @@ package Tcl.Info is
       -- Proc_Name   - The name of the Tcl procedure which body will be taken
       -- Interpreter - Tcl interpreter on which body will be taken. By default
       --               it is current default Tcl interpreter.
+      -- RESULT
+      -- The String with body of the selected Tcl procedure
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -68,19 +72,41 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Procedure_Body", Nominal);
       -- ****
 
-   -- ****f* Info/Info.Exists
-   -- FUNCTION
-   -- Check if the selected Tcl variable exists
-   -- PARAMETERS
-   -- Var_Name    - Name of Tcl variable which existence will be checked
-   -- Interpreter - Tcl interpreter on which existence of the variable will be
-   --               checked. By default it is current default Tcl interpreter.
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- EXAMPLE
-   -- -- Check if the Tcl variable $myvar exists in the default Tcl interpreter
-   -- Var_Exists: constant Boolean := Exists("myvar");
-   -- SOURCE
+      -- ****f* Info/Info.Commands_Count
+      -- FUNCTION
+      -- Get the number of invoked commands on the selected Tcl interpreter
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which the amount of invoked commands
+      --               will be counted.  By default it is current default Tcl
+      --               interpreter.
+      -- RESULT
+      -- The amount of invoked commands on the selected Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the amount of invoked command on the default Tcl interpreter
+      -- Amount: constant Natural := Commands_Count;
+      -- SOURCE
+   function Commands_Count
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Commands_Count", Nominal);
+
+      -- ****f* Info/Info.Exists
+      -- FUNCTION
+      -- Check if the selected Tcl variable exists
+      -- PARAMETERS
+      -- Var_Name    - Name of Tcl variable which existence will be checked
+      -- Interpreter - Tcl interpreter on which existence of the variable will be
+      --               checked. By default it is current default Tcl interpreter.
+      -- RESULT
+      -- True if the selected variable exists, otherwise False
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if the Tcl variable $myvar exists in the default Tcl interpreter
+      -- Var_Exists: constant Boolean := Exists("myvar");
+      -- SOURCE
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean with

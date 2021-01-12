@@ -42,6 +42,13 @@ package body Tcl.Info is
       return Tcl_GetResult(Interpreter);
    end Procedure_Body;
 
+   function Commands_Count
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
+   begin
+      Tcl_Eval("info cmdcount", Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end Commands_Count;
+
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
