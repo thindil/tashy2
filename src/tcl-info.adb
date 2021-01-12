@@ -26,12 +26,21 @@ package body Tcl.Info is
       if Slice_Count(Tokens) = 0 then
          return (1 => Null_Unbounded_String);
       end if;
-      return Result: Unbouned_Strings_Array(1 .. Positive(Slice_Count(Tokens))) do
+      return
+        Result: Unbouned_Strings_Array(1 .. Positive(Slice_Count(Tokens))) do
          for I in 1 .. Positive(Slice_Count(Tokens)) loop
             Result(I) := To_Unbounded_String(Slice(Tokens, Slice_Number(I)));
          end loop;
       end return;
    end Arguments;
+
+   function Procedure_Body
+     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
+   begin
+      Tcl_Eval("info body " & Proc_Name, Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end Procedure_Body;
 
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
