@@ -1462,6 +1462,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button1: Tk_Button;
+      Button2: Tk_Button;
 
    begin
 
@@ -1469,8 +1471,12 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button1, ".mybutton", Button_Options'(others => <>));
+      Create(Button2, ".mybutton2", Button_Options'(others => <>));
+      Add((Button1, Button2));
+      Assert(Size(Get_Main_Window) = (2, 1), "Failed to get grid size.");
+      Destroy(Button1);
+      Destroy(Button2);
 
 --  begin read only
    end Test_Size_test_size;
@@ -1522,6 +1528,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button1: Tk_Button;
+      Button2: Tk_Button;
 
    begin
 
@@ -1529,8 +1537,14 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button1, ".mybutton", Button_Options'(others => <>));
+      Create(Button2, ".mybutton2", Button_Options'(others => <>));
+      Add((Button1, Button2));
+      Assert
+        (Slaves(Get_Main_Window)'Length = 2,
+         "Failed to get list of slaves in grid.");
+      Destroy(Button1);
+      Destroy(Button2);
 
 --  begin read only
    end Test_Slaves_test_slaves;
