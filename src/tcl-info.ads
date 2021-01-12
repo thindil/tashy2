@@ -48,6 +48,26 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Arguments", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Procedure_Body
+      -- FUNCTION
+      -- Get the body of the selected Tcl procedure
+      -- PARAMETERS
+      -- Proc_Name   - The name of the Tcl procedure which body will be taken
+      -- Interpreter - Tcl interpreter on which body will be taken. By default
+      --               it is current default Tcl interpreter.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the body of Tcl procedure myproc2 on default interpreter
+      -- Proc_Body: constant String := Procedure_Body("myproc2");
+      -- SOURCE
+   function Procedure_Body
+     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String with
+      Pre => Proc_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Procedure_Body", Nominal);
+      -- ****
+
    -- ****f* Info/Info.Exists
    -- FUNCTION
    -- Check if the selected Tcl variable exists
