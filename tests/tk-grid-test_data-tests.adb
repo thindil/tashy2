@@ -1157,6 +1157,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+      Options: Column_Options;
 
    begin
 
@@ -1164,8 +1166,15 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button, ".mybutton", Button_Options'(others => <>));
+      Add(Button);
+      Row_Configure
+        (Get_Main_Window, Button, Column_Options'(Weight => 15, others => <>));
+      Options := Get_Row_Options(Get_Main_Window, 0);
+      Assert
+        (Options.Weight = 15,
+         "Failed to set row options with child widget for grid.");
+      Destroy(Button);
 
 --  begin read only
    end Test_2_Row_Configure_test_row_configure2;
@@ -1213,6 +1222,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options: Column_Options;
 
    begin
 
@@ -1220,8 +1230,12 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Column_Configure
+        (Get_Main_Window, 0, Column_Options'(Weight => 1, others => <>));
+      Options := Get_Column_Options(Get_Main_Window, 0);
+      Assert
+        (Options.Weight = 1,
+         "Failed to set row options with row number for grid.");
 
 --  begin read only
    end Test_3_Row_Configure_test_row_configure3;
@@ -1274,11 +1288,18 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options: Column_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Row_Configure
+        (Get_Main_Window, 0, Column_Options'(Weight => 23, others => <>));
+      Options := Get_Row_Options(Get_Main_Window, 0);
+      Assert(Options.Weight = 23, "Failed to get column options for grid.");
 
 --  begin read only
    end Test_Get_Row_Options_test_get_row_options;
@@ -1320,6 +1341,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
 
    begin
 
@@ -1327,8 +1349,13 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button, ".mybutton", Button_Options'(others => <>));
+      Add(Button);
+      Remove(Button);
+      Assert
+        (Slaves(Get_Main_Window)(1) = Null_Widget,
+         "Failed to remove widget in grid.");
+      Destroy(Button);
 
 --  begin read only
    end Test_1_Remove_test_remove1;
@@ -1370,6 +1397,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button1: Tk_Button;
+      Button2: Tk_Button;
 
    begin
 
@@ -1377,8 +1406,15 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create(Button1, ".mybutton", Button_Options'(others => <>));
+      Create(Button2, ".mybutton2", Button_Options'(others => <>));
+      Add((Button1, Button2));
+      Remove((Button1, Button2));
+      Assert
+        (Slaves(Get_Main_Window)(1) = Null_Widget,
+         "Failed to remove widgets in grid.");
+      Destroy(Button1);
+      Destroy(Button2);
 
 --  begin read only
    end Test_2_Remove_test_remove2;
