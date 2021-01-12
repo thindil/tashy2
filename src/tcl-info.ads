@@ -12,11 +12,41 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+
 -- ****h* Tcl/Info
 -- FUNCTION
 -- Provide bindings for Tcl command info
 -- SOURCE
 package Tcl.Info is
+
+   -- ****t* Info/Info.Info_Result_Array
+   -- FUNCTION
+   -- Array used for take result from some Info functions
+   -- SOURCE
+   type Unbouned_Strings_Array is array(Positive range <>) of Unbounded_String;
+   -- ****
+
+   -- ****f* Info/Info.Arguments
+   -- FUNCTION
+   -- Get the list of available arguments names for the selected Tcl procedure
+   -- PARAMETERS
+   -- Proc_Name   - The name of the Tcl procedure which arguments name will be
+   --               taken
+   -- Interpreter - Tcl interpreter on which arguments names will be taken. By
+   --               default it is current default Tcl interpreter.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the names of arguments or Tcl procedure myproc on default interpreter
+   -- Arguments_Names: constant Unbouned_Strings_Array := Arguments("myproc");
+   -- SOURCE
+   function Arguments
+     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array with
+      Pre => Proc_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Arguments", Nominal);
+      -- ****
 
    -- ****f* Info/Info.Exists
    -- FUNCTION

@@ -12,7 +12,26 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with GNAT.String_Split; use GNAT.String_Split;
+
 package body Tcl.Info is
+
+   function Arguments
+     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+      Tokens: Slice_Set;
+   begin
+      Tcl_Eval("info args " & Proc_Name, Interpreter);
+      Create(Tokens, Tcl_GetResult(Interpreter), " ");
+      if Slice_Count(Tokens) = 0 then
+         return (1 => Null_Unbounded_String);
+      end if;
+      return Result: Unbouned_Strings_Array(1 .. Positive(Slice_Count(Tokens))) do
+         for I in 1 .. Positive(Slice_Count(Tokens)) loop
+            Result(I) := To_Unbounded_String(Slice(Tokens, Slice_Number(I)));
+         end loop;
+      end return;
+   end Arguments;
 
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
