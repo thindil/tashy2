@@ -87,6 +87,13 @@ package body Tcl.Info is
       end if;
    end Complete;
 
+   function Coroutine
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      Tcl_Eval("info coroutine", Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end Coroutine;
+
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
