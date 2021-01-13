@@ -16,8 +16,20 @@ with GNAT.String_Split; use GNAT.String_Split;
 
 package body Tcl.Info is
 
+   -- ****if* Info/Info.Get_Unbounded_Array_Result
+   -- FUNCTION
+   -- Get the last Tcl command result and convert it to Unbouned_Strings_Array
+   -- PARAMETERS
+   -- Interpreter - Tcl interpreter on which the last Tcl command result will
+   --               be get
+   -- RESULT
+   -- Unbouned_Strings_Array with result of the command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    function Get_Unbounded_Array_Result
      (Interpreter: Tcl_Interpreter) return Unbouned_Strings_Array is
+     -- ****
       Tokens: Slice_Set;
    begin
       Create(Tokens, Tcl_GetResult(Interpreter), " ");
