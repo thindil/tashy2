@@ -75,6 +75,18 @@ package body Tcl.Info is
       return Get_Unbounded_Array_Result(Interpreter);
    end Commands;
 
+   function Complete
+     (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean is
+   begin
+      Tcl_Eval("info complete " & Command, Interpreter);
+      if Tcl_GetResult(Interpreter) = 1 then
+         return True;
+      else
+         return False;
+      end if;
+   end Complete;
+
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is

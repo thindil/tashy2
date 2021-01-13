@@ -117,6 +117,29 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Command", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Complete
+      -- FUNCTION
+      -- Check if the selected Tcl command is complete (no unclosed quotes,
+      -- braces, brackets, etc)
+      -- PARAMETERS
+      -- Command     - The name of Tcl command to check
+      -- Interpreter - Tcl interpreter on which Tcl commands will be checked.
+      --               By default it is current default Tcl interpreter.
+      -- RESULT
+      -- If command is not complete, return False. Otherwise return True
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if command mycommand is complete on default interpreter
+      -- Is_Complete: constant Boolean := Complete("mycommand");
+      -- SOURCE
+   function Complete
+     (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean with
+      Pre => Command'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Complete", Nominal);
+      -- ****
+
       -- ****f* Info/Info.Exists
       -- FUNCTION
       -- Check if the selected Tcl variable exists
