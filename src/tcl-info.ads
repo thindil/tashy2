@@ -161,6 +161,31 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Coroutine", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Default
+      -- FUNCTION
+      -- Get the default value for the selected argument in the selected Tcl
+      -- procedure
+      -- PARAMETERS
+      -- Proc_Name   - The name of the Tcl procedure to check
+      -- Argument    - The name of the argument in the Proc_Name procedure to
+      --               check
+      -- Var_Name    - The name of Tcl variable in which the default value
+      --               will be put
+      -- Interpreter - Tcl interpreter on which procedure will be checked.
+      --               By default it is current default Tcl interpreter.
+      -- RESULT
+      -- If the selected argument in the selected procedure has default value,
+      -- return True and put the default value to the Tcl variable Var_Name.
+      -- Otherwise return False;
+      -- SOURCE
+   function Default
+     (Proc_Name, Argument, Var_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean with
+      Pre => Proc_Name'Length > 0 and Argument'Length > 0 and
+      Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Default", Nominal);
+      -- ****
+
       -- ****f* Info/Info.Exists
       -- FUNCTION
       -- Check if the selected Tcl variable exists

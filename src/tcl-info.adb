@@ -94,6 +94,20 @@ package body Tcl.Info is
       return Tcl_GetResult(Interpreter);
    end Coroutine;
 
+   function Default
+     (Proc_Name, Argument, Var_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
+   begin
+      Tcl_Eval
+        ("info default " & Proc_Name & " " & Argument & " " & Var_Name,
+         Interpreter);
+      if Tcl_GetResult(Interpreter) = 1 then
+         return True;
+      else
+         return False;
+      end if;
+   end Default;
+
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
