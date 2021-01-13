@@ -77,7 +77,7 @@ package Tcl.Info is
       -- Get the number of invoked commands on the selected Tcl interpreter
       -- PARAMETERS
       -- Interpreter - Tcl interpreter on which the amount of invoked commands
-      --               will be counted.  By default it is current default Tcl
+      --               will be counted. By default it is current default Tcl
       --               interpreter.
       -- RESULT
       -- The amount of invoked commands on the selected Tcl interpreter
@@ -91,6 +91,31 @@ package Tcl.Info is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Commands_Count", Nominal);
+
+      -- ****f* Info/Info.Commands
+      -- FUNCTION
+      -- Get the list of names of Tcl commands which match the pattern
+      -- PARAMETERS
+      -- Pattern     - The pattern on which Tcl commands will be matched. Can
+      --               be empty. Default value is empty.
+      -- Interpreter - Tcl interpreter on which Tcl commands will be searched.
+      --               By default it is current default Tcl interpreter.
+      -- RESULT
+      -- If Pattern is empty, return list of names of all visible in the
+      -- current Tcl namespace commands. Otherwise return only list of names
+      -- of commands which match the Pattern.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the names of all available commands in default Tcl interpreter
+      -- Commands_Names: constant String := Commands;
+      -- SOURCE
+   function Commands
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Command", Nominal);
+      -- ****
 
       -- ****f* Info/Info.Exists
       -- FUNCTION

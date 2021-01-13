@@ -16,12 +16,10 @@ with GNAT.String_Split; use GNAT.String_Split;
 
 package body Tcl.Info is
 
-   function Arguments
-     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array is
+   function Get_Unbounded_Array_Result
+     (Interpreter: Tcl_Interpreter) return Unbouned_Strings_Array is
       Tokens: Slice_Set;
    begin
-      Tcl_Eval("info args " & Proc_Name, Interpreter);
       Create(Tokens, Tcl_GetResult(Interpreter), " ");
       if Slice_Count(Tokens) = 0 then
          return (1 => Null_Unbounded_String);
@@ -32,6 +30,14 @@ package body Tcl.Info is
             Result(I) := To_Unbounded_String(Slice(Tokens, Slice_Number(I)));
          end loop;
       end return;
+   end Get_Unbounded_Array_Result;
+
+   function Arguments
+     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      Tcl_Eval("info args " & Proc_Name, Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter);
    end Arguments;
 
    function Procedure_Body
@@ -48,6 +54,14 @@ package body Tcl.Info is
       Tcl_Eval("info cmdcount", Interpreter);
       return Tcl_GetResult(Interpreter);
    end Commands_Count;
+
+   function Commands
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      Tcl_Eval("info commands " & Pattern, Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter);
+   end Commands;
 
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
