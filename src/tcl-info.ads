@@ -140,6 +140,27 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Complete", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Coroutine
+      -- FUNCTION
+      -- Get the name of currently executed coroutine
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which coroutine will be checked.
+      --               By default it is current default Tcl interpreter.
+      -- RESULT
+      -- The name of currently executed coroutine or empty string if no
+      -- coroutine is run currently.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of the currently executed coroutine on My_Interpreter interpreter
+      -- Coroutine_Name: constant String := Coroutine(My_Interpreter);
+      -- SOURCE
+   function Coroutine
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Coroutine", Nominal);
+      -- ****
+
       -- ****f* Info/Info.Exists
       -- FUNCTION
       -- Check if the selected Tcl variable exists
