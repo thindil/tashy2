@@ -108,6 +108,13 @@ package body Tcl.Info is
       end if;
    end Default;
 
+   function ErrorStack
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      Tcl_Eval("info errorstack", Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end ErrorStack;
+
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is

@@ -177,6 +177,12 @@ package Tcl.Info is
       -- If the selected argument in the selected procedure has default value,
       -- return True and put the default value to the Tcl variable Var_Name.
       -- Otherwise return False;
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the default value of argument myarg in procedure myproc on the default
+      -- -- interpreter and put it in Tcl variable myvar
+      -- Has_Default: constant Boolean := Default("myproc", "myarg", "myvar");
       -- SOURCE
    function Default
      (Proc_Name, Argument, Var_Name: String;
@@ -184,6 +190,26 @@ package Tcl.Info is
       Pre => Proc_Name'Length > 0 and Argument'Length > 0 and
       Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Default", Nominal);
+      -- ****
+
+      -- ****f* Info/Info.ErrorStack
+      -- FUNCTION
+      -- Get the call stack of the last error on the selected Tcl interpreter
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which error stack will be checked.
+      --               By default it is current default Tcl interpreter.
+      -- RESULT
+      -- Full call stack of the last error on the selected Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the error call stack on the default interpreter
+      -- Error_Stack: constant String := ErrorStack;
+      -- SOURCE
+   function ErrorStack
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_ErrorStack", Nominal);
       -- ****
 
       -- ****f* Info/Info.Exists
