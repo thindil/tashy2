@@ -134,4 +134,12 @@ package body Tcl.Info is
       return Get_Unbounded_Array_Result(Interpreter);
    end Functions;
 
+   function Globals
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      Tcl_Eval("info globals " & Pattern, Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter);
+   end Globals;
+
 end Tcl.Info;
