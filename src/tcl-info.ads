@@ -286,4 +286,25 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Globals", Nominal);
       -- ****
 
+      -- ****f* Info/Info.HostName
+      -- FUNCTION
+      -- Get the name of the computer on which the function is executed.
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which hostname of the computer will
+      --               be taken. By default it is current default Tcl
+      --               interpreter.
+      -- RESULT
+      -- String with name of the computer on which the function was executed
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of computer on default Tcl interpreter
+      -- Host_Name: constant String := HostName;
+      -- SOURCE
+   function HostName
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_HostName", Nominal);
+      -- ****
+
 end Tcl.Info;
