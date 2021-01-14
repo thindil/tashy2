@@ -142,4 +142,11 @@ package body Tcl.Info is
       return Get_Unbounded_Array_Result(Interpreter);
    end Globals;
 
+   function HostName
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      Tcl_Eval("info hostname", Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end HostName;
+
 end Tcl.Info;
