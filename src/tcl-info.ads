@@ -108,7 +108,7 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available commands in default Tcl interpreter
-      -- Commands_Names: constant String := Commands;
+      -- Commands_Names: constant Unbouned_Strings_Array := Commands;
       -- SOURCE
    function Commands
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -232,6 +232,32 @@ package Tcl.Info is
       return Boolean with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Exists", Nominal);
+      -- ****
+
+      -- ****f* Info/Info.Functions
+      -- FUNCTION
+      -- Get the list of names of Tcl math functions which match the pattern
+      -- PARAMETERS
+      -- Pattern     - The pattern on which Tcl math functions will be
+      --               matched. Can be empty. Default value is empty.
+      -- Interpreter - Tcl interpreter on which Tcl math functions will be
+      --               searched. By default it is current default Tcl
+      --               interpreter.
+      -- RESULT
+      -- If Pattern is empty, return list of names of all visible in the
+      -- current Tcl namespace math functions. Otherwise return only list of
+      -- names of math functions which match the Pattern.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the names of all available math functions in default Tcl interpreter
+      -- Functions_Names: constant Unbouned_Strings_Array := Functions;
+      -- SOURCE
+   function Functions
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Functions", Nominal);
       -- ****
 
 end Tcl.Info;
