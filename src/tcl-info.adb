@@ -149,4 +149,11 @@ package body Tcl.Info is
       return Tcl_GetResult(Interpreter);
    end HostName;
 
+   function Library
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      Tcl_Eval("info library", Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end Library;
+
 end Tcl.Info;
