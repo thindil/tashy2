@@ -307,4 +307,25 @@ package Tcl.Info is
       Test_Case => ("Test_Info_HostName", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Library
+      -- FUNCTION
+      -- Get the library directory where the standard Tcl scripts are stored.
+      -- It is a value of global variable $tcl_library
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which library directory will be
+      --               taken. By default it is current default Tcl interpreter.
+      -- RESULT
+      -- String with the full path to the library directory
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the library directory on default Tcl interpreter
+      -- Library_Path: constant String := Library;
+      -- SOURCE
+   function Library
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Library", Nominal);
+      -- ****
+
 end Tcl.Info;
