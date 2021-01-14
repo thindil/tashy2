@@ -260,4 +260,30 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Functions", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Globals
+      -- FUNCTION
+      -- Get the list of names of Tcl global variables which match the pattern
+      -- PARAMETERS
+      -- Pattern     - The pattern on which Tcl global variables will be
+      --               matched. Can be empty. Default value is empty.
+      -- Interpreter - Tcl interpreter on which Tcl global variables will be
+      --               searched. By default it is current default Tcl
+      --               interpreter.
+      -- RESULT
+      -- If Pattern is empty, return list of names of all visible in the
+      -- current Tcl namespace global variables. Otherwise return only list of
+      -- names of global variables which match the Pattern.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the names of all available global variables in default Tcl interpreter
+      -- Global_Variables_Names: constant Unbouned_Strings_Array := Globals;
+      -- SOURCE
+   function Globals
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Globals", Nominal);
+      -- ****
+
 end Tcl.Info;
