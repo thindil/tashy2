@@ -373,4 +373,25 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Name_Of_Executable", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Path_Level
+      -- FUNCTION
+      -- Get the version of Tcl library. It is a value of global variable
+      -- $tcl_pathLevel
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which library version will be
+      --               taken. By default it is current default Tcl interpreter.
+      -- RESULT
+      -- String with the version of Tcl library
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the library version on default Tcl interpreter
+      -- Version: constant String := Path_Level;
+      -- SOURCE
+   function Path_Level
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Path_Level", Nominal);
+      -- ****
+
 end Tcl.Info;

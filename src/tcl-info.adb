@@ -171,4 +171,11 @@ package body Tcl.Info is
       return Tcl_GetResult(Interpreter);
    end Name_Of_Executable;
 
+   function Path_Level
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      Tcl_Eval("info pathlevel", Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end Path_Level;
+
 end Tcl.Info;
