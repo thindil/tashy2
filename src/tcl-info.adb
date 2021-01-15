@@ -156,4 +156,12 @@ package body Tcl.Info is
       return Tcl_GetResult(Interpreter);
    end Library;
 
+   function Locals
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      Tcl_Eval("info locals " & Pattern, Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter);
+   end Locals;
+
 end Tcl.Info;
