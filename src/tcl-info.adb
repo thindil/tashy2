@@ -186,4 +186,12 @@ package body Tcl.Info is
       return Get_Unbounded_Array_Result(Interpreter);
    end Procs;
 
+   function Script
+     (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
+   begin
+      Tcl_Eval("info script " & File_Name, Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end Script;
+
 end Tcl.Info;
