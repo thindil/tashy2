@@ -354,4 +354,23 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Locals", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Name_Of_Executable
+      -- FUNCTION
+      -- Get the full path to the binary file from which the application was
+      -- invoked
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which name of executable will be
+      --               taken. By default it is current default Tcl interpreter.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of executable on default interpreter
+      -- Full_Path: constant String := Name_Of_Executable;
+      -- SOURCE
+   function Name_Of_Executable
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Name_Of_Executable", Nominal);
+      -- ****
+
 end Tcl.Info;
