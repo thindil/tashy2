@@ -164,4 +164,11 @@ package body Tcl.Info is
       return Get_Unbounded_Array_Result(Interpreter);
    end Locals;
 
+   function Name_Of_Executable
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      Tcl_Eval("info nameofexecutable", Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end Name_Of_Executable;
+
 end Tcl.Info;
