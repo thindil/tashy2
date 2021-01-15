@@ -421,4 +421,28 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Procs", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Script
+      -- FUNCTION
+      -- Get the name of currently evaluated Tcl script
+      -- PARAMETERS
+      -- File_Name   - If specified, it value will be used as a return value.
+      --               Can be empty. Default value is empty.
+      -- Interpreter - Tcl interpreter on which script name will be
+      --               taken. By default it is current default Tcl interpreter.
+      -- RESULT
+      -- String with the name of currently evaluated Tcl script or empty
+      -- String if no script is evaluated.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of the currently evaluated Tcl script on default Tcl interpreter
+      -- File_Name: constant String := Script;
+      -- SOURCE
+   function Script
+     (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Path_Level", Nominal);
+      -- ****
+
 end Tcl.Info;
