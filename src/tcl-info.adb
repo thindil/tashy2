@@ -178,4 +178,12 @@ package body Tcl.Info is
       return Tcl_GetResult(Interpreter);
    end Path_Level;
 
+   function Procs
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      Tcl_Eval("info procs " & Pattern, Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter);
+   end Procs;
+
 end Tcl.Info;

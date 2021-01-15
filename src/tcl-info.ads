@@ -394,4 +394,31 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Path_Level", Nominal);
       -- ****
 
+      -- ****f* Info/Info.Procs
+      -- FUNCTION
+      -- Get the list of names of Tcl procedures in current namespace which
+      -- match the pattern
+      -- PARAMETERS
+      -- Pattern     - The pattern on which Tcl procedures will be matched.
+      --               Can be empty. Default value is empty.
+      -- Interpreter - Tcl interpreter on which Tcl procedures will be
+      --               searched. By default it is current default Tcl
+      --               interpreter.
+      -- RESULT
+      -- If Pattern is empty, return list of names of all visible in the
+      -- current Tcl namespace procedures. Otherwise return only list of
+      -- names of procedures which match the Pattern.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the names of all available procedures in default Tcl interpreter
+      -- Procedures_Names: constant Unbouned_Strings_Array := Procs;
+      -- SOURCE
+   function Procs
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Procs", Nominal);
+      -- ****
+
 end Tcl.Info;
