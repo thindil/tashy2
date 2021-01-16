@@ -171,12 +171,12 @@ package body Tcl.Info is
       return Tcl_GetResult(Interpreter);
    end Name_Of_Executable;
 
-   function Path_Level
+   function Patch_Level
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval("info pathlevel", Interpreter);
+      Tcl_Eval("info patchlevel", Interpreter);
       return Tcl_GetResult(Interpreter);
-   end Path_Level;
+   end Patch_Level;
 
    function Procs
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -193,5 +193,12 @@ package body Tcl.Info is
       Tcl_Eval("info script " & File_Name, Interpreter);
       return Tcl_GetResult(Interpreter);
    end Script;
+
+   function Tcl_Version
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      Tcl_Eval("info tclversion", Interpreter);
+      return Tcl_GetResult(Interpreter);
+   end Tcl_Version;
 
 end Tcl.Info;

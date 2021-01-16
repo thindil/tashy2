@@ -373,9 +373,9 @@ package Tcl.Info is
       Test_Case => ("Test_Info_Name_Of_Executable", Nominal);
       -- ****
 
-      -- ****f* Info/Info.Path_Level
+      -- ****f* Info/Info.Patch_Level
       -- FUNCTION
-      -- Get the version of Tcl library. It is a value of global variable
+      -- Get the exact version of Tcl library. It is a value of global variable
       -- $tcl_pathLevel
       -- PARAMETERS
       -- Interpreter - Tcl interpreter on which library version will be
@@ -386,12 +386,12 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the library version on default Tcl interpreter
-      -- Version: constant String := Path_Level;
+      -- Version: constant String := Patch_Level;
       -- SOURCE
-   function Path_Level
+   function Patch_Level
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Info_Path_Level", Nominal);
+      Test_Case => ("Test_Info_Patch_Level", Nominal);
       -- ****
 
       -- ****f* Info/Info.Procs
@@ -442,7 +442,28 @@ package Tcl.Info is
      (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Info_Path_Level", Nominal);
+      Test_Case => ("Test_Info_Script", Nominal);
+      -- ****
+
+      -- ****f* Info/Info.Tcl_Version
+      -- FUNCTION
+      -- Get the major and minor version of Tcl library. It is a value of
+      -- global variable $tcl_version
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which library version will be
+      --               taken. By default it is current default Tcl interpreter.
+      -- RESULT
+      -- String with the version of Tcl library
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the library version on default Tcl interpreter
+      -- Version: constant String := Tcl_Version;
+      -- SOURCE
+   function Tcl_Version
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Info_Tcl_Version", Nominal);
       -- ****
 
 end Tcl.Info;
