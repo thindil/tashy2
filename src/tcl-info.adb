@@ -201,4 +201,12 @@ package body Tcl.Info is
       return Tcl_GetResult(Interpreter);
    end Tcl_Version;
 
+   function Vars
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      Tcl_Eval("info vars " & Pattern, Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter);
+   end Vars;
+
 end Tcl.Info;
