@@ -24,7 +24,7 @@ package Tcl.Info is
    -- FUNCTION
    -- Array used for take result from some Info functions
    -- SOURCE
-   type Unbouned_Strings_Array is array(Positive range <>) of Unbounded_String;
+   type Unbounded_Strings_Array is array(Positive range <>) of Unbounded_String;
    -- ****
 
    -- ****f* Info/Info.Arguments
@@ -41,11 +41,11 @@ package Tcl.Info is
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Get the names of arguments or Tcl procedure myproc on default interpreter
-   -- Arguments_Names: constant Unbouned_Strings_Array := Arguments("myproc");
+   -- Arguments_Names: constant Unbounded_Strings_Array := Arguments("myproc");
    -- SOURCE
    function Arguments
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array with
+      return Unbounded_Strings_Array with
       Pre => Proc_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Arguments", Nominal);
       -- ****
@@ -108,11 +108,11 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available commands in default Tcl interpreter
-      -- Commands_Names: constant Unbouned_Strings_Array := Commands;
+      -- Commands_Names: constant Unbounded_Strings_Array := Commands;
       -- SOURCE
    function Commands
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array with
+      return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Command", Nominal);
       -- ****
@@ -251,11 +251,11 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available math functions in default Tcl interpreter
-      -- Functions_Names: constant Unbouned_Strings_Array := Functions;
+      -- Functions_Names: constant Unbounded_Strings_Array := Functions;
       -- SOURCE
    function Functions
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array with
+      return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Functions", Nominal);
       -- ****
@@ -277,11 +277,11 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available global variables in default Tcl interpreter
-      -- Global_Variables_Names: constant Unbouned_Strings_Array := Globals;
+      -- Global_Variables_Names: constant Unbounded_Strings_Array := Globals;
       -- SOURCE
    function Globals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array with
+      return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Globals", Nominal);
       -- ****
@@ -345,11 +345,11 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available local variables in default Tcl interpreter
-      -- Local_Variables_Names: constant Unbouned_Strings_Array := Locals;
+      -- Local_Variables_Names: constant Unbounded_Strings_Array := Locals;
       -- SOURCE
    function Locals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array with
+      return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Locals", Nominal);
       -- ****
@@ -412,11 +412,11 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available procedures in default Tcl interpreter
-      -- Procedures_Names: constant Unbouned_Strings_Array := Procs;
+      -- Procedures_Names: constant Unbounded_Strings_Array := Procs;
       -- SOURCE
    function Procs
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array with
+      return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Procs", Nominal);
       -- ****
@@ -483,11 +483,11 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available variables in default Tcl interpreter
-      -- Variables_Names: constant Unbouned_Strings_Array := Vars;
+      -- Variables_Names: constant Unbounded_Strings_Array := Vars;
       -- SOURCE
    function Vars
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array with
+      return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Info_Vars", Nominal);
       -- ****
