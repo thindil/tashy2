@@ -31,6 +31,459 @@ package body Tcl.Info.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
+   function Wrap_Test_Arguments_d24517_2155d3
+     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      begin
+         pragma Assert
+           (Proc_Name'Length > 0 and Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Arguments test requirement violated");
+      end;
+      declare
+         Test_Arguments_d24517_2155d3_Result: constant Unbouned_Strings_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Arguments
+             (Proc_Name, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Arguments test commitment violated");
+         end;
+         return Test_Arguments_d24517_2155d3_Result;
+      end;
+   end Wrap_Test_Arguments_d24517_2155d3;
+--  end read only
+
+--  begin read only
+   procedure Test_Arguments_test_info_arguments(Gnattest_T: in out Test);
+   procedure Test_Arguments_d24517_2155d3(Gnattest_T: in out Test) renames
+     Test_Arguments_test_info_arguments;
+--  id:2.2/d24517812be45008/Arguments/1/0/test_info_arguments/
+   procedure Test_Arguments_test_info_arguments(Gnattest_T: in out Test) is
+      function Arguments
+        (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Unbouned_Strings_Array renames
+        Wrap_Test_Arguments_d24517_2155d3;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Arguments_test_info_arguments;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Procedure_Body_bc2330_b86b33
+     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
+   begin
+      begin
+         pragma Assert
+           (Proc_Name'Length > 0 and Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Procedure_Body test requirement violated");
+      end;
+      declare
+         Test_Procedure_Body_bc2330_b86b33_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Procedure_Body
+             (Proc_Name, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Procedure_Body test commitment violated");
+         end;
+         return Test_Procedure_Body_bc2330_b86b33_Result;
+      end;
+   end Wrap_Test_Procedure_Body_bc2330_b86b33;
+--  end read only
+
+--  begin read only
+   procedure Test_Procedure_Body_test_info_procedure_body
+     (Gnattest_T: in out Test);
+   procedure Test_Procedure_Body_bc2330_b86b33(Gnattest_T: in out Test) renames
+     Test_Procedure_Body_test_info_procedure_body;
+--  id:2.2/bc2330b4c01267e2/Procedure_Body/1/0/test_info_procedure_body/
+   procedure Test_Procedure_Body_test_info_procedure_body
+     (Gnattest_T: in out Test) is
+      function Procedure_Body
+        (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return String renames
+        Wrap_Test_Procedure_Body_bc2330_b86b33;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Procedure_Body_test_info_procedure_body;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Commands_Count_39e46a_cae496
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Commands_Count test requirement violated");
+      end;
+      declare
+         Test_Commands_Count_39e46a_cae496_Result: constant Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Commands_Count
+             (Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Commands_Count test commitment violated");
+         end;
+         return Test_Commands_Count_39e46a_cae496_Result;
+      end;
+   end Wrap_Test_Commands_Count_39e46a_cae496;
+--  end read only
+
+--  begin read only
+   procedure Test_Commands_Count_test_info_commands_count
+     (Gnattest_T: in out Test);
+   procedure Test_Commands_Count_39e46a_cae496(Gnattest_T: in out Test) renames
+     Test_Commands_Count_test_info_commands_count;
+--  id:2.2/39e46a558838a3ef/Commands_Count/1/0/test_info_commands_count/
+   procedure Test_Commands_Count_test_info_commands_count
+     (Gnattest_T: in out Test) is
+      function Commands_Count
+        (Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Natural renames
+        Wrap_Test_Commands_Count_39e46a_cae496;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Commands_Count_test_info_commands_count;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Commands_ff86c2_675616
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Command test requirement violated");
+      end;
+      declare
+         Test_Commands_ff86c2_675616_Result: constant Unbouned_Strings_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Commands
+             (Pattern, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Command test commitment violated");
+         end;
+         return Test_Commands_ff86c2_675616_Result;
+      end;
+   end Wrap_Test_Commands_ff86c2_675616;
+--  end read only
+
+--  begin read only
+   procedure Test_Commands_test_info_command(Gnattest_T: in out Test);
+   procedure Test_Commands_ff86c2_675616(Gnattest_T: in out Test) renames
+     Test_Commands_test_info_command;
+--  id:2.2/ff86c2a700bff148/Commands/1/0/test_info_command/
+   procedure Test_Commands_test_info_command(Gnattest_T: in out Test) is
+      function Commands
+        (Pattern: String := "";
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Unbouned_Strings_Array renames
+        Wrap_Test_Commands_ff86c2_675616;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Commands_test_info_command;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Complete_539361_79b807
+     (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean is
+   begin
+      begin
+         pragma Assert(Command'Length > 0 and Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Complete test requirement violated");
+      end;
+      declare
+         Test_Complete_539361_79b807_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Complete
+             (Command, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Complete test commitment violated");
+         end;
+         return Test_Complete_539361_79b807_Result;
+      end;
+   end Wrap_Test_Complete_539361_79b807;
+--  end read only
+
+--  begin read only
+   procedure Test_Complete_test_info_complete(Gnattest_T: in out Test);
+   procedure Test_Complete_539361_79b807(Gnattest_T: in out Test) renames
+     Test_Complete_test_info_complete;
+--  id:2.2/539361c0b35d240d/Complete/1/0/test_info_complete/
+   procedure Test_Complete_test_info_complete(Gnattest_T: in out Test) is
+      function Complete
+        (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Boolean renames
+        Wrap_Test_Complete_539361_79b807;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Complete_test_info_complete;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Coroutine_e20165_613b2a
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Coroutine test requirement violated");
+      end;
+      declare
+         Test_Coroutine_e20165_613b2a_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Coroutine
+             (Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Coroutine test commitment violated");
+         end;
+         return Test_Coroutine_e20165_613b2a_Result;
+      end;
+   end Wrap_Test_Coroutine_e20165_613b2a;
+--  end read only
+
+--  begin read only
+   procedure Test_Coroutine_test_info_coroutine(Gnattest_T: in out Test);
+   procedure Test_Coroutine_e20165_613b2a(Gnattest_T: in out Test) renames
+     Test_Coroutine_test_info_coroutine;
+--  id:2.2/e20165c7c1a804b5/Coroutine/1/0/test_info_coroutine/
+   procedure Test_Coroutine_test_info_coroutine(Gnattest_T: in out Test) is
+      function Coroutine
+        (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_Coroutine_e20165_613b2a;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Coroutine_test_info_coroutine;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Default_c49ada_db99d7
+     (Proc_Name, Argument, Var_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
+   begin
+      begin
+         pragma Assert
+           (Proc_Name'Length > 0 and Argument'Length > 0 and
+            Var_Name'Length > 0 and Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Default test requirement violated");
+      end;
+      declare
+         Test_Default_c49ada_db99d7_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Default
+             (Proc_Name, Argument, Var_Name, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Default test commitment violated");
+         end;
+         return Test_Default_c49ada_db99d7_Result;
+      end;
+   end Wrap_Test_Default_c49ada_db99d7;
+--  end read only
+
+--  begin read only
+   procedure Test_Default_test_info_default(Gnattest_T: in out Test);
+   procedure Test_Default_c49ada_db99d7(Gnattest_T: in out Test) renames
+     Test_Default_test_info_default;
+--  id:2.2/c49adaf20f823d22/Default/1/0/test_info_default/
+   procedure Test_Default_test_info_default(Gnattest_T: in out Test) is
+      function Default
+        (Proc_Name, Argument, Var_Name: String;
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Boolean renames
+        Wrap_Test_Default_c49ada_db99d7;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Default_test_info_default;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_ErrorStack_bd77fa_123ed2
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_ErrorStack test requirement violated");
+      end;
+      declare
+         Test_ErrorStack_bd77fa_123ed2_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.ErrorStack
+             (Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_ErrorStack test commitment violated");
+         end;
+         return Test_ErrorStack_bd77fa_123ed2_Result;
+      end;
+   end Wrap_Test_ErrorStack_bd77fa_123ed2;
+--  end read only
+
+--  begin read only
+   procedure Test_ErrorStack_test_info_errorstack(Gnattest_T: in out Test);
+   procedure Test_ErrorStack_bd77fa_123ed2(Gnattest_T: in out Test) renames
+     Test_ErrorStack_test_info_errorstack;
+--  id:2.2/bd77fa6f40e645d6/ErrorStack/1/0/test_info_errorstack/
+   procedure Test_ErrorStack_test_info_errorstack(Gnattest_T: in out Test) is
+      function ErrorStack
+        (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_ErrorStack_bd77fa_123ed2;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_ErrorStack_test_info_errorstack;
+--  end read only
+
+--  begin read only
    function Wrap_Test_Exists_e0ba6a_a2ca41
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
@@ -88,6 +541,618 @@ package body Tcl.Info.Test_Data.Tests is
 
 --  begin read only
    end Test_Exists_test_info_exists;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Functions_79eb08_10dc33
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Functions test requirement violated");
+      end;
+      declare
+         Test_Functions_79eb08_10dc33_Result: constant Unbouned_Strings_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Functions
+             (Pattern, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Functions test commitment violated");
+         end;
+         return Test_Functions_79eb08_10dc33_Result;
+      end;
+   end Wrap_Test_Functions_79eb08_10dc33;
+--  end read only
+
+--  begin read only
+   procedure Test_Functions_test_info_functions(Gnattest_T: in out Test);
+   procedure Test_Functions_79eb08_10dc33(Gnattest_T: in out Test) renames
+     Test_Functions_test_info_functions;
+--  id:2.2/79eb08177fef21c6/Functions/1/0/test_info_functions/
+   procedure Test_Functions_test_info_functions(Gnattest_T: in out Test) is
+      function Functions
+        (Pattern: String := "";
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Unbouned_Strings_Array renames
+        Wrap_Test_Functions_79eb08_10dc33;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Functions_test_info_functions;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Globals_3e4cb5_c19ad0
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Globals test requirement violated");
+      end;
+      declare
+         Test_Globals_3e4cb5_c19ad0_Result: constant Unbouned_Strings_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Globals
+             (Pattern, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Globals test commitment violated");
+         end;
+         return Test_Globals_3e4cb5_c19ad0_Result;
+      end;
+   end Wrap_Test_Globals_3e4cb5_c19ad0;
+--  end read only
+
+--  begin read only
+   procedure Test_Globals_test_info_globals(Gnattest_T: in out Test);
+   procedure Test_Globals_3e4cb5_c19ad0(Gnattest_T: in out Test) renames
+     Test_Globals_test_info_globals;
+--  id:2.2/3e4cb52ec26f6b19/Globals/1/0/test_info_globals/
+   procedure Test_Globals_test_info_globals(Gnattest_T: in out Test) is
+      function Globals
+        (Pattern: String := "";
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Unbouned_Strings_Array renames
+        Wrap_Test_Globals_3e4cb5_c19ad0;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Globals_test_info_globals;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_HostName_f98e16_b2a918
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_HostName test requirement violated");
+      end;
+      declare
+         Test_HostName_f98e16_b2a918_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.HostName(Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_HostName test commitment violated");
+         end;
+         return Test_HostName_f98e16_b2a918_Result;
+      end;
+   end Wrap_Test_HostName_f98e16_b2a918;
+--  end read only
+
+--  begin read only
+   procedure Test_HostName_test_info_hostname(Gnattest_T: in out Test);
+   procedure Test_HostName_f98e16_b2a918(Gnattest_T: in out Test) renames
+     Test_HostName_test_info_hostname;
+--  id:2.2/f98e16966f0b68e2/HostName/1/0/test_info_hostname/
+   procedure Test_HostName_test_info_hostname(Gnattest_T: in out Test) is
+      function HostName
+        (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_HostName_f98e16_b2a918;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_HostName_test_info_hostname;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Library_77b287_8b9a20
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Library test requirement violated");
+      end;
+      declare
+         Test_Library_77b287_8b9a20_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Library(Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Library test commitment violated");
+         end;
+         return Test_Library_77b287_8b9a20_Result;
+      end;
+   end Wrap_Test_Library_77b287_8b9a20;
+--  end read only
+
+--  begin read only
+   procedure Test_Library_test_info_library(Gnattest_T: in out Test);
+   procedure Test_Library_77b287_8b9a20(Gnattest_T: in out Test) renames
+     Test_Library_test_info_library;
+--  id:2.2/77b28756b6b9de08/Library/1/0/test_info_library/
+   procedure Test_Library_test_info_library(Gnattest_T: in out Test) is
+      function Library
+        (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_Library_77b287_8b9a20;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Library_test_info_library;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Locals_089928_f4c43e
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Locals test requirement violated");
+      end;
+      declare
+         Test_Locals_089928_f4c43e_Result: constant Unbouned_Strings_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Locals
+             (Pattern, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Locals test commitment violated");
+         end;
+         return Test_Locals_089928_f4c43e_Result;
+      end;
+   end Wrap_Test_Locals_089928_f4c43e;
+--  end read only
+
+--  begin read only
+   procedure Test_Locals_test_info_locals(Gnattest_T: in out Test);
+   procedure Test_Locals_089928_f4c43e(Gnattest_T: in out Test) renames
+     Test_Locals_test_info_locals;
+--  id:2.2/089928d110ab80a4/Locals/1/0/test_info_locals/
+   procedure Test_Locals_test_info_locals(Gnattest_T: in out Test) is
+      function Locals
+        (Pattern: String := "";
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Unbouned_Strings_Array renames
+        Wrap_Test_Locals_089928_f4c43e;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Locals_test_info_locals;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Name_Of_Executable_64477f_24ff4c
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Name_Of_Executable test requirement violated");
+      end;
+      declare
+         Test_Name_Of_Executable_64477f_24ff4c_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Name_Of_Executable
+             (Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Name_Of_Executable test commitment violated");
+         end;
+         return Test_Name_Of_Executable_64477f_24ff4c_Result;
+      end;
+   end Wrap_Test_Name_Of_Executable_64477f_24ff4c;
+--  end read only
+
+--  begin read only
+   procedure Test_Name_Of_Executable_test_info_name_of_executable
+     (Gnattest_T: in out Test);
+   procedure Test_Name_Of_Executable_64477f_24ff4c
+     (Gnattest_T: in out Test) renames
+     Test_Name_Of_Executable_test_info_name_of_executable;
+--  id:2.2/64477f8c1decfabe/Name_Of_Executable/1/0/test_info_name_of_executable/
+   procedure Test_Name_Of_Executable_test_info_name_of_executable
+     (Gnattest_T: in out Test) is
+      function Name_Of_Executable
+        (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_Name_Of_Executable_64477f_24ff4c;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Name_Of_Executable_test_info_name_of_executable;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Patch_Level_b52e42_325136
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Patch_Level test requirement violated");
+      end;
+      declare
+         Test_Patch_Level_b52e42_325136_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Patch_Level
+             (Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Patch_Level test commitment violated");
+         end;
+         return Test_Patch_Level_b52e42_325136_Result;
+      end;
+   end Wrap_Test_Patch_Level_b52e42_325136;
+--  end read only
+
+--  begin read only
+   procedure Test_Patch_Level_test_info_patch_level(Gnattest_T: in out Test);
+   procedure Test_Patch_Level_b52e42_325136(Gnattest_T: in out Test) renames
+     Test_Patch_Level_test_info_patch_level;
+--  id:2.2/b52e42b93cdc2894/Patch_Level/1/0/test_info_patch_level/
+   procedure Test_Patch_Level_test_info_patch_level(Gnattest_T: in out Test) is
+      function Patch_Level
+        (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_Patch_Level_b52e42_325136;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Patch_Level_test_info_patch_level;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Procs_79f38d_884500
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Procs test requirement violated");
+      end;
+      declare
+         Test_Procs_79f38d_884500_Result: constant Unbouned_Strings_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Procs
+             (Pattern, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Procs test commitment violated");
+         end;
+         return Test_Procs_79f38d_884500_Result;
+      end;
+   end Wrap_Test_Procs_79f38d_884500;
+--  end read only
+
+--  begin read only
+   procedure Test_Procs_test_info_procs(Gnattest_T: in out Test);
+   procedure Test_Procs_79f38d_884500(Gnattest_T: in out Test) renames
+     Test_Procs_test_info_procs;
+--  id:2.2/79f38d9293bc6b9f/Procs/1/0/test_info_procs/
+   procedure Test_Procs_test_info_procs(Gnattest_T: in out Test) is
+      function Procs
+        (Pattern: String := "";
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Unbouned_Strings_Array renames
+        Wrap_Test_Procs_79f38d_884500;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Procs_test_info_procs;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Script_b67457_ddce00
+     (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Script test requirement violated");
+      end;
+      declare
+         Test_Script_b67457_ddce00_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Script
+             (File_Name, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Script test commitment violated");
+         end;
+         return Test_Script_b67457_ddce00_Result;
+      end;
+   end Wrap_Test_Script_b67457_ddce00;
+--  end read only
+
+--  begin read only
+   procedure Test_Script_test_info_script(Gnattest_T: in out Test);
+   procedure Test_Script_b67457_ddce00(Gnattest_T: in out Test) renames
+     Test_Script_test_info_script;
+--  id:2.2/b67457baa3eb723c/Script/1/0/test_info_script/
+   procedure Test_Script_test_info_script(Gnattest_T: in out Test) is
+      function Script
+        (File_Name: String := "";
+         Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_Script_b67457_ddce00;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Script_test_info_script;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Tcl_Version_f8490f_6661d4
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Tcl_Version test requirement violated");
+      end;
+      declare
+         Test_Tcl_Version_f8490f_6661d4_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Tcl_Version
+             (Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Tcl_Version test commitment violated");
+         end;
+         return Test_Tcl_Version_f8490f_6661d4_Result;
+      end;
+   end Wrap_Test_Tcl_Version_f8490f_6661d4;
+--  end read only
+
+--  begin read only
+   procedure Test_Tcl_Version_test_info_tcl_version(Gnattest_T: in out Test);
+   procedure Test_Tcl_Version_f8490f_6661d4(Gnattest_T: in out Test) renames
+     Test_Tcl_Version_test_info_tcl_version;
+--  id:2.2/f8490f0fbc1565a4/Tcl_Version/1/0/test_info_tcl_version/
+   procedure Test_Tcl_Version_test_info_tcl_version(Gnattest_T: in out Test) is
+      function Tcl_Version
+        (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_Tcl_Version_f8490f_6661d4;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Tcl_Version_test_info_tcl_version;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Vars_336d97_9d2a56
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbouned_Strings_Array is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-info.ads:0):Test_Info_Vars test requirement violated");
+      end;
+      declare
+         Test_Vars_336d97_9d2a56_Result: constant Unbouned_Strings_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Vars
+             (Pattern, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-info.ads:0:):Test_Info_Vars test commitment violated");
+         end;
+         return Test_Vars_336d97_9d2a56_Result;
+      end;
+   end Wrap_Test_Vars_336d97_9d2a56;
+--  end read only
+
+--  begin read only
+   procedure Test_Vars_test_info_vars(Gnattest_T: in out Test);
+   procedure Test_Vars_336d97_9d2a56(Gnattest_T: in out Test) renames
+     Test_Vars_test_info_vars;
+--  id:2.2/336d9734b59539da/Vars/1/0/test_info_vars/
+   procedure Test_Vars_test_info_vars(Gnattest_T: in out Test) is
+      function Vars
+        (Pattern: String := "";
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Unbouned_Strings_Array renames
+        Wrap_Test_Vars_336d97_9d2a56;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Vars_test_info_vars;
 --  end read only
 
 --  begin read only
