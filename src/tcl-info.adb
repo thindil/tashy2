@@ -18,17 +18,17 @@ package body Tcl.Info is
 
    -- ****if* Info/Info.Get_Unbounded_Array_Result
    -- FUNCTION
-   -- Get the last Tcl command result and convert it to Unbouned_Strings_Array
+   -- Get the last Tcl command result and convert it to Unbounded_Strings_Array
    -- PARAMETERS
    -- Interpreter - Tcl interpreter on which the last Tcl command result will
    --               be get
    -- RESULT
-   -- Unbouned_Strings_Array with result of the command
+   -- Unbounded_Strings_Array with result of the command
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    function Get_Unbounded_Array_Result
-     (Interpreter: Tcl_Interpreter) return Unbouned_Strings_Array is
+     (Interpreter: Tcl_Interpreter) return Unbounded_Strings_Array is
      -- ****
       Tokens: Slice_Set;
    begin
@@ -37,7 +37,7 @@ package body Tcl.Info is
          return (1 => Null_Unbounded_String);
       end if;
       return
-        Result: Unbouned_Strings_Array(1 .. Positive(Slice_Count(Tokens))) do
+        Result: Unbounded_Strings_Array(1 .. Positive(Slice_Count(Tokens))) do
          for I in 1 .. Positive(Slice_Count(Tokens)) loop
             Result(I) := To_Unbounded_String(Slice(Tokens, Slice_Number(I)));
          end loop;
@@ -46,7 +46,7 @@ package body Tcl.Info is
 
    function Arguments
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array is
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval("info args " & Proc_Name, Interpreter);
       return Get_Unbounded_Array_Result(Interpreter);
@@ -69,7 +69,7 @@ package body Tcl.Info is
 
    function Commands
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array is
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval("info commands " & Pattern, Interpreter);
       return Get_Unbounded_Array_Result(Interpreter);
@@ -128,7 +128,7 @@ package body Tcl.Info is
 
    function Functions
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array is
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval("info functions " & Pattern, Interpreter);
       return Get_Unbounded_Array_Result(Interpreter);
@@ -136,7 +136,7 @@ package body Tcl.Info is
 
    function Globals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array is
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval("info globals " & Pattern, Interpreter);
       return Get_Unbounded_Array_Result(Interpreter);
@@ -158,7 +158,7 @@ package body Tcl.Info is
 
    function Locals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array is
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval("info locals " & Pattern, Interpreter);
       return Get_Unbounded_Array_Result(Interpreter);
@@ -180,7 +180,7 @@ package body Tcl.Info is
 
    function Procs
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array is
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval("info procs " & Pattern, Interpreter);
       return Get_Unbounded_Array_Result(Interpreter);
@@ -203,7 +203,7 @@ package body Tcl.Info is
 
    function Vars
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbouned_Strings_Array is
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval("info vars " & Pattern, Interpreter);
       return Get_Unbounded_Array_Result(Interpreter);
