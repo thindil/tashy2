@@ -80,7 +80,7 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      Tcl_Eval("proc myproc {arg1 arg2} {return 0}");
+      Tcl_Eval("proc myproc {arg1 {arg2 2}} {return 0}");
       declare
          Result: Unbounded_Strings_Array := Arguments("myproc");
       begin
