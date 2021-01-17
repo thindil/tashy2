@@ -437,11 +437,16 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      Assert(not Default("myproc", "arg1", "myvalue"), "Failed to get info about no default value in Tcl procedure.");
+      Assert
+        (not Default("myproc", "arg1", "myvalue"),
+         "Failed to get info about no default value in Tcl procedure.");
       if Default("myproc", "arg2", "myvalue") then
-         Assert(Tcl_GetVar("myvalue") = 2, "Failed to get default value for Tcl procedure.");
+         Assert
+           (Tcl_GetVar("myvalue") = 2,
+            "Failed to get default value for Tcl procedure.");
       else
-         Assert(False, "Failed to get info about default value in Tcl procedure.");
+         Assert
+           (False, "Failed to get info about default value in Tcl procedure.");
       end if;
 
 --  begin read only
@@ -787,7 +792,9 @@ package body Tcl.Info.Test_Data.Tests is
    begin
 
       Tcl_Eval("set library [info library]");
-      Assert(Library = Tcl_GetVar("library"), "Failed to get the path to Tcl library.");
+      Assert
+        (Library = Tcl_GetVar("library"),
+         "Failed to get the path to Tcl library.");
 
 --  begin read only
    end Test_Library_test_info_library;
@@ -843,8 +850,14 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      declare
+         Locals_Array: Unbounded_Strings_Array := Locals;
+      begin
+         Assert
+           (Locals_Array'Length = 1 and
+            Locals_Array(1) = Null_Unbounded_String,
+            "Failed to get names of available Tcl local variables.");
+      end;
 
 --  begin read only
    end Test_Locals_test_info_locals;
@@ -900,8 +913,10 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_Eval("set nameofexec [info nameofexecutable]");
+      Assert
+        (Name_Of_Executable = Tcl_GetVar("nameofexec"),
+         "Failed to get the name of executable.");
 
 --  begin read only
    end Test_Name_Of_Executable_test_info_name_of_executable;
@@ -954,8 +969,10 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_Eval("set patch [info patchlevel]");
+      Assert
+        (Patch_Level = Tcl_GetVar("patch"),
+         "Failed to get the library patch level.");
 
 --  begin read only
    end Test_Patch_Level_test_info_patch_level;
@@ -1011,8 +1028,14 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      declare
+         Procs_Array: Unbounded_Strings_Array := Procs("mypr*");
+      begin
+         Assert
+           (Procs_Array'Length = 1 and
+            Procs_Array(1) = To_Unbounded_String("myproc"),
+            "Failed to get names of available Tcl procedures.");
+      end;
 
 --  begin read only
    end Test_Procs_test_info_procs;
@@ -1067,8 +1090,7 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert(Script'Length = 0, "Failed to get the name of Tcl script.");
 
 --  begin read only
    end Test_Script_test_info_script;
@@ -1121,8 +1143,10 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_Eval("set version [info tclversion]");
+      Assert
+        (Tcl_Version = Tcl_GetVar("version"),
+         "Failed to get the Tcl version.");
 
 --  begin read only
    end Test_Tcl_Version_test_info_tcl_version;
@@ -1178,8 +1202,14 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      declare
+         Variables_Array: Unbounded_Strings_Array := Vars("en*");
+      begin
+         Assert
+           (Variables_Array'Length = 1 and
+            Variables_Array(1) = To_Unbounded_String("env"),
+            "Failed to get names of available all Tcl variables.");
+      end;
 
 --  begin read only
    end Test_Vars_test_info_vars;
