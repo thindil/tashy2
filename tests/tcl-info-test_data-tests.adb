@@ -437,8 +437,12 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert(not Default("myproc", "arg1", "myvalue"), "Failed to get info about no default value in Tcl procedure.");
+      if Default("myproc", "arg2", "myvalue") then
+         Assert(Tcl_GetVar("myvalue") = 2, "Failed to get default value for Tcl procedure.");
+      else
+         Assert(False, "Failed to get info about default value in Tcl procedure.");
+      end if;
 
 --  begin read only
    end Test_Default_test_info_default;
@@ -491,8 +495,7 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert(ErrorStack'Length = 0, "Failed to get error stack info.");
 
 --  begin read only
    end Test_ErrorStack_test_info_errorstack;
@@ -608,8 +611,14 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      declare
+         Functions_Array: Unbounded_Strings_Array := Functions("log1*");
+      begin
+         Assert
+           (Functions_Array'Length = 1 and
+            Functions_Array(1) = To_Unbounded_String("log10"),
+            "Failed to get names of available Tcl math functions.");
+      end;
 
 --  begin read only
    end Test_Functions_test_info_functions;
@@ -665,8 +674,14 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      declare
+         Globals_Array: Unbounded_Strings_Array := Globals("en*");
+      begin
+         Assert
+           (Globals_Array'Length = 1 and
+            Globals_Array(1) = To_Unbounded_String("env"),
+            "Failed to get names of available Tcl global variables.");
+      end;
 
 --  begin read only
    end Test_Globals_test_info_globals;
@@ -718,8 +733,8 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_Eval("set host [info hostname]");
+      Assert(HostName = Tcl_GetVar("host"), "Failed to get the host name.");
 
 --  begin read only
    end Test_HostName_test_info_hostname;
@@ -771,8 +786,8 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_Eval("set library [info library]");
+      Assert(Library = Tcl_GetVar("library"), "Failed to get the path to Tcl library.");
 
 --  begin read only
    end Test_Library_test_info_library;
