@@ -85,11 +85,8 @@ package body Tcl.Info.Test_Data.Tests is
          Result: Unbounded_Strings_Array := Arguments("myproc");
       begin
          Assert
-           (Result'Length = 2,
+           (Result'Length = 2 and Result(1) = To_Unbounded_String("arg1"),
             "Failed to get arguments list of Tcl procedure.");
-         Assert
-           (Result(1) = To_Unbounded_String("arg1"),
-            "Failed to get names of arguments of Tcl procedure.");
       end;
 
 --  begin read only
@@ -148,8 +145,9 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (Procedure_Body("myproc") = "return 0",
+         "Failed to get the body of Tcl procedure.");
 
 --  begin read only
    end Test_Procedure_Body_test_info_procedure_body;
@@ -205,8 +203,10 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_Eval("info cmdcount");
+      Assert
+        (Commands_Count = Tcl_GetResult,
+         "Failed to get amount of available Tcl commands.");
 
 --  begin read only
    end Test_Commands_Count_test_info_commands_count;
@@ -262,8 +262,14 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      declare
+         Commands_Array: Unbounded_Strings_Array := Commands("put*");
+      begin
+         Assert
+           (Commands_Array'Length = 1 and
+            Commands_Array(1) = To_Unbounded_String("puts"),
+            "Failed to get names of available Tcl commands.");
+      end;
 
 --  begin read only
    end Test_Commands_test_info_command;
@@ -318,8 +324,9 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (Complete("puts"),
+         "Failed to get completion status of the selected Tcl command.");
 
 --  begin read only
    end Test_Complete_test_info_complete;
@@ -372,8 +379,7 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert(Coroutine = "", "Failed to get the name of current coroutine.");
 
 --  begin read only
    end Test_Coroutine_test_info_coroutine;
