@@ -40,6 +40,26 @@ package Tk.Menu is
       Menu_Type: Menu_Types;
    end record;
 
+   type Menu_Item_Types is (CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR);
+
+   type Menu_Item_Options(Item_Type: Menu_Item_Types := COMMAND) is record
+      case Item_Type is
+         when CASCADE | CHECKBUTTON | COMMAND | RADIOBUTTON =>
+            Active_Background: Tcl_String;
+            Active_Foreground: Tcl_String;
+            Accelerator: Tcl_String;
+            Background: Tcl_String;
+            Bitmap: Tcl_String;
+            Column_Break: Extended_Boolean;
+            Command: Tcl_String;
+            Compound: Place_Type;
+            Font: Tcl_String;
+            Foreground: Tcl_String;
+         when SEPARATOR =>
+            null;
+      end case;
+   end record;
+
    function Create
      (Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu with
