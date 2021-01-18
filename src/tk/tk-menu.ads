@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -12,13 +12,33 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
 package Tk.Menu is
 
    subtype Tk_Menu is Tk_Widget;
 
-   type Menu_Options is new Widget_Options with null record;
+   type Menu_Types is (NONE, MENUBAR, TEAROFF, NORMAL) with
+      Default_Value => NONE;
+
+   type Menu_Options is new Widget_Options with record
+      Active_Background: Tcl_String;
+      Active_Border_Width: Pixel_Data;
+      Active_Foreground: Tcl_String;
+      Background: Tcl_String;
+      Border_Width: Pixel_Data;
+      Disabled_Foreground: Tcl_String;
+      Font: Tcl_String;
+      Foreground: Tcl_String;
+      Relief: Relief_Type;
+      Post_Command: Tcl_String;
+      Select_Color: Tcl_String;
+      Tear_Off: Extended_Boolean;
+      Tear_Off_Command: Tcl_String;
+      Title: Tcl_String;
+      Menu_Type: Menu_Types;
+   end record;
 
    function Create
      (Path_Name: String; Options: Menu_Options;
