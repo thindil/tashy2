@@ -30,4 +30,9 @@ package body Tk.Menu is
       Widget := Create(Path_Name, Options, Interpreter);
    end Create;
 
+   procedure Activate(Menu: Tk_Menu; Index: Tcl_String) is
+   begin
+      Execute_Widget_Command(Menu, "activate", To_Ada_String(Index));
+   end Activate;
+
 end Tk.Menu;
