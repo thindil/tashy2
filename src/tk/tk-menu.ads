@@ -44,12 +44,18 @@ package Tk.Menu is
      (Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget;
+      Post => Create'Result /= Null_Widget,
+      Test_Case => ("Test_Menu_Create1", Nominal);
 
    procedure Create
      (Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Widget /= Null_Widget;
+      Post => Widget /= Null_Widget,
+      Test_Case => ("Test_Menu_Create2", Nominal);
+
+   procedure Activate(Menu: Tk_Menu; Index: Tcl_String) with
+      Pre => Length(Index) > 0,
+      Test_Case => ("Test_Menu_Activate", Nominal);
 
 end Tk.Menu;
