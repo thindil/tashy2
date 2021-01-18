@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -14,9 +14,31 @@
 
 with Tk.TopLevel; use Tk.TopLevel;
 
+-- ****h* Tk/MainWindow
+-- FUNCTION
+-- Provides code for manipulate Tk main window widget
+-- SOURCE
 package Tk.MainWindow is
+-- ****
 
+   -- ****f* MainWindow/MainWindow.Get_Main_Window
+   -- FUNCTION
+   -- Get the main window widget of Tk application on the selected Tcl
+   -- interpreter
+   -- PARAMETERS
+   -- Interpreter - Tcl interpreter on which the main window will be get
+   -- RESULT
+   -- The main window of the Tk application as Tk_TopLevel widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the main window of Tk application on default Tcl interpreter
+   -- My_Main_Window: constant Tk_TopLevel := Get_Main_Window;
+   -- SOURCE
    function Get_Main_Window
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel;
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Main_Window", Nominal);
+     -- ****
 
 end Tk.MainWindow;
