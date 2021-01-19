@@ -104,4 +104,54 @@ package Tk.Menu is
       Pre => Length(Index) > 0,
       Test_Case => ("Test_Activate_Menu", Nominal);
 
+   procedure Add
+     (Menu: Tk_Menu; Item_Type: Menu_Item_Types;
+      Options: Menu_Item_Options) with
+      Pre => Menu /= Null_Widget,
+      Test_Case => ("Test_Add_Menu", Nominal);
+
+      -- ****f* Menu/Menu.Get_Options
+      -- FUNCTION
+      -- Get all values of Tk options of the selected menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu which options' values will be taken
+      -- RESULT
+      -- Menu_Options record with values of the selected menu options
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get all values of option of menu with pathname .mymenu
+      -- My_Menu_Options: constant Menu_Options := Get_Options(Get_Widget(".mymenu"));
+      -- SEE ALSO
+      -- Menu.Configure
+      -- COMMANDS
+      -- Widget configure
+      -- SOURCE
+   function Get_Options(Widget: Tk_Menu) return Menu_Options with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Get_Options_Menu", Nominal);
+      -- ****
+
+      -- ****f* Menu/Menu.Configure
+      -- FUNCTION
+      -- Set the selected options for the selected menu
+      -- PARAMETERS
+      -- Widget  - Tk_Menu which options will be set
+      -- Options - The record with new values for the menu options
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Disable tear off for menu with pathname .mymenu
+      -- Configure(Get_Widget(".mymenu"), (Tear_Off => False, others => <>));
+      -- SEE ALSO
+      -- Menu.Get_Options
+      -- COMMANDS
+      -- Widget configure Options
+      -- SOURCE
+   procedure Configure(Widget: Tk_Menu; Options: Menu_Options) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Configure_Menu", Nominal);
+      -- ****
+
+
 end Tk.Menu;
