@@ -13,15 +13,53 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Menu is
+
+   -- ****if* Menu/Menu.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Button_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Menu_Options) return String is
+      -- ****
+      Options_String: Unbounded_String;
+   begin
+      Option_Image
+        ("activebackground", Options.Active_Background, Options_String);
+      Option_Image
+        ("activeborderwidth", Options.Active_Border_Width, Options_String);
+      Option_Image
+        ("activeforeground", Options.Active_Foreground, Options_String);
+      Option_Image("background", Options.Background, Options_String);
+      Option_Image("borderwidth", Options.Border_Width, Options_String);
+      Option_Image("cursor", Options.Cursor, Options_String);
+      Option_Image
+        ("disabledforeground", Options.Disabled_Foreground, Options_String);
+      Option_Image("font", Options.Font, Options_String);
+      Option_Image("foreground", Options.Foreground, Options_String);
+      Option_Image("relief", Options.Relief, Options_String);
+      Option_Image("postcommand", Options.Post_Command, Options_String);
+      Option_Image("selectcolor", Options.Select_Color, Options_String);
+      Option_Image("takefocus", Options.Take_Focus, Options_String);
+      Option_Image("tearoff", Options.Tear_Off, Options_String);
+      Option_Image("tearoffcommand", Options.Tear_Off_Command, Options_String);
+      Option_Image("title", Options.Title, Options_String);
+      return To_String(Options_String);
+   end Options_To_String;
 
    function Create
      (Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu is
-      pragma Unreferenced(Options);
    begin
-      Tcl_Eval("menu " & Path_Name & " ", Interpreter);
+      Tcl_Eval
+        ("menu " & Path_Name & " " & Options_To_String(Options), Interpreter);
       return Get_Widget(Path_Name, Interpreter);
    end Create;
 
@@ -52,9 +90,8 @@ package body Tk.Menu is
    end Get_Options;
 
    procedure Configure(Widget: Tk_Menu; Options: Menu_Options) is
-      pragma Unreferenced(Options);
    begin
-      Execute_Widget_Command(Widget, "configure");
+      Execute_Widget_Command(Widget, "configure", Options_To_String(Options));
    end Configure;
 
 end Tk.Menu;
