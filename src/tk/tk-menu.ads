@@ -40,7 +40,8 @@ package Tk.Menu is
       Menu_Type: Menu_Types;
    end record;
 
-   type Menu_Item_Types is (CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR);
+   type Menu_Item_Types is
+     (CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR);
 
    type Menu_Item_Options(Item_Type: Menu_Item_Types := COMMAND) is record
       case Item_Type is
@@ -55,6 +56,31 @@ package Tk.Menu is
             Compound: Place_Type;
             Font: Tcl_String;
             Foreground: Tcl_String;
+            Hide_Margin: Extended_Boolean;
+            Image: Tcl_String;
+            Label: Tcl_String;
+            State: State_Type;
+            UnderLine: Extended_Natural;
+            case Item_Type is
+               when CASCADE =>
+                  Menu: Tk_Menu;
+               when CHECKBUTTON | RADIOBUTTON =>
+                  Indicator_On: Extended_Boolean;
+                  Select_Color: Tcl_String;
+                  Select_Image: Tcl_String;
+                  Variable: Tcl_String;
+                  case Item_Type is
+                     when CHECKBUTTON =>
+                        Off_Value: Tcl_String;
+                        On_Value: Tcl_String;
+                     when RADIOBUTTON =>
+                        Value: Tcl_String;
+                     when others =>
+                        null;
+                  end case;
+               when others =>
+                  null;
+            end case;
          when SEPARATOR =>
             null;
       end case;
@@ -65,17 +91,17 @@ package Tk.Menu is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
-      Test_Case => ("Test_Menu_Create1", Nominal);
+      Test_Case => ("Test_Create_Menu1", Nominal);
 
    procedure Create
      (Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Widget /= Null_Widget,
-      Test_Case => ("Test_Menu_Create2", Nominal);
+      Test_Case => ("Test_Create_Menu2", Nominal);
 
    procedure Activate(Menu: Tk_Menu; Index: Tcl_String) with
       Pre => Length(Index) > 0,
-      Test_Case => ("Test_Menu_Activate", Nominal);
+      Test_Case => ("Test_Activate_Menu", Nominal);
 
 end Tk.Menu;
