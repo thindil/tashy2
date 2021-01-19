@@ -12,6 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
+
 package body Tk.Menu is
 
    function Create
@@ -34,5 +36,25 @@ package body Tk.Menu is
    begin
       Execute_Widget_Command(Menu, "activate", To_Ada_String(Index));
    end Activate;
+
+   procedure Add
+     (Menu: Tk_Menu; Item_Type: Menu_Item_Types; Options: Menu_Item_Options) is
+      pragma Unreferenced(Options);
+   begin
+      Execute_Widget_Command
+        (Menu, "add", To_Lower(Menu_Item_Types'Image(Item_Type)));
+   end Add;
+
+   function Get_Options(Widget: Tk_Menu) return Menu_Options is
+      pragma Unreferenced(Widget);
+   begin
+      return Menu_Options'(others => <>);
+   end Get_Options;
+
+   procedure Configure(Widget: Tk_Menu; Options: Menu_Options) is
+      pragma Unreferenced(Options);
+   begin
+      Execute_Widget_Command(Widget, "configure");
+   end Configure;
 
 end Tk.Menu;
