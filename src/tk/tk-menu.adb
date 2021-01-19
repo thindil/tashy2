@@ -51,6 +51,11 @@ package body Tk.Menu is
       Option_Image("tearoff", Options.Tear_Off, Options_String);
       Option_Image("tearoffcommand", Options.Tear_Off_Command, Options_String);
       Option_Image("title", Options.Title, Options_String);
+      if Options.Menu_Type /= NONE then
+         Append
+           (Options_String,
+            " -type " & To_Lower(Menu_Types'Image(Options.Menu_Type)));
+      end if;
       return To_String(Options_String);
    end Options_To_String;
 
@@ -84,9 +89,30 @@ package body Tk.Menu is
    end Add;
 
    function Get_Options(Widget: Tk_Menu) return Menu_Options is
-      pragma Unreferenced(Widget);
    begin
-      return Menu_Options'(others => <>);
+      return Options: Menu_Options do
+         Options.Active_Background := Option_Value(Widget, "activebackground");
+         Options.Active_Border_Width :=
+           Option_Value(Widget, "activeborderwidth");
+         Options.Active_Foreground := Option_Value(Widget, "activeforeground");
+         Options.Background := Option_Value(Widget, "background");
+         Options.Border_Width := Option_Value(Widget, "borderwidth");
+         Options.Cursor := Option_Value(Widget, "cursor");
+         Options.Disabled_Foreground :=
+           Option_Value(Widget, "disabledforeground");
+         Options.Font := Option_Value(Widget, "font");
+         Options.Foreground := Option_Value(Widget, "foreground");
+         Options.Relief := Option_Value(Widget, "relief");
+         Options.Post_Command := Option_Value(Widget, "postcommand");
+         Options.Select_Color := Option_Value(Widget, "selectcolor");
+         Options.Take_Focus := Option_Value(Widget, "takefocus");
+         Options.Tear_Off := Option_Value(Widget, "tearoff");
+         Options.Tear_Off_Command := Option_Value(Widget, "tearoffcommand");
+         Options.Title := Option_Value(Widget, "title");
+         Execute_Widget_Command(Widget, "cget", "type");
+         Options.Menu_Type :=
+           Menu_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      end return;
    end Get_Options;
 
    procedure Configure(Widget: Tk_Menu; Options: Menu_Options) is
