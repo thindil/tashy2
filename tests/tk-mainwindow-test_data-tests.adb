@@ -84,7 +84,9 @@ package body Tk.MainWindow.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Assert(Get_Main_Window /= Null_Widget, "Failed to get main window of Tk application.");
+      Assert
+        (Get_Main_Window /= Null_Widget,
+         "Failed to get main window of Tk application.");
 
 --  begin read only
    end Test_Get_Main_Window_test_main_window;
