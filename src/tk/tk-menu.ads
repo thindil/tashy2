@@ -132,6 +132,12 @@ package Tk.Menu is
       Test_Case => ("Test_Get_Options_Menu", Nominal);
       -- ****
 
+   procedure Clone
+     (Widget: Tk_Menu; New_Path_Name: String;
+      Menu_Type: Menu_Types := NONE) with
+      Pre => Widget /= Null_Widget and New_Path_Name'Length > 0,
+      Test_Case => ("Test_Clone_Menu", Nominal);
+
       -- ****f* Menu/Menu.Configure
       -- FUNCTION
       -- Set the selected options for the selected menu
@@ -153,5 +159,8 @@ package Tk.Menu is
       Test_Case => ("Test_Configure_Menu", Nominal);
       -- ****
 
+   procedure Delete(Widget: Tk_Menu; Index1: String; Index2: String := "") with
+      Pre => Widget /= Null_Widget and Index1'Length > 0,
+      Test_Case => ("Test_Delete_Menu", Nominal);
 
 end Tk.Menu;
