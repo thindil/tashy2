@@ -163,4 +163,9 @@ package Tk.Menu is
       Pre => Widget /= Null_Widget and Index1'Length > 0,
       Test_Case => ("Test_Delete_Menu", Nominal);
 
+   function Entry_Get_Options
+     (Widget: Tk_Menu; Index: String) return Menu_Item_Options with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_Entry_Get_Options_Menu", Nominal);
+
 end Tk.Menu;
