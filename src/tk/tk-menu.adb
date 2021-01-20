@@ -173,4 +173,26 @@ package body Tk.Menu is
       Execute_Widget_Command(Widget, "delete", Index1 & " " & Index2);
    end Delete;
 
+   function Entry_Get_Options
+     (Widget: Tk_Menu; Index: String) return Menu_Item_Options is
+      function Item_Value(Name: String) return Tcl_String is
+      begin
+         Execute_Widget_Command(Widget, "entrycget", Index & " " & Name);
+         return To_Tcl_String(Tcl_GetResult(Tk_Interp(Widget)));
+      end Item_Value;
+   begin
+      return Options: Menu_Item_Options do
+         Options.Active_Background := Item_Value("activebackground");
+         Options.Active_Foreground := Item_Value("activeforeground");
+         Options.Accelerator := Item_Value("accelerator");
+         Options.Background := Item_Value("background");
+         Options.Bitmap := Item_Value("bitmap");
+         Options.Command := Item_Value("command");
+         Options.Font := Item_Value("font");
+         Options.Foreground := Item_Value("foreground");
+         Options.Image := Item_Value("image");
+         Options.Label := Item_Value("label");
+      end return;
+   end Entry_Get_Options;
+
 end Tk.Menu;
