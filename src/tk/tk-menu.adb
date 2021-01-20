@@ -175,6 +175,7 @@ package body Tk.Menu is
 
    function Entry_Get_Options
      (Widget: Tk_Menu; Index: String) return Menu_Item_Options is
+      Item_Type: Menu_Item_Types;
       function Item_Value(Name: String) return Tcl_String is
       begin
          Execute_Widget_Command(Widget, "entrycget", Index & " " & Name);
@@ -182,6 +183,8 @@ package body Tk.Menu is
       end Item_Value;
    begin
       return Options: Menu_Item_Options do
+         Execute_Widget_Command(Widget, "type", Index);
+         Item_Type := Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
          Options.Active_Background := Item_Value("activebackground");
          Options.Active_Foreground := Item_Value("activeforeground");
          Options.Accelerator := Item_Value("accelerator");
@@ -192,6 +195,22 @@ package body Tk.Menu is
          Options.Foreground := Item_Value("foreground");
          Options.Image := Item_Value("image");
          Options.Label := Item_Value("label");
+         case Item_Type is
+            when CHECKBUTTON | RADIOBUTTON =>
+               Options.Select_Color := Item_Value("selectcolor");
+               Options.Select_Image := Item_Value("selectimage");
+               case Item_Type is
+                  when CHECKBUTTON =>
+                     Options.Off_Value := Item_Value("offvalue");
+                     Options.On_Value := Item_Value("onvalue");
+                  when RADIOBUTTON =>
+                     Options.Value := Item_Value("value");
+                  when others =>
+                     null;
+               end case;
+            when others =>
+               null;
+         end case;
       end return;
    end Entry_Get_Options;
 
