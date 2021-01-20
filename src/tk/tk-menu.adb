@@ -149,7 +149,7 @@ package body Tk.Menu is
          Options.Tear_Off := Option_Value(Widget, "tearoff");
          Options.Tear_Off_Command := Option_Value(Widget, "tearoffcommand");
          Options.Title := Option_Value(Widget, "title");
-         Execute_Widget_Command(Widget, "cget", "type");
+         Execute_Widget_Command(Widget, "cget", "-type");
          Options.Menu_Type :=
            Menu_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
       end return;
@@ -178,8 +178,16 @@ package body Tk.Menu is
       Item_Type: Menu_Item_Types;
       function Item_Value(Name: String) return Tcl_String is
       begin
-         Execute_Widget_Command(Widget, "entrycget", Index & " " & Name);
+         Execute_Widget_Command(Widget, "entrycget", Index & " -" & Name);
          return To_Tcl_String(Tcl_GetResult(Tk_Interp(Widget)));
+      end Item_Value;
+      function Item_Value(Name: String) return Extended_Boolean is
+      begin
+         Execute_Widget_Command(Widget, "entrycget", Index & " -" & Name);
+         if Tcl_GetResult = 1 then
+            return TRUE;
+         end if;
+         return FALSE;
       end Item_Value;
    begin
       return Options: Menu_Item_Options do
@@ -190,13 +198,29 @@ package body Tk.Menu is
          Options.Accelerator := Item_Value("accelerator");
          Options.Background := Item_Value("background");
          Options.Bitmap := Item_Value("bitmap");
+         Options.Column_Break := Item_Value("columnbreak");
          Options.Command := Item_Value("command");
+         Execute_Widget_Command(Widget, "entrycget", Index & " -compound");
+         Options.Compound :=
+           Place_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
          Options.Font := Item_Value("font");
          Options.Foreground := Item_Value("foreground");
+         Options.Hide_Margin := Item_Value("hidemargin");
          Options.Image := Item_Value("image");
          Options.Label := Item_Value("label");
+         Execute_Widget_Command(Widget, "entrycget", Index & " -state");
+         Options.State := State_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+         Execute_Widget_Command(Widget, "entrycget", Index & " -underline");
+         Options.UnderLine :=
+           Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
          case Item_Type is
+            when CASCADE =>
+               Execute_Widget_Command(Widget, "entrycget", Index & " -menu");
+               Options.Menu :=
+                 Get_Widget
+                   (Tcl_GetResult(Tk_Interp(Widget)), Tk_Interp(Widget));
             when CHECKBUTTON | RADIOBUTTON =>
+               Options.Indicator_On := Item_Value("inditatoron");
                Options.Select_Color := Item_Value("selectcolor");
                Options.Select_Image := Item_Value("selectimage");
                case Item_Type is
