@@ -21,7 +21,7 @@ package body Tk.Menu is
    -- FUNCTION
    -- Convert Ada structure to Tcl command
    -- PARAMETERS
-   -- Options - Ada Button_Options to convert
+   -- Options - Ada Menu_Options to convert
    -- RESULT
    -- String with Tcl command options
    -- HISTORY
@@ -80,12 +80,52 @@ package body Tk.Menu is
       Execute_Widget_Command(Menu, "activate", To_Ada_String(Index));
    end Activate;
 
+   -- ****if* Menu/Menu.Item_Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Menu_Item_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Item_Options_To_String
+     (Options: Menu_Item_Options; Item_Type: Menu_Item_Types) return String is
+      -- ****
+      Options_String: Unbounded_String;
+   begin
+      if Item_Type = SEPARATOR then
+         return "";
+      end if;
+      Option_Image
+        ("activebackground", Options.Active_Background, Options_String);
+      Option_Image
+        ("activeforeground", Options.Active_Foreground, Options_String);
+      Option_Image("accelerator", Options.Accelerator, Options_String);
+      Option_Image("background", Options.Background, Options_String);
+      Option_Image("bitmap", Options.Bitmap, Options_String);
+      Option_Image("columnbreak", Options.Column_Break, Options_String);
+      Option_Image("command", Options.Command, Options_String);
+      Option_Image("compound", Options.Compound, Options_String);
+      Option_Image("font", Options.Font, Options_String);
+      Option_Image("foreground", Options.Foreground, Options_String);
+      Option_Image("hidemargin", Options.Hide_Margin, Options_String);
+      Option_Image("image", Options.Image, Options_String);
+      Option_Image("label", Options.Label, Options_String);
+      Option_Image("selectcolor", Options.Select_Color, Options_String);
+      Option_Image("state", Options.State, Options_String);
+      Option_Image("underline", Options.UnderLine, Options_String);
+      return To_String(Options_String);
+   end Item_Options_To_String;
+
    procedure Add
      (Menu: Tk_Menu; Item_Type: Menu_Item_Types; Options: Menu_Item_Options) is
-      pragma Unreferenced(Options);
    begin
       Execute_Widget_Command
-        (Menu, "add", To_Lower(Menu_Item_Types'Image(Item_Type)));
+        (Menu, "add",
+         To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
+         Item_Options_To_String(Options, Item_Type));
    end Add;
 
    function Get_Options(Widget: Tk_Menu) return Menu_Options is
