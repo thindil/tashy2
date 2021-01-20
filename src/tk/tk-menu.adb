@@ -155,9 +155,22 @@ package body Tk.Menu is
       end return;
    end Get_Options;
 
+   procedure Clone
+     (Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE) is
+   begin
+      Execute_Widget_Command
+        (Widget, "clone",
+         New_Path_Name & " " & To_Lower(Menu_Types'Image(Menu_Type)));
+   end Clone;
+
    procedure Configure(Widget: Tk_Menu; Options: Menu_Options) is
    begin
       Execute_Widget_Command(Widget, "configure", Options_To_String(Options));
    end Configure;
+
+   procedure Delete(Widget: Tk_Menu; Index1: String; Index2: String := "") is
+   begin
+      Execute_Widget_Command(Widget, "delete", Index1 & " " & Index2);
+   end Delete;
 
 end Tk.Menu;
