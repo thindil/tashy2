@@ -212,4 +212,12 @@ package Tk.Menu is
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Unpost_Menu", Nominal);
 
+   function X_Position(Widget: Tk_Menu; Index: String) return Natural with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_X_Position_Menu", Nominal);
+
+   function Y_Position(Widget: Tk_Menu; Index: String) return Natural with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_Y_Position_Menu", Nominal);
+
 end Tk.Menu;
