@@ -311,4 +311,16 @@ package body Tk.Menu is
       Execute_Widget_Command(Widget, "unpost");
    end Unpost;
 
+   function X_Position(Widget: Tk_Menu; Index: String) return Natural is
+   begin
+      Execute_Widget_Command(Widget, "xposition", Index);
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end X_Position;
+
+   function Y_Position(Widget: Tk_Menu; Index: String) return Natural is
+   begin
+      Execute_Widget_Command(Widget, "yposition", Index);
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end Y_Position;
+
 end Tk.Menu;
