@@ -145,6 +145,111 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Get_Options_ded36e_2834e9
+     (Widget: Tk_Menu) return Menu_Options is
+   begin
+      begin
+         pragma Assert(Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-menu.ads:0):Test_Get_Options_Menu test requirement violated");
+      end;
+      declare
+         Test_Get_Options_ded36e_2834e9_Result: constant Menu_Options :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Menu.Get_Options(Widget);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-menu.ads:0:):Test_Get_Options_Menu test commitment violated");
+         end;
+         return Test_Get_Options_ded36e_2834e9_Result;
+      end;
+   end Wrap_Test_Get_Options_ded36e_2834e9;
+--  end read only
+
+--  begin read only
+   procedure Test_Get_Options_test_get_options_menu
+     (Gnattest_T: in out Test_Menu_Options);
+   procedure Test_Get_Options_ded36e_2834e9
+     (Gnattest_T: in out Test_Menu_Options) renames
+     Test_Get_Options_test_get_options_menu;
+--  id:2.2/ded36e34d54c20f9/Get_Options/1/0/test_get_options_menu/
+   procedure Test_Get_Options_test_get_options_menu
+     (Gnattest_T: in out Test_Menu_Options) is
+      function Get_Options(Widget: Tk_Menu) return Menu_Options renames
+        Wrap_Test_Get_Options_ded36e_2834e9;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Get_Options_test_get_options_menu;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Configure_0076be_576a27
+     (Widget: Tk_Menu; Options: Menu_Options) is
+   begin
+      begin
+         pragma Assert(Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-menu.ads:0):Test_Configure_Menu test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Configure(Widget, Options);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-menu.ads:0:):Test_Configure_Menu test commitment violated");
+      end;
+   end Wrap_Test_Configure_0076be_576a27;
+--  end read only
+
+--  begin read only
+   procedure Test_Configure_test_configure_menu
+     (Gnattest_T: in out Test_Menu_Options);
+   procedure Test_Configure_0076be_576a27
+     (Gnattest_T: in out Test_Menu_Options) renames
+     Test_Configure_test_configure_menu;
+--  id:2.2/0076be6725db0897/Configure/1/0/test_configure_menu/
+   procedure Test_Configure_test_configure_menu
+     (Gnattest_T: in out Test_Menu_Options) is
+      procedure Configure(Widget: Tk_Menu; Options: Menu_Options) renames
+        Wrap_Test_Configure_0076be_576a27;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Configure_test_configure_menu;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
