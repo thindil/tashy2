@@ -13,6 +13,8 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings; use Ada.Strings;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Menu is
@@ -279,5 +281,34 @@ package body Tk.Menu is
       Invoke(Widget, Index);
       return Tcl_GetResult(Tk_Interp(Widget));
    end Invoke;
+
+   procedure Post(Widget: Tk_Menu; X, Y: Natural) is
+   begin
+      Execute_Widget_Command
+        (Widget, "post", Trim(Natural'Image(X), Left) & Natural'Image(Y));
+   end Post;
+
+   function Post(Widget: Tk_Menu; X, Y: Natural) return String is
+   begin
+      Post(Widget, X, Y);
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end Post;
+
+   procedure PostCascade(Widget: Tk_Menu; Index: String) is
+   begin
+      Execute_Widget_Command(Widget, "postcascade", Index);
+   end PostCascade;
+
+   function Get_Item_Type
+     (Widget: Tk_Menu; Index: String) return Menu_Item_Types is
+   begin
+      Execute_Widget_Command(Widget, "type", Index);
+      return Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
+   end Get_Item_Type;
+
+   procedure Unpost(Widget: Tk_Menu) is
+   begin
+      Execute_Widget_Command(Widget, "unpost");
+   end Unpost;
 
 end Tk.Menu;
