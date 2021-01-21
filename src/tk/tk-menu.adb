@@ -115,9 +115,24 @@ package body Tk.Menu is
       Option_Image("hidemargin", Options.Hide_Margin, Options_String);
       Option_Image("image", Options.Image, Options_String);
       Option_Image("label", Options.Label, Options_String);
-      Option_Image("selectcolor", Options.Select_Color, Options_String);
       Option_Image("state", Options.State, Options_String);
       Option_Image("underline", Options.UnderLine, Options_String);
+      if Item_Type in CHECKBUTTON | RADIOBUTTON then
+         Option_Image("indicatoron", Options.Indicator_On, Options_String);
+         Option_Image("selectcolor", Options.Select_Color, Options_String);
+         Option_Image("selectimage", Options.Select_Image, Options_String);
+         Option_Image("variable", Options.Variable, Options_String);
+      end if;
+      if Item_Type = CHECKBUTTON then
+         Option_Image("offvalue", Options.Off_Value, Options_String);
+         Option_Image("onvalue", Options.On_Value, Options_String);
+      end if;
+      if Item_Type = RADIOBUTTON then
+         Option_Image("value", Options.Value, Options_String);
+      end if;
+      if Item_Type = CASCADE and then Options.Menu /= Null_Widget then
+         Append(Options_String, " -menu " & Tk_PathName(Options.Menu));
+      end if;
       return To_String(Options_String);
    end Item_Options_To_String;
 
