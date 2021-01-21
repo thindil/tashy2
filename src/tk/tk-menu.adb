@@ -120,10 +120,11 @@ package body Tk.Menu is
    end Item_Options_To_String;
 
    procedure Add
-     (Menu: Tk_Menu; Item_Type: Menu_Item_Types; Options: Menu_Item_Options) is
+     (Widget: Tk_Menu; Item_Type: Menu_Item_Types;
+      Options: Menu_Item_Options) is
    begin
       Execute_Widget_Command
-        (Menu, "add",
+        (Widget, "add",
          To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
          Item_Options_To_String(Options, Item_Type));
    end Add;
@@ -237,5 +238,46 @@ package body Tk.Menu is
          end case;
       end return;
    end Entry_Get_Options;
+
+   procedure Entry_Configure
+     (Widget: Tk_Menu; Index: String; Options: Menu_Item_Options) is
+   begin
+      Execute_Widget_Command(Widget, "type", Index);
+      Execute_Widget_Command
+        (Widget, "entryconfigure",
+         Index & " " &
+         Item_Options_To_String
+           (Options, Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)))));
+   end Entry_Configure;
+
+   function Index(Widget: Tk_Menu; Index: String) return Extended_Natural is
+   begin
+      Execute_Widget_Command(Widget, "index", Index);
+      if Tcl_GetResult(Tk_Interp(Widget)) = "none" then
+         return -1;
+      end if;
+      return Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
+   end Index;
+
+   procedure Insert
+     (Widget: Tk_Menu; Index: String; Item_Type: Menu_Item_Types;
+      Options: Menu_Item_Options) is
+   begin
+      Execute_Widget_Command
+        (Widget, "add",
+         Index & " " & To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
+         Item_Options_To_String(Options, Item_Type));
+   end Insert;
+
+   procedure Invoke(Widget: Tk_Menu; Index: String) is
+   begin
+      Execute_Widget_Command(Widget, "invoke", Index);
+   end Invoke;
+
+   function Invoke(Widget: Tk_Menu; Index: String) return String is
+   begin
+      Invoke(Widget, Index);
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end Invoke;
 
 end Tk.Menu;
