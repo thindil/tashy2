@@ -185,10 +185,31 @@ package Tk.Menu is
 
    procedure Invoke(Widget: Tk_Menu; Index: String) with
       Pre => Widget /= Null_Widget and Index'Length > 0,
-      Test_Case => ("Test_Invoke_Menu2", Nominal);
+      Test_Case => ("Test_Invoke_Menu1", Nominal);
 
    function Invoke(Widget: Tk_Menu; Index: String) return String with
       Pre => Widget /= Null_Widget and Index'Length > 0,
-      Test_Case => ("Test_Invoke_Menu1", Nominal);
+      Test_Case => ("Test_Invoke_Menu2", Nominal);
+
+   procedure Post(Widget: Tk_Menu; X, Y: Natural) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Post_Menu1", Nominal);
+
+   function Post(Widget: Tk_Menu; X, Y: Natural) return String with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Post_Menu2", Nominal);
+
+   procedure PostCascade(Widget: Tk_Menu; Index: String) with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_PostCascade_Menu", Nominal);
+
+   function Get_Item_Type
+     (Widget: Tk_Menu; Index: String) return Menu_Item_Types with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_Get_Item_Type_Menu", Nominal);
+
+   procedure Unpost(Widget: Tk_Menu) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Unpost_Menu", Nominal);
 
 end Tk.Menu;
