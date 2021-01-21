@@ -105,9 +105,9 @@ package Tk.Menu is
       Test_Case => ("Test_Activate_Menu", Nominal);
 
    procedure Add
-     (Menu: Tk_Menu; Item_Type: Menu_Item_Types;
+     (Widget: Tk_Menu; Item_Type: Menu_Item_Types;
       Options: Menu_Item_Options) with
-      Pre => Menu /= Null_Widget,
+      Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Add_Menu", Nominal);
 
       -- ****f* Menu/Menu.Get_Options
@@ -167,5 +167,28 @@ package Tk.Menu is
      (Widget: Tk_Menu; Index: String) return Menu_Item_Options with
       Pre => Widget /= Null_Widget and Index'Length > 0,
       Test_Case => ("Test_Entry_Get_Options_Menu", Nominal);
+
+   procedure Entry_Configure
+     (Widget: Tk_Menu; Index: String; Options: Menu_Item_Options) with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_Entry_Configure_Menu", Nominal);
+
+   function Index(Widget: Tk_Menu; Index: String) return Extended_Natural with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_Index_Menu", Nominal);
+
+   procedure Insert
+     (Widget: Tk_Menu; Index: String; Item_Type: Menu_Item_Types;
+      Options: Menu_Item_Options) with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_Insert_Menu", Nominal);
+
+   procedure Invoke(Widget: Tk_Menu; Index: String) with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_Invoke_Menu2", Nominal);
+
+   function Invoke(Widget: Tk_Menu; Index: String) return String with
+      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => ("Test_Invoke_Menu1", Nominal);
 
 end Tk.Menu;
