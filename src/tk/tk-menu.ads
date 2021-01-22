@@ -132,9 +132,9 @@ package Tk.Menu is
       Test_Case => ("Test_Get_Options_Menu", Nominal);
       -- ****
 
-   procedure Clone
-     (Widget: Tk_Menu; New_Path_Name: String;
-      Menu_Type: Menu_Types := NONE) with
+   function Clone
+     (Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE)
+      return Tk_Menu with
       Pre => Widget /= Null_Widget and New_Path_Name'Length > 0,
       Test_Case => ("Test_Clone_Menu", Nominal);
 

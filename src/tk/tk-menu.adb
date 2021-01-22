@@ -173,12 +173,14 @@ package body Tk.Menu is
       end return;
    end Get_Options;
 
-   procedure Clone
-     (Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE) is
+   function Clone
+     (Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE)
+      return Tk_Menu is
    begin
       Execute_Widget_Command
         (Widget, "clone",
          New_Path_Name & " " & To_Lower(Menu_Types'Image(Menu_Type)));
+      return Tk_Menu(Get_Widget(New_Path_Name, Tk_Interp(Widget)));
    end Clone;
 
    procedure Configure(Widget: Tk_Menu; Options: Menu_Options) is
