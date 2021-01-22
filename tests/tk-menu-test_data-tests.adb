@@ -132,11 +132,22 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 14"), others => <>));
+      Invoke(Menu, "1");
+      Assert(Tcl_GetVar("myvar") = 14, "Failed to activate menu entry.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Add_test_add_menu;
