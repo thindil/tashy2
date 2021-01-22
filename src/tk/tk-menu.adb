@@ -177,9 +177,13 @@ package body Tk.Menu is
      (Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE)
       return Tk_Menu is
    begin
-      Execute_Widget_Command
-        (Widget, "clone",
-         New_Path_Name & " " & To_Lower(Menu_Types'Image(Menu_Type)));
+      if Menu_Type /= NONE then
+         Execute_Widget_Command
+           (Widget, "clone",
+            New_Path_Name & " " & To_Lower(Menu_Types'Image(Menu_Type)));
+      else
+         Execute_Widget_Command(Widget, "clone", New_Path_Name);
+      end if;
       return Tk_Menu(Get_Widget(New_Path_Name, Tk_Interp(Widget)));
    end Clone;
 
