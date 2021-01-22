@@ -15,6 +15,10 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables; use Tcl.Variables;
+
 --  begin read only
 --  end read only
 package body Tk.Menu.Test_Data.Tests is
@@ -65,11 +69,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 12"), others => <>));
+      Activate(Menu, To_Tcl_String("1"));
+      Invoke(Menu, "active");
+      Assert(Tcl_GetVar("myvar") = 12, "Failed to activate menu entry.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Activate_test_activate_menu;
