@@ -154,8 +154,9 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Clone_0b101a_307c8a
-     (Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE) is
+   function Wrap_Test_Clone_cce6c8_307c8a
+     (Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE)
+      return Tk_Menu is
    begin
       begin
          pragma Assert(Widget /= Null_Widget and New_Path_Name'Length > 0);
@@ -166,30 +167,35 @@ package body Tk.Menu.Test_Data.Tests is
               (False,
                "req_sloc(tk-menu.ads:0):Test_Clone_Menu test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Clone
-        (Widget, New_Path_Name, Menu_Type);
+      declare
+         Test_Clone_cce6c8_307c8a_Result: constant Tk_Menu :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Menu.Clone
+             (Widget, New_Path_Name, Menu_Type);
       begin
-         pragma Assert(True);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "ens_sloc(tk-menu.ads:0:):Test_Clone_Menu test commitment violated");
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-menu.ads:0:):Test_Clone_Menu test commitment violated");
+         end;
+         return Test_Clone_cce6c8_307c8a_Result;
       end;
-   end Wrap_Test_Clone_0b101a_307c8a;
+   end Wrap_Test_Clone_cce6c8_307c8a;
 --  end read only
 
 --  begin read only
    procedure Test_Clone_test_clone_menu(Gnattest_T: in out Test);
-   procedure Test_Clone_0b101a_307c8a(Gnattest_T: in out Test) renames
+   procedure Test_Clone_cce6c8_307c8a(Gnattest_T: in out Test) renames
      Test_Clone_test_clone_menu;
---  id:2.2/0b101aecb6aa9cc8/Clone/1/0/test_clone_menu/
+--  id:2.2/cce6c8abdd50593a/Clone/1/0/test_clone_menu/
    procedure Test_Clone_test_clone_menu(Gnattest_T: in out Test) is
-      procedure Clone
-        (Widget: Tk_Menu; New_Path_Name: String;
-         Menu_Type: Menu_Types := NONE) renames
-        Wrap_Test_Clone_0b101a_307c8a;
+      function Clone
+        (Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE)
+         return Tk_Menu renames
+        Wrap_Test_Clone_cce6c8_307c8a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

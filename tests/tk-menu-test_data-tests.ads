@@ -16,7 +16,7 @@ package Tk.Menu.Test_Data.Tests is
    procedure Test_Add_ba4759_b5105f(Gnattest_T: in out Test);
    --  tk-menu.ads:107:4:Add:Test_Add_Menu
 
-   procedure Test_Clone_0b101a_307c8a(Gnattest_T: in out Test);
+   procedure Test_Clone_cce6c8_307c8a(Gnattest_T: in out Test);
    --  tk-menu.ads:135:4:Clone:Test_Clone_Menu
 
    procedure Test_Delete_7e606b_322d85(Gnattest_T: in out Test);
