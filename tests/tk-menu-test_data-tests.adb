@@ -260,11 +260,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 18"), others => <>));
+      Delete(Menu, "1");
+      Invoke(Menu, "1");
+      Assert(Tcl_GetVar("myvar") = 16, "Failed to delete menu entry.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Delete_test_delete_menu;
@@ -317,11 +329,25 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
+      Options: Menu_Item_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 18"), others => <>));
+      Options := Entry_Get_Options(Menu, "1");
+      Assert
+        (Options.Command = To_Tcl_String("set myvar 18"),
+         "Failed to get options of the menu entry.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Entry_Get_Options_test_entry_get_options_menu;
@@ -369,11 +395,29 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
+      Options, Options2: Menu_Item_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 18"), others => <>));
+      Options :=
+        (Item_Type => COMMAND, Label => To_Tcl_String("New label"),
+         others => <>);
+      Entry_Configure(Menu, "1", Options);
+      Options2 := Entry_Get_Options(Menu, "1");
+      Assert
+        (Options2.Label = Options.Label,
+         "Failed to set options of the menu entry.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Entry_Configure_test_entry_configure_menu;
@@ -422,11 +466,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 18"), others => <>));
+      Assert
+        (Index(Menu, "end") = 1,
+         "Failed to get numerical index of the menu entry.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Index_test_index_menu;
@@ -473,11 +529,28 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 18"), others => <>));
+      Insert
+        (Menu, "1", COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Invoke(Menu, "1");
+      Assert
+        (Tcl_GetVar("myvar") = 20,
+         "Failed to insert a new entry to the menu.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Insert_test_insert_menu;
