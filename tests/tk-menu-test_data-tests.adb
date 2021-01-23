@@ -841,6 +841,7 @@ package body Tk.Menu.Test_Data.Tests is
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       PostCascade(Menu, "1");
       Assert(True, "This test can only crash.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_PostCascade_test_postcascade_menu;
@@ -892,11 +893,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Assert
+        (Get_Item_Type(Menu, "1") = COMMAND,
+         "Failed to get type of menu entry.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Get_Item_Type_test_get_item_type_menu;
@@ -937,11 +950,19 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Post(Menu, 0, 0);
+      Unpost(Menu);
+      Assert(True, "This test can only crash.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Unpost_test_unpost_menu;
@@ -991,11 +1012,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Assert
+        (X_Position(Menu, "0") = 1,
+         "Failed to get X position of the menu entry.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_X_Position_test_x_position_menu;
@@ -1045,11 +1078,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Assert
+        (Y_Position(Menu, "0") = 1,
+         "Failed to get Y position of the menu entry.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Y_Position_test_y_position_menu;
