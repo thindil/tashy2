@@ -287,7 +287,7 @@ package body Tk.Menu is
       Options: Menu_Item_Options) is
    begin
       Execute_Widget_Command
-        (Widget, "add",
+        (Widget, "insert",
          Index & " " & To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
          Item_Options_To_String(Options, Item_Type));
    end Insert;
