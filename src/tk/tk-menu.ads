@@ -15,13 +15,57 @@
 with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
+-- ****h* Tk/Menu
+-- FUNCTION
+-- Provides code for manipulate Tk widget menu
+-- SOURCE
 package Tk.Menu is
+-- ****
 
+   -- ****t* Menu/Menu.Tk_Menu
+   -- FUNCTION
+   -- The Tk identifier of the menu
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    subtype Tk_Menu is Tk_Widget;
+   -- ****
 
+   -- ****t* Menu/Menu.Menu_Types
+   -- FUNCTION
+   -- The types of menu
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Menu_Types is (NONE, MENUBAR, TEAROFF, NORMAL) with
       Default_Value => NONE;
+      -- ****
 
+      -- ****s* Menu/Menu.Menu_Options
+      -- FUNCTION
+      -- Data structure for all available options for the Tk button
+      -- OPTIONS
+      -- Active_Background   - Background color when button is active (mouse is
+      --                       over the menu)
+      -- Active_Border_Width - The width of border drawed around active menu
+      -- Active_Foreground   - Foreground color when menu is active
+      -- Background          - Normal background color of the menu
+      -- Border_Width        - The width of the menu's border
+      -- Disabled_Foreground - Foreground color when the menu is disabled
+      -- Font                - The Tk font which will be used to draw text on the menu
+      -- Foreground          - Normal foreground color of the menu
+      -- Relief              - 3-D effect desired for the menu
+      -- Post_Command        - The Tcl command executed before the menu is posted
+      -- Tear_Off            - If true, the menu can be torn off, otherwise this option
+      --                       is disabled
+      -- Tear_Off_Command    - The Tcl command executed when the menu will be torn off
+      -- Title               - The title of the torn off menu
+      -- Menu_Type           - The type of the menu. It can be set only during creation.
+      --                       Later even if this option is changed, the menu behavior is
+      --                       not.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
    type Menu_Options is new Widget_Options with record
       Active_Background: Tcl_String;
       Active_Border_Width: Pixel_Data;
@@ -39,6 +83,7 @@ package Tk.Menu is
       Title: Tcl_String;
       Menu_Type: Menu_Types;
    end record;
+   -- ****
 
    type Menu_Item_Types is
      (CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR);
