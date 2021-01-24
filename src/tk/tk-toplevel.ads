@@ -25,7 +25,7 @@ package Tk.TopLevel is
 
    -- ****t* TopLevel/TopLevel.Tk_Button
    -- FUNCTION
-   -- The Tk indetifier of the toplevel
+   -- The Tk identifier of the toplevel
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE

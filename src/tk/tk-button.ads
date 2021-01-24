@@ -24,7 +24,7 @@ package Tk.Button is
 
    -- ****t* Button/Button.Tk_Button
    -- FUNCTION
-   -- The Tk indetifier of the button
+   -- The Tk identifier of the button
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -41,7 +41,7 @@ package Tk.Button is
    -- Anchor               - The direction in which a button text or image is
    --                        positioned. For example, NW means display in top-left
    --                        corner of the button
-   -- Background           - Normal Background color of the button
+   -- Background           - Normal background color of the button
    -- Bitmap               - The name of the bitmap to display on button
    -- Border_Width         - The width of the button's border
    -- Command              - The Tcl command which will be executed when the
