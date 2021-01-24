@@ -43,9 +43,9 @@ package Tk.Menu is
 
       -- ****s* Menu/Menu.Menu_Options
       -- FUNCTION
-      -- Data structure for all available options for the Tk button
+      -- Data structure for all available options for the Tk menu
       -- OPTIONS
-      -- Active_Background   - Background color when button is active (mouse is
+      -- Active_Background   - Background color when menu is active (mouse is
       --                       over the menu)
       -- Active_Border_Width - The width of border drawed around active menu
       -- Active_Foreground   - Foreground color when menu is active
@@ -85,9 +85,65 @@ package Tk.Menu is
    end record;
    -- ****
 
+   -- ****t* Menu/Menu.Menu_Item_Types
+   -- FUNCTION
+   -- Available types of menu items (entries)
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Menu_Item_Types is
      (CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR);
+   -- ****
 
+   -- ****s* Menu/Menu.Menu_Item_Options
+   -- FUNCTION
+   -- Data structure for all available options for the Tk menu entries (items).
+   -- Available options depends on Item_Type of menu item.
+   -- OPTIONS
+   -- Item_Type         - Type of item which options will be get or set. SEPARATOR
+   --                     menu item don't have any options.
+   -- Active_Background - Background color when menu entry is active (mouse is
+   --                     over the menu)
+   -- Active_Foreground - Foreground color when menu entry is active
+   -- Accelerator       - Text which will be show on the right side of the menu entry.
+   --                     The most often it is keyboard shortcut for the entry.
+   -- Background        - Normal background color of the menu entry
+   -- Bitmap            - Specifies bitmap to display instead of text on the menu entry
+   -- Column_Break      - If True, the menu entry appears on at the top of new column in
+   --                     menu. Otherwise it appears below the previous menu entry.
+   -- Command           - The Tcl command to execute when the menu entry is invoked
+   -- Compound          - Specifies if menu entry should display image and text and if
+   --                     so, where image will be placed relative to text
+   -- Font              - The Tk font which will be used for the menu entry
+   -- Foreground        - Normal foreground color of the menu entry
+   -- Hide_Margin       - If False, draw standard margin around the menu entry. Otherwise
+   --                     margins are hidden
+   -- Image             - Specifies Tk image to show on the menu entry
+   -- Label             - Specifies text which will be displayed on the menu entry
+   -- State             - The state of the menu entry. Disabled menu entries cannot be
+   --                     invoked.
+   -- UnderLine         - Index of the character in Label which will be underlined. Used
+   --                     mostly to indicate keyboard shortcut for the menu entry.
+   -- Menu              - The submenu of the menu entry. Available only for CASCADE
+   --                     Item_Type.
+   -- Indicator_On      - If True, show the menu entry indicator. Available only for
+   --                     RADIOBUTTON and CHECKBUTTON Item_Type.
+   -- Select_Color      - The color of indicator when the menu entry is selected. Available
+   --                     only for RADIOBUTTON and CHECKBUTTON Item_Type.
+   -- Select_Image      - The image displayed when the menu entry is selected. Available
+   --                     only for RADIOBUTTON and CHECKBUTTON Item_Type.
+   -- Variable          - The name of Tcl global variable which will be set when the menu
+   --                     entry is selected. Available only for RADIOBUTTON and CHECKBUTTON
+   --                     Item_Type
+   -- Off_Value         - The value of the associated Variable when the menu entry is not
+   --                     selected. Available only for CHECKBUTTON Item_Type.
+   -- On_Value          - The value of the associated Variable when the menu entry is
+   --                     selected. Available only for CHECKBUTTON Item_Type.
+   -- Value             -  The value of the associated Variable when the menu entry is
+   --                     selected. Available only for RADIOBUTTON Item_Type.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Menu_Item_Options(Item_Type: Menu_Item_Types := COMMAND) is record
       case Item_Type is
          when CASCADE | CHECKBUTTON | COMMAND | RADIOBUTTON =>
@@ -130,6 +186,7 @@ package Tk.Menu is
             null;
       end case;
    end record;
+   -- ****
 
    function Create
      (Path_Name: String; Options: Menu_Options;
