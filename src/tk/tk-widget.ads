@@ -35,6 +35,8 @@ package Tk.Widget is
    -- ****d* Widget/Widget.Null_Widget
    -- FUNCTION
    -- Not created or not existing Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Null_Widget: constant Tk_Widget := Tk_Widget(System.Null_Address);
    -- ****
@@ -195,6 +197,8 @@ package Tk.Widget is
    -- ****t* Widget/Widget.Tk_Window
    -- FUNCTION
    -- The window manager identifier for Tk_Widget
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Tk_Window is new System.Address;
    -- ****
@@ -202,6 +206,8 @@ package Tk.Widget is
    -- ****d* Widget/Widget.Null_Window
    -- FUNCTION
    -- Not created or not existing Tk window
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Null_Window: constant Tk_Window := Tk_Window(System.Null_Address);
    -- ****
