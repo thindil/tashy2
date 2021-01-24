@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+
 --  begin read only
 --  end read only
 package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
@@ -79,11 +81,17 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Menu := Create(".mymenu", Menu_Options'(others => <>));
+      Assert(Menu /= Null_Widget, "Failed to create (function) a new menu.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_1_Create_test_create_menu1;
@@ -134,11 +142,17 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Assert(Menu /= Null_Widget, "Failed to create (procedure) a new menu.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_2_Create_test_create_menu2;
@@ -189,11 +203,19 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
+      Options: Menu_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
+      Options :=  Get_Options(Menu);
+      Assert(Options.Tear_Off = FALSE, "Failed to get options of a menu.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Get_Options_test_get_options_menu;
@@ -239,11 +261,21 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
+      Options, Options2: Menu_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
+      Options := (Tear_Off => TRUE, others => <>);
+      Configure(Menu, Options);
+      Options2 := Get_Options(Menu);
+      Assert(Options.Tear_Off = Options2.Tear_Off, "Failed to set options of a menu.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_Configure_test_configure_menu;
