@@ -268,7 +268,7 @@ package Tk.Menu is
       Test_Case => ("Test_Activate_Menu", Nominal);
       -- ****
 
-      -- ****f* Tk.Menu/Add
+      -- ****f* Menu/Menu.Add
       -- FUNCTION
       -- Add a new menu entry to the selected menu
       -- PARAMETERS
@@ -313,11 +313,30 @@ package Tk.Menu is
       Test_Case => ("Test_Get_Options_Menu", Nominal);
       -- ****
 
+      -- ****f* Menu/Menu.Clone
+      -- FUNCTION
+      -- Clone the selected menu
+      -- PARAMETERS
+      -- Widget        - Tk_Menu which will be cloned
+      -- New_Path_Name - The Tk path for the newly created menu
+      -- Menu_Type     - The type of the newly created menu. If empty, the
+      --                 cloned menu will have that same type as original.
+      -- RESULT
+      -- The Tk identifier of the newly created menu
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Clone menu My_Menu to menu named .myclonedmenu with that same type
+      -- My_Cloned_Menu: constant Tk_Menu := Clone(My_Menu, ".myclonedmenu");
+      -- COMMANDS
+      -- Widget clone New_Path_Name ?Menu_Type?
+      -- SOURCE
    function Clone
      (Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE)
       return Tk_Menu with
       Pre => Widget /= Null_Widget and New_Path_Name'Length > 0,
       Test_Case => ("Test_Clone_Menu", Nominal);
+      -- ****
 
       -- ****f* Menu/Menu.Configure
       -- FUNCTION
