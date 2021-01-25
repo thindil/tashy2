@@ -188,19 +188,66 @@ package Tk.Menu is
    end record;
    -- ****
 
+   -- ****f* Menu/Menu.Create_(function)
+   -- FUNCTION
+   -- Create a new Tk menu widget with the selected pathname and options
+   -- PARAMETERS
+   -- Path_Name   - Tk pathname for the newly created menu
+   -- Options     - Options for the newly created menu
+   -- Interpreter - Tcl interpreter on which the menu will be created. Can
+   --               be empty. Default value is the default Tcl interpreter
+   -- RESULT
+   -- The Tk identifier of the newly created menu widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Create the menu with pathname .mymenu with disabled tear off option
+   -- My_Menu: constant Tk_Menu := Create(".mymenu", Menu_Options'(Tear_Off => False, others => <>));
+   -- SEE ALSO
+   -- Menu.Create_(procedure)
+   -- COMMANDS
+   -- menu Path_Name Options
+   -- SOURCE
    function Create
      (Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => ("Test_Create_Menu1", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Create_(procedure)
+      -- FUNCTION
+      -- Create a new Tk menu widget with the selected pathname and options
+      -- PARAMETERS
+      -- Widget      - Tk_Menu identifier which will be returned
+      -- Path_Name   - Tk pathname for the newly created menu
+      -- Options     - Options for the newly created menu
+      -- Interpreter - Tcl interpreter on which the menu will be created. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- OUTPUT
+      -- The Widget parameter as Tk identifier of the newly created menu widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Create the menu with pathname .mymenu with disabled tear off option
+      -- declare
+      --    My_Menu: Tk_Menu;
+      -- begin
+      --    Create(My_Menu, ".mymenu", Menu_Options'(Tear_Off => False, others => <>));
+      -- end;
+      -- SEE ALSO
+      -- Menu.Create_(function)
+      -- COMMANDS
+      -- menu Path_Name Options
+      -- SOURCE
    procedure Create
      (Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Widget /= Null_Widget,
       Test_Case => ("Test_Create_Menu2", Nominal);
+      -- ****
 
    procedure Activate(Menu: Tk_Menu; Index: Tcl_String) with
       Pre => Length(Index) > 0,
