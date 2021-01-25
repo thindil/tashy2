@@ -33,11 +33,11 @@ package body Tk.Menu.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Activate_e310e8_4d580e
-     (Menu: Tk_Menu; Index: Tcl_String) is
+   procedure Wrap_Test_Activate_e310e8_318e72
+     (Widget: Tk_Menu; Index: Tcl_String) is
    begin
       begin
-         pragma Assert(Length(Index) > 0);
+         pragma Assert(Widget /= Null_Widget and Length(Index) > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -45,7 +45,7 @@ package body Tk.Menu.Test_Data.Tests is
               (False,
                "req_sloc(tk-menu.ads:0):Test_Activate_Menu test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Activate(Menu, Index);
+      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Activate(Widget, Index);
       begin
          pragma Assert(True);
          null;
@@ -55,17 +55,17 @@ package body Tk.Menu.Test_Data.Tests is
               (False,
                "ens_sloc(tk-menu.ads:0:):Test_Activate_Menu test commitment violated");
       end;
-   end Wrap_Test_Activate_e310e8_4d580e;
+   end Wrap_Test_Activate_e310e8_318e72;
 --  end read only
 
 --  begin read only
    procedure Test_Activate_test_activate_menu(Gnattest_T: in out Test);
-   procedure Test_Activate_e310e8_4d580e(Gnattest_T: in out Test) renames
+   procedure Test_Activate_e310e8_318e72(Gnattest_T: in out Test) renames
      Test_Activate_test_activate_menu;
 --  id:2.2/e310e84b92d86930/Activate/1/0/test_activate_menu/
    procedure Test_Activate_test_activate_menu(Gnattest_T: in out Test) is
-      procedure Activate(Menu: Tk_Menu; Index: Tcl_String) renames
-        Wrap_Test_Activate_e310e8_4d580e;
+      procedure Activate(Widget: Tk_Menu; Index: Tcl_String) renames
+        Wrap_Test_Activate_e310e8_318e72;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
