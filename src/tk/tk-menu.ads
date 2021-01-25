@@ -249,15 +249,47 @@ package Tk.Menu is
       Test_Case => ("Test_Create_Menu2", Nominal);
       -- ****
 
+      -- ****f* Menu/Menu.Activate
+      -- FUNCTION
+      -- Set the selected menu entry as active
+      -- PARAMETERS
+      -- Widget - Tk_Menu widget in which the menu entry will be set as active
+      -- Index  - The index of the menu entry to activate
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set active the last element of the menu My_Menu
+      -- Activate(My_Menu, To_Tcl_String("end"));
+      -- COMMANDS
+      -- Widget activate Index
+      -- SOURCE
    procedure Activate(Widget: Tk_Menu; Index: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Activate_Menu", Nominal);
+      -- ****
 
+      -- ****f* Tk.Menu/Add
+      -- FUNCTION
+      -- Add a new menu entry to the selected menu
+      -- PARAMETERS
+      -- Widget    - Tk_Menu widget in which the new entry will be added
+      -- Item_Type - The type of menu entry to add
+      -- Options   - The options for the newly added entry
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Add to menu My_Menu entry with label "Quit" and quit from the program on activate
+      -- Add(My_Menu, COMMAND, Menu_Item_Options'(Label => To_Tcl_String("Quit"), Command => To_Tcl_String("exit"),
+      --                                          others => <>));
+      -- COMMANDS
+      -- Widget add Item_Type Options
+      -- SOURCE
    procedure Add
      (Widget: Tk_Menu; Item_Type: Menu_Item_Types;
       Options: Menu_Item_Options) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Add_Menu", Nominal);
+      -- ****
 
       -- ****f* Menu/Menu.Get_Options
       -- FUNCTION
