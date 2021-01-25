@@ -249,8 +249,8 @@ package Tk.Menu is
       Test_Case => ("Test_Create_Menu2", Nominal);
       -- ****
 
-   procedure Activate(Menu: Tk_Menu; Index: Tcl_String) with
-      Pre => Length(Index) > 0,
+   procedure Activate(Widget: Tk_Menu; Index: Tcl_String) with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Activate_Menu", Nominal);
 
    procedure Add
