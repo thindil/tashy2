@@ -77,9 +77,9 @@ package body Tk.Menu is
       Widget := Create(Path_Name, Options, Interpreter);
    end Create;
 
-   procedure Activate(Menu: Tk_Menu; Index: Tcl_String) is
+   procedure Activate(Widget: Tk_Menu; Index: Tcl_String) is
    begin
-      Execute_Widget_Command(Menu, "activate", To_Ada_String(Index));
+      Execute_Widget_Command(Widget, "activate", To_Ada_String(Index));
    end Activate;
 
    -- ****if* Menu/Menu.Item_Options_To_String
