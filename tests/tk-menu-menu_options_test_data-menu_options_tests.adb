@@ -213,7 +213,7 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
          return;
       end if;
       Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
-      Options :=  Get_Options(Menu);
+      Options := Get_Options(Menu);
       Assert(Options.Tear_Off = FALSE, "Failed to get options of a menu.");
       Destroy(Menu);
 
@@ -274,7 +274,9 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
       Options := (Tear_Off => TRUE, others => <>);
       Configure(Menu, Options);
       Options2 := Get_Options(Menu);
-      Assert(Options.Tear_Off = Options2.Tear_Off, "Failed to set options of a menu.");
+      Assert
+        (Options.Tear_Off = Options2.Tear_Off,
+         "Failed to set options of a menu.");
       Destroy(Menu);
 
 --  begin read only
