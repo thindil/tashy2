@@ -19,11 +19,11 @@ package Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 
    procedure Test_Get_Options_ded36e_2834e9
      (Gnattest_T: in out Test_Menu_Options);
-   --  tk-menu.ads:279:4:Get_Options:Test_Get_Options_Menu
+   --  tk-menu.ads:311:4:Get_Options:Test_Get_Options_Menu
 
    procedure Test_Configure_0076be_576a27
      (Gnattest_T: in out Test_Menu_Options);
-   --  tk-menu.ads:306:4:Configure:Test_Configure_Menu
+   --  tk-menu.ads:357:4:Configure:Test_Configure_Menu
 
 end Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests;
 --  end read only
