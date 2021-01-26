@@ -384,7 +384,7 @@ package Tk.Menu is
 
       -- ****f* Menu/Menu.Entry_Get_Options
       -- FUNCTION
-      -- Get all options of the selected menu entry
+      -- Get all options of the selected menu entry in the selected menu
       -- PARAMETERS
       -- Widget - Tk_Menu from which the options for the selected menu entry
       --          will be get
@@ -398,6 +398,8 @@ package Tk.Menu is
       -- Item_Options: constant Menu_Item_Options := Entry_Get_Options(My_Menu, To_Tcl_String("2"));
       -- COMMANDS
       -- Widget entryconfigure Index
+      -- SEE ALSO
+      -- Menu.Entry_Configure
       -- SOURCE
    function Entry_Get_Options
      (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Options with
@@ -405,15 +407,53 @@ package Tk.Menu is
       Test_Case => ("Test_Entry_Get_Options_Menu", Nominal);
       -- ****
 
+      -- ****f* Menu/Menu.Entry_Configure
+      -- FUNCTION
+      -- Set options of the selected menu entry in the selected menu
+      -- PARAMETERS
+      -- Widget  - Tk_Menu in which the menu entry options will be set
+      -- Index   - The index of the menu entry which options will be set
+      -- Options - The new values of options for the selected menu entry
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the label for the first menu entry in My_Menu menu to "First element"
+      -- Entry_Configure(My_Menu, To_Tcl_String("0"), Menu_Item_Options'(Label => To_Tcl_String("First element")));
+      -- COMMANDS
+      -- Widget entryconfigure Index Options
+      -- SEE ALSO
+      -- Menu.Entry_Get_Options
+      -- SOURCE
    procedure Entry_Configure
      (Widget: Tk_Menu; Index: Tcl_String; Options: Menu_Item_Options) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Entry_Configure_Menu", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Index
+      -- FUNCTION
+      -- Get the numerical index of the selected menu entry in the selected
+      -- menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu in which the numerical index of menu entry will be
+      --          get
+      -- Index  - The index of the menu entry which numerical index will be get
+      -- RESULT
+      -- Numerical index of the selected menu entry or -1 if menu entry was
+      -- specified as "none"
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the numerical index of the last menu entry in My_Menu menu
+      -- Number: constant Extended_Natural := Index(My_Menu, To_Tcl_String("end"));
+      -- COMMANDS
+      -- Widget index Index
+      -- SOURCE
    function Index
      (Widget: Tk_Menu; Index: Tcl_String) return Extended_Natural with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Index_Menu", Nominal);
+      -- ****
 
    procedure Insert
      (Widget: Tk_Menu; Index: Tcl_String; Item_Type: Menu_Item_Types;
