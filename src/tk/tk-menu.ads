@@ -359,16 +359,51 @@ package Tk.Menu is
       Test_Case => ("Test_Configure_Menu", Nominal);
       -- ****
 
+      -- ****f* Menu/Menu.Delete
+      -- FUNCTION
+      -- Delete the selected menu entries from the selected menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu from which the menu entries will be deleted
+      -- Index1 - The index of the first menu entry to delete
+      -- Index2 - The index of the last menu entry to delete. If empty, delete
+      --          only the Index1 menu entry. Default value is empty
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Delete the last menu entry in My_Menu menu
+      -- Delete(My_Menu, To_Tcl_String("end"));
+      -- COMMANDS
+      -- Widget delete Index1 ?Index2?
+      -- SOURCE
    procedure Delete
      (Widget: Tk_Menu; Index1: Tcl_String;
       Index2: Tcl_String := To_Tcl_String("")) with
       Pre => Widget /= Null_Widget and Length(Index1) > 0,
       Test_Case => ("Test_Delete_Menu", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Entry_Get_Options
+      -- FUNCTION
+      -- Get all options of the selected menu entry
+      -- PARAMETERS
+      -- Widget - Tk_Menu from which the options for the selected menu entry
+      --          will be get
+      -- Index  - The index of the menu entry which options will be get
+      -- RESULT
+      -- Menu_Item_Options record with options of the selected menu entry
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the options of the third menu entry in My_Menu menu
+      -- Item_Options: constant Menu_Item_Options := Entry_Get_Options(My_Menu, To_Tcl_String("2"));
+      -- COMMANDS
+      -- Widget entryconfigure Index
+      -- SOURCE
    function Entry_Get_Options
      (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Options with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Entry_Get_Options_Menu", Nominal);
+      -- ****
 
    procedure Entry_Configure
      (Widget: Tk_Menu; Index: Tcl_String; Options: Menu_Item_Options) with
