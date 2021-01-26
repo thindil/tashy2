@@ -371,26 +371,27 @@ package Tk.Menu is
       Test_Case => ("Test_Entry_Get_Options_Menu", Nominal);
 
    procedure Entry_Configure
-     (Widget: Tk_Menu; Index: String; Options: Menu_Item_Options) with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+     (Widget: Tk_Menu; Index: Tcl_String; Options: Menu_Item_Options) with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Entry_Configure_Menu", Nominal);
 
-   function Index(Widget: Tk_Menu; Index: String) return Extended_Natural with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+   function Index
+     (Widget: Tk_Menu; Index: Tcl_String) return Extended_Natural with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Index_Menu", Nominal);
 
    procedure Insert
-     (Widget: Tk_Menu; Index: String; Item_Type: Menu_Item_Types;
+     (Widget: Tk_Menu; Index: Tcl_String; Item_Type: Menu_Item_Types;
       Options: Menu_Item_Options) with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Insert_Menu", Nominal);
 
-   procedure Invoke(Widget: Tk_Menu; Index: String) with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+   procedure Invoke(Widget: Tk_Menu; Index: Tcl_String) with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Invoke_Menu1", Nominal);
 
-   function Invoke(Widget: Tk_Menu; Index: String) return String with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+   function Invoke(Widget: Tk_Menu; Index: Tcl_String) return String with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Invoke_Menu2", Nominal);
 
    procedure Post(Widget: Tk_Menu; X, Y: Natural) with
@@ -401,25 +402,25 @@ package Tk.Menu is
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Post_Menu2", Nominal);
 
-   procedure PostCascade(Widget: Tk_Menu; Index: String) with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+   procedure PostCascade(Widget: Tk_Menu; Index: Tcl_String) with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_PostCascade_Menu", Nominal);
 
    function Get_Item_Type
-     (Widget: Tk_Menu; Index: String) return Menu_Item_Types with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+     (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Types with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Get_Item_Type_Menu", Nominal);
 
    procedure Unpost(Widget: Tk_Menu) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Unpost_Menu", Nominal);
 
-   function X_Position(Widget: Tk_Menu; Index: String) return Natural with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+   function X_Position(Widget: Tk_Menu; Index: Tcl_String) return Natural with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_X_Position_Menu", Nominal);
 
-   function Y_Position(Widget: Tk_Menu; Index: String) return Natural with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+   function Y_Position(Widget: Tk_Menu; Index: Tcl_String) return Natural with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Y_Position_Menu", Nominal);
 
 end Tk.Menu;
