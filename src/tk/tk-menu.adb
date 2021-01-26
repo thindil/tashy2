@@ -192,22 +192,28 @@ package body Tk.Menu is
       Execute_Widget_Command(Widget, "configure", Options_To_String(Options));
    end Configure;
 
-   procedure Delete(Widget: Tk_Menu; Index1: String; Index2: String := "") is
+   procedure Delete
+     (Widget: Tk_Menu; Index1: Tcl_String;
+      Index2: Tcl_String := To_Tcl_String("")) is
    begin
-      Execute_Widget_Command(Widget, "delete", Index1 & " " & Index2);
+      Execute_Widget_Command
+        (Widget, "delete",
+         To_Ada_String(Index1) & " " & To_Ada_String(Index2));
    end Delete;
 
    function Entry_Get_Options
-     (Widget: Tk_Menu; Index: String) return Menu_Item_Options is
+     (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Options is
       Item_Type: Menu_Item_Types;
       function Item_Value(Name: String) return Tcl_String is
       begin
-         Execute_Widget_Command(Widget, "entrycget", Index & " -" & Name);
+         Execute_Widget_Command
+           (Widget, "entrycget", To_Ada_String(Index) & " -" & Name);
          return To_Tcl_String(Tcl_GetResult(Tk_Interp(Widget)));
       end Item_Value;
       function Item_Value(Name: String) return Extended_Boolean is
       begin
-         Execute_Widget_Command(Widget, "entrycget", Index & " -" & Name);
+         Execute_Widget_Command
+           (Widget, "entrycget", To_Ada_String(Index) & " -" & Name);
          if Tcl_GetResult = 1 then
             return TRUE;
          end if;
@@ -215,7 +221,7 @@ package body Tk.Menu is
       end Item_Value;
    begin
       return Options: Menu_Item_Options do
-         Execute_Widget_Command(Widget, "type", Index);
+         Execute_Widget_Command(Widget, "type", To_Ada_String(Index));
          Item_Type := Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
          Options.Active_Background := Item_Value("activebackground");
          Options.Active_Foreground := Item_Value("activeforeground");
@@ -224,7 +230,8 @@ package body Tk.Menu is
          Options.Bitmap := Item_Value("bitmap");
          Options.Column_Break := Item_Value("columnbreak");
          Options.Command := Item_Value("command");
-         Execute_Widget_Command(Widget, "entrycget", Index & " -compound");
+         Execute_Widget_Command
+           (Widget, "entrycget", To_Ada_String(Index) & " -compound");
          Options.Compound :=
            Place_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
          Options.Font := Item_Value("font");
@@ -232,14 +239,17 @@ package body Tk.Menu is
          Options.Hide_Margin := Item_Value("hidemargin");
          Options.Image := Item_Value("image");
          Options.Label := Item_Value("label");
-         Execute_Widget_Command(Widget, "entrycget", Index & " -state");
+         Execute_Widget_Command
+           (Widget, "entrycget", To_Ada_String(Index) & " -state");
          Options.State := State_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
-         Execute_Widget_Command(Widget, "entrycget", Index & " -underline");
+         Execute_Widget_Command
+           (Widget, "entrycget", To_Ada_String(Index) & " -underline");
          Options.UnderLine :=
            Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
          case Item_Type is
             when CASCADE =>
-               Execute_Widget_Command(Widget, "entrycget", Index & " -menu");
+               Execute_Widget_Command
+                 (Widget, "entrycget", To_Ada_String(Index) & " -menu");
                Options.Menu :=
                  Get_Widget
                    (Tcl_GetResult(Tk_Interp(Widget)), Tk_Interp(Widget));

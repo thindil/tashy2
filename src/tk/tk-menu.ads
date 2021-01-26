@@ -359,13 +359,15 @@ package Tk.Menu is
       Test_Case => ("Test_Configure_Menu", Nominal);
       -- ****
 
-   procedure Delete(Widget: Tk_Menu; Index1: String; Index2: String := "") with
-      Pre => Widget /= Null_Widget and Index1'Length > 0,
+   procedure Delete
+     (Widget: Tk_Menu; Index1: Tcl_String;
+      Index2: Tcl_String := To_Tcl_String("")) with
+      Pre => Widget /= Null_Widget and Length(Index1) > 0,
       Test_Case => ("Test_Delete_Menu", Nominal);
 
    function Entry_Get_Options
-     (Widget: Tk_Menu; Index: String) return Menu_Item_Options with
-      Pre => Widget /= Null_Widget and Index'Length > 0,
+     (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Options with
+      Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Entry_Get_Options_Menu", Nominal);
 
    procedure Entry_Configure
