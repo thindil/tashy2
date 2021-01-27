@@ -323,6 +323,23 @@ package body Tk.Menu is
       end return;
    end Entry_Get_Options;
 
+   function Entry_Get_Options
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return Menu_Item_Options is
+      New_Index: constant Tcl_String :=
+        (if Is_Index then To_Tcl_String(Trim(Natural'Image(Index), Left))
+         else To_Tcl_String("@" & Trim(Natural'Image(Index), Left)));
+   begin
+      return Entry_Get_Options(Widget, New_Index);
+   end Entry_Get_Options;
+
+   function Entry_Get_Options
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Menu_Item_Options is
+   begin
+      return Entry_Get_Options
+          (Widget, To_Tcl_String(To_Lower(Menu_Item_Indexes'Image(Index))));
+   end Entry_Get_Options;
+
    procedure Entry_Configure
      (Widget: Tk_Menu; Index: Tcl_String; Options: Menu_Item_Options) is
    begin
@@ -330,6 +347,33 @@ package body Tk.Menu is
       Execute_Widget_Command
         (Widget, "entryconfigure",
          To_Ada_String(Index) & " " &
+         Item_Options_To_String
+           (Options, Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)))));
+   end Entry_Configure;
+
+   procedure Entry_Configure
+     (Widget: Tk_Menu; Index: Natural; Options: Menu_Item_Options;
+      Is_Index: Boolean := True) is
+      New_Index: constant String :=
+        (if Is_Index then Trim(Natural'Image(Index), Left)
+         else "@" & Trim(Natural'Image(Index), Left));
+   begin
+      Execute_Widget_Command(Widget, "type", New_Index);
+      Execute_Widget_Command
+        (Widget, "entryconfigure",
+         New_Index & " " &
+         Item_Options_To_String
+           (Options, Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)))));
+   end Entry_Configure;
+
+   procedure Entry_Configure
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes; Options: Menu_Item_Options) is
+   begin
+      Execute_Widget_Command
+        (Widget, "type", To_Lower(Menu_Item_Indexes'Image(Index)));
+      Execute_Widget_Command
+        (Widget, "entryconfigure",
+         To_Lower(Menu_Item_Indexes'Image(Index)) & " " &
          Item_Options_To_String
            (Options, Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)))));
    end Entry_Configure;

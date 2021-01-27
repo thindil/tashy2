@@ -419,16 +419,18 @@ package Tk.Menu is
       -- FUNCTION
       -- Get all options of the selected menu entry in the selected menu
       -- PARAMETERS
-      -- Widget - Tk_Menu from which the options for the selected menu entry
-      --          will be get
-      -- Index  - The index of the menu entry which options will be get
+      -- Widget   - Tk_Menu from which the options for the selected menu entry
+      --            will be get
+      -- Index    - The index of the menu entry which options will be get
+      -- Is_Index - If true, Index is numerical index of the menu entry.
+      --            Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- Menu_Item_Options record with options of the selected menu entry
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the options of the third menu entry in My_Menu menu
-      -- Item_Options: constant Menu_Item_Options := Entry_Get_Options(My_Menu, To_Tcl_String("2"));
+      -- Item_Options: constant Menu_Item_Options := Entry_Get_Options(My_Menu, 2));
       -- COMMANDS
       -- Widget entryconfigure Index
       -- SEE ALSO
@@ -438,15 +440,25 @@ package Tk.Menu is
      (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Options with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Entry_Get_Options_Menu", Nominal);
+   function Entry_Get_Options
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) return Menu_Item_Options with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Entry_Get_Options_Menu2", Nominal);
+   function Entry_Get_Options
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Menu_Item_Options with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Entry_Get_Options_Menu3", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Entry_Configure
       -- FUNCTION
       -- Set options of the selected menu entry in the selected menu
       -- PARAMETERS
-      -- Widget  - Tk_Menu in which the menu entry options will be set
-      -- Index   - The index of the menu entry which options will be set
-      -- Options - The new values of options for the selected menu entry
+      -- Widget   - Tk_Menu in which the menu entry options will be set
+      -- Index    - The index of the menu entry which options will be set
+      -- Options  - The new values of options for the selected menu entry
+      -- Is_Index - If true, Index is numerical index of the menu entry.
+      --            Otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -461,6 +473,14 @@ package Tk.Menu is
      (Widget: Tk_Menu; Index: Tcl_String; Options: Menu_Item_Options) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Entry_Configure_Menu", Nominal);
+   procedure Entry_Configure
+     (Widget: Tk_Menu; Index: Natural; Options: Menu_Item_Options; Is_Index: Boolean := True) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Entry_Configure_Menu2", Nominal);
+   procedure Entry_Configure
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes; Options: Menu_Item_Options) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Entry_Configure_Menu3", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Index
