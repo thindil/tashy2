@@ -388,6 +388,27 @@ package body Tk.Menu is
       return Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
    end Index;
 
+   function Index(Widget: Tk_Menu; Index: Natural) return Extended_Natural is
+   begin
+      Execute_Widget_Command
+        (Widget, "index", "@" & Trim(Natural'Image(Index), Left));
+      if Tcl_GetResult(Tk_Interp(Widget)) = "none" then
+         return -1;
+      end if;
+      return Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
+   end Index;
+
+   function Index
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Extended_Natural is
+   begin
+      Execute_Widget_Command
+        (Widget, "index", To_Lower(Menu_Item_Indexes'Image(Index)));
+      if Tcl_GetResult(Tk_Interp(Widget)) = "none" then
+         return -1;
+      end if;
+      return Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
+   end Index;
+
    procedure Insert
      (Widget: Tk_Menu; Index: Tcl_String; Item_Type: Menu_Item_Types;
       Options: Menu_Item_Options) is
@@ -395,6 +416,30 @@ package body Tk.Menu is
       Execute_Widget_Command
         (Widget, "insert",
          To_Ada_String(Index) & " " &
+         To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
+         Item_Options_To_String(Options, Item_Type));
+   end Insert;
+
+   procedure Insert
+     (Widget: Tk_Menu; Index: Natural; Item_Type: Menu_Item_Types;
+      Options: Menu_Item_Options; Is_Index: Boolean := True) is
+      New_Index: constant String :=
+        (if Is_Index then Trim(Natural'Image(Index), Left)
+         else "@" & Trim(Natural'Image(Index), Left));
+   begin
+      Execute_Widget_Command
+        (Widget, "insert",
+         New_Index & " " & To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
+         Item_Options_To_String(Options, Item_Type));
+   end Insert;
+
+   procedure Insert
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes; Item_Type: Menu_Item_Types;
+      Options: Menu_Item_Options) is
+   begin
+      Execute_Widget_Command
+        (Widget, "insert",
+         To_Lower(Menu_Item_Indexes'Image(Index)) & " " &
          To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
          Item_Options_To_String(Options, Item_Type));
    end Insert;

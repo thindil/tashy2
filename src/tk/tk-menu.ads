@@ -463,7 +463,7 @@ package Tk.Menu is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the label for the first menu entry in My_Menu menu to "First element"
-      -- Entry_Configure(My_Menu, To_Tcl_String("0"), Menu_Item_Options'(Label => To_Tcl_String("First element")));
+      -- Entry_Configure(My_Menu, 0, Menu_Item_Options'(Label => To_Tcl_String("First element")));
       -- COMMANDS
       -- Widget entryconfigure Index Options
       -- SEE ALSO
@@ -493,12 +493,12 @@ package Tk.Menu is
       -- Index  - The index of the menu entry which numerical index will be get
       -- RESULT
       -- Numerical index of the selected menu entry or -1 if menu entry was
-      -- specified as "none"
+      -- specified as NONE or "none"
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the numerical index of the last menu entry in My_Menu menu
-      -- Number: constant Extended_Natural := Index(My_Menu, To_Tcl_String("end"));
+      -- Number: constant Extended_Natural := Index(My_Menu, MENU_END);
       -- COMMANDS
       -- Widget index Index
       -- SOURCE
@@ -506,6 +506,14 @@ package Tk.Menu is
      (Widget: Tk_Menu; Index: Tcl_String) return Extended_Natural with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Index_Menu", Nominal);
+   function Index
+     (Widget: Tk_Menu; Index: Natural) return Extended_Natural with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Index_Menu2", Nominal);
+   function Index
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Extended_Natural with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Index_Menu3", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Insert
@@ -516,13 +524,15 @@ package Tk.Menu is
       -- Index     - The index on which the new menu entry will be inserted
       -- Item_Type - The type of menu entry to insert
       -- Options   - The options for the newly inserted entry
+      -- Is_Index  - If true, Index is numerical index of the menu entry.
+      --             Otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Insert into menu My_Menu entry with label "Quit" and quit from the program on activate on last position
-      -- Insert(My_Menu, To_Tcl_String("end"), COMMAND, Menu_Item_Options'(Label => To_Tcl_String("Quit"),
-      --                                                                   Command => To_Tcl_String("exit"),
-      --                                                                   others => <>));
+      -- Insert(My_Menu, MENU_END, COMMAND, Menu_Item_Options'(Label => To_Tcl_String("Quit"),
+      --                                                       Command => To_Tcl_String("exit"),
+      --                                                       others => <>));
       -- COMMANDS
       -- Widget insert Index Item_Type Options
       -- SEE ALSO
@@ -533,6 +543,16 @@ package Tk.Menu is
       Options: Menu_Item_Options) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Insert_Menu", Nominal);
+   procedure Insert
+     (Widget: Tk_Menu; Index: Natural; Item_Type: Menu_Item_Types;
+     Options: Menu_Item_Options; Is_Index: Boolean := True) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Insert_Menu2", Nominal);
+   procedure Insert
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes; Item_Type: Menu_Item_Types;
+      Options: Menu_Item_Options) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Insert_Menu3", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Invoke_(procedure)
