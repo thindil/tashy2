@@ -283,6 +283,8 @@ package Tk.Menu is
       --                                          others => <>));
       -- COMMANDS
       -- Widget add Item_Type Options
+      -- SEE ALSO
+      -- Menu.Insert
       -- SOURCE
    procedure Add
      (Widget: Tk_Menu; Item_Type: Menu_Item_Types;
@@ -455,27 +457,130 @@ package Tk.Menu is
       Test_Case => ("Test_Index_Menu", Nominal);
       -- ****
 
+      -- ****f* Menu/Menu.Insert
+      -- FUNCTION
+      -- Insert a new menu entry into selected position in the selected menu
+      -- PARAMETERS
+      -- Widget    - Tk_Menu widget in which the new entry will be inserted
+      -- Index     - The index on which the new menu entry will be inserted
+      -- Item_Type - The type of menu entry to insert
+      -- Options   - The options for the newly inserted entry
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Insert into menu My_Menu entry with label "Quit" and quit from the program on activate on last position
+      -- Insert(My_Menu, To_Tcl_String("end"), COMMAND, Menu_Item_Options'(Label => To_Tcl_String("Quit"),
+      --                                                                   Command => To_Tcl_String("exit"),
+      --                                                                   others => <>));
+      -- COMMANDS
+      -- Widget insert Index Item_Type Options
+      -- SEE ALSO
+      -- Menu.Add
+      -- SOURCE
    procedure Insert
      (Widget: Tk_Menu; Index: Tcl_String; Item_Type: Menu_Item_Types;
       Options: Menu_Item_Options) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Insert_Menu", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Invoke_(procedure)
+      -- FUNCTION
+      -- Invoke the Tcl command related to the selected menu entry in the
+      -- selected menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu in which the menu entry command will be invoked
+      -- Index  - The index of the menu entry which command will be invoked
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Invoke the first menu entry in My_Menu menu
+      -- Invoke(My_Menu, To_Tcl_String("0"));
+      -- COMMANDS
+      -- Widget invoke Index
+      -- SEE ALSO
+      -- Menu.Invoke_(function)
+      -- SOURCE
    procedure Invoke(Widget: Tk_Menu; Index: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Invoke_Menu1", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Invoke_(function)
+      -- FUNCTION
+      -- Invoke the Tcl command related to the selected menu entry in the
+      -- selected menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu in which the menu entry command will be invoked
+      -- Index  - The index of the menu entry which command will be invoked
+      -- RESULT
+      -- String with value returned by the invoked Tcl command
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Invoke the second menu entry in My_Menu menu
+      -- Result: constant String := Invoke(My_Menu, To_Tcl_String("1"));
+      -- COMMANDS
+      -- Widget invoke Index
+      -- SEE ALSO
+      -- Menu.Invoke_(procedure)
+      -- SOURCE
    function Invoke(Widget: Tk_Menu; Index: Tcl_String) return String with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Invoke_Menu2", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Post_(procedure)
+      -- FUNCTION
+      -- Show the selected menu at the selected root-window coordinates
+      -- PARAMETERS
+      -- Widget - Tk_Menu to show
+      -- X      - X coordinate of root-window where upper left corner of menu
+      --          will be
+      -- Y      - Y coordinate of root-window where upper left corner of menu
+      --          will be
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Show the menu My_Menu at location (10, 24) of root-window
+      -- Post(My_Menu, 10, 24);
+      -- COMMANDS
+      -- Widget post X Y
+      -- SEE ALSO
+      -- Menu.Post_(function)
+      -- SOURCE
    procedure Post(Widget: Tk_Menu; X, Y: Natural) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Post_Menu1", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Post_(function)
+      -- FUNCTION
+      -- Show the selected menu at the selected root-window coordinates and get
+      -- the value returned by Post_Command Tcl command of the menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu to show
+      -- X      - X coordinate of root-window where upper left corner of menu
+      --          will be
+      -- Y      - Y coordinate of root-window where upper left corner of menu
+      --          will be
+      -- RESULT
+      -- The value returned by the Post_Command Tcl command of the menu. If no
+      -- Post_Command specified, return empty String.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Show the menu My_Menu at location (20, 44) of root-window
+      -- Result : constant String := Post(My_Menu, 10, 24);
+      -- COMMANDS
+      -- Widget post X Y
+      -- SEE ALSO
+      -- Menu.Post_(procedure)
+      -- SOURCE
    function Post(Widget: Tk_Menu; X, Y: Natural) return String with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Post_Menu2", Nominal);
+      -- ****
 
    procedure PostCascade(Widget: Tk_Menu; Index: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
