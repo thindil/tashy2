@@ -188,6 +188,15 @@ package Tk.Menu is
    end record;
    -- ****
 
+   -- ****t* Menu/Menu.Menu_Item_Indexes
+   -- FUNCTION
+   -- Available types of menu entries indexes
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Menu_Item_Indexes is (ACTIVE, MENU_END, LAST, NONE);
+   -- ****
+
    -- ****f* Menu/Menu.Create_(function)
    -- FUNCTION
    -- Create a new Tk menu widget with the selected pathname and options
@@ -253,19 +262,27 @@ package Tk.Menu is
       -- FUNCTION
       -- Set the selected menu entry as active
       -- PARAMETERS
-      -- Widget - Tk_Menu widget in which the menu entry will be set as active
-      -- Index  - The index of the menu entry to activate
+      -- Widget   - Tk_Menu widget in which the menu entry will be set as active
+      -- Index    - The index of the menu entry to activate
+      -- Is_Index - If True, Index is numerical index of the menu entry,
+      --            otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set active the last element of the menu My_Menu
-      -- Activate(My_Menu, To_Tcl_String("end"));
+      -- Activate(My_Menu, LAST);
       -- COMMANDS
       -- Widget activate Index
       -- SOURCE
    procedure Activate(Widget: Tk_Menu; Index: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Activate_Menu", Nominal);
+   procedure Activate(Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Activate_Menu2", Nominal);
+   procedure Activate(Widget: Tk_Menu; Index: Menu_Item_Indexes) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Activate_Menu3", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Add
@@ -365,10 +382,14 @@ package Tk.Menu is
       -- FUNCTION
       -- Delete the selected menu entries from the selected menu
       -- PARAMETERS
-      -- Widget - Tk_Menu from which the menu entries will be deleted
-      -- Index1 - The index of the first menu entry to delete
-      -- Index2 - The index of the last menu entry to delete. If empty, delete
-      --          only the Index1 menu entry. Default value is empty
+      -- Widget    - Tk_Menu from which the menu entries will be deleted
+      -- Index1    - The index of the first menu entry to delete
+      -- Index2    - The index of the last menu entry to delete. If empty, delete
+      --             only the Index1 menu entry. Default value is empty
+      -- Is_Index1 - If true, Index1 is numerical index of the menu entry.
+      --             Otherwise it is Y coordinate of the menu entry.
+      -- Is_Index2 - If true, Index2 is numerical index of the menu entry.
+      --             Otherwise it is Y coordinate of the menu entry.
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -382,6 +403,16 @@ package Tk.Menu is
       Index2: Tcl_String := To_Tcl_String("")) with
       Pre => Widget /= Null_Widget and Length(Index1) > 0,
       Test_Case => ("Test_Delete_Menu", Nominal);
+   procedure Delete
+     (Widget: Tk_Menu; Index1: Natural;
+     Index2: Extended_Natural := -1; Is_Index1, Is_Index2: Boolean := True) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Delete_Menu2", Nominal);
+   procedure Delete
+     (Widget: Tk_Menu; Index1: Menu_Item_Indexes;
+      Index2: Menu_Item_Indexes := NONE) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Delete_Menu3", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Entry_Get_Options

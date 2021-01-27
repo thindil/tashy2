@@ -82,6 +82,24 @@ package body Tk.Menu is
       Execute_Widget_Command(Widget, "activate", To_Ada_String(Index));
    end Activate;
 
+   procedure Activate
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) is
+   begin
+      if Is_Index then
+         Execute_Widget_Command
+           (Widget, "activate", Trim(Natural'Image(Index), Left));
+      else
+         Execute_Widget_Command
+           (Widget, "activate", "@" & Trim(Natural'Image(Index), Left));
+      end if;
+   end Activate;
+
+   procedure Activate(Widget: Tk_Menu; Index: Menu_Item_Indexes) is
+   begin
+      Execute_Widget_Command
+        (Widget, "activate", To_Lower(Menu_Item_Indexes'Image(Index)));
+   end Activate;
+
    -- ****if* Menu/Menu.Item_Options_To_String
    -- FUNCTION
    -- Convert Ada structure to Tcl command
@@ -199,6 +217,39 @@ package body Tk.Menu is
       Execute_Widget_Command
         (Widget, "delete",
          To_Ada_String(Index1) & " " & To_Ada_String(Index2));
+   end Delete;
+
+   procedure Delete
+     (Widget: Tk_Menu; Index1: Natural; Index2: Extended_Natural := -1;
+      Is_Index1, Is_Index2: Boolean := True) is
+      NewIndex1: constant String :=
+        (if Is_Index1 then Trim(Natural'Image(Index1), Left)
+         else "@" & Trim(Natural'Image(Index1), Left));
+      NewIndex2: constant String :=
+        (if Is_Index2 then Trim(Extended_Natural'Image(Index2), Left)
+         else "@" & Trim(Extended_Natural'Image(Index2), Left));
+   begin
+
+      if Index2 > -1 then
+         Execute_Widget_Command(Widget, "delete", NewIndex1 & " " & NewIndex2);
+      else
+         Execute_Widget_Command(Widget, "delete", NewIndex1);
+      end if;
+   end Delete;
+
+   procedure Delete
+     (Widget: Tk_Menu; Index1: Menu_Item_Indexes;
+      Index2: Menu_Item_Indexes := NONE) is
+   begin
+      if Index2 /= NONE then
+         Execute_Widget_Command
+           (Widget, "delete",
+            To_Lower(Menu_Item_Indexes'Image(Index1)) & " " &
+            To_Lower(Menu_Item_Indexes'Image(Index2)));
+      else
+         Execute_Widget_Command
+           (Widget, "delete", To_Lower(Menu_Item_Indexes'Image(Index1)));
+      end if;
    end Delete;
 
    function Entry_Get_Options
