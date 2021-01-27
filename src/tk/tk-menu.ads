@@ -576,31 +576,116 @@ package Tk.Menu is
       -- Widget post X Y
       -- SEE ALSO
       -- Menu.Post_(procedure)
+      -- SEE ALSO
+      -- Menu.Unpost
       -- SOURCE
    function Post(Widget: Tk_Menu; X, Y: Natural) return String with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Post_Menu2", Nominal);
       -- ****
 
+      -- ****f* Menu/Menu.PostCascade
+      -- FUNCTION
+      -- Post the submenu associated with the selected CASCADE menu entry and
+      -- unpost the previous submenu if visible
+      -- PARAMETERS
+      -- Widget - Tk_Menu in which the submenu will be show
+      -- Index  - Index of menu entry which submenu will be show
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Show the submenu of the second item in My_Menu menu
+      -- PostCascade(My_Menu, To_Tcl_String("1"));
+      -- COMMANDS
+      -- Widget postcascade Index
+      -- SOURCE
    procedure PostCascade(Widget: Tk_Menu; Index: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_PostCascade_Menu", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Get_Item_Type
+      -- FUNCTION
+      -- Get the type of the selected menu entry in the selected menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu in which the menu item type will be get
+      -- Index  - The index of the menu entry which type will be get
+      -- RESULT
+      -- The type of the selected menu entry
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the type of menu entry with label Quit in My_Menu menu
+      -- Item_Type: constant Menu_Item_Types := Get_Item_Type(My_Menu, To_Tcl_String("Quit"));
+      -- SOURCE
    function Get_Item_Type
      (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Types with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Get_Item_Type_Menu", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Unpost
+      -- FUNCTION
+      -- Hide the selected menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu to hide
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Hide menu My_Menu
+      -- Unpost(My_Menu);
+      -- SEE ALSO
+      -- Menu.Post
+      -- SOURCE
    procedure Unpost(Widget: Tk_Menu) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Unpost_Menu", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.X_Position
+      -- FUNCTION
+      -- Get the X pixel coordinate of top left corner of the selected menu
+      -- entry in the selected menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu in which coordinate will be get
+      -- Index  - The index of the menu entry which coordinate will be get
+      -- RESULT
+      -- X coordinate for the pixel of the top left corner of the selected
+      -- menu
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the X coordinate for the first menu entry in My_Menu
+      -- X: constant Natural := X_Position(My_Menu, To_Tcl_String("0"));
+      -- SEE ALSO
+      -- Menu.Y_Position
+      -- SOURCE
    function X_Position(Widget: Tk_Menu; Index: Tcl_String) return Natural with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_X_Position_Menu", Nominal);
+      -- ****
 
+      -- ****f* Menu/Menu.Y_Position
+      -- FUNCTION
+      -- Get the Y pixel coordinate of top left corner of the selected menu
+      -- entry in the selected menu
+      -- PARAMETERS
+      -- Widget - Tk_Menu in which coordinate will be get
+      -- Index  - The index of the menu entry which coordinate will be get
+      -- RESULT
+      -- Y coordinate for the pixel of the top left corner of the selected
+      -- menu
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the Y coordinate for the first menu entry in My_Menu
+      -- Y: constant Natural := Y_Position(My_Menu, To_Tcl_String("0"));
+      -- SEE ALSO
+      -- Menu.X_Position
+      -- SOURCE
    function Y_Position(Widget: Tk_Menu; Index: Tcl_String) return Natural with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Y_Position_Menu", Nominal);
+      -- ****
 
 end Tk.Menu;
