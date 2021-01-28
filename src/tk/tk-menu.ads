@@ -711,8 +711,10 @@ package Tk.Menu is
       -- FUNCTION
       -- Get the type of the selected menu entry in the selected menu
       -- PARAMETERS
-      -- Widget - Tk_Menu in which the menu item type will be get
-      -- Index  - The index of the menu entry which type will be get
+      -- Widget   - Tk_Menu in which the menu item type will be get
+      -- Index    - The index of the menu entry which type will be get
+      -- Is_Index - If true, Index is numerical index of the menu entry.
+      --            Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- The type of the selected menu entry
       -- HISTORY
@@ -759,8 +761,10 @@ package Tk.Menu is
       -- Get the X pixel coordinate of top left corner of the selected menu
       -- entry in the selected menu
       -- PARAMETERS
-      -- Widget - Tk_Menu in which coordinate will be get
-      -- Index  - The index of the menu entry which coordinate will be get
+      -- Widget   - Tk_Menu in which coordinate will be get
+      -- Index    - The index of the menu entry which coordinate will be get
+      -- Is_Index - If true, Index is numerical index of the menu entry.
+      --            Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- X coordinate for the pixel of the top left corner of the selected
       -- menu
@@ -768,13 +772,22 @@ package Tk.Menu is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the X coordinate for the first menu entry in My_Menu
-      -- X: constant Natural := X_Position(My_Menu, To_Tcl_String("0"));
+      -- X: constant Natural := X_Position(My_Menu, 0);
       -- SEE ALSO
       -- Menu.Y_Position
       -- SOURCE
    function X_Position(Widget: Tk_Menu; Index: Tcl_String) return Natural with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_X_Position_Menu", Nominal);
+   function X_Position
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return Natural with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_X_Position_Menu2", Nominal);
+   function X_Position
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Natural with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_X_Position_Menu3", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Y_Position
@@ -782,8 +795,10 @@ package Tk.Menu is
       -- Get the Y pixel coordinate of top left corner of the selected menu
       -- entry in the selected menu
       -- PARAMETERS
-      -- Widget - Tk_Menu in which coordinate will be get
-      -- Index  - The index of the menu entry which coordinate will be get
+      -- Widget   - Tk_Menu in which coordinate will be get
+      -- Index    - The index of the menu entry which coordinate will be get
+      -- Is_Index - If true, Index is numerical index of the menu entry.
+      --            Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- Y coordinate for the pixel of the top left corner of the selected
       -- menu
@@ -791,13 +806,22 @@ package Tk.Menu is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the Y coordinate for the first menu entry in My_Menu
-      -- Y: constant Natural := Y_Position(My_Menu, To_Tcl_String("0"));
+      -- Y: constant Natural := Y_Position(My_Menu, 0);
       -- SEE ALSO
       -- Menu.X_Position
       -- SOURCE
    function Y_Position(Widget: Tk_Menu; Index: Tcl_String) return Natural with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Y_Position_Menu", Nominal);
+   function Y_Position
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return Natural with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Y_Position_Menu2", Nominal);
+   function Y_Position
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Natural with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Y_Position_Menu3", Nominal);
       -- ****
 
 end Tk.Menu;
