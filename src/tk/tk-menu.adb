@@ -449,7 +449,36 @@ package body Tk.Menu is
       Execute_Widget_Command(Widget, "invoke", To_Ada_String(Index));
    end Invoke;
 
+   procedure Invoke
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) is
+      New_Index: constant String :=
+        (if Is_Index then Trim(Natural'Image(Index), Left)
+         else "@" & Trim(Natural'Image(Index), Left));
+   begin
+      Execute_Widget_Command(Widget, "invoke", New_Index);
+   end Invoke;
+
+   procedure Invoke(Widget: Tk_Menu; Index: Menu_Item_Indexes) is
+   begin
+      Execute_Widget_Command
+        (Widget, "invoke", To_Lower(Menu_Item_Indexes'Image(Index)));
+   end Invoke;
+
    function Invoke(Widget: Tk_Menu; Index: Tcl_String) return String is
+   begin
+      Invoke(Widget, Index);
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end Invoke;
+
+   function Invoke
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return String is
+   begin
+      Invoke(Widget, Index, Is_Index);
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end Invoke;
+
+   function Invoke(Widget: Tk_Menu; Index: Menu_Item_Indexes) return String is
    begin
       Invoke(Widget, Index);
       return Tcl_GetResult(Tk_Interp(Widget));
