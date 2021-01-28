@@ -277,7 +277,8 @@ package Tk.Menu is
    procedure Activate(Widget: Tk_Menu; Index: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Activate_Menu", Nominal);
-   procedure Activate(Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) with
+   procedure Activate
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Activate_Menu2", Nominal);
    procedure Activate(Widget: Tk_Menu; Index: Menu_Item_Indexes) with
@@ -404,8 +405,8 @@ package Tk.Menu is
       Pre => Widget /= Null_Widget and Length(Index1) > 0,
       Test_Case => ("Test_Delete_Menu", Nominal);
    procedure Delete
-     (Widget: Tk_Menu; Index1: Natural;
-     Index2: Extended_Natural := -1; Is_Index1, Is_Index2: Boolean := True) with
+     (Widget: Tk_Menu; Index1: Natural; Index2: Extended_Natural := -1;
+      Is_Index1, Is_Index2: Boolean := True) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Delete_Menu2", Nominal);
    procedure Delete
@@ -441,7 +442,8 @@ package Tk.Menu is
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Entry_Get_Options_Menu", Nominal);
    function Entry_Get_Options
-     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) return Menu_Item_Options with
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return Menu_Item_Options with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Entry_Get_Options_Menu2", Nominal);
    function Entry_Get_Options
@@ -474,11 +476,13 @@ package Tk.Menu is
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Entry_Configure_Menu", Nominal);
    procedure Entry_Configure
-     (Widget: Tk_Menu; Index: Natural; Options: Menu_Item_Options; Is_Index: Boolean := True) with
+     (Widget: Tk_Menu; Index: Natural; Options: Menu_Item_Options;
+      Is_Index: Boolean := True) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Entry_Configure_Menu2", Nominal);
    procedure Entry_Configure
-     (Widget: Tk_Menu; Index: Menu_Item_Indexes; Options: Menu_Item_Options) with
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes;
+      Options: Menu_Item_Options) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Entry_Configure_Menu3", Nominal);
       -- ****
@@ -506,8 +510,7 @@ package Tk.Menu is
      (Widget: Tk_Menu; Index: Tcl_String) return Extended_Natural with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Index_Menu", Nominal);
-   function Index
-     (Widget: Tk_Menu; Index: Natural) return Extended_Natural with
+   function Index(Widget: Tk_Menu; Index: Natural) return Extended_Natural with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Index_Menu2", Nominal);
    function Index
@@ -545,7 +548,7 @@ package Tk.Menu is
       Test_Case => ("Test_Insert_Menu", Nominal);
    procedure Insert
      (Widget: Tk_Menu; Index: Natural; Item_Type: Menu_Item_Types;
-     Options: Menu_Item_Options; Is_Index: Boolean := True) with
+      Options: Menu_Item_Options; Is_Index: Boolean := True) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Insert_Menu2", Nominal);
    procedure Insert
@@ -560,13 +563,15 @@ package Tk.Menu is
       -- Invoke the Tcl command related to the selected menu entry in the
       -- selected menu
       -- PARAMETERS
-      -- Widget - Tk_Menu in which the menu entry command will be invoked
-      -- Index  - The index of the menu entry which command will be invoked
+      -- Widget   - Tk_Menu in which the menu entry command will be invoked
+      -- Index    - The index of the menu entry which command will be invoked
+      -- Is_Index - If true, Index is numerical index of the menu entry.
+      --            Otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Invoke the first menu entry in My_Menu menu
-      -- Invoke(My_Menu, To_Tcl_String("0"));
+      -- Invoke(My_Menu, 0);
       -- COMMANDS
       -- Widget invoke Index
       -- SEE ALSO
@@ -575,6 +580,13 @@ package Tk.Menu is
    procedure Invoke(Widget: Tk_Menu; Index: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Invoke_Menu1", Nominal);
+   procedure Invoke
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Invoke_Menu3", Nominal);
+   procedure Invoke(Widget: Tk_Menu; Index: Menu_Item_Indexes) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Invoke_Menu4", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Invoke_(function)
@@ -582,15 +594,17 @@ package Tk.Menu is
       -- Invoke the Tcl command related to the selected menu entry in the
       -- selected menu
       -- PARAMETERS
-      -- Widget - Tk_Menu in which the menu entry command will be invoked
-      -- Index  - The index of the menu entry which command will be invoked
+      -- Widget   - Tk_Menu in which the menu entry command will be invoked
+      -- Index    - The index of the menu entry which command will be invoked
+      -- Is_Index - If true, Index is numerical index of the menu entry.
+      --            Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- String with value returned by the invoked Tcl command
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Invoke the second menu entry in My_Menu menu
-      -- Result: constant String := Invoke(My_Menu, To_Tcl_String("1"));
+      -- Result: constant String := Invoke(My_Menu, 1);
       -- COMMANDS
       -- Widget invoke Index
       -- SEE ALSO
@@ -599,6 +613,15 @@ package Tk.Menu is
    function Invoke(Widget: Tk_Menu; Index: Tcl_String) return String with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Invoke_Menu2", Nominal);
+   function Invoke
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return String with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Invoke_Menu5", Nominal);
+   function Invoke
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return String with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Invoke_Menu6", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Post_(procedure)
