@@ -683,19 +683,28 @@ package Tk.Menu is
       -- Post the submenu associated with the selected CASCADE menu entry and
       -- unpost the previous submenu if visible
       -- PARAMETERS
-      -- Widget - Tk_Menu in which the submenu will be show
-      -- Index  - Index of menu entry which submenu will be show
+      -- Widget   - Tk_Menu in which the submenu will be show
+      -- Index    - Index of menu entry which submenu will be show
+      -- Is_Index - If true, Index is numerical index of the menu entry.
+      --            Otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Show the submenu of the second item in My_Menu menu
-      -- PostCascade(My_Menu, To_Tcl_String("1"));
+      -- PostCascade(My_Menu, 1);
       -- COMMANDS
       -- Widget postcascade Index
       -- SOURCE
    procedure PostCascade(Widget: Tk_Menu; Index: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_PostCascade_Menu", Nominal);
+   procedure PostCascade
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_PostCascade_Menu2", Nominal);
+   procedure PostCascade(Widget: Tk_Menu; Index: Menu_Item_Indexes) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_PostCascade_Menu3", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Get_Item_Type
@@ -716,6 +725,15 @@ package Tk.Menu is
      (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Types with
       Pre => Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => ("Test_Get_Item_Type_Menu", Nominal);
+   function Get_Item_Type
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return Menu_Item_Types with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Get_Item_Type_Menu2", Nominal);
+   function Get_Item_Type
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Menu_Item_Types with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Get_Item_Type_Menu3", Nominal);
       -- ****
 
       -- ****f* Menu/Menu.Unpost
