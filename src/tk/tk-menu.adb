@@ -501,10 +501,44 @@ package body Tk.Menu is
       Execute_Widget_Command(Widget, "postcascade", To_Ada_String(Index));
    end PostCascade;
 
+   procedure PostCascade
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) is
+      New_Index: constant String :=
+        (if Is_Index then Trim(Natural'Image(Index), Left)
+         else "@" & Trim(Natural'Image(Index), Left));
+   begin
+      Execute_Widget_Command(Widget, "postcascade", New_Index);
+   end PostCascade;
+
+   procedure PostCascade(Widget: Tk_Menu; Index: Menu_Item_Indexes) is
+   begin
+      Execute_Widget_Command
+        (Widget, "postcascade", To_Lower(Menu_Item_Indexes'Image(Index)));
+   end PostCascade;
+
    function Get_Item_Type
      (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Types is
    begin
       Execute_Widget_Command(Widget, "type", To_Ada_String(Index));
+      return Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
+   end Get_Item_Type;
+
+   function Get_Item_Type
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return Menu_Item_Types is
+      New_Index: constant String :=
+        (if Is_Index then Trim(Natural'Image(Index), Left)
+         else "@" & Trim(Natural'Image(Index), Left));
+   begin
+      Execute_Widget_Command(Widget, "type", New_Index);
+      return Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
+   end Get_Item_Type;
+
+   function Get_Item_Type
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Menu_Item_Types is
+   begin
+      Execute_Widget_Command
+        (Widget, "type", To_Lower(Menu_Item_Indexes'Image(Index)));
       return Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
    end Get_Item_Type;
 
