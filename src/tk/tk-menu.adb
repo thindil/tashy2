@@ -553,9 +553,47 @@ package body Tk.Menu is
       return Tcl_GetResult(Tk_Interp(Widget));
    end X_Position;
 
+   function X_Position
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return Natural is
+      New_Index: constant String :=
+        (if Is_Index then Trim(Natural'Image(Index), Left)
+         else "@" & Trim(Natural'Image(Index), Left));
+   begin
+      Execute_Widget_Command(Widget, "xposition", New_Index);
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end X_Position;
+
+   function X_Position
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Natural is
+   begin
+      Execute_Widget_Command
+        (Widget, "xposition", To_Lower(Menu_Item_Indexes'Image(Index)));
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end X_Position;
+
    function Y_Position(Widget: Tk_Menu; Index: Tcl_String) return Natural is
    begin
       Execute_Widget_Command(Widget, "yposition", To_Ada_String(Index));
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end Y_Position;
+
+   function Y_Position
+     (Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+      return Natural is
+      New_Index: constant String :=
+        (if Is_Index then Trim(Natural'Image(Index), Left)
+         else "@" & Trim(Natural'Image(Index), Left));
+   begin
+      Execute_Widget_Command(Widget, "yposition", New_Index);
+      return Tcl_GetResult(Tk_Interp(Widget));
+   end Y_Position;
+
+   function Y_Position
+     (Widget: Tk_Menu; Index: Menu_Item_Indexes) return Natural is
+   begin
+      Execute_Widget_Command
+        (Widget, "yposition", To_Lower(Menu_Item_Indexes'Image(Index)));
       return Tcl_GetResult(Tk_Interp(Widget));
    end Y_Position;
 
