@@ -2343,7 +2343,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
         (X_Position(Menu, To_Tcl_String("0")) = 1,
-         "Failed to get X position of the menu entry.");
+         "Failed to get X position of the menu entry with Tcl_String index.");
       Destroy(Menu);
 
 --  begin read only
@@ -2397,11 +2397,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Assert
+        (X_Position(Menu, 0) = 1,
+         "Failed to get X position of the menu entry with Natural index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_2_X_Position_test_x_position_menu2;
@@ -2452,11 +2464,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Assert
+        (X_Position(Menu, LAST) = 1,
+         "Failed to get X position of the menu entry with Menu_Item_Indexes index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_3_X_Position_test_x_position_menu3;
@@ -2521,7 +2545,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
         (Y_Position(Menu, To_Tcl_String("0")) = 1,
-         "Failed to get Y position of the menu entry.");
+         "Failed to get Y position of the menu entry with Tcl_String index.");
       Destroy(Menu);
 
 --  begin read only
@@ -2575,11 +2599,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Assert
+        (Y_Position(Menu, 0) = 1,
+         "Failed to get Y position of the menu entry with Natural index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_2_Y_Position_test_y_position_menu2;
@@ -2630,11 +2666,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Assert
+        (Y_Position(Menu, 0) = 1,
+         "Failed to get Y position of the menu entry with Menu_Item_Indexes index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_3_Y_Position_test_y_position_menu3;
