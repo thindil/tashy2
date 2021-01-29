@@ -1217,7 +1217,7 @@ package body Tk.Menu.Test_Data.Tests is
       Invoke(Menu, To_Tcl_String("1"));
       Assert
         (Tcl_GetVar("myvar") = 20,
-         "Failed to insert a new entry to the menu.");
+         "Failed to insert a new entry to the menu with Tcl_String index.");
       Destroy(Menu);
 
 --  begin read only
@@ -1265,11 +1265,28 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 18"), others => <>));
+      Insert
+        (Menu, 1, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 220"), others => <>));
+      Invoke(Menu, To_Tcl_String("1"));
+      Assert
+        (Tcl_GetVar("myvar") = 220,
+         "Failed to insert a new entry to the menu with Natural index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_2_Insert_test_insert_menu2;
@@ -1316,11 +1333,28 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 18"), others => <>));
+      Insert
+        (Menu, LAST, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 230"), others => <>));
+      Invoke(Menu, LAST);
+      Assert
+        (Tcl_GetVar("myvar") = 230,
+         "Failed to insert a new entry to the menu with Menu_Item_Indexes index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_3_Insert_test_insert_menu3;
@@ -1377,7 +1411,7 @@ package body Tk.Menu.Test_Data.Tests is
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Invoke(Menu, To_Tcl_String("1"));
-      Assert(Tcl_GetVar("myvar") = 18, "Failed to invoke the menu entry.");
+      Assert(Tcl_GetVar("myvar") = 18, "Failed to invoke the menu entry with Tcl_String index.");
       Destroy(Menu);
 
 --  begin read only
@@ -1423,11 +1457,22 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 128"), others => <>));
+      Invoke(Menu, 1);
+      Assert(Tcl_GetVar("myvar") = 128, "Failed to invoke the menu entry with Natural index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_2_Invoke_test_invoke_menu3;
@@ -1470,11 +1515,22 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 138"), others => <>));
+      Invoke(Menu, 1);
+      Assert(Tcl_GetVar("myvar") = 138, "Failed to invoke the menu entry with Menu_Item_Indexes index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_3_Invoke_test_invoke_menu4;
@@ -1537,7 +1593,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
         (Invoke(Menu, To_Tcl_String("1")) = "20",
-         "Failed to invoke the menu entry and get it result.");
+         "Failed to invoke the menu entry and get it result with Tcl_String index.");
       Destroy(Menu);
 
 --  begin read only
@@ -1590,11 +1646,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 220"), others => <>));
+      Assert
+        (Invoke(Menu, 1) = "220",
+         "Failed to invoke the menu entry and get it result with Natural index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_5_Invoke_test_invoke_menu5;
@@ -1643,11 +1711,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 230"), others => <>));
+      Assert
+        (Invoke(Menu, LAST) = "230",
+         "Failed to invoke the menu entry and get it result with Menu_Item_Indexes index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_6_Invoke_test_invoke_menu6;
