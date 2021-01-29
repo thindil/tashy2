@@ -1076,7 +1076,7 @@ package body Tk.Menu.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => False, others => <>));
+      Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
       Add
         (Menu, COMMAND,
          Menu_Item_Options'
@@ -1411,7 +1411,9 @@ package body Tk.Menu.Test_Data.Tests is
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Invoke(Menu, To_Tcl_String("1"));
-      Assert(Tcl_GetVar("myvar") = 18, "Failed to invoke the menu entry with Tcl_String index.");
+      Assert
+        (Tcl_GetVar("myvar") = 18,
+         "Failed to invoke the menu entry with Tcl_String index.");
       Destroy(Menu);
 
 --  begin read only
@@ -1471,7 +1473,9 @@ package body Tk.Menu.Test_Data.Tests is
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 128"), others => <>));
       Invoke(Menu, 1);
-      Assert(Tcl_GetVar("myvar") = 128, "Failed to invoke the menu entry with Natural index.");
+      Assert
+        (Tcl_GetVar("myvar") = 128,
+         "Failed to invoke the menu entry with Natural index.");
       Destroy(Menu);
 
 --  begin read only
@@ -1529,7 +1533,9 @@ package body Tk.Menu.Test_Data.Tests is
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 138"), others => <>));
       Invoke(Menu, 1);
-      Assert(Tcl_GetVar("myvar") = 138, "Failed to invoke the menu entry with Menu_Item_Indexes index.");
+      Assert
+        (Tcl_GetVar("myvar") = 138,
+         "Failed to invoke the menu entry with Menu_Item_Indexes index.");
       Destroy(Menu);
 
 --  begin read only
@@ -1945,11 +1951,18 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      PostCascade(Menu, 1);
+      Assert(True, "This test can only crash.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_2_PostCascade_test_postcascade_menu2;
@@ -1994,11 +2007,18 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      PostCascade(Menu, LAST);
+      Assert(True, "This test can only crash.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_3_PostCascade_test_postcascade_menu3;
@@ -2065,7 +2085,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
         (Get_Item_Type(Menu, To_Tcl_String("1")) = COMMAND,
-         "Failed to get type of menu entry.");
+         "Failed to get type of menu entry with Tcl_String index.");
       Destroy(Menu);
 
 --  begin read only
@@ -2120,11 +2140,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Assert
+        (Get_Item_Type(Menu, 1) = COMMAND,
+         "Failed to get type of menu entry with Natural Index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_2_Get_Item_Type_test_get_item_type_menu2;
@@ -2177,11 +2209,23 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Menu: Tk_Menu;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Menu, ".mymenu", Menu_Options'(others => <>));
+      Add
+        (Menu, COMMAND,
+         Menu_Item_Options'
+           (Command => To_Tcl_String("set myvar 20"), others => <>));
+      Assert
+        (Get_Item_Type(Menu, 1) = COMMAND,
+         "Failed to get type of menu entry with Natural Index.");
+      Destroy(Menu);
 
 --  begin read only
    end Test_3_Get_Item_Type_test_get_item_type_menu3;
