@@ -24,9 +24,21 @@ package Tk.TtkWidget is
       Style: Tcl_String;
    end record;
 
+   function Get_Options
+     (Widget: Ttk_Widget) return Ttk_Widget_Options is abstract with
+      Pre'Class => Widget /= Null_Widget;
+
    type Ttk_State_Type is
      (ACTIVE, DISABLED, FOCUS, PRESSED, SELECTED, BACKGROUND, READONLY,
       ALTERNATE, INVALID, HOVER, NONE) with
       Default_Value => NONE;
+
+   function In_State
+     (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean with
+      Pre => Widget /= Null_Widget;
+
+   procedure In_State
+     (Widget: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) with
+      Pre => Widget /= Null_Widget and Length(Tcl_Script) > 0;
 
 end Tk.TtkWidget;
