@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with GNAT.String_Split; use GNAT.String_Split;
 
 package body Tk.TtkWidget is
 
@@ -36,5 +37,30 @@ package body Tk.TtkWidget is
          To_Lower(Ttk_State_Type'Image(State)) & " " &
          To_Ada_String(Tcl_Script));
    end In_State;
+
+   procedure State
+     (Widget: Ttk_Widget; State: Ttk_State_Type; Disable: Boolean := False) is
+   begin
+      if Disable then
+         Execute_Widget_Command
+           (Widget, "state", "!" & To_Lower(Ttk_State_Type'Image(State)));
+      else
+         Execute_Widget_Command
+           (Widget, "state", To_Lower(Ttk_State_Type'Image(State)));
+      end if;
+   end State;
+
+   function State(Widget: Ttk_Widget) return Ttk_State_Array is
+      Tokens: Slice_Set;
+   begin
+      Execute_Widget_Command(Widget, "state");
+      Create(Tokens, Tcl_GetResult, " ");
+      return States: Ttk_State_Array(1 .. Natural(Slice_Count(Tokens))) do
+         for I in 1 .. Slice_Count(Tokens) loop
+            States(Positive(I)) :=
+              Ttk_State_Type'Value(Slice(Tokens, Slice_Number(I)));
+         end loop;
+      end return;
+   end State;
 
 end Tk.TtkWidget;

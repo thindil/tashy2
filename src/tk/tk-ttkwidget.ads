@@ -32,12 +32,26 @@ package Tk.TtkWidget is
      (ACTIVE, DISABLED, FOCUS, PRESSED, SELECTED, BACKGROUND, READONLY,
       ALTERNATE, INVALID, HOVER);
 
+   type Ttk_State_Array is array(Positive range <>) of Ttk_State_Type;
+
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean with
-      Pre => Widget /= Null_Widget;
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Ttk_Widget_In_State", Nominal);
 
    procedure In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) with
-      Pre => Widget /= Null_Widget and Length(Tcl_Script) > 0;
+      Pre => Widget /= Null_Widget and Length(Tcl_Script) > 0,
+      Test_Case => ("Test_Ttk_Widget_In_State2", Nominal);
+
+   procedure State
+     (Widget: Ttk_Widget; State: Ttk_State_Type;
+      Disable: Boolean := False) with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Ttk_Widget_State", Nominal);
+
+   function State(Widget: Ttk_Widget) return Ttk_State_Array with
+      Pre => Widget /= Null_Widget,
+      Test_Case => ("Test_Ttk_Widget_State2", Nominal);
 
 end Tk.TtkWidget;
