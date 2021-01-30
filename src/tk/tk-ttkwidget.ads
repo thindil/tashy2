@@ -30,8 +30,7 @@ package Tk.TtkWidget is
 
    type Ttk_State_Type is
      (ACTIVE, DISABLED, FOCUS, PRESSED, SELECTED, BACKGROUND, READONLY,
-      ALTERNATE, INVALID, HOVER, NONE) with
-      Default_Value => NONE;
+      ALTERNATE, INVALID, HOVER);
 
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean with
