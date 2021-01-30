@@ -15,24 +15,71 @@
 with Tk.Widget; use Tk.Widget;
 with Tcl.Strings; use Tcl.Strings;
 
+-- ****h* Tk/TtkWidget
+-- FUNCTION
+-- Provide code for manipulate Ttk widgets. Parent of the all Ttk widgets.
+-- SOURCE
 package Tk.TtkWidget is
+-- ****
 
+   -- ****t* TtkWidget/TtkWidget.Ttk_Widget
+   -- FUNCTION
+   -- The identifier of the Ttk Widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    subtype Ttk_Widget is Tk_Widget;
+   -- ****
 
+   -- ****s* TtkWidget/TtkWidget.Ttk_Widget_Options
+   -- FUNCTION
+   -- Abstract records to store available options and their values for widgets.
+   -- All Ttk widgets options should be children of this record
+   -- OPTIONS
+   -- Class - The class of the widget. Used to query for the widget options
+   --         and default binding tags for the widget
+   -- Style - The name of the style used by the widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Ttk_Widget_Options is abstract new Widget_Options with record
       Class: Tcl_String;
       Style: Tcl_String;
    end record;
+   -- ****
 
+   -- ****f* TtkWidget/TtkWidget.Get_Options
+   -- FUNCTION
+   -- The abstract function to get options of the selected Ttk widget. All
+   -- Ttk widgets have to implement their own with own options.
+   -- PARAMETERS
+   -- Widget - The Ttk widget which options will be get
+   -- RESULT
+   -- The record with options for the selected Ttk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    function Get_Options
      (Widget: Ttk_Widget) return Ttk_Widget_Options is abstract with
       Pre'Class => Widget /= Null_Widget;
+      -- ****
 
+      -- ****t* TtkWidget/TtkWidget.Ttk_State_Type
+      -- FUNCTION
+      -- Type used to set the current state of the selected Ttk widget
+      -- SOURCE
    type Ttk_State_Type is
      (ACTIVE, DISABLED, FOCUS, PRESSED, SELECTED, BACKGROUND, READONLY,
       ALTERNATE, INVALID, HOVER);
+   -- ****
 
+   -- ****t* Tk.TtkWidget/Ttk_State_Array
+   -- FUNCTION
+   -- Array of Ttk_State_Type. Used mostly in taking information about the
+   -- state of the selecte Ttk widget
+   -- SOURCE
    type Ttk_State_Array is array(Positive range <>) of Ttk_State_Type;
+   -- ****
 
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean with
