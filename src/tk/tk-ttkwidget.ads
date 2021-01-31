@@ -73,7 +73,7 @@ package Tk.TtkWidget is
       ALTERNATE, INVALID, HOVER);
    -- ****
 
-   -- ****t* Tk.TtkWidget/Ttk_State_Array
+   -- ****t* TtkWidget/TtkWidget.Ttk_State_Array
    -- FUNCTION
    -- Array of Ttk_State_Type. Used mostly in taking information about the
    -- state of the selecte Ttk widget
@@ -81,15 +81,51 @@ package Tk.TtkWidget is
    type Ttk_State_Array is array(Positive range <>) of Ttk_State_Type;
    -- ****
 
+   -- ****f* TtkWidget/TtkWidget.In_State_(function)
+   -- FUNCTION
+   -- Check if the selected Ttk widget is in the selected state
+   -- PARAMETERS
+   -- Widget - The Ttk widget which state will be tested
+   -- State  - Ttk_State to check
+   -- RESULT
+   -- True if the selected Ttk widget is in the selected state, otherwise
+   -- False
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Check if the Ttk widget My_Button is disabled
+   -- Is_Disabled: constant Boolean := In_State(My_Button, DISABLED);
+   -- SEE ALSO
+   -- TtkWidget.In_State_(procedure)
+   -- SOURCE
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Ttk_Widget_In_State", Nominal);
+      -- ****
 
+      -- ****f* TtkWidget/TtkWidget.In_State(procedure)
+      -- FUNCTION
+      -- Check if the selected Ttk widget is in the selected state. If is,
+      -- then execute the selected Tcl commands
+      -- PARAMETERS
+      -- Widget     - The Ttk widget which state will be checked
+      -- State      - Ttk_State to check
+      -- Tcl_Script - The Tcl commands which will be executed if the widget
+      --              is in the selected state
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Exit the program if My_Entry Ttk widget is disabled
+      -- In_State(My_Entry, DISABLED, To_Tcl_String("exit"));
+      -- SEE ALSO
+      -- TtkWidget.In_State_(function)
+      -- SOURCE
    procedure In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Tcl_Script) > 0,
       Test_Case => ("Test_Ttk_Widget_In_State2", Nominal);
+      -- ****
 
    procedure State
      (Widget: Ttk_Widget; State: Ttk_State_Type;
