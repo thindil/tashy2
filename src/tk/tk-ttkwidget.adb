@@ -35,7 +35,7 @@ package body Tk.TtkWidget is
       Execute_Widget_Command
         (Widget, "instate",
          To_Lower(Ttk_State_Type'Image(State)) & " " &
-         To_Ada_String(Tcl_Script));
+         To_String(Tcl_Script));
    end In_State;
 
    procedure State
