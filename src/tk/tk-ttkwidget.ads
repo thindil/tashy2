@@ -97,6 +97,8 @@ package Tk.TtkWidget is
    -- Is_Disabled: constant Boolean := In_State(My_Button, DISABLED);
    -- SEE ALSO
    -- TtkWidget.In_State_(procedure)
+   -- COMMANDS
+   -- Widget instate State
    -- SOURCE
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean with
@@ -120,6 +122,8 @@ package Tk.TtkWidget is
       -- In_State(My_Entry, DISABLED, To_Tcl_String("exit"));
       -- SEE ALSO
       -- TtkWidget.In_State_(function)
+      -- COMMANDS
+      -- Widget instate State Tcl_Script
       -- SOURCE
    procedure In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) with
@@ -127,14 +131,51 @@ package Tk.TtkWidget is
       Test_Case => ("Test_Ttk_Widget_In_State2", Nominal);
       -- ****
 
+      -- ****f* TtkWidget/TtkWidget.State_(procedure)
+      -- FUNCTION
+      -- Set the selected state for the selected Ttk widget
+      -- PARAMETERS
+      -- Widget  - The Ttk widget which state will be changed
+      -- State   - The selected state to set or unset
+      -- Disable - If True, disable the selected State. Otherwise enable it
+      --           for the selected Widget. Default value is False.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Enable Ttk widget My_Button
+      -- State(My_Button, DISABLED, True);
+      -- SEE ALSO
+      -- TtkWidget.State_(function)
+      -- COMMANDS
+      -- Widget state State
+      -- SOURCE
    procedure State
      (Widget: Ttk_Widget; State: Ttk_State_Type;
       Disable: Boolean := False) with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Ttk_Widget_State", Nominal);
+      -- ****
 
+      -- ****f* TtkWidget/Ttk_Widget.State_(function)
+      -- FUNCTION
+      -- Get the states of the selected Ttk widget
+      -- PARAMETERS
+      -- Widget - The Ttk widget which states will be taken
+      -- RESULT
+      -- Ttk_State_Array with all states currently set for the selected Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the states of Ttk widget My_Button
+      -- States: constant Ttk_State_Array := State(My_Button);
+      -- SEE ALSO
+      -- TtkWidget.State_(procedure)
+      -- COMMANDS
+      -- Widget state
+      -- SOURCE
    function State(Widget: Ttk_Widget) return Ttk_State_Array with
       Pre => Widget /= Null_Widget,
       Test_Case => ("Test_Ttk_Widget_State2", Nominal);
+      -- ****
 
 end Tk.TtkWidget;
