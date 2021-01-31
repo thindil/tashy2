@@ -15,6 +15,9 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tcl.Variables; use Tcl.Variables;
+
 --  begin read only
 --  end read only
 package body Tk.TtkWidget.Test_Data.Tests is
@@ -73,11 +76,18 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Ttk_Widget;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("ttk::button .test");
+      Widget := Get_Widget(".test");
+      Assert(not In_State(Widget, DISABLED), "Failed to get state of the Ttk widget.");
+      Destroy(Widget);
 
 --  begin read only
    end Test_1_In_State_test_ttk_widget_in_state;
@@ -125,11 +135,20 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Ttk_Widget;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("ttk::button .test");
+      Widget := Get_Widget(".test");
+      State(Widget, DISABLED);
+      In_State(Widget, DISABLED, To_Tcl_String("set myvar true"));
+      Assert(Tcl_GetVar("myvar") = "true", "Failed to run Tcl script on Ttk widget state.");
+      Destroy(Widget);
 
 --  begin read only
    end Test_2_In_State_test_ttk_widget_in_state2;
