@@ -48,22 +48,6 @@ package Tk.TtkWidget is
    end record;
    -- ****
 
-   -- ****f* TtkWidget/TtkWidget.Get_Options
-   -- FUNCTION
-   -- The abstract function to get options of the selected Ttk widget. All
-   -- Ttk widgets have to implement their own with own options.
-   -- PARAMETERS
-   -- Widget - The Ttk widget which options will be get
-   -- RESULT
-   -- The record with options for the selected Ttk widget
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   function Get_Options
-     (Widget: Ttk_Widget) return Ttk_Widget_Options is abstract with
-      Pre'Class => Widget /= Null_Widget;
-      -- ****
-
       -- ****t* TtkWidget/TtkWidget.Ttk_State_Type
       -- FUNCTION
       -- Type used to set the current state of the selected Ttk widget
