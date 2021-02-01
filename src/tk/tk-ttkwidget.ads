@@ -65,25 +65,37 @@ package Tk.TtkWidget is
    type Ttk_State_Array is array(Positive range <>) of Ttk_State_Type;
    -- ****
 
-   -- ****f* TtkWidget/TtkWidget.In_State_(function)
-   -- FUNCTION
-   -- Check if the selected Ttk widget is in the selected state
-   -- PARAMETERS
-   -- Widget - The Ttk widget which state will be tested
-   -- State  - Ttk_State to check
-   -- RESULT
-   -- True if the selected Ttk widget is in the selected state, otherwise
-   -- False
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- EXAMPLE
-   -- -- Check if the Ttk widget My_Button is disabled
-   -- Is_Disabled: constant Boolean := In_State(My_Button, DISABLED);
-   -- SEE ALSO
-   -- TtkWidget.In_State_(procedure)
-   -- COMMANDS
-   -- Widget instate State
-   -- SOURCE
+      -- ****t* TtkWidget/TtkWidget.Compound_Type
+      -- FUNCTION
+      -- Type of possible place directions for text and image on the Ttk
+      -- widgets
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
+   type Compound_Type is
+     (EMPTY, NONE, BOTTOM, TOP, LEFT, RIGHT, CENTER, TEXT, IMAGE) with
+      Default_Value => EMPTY;
+      -- ****
+
+      -- ****f* TtkWidget/TtkWidget.In_State_(function)
+      -- FUNCTION
+      -- Check if the selected Ttk widget is in the selected state
+      -- PARAMETERS
+      -- Widget - The Ttk widget which state will be tested
+      -- State  - Ttk_State to check
+      -- RESULT
+      -- True if the selected Ttk widget is in the selected state, otherwise
+      -- False
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if the Ttk widget My_Button is disabled
+      -- Is_Disabled: constant Boolean := In_State(My_Button, DISABLED);
+      -- SEE ALSO
+      -- TtkWidget.In_State_(procedure)
+      -- COMMANDS
+      -- Widget instate State
+      -- SOURCE
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean with
       Pre => Widget /= Null_Widget,
