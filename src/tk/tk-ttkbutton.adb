@@ -13,11 +13,39 @@
 -- limitations under the License.
 
 package body Tk.TtkButton is
-   
+
+   function Create
+     (Path_Name: String; Options: Ttk_Button_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button is
+   begin
+      return Null_Widget;
+   end Create;
+
+   procedure Create
+     (Widget: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   begin
+      Widget := Create(Path_Name, Options, Interpreter);
+   end Create;
+
    function Get_Options(Widget: Ttk_Button) return Ttk_Button_Options is
-      pragma Unreferenced(Widget);
    begin
       return Ttk_Button_Options'(others => <>);
    end Get_Options;
+
+   procedure Configure(Widget: Ttk_Button; Options: Ttk_Button_Options) is
+   begin
+      null;
+   end Configure;
+
+   procedure Invoke(Widget: Ttk_Button) is
+   begin
+      null;
+   end Invoke;
+
+   function Invoke(Widget: Ttk_Button) return String is
+   begin
+      return "";
+   end Invoke;
 
 end Tk.TtkButton;
