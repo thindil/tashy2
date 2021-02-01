@@ -86,7 +86,9 @@ package body Tk.TtkWidget.Test_Data.Tests is
       end if;
       Tcl_Eval("ttk::button .test");
       Widget := Get_Widget(".test");
-      Assert(not In_State(Widget, DISABLED), "Failed to get state of the Ttk widget.");
+      Assert
+        (not In_State(Widget, DISABLED),
+         "Failed to get state of the Ttk widget.");
       Destroy(Widget);
 
 --  begin read only
@@ -147,7 +149,9 @@ package body Tk.TtkWidget.Test_Data.Tests is
       Widget := Get_Widget(".test");
       State(Widget, DISABLED);
       In_State(Widget, DISABLED, To_Tcl_String("set myvar true"));
-      Assert(Tcl_GetVar("myvar") = "true", "Failed to run Tcl script on Ttk widget state.");
+      Assert
+        (Tcl_GetVar("myvar") = "true",
+         "Failed to run Tcl script on Ttk widget state.");
       Destroy(Widget);
 
 --  begin read only
@@ -194,11 +198,20 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Ttk_Widget;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("ttk::button .test");
+      Widget := Get_Widget(".test");
+      State(Widget, DISABLED);
+      Assert
+        (In_State(Widget, DISABLED), "Failed to set state of the Ttk widget.");
+      Destroy(Widget);
 
 --  begin read only
    end Test_1_State_test_ttk_widget_state;
@@ -246,11 +259,24 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Ttk_Widget;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("ttk::button .test");
+      Widget := Get_Widget(".test");
+      State(Widget, DISABLED);
+      State(Widget, READONLY);
+      declare
+         States: constant Ttk_State_Array := State(Widget);
+      begin
+         Assert(States'Length = 2, "Failed to get states of the Ttk widget.");
+      end;
+      Destroy(Widget);
 
 --  begin read only
    end Test_2_State_test_ttk_widget_state2;
