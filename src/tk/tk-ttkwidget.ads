@@ -77,25 +77,57 @@ package Tk.TtkWidget is
       Default_Value => EMPTY;
       -- ****
 
-      -- ****f* TtkWidget/TtkWidget.In_State_(function)
+      -- ****s* TtkWidget/TtkWidget.Ttk_Image_Option
       -- FUNCTION
-      -- Check if the selected Ttk widget is in the selected state
-      -- PARAMETERS
-      -- Widget - The Ttk widget which state will be tested
-      -- State  - Ttk_State to check
-      -- RESULT
-      -- True if the selected Ttk widget is in the selected state, otherwise
-      -- False
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Check if the Ttk widget My_Button is disabled
-      -- Is_Disabled: constant Boolean := In_State(My_Button, DISABLED);
-      -- SEE ALSO
-      -- TtkWidget.In_State_(procedure)
-      -- COMMANDS
-      -- Widget instate State
+      -- Used to store configuration of images used by the selected Ttk_Widget
+      -- OPTIONS
+      -- Default    - The default image, used when no other specified for other
+      --              states
+      -- Active     - The image used when widget is in active state
+      -- Disabled   - The image used when widget is in disabled state
+      -- Focus      - The image used when widget is in focus state
+      -- Pressed    - The image used when widget is in pressed state
+      -- Selected   - The image used when widget is in selected state
+      -- Background - The image used when widget is in background state
+      -- Readonly   - The image used when widget is in readonly state
+      -- Alternate  - The image used when widget is in alternate state
+      -- Invalid    - The image used when widget is in invalid state
+      -- Hover      - The image used when widget is in hover state
       -- SOURCE
+   type Ttk_Image_Option is record
+      Default: Tcl_String;
+      Active: Tcl_String;
+      Disabled: Tcl_String;
+      Focus: Tcl_String;
+      Pressed: Tcl_String;
+      Selected: Tcl_String;
+      Background: Tcl_String;
+      Readonly: Tcl_String;
+      Alternate: Tcl_String;
+      Invalid: Tcl_String;
+      Hover: Tcl_String;
+   end record;
+   -- ****
+
+   -- ****f* TtkWidget/TtkWidget.In_State_(function)
+   -- FUNCTION
+   -- Check if the selected Ttk widget is in the selected state
+   -- PARAMETERS
+   -- Widget - The Ttk widget which state will be tested
+   -- State  - Ttk_State to check
+   -- RESULT
+   -- True if the selected Ttk widget is in the selected state, otherwise
+   -- False
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Check if the Ttk widget My_Button is disabled
+   -- Is_Disabled: constant Boolean := In_State(My_Button, DISABLED);
+   -- SEE ALSO
+   -- TtkWidget.In_State_(procedure)
+   -- COMMANDS
+   -- Widget instate State
+   -- SOURCE
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean with
       Pre => Widget /= Null_Widget,
