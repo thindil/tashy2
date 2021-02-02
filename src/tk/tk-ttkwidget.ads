@@ -77,6 +77,15 @@ package Tk.TtkWidget is
       Default_Value => EMPTY;
       -- ****
 
+      -- ****t* TtkWidget/TtkWidget.Disabled_State_Type
+      -- FUNCTION
+      -- Type used to set disabled bit of the Ttk widgets for compatybility
+      -- with old Tk widgets
+      -- SOURCE
+   type Disabled_State_Type is (NORMAL, DISABLED, NONE) with
+      Default_Value => NONE;
+      -- ****
+
       -- ****s* TtkWidget/TtkWidget.Ttk_Image_Option
       -- FUNCTION
       -- Used to store configuration of images used by the selected Ttk_Widget
