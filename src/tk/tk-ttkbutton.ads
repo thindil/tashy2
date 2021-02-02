@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 with Tk.TtkWidget; use Tk.TtkWidget;
 
@@ -20,8 +21,15 @@ package Tk.TtkButton is
    subtype Ttk_Button is Ttk_Widget;
 
    type Ttk_Button_Options is new Ttk_Widget_Options with record
+      Command: Tcl_String;
       Compound: Compound_Type;
+      Default: State_Type;
       Image: Ttk_Image_Option;
+      State: Disabled_State_Type;
+      Text: Tcl_String;
+      Text_Variable: Tcl_String;
+      Underline: Extended_Natural;
+      Width: Integer;
    end record;
 
    -- ****f* TtkButton/TtkButton.Create_(function)
