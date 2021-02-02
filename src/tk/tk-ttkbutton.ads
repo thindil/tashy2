@@ -21,6 +21,7 @@ package Tk.TtkButton is
 
    type Ttk_Button_Options is new Ttk_Widget_Options with record
       Compound: Compound_Type;
+      Image: Ttk_Image_Option;
    end record;
 
    -- ****f* TtkButton/TtkButton.Create_(function)
