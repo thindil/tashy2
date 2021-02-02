@@ -19,7 +19,9 @@ package Tk.TtkButton is
 
    subtype Ttk_Button is Ttk_Widget;
 
-   type Ttk_Button_Options is new Ttk_Widget_Options with null record;
+   type Ttk_Button_Options is new Ttk_Widget_Options with record
+      Compound: Compound_Type;
+   end record;
 
    -- ****f* TtkButton/TtkButton.Create_(function)
    -- FUNCTION
