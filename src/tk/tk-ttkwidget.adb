@@ -17,6 +17,28 @@ with GNAT.String_Split; use GNAT.String_Split;
 
 package body Tk.TtkWidget is
 
+   procedure Option_Image
+     (Name: String; Value: Compound_Type;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value /= NONE then
+         Append
+           (Options_String,
+            " -" & Name & " " & To_Lower(Compound_Type'Image(Value)));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Disabled_State_Type;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value /= NONE then
+         Append
+           (Options_String,
+            " -" & Name & " " & To_Lower(Disabled_State_Type'Image(Value)));
+      end if;
+   end Option_Image;
+
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean is
    begin
@@ -34,8 +56,7 @@ package body Tk.TtkWidget is
    begin
       Execute_Widget_Command
         (Widget, "instate",
-         To_Lower(Ttk_State_Type'Image(State)) & " " &
-         To_String(Tcl_Script));
+         To_Lower(Ttk_State_Type'Image(State)) & " " & To_String(Tcl_Script));
    end In_State;
 
    procedure State
