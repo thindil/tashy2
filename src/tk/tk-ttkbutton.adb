@@ -12,7 +12,37 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+
 package body Tk.TtkButton is
+
+   -- ****if* TtkButton/TtkButton.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Ttk_Button_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Ttk_Button_Options) return String is
+      -- ****
+      Options_String: Unbounded_String;
+   begin
+      Option_Image("command", Options.Command, Options_String);
+--      Option_Image("compound", Options.Compound, Options_String);
+      Option_Image("cursor", Options.Cursor, Options_String);
+      Option_Image("default", Options.Default, Options_String);
+--      Option_Image("image", Options.Image, Options_String);
+      Option_Image("takefocus", Options.Take_Focus, Options_String);
+--      Option_Image("state", Options.State, Options_String);
+      Option_Image("text", Options.Text, Options_String);
+      Option_Image("textvariable", Options.Text_Variable, Options_String);
+      Option_Image("underline", Options.Underline, Options_String);
+      Option_Image("width", Options.Width, Options_String);
+      return To_String(Options_String);
+   end Options_To_String;
 
    function Create
      (Path_Name: String; Options: Ttk_Button_Options;
