@@ -70,7 +70,8 @@ package Tk.Button is
    -- Repeat_Interval      - Amount of miliseconds between auto-repeat
    -- State                - The current state of the button
    -- Text                 - The text displayed on the button
-   -- Text_Variable        - The Tcl variable which value will be used the text on the button
+   -- Text_Variable        - The Tcl variable which value will be used as the text on the
+   --                        button
    -- Underline            - The index of the character in the button text which will be
    --                        underlined. The index starts from 0
    -- Width                - Width of the button. For images, it is in pixels, for text in
