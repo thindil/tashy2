@@ -16,10 +16,46 @@ with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 with Tk.TtkWidget; use Tk.TtkWidget;
 
+-- ****h* Tk/TtkButton
+-- FUNCTION
+-- Provides code for manipulate Tk widget ttk::button
+-- SOURCE
 package Tk.TtkButton is
+-- ****
 
+   -- ****t* TtkButton/TtkButton.Ttk_Button
+   -- FUNCTION
+   -- The Tk identifier of the ttk::button
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    subtype Ttk_Button is Ttk_Widget;
+   -- ****
 
+   -- ****s* TtkButton/TtkButton.Ttk_Button_Options
+   -- FUNCTION
+   -- Data structure for all available options for the Tk ttk::button
+   -- OPTIONS
+   -- Command       - The Tcl command which will be executed when the button
+   --                 was pressed
+   -- Compound      - Specifies if the button should display image and text in
+   --                 the same time. If yes (other value than NONE or EMPTY),
+   --                 then mean position of image related to the text
+   -- Default       - Specifies the state for the default button (activated
+   --                 when the user press Enter)
+   -- Image         - Tk image used to display on the button. Default option
+   --                 mean image used when other state's images are not
+   --                 specified
+   -- State         - The current state of the button
+   -- Text          - The text displayed on the button
+   -- Text_Variable - The Tcl variable which value will be used for the text
+   --                 on the button
+   -- Underline     - The index of the character in the button text which will be
+   --                 underlined. The index starts from 0
+   -- Width         - Width of the button. If greater than 0, allocate that
+   --                 much space for the button, if less than zero, it is
+   --                 minimum width, if zero, use natural width
+   -- SOURCE
    type Ttk_Button_Options is new Ttk_Widget_Options with record
       Command: Tcl_String;
       Compound: Compound_Type;
@@ -31,6 +67,7 @@ package Tk.TtkButton is
       Underline: Extended_Natural;
       Width: Integer;
    end record;
+   -- ****
 
    -- ****f* TtkButton/TtkButton.Create_(function)
    -- FUNCTION
