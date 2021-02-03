@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Tk.Widget; use Tk.Widget;
 with Tcl.Strings; use Tcl.Strings;
 
@@ -117,6 +118,42 @@ package Tk.TtkWidget is
       Hover: Tcl_String;
    end record;
    -- ****
+
+      -- ****f* TtkWidget/TtkWidget.Option_Image
+      -- FUNCTION
+      -- Allow to convert the selected widget's option to Unbounded_String
+      -- which can be used in creating or configuring the widget.
+      -- PARAMETERS
+      -- Name           - The name of the selected widget's option
+      -- Value          - The value of the selected widget's option which will
+      --                  be converted to Unbounded_String
+      -- Options_String - String with currently set options for the selected
+      --                  widget
+      -- OUTPUT
+      -- If Value has default value for the selected type, then return
+      -- unmodified Options_String. Otherwise append the proper Tk
+      -- configuration option to the Options_String.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the text option to hello world in My_Options string
+      -- declare
+      --    My_Options: Unbounded_String;
+      -- begin
+      --    Option_Image("compound", BOTTOM, My_Options);
+      -- end;
+      -- SOURCE
+   procedure Option_Image
+     (Name: String; Value: Compound_Type;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Compound_Type", Nominal);
+   procedure Option_Image
+     (Name: String; Value: Disabled_State_Type;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Distabled_State_Type", Nominal);
+      -- ****
 
    -- ****f* TtkWidget/TtkWidget.In_State_(function)
    -- FUNCTION
