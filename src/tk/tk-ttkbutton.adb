@@ -31,12 +31,12 @@ package body Tk.TtkButton is
       Options_String: Unbounded_String;
    begin
       Option_Image("command", Options.Command, Options_String);
---      Option_Image("compound", Options.Compound, Options_String);
+      Option_Image("compound", Options.Compound, Options_String);
       Option_Image("cursor", Options.Cursor, Options_String);
       Option_Image("default", Options.Default, Options_String);
---      Option_Image("image", Options.Image, Options_String);
+      Option_Image("image", Options.Image, Options_String);
       Option_Image("takefocus", Options.Take_Focus, Options_String);
---      Option_Image("state", Options.State, Options_String);
+      Option_Image("state", Options.State, Options_String);
       Option_Image("text", Options.Text, Options_String);
       Option_Image("textvariable", Options.Text_Variable, Options_String);
       Option_Image("underline", Options.Underline, Options_String);
