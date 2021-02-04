@@ -44,11 +44,9 @@ package body Tk.TtkWidget is
       Options_String: in out Unbounded_String) is
    begin
       if Value /= Ttk_Image_Option'(others => <>) then
-         Append(Options_String, " -" & Name);
+         Append(Options_String, " -" & Name & " {");
       end if;
-      if Value.Default /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Default));
-      end if;
+      Append(Options_String, To_String(Value.Default));
       if Value.Active /= Tcl_String(Null_Unbounded_String) then
          Append(Options_String, " " & To_String(Value.Active));
       end if;
@@ -79,6 +77,7 @@ package body Tk.TtkWidget is
       if Value.Hover /= Tcl_String(Null_Unbounded_String) then
          Append(Options_String, " " & To_String(Value.Hover));
       end if;
+      Append(Options_String, "}");
    end Option_Image;
 
    function In_State
