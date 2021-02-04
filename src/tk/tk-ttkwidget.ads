@@ -153,6 +153,11 @@ package Tk.TtkWidget is
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => ("Test_Option_Image_Distabled_State_Type", Nominal);
+   procedure Option_Image
+     (Name: String; Value: Ttk_Image_Option;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0,
+      Test_Case => ("Test_Option_Image_Image_Option", Nominal);
       -- ****
 
    -- ****f* TtkWidget/TtkWidget.In_State_(function)

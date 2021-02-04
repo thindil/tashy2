@@ -21,7 +21,7 @@ package body Tk.TtkWidget is
      (Name: String; Value: Compound_Type;
       Options_String: in out Unbounded_String) is
    begin
-      if Value /= NONE then
+      if Value /= EMPTY then
          Append
            (Options_String,
             " -" & Name & " " & To_Lower(Compound_Type'Image(Value)));
@@ -36,6 +36,48 @@ package body Tk.TtkWidget is
          Append
            (Options_String,
             " -" & Name & " " & To_Lower(Disabled_State_Type'Image(Value)));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Ttk_Image_Option;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value /= Ttk_Image_Option'(others => <>) then
+         Append(Options_String, " -" & Name);
+      end if;
+      if Value.Default /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Default));
+      end if;
+      if Value.Active /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Active));
+      end if;
+      if Value.Disabled /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Disabled));
+      end if;
+      if Value.Focus /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Focus));
+      end if;
+      if Value.Pressed /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Pressed));
+      end if;
+      if Value.Selected /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Selected));
+      end if;
+      if Value.Background /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Background));
+      end if;
+      if Value.Readonly /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Readonly));
+      end if;
+      if Value.Alternate /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Alternate));
+      end if;
+      if Value.Invalid /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Invalid));
+      end if;
+      if Value.Hover /= Tcl_String(Null_Unbounded_String) then
+         Append(Options_String, " " & To_String(Value.Hover));
       end if;
    end Option_Image;
 
