@@ -74,11 +74,18 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Option_Image("compound", Compound_Type'(NONE), Options);
+      Assert
+        (Options = To_Unbounded_String(" -compound none"),
+         "Failed to get image for Compound_Type option");
 
 --  begin read only
    end Test_1_Option_Image_test_option_image_compound_type;
@@ -127,11 +134,18 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Option_Image("state", Disabled_State_Type'(NORMAL), Options);
+      Assert
+        (Options = To_Unbounded_String(" -state normal"),
+         "Failed to get image for Disabled_State_Type option");
 
 --  begin read only
    end Test_2_Option_Image_test_option_image_distabled_state_type;
@@ -180,11 +194,21 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Option_Image
+        ("image",
+         Ttk_Image_Option'(Default => To_Tcl_String("MyImage"), others => <>),
+         Options);
+      Assert
+        (Options = To_Unbounded_String(" -image {MyImage}"),
+         "Failed to get image for Ttk_Image_Type option");
 
 --  begin read only
    end Test_3_Option_Image_test_option_image_image_option;
