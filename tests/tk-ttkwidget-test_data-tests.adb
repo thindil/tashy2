@@ -32,6 +32,165 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
+   procedure Wrap_Test_Option_Image_a3facf_ddcb4f
+     (Name: String; Value: Compound_Type;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Compound_Type test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Image_Compound_Type test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_a3facf_ddcb4f;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Option_Image_test_option_image_compound_type
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_a3facf_ddcb4f(Gnattest_T: in out Test) renames
+     Test_1_Option_Image_test_option_image_compound_type;
+--  id:2.2/a3facf0235c97b50/Option_Image/1/0/test_option_image_compound_type/
+   procedure Test_1_Option_Image_test_option_image_compound_type
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Compound_Type;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_a3facf_ddcb4f;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Option_Image_test_option_image_compound_type;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Option_Image_5ac754_8ca289
+     (Name: String; Value: Disabled_State_Type;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Distabled_State_Type test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Image_Distabled_State_Type test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_5ac754_8ca289;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Option_Image_test_option_image_distabled_state_type
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_5ac754_8ca289(Gnattest_T: in out Test) renames
+     Test_2_Option_Image_test_option_image_distabled_state_type;
+--  id:2.2/5ac754e1ee99f3f1/Option_Image/0/0/test_option_image_distabled_state_type/
+   procedure Test_2_Option_Image_test_option_image_distabled_state_type
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Disabled_State_Type;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_5ac754_8ca289;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Option_Image_test_option_image_distabled_state_type;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Option_Image_a0749a_9522a2
+     (Name: String; Value: Ttk_Image_Option;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Image_Option test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Image_Image_Option test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_a0749a_9522a2;
+--  end read only
+
+--  begin read only
+   procedure Test_3_Option_Image_test_option_image_image_option
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_a0749a_9522a2(Gnattest_T: in out Test) renames
+     Test_3_Option_Image_test_option_image_image_option;
+--  id:2.2/a0749a45436a2e7b/Option_Image/0/0/test_option_image_image_option/
+   procedure Test_3_Option_Image_test_option_image_image_option
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Ttk_Image_Option;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_a0749a_9522a2;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_3_Option_Image_test_option_image_image_option;
+--  end read only
+
+--  begin read only
    function Wrap_Test_In_State_46b68b_5aa481
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean is
    begin
