@@ -240,6 +240,9 @@ package body Tk.Widget is
    begin
       if Value /= 0 then
          Append(Options_String, " -" & Name);
+         if Value < 0 then
+            Append(Options_String, " ");
+         end if;
          case Base is
             when 10 =>
                Append(Options_String, Integer'Image(Value));
