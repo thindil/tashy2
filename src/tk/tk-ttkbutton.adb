@@ -35,8 +35,8 @@ package body Tk.TtkButton is
       Option_Image("cursor", Options.Cursor, Options_String);
       Option_Image("default", Options.Default, Options_String);
       Option_Image("image", Options.Image, Options_String);
-      Option_Image("takefocus", Options.Take_Focus, Options_String);
       Option_Image("state", Options.State, Options_String);
+      Option_Image("takefocus", Options.Take_Focus, Options_String);
       Option_Image("text", Options.Text, Options_String);
       Option_Image("textvariable", Options.Text_Variable, Options_String);
       Option_Image("underline", Options.Underline, Options_String);
@@ -48,7 +48,10 @@ package body Tk.TtkButton is
      (Path_Name: String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button is
    begin
-      return Null_Widget;
+      Tcl_Eval
+        ("button " & Path_Name & " " & Options_To_String(Options),
+         Interpreter);
+      return Get_Widget(Path_Name, Interpreter);
    end Create;
 
    procedure Create
@@ -60,7 +63,19 @@ package body Tk.TtkButton is
 
    function Get_Options(Widget: Ttk_Button) return Ttk_Button_Options is
    begin
-      return Ttk_Button_Options'(others => <>);
+      return Options: Ttk_Button_Options do
+         Options.Command := Option_Value(Widget, "command");
+--         Options.Compound := Option_Value(Widget, "compound");
+         Options.Cursor := Option_Value(Widget, "cursor");
+         Options.Default := Option_Value(Widget, "default");
+--         Options.Image := Option_Value(Widget, "image");
+--         Options.State := Option_Value(Widget, "state");
+         Options.Take_Focus := Option_Value(Widget, "takefocus");
+         Options.Text := Option_Value(Widget, "text");
+         Options.Text_Variable := Option_Value(Widget, "textvariable");
+         Options.Underline := Option_Value(Widget, "underline");
+         Options.Width := Option_Value(Widget, "width");
+      end return;
    end Get_Options;
 
    procedure Configure(Widget: Ttk_Button; Options: Ttk_Button_Options) is
@@ -75,6 +90,7 @@ package body Tk.TtkButton is
 
    function Invoke(Widget: Ttk_Button) return String is
    begin
+      Invoke(Widget);
       return "";
    end Invoke;
 
