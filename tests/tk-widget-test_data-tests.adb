@@ -21,6 +21,7 @@ with Tk.Button; use Tk.Button;
 with Tk.Grid; use Tk.Grid;
 with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
+with Tk.TtkButton; use Tk.TtkButton;
 
 --  begin read only
 --  end read only
@@ -1985,11 +1986,24 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Ttk_Button;
+      Result: Integer;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Widget, ".button",
+         Ttk_Button_Options'(Width => -15, others => <>));
+      Tcl_Eval("update");
+      Result := Option_Value(Widget, "width");
+      Assert
+        (Result = -15,
+         "Failed to get value for Integer widget option");
+      Destroy(Widget);
 
 --  begin read only
    end Test_12_Option_Value_test_option_value_integer;
