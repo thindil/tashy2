@@ -215,6 +215,118 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Option_Value_5bd68b_3fcd8d
+     (Widget: Ttk_Widget; Name: String) return Compound_Type is
+   begin
+      begin
+         pragma Assert(Widget /= Null_Widget and Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Tcl_String test requirement violated");
+      end;
+      declare
+         Test_Option_Value_5bd68b_3fcd8d_Result: constant Compound_Type :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value
+             (Widget, Name);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Value_Tcl_String test commitment violated");
+         end;
+         return Test_Option_Value_5bd68b_3fcd8d_Result;
+      end;
+   end Wrap_Test_Option_Value_5bd68b_3fcd8d;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Option_Value_test_option_value_tcl_string
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Value_5bd68b_3fcd8d(Gnattest_T: in out Test) renames
+     Test_1_Option_Value_test_option_value_tcl_string;
+--  id:2.2/5bd68b7026ba67cc/Option_Value/1/0/test_option_value_tcl_string/
+   procedure Test_1_Option_Value_test_option_value_tcl_string
+     (Gnattest_T: in out Test) is
+      function Option_Value
+        (Widget: Ttk_Widget; Name: String) return Compound_Type renames
+        Wrap_Test_Option_Value_5bd68b_3fcd8d;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Option_Value_test_option_value_tcl_string;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Option_Value_e44442_3fcd8d
+     (Widget: Ttk_Widget; Name: String) return Disabled_State_Type is
+   begin
+      begin
+         pragma Assert(Widget /= Null_Widget and Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Tcl_String test requirement violated");
+      end;
+      declare
+         Test_Option_Value_e44442_3fcd8d_Result: constant Disabled_State_Type :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value
+             (Widget, Name);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Value_Tcl_String test commitment violated");
+         end;
+         return Test_Option_Value_e44442_3fcd8d_Result;
+      end;
+   end Wrap_Test_Option_Value_e44442_3fcd8d;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Option_Value_test_option_value_tcl_string
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Value_e44442_3fcd8d(Gnattest_T: in out Test) renames
+     Test_2_Option_Value_test_option_value_tcl_string;
+--  id:2.2/e4444212d9605a79/Option_Value/0/0/test_option_value_tcl_string/
+   procedure Test_2_Option_Value_test_option_value_tcl_string
+     (Gnattest_T: in out Test) is
+      function Option_Value
+        (Widget: Ttk_Widget; Name: String) return Disabled_State_Type renames
+        Wrap_Test_Option_Value_e44442_3fcd8d;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Option_Value_test_option_value_tcl_string;
+--  end read only
+
+--  begin read only
    function Wrap_Test_In_State_46b68b_5aa481
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean is
    begin
