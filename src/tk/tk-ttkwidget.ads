@@ -160,6 +160,32 @@ package Tk.TtkWidget is
       Test_Case => ("Test_Option_Image_Image_Option", Nominal);
       -- ****
 
+   -- ****f* TtkWidget/TtkWidget.Option_Value
+   -- FUNCTION
+   -- Allow convert the selected widget's option from Tcl string value to
+   -- proper Widget_Options field value. It is mostly used in the widgets
+   -- Get_Options funcion
+   -- PARAMETERS
+   -- Widget - Tk_Widget which option will be get
+   -- Name   - The name of the option to get
+   -- RESULT
+   -- Tcl string value converted to the proper Ada binding type
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the value of option state in My_Button widget
+   -- Button_State: constant Disabled_State_Type := Option_Value(My_Button, "state");
+   -- SOURCE
+   function Option_Value
+     (Widget: Ttk_Widget; Name: String) return Compound_Type with
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Tcl_String", Nominal);
+   function Option_Value
+     (Widget: Ttk_Widget; Name: String) return Disabled_State_Type with
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Tcl_String", Nominal);
+      -- ****
+
    -- ****f* TtkWidget/TtkWidget.In_State_(function)
    -- FUNCTION
    -- Check if the selected Ttk widget is in the selected state

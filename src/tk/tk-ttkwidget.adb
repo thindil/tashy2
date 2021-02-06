@@ -80,6 +80,20 @@ package body Tk.TtkWidget is
       Append(Options_String, "}");
    end Option_Image;
 
+   function Option_Value
+     (Widget: Ttk_Widget; Name: String) return Compound_Type is
+   begin
+      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      return Compound_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+   end Option_Value;
+
+   function Option_Value
+     (Widget: Ttk_Widget; Name: String) return Disabled_State_Type is
+   begin
+      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      return Disabled_State_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+   end Option_Value;
+
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean is
    begin
