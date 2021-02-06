@@ -104,11 +104,11 @@ package Tk.Widget.Test_Data.Tests is
    --  tk-widget.ads:532:4:Option_Value:Test_Option_Value_Integer
 
    procedure Test_Destroy_568000_523e35(Gnattest_T: in out Test);
-   --  tk-widget.ads:556:4:Destroy:Test_Destroy
+   --  tk-widget.ads:555:4:Destroy:Test_Destroy
 
    procedure Test_Execute_Widget_Command_7643c6_a33187
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:580:4:Execute_Widget_Command:Test_Execute_Widget_Command
+   --  tk-widget.ads:579:4:Execute_Widget_Command:Test_Execute_Widget_Command
 
 end Tk.Widget.Test_Data.Tests;
 --  end read only
