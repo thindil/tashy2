@@ -24,7 +24,8 @@ package Tcl.Info is
    -- FUNCTION
    -- Array used for take result from some Info functions
    -- SOURCE
-   type Unbounded_Strings_Array is array(Positive range <>) of Unbounded_String;
+   type Unbounded_Strings_Array is
+     array(Positive range <>) of Unbounded_String;
    -- ****
 
    -- ****f* Info/Info.Arguments

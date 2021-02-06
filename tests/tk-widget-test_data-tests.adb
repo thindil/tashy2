@@ -1996,13 +1996,10 @@ package body Tk.Widget.Test_Data.Tests is
          return;
       end if;
       Create
-        (Widget, ".button",
-         Ttk_Button_Options'(Width => -15, others => <>));
+        (Widget, ".button", Ttk_Button_Options'(Width => -15, others => <>));
       Tcl_Eval("update");
       Result := Option_Value(Widget, "width");
-      Assert
-        (Result = -15,
-         "Failed to get value for Integer widget option");
+      Assert(Result = -15, "Failed to get value for Integer widget option");
       Destroy(Widget);
 
 --  begin read only
