@@ -43,10 +43,10 @@ package body Tk.TtkWidget is
      (Name: String; Value: Ttk_Image_Option;
       Options_String: in out Unbounded_String) is
    begin
-      if Value /= Ttk_Image_Option'(others => <>) then
-         Append(Options_String, " -" & Name & " {");
+      if Value = Ttk_Image_Option'(others => <>) then
+         return;
       end if;
-      Append(Options_String, To_String(Value.Default));
+      Append(Options_String, " -" & Name & " {" & To_String(Value.Default));
       if Value.Active /= Tcl_String(Null_Unbounded_String) then
          Append(Options_String, " " & To_String(Value.Active));
       end if;
