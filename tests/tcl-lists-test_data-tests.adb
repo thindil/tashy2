@@ -80,8 +80,14 @@ package body Tcl.Lists.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_Eval("set mylist [list a b c d]");
+      declare
+         My_List: constant Array_List := Split_List_Variable("mylist");
+      begin
+         Assert
+           (My_List'Length = 4,
+            "Failed to convert Tcl list variable to Ada array.");
+      end;
 
 --  begin read only
    end Test_Split_List_Variable_test_split_list_variable;
@@ -136,12 +142,11 @@ package body Tcl.Lists.Test_Data.Tests is
 
    begin
 
-      Tcl_Eval("set mylist [list a b c d]");
       declare
-         My_List: constant Array_List := Split_List("mylist");
+         My_List: constant Array_List := Split_List("a b c d e");
       begin
          Assert
-           (My_List'Length = 4, "Failed to convert Tcl list to Ada array.");
+           (My_List'Length = 5, "Failed to convert Tcl list to Ada array.");
       end;
 
 --  begin read only
