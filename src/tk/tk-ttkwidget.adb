@@ -48,34 +48,34 @@ package body Tk.TtkWidget is
       end if;
       Append(Options_String, " -" & Name & " {" & To_String(Value.Default));
       if Value.Active /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Active));
+         Append(Options_String, " active " & To_String(Value.Active));
       end if;
       if Value.Disabled /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Disabled));
+         Append(Options_String, " disabled " & To_String(Value.Disabled));
       end if;
       if Value.Focus /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Focus));
+         Append(Options_String, " focus " & To_String(Value.Focus));
       end if;
       if Value.Pressed /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Pressed));
+         Append(Options_String, " pressed " & To_String(Value.Pressed));
       end if;
       if Value.Selected /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Selected));
+         Append(Options_String, " selected " & To_String(Value.Selected));
       end if;
       if Value.Background /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Background));
+         Append(Options_String, " background " & To_String(Value.Background));
       end if;
       if Value.Readonly /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Readonly));
+         Append(Options_String, " readonly " & To_String(Value.Readonly));
       end if;
       if Value.Alternate /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Alternate));
+         Append(Options_String, " alternate " & To_String(Value.Alternate));
       end if;
       if Value.Invalid /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Invalid));
+         Append(Options_String, " invalid " & To_String(Value.Invalid));
       end if;
       if Value.Hover /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " " & To_String(Value.Hover));
+         Append(Options_String, " hover " & To_String(Value.Hover));
       end if;
       Append(Options_String, "}");
    end Option_Image;
