@@ -260,11 +260,20 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Ttk_Widget;
+      Option: Compound_Type;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("ttk::button .test -compound text");
+      Widget := Get_Widget(".test");
+      Option := Option_Value(Widget, "compound");
+      Assert(Option = TEXT, "Failed to get value of Ttk_Widget option Compound_Type.");
+      Destroy(Widget);
 
 --  begin read only
    end Test_1_Option_Value_test_option_value_compound_type;
@@ -316,11 +325,20 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Ttk_Widget;
+      Option: Disabled_State_Type;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("ttk::button .test -state disabled");
+      Widget := Get_Widget(".test");
+      Option := Option_Value(Widget, "state");
+      Assert(Option = DISABLED, "Failed to get value of Ttk_Widget option Disabled_State_Type.");
+      Destroy(Widget);
 
 --  begin read only
    end Test_2_Option_Value_test_option_value_disabled_state_type;
@@ -372,11 +390,22 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Widget: Ttk_Widget;
+      Option: Ttk_Image_Option;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("image create bitmap MyImage");
+      Tcl_Eval("ttk::button .test -image {MyImage}");
+      Widget := Get_Widget(".test");
+      Option := Option_Value(Widget, "image");
+      Assert(Option.Default = To_Unbounded_String("MyImage"), "Failed to get value of Ttk_Widget option Ttk_Image_Option.");
+      Destroy(Widget);
+      Tcl_Eval("delete MyImage");
 
 --  begin read only
    end Test_3_Option_Value_test_option_value_ttk_image_option;
