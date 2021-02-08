@@ -30,50 +30,50 @@ package Tcl.Lists is
    type Array_List is array(Positive range <>) of Unbounded_String;
    -- ****
 
-   -- ****f* Lists/Lists.Split_List_Variable
+   -- ****f* Lists/Lists.Split_List
    -- FUNCTION
-   -- Convert Tcl list variable to Ada array
+   -- Convert Tcl list to Ada array
    -- PARAMETERS
-   -- Name        - The name of the Tcl list which will be converted to array
+   -- List        - The the Tcl list which will be converted to array
    -- Interpreter - The Tcl interpreter on which the list will be converted
    -- RESULT
-   -- Array_List with values converted from Tcl list variable
+   -- Array_List with values converted from Tcl list
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
-   -- -- Convert mylist Tcl list to My_List Ada array
-   -- My_List: constant Array_List := Split_List("mylist");
+   -- -- Convert the {a b c d} Tcl list to My_List Ada array
+   -- My_List: constant Array_List := Split_List("{a b c d}");
    -- SEE ALSO
-   -- List.Split_List
+   -- Lists.Split_List_Variable
    -- SOURCE
-   function Split_List_Variable
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Split_List_Variable", Nominal);
-      -- ****
-
-      -- ****f* Lists/Lists.Split_List
-      -- FUNCTION
-      -- Convert Tcl list to Ada array
-      -- PARAMETERS
-      -- List        - The the Tcl list which will be converted to array
-      -- Interpreter - The Tcl interpreter on which the list will be converted
-      -- RESULT
-      -- Array_List with values converted from Tcl list
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Convert the {a b c d} Tcl list to My_List Ada array
-      -- My_List: constant Array_List := Split_List("{a b c d}");
-      -- SEE ALSO
-      -- Lists.Split_List_Variable
-      -- SOURCE
    function Split_List
      (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List with
       Pre => List'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Split_List", Nominal);
+      -- ****
+
+      -- ****f* Lists/Lists.Split_List_Variable
+      -- FUNCTION
+      -- Convert Tcl list variable to Ada array
+      -- PARAMETERS
+      -- Name        - The name of the Tcl list which will be converted to array
+      -- Interpreter - The Tcl interpreter on which the list will be converted
+      -- RESULT
+      -- Array_List with values converted from Tcl list variable
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Convert mylist Tcl list to My_List Ada array
+      -- My_List: constant Array_List := Split_List("mylist");
+      -- SEE ALSO
+      -- List.Split_List
+      -- SOURCE
+   function Split_List_Variable
+     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Array_List with
+      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => ("Test_Split_List_Variable", Nominal);
       -- ****
 
 end Tcl.Lists;
