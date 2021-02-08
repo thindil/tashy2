@@ -179,11 +179,15 @@ package Tk.TtkWidget is
    function Option_Value
      (Widget: Ttk_Widget; Name: String) return Compound_Type with
       Pre => Widget /= Null_Widget and Name'Length > 0,
-      Test_Case => ("Test_Option_Value_Tcl_String", Nominal);
+      Test_Case => ("Test_Option_Value_Compound_Type", Nominal);
    function Option_Value
      (Widget: Ttk_Widget; Name: String) return Disabled_State_Type with
       Pre => Widget /= Null_Widget and Name'Length > 0,
-      Test_Case => ("Test_Option_Value_Tcl_String", Nominal);
+      Test_Case => ("Test_Option_Value_Disabled_State_Type", Nominal);
+   function Option_Value
+     (Widget: Ttk_Widget; Name: String) return Ttk_Image_Option with
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Ttk_Image_Option", Nominal);
       -- ****
 
    -- ****f* TtkWidget/TtkWidget.In_State_(function)
