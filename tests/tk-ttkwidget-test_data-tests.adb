@@ -411,7 +411,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
         (Option.Default = To_Unbounded_String("MyImage"),
          "Failed to get value of Ttk_Widget option Ttk_Image_Option.");
       Destroy(Widget);
-      Tcl_Eval("delete MyImage");
+      Tcl_Eval("image delete MyImage");
 
 --  begin read only
    end Test_3_Option_Value_test_option_value_ttk_image_option;
