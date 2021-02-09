@@ -105,6 +105,10 @@ package body Tk.TtkWidget is
            Split_List(Tcl_GetResult(Tk_Interp(Widget)));
          Index: Positive := 2;
       begin
+         if Options_Array'Length < 1 then
+            return Options;
+         end if;
+         Options.Default := To_Tcl_String(To_String(Options_Array(1)));
          Set_Options_Loop :
          loop
             exit when Index > Options_Array'Length;
