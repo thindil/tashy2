@@ -65,11 +65,11 @@ package body Tk.TtkButton is
    begin
       return Options: Ttk_Button_Options do
          Options.Command := Option_Value(Widget, "command");
---         Options.Compound := Option_Value(Widget, "compound");
+         Options.Compound := Option_Value(Widget, "compound");
          Options.Cursor := Option_Value(Widget, "cursor");
          Options.Default := Option_Value(Widget, "default");
---         Options.Image := Option_Value(Widget, "image");
---         Options.State := Option_Value(Widget, "state");
+         Options.Image := Option_Value(Widget, "image");
+         Options.State := Option_Value(Widget, "state");
          Options.Take_Focus := Option_Value(Widget, "takefocus");
          Options.Text := Option_Value(Widget, "text");
          Options.Text_Variable := Option_Value(Widget, "textvariable");
