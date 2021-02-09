@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Tcl.Strings; use Tcl.Strings;
 
 -- ****h* Tcl/Lists
 -- FUNCTION
@@ -27,7 +27,7 @@ package Tcl.Lists is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Array_List is array(Positive range <>) of Unbounded_String;
+   type Array_List is array(Positive range <>) of Tcl_String;
    -- ****
 
    -- ****f* Lists/Lists.Split_List
