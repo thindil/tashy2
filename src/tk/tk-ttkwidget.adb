@@ -112,36 +112,26 @@ package body Tk.TtkWidget is
          Set_Options_Loop :
          loop
             exit when Index > Options_Array'Length;
-            if Options_Array(Index) = To_Unbounded_String("active") then
-               Options.Active :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
-            elsif Options_Array(Index) = To_Unbounded_String("disabled") then
-               Options.Disabled :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
-            elsif Options_Array(Index) = To_Unbounded_String("focus") then
-               Options.Focus :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
-            elsif Options_Array(Index) = To_Unbounded_String("pressed") then
-               Options.Pressed :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
-            elsif Options_Array(Index) = To_Unbounded_String("selected") then
-               Options.Selected :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
-            elsif Options_Array(Index) = To_Unbounded_String("background") then
-               Options.Background :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
-            elsif Options_Array(Index) = To_Unbounded_String("readonly") then
-               Options.Readonly :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
-            elsif Options_Array(Index) = To_Unbounded_String("alternate") then
-               Options.Alternate :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
-            elsif Options_Array(Index) = To_Unbounded_String("invalid") then
-               Options.Invalid :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
-            elsif Options_Array(Index) = To_Unbounded_String("hover") then
-               Options.Hover :=
-                 To_Tcl_String(To_String(Options_Array(Index + 1)));
+            if Options_Array(Index) = To_Tcl_String("active") then
+               Options.Active := Options_Array(Index + 1);
+            elsif Options_Array(Index) = To_Tcl_String("disabled") then
+               Options.Disabled := Options_Array(Index + 1);
+            elsif Options_Array(Index) = To_Tcl_String("focus") then
+               Options.Focus := Options_Array(Index + 1);
+            elsif Options_Array(Index) = To_Tcl_String("pressed") then
+               Options.Pressed := Options_Array(Index + 1);
+            elsif Options_Array(Index) = To_Tcl_String("selected") then
+               Options.Selected := Options_Array(Index + 1);
+            elsif Options_Array(Index) = To_Tcl_String("background") then
+               Options.Background := Options_Array(Index + 1);
+            elsif Options_Array(Index) = To_Tcl_String("readonly") then
+               Options.Readonly := Options_Array(Index + 1);
+            elsif Options_Array(Index) = To_Tcl_String("alternate") then
+               Options.Alternate := Options_Array(Index + 1);
+            elsif Options_Array(Index) = To_Tcl_String("invalid") then
+               Options.Invalid := Options_Array(Index + 1);
+            elsif Options_Array(Index) = To_Tcl_String("hover") then
+               Options.Hover := Options_Array(Index + 1);
             end if;
             Index := Index + 2;
          end loop Set_Options_Loop;
