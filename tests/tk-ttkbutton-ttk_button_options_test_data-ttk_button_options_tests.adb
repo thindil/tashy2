@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+
 --  begin read only
 --  end read only
 package body Tk.TtkButton.Ttk_Button_Options_Test_Data
@@ -80,11 +82,19 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Ttk_Button := Null_Widget;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Button := Create(".mybutton", Ttk_Button_Options'(others => <>));
+      Assert
+        (Button /= Null_Widget,
+         "Failed to create a new Ttk button with function.");
+      Destroy(Button);
 
 --  begin read only
    end Test_1_Create_test_create_ttkbutton1;
@@ -136,11 +146,19 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Ttk_Button := Null_Widget;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".mybutton", Ttk_Button_Options'(others => <>));
+      Assert
+        (Button /= Null_Widget,
+         "Failed to create a new Ttk button with procedure.");
+      Destroy(Button);
 
 --  begin read only
    end Test_2_Create_test_create_ttkbutton2;
@@ -193,11 +211,23 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Ttk_Button;
+      Options: Ttk_Button_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Ttk_Button_Options'(Text => To_Tcl_String("Quit"), others => <>));
+      Options := Get_Options(Button);
+      Assert
+        (Options.Text = To_Tcl_String("Quit"),
+         "Failed to get Ttk button options.");
+      Destroy(Button);
 
 --  begin read only
    end Test_Get_Options_test_get_options_ttkbutton;
@@ -245,11 +275,23 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Ttk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Ttk_Button_Options'(Text => To_Tcl_String("Quit"), others => <>));
+      Configure
+        (Button,
+         Ttk_Button_Options'(Text => To_Tcl_String("End"), others => <>));
+      Assert
+        (Option_Value(Button, "text") = To_Tcl_String("End"),
+         "Failed to set new value for Ttk button option.");
 
 --  begin read only
    end Test_Configure_test_configure_ttkbutton;
