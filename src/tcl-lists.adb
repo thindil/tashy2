@@ -28,7 +28,7 @@ package body Tcl.Lists is
          Import => True,
          Convention => C,
          External_Name => "Tcl_SplitList";
-      Amount: Positive;
+      Amount: Natural;
       Values: Argv_Pointer.Pointer;
    begin
       if TclSplitList(Interpreter, New_String(List), int(Amount), Values) =
