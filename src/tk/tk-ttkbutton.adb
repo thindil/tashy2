@@ -80,18 +80,18 @@ package body Tk.TtkButton is
 
    procedure Configure(Widget: Ttk_Button; Options: Ttk_Button_Options) is
    begin
-      null;
+      Execute_Widget_Command(Widget, "configure", Options_To_String(Options));
    end Configure;
 
    procedure Invoke(Widget: Ttk_Button) is
    begin
-      null;
+      Execute_Widget_Command(Widget, "invoke");
    end Invoke;
 
    function Invoke(Widget: Ttk_Button) return String is
    begin
       Invoke(Widget);
-      return "";
+      return Tcl_GetResult(Tk_Interp(Widget));
    end Invoke;
 
 end Tk.TtkButton;
