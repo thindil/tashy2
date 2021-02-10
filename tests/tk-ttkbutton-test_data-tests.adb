@@ -15,6 +15,9 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tcl.Variables; use Tcl.Variables;
+
 --  begin read only
 --  end read only
 package body Tk.TtkButton.Test_Data.Tests is
@@ -64,11 +67,23 @@ package body Tk.TtkButton.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Ttk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Ttk_Button_Options'
+           (Command => To_Tcl_String("set buttonvar 2"), others => <>));
+      Invoke(Button);
+      Assert
+        (Tcl_GetVar("buttonvar") = 2,
+         "Failed to invoke Tcl command related to the Ttk button.");
+      Destroy(Button);
 
 --  begin read only
    end Test_1_Invoke_test_invoke_ttkbutton1;
@@ -115,11 +130,25 @@ package body Tk.TtkButton.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Ttk_Button;
+      Result: String(1 .. 4);
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Ttk_Button_Options'
+           (Command => To_Tcl_String(".mybutton cget -text"),
+            Text => To_Tcl_String("Quit"), others => <>));
+      Result := Invoke(Button);
+      Assert
+        (Result = "Quit",
+         "Failed to invoke Tcl command related to the Ttk button.");
+      Destroy(Button);
 
 --  begin read only
    end Test_2_Invoke_test_invoke_ttkbutton2;
@@ -167,11 +196,24 @@ package body Tk.TtkButton.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Ttk_Button;
+      Result: Integer;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Ttk_Button_Options'
+           (Command => To_Tcl_String("expr 2 + 2"), others => <>));
+      Result := Invoke(Button);
+      Assert
+        (Result = 4,
+         "Failed to invoke Tcl command related to the Ttk button.");
+      Destroy(Button);
 
 --  begin read only
    end Test_3_Invoke_test_invoke_ttkbutton3;
@@ -218,11 +260,23 @@ package body Tk.TtkButton.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Ttk_Button;
+      Result: Float;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Ttk_Button_Options'
+           (Command => To_Tcl_String("expr 2.5 + 2"), others => <>));
+      Result := Invoke(Button);
+      Assert
+        (Result = 4.5, "Failed to invoke Tcl command related to the button.");
+      Destroy(Button);
 
 --  begin read only
    end Test_4_Invoke_test_invoke_ttkbutton4;
