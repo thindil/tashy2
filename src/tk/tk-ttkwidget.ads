@@ -119,30 +119,39 @@ package Tk.TtkWidget is
    end record;
    -- ****
 
-      -- ****f* TtkWidget/TtkWidget.Option_Image
-      -- FUNCTION
-      -- Allow to convert the selected widget's option to Unbounded_String
-      -- which can be used in creating or configuring the widget.
-      -- PARAMETERS
-      -- Name           - The name of the selected widget's option
-      -- Value          - The value of the selected widget's option which will
-      --                  be converted to Unbounded_String
-      -- Options_String - String with currently set options for the selected
-      --                  widget
-      -- OUTPUT
-      -- If Value has default value for the selected type, then return
-      -- unmodified Options_String. Otherwise append the proper Tk
-      -- configuration option to the Options_String.
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Set the text option to hello world in My_Options string
-      -- declare
-      --    My_Options: Unbounded_String;
-      -- begin
-      --    Option_Image("compound", BOTTOM, My_Options);
-      -- end;
-      -- SOURCE
+   -- ****t* TtkWidget/TtkWidget.Padding_Array
+   -- FUNCTION
+   -- Array used mostly for setting padding in ttk widgets
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Padding_Array is array(1 .. 4) of Pixel_Data;
+   -- ****
+
+   -- ****f* TtkWidget/TtkWidget.Option_Image
+   -- FUNCTION
+   -- Allow to convert the selected widget's option to Unbounded_String
+   -- which can be used in creating or configuring the widget.
+   -- PARAMETERS
+   -- Name           - The name of the selected widget's option
+   -- Value          - The value of the selected widget's option which will
+   --                  be converted to Unbounded_String
+   -- Options_String - String with currently set options for the selected
+   --                  widget
+   -- OUTPUT
+   -- If Value has default value for the selected type, then return
+   -- unmodified Options_String. Otherwise append the proper Tk
+   -- configuration option to the Options_String.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Set the text option to hello world in My_Options string
+   -- declare
+   --    My_Options: Unbounded_String;
+   -- begin
+   --    Option_Image("compound", BOTTOM, My_Options);
+   -- end;
+   -- SOURCE
    procedure Option_Image
      (Name: String; Value: Compound_Type;
       Options_String: in out Unbounded_String) with
