@@ -87,9 +87,9 @@ package Tk.TtkButton is
    -- My_Button: constant Ttk_Button := Create(".mybutton", (Text => To_Tcl_String("Quit"),
    --                                  Command => To_Tcl_String("exit"), others => <>));
    -- SEE ALSO
-   -- Button.Create_(procedure)
+   -- TtkButton.Create_(procedure)
    -- COMMANDS
-   -- button Path_Name Options
+   -- ttk::button Path_Name Options
    -- SOURCE
    function Create
      (Path_Name: String; Options: Ttk_Button_Options;
@@ -122,9 +122,9 @@ package Tk.TtkButton is
       --           Command => To_Tcl_String("exit"), others => <>));
       -- end;
       -- SEE ALSO
-      -- Button.Create_(function)
+      -- TtkButton.Create_(function)
       -- COMMANDS
-      -- button Path_Name Options
+      -- ttk::button Path_Name Options
       -- SOURCE
    procedure Create
      (Widget: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
@@ -147,7 +147,7 @@ package Tk.TtkButton is
       -- -- Get all values of option of button with pathname .mybutton
       -- My_Button_Options: constant Ttk_Button_Options := Get_Options(Get_Widget(".mybutton"));
       -- SEE ALSO
-      -- Button.Configure
+      -- TtkButton.Configure
       -- COMMANDS
       -- Widget configure
       -- SOURCE
@@ -168,7 +168,7 @@ package Tk.TtkButton is
       -- -- Disable button with pathname .mybutton
       -- Configure(Get_Widget(".mybutton"), (State => DISABLED, others => <>));
       -- SEE ALSO
-      -- Button.Get_Options
+      -- TtkButton.Get_Options
       -- COMMANDS
       -- Widget configure Options
       -- SOURCE
@@ -189,8 +189,8 @@ package Tk.TtkButton is
       -- -- Invoke the Tcl command of the Ttk_Button My_Button
       -- Invoke(My_Button);
       -- SEE ALSO
-      -- Button.Invoke_(function_and_string_result), Button.Invoke_(function_and_integer_result),
-      -- Button.Invoke_(function_and_float_result)
+      -- TtkButton.Invoke_(function_and_string_result), TtkButton.Invoke_(function_and_integer_result),
+      -- TtkButton.Invoke_(function_and_float_result)
       -- COMMANDS
       -- Widget invoke
       -- SOURCE
@@ -213,8 +213,8 @@ package Tk.TtkButton is
       -- -- Invoke the Tcl command of the Ttk_Button My_Button
       -- Result: constant String := Invoke(My_Button);
       -- SEE ALSO
-      -- Button.Invoke_(procedure), Button.Invoke_(function_and_integer_result),
-      -- Button.Invoke_(function_and_float_result)
+      -- TtkButton.Invoke_(procedure), TtkButton.Invoke_(function_and_integer_result),
+      -- TtkButton.Invoke_(function_and_float_result)
       -- COMMANDS
       -- Widget invoke
       -- SOURCE
@@ -237,8 +237,8 @@ package Tk.TtkButton is
       -- -- Invoke the Tcl command of the Ttk_Button My_Button
       -- Result: constant Integer := Invoke(My_Button);
       -- SEE ALSO
-      -- Button.Invoke_(function_and_string_result), Button.Invoke_(procedure),
-      -- Button.Invoke_(function_and_float_result)
+      -- TtkButton.Invoke_(function_and_string_result), TtkButton.Invoke_(procedure),
+      -- TtkButton.Invoke_(function_and_float_result)
       -- COMMANDS
       -- Widget invoke
       -- SOURCE
@@ -262,8 +262,8 @@ package Tk.TtkButton is
       -- -- Invoke the Tcl command of the Ttk_Button My_Button
       -- Result: constant Float := Invoke(My_Button);
       -- SEE ALSO
-      -- Button.Invoke_(function_and_string_result), Button.Invoke_(function_and_integer_result),
-      -- Button.Invoke_(procedure)
+      -- TtkButton.Invoke_(function_and_string_result), TtkButton.Invoke_(function_and_integer_result),
+      -- TtkButton.Invoke_(procedure)
       -- COMMANDS
       -- Widget invoke
       -- SOURCE
