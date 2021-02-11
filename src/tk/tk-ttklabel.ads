@@ -53,6 +53,11 @@ package Tk.TtkLabel is
    --                 specified
    -- Justify       - If there are multiple lines of text, specify how the lines
    --                 are laid out relative to one another.
+   -- Padding       - Amount of extra space to allocate for the label. If some
+   --                 elemets are empty then, bottom defaults to top, right defaults
+   --                 to left, and top defaults to left. Order of the elements:
+   --                 left, top, right, bottom
+   -- Relief        - 3-D effect desired for the label
    -- State         - The current state of the label
    -- Text          - The text displayed on the label
    -- Text_Variable - The Tcl variable which value will be used for the text
@@ -62,6 +67,9 @@ package Tk.TtkLabel is
    -- Width         - Width of the label. If greater than 0, allocate that
    --                 much space for the label, if less than zero, it is
    --                 minimum width, if zero, use natural width
+   -- Wrap_Length   - Maximum line lenght in pixels. If equal to zero, then automatic
+   --                 wrapping is not performed, otherwise the text is split into
+   --                 lines such that no line is longer than the specified value.
    -- SOURCE
    type Ttk_Label_Options is new Ttk_Widget_Options with record
       Anchor: Directions_Type;
@@ -73,11 +81,14 @@ package Tk.TtkLabel is
       Foreground: Tcl_String;
       Image: Ttk_Image_Option;
       Justify: Justify_Type;
+      Padding: Padding_Array;
+      Relief: Relief_Type;
       State: Disabled_State_Type;
       Text: Tcl_String;
       Text_Variable: Tcl_String;
       Underline: Extended_Natural;
       Width: Integer;
+      Wrap_Length: Extended_Natural;
    end record;
    -- ****
 
