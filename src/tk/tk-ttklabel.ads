@@ -44,8 +44,6 @@ package Tk.TtkLabel is
    -- Compound      - Specifies if the label should display image and text in
    --                 the same time. If yes (other value than NONE or EMPTY),
    --                 then mean position of image related to the text
-   -- Default       - Specifies the state for the default label (activated
-   --                 when the user press Enter)
    -- Font          - The Tk font which will be used to draw text on the label
    -- Foreground    - The foreground color of the label
    -- Image         - Tk image used to display on the label. Default option
@@ -76,7 +74,6 @@ package Tk.TtkLabel is
       Background: Tcl_String;
       Command: Tcl_String;
       Compound: Compound_Type;
-      Default: State_Type;
       Font: Tcl_String;
       Foreground: Tcl_String;
       Image: Ttk_Image_Option;
