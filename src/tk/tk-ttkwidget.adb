@@ -161,6 +161,19 @@ package body Tk.TtkWidget is
       return Options;
    end Option_Value;
 
+   function Option_Value
+     (Widget: Ttk_Widget; Name: String) return Padding_Array is
+      Tokens: Slice_Set;
+   begin
+      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Create(Tokens, Tcl_GetResult, " ");
+      return Padding: Padding_Array do
+         for I in 1 .. 4 loop
+            Padding(I) := Pixel_Data_Value(Slice(Tokens, Slice_Number(I)));
+         end loop;
+      end return;
+   end Option_Value;
+
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean is
    begin

@@ -202,6 +202,10 @@ package Tk.TtkWidget is
      (Widget: Ttk_Widget; Name: String) return Ttk_Image_Option with
       Pre => Widget /= Null_Widget and Name'Length > 0,
       Test_Case => ("Test_Option_Value_Ttk_Image_Option", Nominal);
+   function Option_Value
+     (Widget: Ttk_Widget; Name: String) return Padding_Array with
+      Pre => Widget /= Null_Widget and Name'Length > 0,
+      Test_Case => ("Test_Option_Value_Padding_Array", Nominal);
       -- ****
 
    -- ****f* TtkWidget/TtkWidget.In_State_(function)
