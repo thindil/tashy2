@@ -30,12 +30,14 @@ package body Tk.TtkButton is
       -- ****
       Options_String: Unbounded_String;
    begin
+      Option_Image("class", Options.Class, Options_String);
       Option_Image("command", Options.Command, Options_String);
       Option_Image("compound", Options.Compound, Options_String);
       Option_Image("cursor", Options.Cursor, Options_String);
       Option_Image("default", Options.Default, Options_String);
       Option_Image("image", Options.Image, Options_String);
       Option_Image("state", Options.State, Options_String);
+      Option_Image("style", Options.Style, Options_String);
       Option_Image("takefocus", Options.Take_Focus, Options_String);
       Option_Image("text", Options.Text, Options_String);
       Option_Image("textvariable", Options.Text_Variable, Options_String);
@@ -64,12 +66,14 @@ package body Tk.TtkButton is
    function Get_Options(Widget: Ttk_Button) return Ttk_Button_Options is
    begin
       return Options: Ttk_Button_Options do
+         Options.Class := Option_Value(Widget, "class");
          Options.Command := Option_Value(Widget, "command");
          Options.Compound := Option_Value(Widget, "compound");
          Options.Cursor := Option_Value(Widget, "cursor");
          Options.Default := Option_Value(Widget, "default");
          Options.Image := Option_Value(Widget, "image");
          Options.State := Option_Value(Widget, "state");
+         Options.Style := Option_Value(Widget, "style");
          Options.Take_Focus := Option_Value(Widget, "takefocus");
          Options.Text := Option_Value(Widget, "text");
          Options.Text_Variable := Option_Value(Widget, "textvariable");
