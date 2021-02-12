@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings; use Ada.Strings;
 with GNAT.String_Split; use GNAT.String_Split;
 with Tcl.Lists; use Tcl.Lists;
 
@@ -79,6 +80,27 @@ package body Tk.TtkWidget is
          Append(Options_String, " hover " & To_String(Value.Hover));
       end if;
       Append(Options_String, "}");
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Padding_Array;
+      Options_String: in out Unbounded_String) is
+      First: Boolean := True;
+   begin
+      Convert_Padding_Array_Loop :
+      for Padding of Value loop
+         if Padding.Value > -1.0 then
+            if First then
+               Append(Options_String, " -" & Name & " {");
+               First := False;
+            end if;
+            Append(Options_String, Pixel_Data_Image(Padding) & " ");
+         end if;
+      end loop Convert_Padding_Array_Loop;
+      if not First then
+         Trim(Options_String, Left);
+         Append(Options_String, "}");
+      end if;
    end Option_Image;
 
    function Option_Value
