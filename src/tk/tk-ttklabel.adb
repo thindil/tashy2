@@ -73,6 +73,8 @@ package body Tk.TtkLabel is
    function Get_Options(Widget: Ttk_Label) return Ttk_Label_Options is
    begin
       return Options: Ttk_Label_Options do
+         Options.Anchor := Option_Value(Widget, "anchor");
+         Options.Background := Option_Value(Widget, "background");
          Options.Class := Option_Value(Widget, "class");
          Options.Command := Option_Value(Widget, "command");
          Options.Compound := Option_Value(Widget, "compound");
@@ -81,6 +83,8 @@ package body Tk.TtkLabel is
          Options.Foreground := Option_Value(Widget, "foreground");
          Options.Image := Option_Value(Widget, "image");
          Options.Justify := Option_Value(Widget, "justify");
+         --Options.Padding := Option_Value(Widget, "padding");
+         Options.Relief := Option_Value(Widget, "relief");
          Options.State := Option_Value(Widget, "state");
          Options.Style := Option_Value(Widget, "style");
          Options.Take_Focus := Option_Value(Widget, "takefocus");
@@ -88,6 +92,7 @@ package body Tk.TtkLabel is
          Options.Text_Variable := Option_Value(Widget, "textvariable");
          Options.Underline := Option_Value(Widget, "underline");
          Options.Width := Option_Value(Widget, "width");
+         Options.Wrap_Length := Option_Value(Widget, "wraplength");
       end return;
    end Get_Options;
 
