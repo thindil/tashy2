@@ -51,7 +51,7 @@ package body Tk.TtkButton is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button is
    begin
       Tcl_Eval
-        ("button " & Path_Name & " " & Options_To_String(Options),
+        ("ttk::button " & Path_Name & " " & Options_To_String(Options),
          Interpreter);
       return Get_Widget(Path_Name, Interpreter);
    end Create;
