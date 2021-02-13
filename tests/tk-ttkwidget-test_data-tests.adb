@@ -215,6 +215,59 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Option_Image_81babf_9e329f
+     (Name: String; Value: Padding_Array;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Padding_Array test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Image_Padding_Array test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_81babf_9e329f;
+--  end read only
+
+--  begin read only
+   procedure Test_4_Option_Image_test_option_image_padding_array
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_81babf_9e329f(Gnattest_T: in out Test) renames
+     Test_4_Option_Image_test_option_image_padding_array;
+--  id:2.2/81babfe21f52b417/Option_Image/0/0/test_option_image_padding_array/
+   procedure Test_4_Option_Image_test_option_image_padding_array
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Padding_Array;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_81babf_9e329f;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_4_Option_Image_test_option_image_padding_array;
+--  end read only
+
+--  begin read only
    function Wrap_Test_Option_Value_5bd68b_10996b
      (Widget: Ttk_Widget; Name: String) return Compound_Type is
    begin
@@ -415,6 +468,62 @@ package body Tk.TtkWidget.Test_Data.Tests is
 
 --  begin read only
    end Test_3_Option_Value_test_option_value_ttk_image_option;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Option_Value_069321_713b35
+     (Widget: Ttk_Widget; Name: String) return Padding_Array is
+   begin
+      begin
+         pragma Assert(Widget /= Null_Widget and Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Padding_Array test requirement violated");
+      end;
+      declare
+         Test_Option_Value_069321_713b35_Result: constant Padding_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value
+             (Widget, Name);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Value_Padding_Array test commitment violated");
+         end;
+         return Test_Option_Value_069321_713b35_Result;
+      end;
+   end Wrap_Test_Option_Value_069321_713b35;
+--  end read only
+
+--  begin read only
+   procedure Test_4_Option_Value_test_option_value_padding_array
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Value_069321_713b35(Gnattest_T: in out Test) renames
+     Test_4_Option_Value_test_option_value_padding_array;
+--  id:2.2/069321a6137b6ef1/Option_Value/0/0/test_option_value_padding_array/
+   procedure Test_4_Option_Value_test_option_value_padding_array
+     (Gnattest_T: in out Test) is
+      function Option_Value
+        (Widget: Ttk_Widget; Name: String) return Padding_Array renames
+        Wrap_Test_Option_Value_069321_713b35;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_4_Option_Value_test_option_value_padding_array;
 --  end read only
 
 --  begin read only
