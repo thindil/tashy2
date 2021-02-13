@@ -257,11 +257,21 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Option_Image
+        ("padding",
+         Padding_Array'((1.0, PIXEL), (2.0, PIXEL), (3.0, PIXEL), (4.0, PIXEL)),
+         Options);
+      Assert
+        (Options = To_Unbounded_String(" -padding {1.00 2.00 3.00 4.00}"),
+         "Failed to get image for Padding_Array option");
 
 --  begin read only
    end Test_4_Option_Image_test_option_image_padding_array;
