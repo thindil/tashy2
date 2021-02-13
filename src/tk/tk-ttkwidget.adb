@@ -98,7 +98,7 @@ package body Tk.TtkWidget is
          end if;
       end loop Convert_Padding_Array_Loop;
       if not First then
-         Trim(Options_String, Left);
+         Trim(Options_String, Right);
          Append(Options_String, "}");
       end if;
    end Option_Image;
