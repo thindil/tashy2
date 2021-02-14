@@ -58,7 +58,7 @@ package body Tk.TtkLabel is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label is
    begin
       Tcl_Eval
-        ("button " & Path_Name & " " & Options_To_String(Options),
+        ("ttk::label " & Path_Name & " " & Options_To_String(Options),
          Interpreter);
       return Get_Widget(Path_Name, Interpreter);
    end Create;
@@ -83,7 +83,7 @@ package body Tk.TtkLabel is
          Options.Foreground := Option_Value(Widget, "foreground");
          Options.Image := Option_Value(Widget, "image");
          Options.Justify := Option_Value(Widget, "justify");
-         --Options.Padding := Option_Value(Widget, "padding");
+         Options.Padding := Option_Value(Widget, "padding");
          Options.Relief := Option_Value(Widget, "relief");
          Options.State := Option_Value(Widget, "state");
          Options.Style := Option_Value(Widget, "style");
