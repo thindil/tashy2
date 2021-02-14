@@ -267,7 +267,8 @@ package body Tk.TtkWidget.Test_Data.Tests is
       end if;
       Option_Image
         ("padding",
-         Padding_Array'((1.0, PIXEL), (2.0, PIXEL), (3.0, PIXEL), (4.0, PIXEL)),
+         Padding_Array'
+           ((1.0, PIXEL), (2.0, PIXEL), (3.0, PIXEL), (4.0, PIXEL)),
          Options);
       Assert
         (Options = To_Unbounded_String(" -padding {1.00 2.00 3.00 4.00}"),
@@ -339,6 +340,12 @@ package body Tk.TtkWidget.Test_Data.Tests is
         (Option = TEXT,
          "Failed to get value of Ttk_Widget option Compound_Type.");
       Destroy(Widget);
+      Tcl_Eval("ttk::button .test");
+      Widget := Get_Widget(".test");
+      Option := Option_Value(Widget, "compound");
+      Assert
+        (Option = EMPTY,
+         "Failed to get empty value of Ttk_Widget option Compound_Type.");
 
 --  begin read only
    end Test_1_Option_Value_test_option_value_compound_type;
