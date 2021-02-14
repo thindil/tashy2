@@ -268,7 +268,15 @@ package body Tk.Widget is
      (Widget: Tk_Widget; Name: String) return Directions_Type is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Directions_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      declare
+         Result: constant String := Tcl_GetResult(Tk_Interp(Widget));
+      begin
+         if Result'Length = 0 then
+            return NONE;
+         else
+            return Directions_Type'Value(Result);
+         end if;
+      end;
    end Option_Value;
 
    function Option_Value(Widget: Tk_Widget; Name: String) return Pixel_Data is
