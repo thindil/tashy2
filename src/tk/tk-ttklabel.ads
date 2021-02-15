@@ -39,8 +39,6 @@ package Tk.TtkLabel is
    -- Anchor        - Specifies how the text in the label is positioned relative
    --                 to the inner margins
    -- Background    - The background color of the label
-   -- Command       - The Tcl command which will be executed when the label
-   --                 was pressed
    -- Compound      - Specifies if the label should display image and text in
    --                 the same time. If yes (other value than NONE or EMPTY),
    --                 then mean position of image related to the text
@@ -72,7 +70,6 @@ package Tk.TtkLabel is
    type Ttk_Label_Options is new Ttk_Widget_Options with record
       Anchor: Directions_Type;
       Background: Tcl_String;
-      Command: Tcl_String;
       Compound: Compound_Type;
       Font: Tcl_String;
       Foreground: Tcl_String;
