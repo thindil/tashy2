@@ -22,6 +22,7 @@ with Tk.Grid; use Tk.Grid;
 with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
 with Tk.TtkButton; use Tk.TtkButton;
+with Tk.TtkLabel; use Tk.TtkLabel;
 
 --  begin read only
 --  end read only
@@ -1284,6 +1285,7 @@ package body Tk.Widget.Test_Data.Tests is
       pragma Unreferenced(Gnattest_T);
       Button: Tk_Button;
       Result: Directions_Type;
+      Label: Ttk_Label;
 
    begin
 
@@ -1298,6 +1300,10 @@ package body Tk.Widget.Test_Data.Tests is
       Assert
         (Result = N, "Failed to get value for Directions_Type widget option");
       Destroy(Button);
+      Create(Label, ".mylabel", Ttk_Label_Options'(others => <>));
+      Result := Option_Value(Label, "anchor");
+      Assert(Result = NONE, "Failed to get empty value for Directions_Type widget option");
+      Destroy(Label);
 
 --  begin read only
    end Test_2_Option_Value_test_option_value_direction_type;
