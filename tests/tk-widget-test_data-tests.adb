@@ -1565,6 +1565,7 @@ package body Tk.Widget.Test_Data.Tests is
       pragma Unreferenced(Gnattest_T);
       Button: Tk_Button;
       Result: Justify_Type;
+      Label: Ttk_Label;
 
    begin
 
@@ -1582,6 +1583,10 @@ package body Tk.Widget.Test_Data.Tests is
         (Result = CENTER,
          "Failed to get value for Justify_Type widget option");
       Destroy(Button);
+      Create(Label, ".mylabel", Ttk_Label_Options'(others => <>));
+      Result := Option_Value(Label, "anchor");
+      Assert(Result = NONE, "Failed to get empty value for Justify_Type widget option");
+      Destroy(Label);
 
 --  begin read only
    end Test_6_Option_Value_test_option_value_justify_type;
