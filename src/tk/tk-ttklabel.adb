@@ -33,7 +33,6 @@ package body Tk.TtkLabel is
       Option_Image("anchor", Options.Anchor, Options_String);
       Option_Image("background", Options.Background, Options_String);
       Option_Image("class", Options.Class, Options_String);
-      Option_Image("command", Options.Command, Options_String);
       Option_Image("compound", Options.Compound, Options_String);
       Option_Image("cursor", Options.Cursor, Options_String);
       Option_Image("font", Options.Font, Options_String);
@@ -76,7 +75,6 @@ package body Tk.TtkLabel is
          Options.Anchor := Option_Value(Widget, "anchor");
          Options.Background := Option_Value(Widget, "background");
          Options.Class := Option_Value(Widget, "class");
-         Options.Command := Option_Value(Widget, "command");
          Options.Compound := Option_Value(Widget, "compound");
          Options.Cursor := Option_Value(Widget, "cursor");
          Options.Font := Option_Value(Widget, "font");
