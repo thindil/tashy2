@@ -37,6 +37,9 @@ package body Tk.Widget is
    function Pixel_Data_Value(Value: String) return Pixel_Data is
       Result: Pixel_Data;
    begin
+      if Value'Length = 0 then
+         return Result;
+      end if;
       if not Is_Digit(Value(Value'Last)) then
          Result.Value :=
            Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
