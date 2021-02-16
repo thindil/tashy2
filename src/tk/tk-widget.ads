@@ -252,7 +252,6 @@ package Tk.Widget is
       -- Pixel: constant Pixel_Data := Pixel_Data_Value("2c");
       -- SOURCE
    function Pixel_Data_Value(Value: String) return Pixel_Data with
-      Pre => Value'Length > 0,
       Test_Case => ("Test_Pixel_Data_Value", Nominal);
       -- ****
 
