@@ -549,6 +549,13 @@ package body Tk.TtkWidget.Test_Data.Tests is
         (Option = ((1.0, PIXEL), (2.0, PIXEL), (3.0, PIXEL), (4.0, PIXEL)),
          "Failed to get value of Ttk_Widget option Padding_Array.");
       Destroy(Widget);
+      Tcl_Eval("ttk::label .test");
+      Widget := Get_Widget(".test");
+      Option := Option_Value(Widget, "padding");
+      Assert
+        (Option = ((-1.0, PIXEL), (-1.0, PIXEL), (-1.0, PIXEL), (-1.0, PIXEL)),
+         "Failed to get empty value of Ttk_Widget option Padding_Array.");
+      Destroy(Widget);
 
 --  begin read only
    end Test_4_Option_Value_test_option_value_padding_array;
