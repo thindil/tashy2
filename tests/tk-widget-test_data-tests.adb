@@ -108,11 +108,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Pixel_Data_Value_1cddc7_2c1c37
+   function Wrap_Test_Pixel_Data_Value_1cddc7_342332
      (Value: String) return Pixel_Data is
    begin
       begin
-         pragma Assert(Value'Length > 0);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -121,7 +121,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Pixel_Data_Value test requirement violated");
       end;
       declare
-         Test_Pixel_Data_Value_1cddc7_2c1c37_Result: constant Pixel_Data :=
+         Test_Pixel_Data_Value_1cddc7_342332_Result: constant Pixel_Data :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Pixel_Data_Value
              (Value);
       begin
@@ -134,33 +134,37 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Pixel_Data_Value test commitment violated");
          end;
-         return Test_Pixel_Data_Value_1cddc7_2c1c37_Result;
+         return Test_Pixel_Data_Value_1cddc7_342332_Result;
       end;
-   end Wrap_Test_Pixel_Data_Value_1cddc7_2c1c37;
+   end Wrap_Test_Pixel_Data_Value_1cddc7_342332;
 --  end read only
 
 --  begin read only
    procedure Test_Pixel_Data_Value_test_pixel_data_value
      (Gnattest_T: in out Test);
-   procedure Test_Pixel_Data_Value_1cddc7_2c1c37
+   procedure Test_Pixel_Data_Value_1cddc7_342332
      (Gnattest_T: in out Test) renames
      Test_Pixel_Data_Value_test_pixel_data_value;
 --  id:2.2/1cddc72f48314db2/Pixel_Data_Value/1/0/test_pixel_data_value/
    procedure Test_Pixel_Data_Value_test_pixel_data_value
      (Gnattest_T: in out Test) is
       function Pixel_Data_Value(Value: String) return Pixel_Data renames
-        Wrap_Test_Pixel_Data_Value_1cddc7_2c1c37;
+        Wrap_Test_Pixel_Data_Value_1cddc7_342332;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      Pixel: Pixel_Data;
+      My_Pixel: Pixel_Data;
 
    begin
 
-      Pixel := Pixel_Data_Value("2c");
+      My_Pixel := Pixel_Data_Value("2c");
       Assert
-        (Pixel.Value = 2.0 and Pixel.Value_Unit = C,
+        (My_Pixel.Value = 2.0 and My_Pixel.Value_Unit = C,
          "Invalid value for pixel data from string conversion.");
+      My_Pixel := Pixel_Data_Value("");
+      Assert
+        (My_Pixel.Value = -1.0 and My_Pixel.Value_Unit = PIXEL,
+         "Failed to convert empty string with Pixel_Data");
 
 --  begin read only
    end Test_Pixel_Data_Value_test_pixel_data_value;
@@ -1302,7 +1306,9 @@ package body Tk.Widget.Test_Data.Tests is
       Destroy(Button);
       Create(Label, ".mylabel", Ttk_Label_Options'(others => <>));
       Result := Option_Value(Label, "anchor");
-      Assert(Result = NONE, "Failed to get empty value for Directions_Type widget option");
+      Assert
+        (Result = NONE,
+         "Failed to get empty value for Directions_Type widget option");
       Destroy(Label);
 
 --  begin read only
@@ -1585,7 +1591,9 @@ package body Tk.Widget.Test_Data.Tests is
       Destroy(Button);
       Create(Label, ".mylabel", Ttk_Label_Options'(others => <>));
       Result := Option_Value(Label, "anchor");
-      Assert(Result = NONE, "Failed to get empty value for Justify_Type widget option");
+      Assert
+        (Result = NONE,
+         "Failed to get empty value for Justify_Type widget option");
       Destroy(Label);
 
 --  begin read only
