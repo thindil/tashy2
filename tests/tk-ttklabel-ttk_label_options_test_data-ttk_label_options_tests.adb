@@ -217,9 +217,13 @@ package body Tk.TtkLabel.Ttk_Label_Options_Test_Data.Ttk_Label_Options_Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create(Label, ".mylabel", Ttk_Label_Options'(Text => To_Tcl_String("text"), others => <>));
+      Create
+        (Label, ".mylabel",
+         Ttk_Label_Options'(Text => To_Tcl_String("text"), others => <>));
       Options := Get_Options(Label);
-      Assert(Options.Text = To_Tcl_String("text"), "Failed to get options of Ttk label.");
+      Assert
+        (Options.Text = To_Tcl_String("text"),
+         "Failed to get options of Ttk label.");
 
 --  begin read only
    end Test_Get_Options_test_get_options_ttklabel;
