@@ -176,8 +176,8 @@ package body Tk.TtkWidget is
       Execute_Widget_Command(Widget, "cget", "-" & Name);
       Create(Tokens, Tcl_GetResult, " ");
       return Padding: Padding_Array do
-         for I in 1 .. 4 loop
-            Padding(I) := Pixel_Data_Value(Slice(Tokens, Slice_Number(I)));
+         for I in 1 .. Slice_Count(Tokens) loop
+            Padding(Positive(I)) := Pixel_Data_Value(Slice(Tokens, I));
          end loop;
       end return;
    end Option_Value;
