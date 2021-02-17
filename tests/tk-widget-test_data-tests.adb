@@ -1719,6 +1719,7 @@ package body Tk.Widget.Test_Data.Tests is
       pragma Unreferenced(Gnattest_T);
       Button: Tk_Button;
       Result: Extended_Natural;
+      Label: Ttk_Label;
 
    begin
 
@@ -1736,6 +1737,12 @@ package body Tk.Widget.Test_Data.Tests is
         (Result = 10,
          "Failed to get value for Extended_Natural widget option");
       Destroy(Button);
+      Create(Label, ".mylabel", Ttk_Label_Options'(others => <>));
+      Result := Option_Value(Label, "wraplength");
+      Assert
+        (Result = -1,
+         "Failed to get value for empty Extended_Natural widget option");
+      Destroy(Label);
 
 --  begin read only
    end Test_8_Option_Value_test_option_value_extended_natural;
