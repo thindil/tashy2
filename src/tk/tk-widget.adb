@@ -333,7 +333,14 @@ package body Tk.Widget is
      (Widget: Tk_Widget; Name: String) return Extended_Natural is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Extended_Natural'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      declare
+         Result: constant String := Tcl_GetResult(Tk_Interp(Widget));
+      begin
+         if Result'Length > 0 then
+            return Extended_Natural'Value(Result);
+         end if;
+      end;
+      return -1;
    end Option_Value;
 
    function Option_Value
