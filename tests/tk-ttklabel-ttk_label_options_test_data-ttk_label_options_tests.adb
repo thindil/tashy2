@@ -224,6 +224,7 @@ package body Tk.TtkLabel.Ttk_Label_Options_Test_Data.Ttk_Label_Options_Tests is
       Assert
         (Options.Text = To_Tcl_String("text"),
          "Failed to get options of Ttk label.");
+      Destroy(Label);
 
 --  begin read only
    end Test_Get_Options_test_get_options_ttklabel;
@@ -271,11 +272,27 @@ package body Tk.TtkLabel.Ttk_Label_Options_Test_Data.Ttk_Label_Options_Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Label: Ttk_Label;
+      Options: Ttk_Label_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Label, ".mylabel",
+         Ttk_Label_Options'(Text => To_Tcl_String("text"), others => <>));
+      Configure
+        (Label,
+         Ttk_Label_Options'
+           (Text => To_Tcl_String("another text"), others => <>));
+      Options := Get_Options(Label);
+      Assert
+        (Options.Text = To_Tcl_String("another text"),
+         "Failed to set options for Ttk label.");
+      Destroy(Label);
 
 --  begin read only
    end Test_Configure_test_configure_ttklabel;
