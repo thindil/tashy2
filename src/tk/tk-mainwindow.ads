@@ -39,6 +39,6 @@ package Tk.MainWindow is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Main_Window", Nominal);
-     -- ****
+      -- ****
 
 end Tk.MainWindow;

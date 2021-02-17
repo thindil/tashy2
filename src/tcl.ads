@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -172,7 +172,7 @@ package Tcl is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => ("Test_Tcl_GetResult", Nominal);
-     -- ****
+      -- ****
 
    -- ****f* Tcl/Tcl.Tcl_GetResult_(Integer)
    -- FUNCTION
@@ -192,7 +192,7 @@ package Tcl is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer is
      (Integer'Value(Tcl_GetResult(Interpreter))) with
       Pre => Interpreter /= Null_Interpreter;
-     -- ****
+      -- ****
 
    -- ****f* Tcl/Tcl.Tcl_GetResult_(Float)
    -- FUNCTION

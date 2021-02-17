@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -172,7 +172,7 @@ package Tcl.Variables is
       Flags: Flags_Array := (1 => NONE)) return Float is
      (Float'Value(Tcl_GetVar(Var_Name, Interpreter, Flags))) with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter;
-     -- ****
+      -- ****
 
       -- ****f* Variables/Variables.Tcl_GetVar2_(String)
       -- FUNCTION
@@ -263,7 +263,7 @@ package Tcl.Variables is
      (Float'Value(Tcl_GetVar2(Var_Name, Index_Name, Interpreter, Flags))) with
       Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
       Interpreter /= Null_Interpreter;
-     -- ****
+      -- ****
 
       -- ****f* Variables/Variables.Tcl_UnsetVar
       -- FUNCTION
