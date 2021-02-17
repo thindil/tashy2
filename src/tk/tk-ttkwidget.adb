@@ -141,7 +141,7 @@ package body Tk.TtkWidget is
          Options.Default := To_Tcl_String(To_String(Options_Array(1)));
          Set_Options_Loop :
          loop
-            exit when Index > Options_Array'Length;
+            exit Set_Options_Loop when Index > Options_Array'Length;
             if Options_Array(Index) = To_Tcl_String("active") then
                Options.Active := Options_Array(Index + 1);
             elsif Options_Array(Index) = To_Tcl_String("disabled") then
