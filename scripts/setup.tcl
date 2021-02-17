@@ -2,7 +2,7 @@
 # the next line restarts using wish \
 exec wish "$0" ${1+"$@"}
 
-# Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+# Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -136,7 +136,7 @@ if {[catch {open tashy2_options.gpr r} fid]} {
          append library_switches "-ltcl$tcl_version -ltk$tk_version"
       }
    }
-   set tashvar(AARGS) "-O2 -gnatafoE -gnatwaL"
+   set tashvar(AARGS) "-O2 -gnatafoE -gnatwaL -gnaty3aAbCdefhIklnOprSux"
    set tashvar(LINKER) $library_switches
    set tclhome [file dirname [file dirname [info nameofexecutable]]]
    set tcl_include [file join $tclhome include]
