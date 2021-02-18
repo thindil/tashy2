@@ -16,3 +16,8 @@ Various scripts related to the project:
 * tests.tcl          - Build and run the unit tests for the project. **Important:**
                        run this script from the main project directory, not
                        from here.
+* rules.aru          - configuration file with rules for check code with
+                       AdaControl.
+* check.tcl          - script to run AdaControl check for the code. **Important:**
+                       run this script from the main project directory, not
+                       from here.
