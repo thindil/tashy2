@@ -51,7 +51,7 @@ package Tcl.Strings is
    -- SOURCE
    function To_Tcl_String
      (Source: String; Evaluate: Boolean := False) return Tcl_String with
-      Test_Case => ("Test_To_Tcl_String", Nominal);
+      Test_Case => (Name => "Test_To_Tcl_String", Mode => Nominal);
       -- ****
 
       -- ****f* Strings/Strings.To_Ada_String
@@ -68,7 +68,7 @@ package Tcl.Strings is
       -- My_String: constant String := To_String(To_Tcl_String("hello world"));
       -- SOURCE
    function To_Ada_String(Source: Tcl_String) return String with
-      Test_Case => ("Test_To_Ada_String", Robustness);
+      Test_Case => (Name => "Test_To_Ada_String", Mode => Robustness);
    -- ****
 
 end Tcl.Strings;

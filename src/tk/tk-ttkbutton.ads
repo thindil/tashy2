@@ -96,7 +96,7 @@ package Tk.TtkButton is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
-      Test_Case => ("Test_Create_TtkButton1", Nominal);
+      Test_Case => (Name => "Test_Create_TtkButton1", Mode => Nominal);
       -- ****
 
       -- ****f* TtkButton/TtkButton.Create_(procedure)
@@ -131,7 +131,7 @@ package Tk.TtkButton is
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Widget /= Null_Widget,
-      Test_Case => ("Test_Create_TtkButton2", Nominal);
+      Test_Case => (Name => "Test_Create_TtkButton2", Mode => Nominal);
       -- ****
 
       -- ****f* TtkButton/TtkButton.Get_Options
@@ -153,7 +153,7 @@ package Tk.TtkButton is
       -- SOURCE
    function Get_Options(Widget: Ttk_Button) return Ttk_Button_Options with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Get_Options_TtkButton", Nominal);
+      Test_Case => (Name => "Test_Get_Options_TtkButton", Mode => Nominal);
       -- ****
 
       -- ****f* TtkButton/TtkButton.Configure
@@ -174,7 +174,7 @@ package Tk.TtkButton is
       -- SOURCE
    procedure Configure(Widget: Ttk_Button; Options: Ttk_Button_Options) with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Configure_TtkButton", Nominal);
+      Test_Case => (Name => "Test_Configure_TtkButton", Mode => Nominal);
       -- ****
 
       -- ****f* TtkButton/TtkButton.Invoke_(procedure)
@@ -196,7 +196,7 @@ package Tk.TtkButton is
       -- SOURCE
    procedure Invoke(Widget: Ttk_Button) with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Invoke_TtkButton1", Nominal);
+      Test_Case => (Name => "Test_Invoke_TtkButton1", Mode => Nominal);
       -- ****
 
       -- ****f* TtkButton/TtkButton.Invoke_(function_and_string_result)
@@ -220,7 +220,7 @@ package Tk.TtkButton is
       -- SOURCE
    function Invoke(Widget: Ttk_Button) return String with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Invoke_TtkButton2", Nominal);
+      Test_Case => (Name => "Test_Invoke_TtkButton2", Mode => Nominal);
       -- ****
 
       -- ****f* TtkButton/TtkButton.Invoke_(function_and_integer_result)
@@ -245,7 +245,7 @@ package Tk.TtkButton is
    function Invoke(Widget: Ttk_Button) return Integer is
      (Integer'Value(Invoke(Widget))) with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Invoke_TtkButton3", Nominal);
+      Test_Case => (Name => "Test_Invoke_TtkButton3", Mode => Nominal);
       -- ****
 
       -- ****f* TtkButton/TtkButton.Invoke_(function_and_float_result)
@@ -270,7 +270,7 @@ package Tk.TtkButton is
    function Invoke(Widget: Ttk_Button) return Float is
      (Float'Value(Invoke(Widget))) with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Invoke_TtkButton4", Nominal);
+      Test_Case => (Name => "Test_Invoke_TtkButton4", Mode => Nominal);
       -- ****
 
 end Tk.TtkButton;

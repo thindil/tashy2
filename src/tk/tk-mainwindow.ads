@@ -38,7 +38,7 @@ package Tk.MainWindow is
    function Get_Main_Window
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Main_Window", Nominal);
+      Test_Case => (Name => "Test_Main_Window", Mode => Nominal);
       -- ****
 
 end Tk.MainWindow;

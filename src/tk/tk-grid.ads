@@ -110,7 +110,7 @@ package Tk.Grid is
      (Widget: Tk_Widget;
       Options: Grid_Options := Grid_Options'(others => <>)) with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Add1", Nominal);
+      Test_Case => (Name => "Test_Add1", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Add_(many_widget)
@@ -134,7 +134,7 @@ package Tk.Grid is
      (Widgets: Widgets_Array;
       Options: Grid_Options := Grid_Options'(others => <>)) with
       Pre => Widgets'Length > 0,
-      Test_Case => ("Test_Add2", Nominal);
+      Test_Case => (Name => "Test_Add2", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Anchor_(procedure)
@@ -157,7 +157,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) with
       Pre => Master /= Null_Widget and New_Direction /= NONE,
-      Test_Case => ("Test_Anchor1", Nominal);
+      Test_Case => (Name => "Test_Anchor1", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Anchor_(function)
@@ -177,7 +177,7 @@ package Tk.Grid is
       -- SOURCE
    function Anchor(Master: Tk_Widget) return Directions_Type with
       Pre => Master /= Null_Widget,
-      Test_Case => ("Test_Anchor2", Nominal);
+      Test_Case => (Name => "Test_Anchor2", Mode => Nominal);
       -- ****
 
       -- ****f* Tk.Grid/BBox
@@ -216,7 +216,7 @@ package Tk.Grid is
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return BBox_Array with
       Pre => Master /= Null_Widget,
-      Test_Case => ("Test_BBox", Nominal);
+      Test_Case => (Name => "Test_BBox", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Column_Configure_(child_name)
@@ -241,7 +241,7 @@ package Tk.Grid is
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
       Pre => Master /= Null_Widget and Length(Child_Name) > 0 and
       Options /= Column_Options'(others => <>),
-      Test_Case => ("Test_Column_Configure1", Nominal);
+      Test_Case => (Name => "Test_Column_Configure1", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Column_Configure_(child)
@@ -266,7 +266,7 @@ package Tk.Grid is
      (Master, Child: Tk_Widget; Options: Column_Options) with
       Pre => Master /= Null_Widget and Child /= Null_Widget and
       Options /= Column_Options'(others => <>),
-      Test_Case => ("Test_Column_Configure2", Nominal);
+      Test_Case => (Name => "Test_Column_Configure2", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Column_Configure_(column_number)
@@ -291,7 +291,7 @@ package Tk.Grid is
      (Master: Tk_Widget; Column: Natural; Options: Column_Options) with
       Pre => Master /= Null_Widget and
       Options /= Column_Options'(others => <>),
-      Test_Case => ("Test_Column_Configure3", Nominal);
+      Test_Case => (Name => "Test_Column_Configure3", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Get_Column_Options
@@ -314,7 +314,7 @@ package Tk.Grid is
    function Get_Column_Options
      (Master: Tk_Widget; Column: Natural) return Column_Options with
       Pre => Master /= Null_Widget,
-      Test_Case => ("Test_Get_Column_Options", Nominal);
+      Test_Case => (Name => "Test_Get_Column_Options", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Configure_(single_widget)
@@ -335,7 +335,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Configure(Widget: Tk_Widget; Options: Grid_Options) with
       Pre => Widget /= Null_Widget and Options /= Grid_Options'(others => <>),
-      Test_Case => ("Test_Configure1", Nominal);
+      Test_Case => (Name => "Test_Configure1", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Configure_(many_widgets)
@@ -356,7 +356,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Configure(Widgets: Widgets_Array; Options: Grid_Options) with
       Pre => Widgets'Length > 0 and Options /= Grid_Options'(others => <>),
-      Test_Case => ("Test_Configure2", Nominal);
+      Test_Case => (Name => "Test_Configure2", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Forget_(single_widget)
@@ -378,7 +378,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Forget(Widget: Tk_Widget) with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Forget1", Nominal);
+      Test_Case => (Name => "Test_Forget1", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Forget_(many_widgets)
@@ -400,7 +400,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Forget(Widgets: Widgets_Array) with
       Pre => Widgets'Length > 0,
-      Test_Case => ("Test_Forget2", Nominal);
+      Test_Case => (Name => "Test_Forget2", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Info
@@ -421,7 +421,7 @@ package Tk.Grid is
       -- SOURCE
    function Info(Widget: Tk_Widget) return Grid_Options with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Info", Nominal);
+      Test_Case => (Name => "Test_Info", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Location
@@ -453,7 +453,7 @@ package Tk.Grid is
    function Location
      (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array with
       Pre => Master /= Null_Widget and X.Value > -1.0 and Y.Value > -1.0,
-      Test_Case => ("Test_Location", Nominal);
+      Test_Case => (Name => "Test_Location", Mode => Nominal);
       -- ****
 
       -- ****f* Tk.Grid/Propagate_(procedure)
@@ -474,7 +474,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) with
       Pre => Master /= Null_Widget,
-      Test_Case => ("Test_Propagate1", Nominal);
+      Test_Case => (Name => "Test_Propagate1", Mode => Nominal);
       -- ****
 
       -- ****f* Tk.Grid/Propagate_(function)
@@ -497,7 +497,7 @@ package Tk.Grid is
       -- SOURCE
    function Propagate(Master: Tk_Widget) return Boolean with
       Pre => Master /= Null_Widget,
-      Test_Case => ("Test_Propagate2", Nominal);
+      Test_Case => (Name => "Test_Propagate2", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Row_Configure_(child_name)
@@ -522,7 +522,7 @@ package Tk.Grid is
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
       Pre => Master /= Null_Widget and Length(Child_Name) > 0 and
       Options /= Column_Options'(others => <>),
-      Test_Case => ("Test_Row_Configure1", Nominal);
+      Test_Case => (Name => "Test_Row_Configure1", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Row_Configure_(child)
@@ -547,7 +547,7 @@ package Tk.Grid is
      (Master, Child: Tk_Widget; Options: Column_Options) with
       Pre => Master /= Null_Widget and Child /= Null_Widget and
       Options /= Column_Options'(others => <>),
-      Test_Case => ("Test_Row_Configure2", Nominal);
+      Test_Case => (Name => "Test_Row_Configure2", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Row_Configure_(row_number)
@@ -572,7 +572,7 @@ package Tk.Grid is
      (Master: Tk_Widget; Row: Natural; Options: Column_Options) with
       Pre => Master /= Null_Widget and
       Options /= Column_Options'(others => <>),
-      Test_Case => ("Test_Row_Configure3", Nominal);
+      Test_Case => (Name => "Test_Row_Configure3", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Get_Row_Options
@@ -595,7 +595,7 @@ package Tk.Grid is
    function Get_Row_Options
      (Master: Tk_Widget; Row: Natural) return Column_Options with
       Pre => Master /= Null_Widget,
-      Test_Case => ("Test_Get_Row_Options", Nominal);
+      Test_Case => (Name => "Test_Get_Row_Options", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Remove_(single_widget)
@@ -619,7 +619,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Remove(Widget: Tk_Widget) with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Remove1", Nominal);
+      Test_Case => (Name => "Test_Remove1", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Remove_(many_widgets)
@@ -643,7 +643,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Remove(Widgets: Widgets_Array) with
       Pre => Widgets'Length > 0,
-      Test_Case => ("Test_Remove2", Nominal);
+      Test_Case => (Name => "Test_Remove2", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Size
@@ -664,7 +664,7 @@ package Tk.Grid is
       -- SOURCE
    function Size(Master: Tk_Widget) return Result_Array with
       Pre => Master /= Null_Widget,
-      Test_Case => ("Test_Size", Nominal);
+      Test_Case => (Name => "Test_Size", Mode => Nominal);
       -- ****
 
       -- ****f* Grid/Grid.Slaves
@@ -690,7 +690,7 @@ package Tk.Grid is
      (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
       return Widgets_Array with
       Pre => Master /= Null_Widget,
-      Test_Case => ("Test_Slaves", Nominal);
+      Test_Case => (Name => "Test_Slaves", Mode => Nominal);
       -- ****
 
 end Tk.Grid;
