@@ -123,3 +123,17 @@ version: 3.0
       - fossil push
       - fossil git export --force
    description: Update remote Fossil repository and its Git mirror
+- command:
+   name: check
+   execute:
+      - scripts/check.tcl
+   description: Run AdaControl to check correctness of the code
+   flags:
+      - unixonly
+- command:
+   name: check
+   execute:
+      - tclsh scripts\check.tcl
+   description: Run AdaControl to check correctness of the code
+   flags:
+      - windowsonly
