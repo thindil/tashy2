@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -105,7 +105,7 @@ package Tcl.Commands is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       DeleteProc: Tcl_CmdDeleteProc := null) return Tcl_Command with
       Pre => Command_Name'Length > 0,
-      Test_Case => ("Test_Tcl_CreateCommand", Nominal);
+      Test_Case => (Name => "Test_Tcl_CreateCommand", Mode => Nominal);
       -- ****
 
       -----------------------------------------

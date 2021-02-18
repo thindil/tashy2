@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ package Tk is
    -- SOURCE
    procedure Tk_Init(Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Tk_Init", Nominal);
+      Test_Case => (Name => "Test_Tk_Init", Mode => Nominal);
    -- ****
 
    -- ****f* Tk/Tk.Tk_MainLoop

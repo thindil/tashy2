@@ -50,7 +50,7 @@ package Tcl.Lists is
      (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List with
       Pre => List'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Split_List", Nominal);
+      Test_Case => (Name => "Test_Split_List", Mode => Nominal);
       -- ****
 
       -- ****f* Lists/Lists.Split_List_Variable
@@ -73,7 +73,7 @@ package Tcl.Lists is
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Split_List_Variable", Nominal);
+      Test_Case => (Name => "Test_Split_List_Variable", Mode => Nominal);
       -- ****
 
 end Tcl.Lists;

@@ -156,22 +156,25 @@ package Tk.TtkWidget is
      (Name: String; Value: Compound_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => ("Test_Option_Image_Compound_Type", Nominal);
+      Test_Case => (Name => "Test_Option_Image_Compound_Type",
+       Mode => Nominal);
    procedure Option_Image
      (Name: String; Value: Disabled_State_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => ("Test_Option_Image_Distabled_State_Type", Nominal);
+      Test_Case => (Name => "Test_Option_Image_Distabled_State_Type",
+       Mode => Nominal);
    procedure Option_Image
      (Name: String; Value: Ttk_Image_Option;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => ("Test_Option_Image_Image_Option", Nominal);
+      Test_Case => (Name => "Test_Option_Image_Image_Option", Mode => Nominal);
    procedure Option_Image
      (Name: String; Value: Padding_Array;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => ("Test_Option_Image_Padding_Array", Nominal);
+      Test_Case => (Name => "Test_Option_Image_Padding_Array",
+       Mode => Nominal);
       -- ****
 
    -- ****f* TtkWidget/TtkWidget.Option_Value
@@ -193,19 +196,23 @@ package Tk.TtkWidget is
    function Option_Value
      (Widget: Ttk_Widget; Name: String) return Compound_Type with
       Pre => Widget /= Null_Widget and Name'Length > 0,
-      Test_Case => ("Test_Option_Value_Compound_Type", Nominal);
+      Test_Case => (Name => "Test_Option_Value_Compound_Type",
+       Mode => Nominal);
    function Option_Value
      (Widget: Ttk_Widget; Name: String) return Disabled_State_Type with
       Pre => Widget /= Null_Widget and Name'Length > 0,
-      Test_Case => ("Test_Option_Value_Disabled_State_Type", Nominal);
+      Test_Case => (Name => "Test_Option_Value_Disabled_State_Type",
+       Mode => Nominal);
    function Option_Value
      (Widget: Ttk_Widget; Name: String) return Ttk_Image_Option with
       Pre => Widget /= Null_Widget and Name'Length > 0,
-      Test_Case => ("Test_Option_Value_Ttk_Image_Option", Nominal);
+      Test_Case => (Name => "Test_Option_Value_Ttk_Image_Option",
+       Mode => Nominal);
    function Option_Value
      (Widget: Ttk_Widget; Name: String) return Padding_Array with
       Pre => Widget /= Null_Widget and Name'Length > 0,
-      Test_Case => ("Test_Option_Value_Padding_Array", Nominal);
+      Test_Case => (Name => "Test_Option_Value_Padding_Array",
+       Mode => Nominal);
       -- ****
 
    -- ****f* TtkWidget/TtkWidget.In_State_(function)
@@ -230,7 +237,7 @@ package Tk.TtkWidget is
    function In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Ttk_Widget_In_State", Nominal);
+      Test_Case => (Name => "Test_Ttk_Widget_In_State", Mode => Nominal);
       -- ****
 
       -- ****f* TtkWidget/TtkWidget.In_State(procedure)
@@ -255,7 +262,7 @@ package Tk.TtkWidget is
    procedure In_State
      (Widget: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) with
       Pre => Widget /= Null_Widget and Length(Tcl_Script) > 0,
-      Test_Case => ("Test_Ttk_Widget_In_State2", Nominal);
+      Test_Case => (Name => "Test_Ttk_Widget_In_State2", Mode => Nominal);
       -- ****
 
       -- ****f* TtkWidget/TtkWidget.State_(procedure)
@@ -280,7 +287,7 @@ package Tk.TtkWidget is
      (Widget: Ttk_Widget; State: Ttk_State_Type;
       Disable: Boolean := False) with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Ttk_Widget_State", Nominal);
+      Test_Case => (Name => "Test_Ttk_Widget_State", Mode => Nominal);
       -- ****
 
       -- ****f* TtkWidget/Ttk_Widget.State_(function)
@@ -302,7 +309,7 @@ package Tk.TtkWidget is
       -- SOURCE
    function State(Widget: Ttk_Widget) return Ttk_State_Array with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Ttk_Widget_State2", Nominal);
+      Test_Case => (Name => "Test_Ttk_Widget_State2", Mode => Nominal);
       -- ****
 
 end Tk.TtkWidget;

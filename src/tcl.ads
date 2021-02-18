@@ -119,7 +119,7 @@ package Tcl is
    procedure Tcl_Eval
      (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Script'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Tcl_Eval", Nominal);
+      Test_Case => (Name => "Test_Tcl_Eval", Mode => Nominal);
       -- ****
 
    ---------------------------------------
@@ -171,7 +171,7 @@ package Tcl is
    function Tcl_GetResult
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Tcl_GetResult", Nominal);
+      Test_Case => (Name => "Test_Tcl_GetResult", Mode => Nominal);
       -- ****
 
    -- ****f* Tcl/Tcl.Tcl_GetResult_(Integer)
@@ -233,7 +233,7 @@ package Tcl is
      (Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Result'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Tcl_SetResult", Nominal);
+      Test_Case => (Name => "Test_Tcl_SetResult", Mode => Nominal);
       -- ****
 
 end Tcl;

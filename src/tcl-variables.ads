@@ -64,7 +64,7 @@ package Tcl.Variables is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
       Pre => Var_Name'Length > 0 and New_Value'Length > 0,
-      Test_Case => ("Test_Tcl_SetVar", Nominal);
+      Test_Case => (Name => "Test_Tcl_SetVar", Mode => Nominal);
       -- ****
 
       -- ****f* Variables/Variables.Tcl_SetVar2
@@ -93,7 +93,7 @@ package Tcl.Variables is
       Flags: Flags_Array := (1 => NONE)) with
       Pre => Array_Name'Length > 0 and Index_Name'Length > 0 and
       New_Value'Length > 0,
-      Test_Case => ("Test_Tcl_SetVar2", Nominal);
+      Test_Case => (Name => "Test_Tcl_SetVar2", Mode => Nominal);
       -- ****
 
       -- ****f* Variables/Variables.Tcl_GetVar_(String)
@@ -119,7 +119,7 @@ package Tcl.Variables is
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return String with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Tcl_GetVar", Nominal);
+      Test_Case => (Name => "Test_Tcl_GetVar", Mode => Nominal);
       -- ****
 
       -- ****f* Variables/Variables.Tcl_GetVar_(Integer)
@@ -201,7 +201,7 @@ package Tcl.Variables is
       Flags: Flags_Array := (1 => NONE)) return String with
       Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
       Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Tcl_GetVar2", Nominal);
+      Test_Case => (Name => "Test_Tcl_GetVar2", Mode => Nominal);
       -- ****
 
       -- ****f* Variables/Variables.Tcl_GetVar2_(Integer)
@@ -286,7 +286,7 @@ package Tcl.Variables is
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Tcl_UnsetVar", Nominal);
+      Test_Case => (Name => "Test_Tcl_UnsetVar", Mode => Nominal);
       -- ****
 
       -- ****f* Variables/Variables.Tcl_UnsetVar2
@@ -314,7 +314,7 @@ package Tcl.Variables is
       Flags: Flags_Array := (1 => NONE)) with
       Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
       Interpreter /= Null_Interpreter,
-      Test_Case => ("Test_Tcl_UnsetVar2", Nominal);
+      Test_Case => (Name => "Test_Tcl_UnsetVar2", Mode => Nominal);
       -- ****
 
 end Tcl.Variables;

@@ -113,7 +113,7 @@ package Tk.TtkLabel is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
-      Test_Case => ("Test_Create_TtkLabel1", Nominal);
+      Test_Case => (Name => "Test_Create_TtkLabel1", Mode => Nominal);
       -- ****
 
       -- ****f* TtkLabel/TtkLabel.Create_(procedure)
@@ -148,7 +148,7 @@ package Tk.TtkLabel is
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Widget /= Null_Widget,
-      Test_Case => ("Test_Create_TtkLabel2", Nominal);
+      Test_Case => (Name => "Test_Create_TtkLabel2", Mode => Nominal);
       -- ****
 
       -- ****f* TtkLabel/TtkLabel.Get_Options
@@ -170,7 +170,7 @@ package Tk.TtkLabel is
       -- SOURCE
    function Get_Options(Widget: Ttk_Label) return Ttk_Label_Options with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Get_Options_TtkLabel", Nominal);
+      Test_Case => (Name => "Test_Get_Options_TtkLabel", Mode => Nominal);
       -- ****
 
       -- ****f* TtkLabel/TtkLabel.Configure
@@ -191,7 +191,7 @@ package Tk.TtkLabel is
       -- SOURCE
    procedure Configure(Widget: Ttk_Label; Options: Ttk_Label_Options) with
       Pre => Widget /= Null_Widget,
-      Test_Case => ("Test_Configure_TtkLabel", Nominal);
+      Test_Case => (Name => "Test_Configure_TtkLabel", Mode => Nominal);
       -- ****
 
 end Tk.TtkLabel;
