@@ -141,6 +141,13 @@ package Tcl is
    for Result_Types use (TCL_STATIC => 0, TCL_VOLATILE => 1, TCL_DYNAMIC => 3);
    -- ****
 
+   -- ****d* Tcl/Default_Result_Type
+   -- FUNCTION
+   -- The default type of Tcl result
+   -- SOURCE
+   Default_Result_Type: constant Result_Types := TCL_STATIC;
+   -- ****
+
    -- ****t* Tcl/Tcl.Tcl_Results
    -- FUNCTION
    -- Used as return Tcl result for commands
@@ -154,6 +161,13 @@ package Tcl is
    type Tcl_Results is
      (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE) with
       Default_Value => TCL_OK;
+      -- ****
+
+      -- ****d* Tcl/Default_Tcl_Result
+      -- FUNCTION
+      -- The default Tcl result return code
+      -- SOURCE
+   Default_Tcl_Result: constant Tcl_Results := TCL_OK;
    -- ****
 
    -- ****f* Tcl/Tcl.Tcl_Get_Result_(String)
