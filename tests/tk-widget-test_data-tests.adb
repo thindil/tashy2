@@ -1107,7 +1107,7 @@ package body Tk.Widget.Test_Data.Tests is
       Option_Image("myoption", Tk_Window_Id(Button), Options_String);
       Tcl_Eval("winfo id .mybutton");
       Assert
-        (To_String(Options_String) = " -myoption " & Tcl_GetResult,
+        (To_String(Options_String) = " -myoption " & Tcl_Get_Result,
          "Failed to get image for Tk_Widget option");
       Destroy(Button);
 
@@ -2122,7 +2122,7 @@ package body Tk.Widget.Test_Data.Tests is
          Button_Options'(Text => To_Tcl_String("Quit"), others => <>));
       Execute_Widget_Command(Button, "cget", "-text");
       Assert
-        (Tcl_GetResult = "Quit",
+        (Tcl_Get_Result = "Quit",
          "Failed to execute Tcl command on the selected Tk_Widget.");
       Destroy(Button);
 
