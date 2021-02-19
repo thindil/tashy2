@@ -108,7 +108,7 @@ package body Tk.TtkWidget is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
       declare
-         Result: constant String := Tcl_GetResult(Tk_Interp(Widget));
+         Result: constant String := Tcl_Get_Result(Tk_Interp(Widget));
       begin
          if Result'Length = 0 then
             return EMPTY;
@@ -122,7 +122,7 @@ package body Tk.TtkWidget is
      (Widget: Ttk_Widget; Name: String) return Disabled_State_Type is
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Disabled_State_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      return Disabled_State_Type'Value(Tcl_Get_Result(Tk_Interp(Widget)));
    end Option_Value;
 
    function Option_Value
@@ -132,7 +132,7 @@ package body Tk.TtkWidget is
       Execute_Widget_Command(Widget, "cget", "-" & Name);
       declare
          Options_Array: constant Array_List :=
-           Split_List(Tcl_GetResult(Tk_Interp(Widget)));
+           Split_List(Tcl_Get_Result(Tk_Interp(Widget)));
          Index: Positive := 2;
       begin
          if Options_Array'Length < 1 then
@@ -174,7 +174,7 @@ package body Tk.TtkWidget is
       Tokens: Slice_Set;
    begin
       Execute_Widget_Command(Widget, "cget", "-" & Name);
-      Create(Tokens, Tcl_GetResult, " ");
+      Create(Tokens, Tcl_Get_Result, " ");
       return Padding: Padding_Array do
          for I in 1 .. Slice_Count(Tokens) loop
             Padding(Positive(I)) := Pixel_Data_Value(Slice(Tokens, I));
@@ -187,7 +187,7 @@ package body Tk.TtkWidget is
    begin
       Execute_Widget_Command
         (Widget, "instate", To_Lower(Ttk_State_Type'Image(State)));
-      if Tcl_GetResult(Tk_Interp(Widget)) = 1 then
+      if Tcl_Get_Result(Tk_Interp(Widget)) = 1 then
          return True;
       else
          return False;
@@ -218,7 +218,7 @@ package body Tk.TtkWidget is
       Tokens: Slice_Set;
    begin
       Execute_Widget_Command(Widget, "state");
-      Create(Tokens, Tcl_GetResult, " ");
+      Create(Tokens, Tcl_Get_Result, " ");
       return States: Ttk_State_Array(1 .. Natural(Slice_Count(Tokens))) do
          for I in 1 .. Slice_Count(Tokens) loop
             States(Positive(I)) :=

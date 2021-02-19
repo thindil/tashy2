@@ -77,7 +77,7 @@ package body Tk.Grid is
    function Anchor(Master: Tk_Widget) return Directions_Type is
    begin
       Tcl_Eval("grid anchor " & Tk_PathName(Master), Tk_Interp(Master));
-      return Directions_Type'Value(Tcl_GetResult);
+      return Directions_Type'Value(Tcl_Get_Result);
    end Anchor;
 
    function BBox
@@ -119,7 +119,7 @@ package body Tk.Grid is
       Tcl_Eval
         ("grid bbox " & Tk_PathName(Master) & To_String(Options),
          Tk_Interp(Master));
-      Create(Tokens, Tcl_GetResult, " ");
+      Create(Tokens, Tcl_Get_Result, " ");
       return Coords: BBox_Array do
          for I in 1 .. 4 loop
             Coords(I) := Natural'Value(Slice(Tokens, Slice_Number(I)));
@@ -200,7 +200,7 @@ package body Tk.Grid is
         ("grid " & ConfigType & "configure " & Tk_PathName(Master) &
          Natural'Image(Index) & " -" & Name,
          Tk_Interp(Master));
-      return Pixel_Data_Value(Tcl_GetResult(Tk_Interp(Master)));
+      return Pixel_Data_Value(Tcl_Get_Result(Tk_Interp(Master)));
    end Get_Value;
 
    -- ****if* Grid/Grid.Get_Value_(Tcl_String)
@@ -228,7 +228,7 @@ package body Tk.Grid is
         ("grid " & ConfigType & "configure " & Tk_PathName(Master) &
          Natural'Image(Index) & " -" & Name,
          Tk_Interp(Master));
-      return To_Tcl_String(Tcl_GetResult(Tk_Interp(Master)));
+      return To_Tcl_String(Tcl_Get_Result(Tk_Interp(Master)));
    end Get_Value;
 
    -- ****if* Grid/Grid.Get_Value_(Extended_Natural)
@@ -256,7 +256,7 @@ package body Tk.Grid is
         ("grid " & ConfigType & "configure " & Tk_PathName(Master) &
          Natural'Image(Index) & " -" & Name,
          Tk_Interp(Master));
-      return Extended_Natural'Value(Tcl_GetResult(Tk_Interp(Master)));
+      return Extended_Natural'Value(Tcl_Get_Result(Tk_Interp(Master)));
    end Get_Value;
 
    function Get_Column_Options
@@ -322,7 +322,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval("grid info " & Tk_PathName(Widget), Tk_Interp(Widget));
       declare
-         Result: constant String := Tcl_GetResult(Tk_Interp(Widget));
+         Result: constant String := Tcl_Get_Result(Tk_Interp(Widget));
       begin
          for I in Options_Names'Range loop
             StartIndex :=
@@ -382,7 +382,7 @@ package body Tk.Grid is
          Positive_Float'Image(Y.Value) &
          To_Lower(Pixel_Unit'Image(Y.Value_Unit)),
          Tk_Interp(Master));
-      Create(Tokens, Tcl_GetResult(Tk_Interp(Master)), " ");
+      Create(Tokens, Tcl_Get_Result(Tk_Interp(Master)), " ");
       return (Extended_Natural'Value(Slice(Tokens, 1)),
          Extended_Natural'Value(Slice(Tokens, 2)));
    end Location;
@@ -398,7 +398,7 @@ package body Tk.Grid is
    function Propagate(Master: Tk_Widget) return Boolean is
    begin
       Tcl_Eval("grid propagate " & Tk_PathName(Master), Tk_Interp(Master));
-      if Tcl_GetResult(Tk_Interp(Master)) = 1 then
+      if Tcl_Get_Result(Tk_Interp(Master)) = 1 then
          return True;
       else
          return False;
@@ -458,7 +458,7 @@ package body Tk.Grid is
       Tokens: Slice_Set;
    begin
       Tcl_Eval("grid size " & Tk_PathName(Master), Tk_Interp(Master));
-      Create(Tokens, Tcl_GetResult(Tk_Interp(Master)), " ");
+      Create(Tokens, Tcl_Get_Result(Tk_Interp(Master)), " ");
       return (Extended_Natural'Value(Slice(Tokens, 1)),
          Extended_Natural'Value(Slice(Tokens, 2)));
    end Size;
@@ -476,7 +476,7 @@ package body Tk.Grid is
          Append(Options, " -column" & Extended_Natural'Image(Column));
       end if;
       Tcl_Eval("grid slaves " & Tk_PathName(Master) & To_String(Options));
-      Create(Tokens, Tcl_GetResult(Tk_Interp(Master)), " ");
+      Create(Tokens, Tcl_Get_Result(Tk_Interp(Master)), " ");
       return Widgets: Widgets_Array(1 .. Natural(Slice_Count(Tokens))) do
          for I in 1 .. Slice_Count(Tokens) loop
             Widgets(Positive(I)) :=

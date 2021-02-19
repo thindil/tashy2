@@ -48,7 +48,7 @@ package Tcl.Info is
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Unbounded_Strings_Array with
       Pre => Proc_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Arguments", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Arguments", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Procedure_Body
@@ -70,7 +70,7 @@ package Tcl.Info is
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String with
       Pre => Proc_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Procedure_Body", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Procedure_Body", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Commands_Count
@@ -91,7 +91,7 @@ package Tcl.Info is
    function Commands_Count
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Commands_Count", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Commands_Count", Mode => Nominal);
 
       -- ****f* Info/Info.Commands
       -- FUNCTION
@@ -115,7 +115,7 @@ package Tcl.Info is
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Command", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Command", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Complete
@@ -138,7 +138,7 @@ package Tcl.Info is
      (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean with
       Pre => Command'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Complete", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Complete", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Coroutine
@@ -159,7 +159,7 @@ package Tcl.Info is
    function Coroutine
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Coroutine", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Coroutine", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Default
@@ -190,7 +190,7 @@ package Tcl.Info is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean with
       Pre => Proc_Name'Length > 0 and Argument'Length > 0 and
       Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Default", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Default", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.ErrorStack
@@ -210,7 +210,7 @@ package Tcl.Info is
    function ErrorStack
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_ErrorStack", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_ErrorStack", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Exists
@@ -232,7 +232,7 @@ package Tcl.Info is
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Exists", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Exists", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Functions
@@ -258,7 +258,7 @@ package Tcl.Info is
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Functions", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Functions", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Globals
@@ -284,7 +284,7 @@ package Tcl.Info is
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Globals", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Globals", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.HostName
@@ -305,7 +305,7 @@ package Tcl.Info is
    function HostName
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_HostName", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_HostName", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Library
@@ -326,7 +326,7 @@ package Tcl.Info is
    function Library
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Library", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Library", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Locals
@@ -352,7 +352,7 @@ package Tcl.Info is
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Locals", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Locals", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Name_Of_Executable
@@ -371,7 +371,7 @@ package Tcl.Info is
    function Name_Of_Executable
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Name_Of_Executable", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Name_Of_Executable", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Patch_Level
@@ -392,7 +392,7 @@ package Tcl.Info is
    function Patch_Level
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Patch_Level", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Patch_Level", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Procs
@@ -419,7 +419,7 @@ package Tcl.Info is
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Procs", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Procs", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Script
@@ -443,7 +443,7 @@ package Tcl.Info is
      (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Script", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Script", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Tcl_Version
@@ -464,7 +464,7 @@ package Tcl.Info is
    function Tcl_Version
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Tcl_Version", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Tcl_Version", Mode => Nominal);
       -- ****
 
       -- ****f* Info/Info.Vars
@@ -490,7 +490,7 @@ package Tcl.Info is
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Unbounded_Strings_Array with
       Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name =>"Test_Info_Vars", Mode => Nominal);
+      Test_Case => (Name => "Test_Info_Vars", Mode => Nominal);
       -- ****
 
 end Tcl.Info;

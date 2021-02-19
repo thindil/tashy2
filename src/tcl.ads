@@ -154,7 +154,7 @@ package Tcl is
      (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE);
    -- ****
 
-   -- ****f* Tcl/Tcl.Tcl_GetResult_(String)
+   -- ****f* Tcl/Tcl.Tcl_Get_Result_(String)
    -- FUNCTION
    -- Get the result of last Tcl command as string
    -- PARAMETERS
@@ -166,15 +166,15 @@ package Tcl is
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Print the result of the last Tcl command on the default Tcl interpreter
-   -- Ada.Text_IO.Put_Line(Tcl_GetResult);
+   -- Ada.Text_IO.Put_Line(Tcl_Get_Result);
    -- SOURCE
-   function Tcl_GetResult
+   function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_GetResult", Mode => Nominal);
       -- ****
 
-   -- ****f* Tcl/Tcl.Tcl_GetResult_(Integer)
+   -- ****f* Tcl/Tcl.Tcl_Get_Result_(Integer)
    -- FUNCTION
    -- Get the result of last Tcl command as integer
    -- PARAMETERS
@@ -186,15 +186,15 @@ package Tcl is
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Get the result of the last Tcl command on the default Tcl interpreter
-   -- Result := constant Integer := Tcl_GetResult;
+   -- Result := constant Integer := Tcl_Get_Result;
    -- SOURCE
-   function Tcl_GetResult
+   function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer is
-     (Integer'Value(Tcl_GetResult(Interpreter))) with
+     (Integer'Value(Tcl_Get_Result(Interpreter))) with
       Pre => Interpreter /= Null_Interpreter;
       -- ****
 
-   -- ****f* Tcl/Tcl.Tcl_GetResult_(Float)
+   -- ****f* Tcl/Tcl.Tcl_Get_Result_(Float)
    -- FUNCTION
    -- Get the result of last Tcl command as float
    -- PARAMETERS
@@ -206,15 +206,15 @@ package Tcl is
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Get the result of the last Tcl command on the default Tcl interpreter
-   -- Result := constant Float := Tcl_GetResult;
+   -- Result := constant Float := Tcl_Get_Result;
    -- SOURCE
-   function Tcl_GetResult
+   function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Float is
-     (Float'Value(Tcl_GetResult(Interpreter))) with
+     (Float'Value(Tcl_Get_Result(Interpreter))) with
       Pre => Interpreter /= Null_Interpreter;
      -- ****
 
-     -- ****f* Tcl/Tcl.Tcl_SetResult
+     -- ****f* Tcl/Tcl.Tcl_Set_Result
      -- FUNCTION
      -- Set Tcl result value
      -- PARAMETERS
@@ -227,9 +227,9 @@ package Tcl is
      -- 8.6.0 - Added
      -- EXAMPLE
      -- -- Set the Tcl result on the default Tcl interpreter to OK as static result
-     -- Tcl_SetResult("OK");
+     -- Tcl_Set_Result("OK");
      -- SOURCE
-   procedure Tcl_SetResult
+   procedure Tcl_Set_Result
      (Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Result'Length > 0 and Interpreter /= Null_Interpreter,

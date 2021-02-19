@@ -33,7 +33,7 @@ package body Tcl.Lists is
    begin
       if TclSplitList(Interpreter, New_String(List), int(Amount), Values) =
         TCL_ERROR then
-         raise Tcl_Exception with Tcl_GetResult(Interpreter);
+         raise Tcl_Exception with Tcl_Get_Result(Interpreter);
       end if;
       return ArrayList: Array_List(1 .. Amount) do
          for I in ArrayList'Range loop
