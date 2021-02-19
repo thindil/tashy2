@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -26,11 +26,11 @@ package body Tcl is
 
    function Create_Interpreter
      (Default: Boolean := True) return Tcl_Interpreter is
-      function Tcl_CreateInterp return Tcl_Interpreter with
+      function Tcl_Create_Interp return Tcl_Interpreter with
          Import => True,
          Convention => C,
          External_Name => "Tcl_CreateInterp";
-      Interpreter: constant Tcl_Interpreter := Tcl_CreateInterp;
+      Interpreter: constant Tcl_Interpreter := Tcl_Create_Interp;
    begin
       if Interpreter = Null_Interpreter then
          raise Tcl_Exception with "Failed to create Tcl interpreter";
@@ -52,25 +52,25 @@ package body Tcl is
    end Get_Interpreter;
 
    procedure Tcl_Init(Interpreter: Tcl_Interpreter) is
-      function TclInit(interp: Tcl_Interpreter) return int with
+      function Native_Tcl_Init(interp: Tcl_Interpreter) return int with
          Import => True,
          Convention => C,
          External_Name => "Tcl_Init";
    begin
-      if TclInit(Interpreter) = int(Tcl_Results'Pos(TCL_ERROR)) then
+      if Native_Tcl_Init(Interpreter) = int(Tcl_Results'Pos(TCL_ERROR)) then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
    end Tcl_Init;
 
    procedure Tcl_Eval
      (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      function TclEval
+      function Native_Tcl_Eval
         (interp: Tcl_Interpreter; script: chars_ptr) return int with
          Import => True,
          Convention => C,
          External_Name => "Tcl_Eval";
    begin
-      if TclEval(Interpreter, New_String(Script)) =
+      if Native_Tcl_Eval(Interpreter, New_String(Script)) =
         int(Tcl_Results'Pos(TCL_ERROR)) then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
@@ -78,25 +78,25 @@ package body Tcl is
 
    function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
-      function TclGetStringResult
+      function Tcl_Get_String_Result
         (interp: Tcl_Interpreter) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetStringResult";
    begin
-      return Value(TclGetStringResult(Interpreter));
+      return Value(Tcl_Get_String_Result(Interpreter));
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
      (Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      procedure TclSetResult
+      procedure Native_Tcl_Set_Result
         (interp: Tcl_Interpreter; result: chars_ptr; freeProc: int) with
          Import => True,
          Convention => C,
          External_Name => "Tcl_SetResult";
    begin
-      TclSetResult
+      Native_Tcl_Set_Result
         (Interpreter, New_String(Result), Result_Types'Enum_Rep(Result_Type));
    end Tcl_Set_Result;
 

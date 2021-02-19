@@ -136,7 +136,8 @@ package Tcl is
       -- HISTORY
       -- 8.6.0 - Added
       -- SOURCE
-   type Result_Types is (TCL_STATIC, TCL_VOLATILE, TCL_DYNAMIC);
+   type Result_Types is (TCL_STATIC, TCL_VOLATILE, TCL_DYNAMIC) with
+      Default_Value => TCL_STATIC;
    for Result_Types use (TCL_STATIC => 0, TCL_VOLATILE => 1, TCL_DYNAMIC => 3);
    -- ****
 
@@ -151,7 +152,8 @@ package Tcl is
    -- TCL_CONTINUE - Used when a command want to emulate Tcl command continue
    -- SOURCE
    type Tcl_Results is
-     (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE);
+     (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE) with
+      Default_Value => TCL_OK;
    -- ****
 
    -- ****f* Tcl/Tcl.Tcl_Get_Result_(String)
@@ -190,7 +192,7 @@ package Tcl is
    -- SOURCE
    function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer is
-     (Integer'Value(Tcl_Get_Result(Interpreter))) with
+     (Integer'Value(Tcl_Get_Result(Interpreter => Interpreter))) with
       Pre => Interpreter /= Null_Interpreter;
       -- ****
 
@@ -210,7 +212,7 @@ package Tcl is
    -- SOURCE
    function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Float is
-     (Float'Value(Tcl_Get_Result(Interpreter))) with
+     (Float'Value(Tcl_Get_Result(Interpreter => Interpreter))) with
       Pre => Interpreter /= Null_Interpreter;
      -- ****
 
