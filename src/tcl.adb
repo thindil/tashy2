@@ -52,12 +52,13 @@ package body Tcl is
    end Get_Interpreter;
 
    procedure Tcl_Init(Interpreter: Tcl_Interpreter) is
-      function Native_Tcl_Init(interp: Tcl_Interpreter) return int with
+      function Native_Tcl_Init(Interp: Tcl_Interpreter) return int with
          Import => True,
          Convention => C,
          External_Name => "Tcl_Init";
    begin
-      if Native_Tcl_Init(Interpreter) = int(Tcl_Results'Pos(TCL_ERROR)) then
+      if Native_Tcl_Init(Interp => Interpreter) =
+        int(Tcl_Results'Pos(TCL_ERROR)) then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
    end Tcl_Init;
@@ -65,12 +66,13 @@ package body Tcl is
    procedure Tcl_Eval
      (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
       function Native_Tcl_Eval
-        (interp: Tcl_Interpreter; script: chars_ptr) return int with
+        (Interp: Tcl_Interpreter; Script: chars_ptr) return int with
          Import => True,
          Convention => C,
          External_Name => "Tcl_Eval";
    begin
-      if Native_Tcl_Eval(Interpreter, New_String(Script)) =
+      if Native_Tcl_Eval
+          (Interp => Interpreter, Script => New_String(Str => Script)) =
         int(Tcl_Results'Pos(TCL_ERROR)) then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
@@ -79,25 +81,26 @@ package body Tcl is
    function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
       function Tcl_Get_String_Result
-        (interp: Tcl_Interpreter) return chars_ptr with
+        (Interp: Tcl_Interpreter) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetStringResult";
    begin
-      return Value(Tcl_Get_String_Result(Interpreter));
+      return Value(Item => Tcl_Get_String_Result(Interp => Interpreter));
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
      (Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       procedure Native_Tcl_Set_Result
-        (interp: Tcl_Interpreter; result: chars_ptr; freeProc: int) with
+        (Interp: Tcl_Interpreter; Result: chars_ptr; Free_Proc: int) with
          Import => True,
          Convention => C,
          External_Name => "Tcl_SetResult";
    begin
       Native_Tcl_Set_Result
-        (Interpreter, New_String(Result), Result_Types'Enum_Rep(Result_Type));
+        (Interp => Interpreter, Result => New_String(Str => Result),
+         Free_Proc => Result_Types'Enum_Rep(Result_Type));
    end Tcl_Set_Result;
 
 end Tcl;
