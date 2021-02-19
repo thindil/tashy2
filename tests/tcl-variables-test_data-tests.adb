@@ -76,7 +76,8 @@ package body Tcl.Variables.Test_Data.Tests is
 
       Tcl_SetVar("myvar", "2");
       Tcl_Eval("expr 2 + $myvar");
-      Assert(Tcl_GetResult = 4, "Failed to set value of Tcl variable 'myvar'");
+      Assert
+        (Tcl_Get_Result = 4, "Failed to set value of Tcl variable 'myvar'");
 
 --  begin read only
    end Test_Tcl_SetVar_test_tcl_setvar;
@@ -133,7 +134,7 @@ package body Tcl.Variables.Test_Data.Tests is
       Tcl_SetVar2("myarray", "0", "2");
       Tcl_Eval("expr 2 + $myarray(0)");
       Assert
-        (Tcl_GetResult = 4,
+        (Tcl_Get_Result = 4,
          "Failed to set value of Tcl first element in 'myarray'");
 
 --  begin read only

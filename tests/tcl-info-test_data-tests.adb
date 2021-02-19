@@ -205,7 +205,7 @@ package body Tcl.Info.Test_Data.Tests is
 
       Tcl_Eval("info cmdcount");
       Assert
-        (Commands_Count = Tcl_GetResult,
+        (Commands_Count = Tcl_Get_Result,
          "Failed to get amount of available Tcl commands.");
 
 --  begin read only

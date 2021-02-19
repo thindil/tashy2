@@ -71,14 +71,14 @@ package body Tcl.Test_Data.Tests is
    begin
 
       Tcl_Eval("expr 2 + 2");
-      Assert(Tcl_GetResult = "4", "Failed to evaluate Tcl code.");
+      Assert(Tcl_Get_Result = "4", "Failed to evaluate Tcl code.");
 
 --  begin read only
    end Test_Tcl_Eval_test_tcl_eval;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Tcl_GetResult_3875a5_b83d43
+   function Wrap_Test_Tcl_Get_Result_9a7ac3_b83d43
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       begin
@@ -91,8 +91,9 @@ package body Tcl.Test_Data.Tests is
                "req_sloc(tcl.ads:0):Test_Tcl_GetResult test requirement violated");
       end;
       declare
-         Test_Tcl_GetResult_3875a5_b83d43_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_GetResult(Interpreter);
+         Test_Tcl_Get_Result_9a7ac3_b83d43_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Get_Result
+             (Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -103,35 +104,35 @@ package body Tcl.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl.ads:0:):Test_Tcl_GetResult test commitment violated");
          end;
-         return Test_Tcl_GetResult_3875a5_b83d43_Result;
+         return Test_Tcl_Get_Result_9a7ac3_b83d43_Result;
       end;
-   end Wrap_Test_Tcl_GetResult_3875a5_b83d43;
+   end Wrap_Test_Tcl_Get_Result_9a7ac3_b83d43;
 --  end read only
 
 --  begin read only
-   procedure Test_Tcl_GetResult_test_tcl_getresult(Gnattest_T: in out Test);
-   procedure Test_Tcl_GetResult_3875a5_b83d43(Gnattest_T: in out Test) renames
-     Test_Tcl_GetResult_test_tcl_getresult;
---  id:2.2/3875a5a7f66e0974/Tcl_GetResult/1/0/test_tcl_getresult/
-   procedure Test_Tcl_GetResult_test_tcl_getresult(Gnattest_T: in out Test) is
-      function Tcl_GetResult
+   procedure Test_Tcl_Get_Result_test_tcl_getresult(Gnattest_T: in out Test);
+   procedure Test_Tcl_Get_Result_9a7ac3_b83d43(Gnattest_T: in out Test) renames
+     Test_Tcl_Get_Result_test_tcl_getresult;
+--  id:2.2/9a7ac36b6f9d677a/Tcl_Get_Result/1/0/test_tcl_getresult/
+   procedure Test_Tcl_Get_Result_test_tcl_getresult(Gnattest_T: in out Test) is
+      function Tcl_Get_Result
         (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
-        Wrap_Test_Tcl_GetResult_3875a5_b83d43;
+        Wrap_Test_Tcl_Get_Result_9a7ac3_b83d43;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      Tcl_SetResult("2");
-      Assert(Tcl_GetResult = "2", "Failed to get Tcl result");
+      Tcl_Set_Result("2");
+      Assert(Tcl_Get_Result = "2", "Failed to get Tcl result");
 
 --  begin read only
-   end Test_Tcl_GetResult_test_tcl_getresult;
+   end Test_Tcl_Get_Result_test_tcl_getresult;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Tcl_SetResult_e87522_5a72b9
+   procedure Wrap_Test_Tcl_Set_Result_2e8975_5a72b9
      (Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -144,7 +145,7 @@ package body Tcl.Test_Data.Tests is
               (False,
                "req_sloc(tcl.ads:0):Test_Tcl_SetResult test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_SetResult
+      GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Set_Result
         (Result, Result_Type, Interpreter);
       begin
          pragma Assert(True);
@@ -155,30 +156,30 @@ package body Tcl.Test_Data.Tests is
               (False,
                "ens_sloc(tcl.ads:0:):Test_Tcl_SetResult test commitment violated");
       end;
-   end Wrap_Test_Tcl_SetResult_e87522_5a72b9;
+   end Wrap_Test_Tcl_Set_Result_2e8975_5a72b9;
 --  end read only
 
 --  begin read only
-   procedure Test_Tcl_SetResult_test_tcl_setresult(Gnattest_T: in out Test);
-   procedure Test_Tcl_SetResult_e87522_5a72b9(Gnattest_T: in out Test) renames
-     Test_Tcl_SetResult_test_tcl_setresult;
---  id:2.2/e875226c0ec21ff5/Tcl_SetResult/1/0/test_tcl_setresult/
-   procedure Test_Tcl_SetResult_test_tcl_setresult(Gnattest_T: in out Test) is
-      procedure Tcl_SetResult
+   procedure Test_Tcl_Set_Result_test_tcl_setresult(Gnattest_T: in out Test);
+   procedure Test_Tcl_Set_Result_2e8975_5a72b9(Gnattest_T: in out Test) renames
+     Test_Tcl_Set_Result_test_tcl_setresult;
+--  id:2.2/2e8975e68b3f48df/Tcl_Set_Result/1/0/test_tcl_setresult/
+   procedure Test_Tcl_Set_Result_test_tcl_setresult(Gnattest_T: in out Test) is
+      procedure Tcl_Set_Result
         (Result: String; Result_Type: Result_Types := TCL_STATIC;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Tcl_SetResult_e87522_5a72b9;
+        Wrap_Test_Tcl_Set_Result_2e8975_5a72b9;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      Tcl_SetResult("2");
-      Assert(Tcl_GetResult = "2", "Failed to set Tcl result");
+      Tcl_Set_Result("2");
+      Assert(Tcl_Get_Result = "2", "Failed to set Tcl result");
 
 --  begin read only
-   end Test_Tcl_SetResult_test_tcl_setresult;
+   end Test_Tcl_Set_Result_test_tcl_setresult;
 --  end read only
 
 --  begin read only
