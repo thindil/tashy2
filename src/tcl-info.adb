@@ -32,7 +32,7 @@ package body Tcl.Info is
      -- ****
       Tokens: Slice_Set;
    begin
-      Create(Tokens, Tcl_GetResult(Interpreter), " ");
+      Create(Tokens, Tcl_Get_Result(Interpreter), " ");
       if Slice_Count(Tokens) = 0 then
          return (1 => Null_Unbounded_String);
       end if;
@@ -57,14 +57,14 @@ package body Tcl.Info is
       return String is
    begin
       Tcl_Eval("info body " & Proc_Name, Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end Procedure_Body;
 
    function Commands_Count
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
    begin
       Tcl_Eval("info cmdcount", Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end Commands_Count;
 
    function Commands
@@ -80,7 +80,7 @@ package body Tcl.Info is
       return Boolean is
    begin
       Tcl_Eval("info complete " & Command, Interpreter);
-      if Tcl_GetResult(Interpreter) = 1 then
+      if Tcl_Get_Result(Interpreter) = 1 then
          return True;
       else
          return False;
@@ -91,7 +91,7 @@ package body Tcl.Info is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval("info coroutine", Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end Coroutine;
 
    function Default
@@ -101,7 +101,7 @@ package body Tcl.Info is
       Tcl_Eval
         ("info default " & Proc_Name & " " & Argument & " " & Var_Name,
          Interpreter);
-      if Tcl_GetResult(Interpreter) = 1 then
+      if Tcl_Get_Result(Interpreter) = 1 then
          return True;
       else
          return False;
@@ -112,7 +112,7 @@ package body Tcl.Info is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval("info errorstack", Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end ErrorStack;
 
    function Exists
@@ -120,7 +120,7 @@ package body Tcl.Info is
       return Boolean is
    begin
       Tcl_Eval("info exists " & Var_Name, Interpreter);
-      if Tcl_GetResult(Interpreter) = 1 then
+      if Tcl_Get_Result(Interpreter) = 1 then
          return True;
       end if;
       return False;
@@ -146,14 +146,14 @@ package body Tcl.Info is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval("info hostname", Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end HostName;
 
    function Library
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval("info library", Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end Library;
 
    function Locals
@@ -168,14 +168,14 @@ package body Tcl.Info is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval("info nameofexecutable", Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end Name_Of_Executable;
 
    function Patch_Level
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval("info patchlevel", Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end Patch_Level;
 
    function Procs
@@ -191,14 +191,14 @@ package body Tcl.Info is
       return String is
    begin
       Tcl_Eval("info script " & File_Name, Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end Script;
 
    function Tcl_Version
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval("info tclversion", Interpreter);
-      return Tcl_GetResult(Interpreter);
+      return Tcl_Get_Result(Interpreter);
    end Tcl_Version;
 
    function Vars

@@ -187,7 +187,7 @@ package body Tk.Menu is
          Options.Title := Option_Value(Widget, "title");
          Execute_Widget_Command(Widget, "cget", "-type");
          Options.Menu_Type :=
-           Menu_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
+           Menu_Types'Value(Tcl_Get_Result(Tk_Interp(Widget)));
       end return;
    end Get_Options;
 
@@ -259,13 +259,13 @@ package body Tk.Menu is
       begin
          Execute_Widget_Command
            (Widget, "entrycget", To_Ada_String(Index) & " -" & Name);
-         return To_Tcl_String(Tcl_GetResult(Tk_Interp(Widget)));
+         return To_Tcl_String(Tcl_Get_Result(Tk_Interp(Widget)));
       end Item_Value;
       function Item_Value(Name: String) return Extended_Boolean is
       begin
          Execute_Widget_Command
            (Widget, "entrycget", To_Ada_String(Index) & " -" & Name);
-         if Tcl_GetResult = 1 then
+         if Tcl_Get_Result = 1 then
             return TRUE;
          end if;
          return FALSE;
@@ -273,7 +273,7 @@ package body Tk.Menu is
    begin
       return Options: Menu_Item_Options do
          Execute_Widget_Command(Widget, "type", To_Ada_String(Index));
-         Item_Type := Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
+         Item_Type := Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Widget)));
          Options.Active_Background := Item_Value("activebackground");
          Options.Active_Foreground := Item_Value("activeforeground");
          Options.Accelerator := Item_Value("accelerator");
@@ -284,7 +284,7 @@ package body Tk.Menu is
          Execute_Widget_Command
            (Widget, "entrycget", To_Ada_String(Index) & " -compound");
          Options.Compound :=
-           Place_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+           Place_Type'Value(Tcl_Get_Result(Tk_Interp(Widget)));
          Options.Font := Item_Value("font");
          Options.Foreground := Item_Value("foreground");
          Options.Hide_Margin := Item_Value("hidemargin");
@@ -292,18 +292,18 @@ package body Tk.Menu is
          Options.Label := Item_Value("label");
          Execute_Widget_Command
            (Widget, "entrycget", To_Ada_String(Index) & " -state");
-         Options.State := State_Type'Value(Tcl_GetResult(Tk_Interp(Widget)));
+         Options.State := State_Type'Value(Tcl_Get_Result(Tk_Interp(Widget)));
          Execute_Widget_Command
            (Widget, "entrycget", To_Ada_String(Index) & " -underline");
          Options.UnderLine :=
-           Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
+           Extended_Natural(Integer'(Tcl_Get_Result(Tk_Interp(Widget))));
          case Item_Type is
             when CASCADE =>
                Execute_Widget_Command
                  (Widget, "entrycget", To_Ada_String(Index) & " -menu");
                Options.Menu :=
                  Get_Widget
-                   (Tcl_GetResult(Tk_Interp(Widget)), Tk_Interp(Widget));
+                   (Tcl_Get_Result(Tk_Interp(Widget)), Tk_Interp(Widget));
             when CHECKBUTTON | RADIOBUTTON =>
                Options.Indicator_On := Item_Value("inditatoron");
                Options.Select_Color := Item_Value("selectcolor");
@@ -348,7 +348,8 @@ package body Tk.Menu is
         (Widget, "entryconfigure",
          To_Ada_String(Index) & " " &
          Item_Options_To_String
-           (Options, Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)))));
+           (Options,
+            Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Widget)))));
    end Entry_Configure;
 
    procedure Entry_Configure
@@ -363,7 +364,8 @@ package body Tk.Menu is
         (Widget, "entryconfigure",
          New_Index & " " &
          Item_Options_To_String
-           (Options, Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)))));
+           (Options,
+            Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Widget)))));
    end Entry_Configure;
 
    procedure Entry_Configure
@@ -375,27 +377,28 @@ package body Tk.Menu is
         (Widget, "entryconfigure",
          To_Lower(Menu_Item_Indexes'Image(Index)) & " " &
          Item_Options_To_String
-           (Options, Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)))));
+           (Options,
+            Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Widget)))));
    end Entry_Configure;
 
    function Index
      (Widget: Tk_Menu; Index: Tcl_String) return Extended_Natural is
    begin
       Execute_Widget_Command(Widget, "index", To_Ada_String(Index));
-      if Tcl_GetResult(Tk_Interp(Widget)) = "none" then
+      if Tcl_Get_Result(Tk_Interp(Widget)) = "none" then
          return -1;
       end if;
-      return Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
+      return Extended_Natural(Integer'(Tcl_Get_Result(Tk_Interp(Widget))));
    end Index;
 
    function Index(Widget: Tk_Menu; Index: Natural) return Extended_Natural is
    begin
       Execute_Widget_Command
         (Widget, "index", "@" & Trim(Natural'Image(Index), Left));
-      if Tcl_GetResult(Tk_Interp(Widget)) = "none" then
+      if Tcl_Get_Result(Tk_Interp(Widget)) = "none" then
          return -1;
       end if;
-      return Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
+      return Extended_Natural(Integer'(Tcl_Get_Result(Tk_Interp(Widget))));
    end Index;
 
    function Index
@@ -403,10 +406,10 @@ package body Tk.Menu is
    begin
       Execute_Widget_Command
         (Widget, "index", To_Lower(Menu_Item_Indexes'Image(Index)));
-      if Tcl_GetResult(Tk_Interp(Widget)) = "none" then
+      if Tcl_Get_Result(Tk_Interp(Widget)) = "none" then
          return -1;
       end if;
-      return Extended_Natural(Integer'(Tcl_GetResult(Tk_Interp(Widget))));
+      return Extended_Natural(Integer'(Tcl_Get_Result(Tk_Interp(Widget))));
    end Index;
 
    procedure Insert
@@ -467,7 +470,7 @@ package body Tk.Menu is
    function Invoke(Widget: Tk_Menu; Index: Tcl_String) return String is
    begin
       Invoke(Widget, Index);
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end Invoke;
 
    function Invoke
@@ -475,13 +478,13 @@ package body Tk.Menu is
       return String is
    begin
       Invoke(Widget, Index, Is_Index);
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end Invoke;
 
    function Invoke(Widget: Tk_Menu; Index: Menu_Item_Indexes) return String is
    begin
       Invoke(Widget, Index);
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end Invoke;
 
    procedure Post(Widget: Tk_Menu; X, Y: Natural) is
@@ -493,7 +496,7 @@ package body Tk.Menu is
    function Post(Widget: Tk_Menu; X, Y: Natural) return String is
    begin
       Post(Widget, X, Y);
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end Post;
 
    procedure PostCascade(Widget: Tk_Menu; Index: Tcl_String) is
@@ -520,7 +523,7 @@ package body Tk.Menu is
      (Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Types is
    begin
       Execute_Widget_Command(Widget, "type", To_Ada_String(Index));
-      return Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      return Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Widget)));
    end Get_Item_Type;
 
    function Get_Item_Type
@@ -531,7 +534,7 @@ package body Tk.Menu is
          else "@" & Trim(Natural'Image(Index), Left));
    begin
       Execute_Widget_Command(Widget, "type", New_Index);
-      return Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      return Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Widget)));
    end Get_Item_Type;
 
    function Get_Item_Type
@@ -539,7 +542,7 @@ package body Tk.Menu is
    begin
       Execute_Widget_Command
         (Widget, "type", To_Lower(Menu_Item_Indexes'Image(Index)));
-      return Menu_Item_Types'Value(Tcl_GetResult(Tk_Interp(Widget)));
+      return Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Widget)));
    end Get_Item_Type;
 
    procedure Unpost(Widget: Tk_Menu) is
@@ -550,7 +553,7 @@ package body Tk.Menu is
    function X_Position(Widget: Tk_Menu; Index: Tcl_String) return Natural is
    begin
       Execute_Widget_Command(Widget, "xposition", To_Ada_String(Index));
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end X_Position;
 
    function X_Position
@@ -561,7 +564,7 @@ package body Tk.Menu is
          else "@" & Trim(Natural'Image(Index), Left));
    begin
       Execute_Widget_Command(Widget, "xposition", New_Index);
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end X_Position;
 
    function X_Position
@@ -569,13 +572,13 @@ package body Tk.Menu is
    begin
       Execute_Widget_Command
         (Widget, "xposition", To_Lower(Menu_Item_Indexes'Image(Index)));
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end X_Position;
 
    function Y_Position(Widget: Tk_Menu; Index: Tcl_String) return Natural is
    begin
       Execute_Widget_Command(Widget, "yposition", To_Ada_String(Index));
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end Y_Position;
 
    function Y_Position
@@ -586,7 +589,7 @@ package body Tk.Menu is
          else "@" & Trim(Natural'Image(Index), Left));
    begin
       Execute_Widget_Command(Widget, "yposition", New_Index);
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end Y_Position;
 
    function Y_Position
@@ -594,7 +597,7 @@ package body Tk.Menu is
    begin
       Execute_Widget_Command
         (Widget, "yposition", To_Lower(Menu_Item_Indexes'Image(Index)));
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end Y_Position;
 
 end Tk.Menu;

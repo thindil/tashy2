@@ -146,7 +146,7 @@ package body Tk.Button is
    function Invoke(Widget: Tk_Button) return String is
    begin
       Invoke(Widget);
-      return Tcl_GetResult(Tk_Interp(Widget));
+      return Tcl_Get_Result(Tk_Interp(Widget));
    end Invoke;
 
 end Tk.Button;
