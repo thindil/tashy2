@@ -23,21 +23,26 @@ package body Tcl.Lists is
      (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
       function TclSplitList
-        (interp: Tcl_Interpreter; list: chars_ptr; argcPtr: out int;
-         argvPtr: out Argv_Pointer.Pointer) return Tcl_Results with
+        (Interp: Tcl_Interpreter; List: chars_ptr; Argc_Ptr: out int;
+         Argv_Ptr: out Argv_Pointer.Pointer) return Tcl_Results with
          Import => True,
          Convention => C,
          External_Name => "Tcl_SplitList";
       Amount: Natural;
       Values: Argv_Pointer.Pointer;
    begin
-      if TclSplitList(Interpreter, New_String(List), int(Amount), Values) =
+      if TclSplitList
+          (Interp => Interpreter, List => New_String(Str => List),
+           Argc_Ptr => int(Amount), Argv_Ptr => Values) =
         TCL_ERROR then
-         raise Tcl_Exception with Tcl_Get_Result(Interpreter);
+         raise Tcl_Exception with Tcl_Get_Result(Interpreter => Interpreter);
       end if;
       return ArrayList: Array_List(1 .. Amount) do
          for I in ArrayList'Range loop
-            ArrayList(I) := To_Unbounded_String(Get_Argument(Values, I - 1));
+            ArrayList(I) :=
+              To_Unbounded_String
+                (Source =>
+                   Get_Argument(Arguments_Pointer => Values, Index => I - 1));
          end loop;
       end return;
    end Split_List;
@@ -46,7 +51,9 @@ package body Tcl.Lists is
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
-      return Split_List(Tcl_GetVar(Name, Interpreter), Interpreter);
+      return Split_List
+          (List => Tcl_GetVar(Var_Name => Name, Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Split_List_Variable;
 
 end Tcl.Lists;
