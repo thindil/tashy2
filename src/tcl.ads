@@ -107,7 +107,7 @@ package Tcl is
    -- FUNCTION
    -- Evaluate the selected Tcl script on the selected Tcl intepreter
    -- PARAMETERS
-   -- Script      - Tcl script to evaluate
+   -- Tcl_Script  - Tcl script to evaluate
    -- Interpreter - Tcl interpreter on which the script will be evaluated.
    --               By default it is current default Tcl interpreter
    -- HISTORY
@@ -117,8 +117,8 @@ package Tcl is
    -- Tcl_Eval("puts {hello world}");
    -- SOURCE
    procedure Tcl_Eval
-     (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Script'Length > 0 and Interpreter /= Null_Interpreter,
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval", Mode => Nominal);
       -- ****
 
@@ -234,7 +234,7 @@ package Tcl is
      -- FUNCTION
      -- Set Tcl result value
      -- PARAMETERS
-     -- Result      - String which will be set as Tcl result
+     -- Tcl_Result  - String which will be set as Tcl result
      -- Result_Type - Type of the result. Can be only TCL_STATIC, TCL_VOLATILE
      --               or TCL_DYNAMIC
      -- Interpreter - Tcl interpreter on which the result will be set. By
@@ -246,9 +246,9 @@ package Tcl is
      -- Tcl_Set_Result("OK");
      -- SOURCE
    procedure Tcl_Set_Result
-     (Result: String; Result_Type: Result_Types := TCL_STATIC;
+     (Tcl_Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Result'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Tcl_Result'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_SetResult", Mode => Nominal);
       -- ****
 
