@@ -30,6 +30,14 @@ package Tcl.Lists is
    type Array_List is array(Positive range <>) of Tcl_String;
    -- ****
 
+   -- ****d* Tcl.Lists/Empty_Array_List
+   -- FUNCTION
+   -- Empty array list constant
+   -- SOURCE
+   Empty_Array_List: constant Array_List(1 .. 0) :=
+     (1 => To_Tcl_String(Source => ""));
+   -- ****
+
    -- ****f* Lists/Lists.Split_List
    -- FUNCTION
    -- Convert Tcl list to Ada array
