@@ -64,7 +64,7 @@ package body Tcl is
    end Tcl_Init;
 
    procedure Tcl_Eval
-     (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
       function Native_Tcl_Eval
         (Interp: Tcl_Interpreter; Script: chars_ptr) return int with
          Import => True,
@@ -72,7 +72,7 @@ package body Tcl is
          External_Name => "Tcl_Eval";
    begin
       if Native_Tcl_Eval
-          (Interp => Interpreter, Script => New_String(Str => Script)) =
+          (Interp => Interpreter, Script => New_String(Str => Tcl_Script)) =
         int(Tcl_Results'Pos(TCL_ERROR)) then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
@@ -90,7 +90,7 @@ package body Tcl is
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
-     (Result: String; Result_Type: Result_Types := TCL_STATIC;
+     (Tcl_Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       procedure Native_Tcl_Set_Result
         (Interp: Tcl_Interpreter; Result: chars_ptr; Free_Proc: int) with
@@ -99,7 +99,7 @@ package body Tcl is
          External_Name => "Tcl_SetResult";
    begin
       Native_Tcl_Set_Result
-        (Interp => Interpreter, Result => New_String(Str => Result),
+        (Interp => Interpreter, Result => New_String(Str => Tcl_Result),
          Free_Proc => Result_Types'Enum_Rep(Result_Type));
    end Tcl_Set_Result;
 
