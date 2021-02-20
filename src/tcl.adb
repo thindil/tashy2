@@ -24,6 +24,20 @@ package body Tcl is
    Default_Interpreter: Tcl_Interpreter := Null_Interpreter;
    -- ****
 
+   procedure Set_Interpreter(Interpreter: Tcl_Interpreter) is
+   begin
+      Default_Interpreter := Interpreter;
+   end Set_Interpreter;
+
+   function Get_Interpreter return Tcl_Interpreter is
+   begin
+      if Default_Interpreter = Null_Interpreter then
+         raise Tcl_Exception
+           with "Default Tcl interpreter is not created yet.";
+      end if;
+      return Default_Interpreter;
+   end Get_Interpreter;
+
    function Create_Interpreter
      (Default: Boolean := True) return Tcl_Interpreter is
       function Tcl_Create_Interp return Tcl_Interpreter with
@@ -36,20 +50,11 @@ package body Tcl is
          raise Tcl_Exception with "Failed to create Tcl interpreter";
       end if;
       if Default then
-         Default_Interpreter := Interpreter;
-         return Default_Interpreter;
+         Set_Interpreter(Interpreter => Interpreter);
+         return Get_Interpreter;
       end if;
       return Interpreter;
    end Create_Interpreter;
-
-   function Get_Interpreter return Tcl_Interpreter is
-   begin
-      if Default_Interpreter = Null_Interpreter then
-         raise Tcl_Exception
-           with "Default Tcl interpreter is not created yet.";
-      end if;
-      return Default_Interpreter;
-   end Get_Interpreter;
 
    procedure Tcl_Init(Interpreter: Tcl_Interpreter) is
       function Native_Tcl_Init(Interp: Tcl_Interpreter) return int with
