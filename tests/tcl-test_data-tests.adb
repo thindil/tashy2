@@ -29,11 +29,12 @@ package body Tcl.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Tcl_Eval_6f41cd_386758
-     (Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   procedure Wrap_Test_Tcl_Eval_6f41cd_5b9cd5
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert(Script'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -41,7 +42,8 @@ package body Tcl.Test_Data.Tests is
               (False,
                "req_sloc(tcl.ads:0):Test_Tcl_Eval test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Eval(Script, Interpreter);
+      GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Eval
+        (Tcl_Script, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -51,19 +53,19 @@ package body Tcl.Test_Data.Tests is
               (False,
                "ens_sloc(tcl.ads:0:):Test_Tcl_Eval test commitment violated");
       end;
-   end Wrap_Test_Tcl_Eval_6f41cd_386758;
+   end Wrap_Test_Tcl_Eval_6f41cd_5b9cd5;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_Eval_test_tcl_eval(Gnattest_T: in out Test);
-   procedure Test_Tcl_Eval_6f41cd_386758(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Eval_6f41cd_5b9cd5(Gnattest_T: in out Test) renames
      Test_Tcl_Eval_test_tcl_eval;
 --  id:2.2/6f41cdb0dd725e03/Tcl_Eval/1/0/test_tcl_eval/
    procedure Test_Tcl_Eval_test_tcl_eval(Gnattest_T: in out Test) is
       procedure Tcl_Eval
-        (Script: String;
+        (Tcl_Script: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Tcl_Eval_6f41cd_386758;
+        Wrap_Test_Tcl_Eval_6f41cd_5b9cd5;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -132,12 +134,13 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Tcl_Set_Result_2e8975_5a72b9
-     (Result: String; Result_Type: Result_Types := TCL_STATIC;
+   procedure Wrap_Test_Tcl_Set_Result_2e8975_cb8f85
+     (Tcl_Result: String; Result_Type: Result_Types := TCL_STATIC;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert(Result'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Tcl_Result'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -146,7 +149,7 @@ package body Tcl.Test_Data.Tests is
                "req_sloc(tcl.ads:0):Test_Tcl_SetResult test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Set_Result
-        (Result, Result_Type, Interpreter);
+        (Tcl_Result, Result_Type, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -156,19 +159,19 @@ package body Tcl.Test_Data.Tests is
               (False,
                "ens_sloc(tcl.ads:0:):Test_Tcl_SetResult test commitment violated");
       end;
-   end Wrap_Test_Tcl_Set_Result_2e8975_5a72b9;
+   end Wrap_Test_Tcl_Set_Result_2e8975_cb8f85;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_Set_Result_test_tcl_setresult(Gnattest_T: in out Test);
-   procedure Test_Tcl_Set_Result_2e8975_5a72b9(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Set_Result_2e8975_cb8f85(Gnattest_T: in out Test) renames
      Test_Tcl_Set_Result_test_tcl_setresult;
 --  id:2.2/2e8975e68b3f48df/Tcl_Set_Result/1/0/test_tcl_setresult/
    procedure Test_Tcl_Set_Result_test_tcl_setresult(Gnattest_T: in out Test) is
       procedure Tcl_Set_Result
-        (Result: String; Result_Type: Result_Types := TCL_STATIC;
+        (Tcl_Result: String; Result_Type: Result_Types := TCL_STATIC;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Tcl_Set_Result_2e8975_5a72b9;
+        Wrap_Test_Tcl_Set_Result_2e8975_cb8f85;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
