@@ -22,29 +22,38 @@ package body Tcl.Lists is
    function Split_List
      (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
-      function TclSplitList
-        (Interp: Tcl_Interpreter; List: chars_ptr; Argc_Ptr: out int;
+      function Tcl_Split_List
+        (Interp: Tcl_Interpreter; Tcl_List: chars_ptr; Argc_Ptr: out int;
          Argv_Ptr: out Argv_Pointer.Pointer) return Tcl_Results with
          Import => True,
          Convention => C,
          External_Name => "Tcl_SplitList";
-      Amount: Natural;
+      Amount: Natural := 0;
       Values: Argv_Pointer.Pointer;
    begin
-      if TclSplitList
-          (Interp => Interpreter, List => New_String(Str => List),
+      if Tcl_Split_List
+          (Interp => Interpreter, Tcl_List => New_String(Str => List),
            Argc_Ptr => int(Amount), Argv_Ptr => Values) =
         TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result(Interpreter => Interpreter);
       end if;
-      return ArrayList: Array_List(1 .. Amount) do
-         for I in ArrayList'Range loop
-            ArrayList(I) :=
+      if Amount = 0 then
+         return Empty_Array_List;
+      end if;
+      Convert_List_To_Array_Block :
+      declare
+         Ada_Array: Array_List(1 .. Amount) :=
+           (others => To_Tcl_String(Source => ""));
+      begin
+         Convert_List_To_Array_Loop :
+         for I in Ada_Array'Range loop
+            Ada_Array(I) :=
               To_Unbounded_String
                 (Source =>
                    Get_Argument(Arguments_Pointer => Values, Index => I - 1));
-         end loop;
-      end return;
+         end loop Convert_List_To_Array_Loop;
+         return Ada_Array;
+      end Convert_List_To_Array_Block;
    end Split_List;
 
    function Split_List_Variable
