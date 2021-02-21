@@ -12,16 +12,19 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Interfaces.C; use Interfaces.C;
-with Interfaces.C.Strings; use Interfaces.C.Strings;
-with Tcl.Commands; use Tcl.Commands;
-with Tcl.Variables; use Tcl.Variables;
+with Interfaces.C;
+with Interfaces.C.Strings;
+with Tcl.Commands;
+with Tcl.Variables;
 
 package body Tcl.Lists is
 
    function Split_List
      (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
+      use Interfaces.C;
+      use Interfaces.C.Strings;
+      use Tcl.Commands;
       function Tcl_Split_List
         (Interp: Tcl_Interpreter; Tcl_List: chars_ptr; Argc_Ptr: out int;
          Argv_Ptr: out Argv_Pointer.Pointer) return Tcl_Results with
@@ -59,6 +62,7 @@ package body Tcl.Lists is
    function Split_List_Variable
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
+      use Tcl.Variables;
    begin
       return Split_List
           (List => Tcl_GetVar(Var_Name => Name, Interpreter => Interpreter),
