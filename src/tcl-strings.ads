@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 -- ****h* Tcl/Strings
 -- FUNCTION
@@ -28,7 +28,14 @@ package Tcl.Strings is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Tcl_String is new Ada.Strings.Unbounded.Unbounded_String;
+   type Tcl_String is new Unbounded_String;
+   -- ****
+
+   -- ****d* Tcl.Strings/Null_Tcl_String
+   -- FUNCTION
+   -- Empty Tcl_String
+   -- SOURCE
+   Null_Tcl_String: constant Tcl_String := Tcl_String(Null_Unbounded_String);
    -- ****
 
    -- ****f* Strings/Strings.To_Tcl_String
