@@ -21,22 +21,25 @@ package body Tcl.Strings is
       New_String: Tcl_String;
       Element_Index: Natural := 1;
    begin
-      Append(New_String, Source);
-      if Index(New_String, " ") = 0 then
+      Append(Source => New_String, New_Item => Source);
+      if Index(Source => New_String, Pattern => " ") = 0 then
          return New_String;
       end if;
       if Evaluate then
          loop
-            Element_Index := Index(New_String, """", Element_Index);
+            Element_Index :=
+              Index
+                (Source => New_String, Pattern => """", From => Element_Index);
             exit when Element_Index = 0;
-            Insert(New_String, Element_Index, "\");
+            Insert
+              (Source => New_String, Before => Element_Index, New_Item => "\");
             Element_Index := Element_Index + 2;
          end loop;
-         Insert(New_String, 1, """");
-         Append(New_String, """");
+         Insert(Source => New_String, Before => 1, New_Item => """");
+         Append(Source => New_String, New_Item => """");
       else
-         Insert(New_String, 1, "{");
-         Append(New_String, "}");
+         Insert(Source => New_String, Before => 1, New_Item => "{");
+         Append(Source => New_String, New_Item => "}");
       end if;
       return New_String;
    end To_Tcl_String;
