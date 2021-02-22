@@ -11,10 +11,10 @@ package Tcl.Strings.Test_Data.Tests is
    null record;
 
    procedure Test_To_Tcl_String_05e111_cc0b40(Gnattest_T: in out Test);
-   --  tcl-strings.ads:52:4:To_Tcl_String:Test_To_Tcl_String
+   --  tcl-strings.ads:59:4:To_Tcl_String:Test_To_Tcl_String
 
    procedure Test_To_Ada_String_9fab6f_7961da(Gnattest_T: in out Test);
-   --  tcl-strings.ads:70:4:To_Ada_String:Test_To_Ada_String
+   --  tcl-strings.ads:77:4:To_Ada_String:Test_To_Ada_String
 
 end Tcl.Strings.Test_Data.Tests;
 --  end read only
