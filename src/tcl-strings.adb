@@ -12,13 +12,13 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Maps; use Ada.Strings.Maps;
+with Ada.Strings.Maps;
 
 package body Tcl.Strings is
 
    function To_Tcl_String
      (Source: String; Evaluate: Boolean := False) return Tcl_String is
-      New_String: Tcl_String;
+      New_String: Tcl_String := Null_Tcl_String;
       Element_Index: Natural := 1;
    begin
       Append(Source => New_String, New_Item => Source);
@@ -26,15 +26,16 @@ package body Tcl.Strings is
          return New_String;
       end if;
       if Evaluate then
+         Evaluated_String_Loop :
          loop
             Element_Index :=
               Index
                 (Source => New_String, Pattern => """", From => Element_Index);
-            exit when Element_Index = 0;
+            exit Evaluated_String_Loop when Element_Index = 0;
             Insert
               (Source => New_String, Before => Element_Index, New_Item => "\");
             Element_Index := Element_Index + 2;
-         end loop;
+         end loop Evaluated_String_Loop;
          Insert(Source => New_String, Before => 1, New_Item => """");
          Append(Source => New_String, New_Item => """");
       else
@@ -45,6 +46,7 @@ package body Tcl.Strings is
    end To_Tcl_String;
 
    function To_Ada_String(Source: Tcl_String) return String is
+      use Ada.Strings.Maps;
       New_String: Tcl_String := Source;
       Element_Index: Natural := 1;
    begin
@@ -59,17 +61,18 @@ package body Tcl.Strings is
          Trim
            (Source => New_String, Left => To_Set(Sequence => """"),
             Right => To_Set(Sequence => """"));
+         Remove_Quotes_Loop :
          loop
             Element_Index :=
               Index
                 (Source => New_String, Pattern => "\""",
                  From => Element_Index);
-            exit when Element_Index = 0;
+            exit Remove_Quotes_Loop when Element_Index = 0;
             Delete
               (Source => New_String, From => Element_Index,
                Through => Element_Index);
             Element_Index := Element_Index + 1;
-         end loop;
+         end loop Remove_Quotes_Loop;
       end if;
       return Slice
           (Source => New_String, Low => 1,
