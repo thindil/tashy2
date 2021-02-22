@@ -48,21 +48,32 @@ package body Tcl.Strings is
       New_String: Tcl_String := Source;
       Element_Index: Natural := 1;
    begin
-      if Length(Source) = 0 then
+      if Length(Source => Source) = 0 then
          return "";
       end if;
-      if Element(New_String, 1) = '{' then
-         Trim(New_String, To_Set("{"), To_Set("}"));
-      elsif Element(New_String, 1) = '"' then
-         Trim(New_String, To_Set(""""), To_Set(""""));
+      if Element(Source => New_String, Index => 1) = '{' then
+         Trim
+           (Source => New_String, Left => To_Set(Sequence => "{"),
+            Right => To_Set(Sequence => "}"));
+      elsif Element(Source => New_String, Index => 1) = '"' then
+         Trim
+           (Source => New_String, Left => To_Set(Sequence => """"),
+            Right => To_Set(Sequence => """"));
          loop
-            Element_Index := Index(New_String, "\""", Element_Index);
+            Element_Index :=
+              Index
+                (Source => New_String, Pattern => "\""",
+                 From => Element_Index);
             exit when Element_Index = 0;
-            Delete(New_String, Element_Index, Element_Index);
+            Delete
+              (Source => New_String, From => Element_Index,
+               Through => Element_Index);
             Element_Index := Element_Index + 1;
          end loop;
       end if;
-      return Slice(New_String, 1, Length(New_String));
+      return Slice
+          (Source => New_String, Low => 1,
+           High => Length(Source => New_String));
    end To_Ada_String;
 
 end Tcl.Strings;
