@@ -108,12 +108,12 @@ package body Tcl.Info is
       end if;
    end Default;
 
-   function ErrorStack
+   function Error_Stack
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval("info errorstack", Interpreter);
       return Tcl_Get_Result(Interpreter);
-   end ErrorStack;
+   end Error_Stack;
 
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -142,12 +142,12 @@ package body Tcl.Info is
       return Get_Unbounded_Array_Result(Interpreter);
    end Globals;
 
-   function HostName
+   function Host_Name
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval("info hostname", Interpreter);
       return Tcl_Get_Result(Interpreter);
-   end HostName;
+   end Host_Name;
 
    function Library
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
