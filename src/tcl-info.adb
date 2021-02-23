@@ -32,14 +32,20 @@ package body Tcl.Info is
      -- ****
       Tokens: Slice_Set;
    begin
-      Create(Tokens, Tcl_Get_Result(Interpreter), " ");
-      if Slice_Count(Tokens) = 0 then
-         return (1 => Null_Unbounded_String);
+      Create
+        (S => Tokens, From => Tcl_Get_Result(Interpreter => Interpreter),
+         Separators => " ");
+      if Slice_Count(S => Tokens) = 0 then
+         return Empty_Unbounded_Strings_Array;
       end if;
       return
-        Result: Unbounded_Strings_Array(1 .. Positive(Slice_Count(Tokens))) do
-         for I in 1 .. Positive(Slice_Count(Tokens)) loop
-            Result(I) := To_Unbounded_String(Slice(Tokens, Slice_Number(I)));
+        Result: Unbounded_Strings_Array
+          (1 .. Positive(Slice_Count(S => Tokens)))
+      do
+         for I in 1 .. Positive(Slice_Count(S => Tokens)) loop
+            Result(I) :=
+              To_Unbounded_String
+                (Source => Slice(S => Tokens, Index => Slice_Number(I)));
          end loop;
       end return;
    end Get_Unbounded_Array_Result;
@@ -48,23 +54,25 @@ package body Tcl.Info is
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Unbounded_Strings_Array is
    begin
-      Tcl_Eval("info args " & Proc_Name, Interpreter);
-      return Get_Unbounded_Array_Result(Interpreter);
+      Tcl_Eval
+        (Tcl_Script => "info args " & Proc_Name, Interpreter => Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
    end Arguments;
 
    function Procedure_Body
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
    begin
-      Tcl_Eval("info body " & Proc_Name, Interpreter);
-      return Tcl_Get_Result(Interpreter);
+      Tcl_Eval
+        (Tcl_Script => "info body " & Proc_Name, Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Procedure_Body;
 
    function Commands_Count
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
    begin
-      Tcl_Eval("info cmdcount", Interpreter);
-      return Tcl_Get_Result(Interpreter);
+      Tcl_Eval(Tcl_Script => "info cmdcount", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Commands_Count;
 
    function Commands
