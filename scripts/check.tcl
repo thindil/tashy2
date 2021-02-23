@@ -12,11 +12,12 @@ set rootdir [pwd]
 proc checkcode {dir} {
    global rootdir
 
-   exec adactl -f [file join $rootdir scripts rules.aru] {*}[glob -directory $dir *.adb] >@stdout
+   set files [list {*}[glob -directory $dir *.adb]]
    set subdirs [glob -type d -directory $dir -nocomplain *]
    foreach dirname $subdirs {
-      checkcode $dirname
+      set files [list {*}$files {*}[glob -directory $dirname *.adb]]
    }
+   exec adactl -f [file join $rootdir scripts rules.aru] {*}$files >@stdout
 }
 
 exec gprclean -P tashy2.gpr -XLIBRARY_TYPE=static >@stdout
