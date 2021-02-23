@@ -28,6 +28,14 @@ package Tcl.Info is
      array(Positive range <>) of Unbounded_String;
    -- ****
 
+   --****d* Info/Empty_Unbounded_Strings_Array
+   -- FUNCTION
+   -- Empty unbounded strings array constant
+   -- SOURCE
+   Empty_Unbounded_Strings_Array: constant Unbounded_Strings_Array(1 .. 0) :=
+     (others => <>);
+   -- ****
+
    -- ****f* Info/Info.Arguments
    -- FUNCTION
    -- Get the list of available arguments names for the selected Tcl procedure
@@ -193,7 +201,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Default", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.ErrorStack
+      -- ****f* Info/Info.Error_Stack
       -- FUNCTION
       -- Get the call stack of the last error on the selected Tcl interpreter
       -- PARAMETERS
@@ -207,7 +215,7 @@ package Tcl.Info is
       -- -- Get the error call stack on the default interpreter
       -- Error_Stack: constant String := ErrorStack;
       -- SOURCE
-   function ErrorStack
+   function Error_Stack
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_ErrorStack", Mode => Nominal);
@@ -287,7 +295,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Globals", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.HostName
+      -- ****f* Info/Info.Host_Name
       -- FUNCTION
       -- Get the name of the computer on which the function is executed.
       -- PARAMETERS
@@ -302,7 +310,7 @@ package Tcl.Info is
       -- -- Get the name of computer on default Tcl interpreter
       -- Host_Name: constant String := HostName;
       -- SOURCE
-   function HostName
+   function Host_Name
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_HostName", Mode => Nominal);
