@@ -79,16 +79,18 @@ package body Tcl.Info is
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Unbounded_Strings_Array is
    begin
-      Tcl_Eval("info commands " & Pattern, Interpreter);
-      return Get_Unbounded_Array_Result(Interpreter);
+      Tcl_Eval
+        (Tcl_Script => "info commands " & Pattern, Interpreter => Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
    end Commands;
 
    function Complete
      (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
    begin
-      Tcl_Eval("info complete " & Command, Interpreter);
-      if Tcl_Get_Result(Interpreter) = 1 then
+      Tcl_Eval
+        (Tcl_Script => "info complete " & Command, Interpreter => Interpreter);
+      if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
          return True;
       else
          return False;
@@ -98,8 +100,8 @@ package body Tcl.Info is
    function Coroutine
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval("info coroutine", Interpreter);
-      return Tcl_Get_Result(Interpreter);
+      Tcl_Eval(Tcl_Script => "info coroutine", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Coroutine;
 
    function Default
@@ -107,9 +109,10 @@ package body Tcl.Info is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
    begin
       Tcl_Eval
-        ("info default " & Proc_Name & " " & Argument & " " & Var_Name,
-         Interpreter);
-      if Tcl_Get_Result(Interpreter) = 1 then
+        (Tcl_Script =>
+           "info default " & Proc_Name & " " & Argument & " " & Var_Name,
+         Interpreter => Interpreter);
+      if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
          return True;
       else
          return False;
@@ -119,16 +122,17 @@ package body Tcl.Info is
    function Error_Stack
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval("info errorstack", Interpreter);
-      return Tcl_Get_Result(Interpreter);
+      Tcl_Eval(Tcl_Script => "info errorstack", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Error_Stack;
 
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
    begin
-      Tcl_Eval("info exists " & Var_Name, Interpreter);
-      if Tcl_Get_Result(Interpreter) = 1 then
+      Tcl_Eval
+        (Tcl_Script => "info exists " & Var_Name, Interpreter => Interpreter);
+      if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
          return True;
       end if;
       return False;
