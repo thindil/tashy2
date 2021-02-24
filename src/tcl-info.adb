@@ -28,75 +28,69 @@ package body Tcl.Info is
    -- 8.6.0 - Added
    -- SOURCE
    function Get_Unbounded_Array_Result
-     (Interpreter : Tcl_Interpreter) return Unbounded_Strings_Array
-   is
+     (Interpreter: Tcl_Interpreter) return Unbounded_Strings_Array is
       -- ****
-      Tokens : Slice_Set;
+      Tokens: Slice_Set;
    begin
       Create
-        (S => Tokens, From => Tcl_Get_Result (Interpreter => Interpreter),
+        (S => Tokens, From => Tcl_Get_Result(Interpreter => Interpreter),
          Separators => " ");
-      if Slice_Count (S => Tokens) = 0 then
+      if Slice_Count(S => Tokens) = 0 then
          return Empty_Unbounded_Strings_Array;
       end if;
       return
-        Result : Unbounded_Strings_Array
-          (1 .. Positive (Slice_Count (S => Tokens)))
+        Result: Unbounded_Strings_Array
+          (1 .. Positive(Slice_Count(S => Tokens)))
       do
-         for I in 1 .. Positive (Slice_Count (S => Tokens)) loop
-            Result (I) :=
+         for I in 1 .. Positive(Slice_Count(S => Tokens)) loop
+            Result(I) :=
               To_Unbounded_String
-                (Source => Slice (S => Tokens, Index => Slice_Number (I)));
+                (Source => Slice(S => Tokens, Index => Slice_Number(I)));
          end loop;
       end return;
    end Get_Unbounded_Array_Result;
 
    function Arguments
-     (Proc_Name : String; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array
-   is
+     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval
         (Tcl_Script => "info args " & Proc_Name, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result (Interpreter => Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
    end Arguments;
 
    function Procedure_Body
-     (Proc_Name : String; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return String
-   is
+     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
    begin
       Tcl_Eval
         (Tcl_Script => "info body " & Proc_Name, Interpreter => Interpreter);
-      return Tcl_Get_Result (Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Procedure_Body;
 
    function Commands_Count
-     (Interpreter : Tcl_Interpreter := Get_Interpreter) return Natural
-   is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
    begin
-      Tcl_Eval (Tcl_Script => "info cmdcount", Interpreter => Interpreter);
-      return Tcl_Get_Result (Interpreter => Interpreter);
+      Tcl_Eval(Tcl_Script => "info cmdcount", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Commands_Count;
 
    function Commands
-     (Pattern : String := ""; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array
-   is
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval
         (Tcl_Script => "info commands " & Pattern, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result (Interpreter => Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
    end Commands;
 
    function Complete
-     (Command : String; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return Boolean
-   is
+     (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean is
    begin
       Tcl_Eval
         (Tcl_Script => "info complete " & Command, Interpreter => Interpreter);
-      if Tcl_Get_Result (Interpreter => Interpreter) = 1 then
+      if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
          return True;
       else
          return False;
@@ -104,23 +98,21 @@ package body Tcl.Info is
    end Complete;
 
    function Coroutine
-     (Interpreter : Tcl_Interpreter := Get_Interpreter) return String
-   is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval (Tcl_Script => "info coroutine", Interpreter => Interpreter);
-      return Tcl_Get_Result (Interpreter => Interpreter);
+      Tcl_Eval(Tcl_Script => "info coroutine", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Coroutine;
 
    function Default
-     (Proc_Name, Argument, Var_Name : String;
-      Interpreter : Tcl_Interpreter := Get_Interpreter) return Boolean
-   is
+     (Proc_Name, Argument, Var_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
    begin
       Tcl_Eval
         (Tcl_Script =>
            "info default " & Proc_Name & " " & Argument & " " & Var_Name,
          Interpreter => Interpreter);
-      if Tcl_Get_Result (Interpreter => Interpreter) = 1 then
+      if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
          return True;
       else
          return False;
@@ -128,123 +120,113 @@ package body Tcl.Info is
    end Default;
 
    function Error_Stack
-     (Interpreter : Tcl_Interpreter := Get_Interpreter) return String
-   is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval (Tcl_Script => "info errorstack", Interpreter => Interpreter);
-      return Tcl_Get_Result (Interpreter => Interpreter);
+      Tcl_Eval(Tcl_Script => "info errorstack", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Error_Stack;
 
    function Exists
-     (Var_Name : String; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return Boolean
-   is
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean is
    begin
       Tcl_Eval
         (Tcl_Script => "info exists " & Var_Name, Interpreter => Interpreter);
-      if Tcl_Get_Result (Interpreter => Interpreter) = 1 then
+      if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
          return True;
       end if;
       return False;
    end Exists;
 
    function Functions
-     (Pattern : String := ""; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array
-   is
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval
-        (Tcl_Script  => "info functions " & Pattern,
+        (Tcl_Script => "info functions " & Pattern,
          Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result (Interpreter => Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
    end Functions;
 
    function Globals
-     (Pattern : String := ""; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array
-   is
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval
         (Tcl_Script => "info globals " & Pattern, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result (Interpreter => Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
    end Globals;
 
    function Host_Name
-     (Interpreter : Tcl_Interpreter := Get_Interpreter) return String
-   is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval (Tcl_Script => "info hostname", Interpreter => Interpreter);
-      return Tcl_Get_Result (Interpreter => Interpreter);
+      Tcl_Eval(Tcl_Script => "info hostname", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Host_Name;
 
    function Library
-     (Interpreter : Tcl_Interpreter := Get_Interpreter) return String
-   is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval (Tcl_Script => "info library", Interpreter => Interpreter);
-      return Tcl_Get_Result (Interpreter => Interpreter);
+      Tcl_Eval(Tcl_Script => "info library", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Library;
 
    function Locals
-     (Pattern : String := ""; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array
-   is
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbounded_Strings_Array is
    begin
       Tcl_Eval
         (Tcl_Script => "info locals " & Pattern, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result (Interpreter => Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
    end Locals;
 
    function Name_Of_Executable
-     (Interpreter : Tcl_Interpreter := Get_Interpreter) return String
-   is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval
         (Tcl_Script => "info nameofexecutable", Interpreter => Interpreter);
-      return Tcl_Get_Result (Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Name_Of_Executable;
 
    function Patch_Level
-     (Interpreter : Tcl_Interpreter := Get_Interpreter) return String
-   is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval ("info patchlevel", Interpreter);
-      return Tcl_Get_Result (Interpreter);
+      Tcl_Eval(Tcl_Script => "info patchlevel", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Patch_Level;
 
    function Procs
-     (Pattern : String := ""; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array
-   is
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbounded_Strings_Array is
    begin
-      Tcl_Eval ("info procs " & Pattern, Interpreter);
-      return Get_Unbounded_Array_Result (Interpreter);
+      Tcl_Eval
+        (Tcl_Script => "info procs " & Pattern, Interpreter => Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
    end Procs;
 
    function Script
-     (File_Name   : String          := "";
-      Interpreter : Tcl_Interpreter := Get_Interpreter) return String
-   is
+     (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
    begin
-      Tcl_Eval ("info script " & File_Name, Interpreter);
-      return Tcl_Get_Result (Interpreter);
+      Tcl_Eval
+        (Tcl_Script => "info script " & File_Name, Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Script;
 
    function Tcl_Version
-     (Interpreter : Tcl_Interpreter := Get_Interpreter) return String
-   is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval ("info tclversion", Interpreter);
-      return Tcl_Get_Result (Interpreter);
+      Tcl_Eval(Tcl_Script => "info tclversion", Interpreter => Interpreter);
+      return Tcl_Get_Result(Interpreter => Interpreter);
    end Tcl_Version;
 
    function Vars
-     (Pattern : String := ""; Interpreter : Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array
-   is
+     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Unbounded_Strings_Array is
    begin
-      Tcl_Eval ("info vars " & Pattern, Interpreter);
-      return Get_Unbounded_Array_Result (Interpreter);
+      Tcl_Eval
+        (Tcl_Script => "info vars " & Pattern, Interpreter => Interpreter);
+      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
    end Vars;
 
 end Tcl.Info;
