@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with GNAT.String_Split; use GNAT.String_Split;
+with GNAT.String_Split;
 
 package body Tcl.Info is
 
@@ -30,6 +30,7 @@ package body Tcl.Info is
    function Get_Unbounded_Array_Result
      (Interpreter: Tcl_Interpreter) return Unbounded_Strings_Array is
       -- ****
+      use GNAT.String_Split;
       Tokens: Slice_Set;
    begin
       Create
@@ -40,13 +41,14 @@ package body Tcl.Info is
       end if;
       return
         Result: Unbounded_Strings_Array
-          (1 .. Positive(Slice_Count(S => Tokens)))
-      do
+          (1 .. Positive(Slice_Count(S => Tokens))) :=
+          (others => Null_Unbounded_String) do
+         Get_Result_Array_Loop :
          for I in 1 .. Positive(Slice_Count(S => Tokens)) loop
             Result(I) :=
               To_Unbounded_String
                 (Source => Slice(S => Tokens, Index => Slice_Number(I)));
-         end loop;
+         end loop Get_Result_Array_Loop;
       end return;
    end Get_Unbounded_Array_Result;
 
@@ -92,9 +94,8 @@ package body Tcl.Info is
         (Tcl_Script => "info complete " & Command, Interpreter => Interpreter);
       if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
          return True;
-      else
-         return False;
       end if;
+      return False;
    end Complete;
 
    function Coroutine
@@ -114,9 +115,8 @@ package body Tcl.Info is
          Interpreter => Interpreter);
       if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
          return True;
-      else
-         return False;
       end if;
+      return False;
    end Default;
 
    function Error_Stack
