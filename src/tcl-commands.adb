@@ -1,4 +1,4 @@
--- Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -14,14 +14,15 @@
 
 package body Tcl.Commands is
 
-   function Tcl_CreateCommand
-     (Command_Name: String; Proc: Tcl_CmdProc;
+   function Tcl_Create_Command
+     (Command_Name: String; Proc: Tcl_Cmd_Proc;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      DeleteProc: Tcl_CmdDeleteProc := null) return Tcl_Command is
+      Delete_Proc: Tcl_Cmd_Delete_Proc := Null_Tcl_Cmd_Delete_Proc)
+      return Tcl_Command is
 
       function TclCreateCommand
-        (interp: Tcl_Interpreter; cmdName: chars_ptr; proc: Tcl_CmdProc;
-         ClientData: System.Address; deleteproc: Tcl_CmdDeleteProc)
+        (interp: Tcl_Interpreter; cmdName: chars_ptr; proc: Tcl_Cmd_Proc;
+         ClientData: System.Address; deleteproc: Tcl_Cmd_Delete_Proc)
          return Tcl_Command with
          Import => True,
          Convention => C,
@@ -30,8 +31,8 @@ package body Tcl.Commands is
    begin
       return TclCreateCommand
           (Interpreter, New_String(Command_Name), Proc, Null_Address,
-           DeleteProc);
-   end Tcl_CreateCommand;
+           Delete_Proc);
+   end Tcl_Create_Command;
 
    function Get_Argument
      (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String is
