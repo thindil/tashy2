@@ -65,7 +65,7 @@ package body Tcl.Lists is
       use Tcl.Variables;
    begin
       return Split_List
-          (List => Tcl_GetVar(Var_Name => Name, Interpreter => Interpreter),
+          (List => Tcl_Get_Var(Var_Name => Name, Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Split_List_Variable;
 

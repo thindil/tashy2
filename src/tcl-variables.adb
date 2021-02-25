@@ -40,7 +40,7 @@ package body Tcl.Variables is
       return int(Flag);
    end Create_Flag;
 
-   procedure Tcl_SetVar
+   procedure Tcl_Set_Var
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) is
@@ -59,9 +59,9 @@ package body Tcl.Variables is
       if Result'Length = 0 then
          raise Tcl_Exception with "Can't set " & Var_Name & " to " & New_Value;
       end if;
-   end Tcl_SetVar;
+   end Tcl_Set_Var;
 
-   procedure Tcl_SetVar2
+   procedure Tcl_Set_Var2
      (Array_Name, Index_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) is
@@ -82,9 +82,9 @@ package body Tcl.Variables is
            with "Can't set element " & Index_Name & " to " & New_Value &
            " in array " & Array_Name;
       end if;
-   end Tcl_SetVar2;
+   end Tcl_Set_Var2;
 
-   function Tcl_GetVar
+   function Tcl_Get_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return String is
       function TclGetVar
@@ -101,9 +101,9 @@ package body Tcl.Variables is
            with "Can't get value of Tcl variable '" & Var_Name & "'";
       end if;
       return Value(Result);
-   end Tcl_GetVar;
+   end Tcl_Get_Var;
 
-   function Tcl_GetVar2
+   function Tcl_Get_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return String is
@@ -124,9 +124,9 @@ package body Tcl.Variables is
            "' of Tcl array '" & Var_Name & "'";
       end if;
       return Value(Result);
-   end Tcl_GetVar2;
+   end Tcl_Get_Var2;
 
-   procedure Tcl_UnsetVar
+   procedure Tcl_Unset_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) is
       function TclUnsetVar
@@ -140,9 +140,9 @@ package body Tcl.Variables is
         int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
          raise Tcl_Exception with "Can't unset " & Var_Name;
       end if;
-   end Tcl_UnsetVar;
+   end Tcl_Unset_Var;
 
-   procedure Tcl_UnsetVar2
+   procedure Tcl_Unset_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) is
@@ -160,6 +160,6 @@ package body Tcl.Variables is
          raise Tcl_Exception
            with "Can't unset element " & Index_Name & " in array " & Var_Name;
       end if;
-   end Tcl_UnsetVar2;
+   end Tcl_Unset_Var2;
 
 end Tcl.Variables;

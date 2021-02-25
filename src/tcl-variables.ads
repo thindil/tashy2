@@ -40,7 +40,7 @@ package Tcl.Variables is
    type Flags_Array is array(Positive range <>) of Variables_Flags;
    -- ****
 
-   -- ****f* Variables/Variables.Tcl_SetVar
+   -- ****f* Variables/Variables.Tcl_Set_Var
    -- FUNCTION
    -- Set value for the selected Tcl variable
    -- PARAMETERS
@@ -57,9 +57,9 @@ package Tcl.Variables is
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Set the value of the Tcl variable $myvar to 2 on default Tcl interpreter
-   -- Tcl_SetVar("myvar", "2");
+   -- Tcl_Set_Var("myvar", "2");
    -- SOURCE
-   procedure Tcl_SetVar
+   procedure Tcl_Set_Var
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
@@ -67,7 +67,7 @@ package Tcl.Variables is
       Test_Case => (Name => "Test_Tcl_SetVar", Mode => Nominal);
       -- ****
 
-      -- ****f* Variables/Variables.Tcl_SetVar2
+      -- ****f* Variables/Variables.Tcl_Set_Var2
       -- FUNCTION
       -- Set value for the selected Tcl variable in the selected array
       -- PARAMETERS
@@ -85,9 +85,9 @@ package Tcl.Variables is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the value of the third element in Tcl array $myarray to 5 on default Tcl interpreter
-      -- Tcl_SetVar2("myarray", "2", "5");
+      -- Tcl_Set_Var2("myarray", "2", "5");
       -- SOURCE
-   procedure Tcl_SetVar2
+   procedure Tcl_Set_Var2
      (Array_Name, Index_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
@@ -96,7 +96,7 @@ package Tcl.Variables is
       Test_Case => (Name => "Test_Tcl_SetVar2", Mode => Nominal);
       -- ****
 
-      -- ****f* Variables/Variables.Tcl_GetVar_(String)
+      -- ****f* Variables/Variables.Tcl_Get_Var_(String)
       -- FUNCTION
       -- Get the value for the selected Tcl variable as a String
       -- PARAMETERS
@@ -113,16 +113,16 @@ package Tcl.Variables is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the value of the Tcl variable $myvar on default Tcl interpreter
-      -- Value: constant String := Tcl_GetVar("myvar");
+      -- Value: constant String := Tcl_Get_Var("myvar");
       -- SOURCE
-   function Tcl_GetVar
+   function Tcl_Get_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return String with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_GetVar", Mode => Nominal);
       -- ****
 
-      -- ****f* Variables/Variables.Tcl_GetVar_(Integer)
+      -- ****f* Variables/Variables.Tcl_Get_Var_(Integer)
       -- FUNCTION
       -- Get the value for the selected Tcl variable as an Integer
       -- PARAMETERS
@@ -141,14 +141,14 @@ package Tcl.Variables is
       -- -- Get the value of the Tcl variable $myvar on default Tcl interpreter
       -- Value: constant Integer := Tcl_GetVar("myvar");
       -- SOURCE
-   function Tcl_GetVar
+   function Tcl_Get_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return Integer is
-     (Integer'Value(Tcl_GetVar(Var_Name, Interpreter, Flags))) with
+     (Integer'Value(Tcl_Get_Var(Var_Name, Interpreter, Flags))) with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter;
      -- ****
 
-     -- ****f* Variables/Variables.Tcl_GetVar_(Float)
+     -- ****f* Variables/Variables.Tcl_Get_Var_(Float)
      -- FUNCTION
      -- Get the value for the selected Tcl variable as a Float
      -- PARAMETERS
@@ -167,14 +167,14 @@ package Tcl.Variables is
      -- -- Get the value of the Tcl variable $myvar on default Tcl interpreter
      -- Value: constant Float := Tcl_GetVar("myvar");
    -- SOURCE
-   function Tcl_GetVar
+   function Tcl_Get_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return Float is
-     (Float'Value(Tcl_GetVar(Var_Name, Interpreter, Flags))) with
+     (Float'Value(Tcl_Get_Var(Var_Name, Interpreter, Flags))) with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter;
       -- ****
 
-      -- ****f* Variables/Variables.Tcl_GetVar2_(String)
+      -- ****f* Variables/Variables.Tcl_Get_Var2_(String)
       -- FUNCTION
       -- Get the value for the selected Tcl variable in the selected array as String
       -- PARAMETERS
@@ -195,7 +195,7 @@ package Tcl.Variables is
       -- -- Get the value of the third element in the Tcl array $myarray on default Tcl interpreter
       -- Value: constant String := Tcl_GetVar2("myarray", "2");
       -- SOURCE
-   function Tcl_GetVar2
+   function Tcl_Get_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return String with
@@ -204,7 +204,7 @@ package Tcl.Variables is
       Test_Case => (Name => "Test_Tcl_GetVar2", Mode => Nominal);
       -- ****
 
-      -- ****f* Variables/Variables.Tcl_GetVar2_(Integer)
+      -- ****f* Variables/Variables.Tcl_Get_Var2_(Integer)
       -- FUNCTION
       -- Get the value for the selected Tcl variable in the selected array as Integer
       -- PARAMETERS
@@ -223,19 +223,19 @@ package Tcl.Variables is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the value of the third element in the Tcl array $myarray on default Tcl interpreter
-      -- Value: constant Integer := Tcl_GetVar2("myarray", "2");
+      -- Value: constant Integer := Tcl_Get_Var2("myarray", "2");
       -- SOURCE
-   function Tcl_GetVar2
+   function Tcl_Get_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return Integer is
      (Integer'Value
-        (Tcl_GetVar2(Var_Name, Index_Name, Interpreter, Flags))) with
+        (Tcl_Get_Var2(Var_Name, Index_Name, Interpreter, Flags))) with
       Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
       Interpreter /= Null_Interpreter;
      -- ****
 
-     -- ****f* Variables/Variables.Tcl_GetVar2_(Float)
+     -- ****f* Variables/Variables.Tcl_Get_Var2_(Float)
      -- FUNCTION
      -- Get the value for the selected Tcl variable in the selected array as Float
      -- PARAMETERS
@@ -254,18 +254,18 @@ package Tcl.Variables is
      -- 8.6.0 - Added
      -- EXAMPLE
      -- -- Get the value of the third element in the Tcl array $myarray on default Tcl interpreter
-     -- Value: constant Float := Tcl_GetVar2("myarray", "2");
+     -- Value: constant Float := Tcl_Get_Var2("myarray", "2");
      -- SOURCE
-   function Tcl_GetVar2
+   function Tcl_Get_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) return Float is
-     (Float'Value(Tcl_GetVar2(Var_Name, Index_Name, Interpreter, Flags))) with
+     (Float'Value(Tcl_Get_Var2(Var_Name, Index_Name, Interpreter, Flags))) with
       Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
       Interpreter /= Null_Interpreter;
       -- ****
 
-      -- ****f* Variables/Variables.Tcl_UnsetVar
+      -- ****f* Variables/Variables.Tcl_Unset_Var
       -- FUNCTION
       -- Delete the selected Tcl variable
       -- PARAMETERS
@@ -280,16 +280,16 @@ package Tcl.Variables is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Delete the Tcl variable $myvar on default Tcl interpreter
-      -- Tcl_UnsetVar("myvar");
+      -- Tcl_Unset_Var("myvar");
       -- SOURCE
-   procedure Tcl_UnsetVar
+   procedure Tcl_Unset_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_UnsetVar", Mode => Nominal);
       -- ****
 
-      -- ****f* Variables/Variables.Tcl_UnsetVar2
+      -- ****f* Variables/Variables.Tcl_Unset_Var2
       -- FUNCTION
       -- Delete the selected Tcl variable in the selected Tcl array
       -- PARAMETERS
@@ -306,9 +306,9 @@ package Tcl.Variables is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Delete the third element in the Tcl array $myarray on default Tcl interpreter
-      -- Tcl_UnsetVar("myarray", "2");
+      -- Tcl_Unset_Var("myarray", "2");
       -- SOURCE
-   procedure Tcl_UnsetVar2
+   procedure Tcl_Unset_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := (1 => NONE)) with
