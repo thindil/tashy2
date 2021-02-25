@@ -20,24 +20,27 @@ package body Tcl.Commands is
       Delete_Proc: Tcl_Cmd_Delete_Proc := Null_Tcl_Cmd_Delete_Proc)
       return Tcl_Command is
 
-      function TclCreateCommand
-        (interp: Tcl_Interpreter; cmdName: chars_ptr; proc: Tcl_Cmd_Proc;
-         ClientData: System.Address; deleteproc: Tcl_Cmd_Delete_Proc)
+      function Tcl_Create_Command_C
+        (Interp: Tcl_Interpreter; Cmd_Name: chars_ptr; Ada_Proc: Tcl_Cmd_Proc;
+         Client_Data: System.Address; Delete_Proc_Ada: Tcl_Cmd_Delete_Proc)
          return Tcl_Command with
          Import => True,
          Convention => C,
          External_Name => "Tcl_CreateCommand";
 
    begin
-      return TclCreateCommand
-          (Interpreter, New_String(Command_Name), Proc, Null_Address,
-           Delete_Proc);
+      return Tcl_Create_Command_C
+          (Interp => Interpreter, Cmd_Name => New_String(Str => Command_Name),
+           Ada_Proc => Proc, Client_Data => Null_Address,
+           Delete_Proc_Ada => Delete_Proc);
    end Tcl_Create_Command;
 
    function Get_Argument
      (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String is
    begin
-      return Value(Argv_Pointer.Value(Arguments_Pointer)(size_t(Index)));
+      return Value
+          (Item =>
+             Argv_Pointer.Value(Ref => Arguments_Pointer)(size_t(Index)));
    end Get_Argument;
 
 end Tcl.Commands;
