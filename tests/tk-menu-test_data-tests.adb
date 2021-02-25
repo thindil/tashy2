@@ -84,7 +84,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 12"), others => <>));
       Activate(Menu, To_Tcl_String("1"));
       Invoke(Menu, To_Tcl_String("active"));
-      Assert(Tcl_GetVar("myvar") = 12, "Failed to activate menu entry.");
+      Assert(Tcl_Get_Var("myvar") = 12, "Failed to activate menu entry.");
       Destroy(Menu);
 
 --  begin read only
@@ -145,7 +145,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 122"), others => <>));
       Activate(Menu, 1);
       Invoke(Menu, To_Tcl_String("active"));
-      Assert(Tcl_GetVar("myvar") = 122, "Failed to activate menu entry.");
+      Assert(Tcl_Get_Var("myvar") = 122, "Failed to activate menu entry.");
       Destroy(Menu);
 
 --  begin read only
@@ -204,7 +204,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 123"), others => <>));
       Activate(Menu, LAST);
       Invoke(Menu, To_Tcl_String("active"));
-      Assert(Tcl_GetVar("myvar") = 123, "Failed to activate menu entry.");
+      Assert(Tcl_Get_Var("myvar") = 123, "Failed to activate menu entry.");
       Destroy(Menu);
 
 --  begin read only
@@ -266,7 +266,7 @@ package body Tk.Menu.Test_Data.Tests is
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 14"), others => <>));
       Invoke(Menu, To_Tcl_String("1"));
-      Assert(Tcl_GetVar("myvar") = 14, "Failed to add menu entry.");
+      Assert(Tcl_Get_Var("myvar") = 14, "Failed to add menu entry.");
       Destroy(Menu);
 
 --  begin read only
@@ -334,7 +334,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 16"), others => <>));
       CloneMenu := Clone(Menu, ".mynewmenu");
       Invoke(CloneMenu, To_Tcl_String("1"));
-      Assert(Tcl_GetVar("myvar") = 16, "Failed to clone menu.");
+      Assert(Tcl_Get_Var("myvar") = 16, "Failed to clone menu.");
       Destroy(Menu);
 
 --  begin read only
@@ -397,7 +397,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Delete(Menu, To_Tcl_String("1"));
       Invoke(Menu, To_Tcl_String("1"));
-      Assert(Tcl_GetVar("myvar") = 16, "Failed to delete menu entry.");
+      Assert(Tcl_Get_Var("myvar") = 16, "Failed to delete menu entry.");
       Destroy(Menu);
 
 --  begin read only
@@ -460,7 +460,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 182"), others => <>));
       Delete(Menu, 1);
       Invoke(Menu, To_Tcl_String("1"));
-      Assert(Tcl_GetVar("myvar") = 16, "Failed to delete menu entry.");
+      Assert(Tcl_Get_Var("myvar") = 16, "Failed to delete menu entry.");
       Destroy(Menu);
 
 --  begin read only
@@ -523,7 +523,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 183"), others => <>));
       Delete(Menu, LAST);
       Invoke(Menu, To_Tcl_String("1"));
-      Assert(Tcl_GetVar("myvar") = 16, "Failed to delete menu entry.");
+      Assert(Tcl_Get_Var("myvar") = 16, "Failed to delete menu entry.");
       Destroy(Menu);
 
 --  begin read only
@@ -1216,7 +1216,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Invoke(Menu, To_Tcl_String("1"));
       Assert
-        (Tcl_GetVar("myvar") = 20,
+        (Tcl_Get_Var("myvar") = 20,
          "Failed to insert a new entry to the menu with Tcl_String index.");
       Destroy(Menu);
 
@@ -1284,7 +1284,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 220"), others => <>));
       Invoke(Menu, To_Tcl_String("1"));
       Assert
-        (Tcl_GetVar("myvar") = 220,
+        (Tcl_Get_Var("myvar") = 220,
          "Failed to insert a new entry to the menu with Natural index.");
       Destroy(Menu);
 
@@ -1352,7 +1352,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 230"), others => <>));
       Invoke(Menu, LAST);
       Assert
-        (Tcl_GetVar("myvar") = 230,
+        (Tcl_Get_Var("myvar") = 230,
          "Failed to insert a new entry to the menu with Menu_Item_Indexes index.");
       Destroy(Menu);
 
@@ -1412,7 +1412,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Invoke(Menu, To_Tcl_String("1"));
       Assert
-        (Tcl_GetVar("myvar") = 18,
+        (Tcl_Get_Var("myvar") = 18,
          "Failed to invoke the menu entry with Tcl_String index.");
       Destroy(Menu);
 
@@ -1474,7 +1474,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 128"), others => <>));
       Invoke(Menu, 1);
       Assert
-        (Tcl_GetVar("myvar") = 128,
+        (Tcl_Get_Var("myvar") = 128,
          "Failed to invoke the menu entry with Natural index.");
       Destroy(Menu);
 
@@ -1534,7 +1534,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 138"), others => <>));
       Invoke(Menu, 1);
       Assert
-        (Tcl_GetVar("myvar") = 138,
+        (Tcl_Get_Var("myvar") = 138,
          "Failed to invoke the menu entry with Menu_Item_Indexes index.");
       Destroy(Menu);
 

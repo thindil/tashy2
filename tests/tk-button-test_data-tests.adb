@@ -133,7 +133,7 @@ package body Tk.Button.Test_Data.Tests is
            (Command => To_Tcl_String("set buttonvar 2"), others => <>));
       Invoke(Button);
       Assert
-        (Tcl_GetVar("buttonvar") = 2,
+        (Tcl_Get_Var("buttonvar") = 2,
          "Failed to invoke Tcl command related to the button.");
       Destroy(Button);
 

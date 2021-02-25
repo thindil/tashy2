@@ -680,7 +680,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
       State(Widget, DISABLED);
       In_State(Widget, DISABLED, To_Tcl_String("set myvar true"));
       Assert
-        (Tcl_GetVar("myvar") = "true",
+        (Tcl_Get_Var("myvar") = "true",
          "Failed to run Tcl script on Ttk widget state.");
       Destroy(Widget);
 
