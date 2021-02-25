@@ -43,7 +43,7 @@ package body Tcl.Variables is
    procedure Tcl_Set_Var
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := (1 => NONE)) is
+      Flags: Flags_Array := Default_Flags_Array) is
       function TclSetVar
         (interp: Tcl_Interpreter; varName, newValue: chars_ptr; flags: int)
          return chars_ptr with
@@ -64,7 +64,7 @@ package body Tcl.Variables is
    procedure Tcl_Set_Var2
      (Array_Name, Index_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := (1 => NONE)) is
+      Flags: Flags_Array := Default_Flags_Array) is
       function TclSetVar2
         (interp: Tcl_Interpreter; name1, name2, newValue: chars_ptr;
          flags: int) return chars_ptr with
@@ -86,7 +86,7 @@ package body Tcl.Variables is
 
    function Tcl_Get_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := (1 => NONE)) return String is
+      Flags: Flags_Array := Default_Flags_Array) return String is
       function TclGetVar
         (interp: Tcl_Interpreter; varName: chars_ptr; flags: int)
          return chars_ptr with
@@ -106,7 +106,7 @@ package body Tcl.Variables is
    function Tcl_Get_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := (1 => NONE)) return String is
+      Flags: Flags_Array := Default_Flags_Array) return String is
       function TclGetVar2
         (interp: Tcl_Interpreter; varName, indexName: chars_ptr; flags: int)
          return chars_ptr with
@@ -128,7 +128,7 @@ package body Tcl.Variables is
 
    procedure Tcl_Unset_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := (1 => NONE)) is
+      Flags: Flags_Array := Default_Flags_Array) is
       function TclUnsetVar
         (interp: Tcl_Interpreter; varName: chars_ptr; flags: int)
          return int with
@@ -145,7 +145,7 @@ package body Tcl.Variables is
    procedure Tcl_Unset_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := (1 => NONE)) is
+      Flags: Flags_Array := Default_Flags_Array) is
       function TclUnsetVar2
         (interp: Tcl_Interpreter; varName, indexName: chars_ptr; flags: int)
          return int with
