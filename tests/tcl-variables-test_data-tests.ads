@@ -11,23 +11,23 @@ package Tcl.Variables.Test_Data.Tests is
      .Test with
    null record;
 
-   procedure Test_Tcl_SetVar_d4c1f4_572e53(Gnattest_T: in out Test);
-   --  tcl-variables.ads:62:4:Tcl_SetVar:Test_Tcl_SetVar
+   procedure Test_Tcl_Set_Var_524f28_572e53(Gnattest_T: in out Test);
+   --  tcl-variables.ads:76:4:Tcl_Set_Var:Test_Tcl_SetVar
 
-   procedure Test_Tcl_SetVar2_9e0960_e29f6c(Gnattest_T: in out Test);
-   --  tcl-variables.ads:90:4:Tcl_SetVar2:Test_Tcl_SetVar2
+   procedure Test_Tcl_Set_Var2_256ebf_e29f6c(Gnattest_T: in out Test);
+   --  tcl-variables.ads:104:4:Tcl_Set_Var2:Test_Tcl_SetVar2
 
-   procedure Test_Tcl_GetVar_b21ebb_45f6e9(Gnattest_T: in out Test);
-   --  tcl-variables.ads:118:4:Tcl_GetVar:Test_Tcl_GetVar
+   procedure Test_Tcl_Get_Var_ea64a1_45f6e9(Gnattest_T: in out Test);
+   --  tcl-variables.ads:132:4:Tcl_Get_Var:Test_Tcl_GetVar
 
-   procedure Test_Tcl_GetVar2_3c5d8f_601542(Gnattest_T: in out Test);
-   --  tcl-variables.ads:198:4:Tcl_GetVar2:Test_Tcl_GetVar2
+   procedure Test_Tcl_Get_Var2_430f71_601542(Gnattest_T: in out Test);
+   --  tcl-variables.ads:218:4:Tcl_Get_Var2:Test_Tcl_GetVar2
 
-   procedure Test_Tcl_UnsetVar_7edf4a_5d27f9(Gnattest_T: in out Test);
-   --  tcl-variables.ads:285:4:Tcl_UnsetVar:Test_Tcl_UnsetVar
+   procedure Test_Tcl_Unset_Var_044aaf_5d27f9(Gnattest_T: in out Test);
+   --  tcl-variables.ads:310:4:Tcl_Unset_Var:Test_Tcl_UnsetVar
 
-   procedure Test_Tcl_UnsetVar2_39807d_618eb3(Gnattest_T: in out Test);
-   --  tcl-variables.ads:311:4:Tcl_UnsetVar2:Test_Tcl_UnsetVar2
+   procedure Test_Tcl_Unset_Var2_e9c900_618eb3(Gnattest_T: in out Test);
+   --  tcl-variables.ads:336:4:Tcl_Unset_Var2:Test_Tcl_UnsetVar2
 
 end Tcl.Variables.Test_Data.Tests;
 --  end read only

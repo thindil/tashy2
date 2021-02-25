@@ -10,8 +10,8 @@ package Tcl.Commands.Test_Data.Tests is
      .Test with
    null record;
 
-   procedure Test_Tcl_CreateCommand_323eac_b11b8b(Gnattest_T: in out Test);
-   --  tcl-commands.ads:103:4:Tcl_CreateCommand:Test_Tcl_CreateCommand
+   procedure Test_Tcl_Create_Command_5606e9_496635(Gnattest_T: in out Test);
+   --  tcl-commands.ads:125:4:Tcl_Create_Command:Test_Tcl_CreateCommand
 
 end Tcl.Commands.Test_Data.Tests;
 --  end read only

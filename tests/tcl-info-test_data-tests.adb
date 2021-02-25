@@ -442,7 +442,7 @@ package body Tcl.Info.Test_Data.Tests is
          "Failed to get info about no default value in Tcl procedure.");
       if Default("myproc", "arg2", "myvalue") then
          Assert
-           (Tcl_GetVar("myvalue") = 2,
+           (Tcl_Get_Var("myvalue") = 2,
             "Failed to get default value for Tcl procedure.");
       else
          Assert
@@ -556,7 +556,7 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      Tcl_SetVar("myvar", "2");
+      Tcl_Set_Var("myvar", "2");
       Assert(Info.Exists("myvar"), "Failed to find existing variable.");
       Assert
         (not Info.Exists("randomnamevar"),
@@ -740,7 +740,7 @@ package body Tcl.Info.Test_Data.Tests is
    begin
 
       Tcl_Eval("set host [info hostname]");
-      Assert(Host_Name = Tcl_GetVar("host"), "Failed to get the host name.");
+      Assert(Host_Name = Tcl_Get_Var("host"), "Failed to get the host name.");
 
 --  begin read only
    end Test_Host_Name_test_info_hostname;
@@ -794,7 +794,7 @@ package body Tcl.Info.Test_Data.Tests is
 
       Tcl_Eval("set library [info library]");
       Assert
-        (Library = Tcl_GetVar("library"),
+        (Library = Tcl_Get_Var("library"),
          "Failed to get the path to Tcl library.");
 
 --  begin read only
@@ -916,7 +916,7 @@ package body Tcl.Info.Test_Data.Tests is
 
       Tcl_Eval("set nameofexec [info nameofexecutable]");
       Assert
-        (Name_Of_Executable = Tcl_GetVar("nameofexec"),
+        (Name_Of_Executable = Tcl_Get_Var("nameofexec"),
          "Failed to get the name of executable.");
 
 --  begin read only
@@ -972,7 +972,7 @@ package body Tcl.Info.Test_Data.Tests is
 
       Tcl_Eval("set patch [info patchlevel]");
       Assert
-        (Patch_Level = Tcl_GetVar("patch"),
+        (Patch_Level = Tcl_Get_Var("patch"),
          "Failed to get the library patch level.");
 
 --  begin read only
@@ -1146,7 +1146,7 @@ package body Tcl.Info.Test_Data.Tests is
 
       Tcl_Eval("set version [info tclversion]");
       Assert
-        (Tcl_Version = Tcl_GetVar("version"),
+        (Tcl_Version = Tcl_Get_Var("version"),
          "Failed to get the Tcl version.");
 
 --  begin read only
