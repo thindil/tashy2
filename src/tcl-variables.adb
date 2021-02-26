@@ -138,14 +138,16 @@ package body Tcl.Variables is
    procedure Tcl_Unset_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
-      function TclUnsetVar
-        (interp: Tcl_Interpreter; varName: chars_ptr; flags: int)
+      function Tcl_Unset_Var_C
+        (Interp: Tcl_Interpreter; Var_Name_C: chars_ptr; Flags_C: int)
          return int with
          Import => True,
          Convention => C,
          External_Name => "Tcl_UnsetVar";
    begin
-      if TclUnsetVar(Interpreter, New_String(Var_Name), Create_Flag(Flags)) =
+      if Tcl_Unset_Var_C
+          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
+           Flags_C => Create_Flag(Flags => Flags)) =
         int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
          raise Tcl_Exception with "Can't unset " & Var_Name;
       end if;
@@ -155,16 +157,17 @@ package body Tcl.Variables is
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
-      function TclUnsetVar2
-        (interp: Tcl_Interpreter; varName, indexName: chars_ptr; flags: int)
-         return int with
+      function Tcl_Unset_Var2_C
+        (Interp: Tcl_Interpreter; Var_Name_C, Index_Name_C: chars_ptr;
+         Flags_C: int) return int with
          Import => True,
          Convention => C,
          External_Name => "Tcl_UnsetVar2";
    begin
-      if TclUnsetVar2
-          (Interpreter, New_String(Var_Name), New_String(Index_Name),
-           Create_Flag(Flags)) =
+      if Tcl_Unset_Var2_C
+          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
+           Index_Name_C => New_String(Str => Index_Name),
+           Flags_C => Create_Flag(Flags => Flags)) =
         int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
          raise Tcl_Exception
            with "Can't unset element " & Index_Name & " in array " & Var_Name;
