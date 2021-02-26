@@ -52,10 +52,12 @@ package body Tcl.Variables is
          External_Name => "Tcl_SetVar";
       Result: constant String :=
         Value
-          (Item => Tcl_Set_Var_C
-             (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
-              New_Value_C => New_String(Str => New_Value),
-              Flags_C => Create_Flag(Flags => Flags)));
+          (Item =>
+             Tcl_Set_Var_C
+               (Interp => Interpreter,
+                Var_Name_C => New_String(Str => Var_Name),
+                New_Value_C => New_String(Str => New_Value),
+                Flags_C => Create_Flag(Flags => Flags)));
    begin
       if Result'Length = 0 then
          raise Tcl_Exception with "Can't set " & Var_Name & " to " & New_Value;
@@ -91,36 +93,39 @@ package body Tcl.Variables is
    function Tcl_Get_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return String is
-      function TclGetVar
-        (interp: Tcl_Interpreter; varName: chars_ptr; flags: int)
+      function Tcl_Get_Var_C
+        (Interp: Tcl_Interpreter; Var_Name_C: chars_ptr; Flags_C: int)
          return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetVar";
       Result: constant chars_ptr :=
-        TclGetVar(Interpreter, New_String(Var_Name), Create_Flag(Flags));
+        Tcl_Get_Var_C
+          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
+           Flags_C => Create_Flag(Flags => Flags));
    begin
       if Result = Null_Ptr then
          raise Tcl_Exception
            with "Can't get value of Tcl variable '" & Var_Name & "'";
       end if;
-      return Value(Result);
+      return Value(Item => Result);
    end Tcl_Get_Var;
 
    function Tcl_Get_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return String is
-      function TclGetVar2
-        (interp: Tcl_Interpreter; varName, indexName: chars_ptr; flags: int)
-         return chars_ptr with
+      function Tcl_Get_Var2_C
+        (Interp: Tcl_Interpreter; Var_Name_C, Index_Name_C: chars_ptr;
+         Flags_C: int) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetVar2";
       Result: constant chars_ptr :=
-        TclGetVar2
-          (Interpreter, New_String(Var_Name), New_String(Index_Name),
-           Create_Flag(Flags));
+        Tcl_Get_Var2_C
+          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
+           Index_Name_C => New_String(Str => Index_Name),
+           Flags_C => Create_Flag(Flags => Flags));
    begin
       if Result = Null_Ptr then
          raise Tcl_Exception
