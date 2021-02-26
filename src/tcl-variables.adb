@@ -52,9 +52,10 @@ package body Tcl.Variables is
          External_Name => "Tcl_SetVar";
       Result: constant String :=
         Value
-          (Tcl_Set_Var_C
-             (Interpreter, New_String(Var_Name), New_String(New_Value),
-              Create_Flag(Flags)));
+          (Item => Tcl_Set_Var_C
+             (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
+              New_Value_C => New_String(Str => New_Value),
+              Flags_C => Create_Flag(Flags => Flags)));
    begin
       if Result'Length = 0 then
          raise Tcl_Exception with "Can't set " & Var_Name & " to " & New_Value;
@@ -73,9 +74,12 @@ package body Tcl.Variables is
          External_Name => "Tcl_SetVar2";
       Result: constant String :=
         Value
-          (Tcl_Set_Var2_C
-             (Interpreter, New_String(Array_Name), New_String(Index_Name),
-              New_String(New_Value), Create_Flag(Flags)));
+          (Item =>
+             Tcl_Set_Var2_C
+               (Interp => Interpreter, Name1 => New_String(Str => Array_Name),
+                Name2 => New_String(Str => Index_Name),
+                New_Value_C => New_String(Str => New_Value),
+                Flags_C => Create_Flag(Flags => Flags)));
    begin
       if Result'Length = 0 then
          raise Tcl_Exception
