@@ -44,15 +44,15 @@ package body Tcl.Variables is
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
-      function TclSetVar
-        (interp: Tcl_Interpreter; varName, newValue: chars_ptr; flags: int)
-         return chars_ptr with
+      function Tcl_Set_Var_C
+        (Interp: Tcl_Interpreter; Var_Name_C, New_Value_C: chars_ptr;
+         Flags_C: int) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Tcl_SetVar";
       Result: constant String :=
         Value
-          (TclSetVar
+          (Tcl_Set_Var_C
              (Interpreter, New_String(Var_Name), New_String(New_Value),
               Create_Flag(Flags)));
    begin
@@ -65,15 +65,15 @@ package body Tcl.Variables is
      (Array_Name, Index_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
-      function TclSetVar2
-        (interp: Tcl_Interpreter; name1, name2, newValue: chars_ptr;
-         flags: int) return chars_ptr with
+      function Tcl_Set_Var2_C
+        (Interp: Tcl_Interpreter; Name1, Name2, New_Value_C: chars_ptr;
+         Flags_C: int) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Tcl_SetVar2";
       Result: constant String :=
         Value
-          (TclSetVar2
+          (Tcl_Set_Var2_C
              (Interpreter, New_String(Array_Name), New_String(Index_Name),
               New_String(New_Value), Create_Flag(Flags)));
    begin
