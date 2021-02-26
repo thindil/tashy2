@@ -31,12 +31,13 @@ package body Tcl.Variables is
    function Create_Flag(Flags: Flags_Array) return int is
       -- ****
       type Unsigned_Integer is mod 2**Integer'Size;
-      Flag: Unsigned_Integer :=
-        Unsigned_Integer(Variables_Flags'Enum_Rep(Flags(1)));
+      Default_Unsigned_Integer: constant Unsigned_Integer := 0;
+      Flag: Unsigned_Integer := Default_Unsigned_Integer;
    begin
-      for I in 2 .. Flags'Last loop
-         Flag := Flag or Unsigned_Integer(Variables_Flags'Enum_Rep(Flags(I)));
-      end loop;
+      Set_Flags_Loop:
+      for Value of Flags loop
+         Flag := Flag or Variables_Flags'Enum_Rep(Value);
+      end loop Set_Flags_Loop;
       return int(Flag);
    end Create_Flag;
 
@@ -132,7 +133,7 @@ package body Tcl.Variables is
            with "Can't get value of the element '" & Index_Name &
            "' of Tcl array '" & Var_Name & "'";
       end if;
-      return Value(Result);
+      return Value(Item => Result);
    end Tcl_Get_Var2;
 
    procedure Tcl_Unset_Var
