@@ -10,17 +10,17 @@ package Tk.TtkButton.Test_Data.Tests is
      .Test with
    null record;
 
-   procedure Test_Invoke_05a9d3_5c2570(Gnattest_T: in out Test);
-   --  tk-ttkbutton.ads:197:4:Invoke:Test_Invoke_TtkButton1
+   procedure Test_Invoke_05a9d3_1d715e(Gnattest_T: in out Test);
+   --  tk-ttkbutton.ads:204:4:Invoke:Test_Invoke_TtkButton1
 
-   procedure Test_Invoke_89eee4_820a79(Gnattest_T: in out Test);
-   --  tk-ttkbutton.ads:221:4:Invoke:Test_Invoke_TtkButton2
+   procedure Test_Invoke_89eee4_5d3252(Gnattest_T: in out Test);
+   --  tk-ttkbutton.ads:228:4:Invoke:Test_Invoke_TtkButton2
 
-   procedure Test_Invoke_e2c227_494531(Gnattest_T: in out Test);
-   --  tk-ttkbutton.ads:245:4:Invoke:Test_Invoke_TtkButton3
+   procedure Test_Invoke_e2c227_1db43e(Gnattest_T: in out Test);
+   --  tk-ttkbutton.ads:252:4:Invoke:Test_Invoke_TtkButton3
 
-   procedure Test_Invoke_6e0b2f_49c2e8(Gnattest_T: in out Test);
-   --  tk-ttkbutton.ads:270:4:Invoke:Test_Invoke_TtkButton4
+   procedure Test_Invoke_6e0b2f_ed279d(Gnattest_T: in out Test);
+   --  tk-ttkbutton.ads:277:4:Invoke:Test_Invoke_TtkButton4
 
 end Tk.TtkButton.Test_Data.Tests;
 --  end read only
