@@ -103,13 +103,13 @@ package Tk.TtkButton is
       -- FUNCTION
       -- Create a new Tk button widget with the selected pathname and options
       -- PARAMETERS
-      -- Widget      - Ttk_Button identifier which will be returned
+      -- Button      - Ttk_Button identifier which will be returned
       -- Path_Name   - Tk pathname for the newly created button
       -- Options     - Options for the newly created button
       -- Interpreter - Tcl interpreter on which the button will be created. Can
       --               be empty. Default value is the default Tcl interpreter
       -- OUTPUT
-      -- The Widget parameter as Tk identifier of the newly created button widget
+      -- The Button parameter as Tk identifier of the newly created button widget
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -127,10 +127,10 @@ package Tk.TtkButton is
       -- ttk::button Path_Name Options
       -- SOURCE
    procedure Create
-     (Widget: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
+     (Button: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Widget /= Null_Widget,
+      Post => Button /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkButton2", Mode => Nominal);
       -- ****
 
@@ -138,7 +138,7 @@ package Tk.TtkButton is
       -- FUNCTION
       -- Get all values of Tk options of the selected button
       -- PARAMETERS
-      -- Widget - Ttk_Button which options' values will be taken
+      -- Button - Ttk_Button which options' values will be taken
       -- RESULT
       -- Ttk_Button_Options record with values of the selected button options
       -- HISTORY
@@ -149,10 +149,10 @@ package Tk.TtkButton is
       -- SEE ALSO
       -- TtkButton.Configure
       -- COMMANDS
-      -- Widget configure
+      -- Button configure
       -- SOURCE
-   function Get_Options(Widget: Ttk_Button) return Ttk_Button_Options with
-      Pre => Widget /= Null_Widget,
+   function Get_Options(Button: Ttk_Button) return Ttk_Button_Options with
+      Pre => Button /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TtkButton", Mode => Nominal);
       -- ****
 
@@ -160,7 +160,7 @@ package Tk.TtkButton is
       -- FUNCTION
       -- Set the selected options for the selected button
       -- PARAMETERS
-      -- Widget  - Ttk_Button which options will be set
+      -- Button  - Ttk_Button which options will be set
       -- Options - The record with new values for the button options
       -- HISTORY
       -- 8.6.0 - Added
@@ -170,19 +170,26 @@ package Tk.TtkButton is
       -- SEE ALSO
       -- TtkButton.Get_Options
       -- COMMANDS
-      -- Widget configure Options
+      -- Button configure Options
       -- SOURCE
-   procedure Configure(Widget: Ttk_Button; Options: Ttk_Button_Options) with
-      Pre => Widget /= Null_Widget,
+   procedure Configure(Button: Ttk_Button; Options: Ttk_Button_Options) with
+      Pre => Button /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TtkButton", Mode => Nominal);
       -- ****
+
+      -- ****d* TtkButton/TtkButton.Empty_Ttk_Button_Options
+      -- FUNCTION
+      -- The default options for the Ttk_Button
+      -- SOURCE
+   Default_Ttk_Button_Options: constant Ttk_Button_Options := Ttk_Button_Options'(others => <>);
+   -- ****
 
       -- ****f* TtkButton/TtkButton.Invoke_(procedure)
       -- FUNCTION
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
-      -- Widget - Ttk_Button which the command will be invoked
+      -- Button - Ttk_Button which the command will be invoked
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -192,10 +199,10 @@ package Tk.TtkButton is
       -- TtkButton.Invoke_(function_and_string_result), TtkButton.Invoke_(function_and_integer_result),
       -- TtkButton.Invoke_(function_and_float_result)
       -- COMMANDS
-      -- Widget invoke
+      -- Button invoke
       -- SOURCE
-   procedure Invoke(Widget: Ttk_Button) with
-      Pre => Widget /= Null_Widget,
+   procedure Invoke(Button: Ttk_Button) with
+      Pre => Button /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_TtkButton1", Mode => Nominal);
       -- ****
 
@@ -204,7 +211,7 @@ package Tk.TtkButton is
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
-      -- Widget - Ttk_Button which the command will be invoked
+      -- Button - Ttk_Button which the command will be invoked
       -- RESULT
       -- The string with the return value of the associated Tcl command.
       -- HISTORY
@@ -216,10 +223,10 @@ package Tk.TtkButton is
       -- TtkButton.Invoke_(procedure), TtkButton.Invoke_(function_and_integer_result),
       -- TtkButton.Invoke_(function_and_float_result)
       -- COMMANDS
-      -- Widget invoke
+      -- Button invoke
       -- SOURCE
-   function Invoke(Widget: Ttk_Button) return String with
-      Pre => Widget /= Null_Widget,
+   function Invoke(Button: Ttk_Button) return String with
+      Pre => Button /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_TtkButton2", Mode => Nominal);
       -- ****
 
@@ -228,7 +235,7 @@ package Tk.TtkButton is
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
-      -- Widget - Ttk_Button which the command will be invoked
+      -- Button - Ttk_Button which the command will be invoked
       -- RESULT
       -- The integer return value of the associated Tcl command.
       -- HISTORY
@@ -240,11 +247,11 @@ package Tk.TtkButton is
       -- TtkButton.Invoke_(function_and_string_result), TtkButton.Invoke_(procedure),
       -- TtkButton.Invoke_(function_and_float_result)
       -- COMMANDS
-      -- Widget invoke
+      -- Button invoke
       -- SOURCE
-   function Invoke(Widget: Ttk_Button) return Integer is
-     (Integer'Value(Invoke(Widget))) with
-      Pre => Widget /= Null_Widget,
+   function Invoke(Button: Ttk_Button) return Integer is
+     (Integer'Value(Invoke(Button => Button))) with
+      Pre => Button /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_TtkButton3", Mode => Nominal);
       -- ****
 
@@ -253,7 +260,7 @@ package Tk.TtkButton is
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
-      -- Widget - Ttk_Button which the command will be invoked
+      -- Button - Ttk_Button which the command will be invoked
       -- RESULT
       -- The float return value of the associated Tcl command.
       -- HISTORY
@@ -265,11 +272,11 @@ package Tk.TtkButton is
       -- TtkButton.Invoke_(function_and_string_result), TtkButton.Invoke_(function_and_integer_result),
       -- TtkButton.Invoke_(procedure)
       -- COMMANDS
-      -- Widget invoke
+      -- Button invoke
       -- SOURCE
-   function Invoke(Widget: Ttk_Button) return Float is
-     (Float'Value(Invoke(Widget))) with
-      Pre => Widget /= Null_Widget,
+   function Invoke(Button: Ttk_Button) return Float is
+     (Float'Value(Invoke(Button => Button))) with
+      Pre => Button /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_TtkButton4", Mode => Nominal);
       -- ****
 
