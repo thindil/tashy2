@@ -16,15 +16,15 @@ package Tk.TtkButton.Ttk_Button_Options_Test_Data.Ttk_Button_Options_Tests is
      (Gnattest_T: in out Test_Ttk_Button_Options);
    --  tk-ttkbutton.ads:94:4:Create:Test_Create_TtkButton1
 
-   procedure Test_Create_ebbdc1_80798c
+   procedure Test_Create_ebbdc1_db14c8
      (Gnattest_T: in out Test_Ttk_Button_Options);
    --  tk-ttkbutton.ads:129:4:Create:Test_Create_TtkButton2
 
-   procedure Test_Get_Options_ded36e_d5d981
+   procedure Test_Get_Options_ded36e_addfb4
      (Gnattest_T: in out Test_Ttk_Button_Options);
    --  tk-ttkbutton.ads:154:4:Get_Options:Test_Get_Options_TtkButton
 
-   procedure Test_Configure_0076be_fd49e6
+   procedure Test_Configure_0076be_e2c160
      (Gnattest_T: in out Test_Ttk_Button_Options);
    --  tk-ttkbutton.ads:175:4:Configure:Test_Configure_TtkButton
 

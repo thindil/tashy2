@@ -101,8 +101,8 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Create_ebbdc1_80798c
-     (Widget: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
+   procedure Wrap_Test_Create_ebbdc1_db14c8
+     (Button: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -116,9 +116,9 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
                "req_sloc(tk-ttkbutton.ads:0):Test_Create_TtkButton2 test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.TtkButton.Create
-        (Widget, Path_Name, Options, Interpreter);
+        (Button, Path_Name, Options, Interpreter);
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Button /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -126,23 +126,23 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
               (False,
                "ens_sloc(tk-ttkbutton.ads:0:):Test_Create_TtkButton2 test commitment violated");
       end;
-   end Wrap_Test_Create_ebbdc1_80798c;
+   end Wrap_Test_Create_ebbdc1_db14c8;
 --  end read only
 
 --  begin read only
    procedure Test_2_Create_test_create_ttkbutton2
      (Gnattest_T: in out Test_Ttk_Button_Options);
-   procedure Test_Create_ebbdc1_80798c
+   procedure Test_Create_ebbdc1_db14c8
      (Gnattest_T: in out Test_Ttk_Button_Options) renames
      Test_2_Create_test_create_ttkbutton2;
 --  id:2.2/ebbdc1934f0fa33d/Create/0/0/test_create_ttkbutton2/
    procedure Test_2_Create_test_create_ttkbutton2
      (Gnattest_T: in out Test_Ttk_Button_Options) is
       procedure Create
-        (Widget: out Ttk_Button; Path_Name: String;
+        (Button: out Ttk_Button; Path_Name: String;
          Options: Ttk_Button_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Create_ebbdc1_80798c;
+        Wrap_Test_Create_ebbdc1_db14c8;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -165,11 +165,11 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Options_ded36e_d5d981
-     (Widget: Ttk_Button) return Ttk_Button_Options is
+   function Wrap_Test_Get_Options_ded36e_addfb4
+     (Button: Ttk_Button) return Ttk_Button_Options is
    begin
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Button /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -178,9 +178,9 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
                "req_sloc(tk-ttkbutton.ads:0):Test_Get_Options_TtkButton test requirement violated");
       end;
       declare
-         Test_Get_Options_ded36e_d5d981_Result: constant Ttk_Button_Options :=
+         Test_Get_Options_ded36e_addfb4_Result: constant Ttk_Button_Options :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkButton.Get_Options
-             (Widget);
+             (Button);
       begin
          begin
             pragma Assert(True);
@@ -191,23 +191,23 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
                  (False,
                   "ens_sloc(tk-ttkbutton.ads:0:):Test_Get_Options_TtkButton test commitment violated");
          end;
-         return Test_Get_Options_ded36e_d5d981_Result;
+         return Test_Get_Options_ded36e_addfb4_Result;
       end;
-   end Wrap_Test_Get_Options_ded36e_d5d981;
+   end Wrap_Test_Get_Options_ded36e_addfb4;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Options_test_get_options_ttkbutton
      (Gnattest_T: in out Test_Ttk_Button_Options);
-   procedure Test_Get_Options_ded36e_d5d981
+   procedure Test_Get_Options_ded36e_addfb4
      (Gnattest_T: in out Test_Ttk_Button_Options) renames
      Test_Get_Options_test_get_options_ttkbutton;
 --  id:2.2/ded36e34d54c20f9/Get_Options/1/0/test_get_options_ttkbutton/
    procedure Test_Get_Options_test_get_options_ttkbutton
      (Gnattest_T: in out Test_Ttk_Button_Options) is
       function Get_Options
-        (Widget: Ttk_Button) return Ttk_Button_Options renames
-        Wrap_Test_Get_Options_ded36e_d5d981;
+        (Button: Ttk_Button) return Ttk_Button_Options renames
+        Wrap_Test_Get_Options_ded36e_addfb4;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -234,11 +234,11 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_fd49e6
-     (Widget: Ttk_Button; Options: Ttk_Button_Options) is
+   procedure Wrap_Test_Configure_0076be_e2c160
+     (Button: Ttk_Button; Options: Ttk_Button_Options) is
    begin
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Button /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -247,7 +247,7 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
                "req_sloc(tk-ttkbutton.ads:0):Test_Configure_TtkButton test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.TtkButton.Configure
-        (Widget, Options);
+        (Button, Options);
       begin
          pragma Assert(True);
          null;
@@ -257,21 +257,21 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
               (False,
                "ens_sloc(tk-ttkbutton.ads:0:):Test_Configure_TtkButton test commitment violated");
       end;
-   end Wrap_Test_Configure_0076be_fd49e6;
+   end Wrap_Test_Configure_0076be_e2c160;
 --  end read only
 
 --  begin read only
    procedure Test_Configure_test_configure_ttkbutton
      (Gnattest_T: in out Test_Ttk_Button_Options);
-   procedure Test_Configure_0076be_fd49e6
+   procedure Test_Configure_0076be_e2c160
      (Gnattest_T: in out Test_Ttk_Button_Options) renames
      Test_Configure_test_configure_ttkbutton;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_ttkbutton/
    procedure Test_Configure_test_configure_ttkbutton
      (Gnattest_T: in out Test_Ttk_Button_Options) is
       procedure Configure
-        (Widget: Ttk_Button; Options: Ttk_Button_Options) renames
-        Wrap_Test_Configure_0076be_fd49e6;
+        (Button: Ttk_Button; Options: Ttk_Button_Options) renames
+        Wrap_Test_Configure_0076be_e2c160;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
