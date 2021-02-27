@@ -42,16 +42,16 @@ package Tk is
       Test_Case => (Name => "Test_Tk_Init", Mode => Nominal);
    -- ****
 
-   -- ****f* Tk/Tk.Tk_MainLoop
+   -- ****f* Tk/Tk.Tk_Main_Loop
    -- FUNCTION
    -- Loop for events until all windows are destroyed
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Start the Tk main loop
-   -- Tk_MainLoop;
+   -- Tk_Main_Loop;
    -- SOURCE
-   procedure Tk_MainLoop with
+   procedure Tk_Main_Loop with
       Import => True,
       Convention => C,
       External_Name => "Tk_MainLoop";
