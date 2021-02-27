@@ -12,17 +12,18 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Interfaces.C; use Interfaces.C;
+with Interfaces.C;
 
 package body Tk is
 
    procedure Tk_Init(Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      function TkInit(interp: Tcl_Interpreter) return int with
+      use Interfaces.C;
+      function Tk_Init_C(Interp: Tcl_Interpreter) return int with
          Import => True,
          Convention => C,
          External_Name => "Tk_Init";
    begin
-      if TkInit(Interpreter) = int(Tcl_Results'Pos(TCL_ERROR)) then
+      if Tk_Init_C(Interp => Interpreter) = int(Tcl_Results'Pos(TCL_ERROR)) then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
    end Tk_Init;
