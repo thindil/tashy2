@@ -22,6 +22,6 @@ begin
    Add(Button);
 
    -- Start the main Tk event loop
-   Tk_MainLoop;
+   Tk_Main_Loop;
 
 end HelloWorld;
