@@ -28,22 +28,48 @@ package body Tk.TtkButton is
    -- SOURCE
    function Options_To_String(Options: Ttk_Button_Options) return String is
       -- ****
-      Options_String: Unbounded_String;
+      Options_String: Unbounded_String := Null_Unbounded_String;
    begin
-      Option_Image("class", Options.Class, Options_String);
-      Option_Image("command", Options.Command, Options_String);
-      Option_Image("compound", Options.Compound, Options_String);
-      Option_Image("cursor", Options.Cursor, Options_String);
-      Option_Image("default", Options.Default, Options_String);
-      Option_Image("image", Options.Image, Options_String);
-      Option_Image("state", Options.State, Options_String);
-      Option_Image("style", Options.Style, Options_String);
-      Option_Image("takefocus", Options.Take_Focus, Options_String);
-      Option_Image("text", Options.Text, Options_String);
-      Option_Image("textvariable", Options.Text_Variable, Options_String);
-      Option_Image("underline", Options.Underline, Options_String);
-      Option_Image("width", Options.Width, Options_String);
-      return To_String(Options_String);
+      Option_Image
+        (Name => "class", Value => Options.Class,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "command", Value => Options.Command,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "compound", Value => Options.Compound,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "cursor", Value => Options.Cursor,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "default", Value => Options.Default,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "image", Value => Options.Image,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "state", Value => Options.State,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "style", Value => Options.Style,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "takefocus", Value => Options.Take_Focus,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "text", Value => Options.Text,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "textvariable", Value => Options.Text_Variable,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "underline", Value => Options.Underline,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "width", Value => Options.Width,
+         Options_String => Options_String);
+      return To_String(Source => Options_String);
    end Options_To_String;
 
    function Create
