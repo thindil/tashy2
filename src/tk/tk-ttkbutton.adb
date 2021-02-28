@@ -77,34 +77,43 @@ package body Tk.TtkButton is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button is
    begin
       Tcl_Eval
-        ("ttk::button " & Path_Name & " " & Options_To_String(Options),
-         Interpreter);
-      return Get_Widget(Path_Name, Interpreter);
+        (Tcl_Script =>
+           "ttk::button " & Path_Name & " " &
+           Options_To_String(Options => Options),
+         Interpreter => Interpreter);
+      return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
      (Button: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Button := Create(Path_Name, Options, Interpreter);
+      Button :=
+        Create
+          (Path_Name => Path_Name, Options => Options,
+           Interpreter => Interpreter);
    end Create;
 
    function Get_Options(Button: Ttk_Button) return Ttk_Button_Options is
    begin
-      return Options: Ttk_Button_Options do
-         Options.Class := Option_Value(Button, "class");
-         Options.Command := Option_Value(Button, "command");
-         Options.Compound := Option_Value(Button, "compound");
-         Options.Cursor := Option_Value(Button, "cursor");
-         Options.Default := Option_Value(Button, "default");
-         Options.Image := Option_Value(Button, "image");
-         Options.State := Option_Value(Button, "state");
-         Options.Style := Option_Value(Button, "style");
-         Options.Take_Focus := Option_Value(Button, "takefocus");
-         Options.Text := Option_Value(Button, "text");
-         Options.Text_Variable := Option_Value(Button, "textvariable");
-         Options.Underline := Option_Value(Button, "underline");
-         Options.Width := Option_Value(Button, "width");
+      return Options: Ttk_Button_Options := Default_Ttk_Button_Options do
+         Options.Class := Option_Value(Widget => Button, Name => "class");
+         Options.Command := Option_Value(Widget => Button, Name => "command");
+         Options.Compound :=
+           Option_Value(Widget => Button, Name => "compound");
+         Options.Cursor := Option_Value(Widget => Button, Name => "cursor");
+         Options.Default := Option_Value(Widget => Button, Name => "default");
+         Options.Image := Option_Value(Widget => Button, Name => "image");
+         Options.State := Option_Value(Widget => Button, Name => "state");
+         Options.Style := Option_Value(Widget => Button, Name => "style");
+         Options.Take_Focus :=
+           Option_Value(Widget => Button, Name => "takefocus");
+         Options.Text := Option_Value(Widget => Button, Name => "text");
+         Options.Text_Variable :=
+           Option_Value(Widget => Button, Name => "textvariable");
+         Options.Underline :=
+           Option_Value(Widget => Button, Name => "underline");
+         Options.Width := Option_Value(Widget => Button, Name => "width");
       end return;
    end Get_Options;
 
