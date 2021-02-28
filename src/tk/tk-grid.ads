@@ -26,34 +26,34 @@ package Tk.Grid is
    -- FUNCTION
    -- Data structure for all available grid slaves options
    -- OPTIONS
-   -- Column     - Index of column in which the widget is placed. Index
-   --              starts from zero
-   -- ColumnSpan - Amount of columns which the widget occupy
-   -- In_Master  - Tk_Widget which is the master for the selected widget
-   -- IPadX      - Amount of internal horizontal padding for the widget
-   -- IPadY      - Amount of internal vertical padding for the widget
-   -- PadX       - Amount of external horizontal padding for the widget. The
-   --              first value is left padding, second right padding
-   -- PadY       - Amount of external vertical padding for the widget. The
-   --              first value is top padding, the second is bottom padding
-   -- Row        - Index of row in which the widget is placed. Index starts
-   --              from zero.
-   -- RowSpan    - Amount of rows which the widget occupy
-   -- Sticky     - Position (or stretch) the widget in the selected directions.
-   --              Possible values are combinations of 'n', 's', 'w' and 'e'
+   -- Column         - Index of column in which the widget is placed. Index
+   --                  starts from zero
+   -- Column_Span    - Amount of columns which the widget occupy
+   -- In_Master      - Tk_Widget which is the master for the selected widget
+   -- Internal_Pad_X - Amount of internal horizontal padding for the widget
+   -- Internal_Pad_Y - Amount of internal vertical padding for the widget
+   -- Pad_X          - Amount of external horizontal padding for the widget. The
+   --                  first value is left padding, second right padding
+   -- Pad_Y          - Amount of external vertical padding for the widget. The
+   --                  first value is top padding, the second is bottom padding
+   -- Row            - Index of row in which the widget is placed. Index starts
+   --                  from zero.
+   -- Row_Span       - Amount of rows which the widget occupy
+   -- Sticky         - Position (or stretch) the widget in the selected directions.
+   --                  Possible values are combinations of 'n', 's', 'w' and 'e'
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    type Grid_Options is record
       Column: Extended_Natural;
-      ColumnSpan: Extended_Natural;
+      Column_Span: Extended_Natural;
       In_Master: Tk_Widget := Null_Widget;
-      IPadX: Pixel_Data;
-      IPadY: Pixel_Data;
-      PadX: Pad_Array := (others => <>);
-      PadY: Pad_Array := (others => <>);
+      Internal_Pad_X: Pixel_Data;
+      Internal_Pad_Y: Pixel_Data;
+      Pad_X: Pad_Array := (others => <>);
+      Pad_Y: Pad_Array := (others => <>);
       Row: Extended_Natural;
-      RowSpan: Extended_Natural;
+      Row_Span: Extended_Natural;
       Sticky: Tcl_String;
    end record;
    -- ****
@@ -62,17 +62,17 @@ package Tk.Grid is
    -- FUNCTION
    -- Data structure for all available grid rows and columns options
    -- OPTIONS
-   -- MinSize - Minimum size of the selected rows or columns
-   -- Weight  - Weigth of the selected rows or columns. 0 means no resize,
-   --           2 means that selected rows or columns will grow twice the rate
-   --           as rows or columns with weight 1.
-   -- Uniform - Name of the uniform group to which rows or columns belong
-   -- Pad     - Padding added to the largest widget in rows or columns
+   -- Min_Size - Minimum size of the selected rows or columns
+   -- Weight   - Weigth of the selected rows or columns. 0 means no resize,
+   --            2 means that selected rows or columns will grow twice the rate
+   --            as rows or columns with weight 1.
+   -- Uniform  - Name of the uniform group to which rows or columns belong
+   -- Pad      - Padding added to the largest widget in rows or columns
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    type Column_Options is record
-      MinSize: Pixel_Data;
+      Min_Size: Pixel_Data;
       Weight: Extended_Natural;
       Uniform: Tcl_String;
       Pad: Pixel_Data;
@@ -212,7 +212,7 @@ package Tk.Grid is
       -- COMMANDS
       -- grid bbox master ?column row? ?column2 row2?
       -- SOURCE
-   function BBox
+   function Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return BBox_Array with
       Pre => Master /= Null_Widget,
