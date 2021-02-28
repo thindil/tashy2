@@ -35,14 +35,14 @@ package body Tk.Grid is
       Options_String: Unbounded_String;
    begin
       Option_Image("column", Options.Column, Options_String);
-      Option_Image("columnspan", Options.ColumnSpan, Options_String);
+      Option_Image("columnspan", Options.Column_Span, Options_String);
       Option_Image("in", Options.In_Master, Options_String);
-      Option_Image("ipadx", Options.IPadX, Options_String);
-      Option_Image("ipady", Options.IPadY, Options_String);
-      Option_Image("padx", Options.PadX, Options_String);
-      Option_Image("pady", Options.PadY, Options_String);
+      Option_Image("ipadx", Options.Internal_Pad_X, Options_String);
+      Option_Image("ipady", Options.Internal_Pad_Y, Options_String);
+      Option_Image("padx", Options.Pad_X, Options_String);
+      Option_Image("pady", Options.Pad_Y, Options_String);
       Option_Image("row", Options.Row, Options_String);
-      Option_Image("rowspan", Options.RowSpan, Options_String);
+      Option_Image("rowspan", Options.Row_Span, Options_String);
       Option_Image("sticky", Options.Sticky, Options_String);
       return To_String(Options_String);
    end Options_To_String;
@@ -80,7 +80,7 @@ package body Tk.Grid is
       return Directions_Type'Value(Tcl_Get_Result);
    end Anchor;
 
-   function BBox
+   function Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return BBox_Array is
       Options: Unbounded_String;
@@ -125,7 +125,7 @@ package body Tk.Grid is
             Coords(I) := Natural'Value(Slice(Tokens, Slice_Number(I)));
          end loop;
       end return;
-   end BBox;
+   end Bounding_Box;
 
    -- ****if* Grid/Grid.Column_Options_To_String
    -- FUNCTION
@@ -141,7 +141,7 @@ package body Tk.Grid is
       -- ****
       Options_String: Unbounded_String;
    begin
-      Option_Image("minsize", Options.MinSize, Options_String);
+      Option_Image("minsize", Options.Min_Size, Options_String);
       Option_Image("weight", Options.Weight, Options_String);
       Option_Image("uniform", Options.Uniform, Options_String);
       Option_Image("pad", Options.Pad, Options_String);
@@ -263,7 +263,7 @@ package body Tk.Grid is
      (Master: Tk_Widget; Column: Natural) return Column_Options is
    begin
       return Options: Column_Options do
-         Options.MinSize := Get_Value(Master, "minsize", "column", Column);
+         Options.Min_Size := Get_Value(Master, "minsize", "column", Column);
          Options.Weight := Get_Value(Master, "weight", "column", Column);
          Options.Uniform := Get_Value(Master, "uniform", "column", Column);
          Options.Pad := Get_Value(Master, "pad", "column", Column);
@@ -345,22 +345,22 @@ package body Tk.Grid is
                   Options.Row :=
                     Extended_Natural'Value(Result(StartIndex .. EndIndex));
                when 4 =>
-                  Options.ColumnSpan :=
+                  Options.Column_Span :=
                     Extended_Natural'Value(Result(StartIndex .. EndIndex));
                when 5 =>
-                  Options.RowSpan :=
+                  Options.Row_Span :=
                     Extended_Natural'Value(Result(StartIndex .. EndIndex));
                when 6 =>
-                  Options.IPadX :=
+                  Options.Internal_Pad_X :=
                     Pixel_Data_Value(Result(StartIndex .. EndIndex));
                when 7 =>
-                  Options.IPadY :=
+                  Options.Internal_Pad_Y :=
                     Pixel_Data_Value(Result(StartIndex .. EndIndex));
                when 8 =>
-                  Options.PadX :=
+                  Options.Pad_X :=
                     Pad_Array_Value(Result(StartIndex .. EndIndex));
                when 9 =>
-                  Options.PadY :=
+                  Options.Pad_Y :=
                     Pad_Array_Value(Result(StartIndex .. EndIndex));
                when 10 =>
                   Options.Sticky :=
@@ -436,7 +436,7 @@ package body Tk.Grid is
      (Master: Tk_Widget; Row: Natural) return Column_Options is
    begin
       return Options: Column_Options do
-         Options.MinSize := Get_Value(Master, "minsize", "row", Row);
+         Options.Min_Size := Get_Value(Master, "minsize", "row", Row);
          Options.Weight := Get_Value(Master, "weight", "row", Row);
          Options.Uniform := Get_Value(Master, "uniform", "row", Row);
          Options.Pad := Get_Value(Master, "pad", "row", Row);
