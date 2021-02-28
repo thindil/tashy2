@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Ada.Strings.Unbounded;
 
 package body Tk.TtkButton is
 
@@ -28,6 +28,7 @@ package body Tk.TtkButton is
    -- SOURCE
    function Options_To_String(Options: Ttk_Button_Options) return String is
       -- ****
+      use Ada.Strings.Unbounded;
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
@@ -119,18 +120,20 @@ package body Tk.TtkButton is
 
    procedure Configure(Button: Ttk_Button; Options: Ttk_Button_Options) is
    begin
-      Execute_Widget_Command(Button, "configure", Options_To_String(Options));
+      Execute_Widget_Command
+        (Widget => Button, Command_Name => "configure",
+         Options => Options_To_String(Options => Options));
    end Configure;
 
    procedure Invoke(Button: Ttk_Button) is
    begin
-      Execute_Widget_Command(Button, "invoke");
+      Execute_Widget_Command(Widget => Button, Command_Name => "invoke");
    end Invoke;
 
    function Invoke(Button: Ttk_Button) return String is
    begin
-      Invoke(Button);
-      return Tcl_Get_Result(Tk_Interp(Button));
+      Invoke(Button => Button);
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Button));
    end Invoke;
 
 end Tk.TtkButton;
