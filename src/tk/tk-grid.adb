@@ -72,8 +72,10 @@ package body Tk.Grid is
       Options: Grid_Options := Grid_Options'(others => <>)) is
    begin
       Tcl_Eval
-        ("grid " & Tk_PathName(Child) & " " & Options_To_String(Options),
-         Tk_Interp(Child));
+        (Tcl_Script =>
+           "grid " & Tk_PathName(Widget => Child) & " " &
+           Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widget => Child));
    end Add;
 
    procedure Add
@@ -81,22 +83,26 @@ package body Tk.Grid is
       Options: Grid_Options := Grid_Options'(others => <>)) is
    begin
       Tcl_Eval
-        ("grid " & Widgets_Array_Image(Widgets) & " " &
-         Options_To_String(Options),
-         Tk_Interp(Widgets(1)));
+        (Tcl_Script =>
+           "grid " & Widgets_Array_Image(Widgets => Widgets) & " " &
+           Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widget => Widgets(1)));
    end Add;
 
    procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) is
    begin
       Tcl_Eval
-        ("grid anchor " & Tk_PathName(Master) & " " &
-         To_Lower(Directions_Type'Image(New_Direction)),
-         Tk_Interp(Master));
+        (Tcl_Script =>
+           "grid anchor " & Tk_PathName(Widget => Master) & " " &
+           To_Lower(Item => Directions_Type'Image(New_Direction)),
+         Interpreter => Tk_Interp(Widget => Master));
    end Anchor;
 
    function Anchor(Master: Tk_Widget) return Directions_Type is
    begin
-      Tcl_Eval("grid anchor " & Tk_PathName(Master), Tk_Interp(Master));
+      Tcl_Eval
+        (Tcl_Script => "grid anchor " & Tk_PathName(Widget => Master),
+         Interpreter => Tk_Interp(Widget => Master));
       return Directions_Type'Value(Tcl_Get_Result);
    end Anchor;
 
