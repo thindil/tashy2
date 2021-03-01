@@ -58,6 +58,13 @@ package Tk.Grid is
    end record;
    -- ****
 
+   -- ****d* Grid/Grid.Default_Grid_Options
+   -- FUNCTION
+   -- Default options for the Tk grid
+   -- SOURCE
+   Default_Grid_Options: constant Grid_Options := Grid_Options'(others => <>);
+   -- ****
+
    -- ****s* Grid/Grid.Column_Options
    -- FUNCTION
    -- Data structure for all available grid rows and columns options
@@ -79,6 +86,14 @@ package Tk.Grid is
    end record;
    -- ****
 
+   -- ****d* Grid/Grid.Default_Column_Options
+   -- FUNCTION
+   -- Default values for Tk grid column and row options
+   -- SOURCE
+   Default_Column_Options: constant Column_Options :=
+     Column_Options'(others => <>);
+     -- ****
+
    -- ****t* Grid/Grid.Result_Array
    -- FUNCTION
    -- Array used mostly as a return value for some functions
@@ -86,6 +101,13 @@ package Tk.Grid is
    -- 8.6.0 - Added
    -- SOURCE
    type Result_Array is array(1 .. 2) of Extended_Natural;
+   -- ****
+
+   -- ****d* Grid/Grid.Empty_Result_Array
+   -- FUNCTION
+   -- Empty result's values array
+   -- SOURCE
+   Empty_Result_Array: constant Result_Array := (others => 0);
    -- ****
 
    -- ****f* Grid/Grid.Add_(single_widget)
@@ -239,7 +261,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Column_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
-      Pre => Master /= Null_Widget and Length(Child_Name) > 0 and
+      Pre => Master /= Null_Widget and Length(Source => Child_Name) > 0 and
       Options /= Column_Options'(others => <>),
       Test_Case => (Name => "Test_Column_Configure1", Mode => Nominal);
       -- ****
@@ -520,7 +542,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Row_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
-      Pre => Master /= Null_Widget and Length(Child_Name) > 0 and
+      Pre => Master /= Null_Widget and Length(Source => Child_Name) > 0 and
       Options /= Column_Options'(others => <>),
       Test_Case => (Name => "Test_Row_Configure1", Mode => Nominal);
       -- ****
