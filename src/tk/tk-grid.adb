@@ -32,19 +32,39 @@ package body Tk.Grid is
    -- SOURCE
    function Options_To_String(Options: Grid_Options) return String is
       -- ****
-      Options_String: Unbounded_String;
+      Options_String: Unbounded_String := Null_Unbounded_String;
    begin
-      Option_Image("column", Options.Column, Options_String);
-      Option_Image("columnspan", Options.Column_Span, Options_String);
-      Option_Image("in", Options.In_Master, Options_String);
-      Option_Image("ipadx", Options.Internal_Pad_X, Options_String);
-      Option_Image("ipady", Options.Internal_Pad_Y, Options_String);
-      Option_Image("padx", Options.Pad_X, Options_String);
-      Option_Image("pady", Options.Pad_Y, Options_String);
-      Option_Image("row", Options.Row, Options_String);
-      Option_Image("rowspan", Options.Row_Span, Options_String);
-      Option_Image("sticky", Options.Sticky, Options_String);
-      return To_String(Options_String);
+      Option_Image
+        (Name => "column", Value => Options.Column,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "columnspan", Value => Options.Column_Span,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "in", Value => Options.In_Master,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "ipadx", Value => Options.Internal_Pad_X,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "ipady", Value => Options.Internal_Pad_Y,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "padx", Value => Options.Pad_X,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "pady", Value => Options.Pad_Y,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "row", Value => Options.Row,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "rowspan", Value => Options.Row_Span,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "sticky", Value => Options.Sticky,
+         Options_String => Options_String);
+      return To_String(Source => Options_String);
    end Options_To_String;
 
    procedure Add
