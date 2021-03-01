@@ -92,7 +92,7 @@ package Tk.Grid is
    -- FUNCTION
    -- Add the selected Tk_Widget to the grid geometry manager
    -- PARAMETERS
-   -- Widget  - Tk_Widget which will be added to the grid. Must be existing
+   -- Child  - Tk_Widget which will be added to the grid. Must be existing
    --           widget.
    -- Options - Grid_Options for the selected widget. Can be empty. Default
    --           value is empty
@@ -107,9 +107,9 @@ package Tk.Grid is
    -- grid widget ?options?
    -- SOURCE
    procedure Add
-     (Widget: Tk_Widget;
+     (Child: Tk_Widget;
       Options: Grid_Options := Grid_Options'(others => <>)) with
-      Pre => Widget /= Null_Widget,
+      Pre => Child /= Null_Widget,
       Test_Case => (Name => "Test_Add1", Mode => Nominal);
       -- ****
 
@@ -321,7 +321,7 @@ package Tk.Grid is
       -- FUNCTION
       -- Configure the selected widget in the grid
       -- PARAMETERS
-      -- Widget  - Tk_Widget which will be configured. Must be existing widget
+      -- Child   - Tk_Widget which will be configured. Must be existing widget
       -- Options - Grid_Options to set. Cannot be empty
       -- HISTORY
       -- 8.6.0 - Added
@@ -333,8 +333,8 @@ package Tk.Grid is
       -- SEE ALSO
       -- Grid.Configure_(many_widgets)
       -- SOURCE
-   procedure Configure(Widget: Tk_Widget; Options: Grid_Options) with
-      Pre => Widget /= Null_Widget and Options /= Grid_Options'(others => <>),
+   procedure Configure(Child: Tk_Widget; Options: Grid_Options) with
+      Pre => Child /= Null_Widget and Options /= Grid_Options'(others => <>),
       Test_Case => (Name => "Test_Configure1", Mode => Nominal);
       -- ****
 
@@ -364,7 +364,7 @@ package Tk.Grid is
       -- Remove the selected widget from the grid and unmap its window. The
       -- grid configuration for the widget will be removed too.
       -- PARAMETERS
-      -- Widget - Tk_Widget to remove. Must be existing widget
+      -- Child - Tk_Widget to remove. Must be existing widget
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -376,8 +376,8 @@ package Tk.Grid is
       -- Grid.Forget_(many_widgets), Grid.Remove_(single_widget),
       -- Grid.Remove_(many_widgets)
       -- SOURCE
-   procedure Forget(Widget: Tk_Widget) with
-      Pre => Widget /= Null_Widget,
+   procedure Forget(Child: Tk_Widget) with
+      Pre => Child /= Null_Widget,
       Test_Case => (Name => "Test_Forget1", Mode => Nominal);
       -- ****
 
@@ -407,8 +407,8 @@ package Tk.Grid is
       -- FUNCTION
       -- Get the grid configuration options for the selected widget
       -- PARAMETERS
-      -- Widget - Tk_Widget which grid configuration options will be get.
-      --          Must be existing widget
+      -- Child - Tk_Widget which grid configuration options will be get.
+      --         Must be existing widget
       -- RESULT
       -- Grid_Options with all grid options for the selected widget
       -- HISTORY
@@ -419,8 +419,8 @@ package Tk.Grid is
       -- COMMANDS
       -- grid info widget
       -- SOURCE
-   function Info(Widget: Tk_Widget) return Grid_Options with
-      Pre => Widget /= Null_Widget,
+   function Info(Child: Tk_Widget) return Grid_Options with
+      Pre => Child /= Null_Widget,
       Test_Case => (Name => "Test_Info", Mode => Nominal);
       -- ****
 
@@ -605,7 +605,7 @@ package Tk.Grid is
       -- widget will be added to the same grid again, it will be using
       -- the previous configuration instead of default.
       -- PARAMETERS
-      -- Widget - Tk_Widget to remove. Must be existing widget
+      -- Child - Tk_Widget to remove. Must be existing widget
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -617,8 +617,8 @@ package Tk.Grid is
       -- Grid.Forget_(single_widget), Grid.Forget_(many_widget2),
       -- Grid.Remove_(many_widgets)
       -- SOURCE
-   procedure Remove(Widget: Tk_Widget) with
-      Pre => Widget /= Null_Widget,
+   procedure Remove(Child: Tk_Widget) with
+      Pre => Child /= Null_Widget,
       Test_Case => (Name => "Test_Remove1", Mode => Nominal);
       -- ****
 
