@@ -48,12 +48,12 @@ package body Tk.Grid is
    end Options_To_String;
 
    procedure Add
-     (Widget: Tk_Widget;
+     (Child: Tk_Widget;
       Options: Grid_Options := Grid_Options'(others => <>)) is
    begin
       Tcl_Eval
-        ("grid " & Tk_PathName(Widget) & " " & Options_To_String(Options),
-         Tk_Interp(Widget));
+        ("grid " & Tk_PathName(Child) & " " & Options_To_String(Options),
+         Tk_Interp(Child));
    end Add;
 
    procedure Add
@@ -270,11 +270,11 @@ package body Tk.Grid is
       end return;
    end Get_Column_Options;
 
-   procedure Configure(Widget: Tk_Widget; Options: Grid_Options) is
+   procedure Configure(Child: Tk_Widget; Options: Grid_Options) is
    begin
       Tcl_Eval
-        ("grid configure " & Tk_PathName(Widget) & Options_To_String(Options),
-         Tk_Interp(Widget));
+        ("grid configure " & Tk_PathName(Child) & Options_To_String(Options),
+         Tk_Interp(Child));
    end Configure;
 
    procedure Configure(Widgets: Widgets_Array; Options: Grid_Options) is
@@ -285,9 +285,9 @@ package body Tk.Grid is
          Tk_Interp(Widgets(1)));
    end Configure;
 
-   procedure Forget(Widget: Tk_Widget) is
+   procedure Forget(Child: Tk_Widget) is
    begin
-      Tcl_Eval("grid forget " & Tk_PathName(Widget), Tk_Interp(Widget));
+      Tcl_Eval("grid forget " & Tk_PathName(Child), Tk_Interp(Child));
    end Forget;
 
    procedure Forget(Widgets: Widgets_Array) is
@@ -296,7 +296,7 @@ package body Tk.Grid is
         ("grid forget " & Widgets_Array_Image(Widgets), Tk_Interp(Widgets(1)));
    end Forget;
 
-   function Info(Widget: Tk_Widget) return Grid_Options is
+   function Info(Child: Tk_Widget) return Grid_Options is
       Options_Names: constant array(1 .. 10) of Unbounded_String :=
         (To_Unbounded_String("-in"), To_Unbounded_String("-column"),
          To_Unbounded_String("-row"), To_Unbounded_String("-columnspan"),
@@ -320,9 +320,9 @@ package body Tk.Grid is
          return Result;
       end Pad_Array_Value;
    begin
-      Tcl_Eval("grid info " & Tk_PathName(Widget), Tk_Interp(Widget));
+      Tcl_Eval("grid info " & Tk_PathName(Child), Tk_Interp(Child));
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widget));
+         Result: constant String := Tcl_Get_Result(Tk_Interp(Child));
       begin
          for I in Options_Names'Range loop
             StartIndex :=
@@ -337,7 +337,7 @@ package body Tk.Grid is
                when 1 =>
                   Options.In_Master :=
                     Get_Widget
-                      (Result(StartIndex .. EndIndex), Tk_Interp(Widget));
+                      (Result(StartIndex .. EndIndex), Tk_Interp(Child));
                when 2 =>
                   Options.Column :=
                     Extended_Natural'Value(Result(StartIndex .. EndIndex));
@@ -443,9 +443,9 @@ package body Tk.Grid is
       end return;
    end Get_Row_Options;
 
-   procedure Remove(Widget: Tk_Widget) is
+   procedure Remove(Child: Tk_Widget) is
    begin
-      Tcl_Eval("grid remove " & Tk_PathName(Widget), Tk_Interp(Widget));
+      Tcl_Eval("grid remove " & Tk_PathName(Child), Tk_Interp(Child));
    end Remove;
 
    procedure Remove(Widgets: Widgets_Array) is
