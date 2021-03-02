@@ -304,20 +304,34 @@ package body Tk.Grid is
    -- ****
    begin
       Tcl_Eval
-        ("grid " & ConfigType & "configure " & Tk_PathName(Master) &
-         Natural'Image(Index) & " -" & Name,
-         Tk_Interp(Master));
-      return Extended_Natural'Value(Tcl_Get_Result(Tk_Interp(Master)));
+        (Tcl_Script =>
+           "grid " & ConfigType & "configure " &
+           Tk_PathName(Widget => Master) & Natural'Image(Index) & " -" & Name,
+         Interpreter => Tk_Interp(Widget => Master));
+      return Extended_Natural'Value
+          (Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)));
    end Get_Value;
 
    function Get_Column_Options
      (Master: Tk_Widget; Column: Natural) return Column_Options is
    begin
       return Options: Column_Options do
-         Options.Min_Size := Get_Value(Master, "minsize", "column", Column);
-         Options.Weight := Get_Value(Master, "weight", "column", Column);
-         Options.Uniform := Get_Value(Master, "uniform", "column", Column);
-         Options.Pad := Get_Value(Master, "pad", "column", Column);
+         Options.Min_Size :=
+           Get_Value
+             (Master => Master, Name => "minsize", ConfigType => "column",
+              Index => Column);
+         Options.Weight :=
+           Get_Value
+             (Master => Master, Name => "weight", ConfigType => "column",
+              Index => Column);
+         Options.Uniform :=
+           Get_Value
+             (Master => Master, Name => "uniform", ConfigType => "column",
+              Index => Column);
+         Options.Pad :=
+           Get_Value
+             (Master => Master, Name => "pad", ConfigType => "column",
+              Index => Column);
       end return;
    end Get_Column_Options;
 
