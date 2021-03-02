@@ -191,27 +191,33 @@ package body Tk.Grid is
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) is
    begin
       Tcl_Eval
-        ("grid columnconfigure " & Tk_PathName(Master) & " " &
-         To_String(Child_Name) & " " & Column_Options_To_String(Options),
-         Tk_Interp(Master));
+        (Tcl_Script =>
+           "grid columnconfigure " & Tk_PathName(Widget => Master) & " " &
+           To_String(Source => Child_Name) & " " &
+           Column_Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widget => Master));
    end Column_Configure;
 
    procedure Column_Configure
      (Master, Child: Tk_Widget; Options: Column_Options) is
    begin
       Tcl_Eval
-        ("grid columnconfigure " & Tk_PathName(Master) & " " &
-         Tk_PathName(Child) & " " & Column_Options_To_String(Options),
-         Tk_Interp(Master));
+        (Tcl_Script =>
+           "grid columnconfigure " & Tk_PathName(Widget => Master) & " " &
+           Tk_PathName(Widget => Child) & " " &
+           Column_Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widget => Master));
    end Column_Configure;
 
    procedure Column_Configure
      (Master: Tk_Widget; Column: Natural; Options: Column_Options) is
    begin
       Tcl_Eval
-        ("grid columnconfigure " & Tk_PathName(Master) &
-         Natural'Image(Column) & " " & Column_Options_To_String(Options),
-         Tk_Interp(Master));
+        (Tcl_Script =>
+           "grid columnconfigure " & Tk_PathName(Widget => Master) &
+           Natural'Image(Column) & " " &
+           Column_Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widget => Master));
    end Column_Configure;
 
    -- ****if* Grid/Grid.Get_Value_(Pixel_Data)
