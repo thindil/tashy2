@@ -109,17 +109,17 @@ package body Tk.Grid is
    function Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return BBox_Array is
-      Options: Unbounded_String;
+      Options: Unbounded_String := Null_Unbounded_String;
       Tokens: Slice_Set;
    begin
       if Column > -1 then
-         Append(Options, Extended_Natural'Image(Column));
+         Append(Source => Options, New_Item => Extended_Natural'Image(Column));
       end if;
       if Row > -1 then
          if Column = -1 then
             raise Tcl_Exception with "Column value not specified";
          end if;
-         Append(Options, Extended_Natural'Image(Row));
+         Append(Source => Options, New_Item => Extended_Natural'Image(Row));
       end if;
       if Column2 > -1 then
          if Column = -1 then
@@ -128,7 +128,8 @@ package body Tk.Grid is
          if Row = -1 then
             raise Tcl_Exception with "Row value not specified";
          end if;
-         Append(Options, Extended_Natural'Image(Column2));
+         Append
+           (Source => Options, New_Item => Extended_Natural'Image(Column2));
       end if;
       if Row2 > -1 then
          if Column = -1 then
@@ -140,16 +141,20 @@ package body Tk.Grid is
          if Column2 = -1 then
             raise Tcl_Exception with "Column2 value not specified";
          end if;
-         Append(Options, Extended_Natural'Image(Row2));
+         Append(Source => Options, New_Item => Extended_Natural'Image(Row2));
       end if;
       Tcl_Eval
-        ("grid bbox " & Tk_PathName(Master) & To_String(Options),
-         Tk_Interp(Master));
-      Create(Tokens, Tcl_Get_Result, " ");
-      return Coords: BBox_Array do
+        (Tcl_Script =>
+           "grid bbox " & Tk_PathName(Widget => Master) &
+           To_String(Source => Options),
+         Interpreter => Tk_Interp(Widget => Master));
+      Create(S => Tokens, From => Tcl_Get_Result, Separators => " ");
+      return Coords: BBox_Array := (others => 0) do
+         Fill_BBox_Array_Loop :
          for I in 1 .. 4 loop
-            Coords(I) := Natural'Value(Slice(Tokens, Slice_Number(I)));
-         end loop;
+            Coords(I) :=
+              Natural'Value(Slice(S => Tokens, Index => Slice_Number(I)));
+         end loop Fill_BBox_Array_Loop;
       end return;
    end Bounding_Box;
 
