@@ -242,10 +242,13 @@ package body Tk.Grid is
    -- ****
    begin
       Tcl_Eval
-        ("grid " & ConfigType & "configure " & Tk_PathName(Master) &
-         Natural'Image(Index) & " -" & Name,
-         Tk_Interp(Master));
-      return Pixel_Data_Value(Tcl_Get_Result(Tk_Interp(Master)));
+        (Tcl_Script =>
+           "grid " & ConfigType & "configure " &
+           Tk_PathName(Widget => Master) & Natural'Image(Index) & " -" & Name,
+         Interpreter => Tk_Interp(Widget => Master));
+      return Pixel_Data_Value
+          (Value =>
+             Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)));
    end Get_Value;
 
    -- ****if* Grid/Grid.Get_Value_(Tcl_String)
@@ -270,10 +273,13 @@ package body Tk.Grid is
    -- ****
    begin
       Tcl_Eval
-        ("grid " & ConfigType & "configure " & Tk_PathName(Master) &
-         Natural'Image(Index) & " -" & Name,
-         Tk_Interp(Master));
-      return To_Tcl_String(Tcl_Get_Result(Tk_Interp(Master)));
+        (Tcl_Script =>
+           "grid " & ConfigType & "configure " &
+           Tk_PathName(Widget => Master) & Natural'Image(Index) & " -" & Name,
+         Interpreter => Tk_Interp(Widget => Master));
+      return To_Tcl_String
+          (Source =>
+             Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)));
    end Get_Value;
 
    -- ****if* Grid/Grid.Get_Value_(Extended_Natural)
