@@ -172,11 +172,19 @@ package body Tk.Grid is
       -- ****
       Options_String: Unbounded_String;
    begin
-      Option_Image("minsize", Options.Min_Size, Options_String);
-      Option_Image("weight", Options.Weight, Options_String);
-      Option_Image("uniform", Options.Uniform, Options_String);
-      Option_Image("pad", Options.Pad, Options_String);
-      return To_String(Options_String);
+      Option_Image
+        (Name => "minsize", Value => Options.Min_Size,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "weight", Value => Options.Weight,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "uniform", Value => Options.Uniform,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "pad", Value => Options.Pad,
+         Options_String => Options_String);
+      return To_String(Source => Options_String);
    end Column_Options_To_String;
 
    procedure Column_Configure
