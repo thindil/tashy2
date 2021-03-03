@@ -350,27 +350,36 @@ package body Tk.Grid is
         (Tcl_Script =>
            "grid configure " & Widgets_Array_Image(Widgets => Widgets) &
            Options_To_String(Options => Options),
-         Interpreter => Tk_Interp(Widgets(1)));
+         Interpreter => Tk_Interp(Widget => Widgets(1)));
    end Configure;
 
    procedure Forget(Child: Tk_Widget) is
    begin
-      Tcl_Eval("grid forget " & Tk_PathName(Child), Tk_Interp(Child));
+      Tcl_Eval
+        (Tcl_Script => "grid forget " & Tk_PathName(Widget => Child),
+         Interpreter => Tk_Interp(Widget => Child));
    end Forget;
 
    procedure Forget(Widgets: Widgets_Array) is
    begin
       Tcl_Eval
-        ("grid forget " & Widgets_Array_Image(Widgets), Tk_Interp(Widgets(1)));
+        (Tcl_Script =>
+           "grid forget " & Widgets_Array_Image(Widgets => Widgets),
+         Interpreter => Tk_Interp(Widget => Widgets(1)));
    end Forget;
 
    function Info(Child: Tk_Widget) return Grid_Options is
       Options_Names: constant array(1 .. 10) of Unbounded_String :=
-        (To_Unbounded_String("-in"), To_Unbounded_String("-column"),
-         To_Unbounded_String("-row"), To_Unbounded_String("-columnspan"),
-         To_Unbounded_String("-rowspan"), To_Unbounded_String("-ipadx"),
-         To_Unbounded_String("-ipady"), To_Unbounded_String("-padx"),
-         To_Unbounded_String("-pady"), To_Unbounded_String("-sticky"));
+        (To_Unbounded_String(Source => "-in"),
+         To_Unbounded_String(Source => "-column"),
+         To_Unbounded_String(Source => "-row"),
+         To_Unbounded_String(Source => "-columnspan"),
+         To_Unbounded_String(Source => "-rowspan"),
+         To_Unbounded_String(Source => "-ipadx"),
+         To_Unbounded_String(Source => "-ipady"),
+         To_Unbounded_String(Source => "-padx"),
+         To_Unbounded_String(Source => "-pady"),
+         To_Unbounded_String(Source => "-sticky"));
       Options: Grid_Options := Grid_Options'(others => <>);
       StartIndex, EndIndex: Positive;
       function Pad_Array_Value(Value: String) return Pad_Array is
