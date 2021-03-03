@@ -338,16 +338,19 @@ package body Tk.Grid is
    procedure Configure(Child: Tk_Widget; Options: Grid_Options) is
    begin
       Tcl_Eval
-        ("grid configure " & Tk_PathName(Child) & Options_To_String(Options),
-         Tk_Interp(Child));
+        (Tcl_Script =>
+           "grid configure " & Tk_PathName(Widget => Child) &
+           Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widget => Child));
    end Configure;
 
    procedure Configure(Widgets: Widgets_Array; Options: Grid_Options) is
    begin
       Tcl_Eval
-        ("grid configure " & Widgets_Array_Image(Widgets) &
-         Options_To_String(Options),
-         Tk_Interp(Widgets(1)));
+        (Tcl_Script =>
+           "grid configure " & Widgets_Array_Image(Widgets => Widgets) &
+           Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widgets(1)));
    end Configure;
 
    procedure Forget(Child: Tk_Widget) is
