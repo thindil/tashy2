@@ -394,7 +394,8 @@ package body Tk.Grid is
                Separators => " ");
          end if;
          for I in 1 .. Slice_Count(S => Tokens) loop
-            Result(Positive(I)) := Pixel_Data_Value(Slice(Tokens, 1));
+            Result(Positive(I)) :=
+              Pixel_Data_Value(Value => Slice(S => Tokens, Index => 1));
          end loop;
          return Result;
       end Pad_Array_Value;
@@ -403,14 +404,19 @@ package body Tk.Grid is
         (Tcl_Script => "grid info " & Tk_PathName(Widget => Child),
          Interpreter => Tk_Interp(Widget => Child));
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Child));
+         Result: constant String :=
+           Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Child));
       begin
          for I in Options_Names'Range loop
             StartIndex :=
-              Index(Result, To_String(Options_Names(I))) +
-              Length(Options_Names(I)) + 1;
+              Index(Source => Result, Pattern => To_String(Options_Names(I))) +
+              Length(Source => Options_Names(I)) + 1;
             if I < Options_Names'Last then
-               EndIndex := Index(Result, To_String(Options_Names(I + 1))) - 2;
+               EndIndex :=
+                 Index
+                   (Source => Result,
+                    Pattern => To_String(Source => Options_Names(I + 1))) -
+                 2;
             else
                EndIndex := Result'Last;
             end if;
