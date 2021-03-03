@@ -370,16 +370,16 @@ package body Tk.Grid is
 
    function Info(Child: Tk_Widget) return Grid_Options is
       Options_Names: constant array(1 .. 10) of Unbounded_String :=
-        (To_Unbounded_String(Source => "-in"),
-         To_Unbounded_String(Source => "-column"),
-         To_Unbounded_String(Source => "-row"),
-         To_Unbounded_String(Source => "-columnspan"),
-         To_Unbounded_String(Source => "-rowspan"),
-         To_Unbounded_String(Source => "-ipadx"),
-         To_Unbounded_String(Source => "-ipady"),
-         To_Unbounded_String(Source => "-padx"),
-         To_Unbounded_String(Source => "-pady"),
-         To_Unbounded_String(Source => "-sticky"));
+        (1 => To_Unbounded_String(Source => "-in"),
+         2 => To_Unbounded_String(Source => "-column"),
+         3 => To_Unbounded_String(Source => "-row"),
+         4 => To_Unbounded_String(Source => "-columnspan"),
+         5 => To_Unbounded_String(Source => "-rowspan"),
+         6 => To_Unbounded_String(Source => "-ipadx"),
+         7 => To_Unbounded_String(Source => "-ipady"),
+         8 => To_Unbounded_String(Source => "-padx"),
+         9 => To_Unbounded_String(Source => "-pady"),
+         10 => To_Unbounded_String(Source => "-sticky"));
       Options: Grid_Options := Grid_Options'(others => <>);
       StartIndex, EndIndex: Positive;
       function Pad_Array_Value(Value: String) return Pad_Array is
@@ -387,17 +387,21 @@ package body Tk.Grid is
          Tokens: Slice_Set;
       begin
          if Value(Value'First) /= '{' then
-            Create(Tokens, Value, " ");
+            Create(S => Tokens, From => Value, Separators => " ");
          else
-            Create(Tokens, Value(Value'First + 1 .. Value'Last - 1), " ");
+            Create
+              (S => Tokens, From => Value(Value'First + 1 .. Value'Last - 1),
+               Separators => " ");
          end if;
-         for I in 1 .. Slice_Count(Tokens) loop
+         for I in 1 .. Slice_Count(S => Tokens) loop
             Result(Positive(I)) := Pixel_Data_Value(Slice(Tokens, 1));
          end loop;
          return Result;
       end Pad_Array_Value;
    begin
-      Tcl_Eval("grid info " & Tk_PathName(Child), Tk_Interp(Child));
+      Tcl_Eval
+        (Tcl_Script => "grid info " & Tk_PathName(Widget => Child),
+         Interpreter => Tk_Interp(Widget => Child));
       declare
          Result: constant String := Tcl_Get_Result(Tk_Interp(Child));
       begin
