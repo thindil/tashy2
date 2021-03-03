@@ -170,7 +170,7 @@ package body Tk.Grid is
    -- SOURCE
    function Column_Options_To_String(Options: Column_Options) return String is
       -- ****
-      Options_String: Unbounded_String;
+      Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
         (Name => "minsize", Value => Options.Min_Size,
@@ -224,11 +224,11 @@ package body Tk.Grid is
    -- FUNCTION
    -- Get the value of the selected column or row configuration
    -- PARAMETERS
-   -- Master     - Tk_Widget which is master of the selected grid geometry
-   --              manager
-   -- Name       - Name of the option to get
-   -- ConfigType - Type of config. Can be column or row
-   -- Index      - Index of the column or row which option will be get
+   -- Master      - Tk_Widget which is master of the selected grid geometry
+   --               manager
+   -- Name        - Name of the option to get
+   -- Config_Type - Type of config. Can be column or row
+   -- Index       - Index of the column or row which option will be get
    -- RESULT
    -- Pixel_Data structure with value of the selected option
    -- HISTORY
@@ -237,13 +237,13 @@ package body Tk.Grid is
    -- Grid.Get_Value_(Tcl_String), Grid.Get_Value_(Extended_Natural)
    -- SOURCE
    function Get_Value
-     (Master: Tk_Widget; Name, ConfigType: String; Index: Natural)
+     (Master: Tk_Widget; Name, Config_Type: String; Index: Natural)
       return Pixel_Data is
    -- ****
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid " & ConfigType & "configure " &
+           "grid " & Config_Type & "configure " &
            Tk_PathName(Widget => Master) & Natural'Image(Index) & " -" & Name,
          Interpreter => Tk_Interp(Widget => Master));
       return Pixel_Data_Value
@@ -255,11 +255,11 @@ package body Tk.Grid is
    -- FUNCTION
    -- Get the value of the selected column or row configuration
    -- PARAMETERS
-   -- Master     - Tk_Widget which is master of the selected grid geometry
-   --              manager
-   -- Name       - Name of the option to get
-   -- ConfigType - Type of config. Can be column or row
-   -- Index      - Index of the column or row which option will be get
+   -- Master      - Tk_Widget which is master of the selected grid geometry
+   --               manager
+   -- Name        - Name of the option to get
+   -- Config_Type - Type of config. Can be column or row
+   -- Index       - Index of the column or row which option will be get
    -- RESULT
    -- Tcl_String with value of the selected option
    -- HISTORY
@@ -268,13 +268,13 @@ package body Tk.Grid is
    -- Grid.Get_Value_(Pixel_Data), Grid.Get_Value_(Extended_Natural)
    -- SOURCE
    function Get_Value
-     (Master: Tk_Widget; Name, ConfigType: String; Index: Natural)
+     (Master: Tk_Widget; Name, Config_Type: String; Index: Natural)
       return Tcl_String is
    -- ****
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid " & ConfigType & "configure " &
+           "grid " & Config_Type & "configure " &
            Tk_PathName(Widget => Master) & Natural'Image(Index) & " -" & Name,
          Interpreter => Tk_Interp(Widget => Master));
       return To_Tcl_String
@@ -286,11 +286,11 @@ package body Tk.Grid is
    -- FUNCTION
    -- Get the value of the selected column or row configuration
    -- PARAMETERS
-   -- Master     - Tk_Widget which is master of the selected grid geometry
-   --              manager
-   -- Name       - Name of the option to get
-   -- ConfigType - Type of config. Can be column or row
-   -- Index      - Index of the column or row which option will be get
+   -- Master      - Tk_Widget which is master of the selected grid geometry
+   --               manager
+   -- Name        - Name of the option to get
+   -- Config_Type - Type of config. Can be column or row
+   -- Index       - Index of the column or row which option will be get
    -- RESULT
    -- Extended_Natural with value of the selected option
    -- HISTORY
@@ -299,13 +299,13 @@ package body Tk.Grid is
    -- Grid.Get_Value_(Pixel_Data), Grid.Get_Value_(Tcl_String)
    -- SOURCE
    function Get_Value
-     (Master: Tk_Widget; Name, ConfigType: String; Index: Natural)
+     (Master: Tk_Widget; Name, Config_Type: String; Index: Natural)
       return Extended_Natural is
    -- ****
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid " & ConfigType & "configure " &
+           "grid " & Config_Type & "configure " &
            Tk_PathName(Widget => Master) & Natural'Image(Index) & " -" & Name,
          Interpreter => Tk_Interp(Widget => Master));
       return Extended_Natural'Value
@@ -315,22 +315,22 @@ package body Tk.Grid is
    function Get_Column_Options
      (Master: Tk_Widget; Column: Natural) return Column_Options is
    begin
-      return Options: Column_Options do
+      return Options: Column_Options := Default_Column_Options do
          Options.Min_Size :=
            Get_Value
-             (Master => Master, Name => "minsize", ConfigType => "column",
+             (Master => Master, Name => "minsize", Config_Type => "column",
               Index => Column);
          Options.Weight :=
            Get_Value
-             (Master => Master, Name => "weight", ConfigType => "column",
+             (Master => Master, Name => "weight", Config_Type => "column",
               Index => Column);
          Options.Uniform :=
            Get_Value
-             (Master => Master, Name => "uniform", ConfigType => "column",
+             (Master => Master, Name => "uniform", Config_Type => "column",
               Index => Column);
          Options.Pad :=
            Get_Value
-             (Master => Master, Name => "pad", ConfigType => "column",
+             (Master => Master, Name => "pad", Config_Type => "column",
               Index => Column);
       end return;
    end Get_Column_Options;
