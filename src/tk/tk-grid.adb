@@ -409,7 +409,9 @@ package body Tk.Grid is
       begin
          for I in Options_Names'Range loop
             StartIndex :=
-              Index(Source => Result, Pattern => To_String(Options_Names(I))) +
+              Index
+                (Source => Result,
+                 Pattern => To_String(Source => Options_Names(I))) +
               Length(Source => Options_Names(I)) + 1;
             if I < Options_Names'Last then
                EndIndex :=
@@ -424,7 +426,8 @@ package body Tk.Grid is
                when 1 =>
                   Options.In_Master :=
                     Get_Widget
-                      (Result(StartIndex .. EndIndex), Tk_Interp(Child));
+                      (Path_Name => Result(StartIndex .. EndIndex),
+                       Interpreter => Tk_Interp(Widget => Child));
                when 2 =>
                   Options.Column :=
                     Extended_Natural'Value(Result(StartIndex .. EndIndex));
@@ -439,19 +442,19 @@ package body Tk.Grid is
                     Extended_Natural'Value(Result(StartIndex .. EndIndex));
                when 6 =>
                   Options.Internal_Pad_X :=
-                    Pixel_Data_Value(Result(StartIndex .. EndIndex));
+                    Pixel_Data_Value(Value => Result(StartIndex .. EndIndex));
                when 7 =>
                   Options.Internal_Pad_Y :=
-                    Pixel_Data_Value(Result(StartIndex .. EndIndex));
+                    Pixel_Data_Value(Value => Result(StartIndex .. EndIndex));
                when 8 =>
                   Options.Pad_X :=
-                    Pad_Array_Value(Result(StartIndex .. EndIndex));
+                    Pad_Array_Value(Value => Result(StartIndex .. EndIndex));
                when 9 =>
                   Options.Pad_Y :=
-                    Pad_Array_Value(Result(StartIndex .. EndIndex));
+                    Pad_Array_Value(Value => Result(StartIndex .. EndIndex));
                when 10 =>
                   Options.Sticky :=
-                    To_Tcl_String(Result(StartIndex .. EndIndex));
+                    To_Tcl_String(Source => Result(StartIndex .. EndIndex));
             end case;
          end loop;
       end;
@@ -463,15 +466,19 @@ package body Tk.Grid is
       Tokens: Slice_Set;
    begin
       Tcl_Eval
-        ("grid location " & Tk_PathName(Master) &
-         Positive_Float'Image(X.Value) &
-         To_Lower(Pixel_Unit'Image(X.Value_Unit)) &
-         Positive_Float'Image(Y.Value) &
-         To_Lower(Pixel_Unit'Image(Y.Value_Unit)),
-         Tk_Interp(Master));
-      Create(Tokens, Tcl_Get_Result(Tk_Interp(Master)), " ");
-      return (Extended_Natural'Value(Slice(Tokens, 1)),
-         Extended_Natural'Value(Slice(Tokens, 2)));
+        (Tcl_Script =>
+           "grid location " & Tk_PathName(Widget => Master) &
+           Positive_Float'Image(X.Value) &
+           To_Lower(Item => Pixel_Unit'Image(X.Value_Unit)) &
+           Positive_Float'Image(Y.Value) &
+           To_Lower(Item => Pixel_Unit'Image(Y.Value_Unit)),
+         Interpreter => Tk_Interp(Widget => Master));
+      Create
+        (S => Tokens,
+         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)),
+         Separators => " ");
+      return (Extended_Natural'Value(Slice(S => Tokens, Index => 1)),
+         Extended_Natural'Value(Slice(S => Tokens, Index => 2)));
    end Location;
 
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) is
