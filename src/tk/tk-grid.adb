@@ -512,27 +512,31 @@ package body Tk.Grid is
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) is
    begin
       Tcl_Eval
-        ("grid rowconfigure " & Tk_PathName(Master) & " " &
-         To_String(Child_Name) & " " & Column_Options_To_String(Options),
-         Tk_Interp(Master));
+        (Tcl_Script =>
+           "grid rowconfigure " & Tk_PathName(Widget => Master) & " " &
+           To_String(Source => Child_Name) & " " &
+           Column_Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widget => Master));
    end Row_Configure;
 
    procedure Row_Configure
      (Master, Child: Tk_Widget; Options: Column_Options) is
    begin
       Tcl_Eval
-        ("grid rowconfigure " & Tk_PathName(Master) & " " &
-         Tk_PathName(Child) & " " & Column_Options_To_String(Options),
-         Tk_Interp(Master));
+        (Tcl_Script =>
+           "grid rowconfigure " & Tk_PathName(Widget => Master) & " " &
+           Tk_PathName(Child) & " " &
+           Column_Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widget => Master));
    end Row_Configure;
 
    procedure Row_Configure
      (Master: Tk_Widget; Row: Natural; Options: Column_Options) is
    begin
       Tcl_Eval
-        ("grid rowconfigure " & Tk_PathName(Master) & Natural'Image(Row) &
-         " " & Column_Options_To_String(Options),
-         Tk_Interp(Master));
+        ("grid rowconfigure " & Tk_PathName(Widget => Master) &
+         Natural'Image(Row) & " " & Column_Options_To_String(Options),
+         Tk_Interp(Widget => Master));
    end Row_Configure;
 
    function Get_Row_Options
@@ -560,8 +564,10 @@ package body Tk.Grid is
    function Size(Master: Tk_Widget) return Result_Array is
       Tokens: Slice_Set;
    begin
-      Tcl_Eval("grid size " & Tk_PathName(Master), Tk_Interp(Master));
-      Create(Tokens, Tcl_Get_Result(Tk_Interp(Master)), " ");
+      Tcl_Eval
+        ("grid size " & Tk_PathName(Widget => Master),
+         Tk_Interp(Widget => Master));
+      Create(Tokens, Tcl_Get_Result(Tk_Interp(Widget => Master)), " ");
       return (Extended_Natural'Value(Slice(Tokens, 1)),
          Extended_Natural'Value(Slice(Tokens, 2)));
    end Size;
@@ -578,12 +584,13 @@ package body Tk.Grid is
       if Column > -1 then
          Append(Options, " -column" & Extended_Natural'Image(Column));
       end if;
-      Tcl_Eval("grid slaves " & Tk_PathName(Master) & To_String(Options));
-      Create(Tokens, Tcl_Get_Result(Tk_Interp(Master)), " ");
+      Tcl_Eval
+        ("grid slaves " & Tk_PathName(Widget => Master) & To_String(Options));
+      Create(Tokens, Tcl_Get_Result(Tk_Interp(Widget => Master)), " ");
       return Widgets: Widgets_Array(1 .. Natural(Slice_Count(Tokens))) do
          for I in 1 .. Slice_Count(Tokens) loop
             Widgets(Positive(I)) :=
-              Get_Widget(Slice(Tokens, I), Tk_Interp(Master));
+              Get_Widget(Slice(Tokens, I), Tk_Interp(Widget => Master));
          end loop;
       end return;
    end Slaves;
