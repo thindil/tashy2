@@ -382,31 +382,36 @@ package body Tk.Grid is
          10 => To_Unbounded_String(Source => "-sticky"));
       Options: Grid_Options := Grid_Options'(others => <>);
       Start_Index, End_Index: Positive := 1;
-      function Pad_Array_Value(Value: String) return Pad_Array is
-         Result: Pad_Array := (others => Pixel_Data'(others => <>));
-         Tokens: Slice_Set;
-      begin
-         if Value(Value'First) /= '{' then
-            Create(S => Tokens, From => Value, Separators => " ");
-         else
-            Create
-              (S => Tokens, From => Value(Value'First + 1 .. Value'Last - 1),
-               Separators => " ");
-         end if;
-         for I in 1 .. Slice_Count(S => Tokens) loop
-            Result(Positive(I)) :=
-              Pixel_Data_Value(Value => Slice(S => Tokens, Index => 1));
-         end loop;
-         return Result;
-      end Pad_Array_Value;
    begin
       Tcl_Eval
         (Tcl_Script => "grid info " & Tk_PathName(Widget => Child),
          Interpreter => Tk_Interp(Widget => Child));
+      Parse_Result_Block :
       declare
          Result: constant String :=
            Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Child));
+         function Pad_Array_Value(Value: String) return Pad_Array is
+            Tokens: Slice_Set;
+         begin
+            if Value(Value'First) = '{' then
+               Create
+                 (S => Tokens,
+                  From => Value(Value'First + 1 .. Value'Last - 1),
+                  Separators => " ");
+            else
+               Create(S => Tokens, From => Value, Separators => " ");
+            end if;
+            return
+              Result_Pad: Pad_Array := (others => Pixel_Data'(others => <>)) do
+               Set_Pad_Array_Loop :
+               for I in 1 .. Slice_Count(S => Tokens) loop
+                  Result_Pad(Positive(I)) :=
+                    Pixel_Data_Value(Value => Slice(S => Tokens, Index => 1));
+               end loop Set_Pad_Array_Loop;
+            end return;
+         end Pad_Array_Value;
       begin
+         Set_Options_Loop :
          for I in Options_Names'Range loop
             Start_Index :=
               Index
@@ -442,10 +447,12 @@ package body Tk.Grid is
                     Extended_Natural'Value(Result(Start_Index .. End_Index));
                when 6 =>
                   Options.Internal_Pad_X :=
-                    Pixel_Data_Value(Value => Result(Start_Index .. End_Index));
+                    Pixel_Data_Value
+                      (Value => Result(Start_Index .. End_Index));
                when 7 =>
                   Options.Internal_Pad_Y :=
-                    Pixel_Data_Value(Value => Result(Start_Index .. End_Index));
+                    Pixel_Data_Value
+                      (Value => Result(Start_Index .. End_Index));
                when 8 =>
                   Options.Pad_X :=
                     Pad_Array_Value(Value => Result(Start_Index .. End_Index));
@@ -456,8 +463,8 @@ package body Tk.Grid is
                   Options.Sticky :=
                     To_Tcl_String(Source => Result(Start_Index .. End_Index));
             end case;
-         end loop;
-      end;
+         end loop Set_Options_Loop;
+      end Parse_Result_Block;
       return Options;
    end Info;
 
