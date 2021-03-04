@@ -484,26 +484,28 @@ package body Tk.Grid is
         (S => Tokens,
          From => Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)),
          Separators => " ");
-      return (Extended_Natural'Value(Slice(S => Tokens, Index => 1)),
-         Extended_Natural'Value(Slice(S => Tokens, Index => 2)));
+      return (1 => Extended_Natural'Value(Slice(S => Tokens, Index => 1)),
+         2 => Extended_Natural'Value(Slice(S => Tokens, Index => 2)));
    end Location;
 
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) is
    begin
       Tcl_Eval
-        ("grid propagate " & Tk_PathName(Master) & " " &
-         To_Lower(Boolean'Image(Enable)),
-         Tk_Interp(Master));
+        (Tcl_Script =>
+           "grid propagate " & Tk_PathName(Widget => Master) & " " &
+           To_Lower(Item => Boolean'Image(Enable)),
+         Interpreter => Tk_Interp(Widget => Master));
    end Propagate;
 
    function Propagate(Master: Tk_Widget) return Boolean is
    begin
-      Tcl_Eval("grid propagate " & Tk_PathName(Master), Tk_Interp(Master));
-      if Tcl_Get_Result(Tk_Interp(Master)) = 1 then
+      Tcl_Eval
+        (Tcl_Script => "grid propagate " & Tk_PathName(Widget => Master),
+         Interpreter => Tk_Interp(Widget => Master));
+      if Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)) = 1 then
          return True;
-      else
-         return False;
       end if;
+      return False;
    end Propagate;
 
    procedure Row_Configure
