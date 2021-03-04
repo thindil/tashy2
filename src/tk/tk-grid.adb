@@ -381,7 +381,7 @@ package body Tk.Grid is
          9 => To_Unbounded_String(Source => "-pady"),
          10 => To_Unbounded_String(Source => "-sticky"));
       Options: Grid_Options := Grid_Options'(others => <>);
-      StartIndex, EndIndex: Positive;
+      Start_Index, End_Index: Positive := 1;
       function Pad_Array_Value(Value: String) return Pad_Array is
          Result: Pad_Array := (others => Pixel_Data'(others => <>));
          Tokens: Slice_Set;
@@ -408,53 +408,53 @@ package body Tk.Grid is
            Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Child));
       begin
          for I in Options_Names'Range loop
-            StartIndex :=
+            Start_Index :=
               Index
                 (Source => Result,
                  Pattern => To_String(Source => Options_Names(I))) +
               Length(Source => Options_Names(I)) + 1;
             if I < Options_Names'Last then
-               EndIndex :=
+               End_Index :=
                  Index
                    (Source => Result,
                     Pattern => To_String(Source => Options_Names(I + 1))) -
                  2;
             else
-               EndIndex := Result'Last;
+               End_Index := Result'Last;
             end if;
             case I is
                when 1 =>
                   Options.In_Master :=
                     Get_Widget
-                      (Path_Name => Result(StartIndex .. EndIndex),
+                      (Path_Name => Result(Start_Index .. End_Index),
                        Interpreter => Tk_Interp(Widget => Child));
                when 2 =>
                   Options.Column :=
-                    Extended_Natural'Value(Result(StartIndex .. EndIndex));
+                    Extended_Natural'Value(Result(Start_Index .. End_Index));
                when 3 =>
                   Options.Row :=
-                    Extended_Natural'Value(Result(StartIndex .. EndIndex));
+                    Extended_Natural'Value(Result(Start_Index .. End_Index));
                when 4 =>
                   Options.Column_Span :=
-                    Extended_Natural'Value(Result(StartIndex .. EndIndex));
+                    Extended_Natural'Value(Result(Start_Index .. End_Index));
                when 5 =>
                   Options.Row_Span :=
-                    Extended_Natural'Value(Result(StartIndex .. EndIndex));
+                    Extended_Natural'Value(Result(Start_Index .. End_Index));
                when 6 =>
                   Options.Internal_Pad_X :=
-                    Pixel_Data_Value(Value => Result(StartIndex .. EndIndex));
+                    Pixel_Data_Value(Value => Result(Start_Index .. End_Index));
                when 7 =>
                   Options.Internal_Pad_Y :=
-                    Pixel_Data_Value(Value => Result(StartIndex .. EndIndex));
+                    Pixel_Data_Value(Value => Result(Start_Index .. End_Index));
                when 8 =>
                   Options.Pad_X :=
-                    Pad_Array_Value(Value => Result(StartIndex .. EndIndex));
+                    Pad_Array_Value(Value => Result(Start_Index .. End_Index));
                when 9 =>
                   Options.Pad_Y :=
-                    Pad_Array_Value(Value => Result(StartIndex .. EndIndex));
+                    Pad_Array_Value(Value => Result(Start_Index .. End_Index));
                when 10 =>
                   Options.Sticky :=
-                    To_Tcl_String(Source => Result(StartIndex .. EndIndex));
+                    To_Tcl_String(Source => Result(Start_Index .. End_Index));
             end case;
          end loop;
       end;
