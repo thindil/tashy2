@@ -525,7 +525,7 @@ package body Tk.Grid is
       Tcl_Eval
         (Tcl_Script =>
            "grid rowconfigure " & Tk_PathName(Widget => Master) & " " &
-           Tk_PathName(Child) & " " &
+           Tk_PathName(Widget => Child) & " " &
            Column_Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widget => Master));
    end Row_Configure;
@@ -534,19 +534,33 @@ package body Tk.Grid is
      (Master: Tk_Widget; Row: Natural; Options: Column_Options) is
    begin
       Tcl_Eval
-        ("grid rowconfigure " & Tk_PathName(Widget => Master) &
-         Natural'Image(Row) & " " & Column_Options_To_String(Options),
-         Tk_Interp(Widget => Master));
+        (Tcl_Script =>
+           "grid rowconfigure " & Tk_PathName(Widget => Master) &
+           Natural'Image(Row) & " " &
+           Column_Options_To_String(Options => Options),
+         Interpreter => Tk_Interp(Widget => Master));
    end Row_Configure;
 
    function Get_Row_Options
      (Master: Tk_Widget; Row: Natural) return Column_Options is
    begin
-      return Options: Column_Options do
-         Options.Min_Size := Get_Value(Master, "minsize", "row", Row);
-         Options.Weight := Get_Value(Master, "weight", "row", Row);
-         Options.Uniform := Get_Value(Master, "uniform", "row", Row);
-         Options.Pad := Get_Value(Master, "pad", "row", Row);
+      return Options: Column_Options := Default_Column_Options do
+         Options.Min_Size :=
+           Get_Value
+             (Master => Master, Name => "minsize", Config_Type => "row",
+              Index => Row);
+         Options.Weight :=
+           Get_Value
+             (Master => Master, Name => "weight", Config_Type => "row",
+              Index => Row);
+         Options.Uniform :=
+           Get_Value
+             (Master => Master, Name => "uniform", Config_Type => "row",
+              Index => Row);
+         Options.Pad :=
+           Get_Value
+             (Master => Master, Name => "pad", Config_Type => "row",
+              Index => Row);
       end return;
    end Get_Row_Options;
 
