@@ -566,24 +566,31 @@ package body Tk.Grid is
 
    procedure Remove(Child: Tk_Widget) is
    begin
-      Tcl_Eval("grid remove " & Tk_PathName(Child), Tk_Interp(Child));
+      Tcl_Eval
+        (Tcl_Script => "grid remove " & Tk_PathName(Widget => Child),
+         Interpreter => Tk_Interp(Widget => Child));
    end Remove;
 
    procedure Remove(Widgets: Widgets_Array) is
    begin
       Tcl_Eval
-        ("grid remove " & Widgets_Array_Image(Widgets), Tk_Interp(Widgets(1)));
+        (Tcl_Script =>
+           "grid remove " & Widgets_Array_Image(Widgets => Widgets),
+         Interpreter => Tk_Interp(Widget => Widgets(1)));
    end Remove;
 
    function Size(Master: Tk_Widget) return Result_Array is
       Tokens: Slice_Set;
    begin
       Tcl_Eval
-        ("grid size " & Tk_PathName(Widget => Master),
-         Tk_Interp(Widget => Master));
-      Create(Tokens, Tcl_Get_Result(Tk_Interp(Widget => Master)), " ");
-      return (Extended_Natural'Value(Slice(Tokens, 1)),
-         Extended_Natural'Value(Slice(Tokens, 2)));
+        (Tcl_Script => "grid size " & Tk_PathName(Widget => Master),
+         Interpreter => Tk_Interp(Widget => Master));
+      Create
+        (S => Tokens,
+         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)),
+         Separators => " ");
+      return (Extended_Natural'Value(Slice(S => Tokens, Index => 1)),
+         Extended_Natural'Value(Slice(S => Tokens, Index => 2)));
    end Size;
 
    function Slaves
