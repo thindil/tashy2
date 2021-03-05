@@ -612,7 +612,8 @@ package body Tk.Grid is
       Tcl_Eval
         (Tcl_Script =>
            "grid slaves " & Tk_PathName(Widget => Master) &
-           To_String(Source => Options));
+           To_String(Source => Options),
+         Interpreter => Tk_Interp(Widget => Master));
       Create
         (S => Tokens,
          From => Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)),
