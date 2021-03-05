@@ -13,8 +13,8 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
-with Ada.Strings; use Ada.Strings;
-with Ada.Strings.Fixed; use Ada.Strings.Fixed;
+with Ada.Strings;
+with Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with GNAT.String_Split; use GNAT.String_Split;
 
@@ -388,6 +388,8 @@ package body Tk.Grid is
          Interpreter => Tk_Interp(Widget => Child));
       Parse_Result_Block :
       declare
+         use Ada.Strings.Fixed;
+
          Result: constant String :=
            Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Child));
          function Pad_Array_Value(Value: String) return Pad_Array is
@@ -618,13 +620,16 @@ package body Tk.Grid is
         (S => Tokens,
          From => Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)),
          Separators => " ");
-      return Widgets: Widgets_Array(1 .. Natural(Slice_Count(S => Tokens))) do
+      return
+        Widgets: Widgets_Array(1 .. Natural(Slice_Count(S => Tokens))) :=
+          (others => Null_Widget) do
+         Fill_Result_Array_Loop :
          for I in 1 .. Slice_Count(S => Tokens) loop
             Widgets(Positive(I)) :=
               Get_Widget
                 (Path_Name => Slice(S => Tokens, Index => I),
                  Interpreter => Tk_Interp(Widget => Master));
-         end loop;
+         end loop Fill_Result_Array_Loop;
       end return;
    end Slaves;
 
