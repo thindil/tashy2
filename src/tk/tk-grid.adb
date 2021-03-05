@@ -589,8 +589,8 @@ package body Tk.Grid is
         (S => Tokens,
          From => Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)),
          Separators => " ");
-      return (Extended_Natural'Value(Slice(S => Tokens, Index => 1)),
-         Extended_Natural'Value(Slice(S => Tokens, Index => 2)));
+      return (1 => Extended_Natural'Value(Slice(S => Tokens, Index => 1)),
+         2 => Extended_Natural'Value(Slice(S => Tokens, Index => 2)));
    end Size;
 
    function Slaves
@@ -600,18 +600,29 @@ package body Tk.Grid is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
       if Row > -1 then
-         Append(Options, " -row" & Extended_Natural'Image(Row));
+         Append
+           (Source => Options,
+            New_Item => " -row" & Extended_Natural'Image(Row));
       end if;
       if Column > -1 then
-         Append(Options, " -column" & Extended_Natural'Image(Column));
+         Append
+           (Source => Options,
+            New_Item => " -column" & Extended_Natural'Image(Column));
       end if;
       Tcl_Eval
-        ("grid slaves " & Tk_PathName(Widget => Master) & To_String(Options));
-      Create(Tokens, Tcl_Get_Result(Tk_Interp(Widget => Master)), " ");
-      return Widgets: Widgets_Array(1 .. Natural(Slice_Count(Tokens))) do
-         for I in 1 .. Slice_Count(Tokens) loop
+        (Tcl_Script =>
+           "grid slaves " & Tk_PathName(Widget => Master) &
+           To_String(Source => Options));
+      Create
+        (S => Tokens,
+         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)),
+         Separators => " ");
+      return Widgets: Widgets_Array(1 .. Natural(Slice_Count(S => Tokens))) do
+         for I in 1 .. Slice_Count(S => Tokens) loop
             Widgets(Positive(I)) :=
-              Get_Widget(Slice(Tokens, I), Tk_Interp(Widget => Master));
+              Get_Widget
+                (Path_Name => Slice(S => Tokens, Index => I),
+                 Interpreter => Tk_Interp(Widget => Master));
          end loop;
       end return;
    end Slaves;
