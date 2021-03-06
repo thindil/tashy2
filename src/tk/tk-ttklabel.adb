@@ -63,40 +63,40 @@ package body Tk.TtkLabel is
    end Create;
 
    procedure Create
-     (Widget: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
+     (Label: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Widget := Create(Path_Name, Options, Interpreter);
+      Label := Create(Path_Name, Options, Interpreter);
    end Create;
 
-   function Get_Options(Widget: Ttk_Label) return Ttk_Label_Options is
+   function Get_Options(Label: Ttk_Label) return Ttk_Label_Options is
    begin
       return Options: Ttk_Label_Options do
-         Options.Anchor := Option_Value(Widget, "anchor");
-         Options.Background := Option_Value(Widget, "background");
-         Options.Class := Option_Value(Widget, "class");
-         Options.Compound := Option_Value(Widget, "compound");
-         Options.Cursor := Option_Value(Widget, "cursor");
-         Options.Font := Option_Value(Widget, "font");
-         Options.Foreground := Option_Value(Widget, "foreground");
-         Options.Image := Option_Value(Widget, "image");
-         Options.Justify := Option_Value(Widget, "justify");
-         Options.Padding := Option_Value(Widget, "padding");
-         Options.Relief := Option_Value(Widget, "relief");
-         Options.State := Option_Value(Widget, "state");
-         Options.Style := Option_Value(Widget, "style");
-         Options.Take_Focus := Option_Value(Widget, "takefocus");
-         Options.Text := Option_Value(Widget, "text");
-         Options.Text_Variable := Option_Value(Widget, "textvariable");
-         Options.Underline := Option_Value(Widget, "underline");
-         Options.Width := Option_Value(Widget, "width");
-         Options.Wrap_Length := Option_Value(Widget, "wraplength");
+         Options.Anchor := Option_Value(Label, "anchor");
+         Options.Background := Option_Value(Label, "background");
+         Options.Class := Option_Value(Label, "class");
+         Options.Compound := Option_Value(Label, "compound");
+         Options.Cursor := Option_Value(Label, "cursor");
+         Options.Font := Option_Value(Label, "font");
+         Options.Foreground := Option_Value(Label, "foreground");
+         Options.Image := Option_Value(Label, "image");
+         Options.Justify := Option_Value(Label, "justify");
+         Options.Padding := Option_Value(Label, "padding");
+         Options.Relief := Option_Value(Label, "relief");
+         Options.State := Option_Value(Label, "state");
+         Options.Style := Option_Value(Label, "style");
+         Options.Take_Focus := Option_Value(Label, "takefocus");
+         Options.Text := Option_Value(Label, "text");
+         Options.Text_Variable := Option_Value(Label, "textvariable");
+         Options.Underline := Option_Value(Label, "underline");
+         Options.Width := Option_Value(Label, "width");
+         Options.Wrap_Length := Option_Value(Label, "wraplength");
       end return;
    end Get_Options;
 
-   procedure Configure(Widget: Ttk_Label; Options: Ttk_Label_Options) is
+   procedure Configure(Label: Ttk_Label; Options: Ttk_Label_Options) is
    begin
-      Execute_Widget_Command(Widget, "configure", Options_To_String(Options));
+      Execute_Widget_Command(Label, "configure", Options_To_String(Options));
    end Configure;
 
 end Tk.TtkLabel;

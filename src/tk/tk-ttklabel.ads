@@ -144,10 +144,10 @@ package Tk.TtkLabel is
       -- ttk::label Path_Name Options
       -- SOURCE
    procedure Create
-     (Widget: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
+     (Label: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Widget /= Null_Widget,
+      Post => Label /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabel2", Mode => Nominal);
       -- ****
 
@@ -166,10 +166,10 @@ package Tk.TtkLabel is
       -- SEE ALSO
       -- TtkLabel.Configure
       -- COMMANDS
-      -- Widget configure
+      -- Label configure
       -- SOURCE
-   function Get_Options(Widget: Ttk_Label) return Ttk_Label_Options with
-      Pre => Widget /= Null_Widget,
+   function Get_Options(Label: Ttk_Label) return Ttk_Label_Options with
+      Pre => Label /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TtkLabel", Mode => Nominal);
       -- ****
 
@@ -187,11 +187,18 @@ package Tk.TtkLabel is
       -- SEE ALSO
       -- TtkLabel.Get_Options
       -- COMMANDS
-      -- Widget configure Options
+      -- Label configure Options
       -- SOURCE
-   procedure Configure(Widget: Ttk_Label; Options: Ttk_Label_Options) with
-      Pre => Widget /= Null_Widget,
+   procedure Configure(Label: Ttk_Label; Options: Ttk_Label_Options) with
+      Pre => Label /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TtkLabel", Mode => Nominal);
       -- ****
+
+      -- ****d* TtkLabel/TtkLabel.Default_Ttk_Label_Options
+      -- FUNCTION
+      -- The default options for the Ttk_Label
+      -- SOURCE
+   Default_Ttk_Label_Options: constant Ttk_Label_Options := Ttk_Label_Options'(others => <>);
+   -- ****
 
 end Tk.TtkLabel;
