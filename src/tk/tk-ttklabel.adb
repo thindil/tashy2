@@ -30,25 +30,63 @@ package body Tk.TtkLabel is
       -- ****
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
-      Option_Image("anchor", Options.Anchor, Options_String);
-      Option_Image("background", Options.Background, Options_String);
-      Option_Image("class", Options.Class, Options_String);
-      Option_Image("compound", Options.Compound, Options_String);
-      Option_Image("cursor", Options.Cursor, Options_String);
-      Option_Image("font", Options.Font, Options_String);
-      Option_Image("foreground", Options.Foreground, Options_String);
-      Option_Image("image", Options.Image, Options_String);
-      Option_Image("justify", Options.Justify, Options_String);
-      Option_Image("padding", Options.Padding, Options_String);
-      Option_Image("relief", Options.Relief, Options_String);
-      Option_Image("state", Options.State, Options_String);
-      Option_Image("style", Options.Style, Options_String);
-      Option_Image("takefocus", Options.Take_Focus, Options_String);
-      Option_Image("text", Options.Text, Options_String);
-      Option_Image("textvariable", Options.Text_Variable, Options_String);
-      Option_Image("underline", Options.Underline, Options_String);
-      Option_Image("width", Options.Width, Options_String);
-      Option_Image("wraplength", Options.Wrap_Length, Options_String);
+      Option_Image
+        (Name => "anchor", Value => Options.Anchor,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "background", Value => Options.Background,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "class", Value => Options.Class,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "compound", Value => Options.Compound,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "cursor", Value => Options.Cursor,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "font", Value => Options.Font,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "foreground", Value => Options.Foreground,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "image", Value => Options.Image,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "justify", Value => Options.Justify,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "padding", Value => Options.Padding,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "relief", Value => Options.Relief,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "state", Value => Options.State,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "style", Value => Options.Style,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "takefocus", Value => Options.Take_Focus,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "text", Value => Options.Text,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "textvariable", Value => Options.Text_Variable,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "underline", Value => Options.Underline,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "width", Value => Options.Width,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "wraplength", Value => Options.Wrap_Length,
+         Options_String => Options_String);
       return To_String(Options_String);
    end Options_To_String;
 
