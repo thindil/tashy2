@@ -177,7 +177,7 @@ package Tk.TtkButton is
       Test_Case => (Name => "Test_Configure_TtkButton", Mode => Nominal);
       -- ****
 
-      -- ****d* TtkButton/TtkButton.Empty_Ttk_Button_Options
+      -- ****d* TtkButton/TtkButton.Default_Ttk_Button_Options
       -- FUNCTION
       -- The default options for the Ttk_Button
       -- SOURCE
