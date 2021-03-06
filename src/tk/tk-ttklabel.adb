@@ -28,7 +28,7 @@ package body Tk.TtkLabel is
    -- SOURCE
    function Options_To_String(Options: Ttk_Label_Options) return String is
       -- ****
-      Options_String: Unbounded_String;
+      Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image("anchor", Options.Anchor, Options_String);
       Option_Image("background", Options.Background, Options_String);
