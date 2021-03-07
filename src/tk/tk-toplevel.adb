@@ -17,8 +17,8 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Tk.TopLevel is
 
    function Create
-     (Path_Name: String; Options: TopLevel_Create_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
+     (Path_Name: String; Options: Toplevel_Create_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
       Options_String: Unbounded_String;
    begin
       Option_Image("background", Options.Background, Options_String);
@@ -49,16 +49,16 @@ package body Tk.TopLevel is
    end Create;
 
    procedure Create
-     (Widget: out Tk_TopLevel; Path_Name: String;
-      Options: TopLevel_Create_Options;
+     (Widget: out Tk_Toplevel; Path_Name: String;
+      Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Widget := Create(Path_Name, Options, Interpreter);
    end Create;
 
-   function Get_Options(Widget: Tk_TopLevel) return TopLevel_Create_Options is
+   function Get_Options(Widget: Tk_Toplevel) return Toplevel_Create_Options is
    begin
-      return Options: TopLevel_Create_Options do
+      return Options: Toplevel_Create_Options do
          Options.Background := Option_Value(Widget, "background");
          Options.Border_Width := Option_Value(Widget, "borderwidth");
          Options.Class := Option_Value(Widget, "class");
@@ -83,7 +83,7 @@ package body Tk.TopLevel is
       end return;
    end Get_Options;
 
-   procedure Configure(Widget: Tk_TopLevel; Options: TopLevel_Options) is
+   procedure Configure(Widget: Tk_Toplevel; Options: Toplevel_Options) is
       Options_String: Unbounded_String;
    begin
       Option_Image("background", Options.Background, Options_String);

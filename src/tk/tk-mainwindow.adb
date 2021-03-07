@@ -15,8 +15,8 @@
 package body Tk.MainWindow is
 
    function Get_Main_Window
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
-      function Tk_MainWindow(interp: Tcl_Interpreter) return Tk_TopLevel with
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
+      function Tk_MainWindow(interp: Tcl_Interpreter) return Tk_Toplevel with
          Import => True,
          Convention => C,
          External_Name => "Tk_MainWindow";
