@@ -48,8 +48,8 @@ package Tk.TopLevel is
    --                        toplevel
    -- Menu                 - Menu widget which will be used as menubar in the
    --                        toplevel
-   -- PadX                 - Extra space requested for the toplevel in X-direction
-   -- PadY                 - Extra space requested for the toplevel in Y-direction
+   -- Pad_X                - Extra space requested for the toplevel in X-direction
+   -- Pad_Y                - Extra space requested for the toplevel in Y-direction
    -- Relief               - 3-D effect desired for the toplevel
    -- Width                - Width of the toplevel
    -- SOURCE
@@ -61,8 +61,8 @@ package Tk.TopLevel is
       Highlight_Color: Tcl_String;
       Highlight_Thickness: Pixel_Data;
       Menu: Tk_Menu := Null_Widget;
-      PadX: Pixel_Data;
-      PadY: Pixel_Data;
+      Pad_X: Pixel_Data;
+      Pad_Y: Pixel_Data;
       Relief: Relief_Type;
       Width: Pixel_Data;
    end record;
@@ -72,8 +72,8 @@ package Tk.TopLevel is
    -- FUNCTION
    -- Set the selected options for the selected toplevel
    -- PARAMETERS
-   -- Widget  - Tk_Toplevel which options will be set
-   -- Options - The record with new values for the button options
+   -- Toplevel_Widget - Tk_Toplevel which options will be set
+   -- Options         - The record with new values for the button options
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
@@ -84,8 +84,8 @@ package Tk.TopLevel is
    -- COMMANDS
    -- Widget configure Options
    -- SOURCE
-   procedure Configure(Widget: Tk_Toplevel; Options: Toplevel_Options) with
-      Pre => Widget /= Null_Widget,
+   procedure Configure(Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) with
+      Pre => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TopLevel", Mode => Nominal);
    -- ****
 
@@ -146,11 +146,11 @@ package Tk.TopLevel is
       -- FUNCTION
       -- Create a new Tk toplevel widget with the selected pathname and options
       -- PARAMETERS
-      -- Widget      - Tk_Toplevel identifier which will be returned
-      -- Path_Name   - Tk pathname for the newly created toplevel
-      -- Options     - Options for the newly created toplevel
-      -- Interpreter - Tcl interpreter on which the toplelve will be created. Can
-      --               be empty. Default value is the default Tcl interpreter
+      -- Toplevel_Widget - Tk_Toplevel identifier which will be returned
+      -- Path_Name       - Tk pathname for the newly created toplevel
+      -- Options         - Options for the newly created toplevel
+      -- Interpreter     - Tcl interpreter on which the toplelve will be created. Can
+      --                   be empty. Default value is the default Tcl interpreter
       -- OUTPUT
       -- The Widget parameter as Tk identifier of the newly created toplevel widget
       -- HISTORY
@@ -168,11 +168,11 @@ package Tk.TopLevel is
       -- toplevel Path_Name Options
       -- SOURCE
    procedure Create
-     (Widget: out Tk_Toplevel; Path_Name: String;
+     (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Widget /= Null_Widget,
+      Post => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_TopLevel2", Mode => Nominal);
    -- ****
 
@@ -180,7 +180,7 @@ package Tk.TopLevel is
    -- FUNCTION
    -- Get all values of Tk options of the selected toplevel
    -- PARAMETERS
-   -- Widget - Tk_Toplevel which options' values will be taken
+   -- Toplevel_Widget - Tk_Toplevel which options' values will be taken
    -- RESULT
    -- TopLevel_Create_Options record with values of the selected toplevel
    -- options
@@ -193,8 +193,8 @@ package Tk.TopLevel is
    -- Widget configure
    -- SOURCE
    function Get_Options
-     (Widget: Tk_Toplevel) return Toplevel_Create_Options with
-      Pre => Widget /= Null_Widget,
+     (Toplevel_Widget: Tk_Toplevel) return Toplevel_Create_Options with
+      Pre => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TopLevel", Mode => Nominal);
    -- ****
 
