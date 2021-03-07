@@ -34,8 +34,8 @@ package body Tk.TopLevel is
       Option_Image
         ("highlighthickness", Options.Highlight_Thickness, Options_String);
       Option_Image("menu", Options.Menu, Options_String);
-      Option_Image("padx", Options.PadX, Options_String);
-      Option_Image("pady", Options.PadY, Options_String);
+      Option_Image("padx", Options.Pad_X, Options_String);
+      Option_Image("pady", Options.Pad_Y, Options_String);
       Option_Image("relief", Options.Relief, Options_String);
       Option_Image("screen", Options.Screen, Options_String);
       Option_Image("takefocus", Options.Take_Focus, Options_String);
@@ -49,41 +49,44 @@ package body Tk.TopLevel is
    end Create;
 
    procedure Create
-     (Widget: out Tk_Toplevel; Path_Name: String;
+     (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Widget := Create(Path_Name, Options, Interpreter);
+      Toplevel_Widget := Create(Path_Name, Options, Interpreter);
    end Create;
 
-   function Get_Options(Widget: Tk_Toplevel) return Toplevel_Create_Options is
+   function Get_Options
+     (Toplevel_Widget: Tk_Toplevel) return Toplevel_Create_Options is
    begin
       return Options: Toplevel_Create_Options do
-         Options.Background := Option_Value(Widget, "background");
-         Options.Border_Width := Option_Value(Widget, "borderwidth");
-         Options.Class := Option_Value(Widget, "class");
-         Options.Color_Map := Option_Value(Widget, "colormap");
-         Options.Container := Option_Value(Widget, "container");
-         Options.Cursor := Option_Value(Widget, "cursor");
-         Options.Height := Option_Value(Widget, "height");
+         Options.Background := Option_Value(Toplevel_Widget, "background");
+         Options.Border_Width := Option_Value(Toplevel_Widget, "borderwidth");
+         Options.Class := Option_Value(Toplevel_Widget, "class");
+         Options.Color_Map := Option_Value(Toplevel_Widget, "colormap");
+         Options.Container := Option_Value(Toplevel_Widget, "container");
+         Options.Cursor := Option_Value(Toplevel_Widget, "cursor");
+         Options.Height := Option_Value(Toplevel_Widget, "height");
          Options.Highlight_Background :=
-           Option_Value(Widget, "highlightbackground");
-         Options.Highlight_Color := Option_Value(Widget, "highlightcolor");
+           Option_Value(Toplevel_Widget, "highlightbackground");
+         Options.Highlight_Color :=
+           Option_Value(Toplevel_Widget, "highlightcolor");
          Options.Highlight_Thickness :=
-           Option_Value(Widget, "highlightthickness");
-         Options.Menu := Option_Value(Widget, "menu");
-         Options.PadX := Option_Value(Widget, "padx");
-         Options.PadY := Option_Value(Widget, "pady");
-         Options.Relief := Option_Value(Widget, "relief");
-         Options.Screen := Option_Value(Widget, "screen");
-         Options.Take_Focus := Option_Value(Widget, "takefocus");
-         Options.Use_Container := Option_Value(Widget, "use");
-         Options.Visual := Option_Value(Widget, "visual");
-         Options.Width := Option_Value(Widget, "width");
+           Option_Value(Toplevel_Widget, "highlightthickness");
+         Options.Menu := Option_Value(Toplevel_Widget, "menu");
+         Options.Pad_X := Option_Value(Toplevel_Widget, "padx");
+         Options.Pad_Y := Option_Value(Toplevel_Widget, "pady");
+         Options.Relief := Option_Value(Toplevel_Widget, "relief");
+         Options.Screen := Option_Value(Toplevel_Widget, "screen");
+         Options.Take_Focus := Option_Value(Toplevel_Widget, "takefocus");
+         Options.Use_Container := Option_Value(Toplevel_Widget, "use");
+         Options.Visual := Option_Value(Toplevel_Widget, "visual");
+         Options.Width := Option_Value(Toplevel_Widget, "width");
       end return;
    end Get_Options;
 
-   procedure Configure(Widget: Tk_Toplevel; Options: Toplevel_Options) is
+   procedure Configure
+     (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) is
       Options_String: Unbounded_String;
    begin
       Option_Image("background", Options.Background, Options_String);
@@ -96,12 +99,13 @@ package body Tk.TopLevel is
       Option_Image
         ("highlighthickness", Options.Highlight_Thickness, Options_String);
       Option_Image("menu", Options.Menu, Options_String);
-      Option_Image("padx", Options.PadX, Options_String);
-      Option_Image("pady", Options.PadY, Options_String);
+      Option_Image("padx", Options.Pad_X, Options_String);
+      Option_Image("pady", Options.Pad_Y, Options_String);
       Option_Image("relief", Options.Relief, Options_String);
       Option_Image("takefocus", Options.Take_Focus, Options_String);
       Option_Image("width", Options.Width, Options_String);
-      Execute_Widget_Command(Widget, "configure", To_String(Options_String));
+      Execute_Widget_Command
+        (Toplevel_Widget, "configure", To_String(Options_String));
    end Configure;
 
 end Tk.TopLevel;
