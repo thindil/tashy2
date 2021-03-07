@@ -84,9 +84,18 @@ package Tk.TopLevel is
    -- COMMANDS
    -- Widget configure Options
    -- SOURCE
-   procedure Configure(Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) with
+   procedure Configure
+     (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) with
       Pre => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TopLevel", Mode => Nominal);
+      -- ****
+
+      -- ****d* TopLevel/TopLevel.Default_Toplevel_Options
+      -- FUNCTION
+      -- Default options for Toplevel widget
+      -- SOURCE
+   Default_Toplevel_Options: constant Toplevel_Options :=
+     Toplevel_Options'(others => <>);
    -- ****
 
    -- ****s* TopLevel/TopLevel.TopLevel_Create_Options
@@ -196,6 +205,14 @@ package Tk.TopLevel is
      (Toplevel_Widget: Tk_Toplevel) return Toplevel_Create_Options with
       Pre => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TopLevel", Mode => Nominal);
+      -- ****
+
+      -- ****d* TopLevel/TopLevel.Default_Toplevel_Create_Options
+      -- FUNCTION
+      -- Default options used during creating Toplevel widget
+      -- SOURCE
+   Default_Toplevel_Create_Options: constant Toplevel_Create_Options :=
+     Toplevel_Create_Options'(others => <>);
    -- ****
 
 end Tk.TopLevel;
