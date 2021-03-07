@@ -87,7 +87,7 @@ package body Tk.TtkLabel is
       Option_Image
         (Name => "wraplength", Value => Options.Wrap_Length,
          Options_String => Options_String);
-      return To_String(Options_String);
+      return To_String(Source => Options_String);
    end Options_To_String;
 
    function Create
@@ -95,40 +95,51 @@ package body Tk.TtkLabel is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label is
    begin
       Tcl_Eval
-        ("ttk::label " & Path_Name & " " & Options_To_String(Options),
-         Interpreter);
-      return Get_Widget(Path_Name, Interpreter);
+        (Tcl_Script =>
+           "ttk::label " & Path_Name & " " &
+           Options_To_String(Options => Options),
+         Interpreter => Interpreter);
+      return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
      (Label: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Label := Create(Path_Name, Options, Interpreter);
+      Label :=
+        Create
+          (Path_Name => Path_Name, Options => Options,
+           Interpreter => Interpreter);
    end Create;
 
    function Get_Options(Label: Ttk_Label) return Ttk_Label_Options is
    begin
-      return Options: Ttk_Label_Options do
-         Options.Anchor := Option_Value(Label, "anchor");
-         Options.Background := Option_Value(Label, "background");
-         Options.Class := Option_Value(Label, "class");
-         Options.Compound := Option_Value(Label, "compound");
-         Options.Cursor := Option_Value(Label, "cursor");
-         Options.Font := Option_Value(Label, "font");
-         Options.Foreground := Option_Value(Label, "foreground");
-         Options.Image := Option_Value(Label, "image");
-         Options.Justify := Option_Value(Label, "justify");
-         Options.Padding := Option_Value(Label, "padding");
-         Options.Relief := Option_Value(Label, "relief");
-         Options.State := Option_Value(Label, "state");
-         Options.Style := Option_Value(Label, "style");
-         Options.Take_Focus := Option_Value(Label, "takefocus");
-         Options.Text := Option_Value(Label, "text");
-         Options.Text_Variable := Option_Value(Label, "textvariable");
-         Options.Underline := Option_Value(Label, "underline");
-         Options.Width := Option_Value(Label, "width");
-         Options.Wrap_Length := Option_Value(Label, "wraplength");
+      return Options: Ttk_Label_Options := Default_Ttk_Label_Options do
+         Options.Anchor := Option_Value(Widget => Label, Name => "anchor");
+         Options.Background :=
+           Option_Value(Widget => Label, Name => "background");
+         Options.Class := Option_Value(Widget => Label, Name => "class");
+         Options.Compound := Option_Value(Widget => Label, Name => "compound");
+         Options.Cursor := Option_Value(Widget => Label, Name => "cursor");
+         Options.Font := Option_Value(Widget => Label, Name => "font");
+         Options.Foreground :=
+           Option_Value(Widget => Label, Name => "foreground");
+         Options.Image := Option_Value(Widget => Label, Name => "image");
+         Options.Justify := Option_Value(Widget => Label, Name => "justify");
+         Options.Padding := Option_Value(Widget => Label, Name => "padding");
+         Options.Relief := Option_Value(Widget => Label, Name => "relief");
+         Options.State := Option_Value(Widget => Label, Name => "state");
+         Options.Style := Option_Value(Widget => Label, Name => "style");
+         Options.Take_Focus :=
+           Option_Value(Widget => Label, Name => "takefocus");
+         Options.Text := Option_Value(Widget => Label, Name => "text");
+         Options.Text_Variable :=
+           Option_Value(Widget => Label, Name => "textvariable");
+         Options.Underline :=
+           Option_Value(Widget => Label, Name => "underline");
+         Options.Width := Option_Value(Widget => Label, Name => "width");
+         Options.Wrap_Length :=
+           Option_Value(Widget => Label, Name => "wraplength");
       end return;
    end Get_Options;
 
