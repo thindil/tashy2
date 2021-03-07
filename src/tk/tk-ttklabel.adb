@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Ada.Strings.Unbounded;
 
 package body Tk.TtkLabel is
 
@@ -28,6 +28,8 @@ package body Tk.TtkLabel is
    -- SOURCE
    function Options_To_String(Options: Ttk_Label_Options) return String is
       -- ****
+      use Ada.Strings.Unbounded;
+
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
@@ -145,7 +147,9 @@ package body Tk.TtkLabel is
 
    procedure Configure(Label: Ttk_Label; Options: Ttk_Label_Options) is
    begin
-      Execute_Widget_Command(Label, "configure", Options_To_String(Options));
+      Execute_Widget_Command
+        (Widget => Label, Command_Name => "configure",
+         Options => Options_To_String(Options => Options));
    end Configure;
 
 end Tk.TtkLabel;
