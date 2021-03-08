@@ -146,7 +146,7 @@ package body Tk.TopLevel is
 
    procedure Configure
      (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) is
-      Options_String: Unbounded_String;
+      Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
         (Name => "background", Value => Options.Background,
@@ -161,13 +161,13 @@ package body Tk.TopLevel is
         (Name => "height", Value => Options.Height,
          Options_String => Options_String);
       Option_Image
-        ("highlightbackground", Value => Options.Highlight_Background,
+        (Name => "highlightbackground", Value => Options.Highlight_Background,
          Options_String => Options_String);
       Option_Image
         (Name => "highlightcolot", Value => Options.Highlight_Color,
          Options_String => Options_String);
       Option_Image
-        ("highlighthickness", Value => Options.Highlight_Thickness,
+        (Name => "highlighthickness", Value => Options.Highlight_Thickness,
          Options_String => Options_String);
       Option_Image
         (Name => "menu", Value => Options.Menu,
@@ -188,7 +188,8 @@ package body Tk.TopLevel is
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
       Execute_Widget_Command
-        (Toplevel_Widget, "configure", To_String(Options_String));
+        (Widget => Toplevel_Widget, Command_Name => "configure",
+         Options => To_String(Source => Options_String));
    end Configure;
 
 end Tk.TopLevel;
