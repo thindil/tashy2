@@ -19,33 +19,70 @@ package body Tk.TopLevel is
    function Create
      (Path_Name: String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
-      Options_String: Unbounded_String;
+      Options_String: Unbounded_String := Null_Unbounded_String;
    begin
-      Option_Image("background", Options.Background, Options_String);
-      Option_Image("borderwidth", Options.Border_Width, Options_String);
-      Option_Image("class", Options.Class, Options_String);
-      Option_Image("colormap", Options.Color_Map, Options_String);
-      Option_Image("container", Options.Container, Options_String);
-      Option_Image("cursor", Options.Cursor, Options_String);
-      Option_Image("height", Options.Height, Options_String);
       Option_Image
-        ("highlightbackground", Options.Highlight_Background, Options_String);
-      Option_Image("highlightcolot", Options.Highlight_Color, Options_String);
+        (Name => "background", Value => Options.Background,
+         Options_String => Options_String);
       Option_Image
-        ("highlighthickness", Options.Highlight_Thickness, Options_String);
-      Option_Image("menu", Options.Menu, Options_String);
-      Option_Image("padx", Options.Pad_X, Options_String);
-      Option_Image("pady", Options.Pad_Y, Options_String);
-      Option_Image("relief", Options.Relief, Options_String);
-      Option_Image("screen", Options.Screen, Options_String);
-      Option_Image("takefocus", Options.Take_Focus, Options_String);
-      Option_Image("use", Options.Use_Container, Options_String);
-      Option_Image("visual", Options.Visual, Options_String);
-      Option_Image("width", Options.Width, Options_String);
+        (Name => "borderwidth", Value => Options.Border_Width,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "class", Value => Options.Class,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "colormap", Value => Options.Color_Map,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "container", Value => Options.Container,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "cursor", Value => Options.Cursor,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "height", Value => Options.Height,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "highlightbackground", Value => Options.Highlight_Background,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "highlightcolot", Value => Options.Highlight_Color,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "highlighthickness", Value => Options.Highlight_Thickness,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "menu", Value => Options.Menu,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "padx", Value => Options.Pad_X,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "pady", Value => Options.Pad_Y,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "relief", Value => Options.Relief,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "screen", Value => Options.Screen,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "takefocus", Value => Options.Take_Focus,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "use", Value => Options.Use_Container,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "visual", Value => Options.Visual,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "width", Value => Options.Width,
+         Options_String => Options_String);
       Tcl_Eval
-        ("toplevel " & Path_Name & " " & To_String(Options_String),
-         Interpreter);
-      return Get_Widget(Path_Name, Interpreter);
+        (Tcl_Script =>
+           "toplevel " & Path_Name & " " & To_String(Source => Options_String),
+         Interpreter => Interpreter);
+      return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
@@ -89,21 +126,45 @@ package body Tk.TopLevel is
      (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) is
       Options_String: Unbounded_String;
    begin
-      Option_Image("background", Options.Background, Options_String);
-      Option_Image("borderwidth", Options.Border_Width, Options_String);
-      Option_Image("cursor", Options.Cursor, Options_String);
-      Option_Image("height", Options.Height, Options_String);
       Option_Image
-        ("highlightbackground", Options.Highlight_Background, Options_String);
-      Option_Image("highlightcolot", Options.Highlight_Color, Options_String);
+        (Name => "background", Value => Options.Background,
+         Options_String => Options_String);
       Option_Image
-        ("highlighthickness", Options.Highlight_Thickness, Options_String);
-      Option_Image("menu", Options.Menu, Options_String);
-      Option_Image("padx", Options.Pad_X, Options_String);
-      Option_Image("pady", Options.Pad_Y, Options_String);
-      Option_Image("relief", Options.Relief, Options_String);
-      Option_Image("takefocus", Options.Take_Focus, Options_String);
-      Option_Image("width", Options.Width, Options_String);
+        (Name => "borderwidth", Value => Options.Border_Width,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "cursor", Value => Options.Cursor,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "height", Value => Options.Height,
+         Options_String => Options_String);
+      Option_Image
+        ("highlightbackground", Value => Options.Highlight_Background,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "highlightcolot", Value => Options.Highlight_Color,
+         Options_String => Options_String);
+      Option_Image
+        ("highlighthickness", Value => Options.Highlight_Thickness,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "menu", Value => Options.Menu,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "padx", Value => Options.Pad_X,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "pady", Value => Options.Pad_Y,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "relief", Value => Options.Relief,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "takefocus", Value => Options.Take_Focus,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "width", Value => Options.Width,
+         Options_String => Options_String);
       Execute_Widget_Command
         (Toplevel_Widget, "configure", To_String(Options_String));
    end Configure;
