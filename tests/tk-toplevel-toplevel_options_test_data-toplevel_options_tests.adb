@@ -3,7 +3,7 @@
 --  Such changes will be kept during further regeneration of this file.
 --  All code placed outside of test routine bodies will be lost. The
 --  code intended to set up and tear down the test environment should be
---  placed into Tk.TopLevel.TopLevel_Options_Test_Data.
+--  placed into Tk.TopLevel.Toplevel_Options_Test_Data.
 
 with AUnit.Assertions; use AUnit.Assertions;
 with System.Assertions;
@@ -19,7 +19,7 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 
 --  begin read only
 --  end read only
-package body Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests is
+package body Tk.TopLevel.Toplevel_Options_Test_Data.Toplevel_Options_Tests is
 
 --  begin read only
 --  id:2.2/01/
@@ -31,11 +31,11 @@ package body Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_7763e3
-     (Widget: Tk_TopLevel; Options: TopLevel_Options) is
+   procedure Wrap_Test_Configure_0076be_afe77d
+     (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) is
    begin
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Toplevel_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -44,7 +44,7 @@ package body Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests is
                "req_sloc(tk-toplevel.ads:0):Test_Configure_TopLevel test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.TopLevel.Configure
-        (Widget, Options);
+        (Toplevel_Widget, Options);
       begin
          pragma Assert(True);
          null;
@@ -54,25 +54,25 @@ package body Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests is
               (False,
                "ens_sloc(tk-toplevel.ads:0:):Test_Configure_TopLevel test commitment violated");
       end;
-   end Wrap_Test_Configure_0076be_7763e3;
+   end Wrap_Test_Configure_0076be_afe77d;
 --  end read only
 
 --  begin read only
    procedure Test_Configure_test_configure_toplevel
-     (Gnattest_T: in out Test_TopLevel_Options);
-   procedure Test_Configure_0076be_7763e3
-     (Gnattest_T: in out Test_TopLevel_Options) renames
+     (Gnattest_T: in out Test_Toplevel_Options);
+   procedure Test_Configure_0076be_afe77d
+     (Gnattest_T: in out Test_Toplevel_Options) renames
      Test_Configure_test_configure_toplevel;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_toplevel/
    procedure Test_Configure_test_configure_toplevel
-     (Gnattest_T: in out Test_TopLevel_Options) is
+     (Gnattest_T: in out Test_Toplevel_Options) is
       procedure Configure
-        (Widget: Tk_TopLevel; Options: TopLevel_Options) renames
-        Wrap_Test_Configure_0076be_7763e3;
+        (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) renames
+        Wrap_Test_Configure_0076be_afe77d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      TopLevel: Tk_TopLevel;
+      TopLevel: Tk_Toplevel;
 
    begin
 
@@ -80,8 +80,8 @@ package body Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create(TopLevel, ".mydialog", TopLevel_Create_Options'(others => <>));
-      Configure(TopLevel, TopLevel_Options'(Relief => RAISED, others => <>));
+      Create(TopLevel, ".mydialog", Toplevel_Create_Options'(others => <>));
+      Configure(TopLevel, Toplevel_Options'(Relief => RAISED, others => <>));
       Assert
         (Option_Value(TopLevel, "relief") = RAISED,
          "Failed to set new value for toplevel option.");
@@ -100,4 +100,4 @@ begin
    null;
 --  begin read only
 --  end read only
-end Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests;
+end Tk.TopLevel.Toplevel_Options_Test_Data.Toplevel_Options_Tests;
