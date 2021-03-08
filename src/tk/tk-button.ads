@@ -62,8 +62,8 @@ package Tk.Button is
    -- Justify              - Justification of the button's text
    -- Over_Relief          - Alternative relief for the button when the mouse cursor is
    --                        over the button
-   -- PadX                 - Extra space requested for the button in X-direction
-   -- PadY                 - Extra space requested for the button in Y-direction
+   -- Pad_X                - Extra space requested for the button in X-direction
+   -- Pad_Y                - Extra space requested for the button in Y-direction
    -- Relief               - 3-D effect desired for the button
    -- Repeat_Delay         - Amount of miliseconds before key or button begins auto-repeat
    --                        on the button
@@ -101,8 +101,8 @@ package Tk.Button is
       Image: Tcl_String;
       Justify: Justify_Type;
       Over_Relief: Relief_Type;
-      PadX: Pixel_Data;
-      PadY: Pixel_Data;
+      Pad_X: Pixel_Data;
+      Pad_Y: Pixel_Data;
       Relief: Relief_Type;
       Repeat_Delay: Extended_Natural;
       Repeat_Interval: Extended_Natural;
@@ -149,13 +149,13 @@ package Tk.Button is
       -- FUNCTION
       -- Create a new Tk button widget with the selected pathname and options
       -- PARAMETERS
-      -- Widget      - Tk_Button identifier which will be returned
-      -- Path_Name   - Tk pathname for the newly created button
-      -- Options     - Options for the newly created button
-      -- Interpreter - Tcl interpreter on which the button will be created. Can
-      --               be empty. Default value is the default Tcl interpreter
+      -- Button_Widget - Tk_Button identifier which will be returned
+      -- Path_Name     - Tk pathname for the newly created button
+      -- Options       - Options for the newly created button
+      -- Interpreter   - Tcl interpreter on which the button will be created. Can
+      --                 be empty. Default value is the default Tcl interpreter
       -- OUTPUT
-      -- The Widget parameter as Tk identifier of the newly created button widget
+      -- The Button_Widget parameter as Tk identifier of the newly created button widget
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -173,10 +173,10 @@ package Tk.Button is
       -- button Path_Name Options
       -- SOURCE
    procedure Create
-     (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
+     (Button_Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Widget /= Null_Widget,
+      Post => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Button2", Mode => Nominal);
       -- ****
 
@@ -184,7 +184,7 @@ package Tk.Button is
       -- FUNCTION
       -- Get all values of Tk options of the selected button
       -- PARAMETERS
-      -- Widget - Tk_Button which options' values will be taken
+      -- Button_Widget - Tk_Button which options' values will be taken
       -- RESULT
       -- Button_Options record with values of the selected button options
       -- HISTORY
@@ -195,10 +195,10 @@ package Tk.Button is
       -- SEE ALSO
       -- Button.Configure
       -- COMMANDS
-      -- Widget configure
+      -- Button_Widget configure
       -- SOURCE
-   function Get_Options(Widget: Tk_Button) return Button_Options with
-      Pre => Widget /= Null_Widget,
+   function Get_Options(Button_Widget: Tk_Button) return Button_Options with
+      Pre => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_Button", Mode => Nominal);
       -- ****
 
@@ -206,7 +206,7 @@ package Tk.Button is
       -- FUNCTION
       -- Set the selected options for the selected button
       -- PARAMETERS
-      -- Widget  - Tk_Button which options will be set
+      -- Button_Widget  - Tk_Button which options will be set
       -- Options - The record with new values for the button options
       -- HISTORY
       -- 8.6.0 - Added
@@ -216,28 +216,36 @@ package Tk.Button is
       -- SEE ALSO
       -- Button.Get_Options
       -- COMMANDS
-      -- Widget configure Options
+      -- Button_Widget configure Options
       -- SOURCE
-   procedure Configure(Widget: Tk_Button; Options: Button_Options) with
-      Pre => Widget /= Null_Widget,
+   procedure Configure(Button_Widget: Tk_Button; Options: Button_Options) with
+      Pre => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_Button", Mode => Nominal);
       -- ****
+
+      -- ****d* Button/Button.Default_Button_Options
+      -- FUNCTION
+      -- Default values for Button widget options
+      -- SOURCE
+   Default_Button_Options: constant Button_Options :=
+     Button_Options'(others => <>);
+   -- ****
 
       -- ****f* Button/Button.Flash
       -- FUNCTION
       -- Flash the button. Does nothing if button state is disabled.
       -- PARAMETERS
-      -- Widget - Tk_Button to flash
+      -- Button_Widget - Tk_Button to flash
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Flash the Tk_Button My_Button
       -- Flash(My_Button);
       -- COMMANDS
-      -- Widget flash
+      -- Button_Widget flash
       -- SOURCE
-   procedure Flash(Widget: Tk_Button) with
-      Pre => Widget /= Null_Widget,
+   procedure Flash(Button_Widget: Tk_Button) with
+      Pre => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Flash_Button", Mode => Nominal);
       -- ****
 
@@ -246,7 +254,7 @@ package Tk.Button is
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
-      -- Widget - Tk_Button which the command will be invoked
+      -- Button_Widget - Tk_Button which the command will be invoked
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -256,10 +264,10 @@ package Tk.Button is
       -- Button.Invoke_(function_and_string_result), Button.Invoke_(function_and_integer_result),
       -- Button.Invoke_(function_and_float_result)
       -- COMMANDS
-      -- Widget invoke
+      -- Button_Widget invoke
       -- SOURCE
-   procedure Invoke(Widget: Tk_Button) with
-      Pre => Widget /= Null_Widget,
+   procedure Invoke(Button_Widget: Tk_Button) with
+      Pre => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_Button1", Mode => Nominal);
       -- ****
 
@@ -268,7 +276,7 @@ package Tk.Button is
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
-      -- Widget - Tk_Button which the command will be invoked
+      -- Button_Widget - Tk_Button which the command will be invoked
       -- RESULT
       -- The string with the return value of the associated Tcl command.
       -- HISTORY
@@ -280,10 +288,10 @@ package Tk.Button is
       -- Button.Invoke_(procedure), Button.Invoke_(function_and_integer_result),
       -- Button.Invoke_(function_and_float_result)
       -- COMMANDS
-      -- Widget invoke
+      -- Button_Widget invoke
       -- SOURCE
-   function Invoke(Widget: Tk_Button) return String with
-      Pre => Widget /= Null_Widget,
+   function Invoke(Button_Widget: Tk_Button) return String with
+      Pre => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_Button2", Mode => Nominal);
       -- ****
 
@@ -292,7 +300,7 @@ package Tk.Button is
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
-      -- Widget - Tk_Button which the command will be invoked
+      -- Button_Widget - Tk_Button which the command will be invoked
       -- RESULT
       -- The integer return value of the associated Tcl command.
       -- HISTORY
@@ -304,11 +312,11 @@ package Tk.Button is
       -- Button.Invoke_(function_and_string_result), Button.Invoke_(procedure),
       -- Button.Invoke_(function_and_float_result)
       -- COMMANDS
-      -- Widget invoke
+      -- Button_Widget invoke
       -- SOURCE
-   function Invoke(Widget: Tk_Button) return Integer is
-     (Integer'Value(Invoke(Widget))) with
-      Pre => Widget /= Null_Widget,
+   function Invoke(Button_Widget: Tk_Button) return Integer is
+     (Integer'Value(Invoke(Button_Widget => Button_Widget))) with
+      Pre => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_Button3", Mode => Nominal);
       -- ****
 
@@ -317,7 +325,7 @@ package Tk.Button is
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
-      -- Widget - Tk_Button which the command will be invoked
+      -- Button_Widget - Tk_Button which the command will be invoked
       -- RESULT
       -- The float return value of the associated Tcl command.
       -- HISTORY
@@ -329,11 +337,11 @@ package Tk.Button is
       -- Button.Invoke_(function_and_string_result), Button.Invoke_(function_and_integer_result),
       -- Button.Invoke_(procedure)
       -- COMMANDS
-      -- Widget invoke
+      -- Button_Widget invoke
       -- SOURCE
-   function Invoke(Widget: Tk_Button) return Float is
-     (Float'Value(Invoke(Widget))) with
-      Pre => Widget /= Null_Widget,
+   function Invoke(Button_Widget: Tk_Button) return Float is
+     (Float'Value(Invoke(Button_Widget => Button_Widget))) with
+      Pre => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_Button4", Mode => Nominal);
       -- ****
 
