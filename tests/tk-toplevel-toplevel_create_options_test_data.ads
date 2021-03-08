@@ -3,7 +3,7 @@
 --  automatically. Contents of this package can be modified in any way
 --  except for sections surrounded by a 'read only' marker.
 
-with Tk.TopLevel.TopLevel_Options_Test_Data.TopLevel_Options_Tests;
+with Tk.TopLevel.TopLevel_Options_Test_Data.Toplevel_Options_Tests;
 
 with GNATtest_Generated;
 

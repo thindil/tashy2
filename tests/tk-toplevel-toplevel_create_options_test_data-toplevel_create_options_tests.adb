@@ -3,7 +3,7 @@
 --  Such changes will be kept during further regeneration of this file.
 --  All code placed outside of test routine bodies will be lost. The
 --  code intended to set up and tear down the test environment should be
---  placed into Tk.TopLevel.TopLevel_Create_Options_Test_Data.
+--  placed into Tk.TopLevel.Toplevel_Create_Options_Test_Data.
 
 with AUnit.Assertions; use AUnit.Assertions;
 with System.Assertions;
@@ -19,8 +19,8 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 
 --  begin read only
 --  end read only
-package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
-  .TopLevel_Create_Options_Tests is
+package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
+  .Toplevel_Create_Options_Tests is
 
 --  begin read only
 --  id:2.2/01/
@@ -33,8 +33,8 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
 --  end read only
 --  begin read only
    function Wrap_Test_Create_32e405_ad4ab8
-     (Path_Name: String; Options: TopLevel_Create_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
+     (Path_Name: String; Options: Toplevel_Create_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
    begin
       begin
          pragma Assert
@@ -47,7 +47,7 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
                "req_sloc(tk-toplevel.ads:0):Test_Create_TopLevel1 test requirement violated");
       end;
       declare
-         Test_Create_32e405_ad4ab8_Result: constant Tk_TopLevel :=
+         Test_Create_32e405_ad4ab8_Result: constant Tk_Toplevel :=
            GNATtest_Generated.GNATtest_Standard.Tk.TopLevel.Create
              (Path_Name, Options, Interpreter);
       begin
@@ -67,22 +67,22 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
 
 --  begin read only
    procedure Test_1_Create_test_create_toplevel1
-     (Gnattest_T: in out Test_TopLevel_Create_Options);
+     (Gnattest_T: in out Test_Toplevel_Create_Options);
    procedure Test_Create_32e405_ad4ab8
-     (Gnattest_T: in out Test_TopLevel_Create_Options) renames
+     (Gnattest_T: in out Test_Toplevel_Create_Options) renames
      Test_1_Create_test_create_toplevel1;
 --  id:2.2/32e405543423d7b8/Create/1/0/test_create_toplevel1/
    procedure Test_1_Create_test_create_toplevel1
-     (Gnattest_T: in out Test_TopLevel_Create_Options) is
+     (Gnattest_T: in out Test_Toplevel_Create_Options) is
       function Create
-        (Path_Name: String; Options: TopLevel_Create_Options;
+        (Path_Name: String; Options: Toplevel_Create_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Tk_TopLevel renames
+         return Tk_Toplevel renames
         Wrap_Test_Create_32e405_ad4ab8;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      TopLevel: Tk_TopLevel := Null_Widget;
+      TopLevel: Tk_Toplevel := Null_Widget;
 
    begin
 
@@ -90,7 +90,7 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create(TopLevel, ".mydialog", TopLevel_Create_Options'(others => <>));
+      Create(TopLevel, ".mydialog", Toplevel_Create_Options'(others => <>));
       Assert(TopLevel /= Null_Widget, "Failed to create a new toplevel.");
       Destroy(TopLevel);
 
@@ -99,9 +99,9 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Create_ebbdc1_841e6d
-     (Widget: out Tk_TopLevel; Path_Name: String;
-      Options: TopLevel_Create_Options;
+   procedure Wrap_Test_Create_ebbdc1_c513fa
+     (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
+      Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -115,9 +115,9 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
                "req_sloc(tk-toplevel.ads:0):Test_Create_TopLevel2 test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.TopLevel.Create
-        (Widget, Path_Name, Options, Interpreter);
+        (Toplevel_Widget, Path_Name, Options, Interpreter);
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Toplevel_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -125,27 +125,27 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
               (False,
                "ens_sloc(tk-toplevel.ads:0:):Test_Create_TopLevel2 test commitment violated");
       end;
-   end Wrap_Test_Create_ebbdc1_841e6d;
+   end Wrap_Test_Create_ebbdc1_c513fa;
 --  end read only
 
 --  begin read only
    procedure Test_2_Create_test_create_toplevel2
-     (Gnattest_T: in out Test_TopLevel_Create_Options);
-   procedure Test_Create_ebbdc1_841e6d
-     (Gnattest_T: in out Test_TopLevel_Create_Options) renames
+     (Gnattest_T: in out Test_Toplevel_Create_Options);
+   procedure Test_Create_ebbdc1_c513fa
+     (Gnattest_T: in out Test_Toplevel_Create_Options) renames
      Test_2_Create_test_create_toplevel2;
 --  id:2.2/ebbdc1934f0fa33d/Create/0/0/test_create_toplevel2/
    procedure Test_2_Create_test_create_toplevel2
-     (Gnattest_T: in out Test_TopLevel_Create_Options) is
+     (Gnattest_T: in out Test_Toplevel_Create_Options) is
       procedure Create
-        (Widget: out Tk_TopLevel; Path_Name: String;
-         Options: TopLevel_Create_Options;
+        (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
+         Options: Toplevel_Create_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Create_ebbdc1_841e6d;
+        Wrap_Test_Create_ebbdc1_c513fa;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      TopLevel: Tk_TopLevel := Null_Widget;
+      TopLevel: Tk_Toplevel := Null_Widget;
 
    begin
 
@@ -153,7 +153,7 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
          Assert(True, "No display, can't test");
          return;
       end if;
-      TopLevel := Create(".mydialog", TopLevel_Create_Options'(others => <>));
+      TopLevel := Create(".mydialog", Toplevel_Create_Options'(others => <>));
       Assert(TopLevel /= Null_Widget, "Failed to create a new toplevel.");
       Destroy(TopLevel);
 
@@ -162,11 +162,11 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Options_ded36e_3f1900
-     (Widget: Tk_TopLevel) return TopLevel_Create_Options is
+   function Wrap_Test_Get_Options_ded36e_1ebb9d
+     (Toplevel_Widget: Tk_Toplevel) return Toplevel_Create_Options is
    begin
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Toplevel_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -175,9 +175,9 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
                "req_sloc(tk-toplevel.ads:0):Test_Get_Options_TopLevel test requirement violated");
       end;
       declare
-         Test_Get_Options_ded36e_3f1900_Result: constant TopLevel_Create_Options :=
+         Test_Get_Options_ded36e_1ebb9d_Result: constant Toplevel_Create_Options :=
            GNATtest_Generated.GNATtest_Standard.Tk.TopLevel.Get_Options
-             (Widget);
+             (Toplevel_Widget);
       begin
          begin
             pragma Assert(True);
@@ -188,28 +188,28 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
                  (False,
                   "ens_sloc(tk-toplevel.ads:0:):Test_Get_Options_TopLevel test commitment violated");
          end;
-         return Test_Get_Options_ded36e_3f1900_Result;
+         return Test_Get_Options_ded36e_1ebb9d_Result;
       end;
-   end Wrap_Test_Get_Options_ded36e_3f1900;
+   end Wrap_Test_Get_Options_ded36e_1ebb9d;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Options_test_get_options_toplevel
-     (Gnattest_T: in out Test_TopLevel_Create_Options);
-   procedure Test_Get_Options_ded36e_3f1900
-     (Gnattest_T: in out Test_TopLevel_Create_Options) renames
+     (Gnattest_T: in out Test_Toplevel_Create_Options);
+   procedure Test_Get_Options_ded36e_1ebb9d
+     (Gnattest_T: in out Test_Toplevel_Create_Options) renames
      Test_Get_Options_test_get_options_toplevel;
 --  id:2.2/ded36e34d54c20f9/Get_Options/1/0/test_get_options_toplevel/
    procedure Test_Get_Options_test_get_options_toplevel
-     (Gnattest_T: in out Test_TopLevel_Create_Options) is
+     (Gnattest_T: in out Test_Toplevel_Create_Options) is
       function Get_Options
-        (Widget: Tk_TopLevel) return TopLevel_Create_Options renames
-        Wrap_Test_Get_Options_ded36e_3f1900;
+        (Toplevel_Widget: Tk_Toplevel) return Toplevel_Create_Options renames
+        Wrap_Test_Get_Options_ded36e_1ebb9d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      TopLevel: Tk_TopLevel;
-      Options: TopLevel_Create_Options;
+      TopLevel: Tk_Toplevel;
+      Options: Toplevel_Create_Options;
 
    begin
 
@@ -219,7 +219,7 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
       end if;
       Create
         (TopLevel, ".mydialog",
-         TopLevel_Create_Options'(Relief => RAISED, others => <>));
+         Toplevel_Create_Options'(Relief => RAISED, others => <>));
       Options := Get_Options(TopLevel);
       Assert(Options.Relief = RAISED, "Failed to get toplevel options.");
       Destroy(TopLevel);
@@ -238,5 +238,5 @@ begin
    null;
 --  begin read only
 --  end read only
-end Tk.TopLevel.TopLevel_Create_Options_Test_Data
-  .TopLevel_Create_Options_Tests;
+end Tk.TopLevel.Toplevel_Create_Options_Test_Data
+  .Toplevel_Create_Options_Tests;

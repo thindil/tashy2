@@ -1794,7 +1794,7 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      Widget: Tk_TopLevel;
+      Widget: Tk_Toplevel;
       Result: Extended_Boolean;
 
    begin
@@ -1805,7 +1805,7 @@ package body Tk.Widget.Test_Data.Tests is
       end if;
       Create
         (Widget, ".mydialog",
-         TopLevel_Create_Options'(Container => TRUE, others => <>));
+         Toplevel_Create_Options'(Container => TRUE, others => <>));
       Tcl_Eval("update");
       Result := Option_Value(Widget, "container");
       Assert
@@ -1863,7 +1863,7 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      Widget: Tk_TopLevel;
+      Widget: Tk_Toplevel;
       Menu: Tk_Menu;
       Result: Tk_Widget;
 
@@ -1876,7 +1876,7 @@ package body Tk.Widget.Test_Data.Tests is
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Create
         (Widget, ".mydialog",
-         TopLevel_Create_Options'(Menu => Menu, others => <>));
+         Toplevel_Create_Options'(Menu => Menu, others => <>));
       Tcl_Eval("update");
       Result := Option_Value(Widget, "menu");
       Assert(Result = Menu, "Failed to get value for Tk_Widget widget option");
@@ -1933,7 +1933,7 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      TopWidget, ChildWidget: Tk_TopLevel;
+      TopWidget, ChildWidget: Tk_Toplevel;
       Result: Tk_Window;
 
    begin
@@ -1944,18 +1944,18 @@ package body Tk.Widget.Test_Data.Tests is
       end if;
       Create
         (TopWidget, ".mydialog",
-         TopLevel_Create_Options'(Container => TRUE, others => <>));
+         Toplevel_Create_Options'(Container => TRUE, others => <>));
       Tcl_Eval("update");
       Create
         (ChildWidget, ".mychild",
-         TopLevel_Create_Options'
+         Toplevel_Create_Options'
            (Use_Container => Tk_Window_Id(TopWidget), others => <>));
       Result := Option_Value(ChildWidget, "use");
       Assert
         (Result = Tk_Window_Id(TopWidget),
          "Failed to get value for Tk_Window widget option");
       Destroy(TopWidget);
-      Create(TopWidget, ".mydialog", TopLevel_Create_Options'(others => <>));
+      Create(TopWidget, ".mydialog", Toplevel_Create_Options'(others => <>));
       Assert
         (Option_Value(TopWidget, "use") = Null_Window,
          "Failed to get empty value for Tk_Window widget option");

@@ -26,7 +26,7 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data is
    end Set_Up;
 
    procedure Tear_Down(Gnattest_T: in out Test_TopLevel_Create_Options) is
-      TopLevel: Tk_TopLevel;
+      TopLevel: Tk_Toplevel;
    begin
       GNATtest_Generated.GNATtest_Standard.Tk.TopLevel
         .TopLevel_Options_Test_Data

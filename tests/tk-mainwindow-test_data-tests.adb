@@ -33,7 +33,7 @@ package body Tk.MainWindow.Test_Data.Tests is
 --  end read only
 --  begin read only
    function Wrap_Test_Get_Main_Window_d38719_603916
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_TopLevel is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
    begin
       begin
          pragma Assert(Interpreter /= Null_Interpreter);
@@ -45,7 +45,7 @@ package body Tk.MainWindow.Test_Data.Tests is
                "req_sloc(tk-mainwindow.ads:0):Test_Main_Window test requirement violated");
       end;
       declare
-         Test_Get_Main_Window_d38719_603916_Result: constant Tk_TopLevel :=
+         Test_Get_Main_Window_d38719_603916_Result: constant Tk_Toplevel :=
            GNATtest_Generated.GNATtest_Standard.Tk.MainWindow.Get_Main_Window
              (Interpreter);
       begin
@@ -72,7 +72,7 @@ package body Tk.MainWindow.Test_Data.Tests is
    procedure Test_Get_Main_Window_test_main_window(Gnattest_T: in out Test) is
       function Get_Main_Window
         (Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Tk_TopLevel renames
+         return Tk_Toplevel renames
         Wrap_Test_Get_Main_Window_d38719_603916;
 --  end read only
 
