@@ -55,8 +55,8 @@ package body Tk.Button is
       Option_Image("image", Options.Image, Options_String);
       Option_Image("justify", Options.Justify, Options_String);
       Option_Image("overrelief", Options.Over_Relief, Options_String);
-      Option_Image("padx", Options.PadX, Options_String);
-      Option_Image("pady", Options.PadY, Options_String);
+      Option_Image("padx", Options.Pad_X, Options_String);
+      Option_Image("pady", Options.Pad_Y, Options_String);
       Option_Image("relief", Options.Relief, Options_String);
       Option_Image("repeatdelay", Options.Repeat_Delay, Options_String);
       Option_Image("repeatiterval", Options.Repeat_Interval, Options_String);
@@ -81,72 +81,77 @@ package body Tk.Button is
    end Create;
 
    procedure Create
-     (Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
+     (Button_Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Widget := Create(Path_Name, Options, Interpreter);
+      Button_Widget := Create(Path_Name, Options, Interpreter);
    end Create;
 
-   function Get_Options(Widget: Tk_Button) return Button_Options is
+   function Get_Options(Button_Widget: Tk_Button) return Button_Options is
    begin
       return Options: Button_Options do
-         Options.Active_Background := Option_Value(Widget, "activebackground");
-         Options.Active_Foreground := Option_Value(Widget, "activeforeground");
-         Options.Anchor := Option_Value(Widget, "anchor");
-         Options.Background := Option_Value(Widget, "background");
-         Options.Bitmap := Option_Value(Widget, "bitmap");
-         Options.Border_Width := Option_Value(Widget, "borderwidth");
-         Options.Command := Option_Value(Widget, "command");
-         Options.Compound := Option_Value(Widget, "compound");
-         Options.Cursor := Option_Value(Widget, "cursor");
-         Options.Default := Option_Value(Widget, "default");
+         Options.Active_Background :=
+           Option_Value(Button_Widget, "activebackground");
+         Options.Active_Foreground :=
+           Option_Value(Button_Widget, "activeforeground");
+         Options.Anchor := Option_Value(Button_Widget, "anchor");
+         Options.Background := Option_Value(Button_Widget, "background");
+         Options.Bitmap := Option_Value(Button_Widget, "bitmap");
+         Options.Border_Width := Option_Value(Button_Widget, "borderwidth");
+         Options.Command := Option_Value(Button_Widget, "command");
+         Options.Compound := Option_Value(Button_Widget, "compound");
+         Options.Cursor := Option_Value(Button_Widget, "cursor");
+         Options.Default := Option_Value(Button_Widget, "default");
          Options.Disabled_Foreground :=
-           Option_Value(Widget, "disabledforeground");
-         Options.Font := Option_Value(Widget, "font");
-         Options.Foreground := Option_Value(Widget, "foreground");
-         Options.Height := Option_Value(Widget, "height");
+           Option_Value(Button_Widget, "disabledforeground");
+         Options.Font := Option_Value(Button_Widget, "font");
+         Options.Foreground := Option_Value(Button_Widget, "foreground");
+         Options.Height := Option_Value(Button_Widget, "height");
          Options.Highlight_Background :=
-           Option_Value(Widget, "highlightbackground");
-         Options.Highlight_Color := Option_Value(Widget, "highlightcolor");
+           Option_Value(Button_Widget, "highlightbackground");
+         Options.Highlight_Color :=
+           Option_Value(Button_Widget, "highlightcolor");
          Options.Highlight_Thickness :=
-           Option_Value(Widget, "highlightthickness");
-         Options.Image := Option_Value(Widget, "image");
-         Options.Justify := Option_Value(Widget, "justify");
-         Options.Over_Relief := Option_Value(Widget, "overrelief");
-         Options.PadX := Option_Value(Widget, "padx");
-         Options.PadY := Option_Value(Widget, "pady");
-         Options.Relief := Option_Value(Widget, "relief");
-         Options.Repeat_Delay := Option_Value(Widget, "repeatdelay");
-         Options.Repeat_Interval := Option_Value(Widget, "repeatinterval");
-         Options.State := Option_Value(Widget, "state");
-         Options.Take_Focus := Option_Value(Widget, "takefocus");
-         Options.Text := Option_Value(Widget, "text");
-         Options.Text_Variable := Option_Value(Widget, "textvariable");
-         Options.Underline := Option_Value(Widget, "underline");
-         Options.Width := Option_Value(Widget, "width");
-         Options.Wrap_Length := Option_Value(Widget, "wraplength");
+           Option_Value(Button_Widget, "highlightthickness");
+         Options.Image := Option_Value(Button_Widget, "image");
+         Options.Justify := Option_Value(Button_Widget, "justify");
+         Options.Over_Relief := Option_Value(Button_Widget, "overrelief");
+         Options.Pad_X := Option_Value(Button_Widget, "padx");
+         Options.Pad_Y := Option_Value(Button_Widget, "pady");
+         Options.Relief := Option_Value(Button_Widget, "relief");
+         Options.Repeat_Delay := Option_Value(Button_Widget, "repeatdelay");
+         Options.Repeat_Interval :=
+           Option_Value(Button_Widget, "repeatinterval");
+         Options.State := Option_Value(Button_Widget, "state");
+         Options.Take_Focus := Option_Value(Button_Widget, "takefocus");
+         Options.Text := Option_Value(Button_Widget, "text");
+         Options.Text_Variable := Option_Value(Button_Widget, "textvariable");
+         Options.Underline := Option_Value(Button_Widget, "underline");
+         Options.Width := Option_Value(Button_Widget, "width");
+         Options.Wrap_Length := Option_Value(Button_Widget, "wraplength");
       end return;
    end Get_Options;
 
-   procedure Configure(Widget: Tk_Button; Options: Button_Options) is
+   procedure Configure(Button_Widget: Tk_Button; Options: Button_Options) is
    begin
-      Execute_Widget_Command(Widget, "configure", Options_To_String(Options));
+      Execute_Widget_Command
+        (Button_Widget, "configure", Options_To_String(Options));
    end Configure;
 
-   procedure Flash(Widget: Tk_Button) is
+   procedure Flash(Button_Widget: Tk_Button) is
    begin
-      Execute_Widget_Command(Widget, "flash");
+      Execute_Widget_Command(Button_Widget, "flash");
    end Flash;
 
-   procedure Invoke(Widget: Tk_Button) is
+   procedure Invoke(Button_Widget: Tk_Button) is
    begin
-      Execute_Widget_Command(Widget, "invoke");
+      Execute_Widget_Command(Button_Widget, "invoke");
    end Invoke;
 
-   function Invoke(Widget: Tk_Button) return String is
+   function Invoke(Button_Widget: Tk_Button) return String is
    begin
-      Invoke(Widget);
-      return Tcl_Get_Result(Tk_Interp(Widget));
+      Invoke(Button_Widget);
+      return Tcl_Get_Result(Tk_Interp(Button_Widget));
    end Invoke;
 
 end Tk.Button;
