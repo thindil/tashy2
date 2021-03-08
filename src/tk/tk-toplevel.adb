@@ -90,35 +90,57 @@ package body Tk.TopLevel is
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Toplevel_Widget := Create(Path_Name, Options, Interpreter);
+      Toplevel_Widget :=
+        Create
+          (Path_Name => Path_Name, Options => Options,
+           Interpreter => Interpreter);
    end Create;
 
    function Get_Options
      (Toplevel_Widget: Tk_Toplevel) return Toplevel_Create_Options is
    begin
-      return Options: Toplevel_Create_Options do
-         Options.Background := Option_Value(Toplevel_Widget, "background");
-         Options.Border_Width := Option_Value(Toplevel_Widget, "borderwidth");
-         Options.Class := Option_Value(Toplevel_Widget, "class");
-         Options.Color_Map := Option_Value(Toplevel_Widget, "colormap");
-         Options.Container := Option_Value(Toplevel_Widget, "container");
-         Options.Cursor := Option_Value(Toplevel_Widget, "cursor");
-         Options.Height := Option_Value(Toplevel_Widget, "height");
+      return
+        Options: Toplevel_Create_Options := Default_Toplevel_Create_Options do
+         Options.Background :=
+           Option_Value(Widget => Toplevel_Widget, Name => "background");
+         Options.Border_Width :=
+           Option_Value(Widget => Toplevel_Widget, Name => "borderwidth");
+         Options.Class :=
+           Option_Value(Widget => Toplevel_Widget, Name => "class");
+         Options.Color_Map :=
+           Option_Value(Widget => Toplevel_Widget, Name => "colormap");
+         Options.Container :=
+           Option_Value(Widget => Toplevel_Widget, Name => "container");
+         Options.Cursor :=
+           Option_Value(Widget => Toplevel_Widget, Name => "cursor");
+         Options.Height :=
+           Option_Value(Widget => Toplevel_Widget, Name => "height");
          Options.Highlight_Background :=
-           Option_Value(Toplevel_Widget, "highlightbackground");
+           Option_Value
+             (Widget => Toplevel_Widget, Name => "highlightbackground");
          Options.Highlight_Color :=
-           Option_Value(Toplevel_Widget, "highlightcolor");
+           Option_Value(Widget => Toplevel_Widget, Name => "highlightcolor");
          Options.Highlight_Thickness :=
-           Option_Value(Toplevel_Widget, "highlightthickness");
-         Options.Menu := Option_Value(Toplevel_Widget, "menu");
-         Options.Pad_X := Option_Value(Toplevel_Widget, "padx");
-         Options.Pad_Y := Option_Value(Toplevel_Widget, "pady");
-         Options.Relief := Option_Value(Toplevel_Widget, "relief");
-         Options.Screen := Option_Value(Toplevel_Widget, "screen");
-         Options.Take_Focus := Option_Value(Toplevel_Widget, "takefocus");
-         Options.Use_Container := Option_Value(Toplevel_Widget, "use");
-         Options.Visual := Option_Value(Toplevel_Widget, "visual");
-         Options.Width := Option_Value(Toplevel_Widget, "width");
+           Option_Value
+             (Widget => Toplevel_Widget, Name => "highlightthickness");
+         Options.Menu :=
+           Option_Value(Widget => Toplevel_Widget, Name => "menu");
+         Options.Pad_X :=
+           Option_Value(Widget => Toplevel_Widget, Name => "padx");
+         Options.Pad_Y :=
+           Option_Value(Widget => Toplevel_Widget, Name => "pady");
+         Options.Relief :=
+           Option_Value(Widget => Toplevel_Widget, Name => "relief");
+         Options.Screen :=
+           Option_Value(Widget => Toplevel_Widget, Name => "screen");
+         Options.Take_Focus :=
+           Option_Value(Widget => Toplevel_Widget, Name => "takefocus");
+         Options.Use_Container :=
+           Option_Value(Widget => Toplevel_Widget, Name => "use");
+         Options.Visual :=
+           Option_Value(Widget => Toplevel_Widget, Name => "visual");
+         Options.Width :=
+           Option_Value(Widget => Toplevel_Widget, Name => "width");
       end return;
    end Get_Options;
 
