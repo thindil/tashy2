@@ -134,60 +134,88 @@ package body Tk.Button is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button is
    begin
       Tcl_Eval
-        ("button " & Path_Name & " " & Options_To_String(Options),
-         Interpreter);
-      return Get_Widget(Path_Name, Interpreter);
+        (Tcl_Script =>
+           "button " & Path_Name & " " & Options_To_String(Options => Options),
+         Interpreter => Interpreter);
+      return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
      (Button_Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Button_Widget := Create(Path_Name, Options, Interpreter);
+      Button_Widget :=
+        Create
+          (Path_Name => Path_Name, Options => Options,
+           Interpreter => Interpreter);
    end Create;
 
    function Get_Options(Button_Widget: Tk_Button) return Button_Options is
    begin
-      return Options: Button_Options do
+      return Options: Button_Options := Default_Button_Options do
          Options.Active_Background :=
-           Option_Value(Button_Widget, "activebackground");
+           Option_Value(Widget => Button_Widget, Name => "activebackground");
          Options.Active_Foreground :=
-           Option_Value(Button_Widget, "activeforeground");
-         Options.Anchor := Option_Value(Button_Widget, "anchor");
-         Options.Background := Option_Value(Button_Widget, "background");
-         Options.Bitmap := Option_Value(Button_Widget, "bitmap");
-         Options.Border_Width := Option_Value(Button_Widget, "borderwidth");
-         Options.Command := Option_Value(Button_Widget, "command");
-         Options.Compound := Option_Value(Button_Widget, "compound");
-         Options.Cursor := Option_Value(Button_Widget, "cursor");
-         Options.Default := Option_Value(Button_Widget, "default");
+           Option_Value(Widget => Button_Widget, Name => "activeforeground");
+         Options.Anchor :=
+           Option_Value(Widget => Button_Widget, Name => "anchor");
+         Options.Background :=
+           Option_Value(Widget => Button_Widget, Name => "background");
+         Options.Bitmap :=
+           Option_Value(Widget => Button_Widget, Name => "bitmap");
+         Options.Border_Width :=
+           Option_Value(Widget => Button_Widget, Name => "borderwidth");
+         Options.Command :=
+           Option_Value(Widget => Button_Widget, Name => "command");
+         Options.Compound :=
+           Option_Value(Widget => Button_Widget, Name => "compound");
+         Options.Cursor :=
+           Option_Value(Widget => Button_Widget, Name => "cursor");
+         Options.Default :=
+           Option_Value(Widget => Button_Widget, Name => "default");
          Options.Disabled_Foreground :=
-           Option_Value(Button_Widget, "disabledforeground");
-         Options.Font := Option_Value(Button_Widget, "font");
-         Options.Foreground := Option_Value(Button_Widget, "foreground");
-         Options.Height := Option_Value(Button_Widget, "height");
+           Option_Value(Widget => Button_Widget, Name => "disabledforeground");
+         Options.Font := Option_Value(Widget => Button_Widget, Name => "font");
+         Options.Foreground :=
+           Option_Value(Widget => Button_Widget, Name => "foreground");
+         Options.Height :=
+           Option_Value(Widget => Button_Widget, Name => "height");
          Options.Highlight_Background :=
-           Option_Value(Button_Widget, "highlightbackground");
+           Option_Value
+             (Widget => Button_Widget, Name => "highlightbackground");
          Options.Highlight_Color :=
-           Option_Value(Button_Widget, "highlightcolor");
+           Option_Value(Widget => Button_Widget, Name => "highlightcolor");
          Options.Highlight_Thickness :=
-           Option_Value(Button_Widget, "highlightthickness");
-         Options.Image := Option_Value(Button_Widget, "image");
-         Options.Justify := Option_Value(Button_Widget, "justify");
-         Options.Over_Relief := Option_Value(Button_Widget, "overrelief");
-         Options.Pad_X := Option_Value(Button_Widget, "padx");
-         Options.Pad_Y := Option_Value(Button_Widget, "pady");
-         Options.Relief := Option_Value(Button_Widget, "relief");
-         Options.Repeat_Delay := Option_Value(Button_Widget, "repeatdelay");
+           Option_Value(Widget => Button_Widget, Name => "highlightthickness");
+         Options.Image :=
+           Option_Value(Widget => Button_Widget, Name => "image");
+         Options.Justify :=
+           Option_Value(Widget => Button_Widget, Name => "justify");
+         Options.Over_Relief :=
+           Option_Value(Widget => Button_Widget, Name => "overrelief");
+         Options.Pad_X :=
+           Option_Value(Widget => Button_Widget, Name => "padx");
+         Options.Pad_Y :=
+           Option_Value(Widget => Button_Widget, Name => "pady");
+         Options.Relief :=
+           Option_Value(Widget => Button_Widget, Name => "relief");
+         Options.Repeat_Delay :=
+           Option_Value(Widget => Button_Widget, Name => "repeatdelay");
          Options.Repeat_Interval :=
-           Option_Value(Button_Widget, "repeatinterval");
-         Options.State := Option_Value(Button_Widget, "state");
-         Options.Take_Focus := Option_Value(Button_Widget, "takefocus");
-         Options.Text := Option_Value(Button_Widget, "text");
-         Options.Text_Variable := Option_Value(Button_Widget, "textvariable");
-         Options.Underline := Option_Value(Button_Widget, "underline");
-         Options.Width := Option_Value(Button_Widget, "width");
-         Options.Wrap_Length := Option_Value(Button_Widget, "wraplength");
+           Option_Value(Widget => Button_Widget, Name => "repeatinterval");
+         Options.State :=
+           Option_Value(Widget => Button_Widget, Name => "state");
+         Options.Take_Focus :=
+           Option_Value(Widget => Button_Widget, Name => "takefocus");
+         Options.Text := Option_Value(Widget => Button_Widget, Name => "text");
+         Options.Text_Variable :=
+           Option_Value(Widget => Button_Widget, Name => "textvariable");
+         Options.Underline :=
+           Option_Value(Widget => Button_Widget, Name => "underline");
+         Options.Width :=
+           Option_Value(Widget => Button_Widget, Name => "width");
+         Options.Wrap_Length :=
+           Option_Value(Widget => Button_Widget, Name => "wraplength");
       end return;
    end Get_Options;
 
