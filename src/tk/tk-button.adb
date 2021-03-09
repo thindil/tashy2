@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Ada.Strings.Unbounded;
 
 package body Tk.Button is
 
@@ -28,6 +28,8 @@ package body Tk.Button is
    -- SOURCE
    function Options_To_String(Options: Button_Options) return String is
       -- ****
+      use Ada.Strings.Unbounded;
+
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
@@ -222,23 +224,25 @@ package body Tk.Button is
    procedure Configure(Button_Widget: Tk_Button; Options: Button_Options) is
    begin
       Execute_Widget_Command
-        (Button_Widget, "configure", Options_To_String(Options));
+        (Widget => Button_Widget, Command_Name => "configure",
+         Options => Options_To_String(Options => Options));
    end Configure;
 
    procedure Flash(Button_Widget: Tk_Button) is
    begin
-      Execute_Widget_Command(Button_Widget, "flash");
+      Execute_Widget_Command(Widget => Button_Widget, Command_Name => "flash");
    end Flash;
 
    procedure Invoke(Button_Widget: Tk_Button) is
    begin
-      Execute_Widget_Command(Button_Widget, "invoke");
+      Execute_Widget_Command
+        (Widget => Button_Widget, Command_Name => "invoke");
    end Invoke;
 
    function Invoke(Button_Widget: Tk_Button) return String is
    begin
-      Invoke(Button_Widget);
-      return Tcl_Get_Result(Tk_Interp(Button_Widget));
+      Invoke(Button_Widget => Button_Widget);
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Button_Widget));
    end Invoke;
 
 end Tk.Button;
