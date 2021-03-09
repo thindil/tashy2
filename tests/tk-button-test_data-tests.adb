@@ -32,10 +32,10 @@ package body Tk.Button.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Flash_21d4a1_cc5d66(Widget: Tk_Button) is
+   procedure Wrap_Test_Flash_21d4a1_fe4617(Button_Widget: Tk_Button) is
    begin
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Button_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -43,7 +43,7 @@ package body Tk.Button.Test_Data.Tests is
               (False,
                "req_sloc(tk-button.ads:0):Test_Flash_Button test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Button.Flash(Widget);
+      GNATtest_Generated.GNATtest_Standard.Tk.Button.Flash(Button_Widget);
       begin
          pragma Assert(True);
          null;
@@ -53,16 +53,17 @@ package body Tk.Button.Test_Data.Tests is
               (False,
                "ens_sloc(tk-button.ads:0:):Test_Flash_Button test commitment violated");
       end;
-   end Wrap_Test_Flash_21d4a1_cc5d66;
+   end Wrap_Test_Flash_21d4a1_fe4617;
 --  end read only
 
 --  begin read only
    procedure Test_Flash_test_flash_button(Gnattest_T: in out Test);
-   procedure Test_Flash_21d4a1_cc5d66(Gnattest_T: in out Test) renames
+   procedure Test_Flash_21d4a1_fe4617(Gnattest_T: in out Test) renames
      Test_Flash_test_flash_button;
 --  id:2.2/21d4a1d7f9902425/Flash/1/0/test_flash_button/
    procedure Test_Flash_test_flash_button(Gnattest_T: in out Test) is
-      procedure Flash(Widget: Tk_Button) renames Wrap_Test_Flash_21d4a1_cc5d66;
+      procedure Flash(Button_Widget: Tk_Button) renames
+        Wrap_Test_Flash_21d4a1_fe4617;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -84,10 +85,10 @@ package body Tk.Button.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Invoke_05a9d3_953100(Widget: Tk_Button) is
+   procedure Wrap_Test_Invoke_05a9d3_ac3b13(Button_Widget: Tk_Button) is
    begin
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Button_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -95,7 +96,7 @@ package body Tk.Button.Test_Data.Tests is
               (False,
                "req_sloc(tk-button.ads:0):Test_Invoke_Button1 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Button.Invoke(Widget);
+      GNATtest_Generated.GNATtest_Standard.Tk.Button.Invoke(Button_Widget);
       begin
          pragma Assert(True);
          null;
@@ -105,17 +106,17 @@ package body Tk.Button.Test_Data.Tests is
               (False,
                "ens_sloc(tk-button.ads:0:):Test_Invoke_Button1 test commitment violated");
       end;
-   end Wrap_Test_Invoke_05a9d3_953100;
+   end Wrap_Test_Invoke_05a9d3_ac3b13;
 --  end read only
 
 --  begin read only
    procedure Test_1_Invoke_test_invoke_button1(Gnattest_T: in out Test);
-   procedure Test_Invoke_05a9d3_953100(Gnattest_T: in out Test) renames
+   procedure Test_Invoke_05a9d3_ac3b13(Gnattest_T: in out Test) renames
      Test_1_Invoke_test_invoke_button1;
 --  id:2.2/05a9d3a88a18a5a9/Invoke/1/0/test_invoke_button1/
    procedure Test_1_Invoke_test_invoke_button1(Gnattest_T: in out Test) is
-      procedure Invoke(Widget: Tk_Button) renames
-        Wrap_Test_Invoke_05a9d3_953100;
+      procedure Invoke(Button_Widget: Tk_Button) renames
+        Wrap_Test_Invoke_05a9d3_ac3b13;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -142,10 +143,11 @@ package body Tk.Button.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Invoke_89eee4_9c2ae3(Widget: Tk_Button) return String is
+   function Wrap_Test_Invoke_89eee4_562019
+     (Button_Widget: Tk_Button) return String is
    begin
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Button_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -154,8 +156,9 @@ package body Tk.Button.Test_Data.Tests is
                "req_sloc(tk-button.ads:0):Test_Invoke_Button2 test requirement violated");
       end;
       declare
-         Test_Invoke_89eee4_9c2ae3_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Button.Invoke(Widget);
+         Test_Invoke_89eee4_562019_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Button.Invoke
+             (Button_Widget);
       begin
          begin
             pragma Assert(True);
@@ -166,19 +169,19 @@ package body Tk.Button.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-button.ads:0:):Test_Invoke_Button2 test commitment violated");
          end;
-         return Test_Invoke_89eee4_9c2ae3_Result;
+         return Test_Invoke_89eee4_562019_Result;
       end;
-   end Wrap_Test_Invoke_89eee4_9c2ae3;
+   end Wrap_Test_Invoke_89eee4_562019;
 --  end read only
 
 --  begin read only
    procedure Test_2_Invoke_test_invoke_button2(Gnattest_T: in out Test);
-   procedure Test_Invoke_89eee4_9c2ae3(Gnattest_T: in out Test) renames
+   procedure Test_Invoke_89eee4_562019(Gnattest_T: in out Test) renames
      Test_2_Invoke_test_invoke_button2;
 --  id:2.2/89eee4a7b544ee30/Invoke/0/0/test_invoke_button2/
    procedure Test_2_Invoke_test_invoke_button2(Gnattest_T: in out Test) is
-      function Invoke(Widget: Tk_Button) return String renames
-        Wrap_Test_Invoke_89eee4_9c2ae3;
+      function Invoke(Button_Widget: Tk_Button) return String renames
+        Wrap_Test_Invoke_89eee4_562019;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -207,10 +210,11 @@ package body Tk.Button.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Invoke_e2c227_35cdc5(Widget: Tk_Button) return Integer is
+   function Wrap_Test_Invoke_e2c227_f37e05
+     (Button_Widget: Tk_Button) return Integer is
    begin
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Button_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -219,8 +223,9 @@ package body Tk.Button.Test_Data.Tests is
                "req_sloc(tk-button.ads:0):Test_Invoke_Button3 test requirement violated");
       end;
       declare
-         Test_Invoke_e2c227_35cdc5_Result: constant Integer :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Button.Invoke(Widget);
+         Test_Invoke_e2c227_f37e05_Result: constant Integer :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Button.Invoke
+             (Button_Widget);
       begin
          begin
             pragma Assert(True);
@@ -231,19 +236,19 @@ package body Tk.Button.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-button.ads:0:):Test_Invoke_Button3 test commitment violated");
          end;
-         return Test_Invoke_e2c227_35cdc5_Result;
+         return Test_Invoke_e2c227_f37e05_Result;
       end;
-   end Wrap_Test_Invoke_e2c227_35cdc5;
+   end Wrap_Test_Invoke_e2c227_f37e05;
 --  end read only
 
 --  begin read only
    procedure Test_3_Invoke_test_invoke_button3(Gnattest_T: in out Test);
-   procedure Test_Invoke_e2c227_35cdc5(Gnattest_T: in out Test) renames
+   procedure Test_Invoke_e2c227_f37e05(Gnattest_T: in out Test) renames
      Test_3_Invoke_test_invoke_button3;
 --  id:2.2/e2c227ba89cf8cf0/Invoke/0/0/test_invoke_button3/
    procedure Test_3_Invoke_test_invoke_button3(Gnattest_T: in out Test) is
-      function Invoke(Widget: Tk_Button) return Integer renames
-        Wrap_Test_Invoke_e2c227_35cdc5;
+      function Invoke(Button_Widget: Tk_Button) return Integer renames
+        Wrap_Test_Invoke_e2c227_f37e05;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -270,10 +275,11 @@ package body Tk.Button.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Invoke_6e0b2f_f05801(Widget: Tk_Button) return Float is
+   function Wrap_Test_Invoke_6e0b2f_4c724f
+     (Button_Widget: Tk_Button) return Float is
    begin
       begin
-         pragma Assert(Widget /= Null_Widget);
+         pragma Assert(Button_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -282,8 +288,9 @@ package body Tk.Button.Test_Data.Tests is
                "req_sloc(tk-button.ads:0):Test_Invoke_Button4 test requirement violated");
       end;
       declare
-         Test_Invoke_6e0b2f_f05801_Result: constant Float :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Button.Invoke(Widget);
+         Test_Invoke_6e0b2f_4c724f_Result: constant Float :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Button.Invoke
+             (Button_Widget);
       begin
          begin
             pragma Assert(True);
@@ -294,19 +301,19 @@ package body Tk.Button.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-button.ads:0:):Test_Invoke_Button4 test commitment violated");
          end;
-         return Test_Invoke_6e0b2f_f05801_Result;
+         return Test_Invoke_6e0b2f_4c724f_Result;
       end;
-   end Wrap_Test_Invoke_6e0b2f_f05801;
+   end Wrap_Test_Invoke_6e0b2f_4c724f;
 --  end read only
 
 --  begin read only
    procedure Test_4_Invoke_test_invoke_button4(Gnattest_T: in out Test);
-   procedure Test_Invoke_6e0b2f_f05801(Gnattest_T: in out Test) renames
+   procedure Test_Invoke_6e0b2f_4c724f(Gnattest_T: in out Test) renames
      Test_4_Invoke_test_invoke_button4;
 --  id:2.2/6e0b2f6e0a7e9e72/Invoke/0/0/test_invoke_button4/
    procedure Test_4_Invoke_test_invoke_button4(Gnattest_T: in out Test) is
-      function Invoke(Widget: Tk_Button) return Float renames
-        Wrap_Test_Invoke_6e0b2f_f05801;
+      function Invoke(Button_Widget: Tk_Button) return Float renames
+        Wrap_Test_Invoke_6e0b2f_4c724f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
