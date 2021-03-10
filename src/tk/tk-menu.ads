@@ -687,7 +687,7 @@ package Tk.Menu is
       Test_Case => (Name => "Test_Post_Menu2", Mode => Nominal);
       -- ****
 
-      -- ****f* Menu/Menu.PostCascade
+      -- ****f* Menu/Menu.Post_Cascade
       -- FUNCTION
       -- Post the submenu associated with the selected CASCADE menu entry and
       -- unpost the previous submenu if visible
@@ -700,19 +700,19 @@ package Tk.Menu is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Show the submenu of the second item in My_Menu menu
-      -- PostCascade(My_Menu, 1);
+      -- Post_Cascade(My_Menu, 1);
       -- COMMANDS
       -- Menu_Widget postcascade Menu_Index
       -- SOURCE
-   procedure PostCascade(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) with
+   procedure Post_Cascade(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) with
       Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_PostCascade_Menu", Mode => Nominal);
-   procedure PostCascade
+   procedure Post_Cascade
      (Menu_Widget: Tk_Menu; Menu_Index: Natural;
       Is_Index: Boolean := True) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_PostCascade_Menu2", Mode => Nominal);
-   procedure PostCascade
+   procedure Post_Cascade
      (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_PostCascade_Menu3", Mode => Nominal);
