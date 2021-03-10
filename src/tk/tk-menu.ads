@@ -352,8 +352,8 @@ package Tk.Menu is
       -- Menu_Widget clone New_Path_Name ?Menu_Type?
       -- SOURCE
    function Clone
-     (Menu_Widget: Tk_Menu; New_Path_Name: String; Menu_Type: Menu_Types := NONE)
-      return Tk_Menu with
+     (Menu_Widget: Tk_Menu; New_Path_Name: String;
+      Menu_Type: Menu_Types := NONE) return Tk_Menu with
       Pre => Menu_Widget /= Null_Widget and New_Path_Name'Length > 0,
       Test_Case => (Name => "Test_Clone_Menu", Mode => Nominal);
       -- ****
@@ -447,7 +447,8 @@ package Tk.Menu is
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Entry_Get_Options_Menu2", Mode => Nominal);
    function Entry_Get_Options
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes) return Menu_Item_Options with
+     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes)
+      return Menu_Item_Options with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Entry_Get_Options_Menu3", Mode => Nominal);
       -- ****
@@ -507,14 +508,17 @@ package Tk.Menu is
       -- Menu_Widget index Index
       -- SOURCE
    function Index
-     (Menu_Widget: Tk_Menu; Index: Tcl_String) return Extended_Natural with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+     (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String)
+      return Extended_Natural with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_Index_Menu", Mode => Nominal);
-   function Index(Menu_Widget: Tk_Menu; Index: Natural) return Extended_Natural with
+   function Index
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural) return Extended_Natural with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Index_Menu2", Mode => Nominal);
    function Index
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes) return Extended_Natural with
+     (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes)
+      return Extended_Natural with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Index_Menu3", Mode => Nominal);
       -- ****
@@ -552,8 +556,8 @@ package Tk.Menu is
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Insert_Menu2", Mode => Nominal);
    procedure Insert
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes; Item_Type: Menu_Item_Types;
-      Options: Menu_Item_Options) with
+     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes;
+      Item_Type: Menu_Item_Types; Options: Menu_Item_Options) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Insert_Menu3", Mode => Nominal);
       -- ****
@@ -733,7 +737,8 @@ package Tk.Menu is
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Item_Type_Menu2", Mode => Nominal);
    function Get_Item_Type
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes) return Menu_Item_Types with
+     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes)
+      return Menu_Item_Types with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Item_Type_Menu3", Mode => Nominal);
       -- ****
@@ -776,7 +781,8 @@ package Tk.Menu is
       -- SEE ALSO
       -- Menu.Y_Position
       -- SOURCE
-   function X_Position(Menu_Widget: Tk_Menu; Index: Tcl_String) return Natural with
+   function X_Position
+     (Menu_Widget: Tk_Menu; Index: Tcl_String) return Natural with
       Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => (Name => "Test_X_Position_Menu", Mode => Nominal);
    function X_Position
@@ -810,7 +816,8 @@ package Tk.Menu is
       -- SEE ALSO
       -- Menu.X_Position
       -- SOURCE
-   function Y_Position(Menu_Widget: Tk_Menu; Index: Tcl_String) return Natural with
+   function Y_Position
+     (Menu_Widget: Tk_Menu; Index: Tcl_String) return Natural with
       Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
       Test_Case => (Name => "Test_Y_Position_Menu", Mode => Nominal);
    function Y_Position
