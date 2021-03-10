@@ -219,7 +219,7 @@ package body Tk.Menu is
 
    procedure Delete
      (Menu_Widget: Tk_Menu; Index1: Tcl_String;
-      Index2: Tcl_String := To_Tcl_String("")) is
+      Index2: Tcl_String := To_Tcl_String(Source => "")) is
    begin
       Execute_Widget_Command
         (Menu_Widget, "delete",
