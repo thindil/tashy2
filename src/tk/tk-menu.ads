@@ -263,8 +263,8 @@ package Tk.Menu is
       -- Set the selected menu entry as active
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu widget in which the menu entry will be set as active
-      -- Index       - The index of the menu entry to activate
-      -- Is_Index    - If True, Index is numerical index of the menu entry,
+      -- Menu_Index       - The index of the menu entry to activate
+      -- Is_Index    - If True, Menu_Index is numerical index of the menu entry,
       --               otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
@@ -272,16 +272,17 @@ package Tk.Menu is
       -- -- Set active the last element of the menu My_Menu
       -- Activate(My_Menu, LAST);
       -- COMMANDS
-      -- Menu_Widget activate Index
+      -- Menu_Widget activate Menu_Index
       -- SOURCE
-   procedure Activate(Menu_Widget: Tk_Menu; Index: Tcl_String) with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+   procedure Activate(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_Activate_Menu", Mode => Nominal);
    procedure Activate
-     (Menu_Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) with
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural;
+      Is_Index: Boolean := True) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Activate_Menu2", Mode => Nominal);
-   procedure Activate(Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes) with
+   procedure Activate(Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Activate_Menu3", Mode => Nominal);
       -- ****
@@ -422,8 +423,8 @@ package Tk.Menu is
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu from which the options for the selected menu entry
       --               will be get
-      -- Index       - The index of the menu entry which options will be get
-      -- Is_Index    - If true, Index is numerical index of the menu entry.
+      -- Menu_Index       - The index of the menu entry which options will be get
+      -- Is_Index    - If true, Menu_Index is numerical index of the menu entry.
       --               Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- Menu_Item_Options record with options of the selected menu entry
@@ -433,21 +434,22 @@ package Tk.Menu is
       -- -- Get the options of the third menu entry in My_Menu menu
       -- Item_Options: constant Menu_Item_Options := Entry_Get_Options(My_Menu, 2));
       -- COMMANDS
-      -- Menu_Widget entryconfigure Index
+      -- Menu_Widget entryconfigure Menu_Index
       -- SEE ALSO
       -- Menu.Entry_Configure
       -- SOURCE
    function Entry_Get_Options
-     (Menu_Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Options with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+     (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String)
+      return Menu_Item_Options with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_Entry_Get_Options_Menu", Mode => Nominal);
    function Entry_Get_Options
-     (Menu_Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
       return Menu_Item_Options with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Entry_Get_Options_Menu2", Mode => Nominal);
    function Entry_Get_Options
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes)
+     (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes)
       return Menu_Item_Options with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Entry_Get_Options_Menu3", Mode => Nominal);
@@ -458,9 +460,9 @@ package Tk.Menu is
       -- Set options of the selected menu entry in the selected menu
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu in which the menu entry options will be set
-      -- Index       - The index of the menu entry which options will be set
+      -- Menu_Index       - The index of the menu entry which options will be set
       -- Options     - The new values of options for the selected menu entry
-      -- Is_Index    - If true, Index is numerical index of the menu entry.
+      -- Is_Index    - If true, Menu_Index is numerical index of the menu entry.
       --               Otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
@@ -468,21 +470,22 @@ package Tk.Menu is
       -- -- Set the label for the first menu entry in My_Menu menu to "First element"
       -- Entry_Configure(My_Menu, 0, Menu_Item_Options'(Label => To_Tcl_String("First element")));
       -- COMMANDS
-      -- Menu_Widget entryconfigure Index Options
+      -- Menu_Widget entryconfigure Menu_Index Options
       -- SEE ALSO
       -- Menu.Entry_Get_Options
       -- SOURCE
    procedure Entry_Configure
-     (Menu_Widget: Tk_Menu; Index: Tcl_String; Options: Menu_Item_Options) with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+     (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String;
+      Options: Menu_Item_Options) with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_Entry_Configure_Menu", Mode => Nominal);
    procedure Entry_Configure
-     (Menu_Widget: Tk_Menu; Index: Natural; Options: Menu_Item_Options;
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural; Options: Menu_Item_Options;
       Is_Index: Boolean := True) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Entry_Configure_Menu2", Mode => Nominal);
    procedure Entry_Configure
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes;
+     (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes;
       Options: Menu_Item_Options) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Entry_Configure_Menu3", Mode => Nominal);
@@ -495,7 +498,7 @@ package Tk.Menu is
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu in which the numerical index of menu entry will be
       --               get
-      -- Index       - The index of the menu entry which numerical index will be get
+      -- Menu_Index       - The index of the menu entry which numerical index will be get
       -- RESULT
       -- Numerical index of the selected menu entry or -1 if menu entry was
       -- specified as NONE or "none"
@@ -505,7 +508,7 @@ package Tk.Menu is
       -- -- Get the numerical index of the last menu entry in My_Menu menu
       -- Number: constant Extended_Natural := Index(My_Menu, MENU_END);
       -- COMMANDS
-      -- Menu_Widget index Index
+      -- Menu_Widget index Menu_Index
       -- SOURCE
    function Index
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String)
@@ -528,10 +531,10 @@ package Tk.Menu is
       -- Insert a new menu entry into selected position in the selected menu
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu widget in which the new entry will be inserted
-      -- Index       - The index on which the new menu entry will be inserted
+      -- Menu_Index       - The index on which the new menu entry will be inserted
       -- Item_Type   - The type of menu entry to insert
       -- Options     - The options for the newly inserted entry
-      -- Is_Index    - If true, Index is numerical index of the menu entry.
+      -- Is_Index    - If true, Menu_Index is numerical index of the menu entry.
       --               Otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
@@ -541,22 +544,22 @@ package Tk.Menu is
       --                                                       Command => To_Tcl_String("exit"),
       --                                                       others => <>));
       -- COMMANDS
-      -- Menu_Widget insert Index Item_Type Options
+      -- Menu_Widget insert Menu_Index Item_Type Options
       -- SEE ALSO
       -- Menu.Add
       -- SOURCE
    procedure Insert
-     (Menu_Widget: Tk_Menu; Index: Tcl_String; Item_Type: Menu_Item_Types;
+     (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String; Item_Type: Menu_Item_Types;
       Options: Menu_Item_Options) with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_Insert_Menu", Mode => Nominal);
    procedure Insert
-     (Menu_Widget: Tk_Menu; Index: Natural; Item_Type: Menu_Item_Types;
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural; Item_Type: Menu_Item_Types;
       Options: Menu_Item_Options; Is_Index: Boolean := True) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Insert_Menu2", Mode => Nominal);
    procedure Insert
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes;
+     (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes;
       Item_Type: Menu_Item_Types; Options: Menu_Item_Options) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Insert_Menu3", Mode => Nominal);
@@ -568,8 +571,8 @@ package Tk.Menu is
       -- selected menu
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu in which the menu entry command will be invoked
-      -- Index       - The index of the menu entry which command will be invoked
-      -- Is_Index    - If true, Index is numerical index of the menu entry.
+      -- Menu_Index       - The index of the menu entry which command will be invoked
+      -- Is_Index    - If true, Menu_Index is numerical index of the menu entry.
       --               Otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
@@ -577,18 +580,19 @@ package Tk.Menu is
       -- -- Invoke the first menu entry in My_Menu menu
       -- Invoke(My_Menu, 0);
       -- COMMANDS
-      -- Menu_Widget invoke Index
+      -- Menu_Widget invoke Menu_Index
       -- SEE ALSO
       -- Menu.Invoke_(function)
       -- SOURCE
-   procedure Invoke(Menu_Widget: Tk_Menu; Index: Tcl_String) with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+   procedure Invoke(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_Invoke_Menu1", Mode => Nominal);
    procedure Invoke
-     (Menu_Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) with
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural;
+      Is_Index: Boolean := True) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_Menu3", Mode => Nominal);
-   procedure Invoke(Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes) with
+   procedure Invoke(Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_Menu4", Mode => Nominal);
       -- ****
@@ -599,8 +603,8 @@ package Tk.Menu is
       -- selected menu
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu in which the menu entry command will be invoked
-      -- Index       - The index of the menu entry which command will be invoked
-      -- Is_Index    - If true, Index is numerical index of the menu entry.
+      -- Menu_Index       - The index of the menu entry which command will be invoked
+      -- Is_Index    - If true, Menu_Index is numerical index of the menu entry.
       --               Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- String with value returned by the invoked Tcl command
@@ -610,20 +614,21 @@ package Tk.Menu is
       -- -- Invoke the second menu entry in My_Menu menu
       -- Result: constant String := Invoke(My_Menu, 1);
       -- COMMANDS
-      -- Menu_Widget invoke Index
+      -- Menu_Widget invoke Menu_Index
       -- SEE ALSO
       -- Menu.Invoke_(procedure)
       -- SOURCE
-   function Invoke(Menu_Widget: Tk_Menu; Index: Tcl_String) return String with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+   function Invoke
+     (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return String with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_Invoke_Menu2", Mode => Nominal);
    function Invoke
-     (Menu_Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
       return String with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_Menu5", Mode => Nominal);
    function Invoke
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes) return String with
+     (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) return String with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_Menu6", Mode => Nominal);
       -- ****
@@ -688,8 +693,8 @@ package Tk.Menu is
       -- unpost the previous submenu if visible
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu in which the submenu will be show
-      -- Index       - Index of menu entry which submenu will be show
-      -- Is_Index    - If true, Index is numerical index of the menu entry.
+      -- Menu_Index       - Index of menu entry which submenu will be show
+      -- Is_Index    - If true, Menu_Index is numerical index of the menu entry.
       --               Otherwise it is Y coordinate of the menu entry
       -- HISTORY
       -- 8.6.0 - Added
@@ -697,16 +702,18 @@ package Tk.Menu is
       -- -- Show the submenu of the second item in My_Menu menu
       -- PostCascade(My_Menu, 1);
       -- COMMANDS
-      -- Menu_Widget postcascade Index
+      -- Menu_Widget postcascade Menu_Index
       -- SOURCE
-   procedure PostCascade(Menu_Widget: Tk_Menu; Index: Tcl_String) with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+   procedure PostCascade(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_PostCascade_Menu", Mode => Nominal);
    procedure PostCascade
-     (Menu_Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True) with
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural;
+      Is_Index: Boolean := True) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_PostCascade_Menu2", Mode => Nominal);
-   procedure PostCascade(Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes) with
+   procedure PostCascade
+     (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_PostCascade_Menu3", Mode => Nominal);
       -- ****
@@ -716,8 +723,8 @@ package Tk.Menu is
       -- Get the type of the selected menu entry in the selected menu
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu in which the menu item type will be get
-      -- Index       - The index of the menu entry which type will be get
-      -- Is_Index    - If true, Index is numerical index of the menu entry.
+      -- Menu_Index       - The index of the menu entry which type will be get
+      -- Is_Index    - If true, Menu_Index is numerical index of the menu entry.
       --               Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- The type of the selected menu entry
@@ -728,16 +735,16 @@ package Tk.Menu is
       -- Item_Type: constant Menu_Item_Types := Get_Item_Type(My_Menu, To_Tcl_String("Quit"));
       -- SOURCE
    function Get_Item_Type
-     (Menu_Widget: Tk_Menu; Index: Tcl_String) return Menu_Item_Types with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+     (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Menu_Item_Types with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_Get_Item_Type_Menu", Mode => Nominal);
    function Get_Item_Type
-     (Menu_Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
       return Menu_Item_Types with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Item_Type_Menu2", Mode => Nominal);
    function Get_Item_Type
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes)
+     (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes)
       return Menu_Item_Types with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Item_Type_Menu3", Mode => Nominal);
@@ -767,8 +774,8 @@ package Tk.Menu is
       -- entry in the selected menu
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu in which coordinate will be get
-      -- Index       - The index of the menu entry which coordinate will be get
-      -- Is_Index    - If true, Index is numerical index of the menu entry.
+      -- Menu_Index       - The index of the menu entry which coordinate will be get
+      -- Is_Index    - If true, Menu_Index is numerical index of the menu entry.
       --               Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- X coordinate for the pixel of the top left corner of the selected
@@ -782,16 +789,16 @@ package Tk.Menu is
       -- Menu.Y_Position
       -- SOURCE
    function X_Position
-     (Menu_Widget: Tk_Menu; Index: Tcl_String) return Natural with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+     (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Natural with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_X_Position_Menu", Mode => Nominal);
    function X_Position
-     (Menu_Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
       return Natural with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_Position_Menu2", Mode => Nominal);
    function X_Position
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes) return Natural with
+     (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) return Natural with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_Position_Menu3", Mode => Nominal);
       -- ****
@@ -802,8 +809,8 @@ package Tk.Menu is
       -- entry in the selected menu
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu in which coordinate will be get
-      -- Index       - The index of the menu entry which coordinate will be get
-      -- Is_Index    - If true, Index is numerical index of the menu entry.
+      -- Menu_Index       - The index of the menu entry which coordinate will be get
+      -- Is_Index    - If true, Menu_Index is numerical index of the menu entry.
       --               Otherwise it is Y coordinate of the menu entry
       -- RESULT
       -- Y coordinate for the pixel of the top left corner of the selected
@@ -817,16 +824,16 @@ package Tk.Menu is
       -- Menu.X_Position
       -- SOURCE
    function Y_Position
-     (Menu_Widget: Tk_Menu; Index: Tcl_String) return Natural with
-      Pre => Menu_Widget /= Null_Widget and Length(Index) > 0,
+     (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Natural with
+      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
       Test_Case => (Name => "Test_Y_Position_Menu", Mode => Nominal);
    function Y_Position
-     (Menu_Widget: Tk_Menu; Index: Natural; Is_Index: Boolean := True)
+     (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
       return Natural with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Y_Position_Menu2", Mode => Nominal);
    function Y_Position
-     (Menu_Widget: Tk_Menu; Index: Menu_Item_Indexes) return Natural with
+     (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) return Natural with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Y_Position_Menu3", Mode => Nominal);
       -- ****
