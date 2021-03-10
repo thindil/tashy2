@@ -275,7 +275,7 @@ package Tk.Menu is
       -- Menu_Widget activate Menu_Index
       -- SOURCE
    procedure Activate(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_Activate_Menu", Mode => Nominal);
    procedure Activate
      (Menu_Widget: Tk_Menu; Menu_Index: Natural;
@@ -402,8 +402,8 @@ package Tk.Menu is
       -- SOURCE
    procedure Delete
      (Menu_Widget: Tk_Menu; Index1: Tcl_String;
-      Index2: Tcl_String := To_Tcl_String("")) with
-      Pre => Menu_Widget /= Null_Widget and Length(Index1) > 0,
+      Index2: Tcl_String := To_Tcl_String(Source => "")) with
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Index1) > 0,
       Test_Case => (Name => "Test_Delete_Menu", Mode => Nominal);
    procedure Delete
      (Menu_Widget: Tk_Menu; Index1: Natural; Index2: Extended_Natural := -1;
@@ -441,7 +441,7 @@ package Tk.Menu is
    function Entry_Get_Options
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String)
       return Menu_Item_Options with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_Entry_Get_Options_Menu", Mode => Nominal);
    function Entry_Get_Options
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
@@ -477,7 +477,7 @@ package Tk.Menu is
    procedure Entry_Configure
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String;
       Options: Menu_Item_Options) with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_Entry_Configure_Menu", Mode => Nominal);
    procedure Entry_Configure
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Options: Menu_Item_Options;
@@ -513,7 +513,7 @@ package Tk.Menu is
    function Index
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String)
       return Extended_Natural with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_Index_Menu", Mode => Nominal);
    function Index
      (Menu_Widget: Tk_Menu; Menu_Index: Natural) return Extended_Natural with
@@ -551,7 +551,7 @@ package Tk.Menu is
    procedure Insert
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String; Item_Type: Menu_Item_Types;
       Options: Menu_Item_Options) with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_Insert_Menu", Mode => Nominal);
    procedure Insert
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Item_Type: Menu_Item_Types;
@@ -585,7 +585,7 @@ package Tk.Menu is
       -- Menu.Invoke_(function)
       -- SOURCE
    procedure Invoke(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_Invoke_Menu1", Mode => Nominal);
    procedure Invoke
      (Menu_Widget: Tk_Menu; Menu_Index: Natural;
@@ -620,7 +620,7 @@ package Tk.Menu is
       -- SOURCE
    function Invoke
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return String with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_Invoke_Menu2", Mode => Nominal);
    function Invoke
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
@@ -705,7 +705,7 @@ package Tk.Menu is
       -- Menu_Widget postcascade Menu_Index
       -- SOURCE
    procedure PostCascade(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_PostCascade_Menu", Mode => Nominal);
    procedure PostCascade
      (Menu_Widget: Tk_Menu; Menu_Index: Natural;
@@ -736,7 +736,7 @@ package Tk.Menu is
       -- SOURCE
    function Get_Item_Type
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Menu_Item_Types with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_Get_Item_Type_Menu", Mode => Nominal);
    function Get_Item_Type
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
@@ -790,7 +790,7 @@ package Tk.Menu is
       -- SOURCE
    function X_Position
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Natural with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_X_Position_Menu", Mode => Nominal);
    function X_Position
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
@@ -825,7 +825,7 @@ package Tk.Menu is
       -- SOURCE
    function Y_Position
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Natural with
-      Pre => Menu_Widget /= Null_Widget and Length(Menu_Index) > 0,
+      Pre => Menu_Widget /= Null_Widget and Length(Source => Menu_Index) > 0,
       Test_Case => (Name => "Test_Y_Position_Menu", Mode => Nominal);
    function Y_Position
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
