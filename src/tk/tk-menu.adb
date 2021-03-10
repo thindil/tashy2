@@ -525,28 +525,28 @@ package body Tk.Menu is
       return Tcl_Get_Result(Tk_Interp(Menu_Widget));
    end Post;
 
-   procedure PostCascade(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) is
+   procedure Post_Cascade(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) is
    begin
       Execute_Widget_Command
         (Menu_Widget, "postcascade", To_Ada_String(Menu_Index));
-   end PostCascade;
+   end Post_Cascade;
 
-   procedure PostCascade
+   procedure Post_Cascade
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True) is
       New_Index: constant String :=
         (if Is_Index then Trim(Natural'Image(Menu_Index), Left)
          else "@" & Trim(Natural'Image(Menu_Index), Left));
    begin
       Execute_Widget_Command(Menu_Widget, "postcascade", New_Index);
-   end PostCascade;
+   end Post_Cascade;
 
-   procedure PostCascade
+   procedure Post_Cascade
      (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) is
    begin
       Execute_Widget_Command
         (Menu_Widget, "postcascade",
          To_Lower(Menu_Item_Indexes'Image(Menu_Index)));
-   end PostCascade;
+   end Post_Cascade;
 
    function Get_Item_Type
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Menu_Item_Types is
