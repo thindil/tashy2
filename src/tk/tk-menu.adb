@@ -52,7 +52,7 @@ package body Tk.Menu is
         (Name => "cursor", Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        ("disabledforeground", Value => Options.Disabled_Foreground,
+        (Name => "disabledforeground", Value => Options.Disabled_Foreground,
          Options_String => Options_String);
       Option_Image
         (Name => "font", Value => Options.Font,
@@ -83,10 +83,12 @@ package body Tk.Menu is
          Options_String => Options_String);
       if Options.Menu_Type /= NONE then
          Append
-           (Options_String,
-            " -type " & To_Lower(Menu_Types'Image(Options.Menu_Type)));
+           (Source => Options_String,
+            New_Item =>
+              " -type " &
+              To_Lower(Item => Menu_Types'Image(Options.Menu_Type)));
       end if;
-      return To_String(Options_String);
+      return To_String(Source => Options_String);
    end Options_To_String;
 
    function Create
@@ -94,21 +96,27 @@ package body Tk.Menu is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu is
    begin
       Tcl_Eval
-        ("menu " & Path_Name & " " & Options_To_String(Options), Interpreter);
-      return Get_Widget(Path_Name, Interpreter);
+        (Tcl_Script =>
+           "menu " & Path_Name & " " & Options_To_String(Options => Options),
+         Interpreter => Interpreter);
+      return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
      (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      Menu_Widget := Create(Path_Name, Options, Interpreter);
+      Menu_Widget :=
+        Create
+          (Path_Name => Path_Name, Options => Options,
+           Interpreter => Interpreter);
    end Create;
 
    procedure Activate(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "activate", To_Ada_String(Menu_Index));
+        (Widget => Menu_Widget, Command_Name => "activate",
+         Options => To_Ada_String(Source => Menu_Index));
    end Activate;
 
    procedure Activate
@@ -116,11 +124,14 @@ package body Tk.Menu is
    begin
       if Is_Index then
          Execute_Widget_Command
-           (Menu_Widget, "activate", Trim(Natural'Image(Menu_Index), Left));
+           (Widget => Menu_Widget, Command_Name => "activate",
+            Options =>
+              Trim(Source => Natural'Image(Menu_Index), Side => Left));
       else
          Execute_Widget_Command
-           (Menu_Widget, "activate",
-            "@" & Trim(Natural'Image(Menu_Index), Left));
+           (Widget => Menu_Widget, Command_Name => "activate",
+            Options =>
+              "@" & Trim(Source => Natural'Image(Menu_Index), Side => Left));
       end if;
    end Activate;
 
