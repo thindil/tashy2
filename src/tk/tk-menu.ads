@@ -41,6 +41,13 @@ package Tk.Menu is
       Default_Value => NONE;
       -- ****
 
+      -- ****d* Menu/Menu.Default_Menu_Type
+      -- FUNCTION
+      -- Default Tk menu type
+      -- SOURCE
+   Default_Menu_Type: constant Menu_Types := NORMAL;
+   -- ****
+
       -- ****s* Menu/Menu.Menu_Options
       -- FUNCTION
       -- Data structure for all available options for the Tk menu
@@ -93,6 +100,13 @@ package Tk.Menu is
    -- SOURCE
    type Menu_Item_Types is
      (CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR);
+   -- ****
+
+   -- ****d* Menu/Menu.Default_Menu_Item
+   -- FUNCTION
+   -- Default type for Tk menu item
+   -- SOURCE
+   Default_Menu_Item: constant Menu_Item_Types := COMMAND;
    -- ****
 
    -- ****s* Menu/Menu.Menu_Item_Options
@@ -188,6 +202,14 @@ package Tk.Menu is
    end record;
    -- ****
 
+   -- ****d* Menu/Menu.Default_Menu_Item_Options
+   -- FUNCTION
+   -- Default values for options for Tk menu item
+   -- SOURCE
+   Default_Menu_Item_Options: constant Menu_Item_Options :=
+     Menu_Item_Options'(others => <>);
+   -- ****
+
    -- ****t* Menu/Menu.Menu_Item_Indexes
    -- FUNCTION
    -- Available types of menu entries indexes
@@ -195,6 +217,13 @@ package Tk.Menu is
    -- 8.6.0 - Added
    -- SOURCE
    type Menu_Item_Indexes is (ACTIVE, MENU_END, LAST, NONE);
+   -- ****
+
+   -- ****d* Menu/Menu.Empty_Menu_Item_Index
+   -- FUNCTION
+   -- Empty index type for menu item
+   -- SOURCE
+   Empty_Menu_Item_Index: constant Menu_Item_Indexes := NONE;
    -- ****
 
    -- ****f* Menu/Menu.Create_(function)
@@ -380,26 +409,33 @@ package Tk.Menu is
       Test_Case => (Name => "Test_Configure_Menu", Mode => Nominal);
       -- ****
 
-      -- ****f* Menu/Menu.Delete
+      -- ****d* Tk.Menu/Default_Menu_Options
       -- FUNCTION
-      -- Delete the selected menu entries from the selected menu
-      -- PARAMETERS
-      -- Menu_Widget - Tk_Menu from which the menu entries will be deleted
-      -- Index1      - The index of the first menu entry to delete
-      -- Index2      - The index of the last menu entry to delete. If empty, delete
-      --               only the Index1 menu entry. Default value is empty
-      -- Is_Index1   - If true, Index1 is numerical index of the menu entry.
-      --               Otherwise it is Y coordinate of the menu entry.
-      -- Is_Index2   - If true, Index2 is numerical index of the menu entry.
-      --               Otherwise it is Y coordinate of the menu entry.
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Delete the last menu entry in My_Menu menu
-      -- Delete(My_Menu, To_Tcl_String("end"));
-      -- COMMANDS
-      -- Menu_Widget delete Index1 ?Index2?
+      -- Default Tk menu options values
       -- SOURCE
+   Default_Menu_Options: constant Menu_Options := Menu_Options'(others => <>);
+   -- ****
+
+   -- ****f* Menu/Menu.Delete
+   -- FUNCTION
+   -- Delete the selected menu entries from the selected menu
+   -- PARAMETERS
+   -- Menu_Widget - Tk_Menu from which the menu entries will be deleted
+   -- Index1      - The index of the first menu entry to delete
+   -- Index2      - The index of the last menu entry to delete. If empty, delete
+   --               only the Index1 menu entry. Default value is empty
+   -- Is_Index1   - If true, Index1 is numerical index of the menu entry.
+   --               Otherwise it is Y coordinate of the menu entry.
+   -- Is_Index2   - If true, Index2 is numerical index of the menu entry.
+   --               Otherwise it is Y coordinate of the menu entry.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Delete the last menu entry in My_Menu menu
+   -- Delete(My_Menu, To_Tcl_String("end"));
+   -- COMMANDS
+   -- Menu_Widget delete Index1 ?Index2?
+   -- SOURCE
    procedure Delete
      (Menu_Widget: Tk_Menu; Index1: Tcl_String;
       Index2: Tcl_String := To_Tcl_String(Source => "")) with
