@@ -138,8 +138,8 @@ package body Tk.Menu is
    procedure Activate(Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "activate",
-         To_Lower(Menu_Item_Indexes'Image(Menu_Index)));
+        (Widget => Menu_Widget, Command_Name => "activate",
+         Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)));
    end Activate;
 
    -- ****if* Menu/Menu.Item_Options_To_String
@@ -155,7 +155,7 @@ package body Tk.Menu is
    function Item_Options_To_String
      (Options: Menu_Item_Options; Item_Type: Menu_Item_Types) return String is
       -- ****
-      Options_String: Unbounded_String;
+      Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       if Item_Type = SEPARATOR then
          return "";
