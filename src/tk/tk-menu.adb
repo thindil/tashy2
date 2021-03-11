@@ -31,28 +31,56 @@ package body Tk.Menu is
    -- SOURCE
    function Options_To_String(Options: Menu_Options) return String is
       -- ****
-      Options_String: Unbounded_String;
+      Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        ("activebackground", Options.Active_Background, Options_String);
+        (Name => "activebackground", Value => Options.Active_Background,
+         Options_String => Options_String);
       Option_Image
-        ("activeborderwidth", Options.Active_Border_Width, Options_String);
+        (Name => "activeborderwidth", Value => Options.Active_Border_Width,
+         Options_String => Options_String);
       Option_Image
-        ("activeforeground", Options.Active_Foreground, Options_String);
-      Option_Image("background", Options.Background, Options_String);
-      Option_Image("borderwidth", Options.Border_Width, Options_String);
-      Option_Image("cursor", Options.Cursor, Options_String);
+        (Name => "activeforeground", Value => Options.Active_Foreground,
+         Options_String => Options_String);
       Option_Image
-        ("disabledforeground", Options.Disabled_Foreground, Options_String);
-      Option_Image("font", Options.Font, Options_String);
-      Option_Image("foreground", Options.Foreground, Options_String);
-      Option_Image("relief", Options.Relief, Options_String);
-      Option_Image("postcommand", Options.Post_Command, Options_String);
-      Option_Image("selectcolor", Options.Select_Color, Options_String);
-      Option_Image("takefocus", Options.Take_Focus, Options_String);
-      Option_Image("tearoff", Options.Tear_Off, Options_String);
-      Option_Image("tearoffcommand", Options.Tear_Off_Command, Options_String);
-      Option_Image("title", Options.Title, Options_String);
+        (Name => "background", Value => Options.Background,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "borderwidth", Value => Options.Border_Width,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "cursor", Value => Options.Cursor,
+         Options_String => Options_String);
+      Option_Image
+        ("disabledforeground", Value => Options.Disabled_Foreground,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "font", Value => Options.Font,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "foreground", Value => Options.Foreground,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "relief", Value => Options.Relief,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "postcommand", Value => Options.Post_Command,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "selectcolor", Value => Options.Select_Color,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "takefocus", Value => Options.Take_Focus,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "tearoff", Value => Options.Tear_Off,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "tearoffcommand", Value => Options.Tear_Off_Command,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "title", Value => Options.Title,
+         Options_String => Options_String);
       if Options.Menu_Type /= NONE then
          Append
            (Options_String,
@@ -122,34 +150,76 @@ package body Tk.Menu is
          return "";
       end if;
       Option_Image
-        ("activebackground", Options.Active_Background, Options_String);
+        (Name => "activebackground", Value => Options.Active_Background,
+         Options_String => Options_String);
       Option_Image
-        ("activeforeground", Options.Active_Foreground, Options_String);
-      Option_Image("accelerator", Options.Accelerator, Options_String);
-      Option_Image("background", Options.Background, Options_String);
-      Option_Image("bitmap", Options.Bitmap, Options_String);
-      Option_Image("columnbreak", Options.Column_Break, Options_String);
-      Option_Image("command", Options.Command, Options_String);
-      Option_Image("compound", Options.Compound, Options_String);
-      Option_Image("font", Options.Font, Options_String);
-      Option_Image("foreground", Options.Foreground, Options_String);
-      Option_Image("hidemargin", Options.Hide_Margin, Options_String);
-      Option_Image("image", Options.Image, Options_String);
-      Option_Image("label", Options.Label, Options_String);
-      Option_Image("state", Options.State, Options_String);
-      Option_Image("underline", Options.Underline, Options_String);
+        (Name => "activeforeground", Value => Options.Active_Foreground,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "accelerator", Value => Options.Accelerator,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "background", Value => Options.Background,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "bitmap", Value => Options.Bitmap,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "columnbreak", Value => Options.Column_Break,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "command", Value => Options.Command,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "compound", Value => Options.Compound,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "font", Value => Options.Font,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "foreground", Value => Options.Foreground,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "hidemargin", Value => Options.Hide_Margin,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "image", Value => Options.Image,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "label", Value => Options.Label,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "state", Value => Options.State,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "underline", Value => Options.Underline,
+         Options_String => Options_String);
       if Item_Type in CHECKBUTTON | RADIOBUTTON then
-         Option_Image("indicatoron", Options.Indicator_On, Options_String);
-         Option_Image("selectcolor", Options.Select_Color, Options_String);
-         Option_Image("selectimage", Options.Select_Image, Options_String);
-         Option_Image("variable", Options.Variable, Options_String);
+         Option_Image
+           (Name => "indicatoron", Value => Options.Indicator_On,
+            Options_String => Options_String);
+         Option_Image
+           (Name => "selectcolor", Value => Options.Select_Color,
+            Options_String => Options_String);
+         Option_Image
+           (Name => "selectimage", Value => Options.Select_Image,
+            Options_String => Options_String);
+         Option_Image
+           (Name => "variable", Value => Options.Variable,
+            Options_String => Options_String);
       end if;
       if Item_Type = CHECKBUTTON then
-         Option_Image("offvalue", Options.Off_Value, Options_String);
-         Option_Image("onvalue", Options.On_Value, Options_String);
+         Option_Image
+           (Name => "offvalue", Value => Options.Off_Value,
+            Options_String => Options_String);
+         Option_Image
+           (Name => "onvalue", Value => Options.On_Value,
+            Options_String => Options_String);
       end if;
       if Item_Type = RADIOBUTTON then
-         Option_Image("value", Options.Value, Options_String);
+         Option_Image
+           (Name => "value", Value => Options.Value,
+            Options_String => Options_String);
       end if;
       if Item_Type = CASCADE and then Options.Menu /= Null_Widget then
          Append(Options_String, " -menu " & Tk_PathName(Options.Menu));
