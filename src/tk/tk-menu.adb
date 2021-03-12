@@ -359,30 +359,37 @@ package body Tk.Menu is
      (Menu_Widget: Tk_Menu; Index1: Menu_Item_Indexes;
       Index2: Menu_Item_Indexes := NONE) is
    begin
-      if Index2 /= NONE then
+      if Index2 = NONE then
          Execute_Widget_Command
-           (Menu_Widget, "delete",
-            To_Lower(Menu_Item_Indexes'Image(Index1)) & " " &
-            To_Lower(Menu_Item_Indexes'Image(Index2)));
+           (Widget => Menu_Widget, Command_Name => "delete",
+            Options => To_Lower(Item => Menu_Item_Indexes'Image(Index1)));
       else
          Execute_Widget_Command
-           (Menu_Widget, "delete", To_Lower(Menu_Item_Indexes'Image(Index1)));
+           (Widget => Menu_Widget, Command_Name => "delete",
+            Options =>
+              To_Lower(Item => Menu_Item_Indexes'Image(Index1)) & " " &
+              To_Lower(Item => Menu_Item_Indexes'Image(Index2)));
       end if;
    end Delete;
 
    function Entry_Get_Options
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Menu_Item_Options is
-      Item_Type: Menu_Item_Types;
+      Item_Type: Menu_Item_Types := Default_Menu_Item;
       function Item_Value(Name: String) return Tcl_String is
       begin
          Execute_Widget_Command
-           (Menu_Widget, "entrycget", To_Ada_String(Menu_Index) & " -" & Name);
-         return To_Tcl_String(Tcl_Get_Result(Tk_Interp(Menu_Widget)));
+           (Widget => Menu_Widget, Command_Name => "entrycget",
+            Options => To_Ada_String(Source => Menu_Index) & " -" & Name);
+         return To_Tcl_String
+             (Source =>
+                Tcl_Get_Result
+                  (Interpreter => Tk_Interp(Widget => Menu_Widget)));
       end Item_Value;
       function Item_Value(Name: String) return Extended_Boolean is
       begin
          Execute_Widget_Command
-           (Menu_Widget, "entrycget", To_Ada_String(Menu_Index) & " -" & Name);
+           (Widget => Menu_Widget, Command_Name => "entrycget",
+            Options => To_Ada_String(Source => Menu_Index) & " -" & Name);
          if Tcl_Get_Result = 1 then
             return TRUE;
          end if;
