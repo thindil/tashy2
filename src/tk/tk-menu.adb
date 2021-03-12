@@ -233,9 +233,11 @@ package body Tk.Menu is
             Options_String => Options_String);
       end if;
       if Item_Type = CASCADE and then Options.Menu /= Null_Widget then
-         Append(Options_String, " -menu " & Tk_PathName(Options.Menu));
+         Append
+           (Source => Options_String,
+            New_Item => " -menu " & Tk_PathName(Widget => Options.Menu));
       end if;
-      return To_String(Options_String);
+      return To_String(Source => Options_String);
    end Item_Options_To_String;
 
    procedure Add
@@ -243,35 +245,45 @@ package body Tk.Menu is
       Options: Menu_Item_Options) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "add",
-         To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
-         Item_Options_To_String(Options, Item_Type));
+        (Widget => Menu_Widget, Command_Name => "add",
+         Options =>
+           To_Lower(Item => Menu_Item_Types'Image(Item_Type)) & " " &
+           Item_Options_To_String(Options => Options, Item_Type => Item_Type));
    end Add;
 
    function Get_Options(Menu_Widget: Tk_Menu) return Menu_Options is
    begin
-      return Options: Menu_Options do
+      return Options: Menu_Options := Default_Menu_Options do
          Options.Active_Background :=
-           Option_Value(Menu_Widget, "activebackground");
+           Option_Value(Widget => Menu_Widget, Name => "activebackground");
          Options.Active_Border_Width :=
-           Option_Value(Menu_Widget, "activeborderwidth");
+           Option_Value(Widget => Menu_Widget, Name => "activeborderwidth");
          Options.Active_Foreground :=
-           Option_Value(Menu_Widget, "activeforeground");
-         Options.Background := Option_Value(Menu_Widget, "background");
-         Options.Border_Width := Option_Value(Menu_Widget, "borderwidth");
-         Options.Cursor := Option_Value(Menu_Widget, "cursor");
+           Option_Value(Widget => Menu_Widget, Name => "activeforeground");
+         Options.Background :=
+           Option_Value(Widget => Menu_Widget, Name => "background");
+         Options.Border_Width :=
+           Option_Value(Widget => Menu_Widget, Name => "borderwidth");
+         Options.Cursor :=
+           Option_Value(Widget => Menu_Widget, Name => "cursor");
          Options.Disabled_Foreground :=
-           Option_Value(Menu_Widget, "disabledforeground");
-         Options.Font := Option_Value(Menu_Widget, "font");
-         Options.Foreground := Option_Value(Menu_Widget, "foreground");
-         Options.Relief := Option_Value(Menu_Widget, "relief");
-         Options.Post_Command := Option_Value(Menu_Widget, "postcommand");
-         Options.Select_Color := Option_Value(Menu_Widget, "selectcolor");
-         Options.Take_Focus := Option_Value(Menu_Widget, "takefocus");
-         Options.Tear_Off := Option_Value(Menu_Widget, "tearoff");
+           Option_Value(Widget => Menu_Widget, Name => "disabledforeground");
+         Options.Font := Option_Value(Widget => Menu_Widget, Name => "font");
+         Options.Foreground :=
+           Option_Value(Widget => Menu_Widget, Name => "foreground");
+         Options.Relief :=
+           Option_Value(Widget => Menu_Widget, Name => "relief");
+         Options.Post_Command :=
+           Option_Value(Widget => Menu_Widget, Name => "postcommand");
+         Options.Select_Color :=
+           Option_Value(Widget => Menu_Widget, Name => "selectcolor");
+         Options.Take_Focus :=
+           Option_Value(Widget => Menu_Widget, Name => "takefocus");
+         Options.Tear_Off :=
+           Option_Value(Widget => Menu_Widget, Name => "tearoff");
          Options.Tear_Off_Command :=
-           Option_Value(Menu_Widget, "tearoffcommand");
-         Options.Title := Option_Value(Menu_Widget, "title");
+           Option_Value(Widget => Menu_Widget, Name => "tearoffcommand");
+         Options.Title := Option_Value(Widget => Menu_Widget, Name => "title");
          Execute_Widget_Command(Menu_Widget, "cget", "-type");
          Options.Menu_Type :=
            Menu_Types'Value(Tcl_Get_Result(Tk_Interp(Menu_Widget)));
