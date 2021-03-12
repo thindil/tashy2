@@ -325,26 +325,33 @@ package body Tk.Menu is
       Index2: Tcl_String := To_Tcl_String(Source => "")) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "delete",
-         To_Ada_String(Index1) & " " & To_Ada_String(Index2));
+        (Widget => Menu_Widget, Command_Name => "delete",
+         Options =>
+           To_Ada_String(Source => Index1) & " " &
+           To_Ada_String(Source => Index2));
    end Delete;
 
    procedure Delete
      (Menu_Widget: Tk_Menu; Index1: Natural; Index2: Extended_Natural := -1;
       Is_Index1, Is_Index2: Boolean := True) is
-      NewIndex1: constant String :=
-        (if Is_Index1 then Trim(Natural'Image(Index1), Left)
-         else "@" & Trim(Natural'Image(Index1), Left));
-      NewIndex2: constant String :=
-        (if Is_Index2 then Trim(Extended_Natural'Image(Index2), Left)
-         else "@" & Trim(Extended_Natural'Image(Index2), Left));
+      New_Index1: constant String :=
+        (if Is_Index1 then Trim(Source => Natural'Image(Index1), Side => Left)
+         else "@" & Trim(Source => Natural'Image(Index1), Side => Left));
+      New_Index2: constant String :=
+        (if Is_Index2 then
+           Trim(Source => Extended_Natural'Image(Index2), Side => Left)
+         else "@" &
+           Trim(Source => Extended_Natural'Image(Index2), Side => Left));
    begin
 
       if Index2 > -1 then
          Execute_Widget_Command
-           (Menu_Widget, "delete", NewIndex1 & " " & NewIndex2);
+           (Widget => Menu_Widget, Command_Name => "delete",
+            Options => New_Index1 & " " & New_Index2);
       else
-         Execute_Widget_Command(Menu_Widget, "delete", NewIndex1);
+         Execute_Widget_Command
+           (Widget => Menu_Widget, Command_Name => "delete",
+            Options => New_Index1);
       end if;
    end Delete;
 
