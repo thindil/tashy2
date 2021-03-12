@@ -284,9 +284,11 @@ package body Tk.Menu is
          Options.Tear_Off_Command :=
            Option_Value(Widget => Menu_Widget, Name => "tearoffcommand");
          Options.Title := Option_Value(Widget => Menu_Widget, Name => "title");
-         Execute_Widget_Command(Menu_Widget, "cget", "-type");
+         Execute_Widget_Command
+           (Widget => Menu_Widget, Command_Name => "cget", Options => "-type");
          Options.Menu_Type :=
-           Menu_Types'Value(Tcl_Get_Result(Tk_Interp(Menu_Widget)));
+           Menu_Types'Value
+             (Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget)));
       end return;
    end Get_Options;
 
@@ -294,20 +296,28 @@ package body Tk.Menu is
      (Menu_Widget: Tk_Menu; New_Path_Name: String;
       Menu_Type: Menu_Types := NONE) return Tk_Menu is
    begin
-      if Menu_Type /= NONE then
+      if Menu_Type = NONE then
          Execute_Widget_Command
-           (Menu_Widget, "clone",
-            New_Path_Name & " " & To_Lower(Menu_Types'Image(Menu_Type)));
+           (Widget => Menu_Widget, Command_Name => "clone",
+            Options => New_Path_Name);
       else
-         Execute_Widget_Command(Menu_Widget, "clone", New_Path_Name);
+         Execute_Widget_Command
+           (Widget => Menu_Widget, Command_Name => "clone",
+            Options =>
+              New_Path_Name & " " &
+              To_Lower(Item => Menu_Types'Image(Menu_Type)));
       end if;
-      return Tk_Menu(Get_Widget(New_Path_Name, Tk_Interp(Menu_Widget)));
+      return Tk_Menu
+          (Get_Widget
+             (Path_Name => New_Path_Name,
+              Interpreter => Tk_Interp(Widget => Menu_Widget)));
    end Clone;
 
    procedure Configure(Menu_Widget: Tk_Menu; Options: Menu_Options) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "configure", Options_To_String(Options));
+        (Widget => Menu_Widget, Command_Name => "configure",
+         Options => Options_To_String(Options => Options));
    end Configure;
 
    procedure Delete
