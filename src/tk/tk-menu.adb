@@ -396,28 +396,31 @@ package body Tk.Menu is
          return FALSE;
       end Item_Value;
    begin
-      return Options: Menu_Item_Options do
+      return Options: Menu_Item_Options := Default_Menu_Item_Options do
          Execute_Widget_Command
-           (Menu_Widget, "type", To_Ada_String(Menu_Index));
+           (Widget => Menu_Widget, Command_Name => "type",
+            Options => To_Ada_String(Source => Menu_Index));
          Item_Type :=
-           Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Menu_Widget)));
-         Options.Active_Background := Item_Value("activebackground");
-         Options.Active_Foreground := Item_Value("activeforeground");
-         Options.Accelerator := Item_Value("accelerator");
-         Options.Background := Item_Value("background");
-         Options.Bitmap := Item_Value("bitmap");
-         Options.Column_Break := Item_Value("columnbreak");
-         Options.Command := Item_Value("command");
+           Menu_Item_Types'Value
+             (Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget)));
+         Options.Active_Background := Item_Value(Name => "activebackground");
+         Options.Active_Foreground := Item_Value(Name => "activeforeground");
+         Options.Accelerator := Item_Value(Name => "accelerator");
+         Options.Background := Item_Value(Name => "background");
+         Options.Bitmap := Item_Value(Name => "bitmap");
+         Options.Column_Break := Item_Value(Name => "columnbreak");
+         Options.Command := Item_Value(Name => "command");
          Execute_Widget_Command
-           (Menu_Widget, "entrycget",
-            To_Ada_String(Menu_Index) & " -compound");
+           (Widget => Menu_Widget, Command_Name => "entrycget",
+            Options => To_Ada_String(Source => Menu_Index) & " -compound");
          Options.Compound :=
-           Place_Type'Value(Tcl_Get_Result(Tk_Interp(Menu_Widget)));
-         Options.Font := Item_Value("font");
-         Options.Foreground := Item_Value("foreground");
-         Options.Hide_Margin := Item_Value("hidemargin");
-         Options.Image := Item_Value("image");
-         Options.Label := Item_Value("label");
+           Place_Type'Value
+             (Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget)));
+         Options.Font := Item_Value(Name => "font");
+         Options.Foreground := Item_Value(Name => "foreground");
+         Options.Hide_Margin := Item_Value(Name => "hidemargin");
+         Options.Image := Item_Value(Name => "image");
+         Options.Label := Item_Value(Name => "label");
          Execute_Widget_Command
            (Menu_Widget, "entrycget", To_Ada_String(Menu_Index) & " -state");
          Options.State :=
@@ -437,15 +440,15 @@ package body Tk.Menu is
                    (Tcl_Get_Result(Tk_Interp(Menu_Widget)),
                     Tk_Interp(Menu_Widget));
             when CHECKBUTTON | RADIOBUTTON =>
-               Options.Indicator_On := Item_Value("inditatoron");
-               Options.Select_Color := Item_Value("selectcolor");
-               Options.Select_Image := Item_Value("selectimage");
+               Options.Indicator_On := Item_Value(Name => "inditatoron");
+               Options.Select_Color := Item_Value(Name => "selectcolor");
+               Options.Select_Image := Item_Value(Name => "selectimage");
                case Item_Type is
                   when CHECKBUTTON =>
-                     Options.Off_Value := Item_Value("offvalue");
-                     Options.On_Value := Item_Value("onvalue");
+                     Options.Off_Value := Item_Value(Name => "offvalue");
+                     Options.On_Value := Item_Value(Name => "onvalue");
                   when RADIOBUTTON =>
-                     Options.Value := Item_Value("value");
+                     Options.Value := Item_Value(Name => "value");
                   when others =>
                      null;
                end case;
