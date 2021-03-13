@@ -517,16 +517,22 @@ package body Tk.Menu is
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Options: Menu_Item_Options;
       Is_Index: Boolean := True) is
       New_Index: constant String :=
-        (if Is_Index then Trim(Natural'Image(Menu_Index), Left)
-         else "@" & Trim(Natural'Image(Menu_Index), Left));
+        (if Is_Index then
+           Trim(Source => Natural'Image(Menu_Index), Side => Left)
+         else "@" & Trim(Source => Natural'Image(Menu_Index), Side => Left));
    begin
-      Execute_Widget_Command(Menu_Widget, "type", New_Index);
       Execute_Widget_Command
-        (Menu_Widget, "entryconfigure",
-         New_Index & " " &
-         Item_Options_To_String
-           (Options,
-            Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Menu_Widget)))));
+        (Widget => Menu_Widget, Command_Name => "type", Options => New_Index);
+      Execute_Widget_Command
+        (Widget => Menu_Widget, Command_Name => "entryconfigure",
+         Options =>
+           New_Index & " " &
+           Item_Options_To_String
+             (Options => Options,
+              Item_Type =>
+                Menu_Item_Types'Value
+                  (Tcl_Get_Result
+                     (Interpreter => Tk_Interp(Widget => Menu_Widget)))));
    end Entry_Configure;
 
    procedure Entry_Configure
@@ -534,13 +540,18 @@ package body Tk.Menu is
       Options: Menu_Item_Options) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "type", To_Lower(Menu_Item_Indexes'Image(Menu_Index)));
+        (Widget => Menu_Widget, Command_Name => "type",
+         Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)));
       Execute_Widget_Command
-        (Menu_Widget, "entryconfigure",
-         To_Lower(Menu_Item_Indexes'Image(Menu_Index)) & " " &
-         Item_Options_To_String
-           (Options,
-            Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Menu_Widget)))));
+        (Widget => Menu_Widget, Command_Name => "entryconfigure",
+         Options =>
+           To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)) & " " &
+           Item_Options_To_String
+             (Options => Options,
+              Item_Type =>
+                Menu_Item_Types'Value
+                  (Tcl_Get_Result
+                     (Interpreter => Tk_Interp(Widget => Menu_Widget)))));
    end Entry_Configure;
 
    function Index
