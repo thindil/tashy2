@@ -609,23 +609,27 @@ package body Tk.Menu is
       Options: Menu_Item_Options) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "insert",
-         To_Ada_String(Menu_Index) & " " &
-         To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
-         Item_Options_To_String(Options, Item_Type));
+        (Widget => Menu_Widget, Command_Name => "insert",
+         Options =>
+           To_Ada_String(Source => Menu_Index) & " " &
+           To_Lower(Item => Menu_Item_Types'Image(Item_Type)) & " " &
+           Item_Options_To_String(Options => Options, Item_Type => Item_Type));
    end Insert;
 
    procedure Insert
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Item_Type: Menu_Item_Types;
       Options: Menu_Item_Options; Is_Index: Boolean := True) is
       New_Index: constant String :=
-        (if Is_Index then Trim(Natural'Image(Menu_Index), Left)
-         else "@" & Trim(Natural'Image(Menu_Index), Left));
+        (if Is_Index then
+           Trim(Source => Natural'Image(Menu_Index), Side => Left)
+         else "@" & Trim(Source => Natural'Image(Menu_Index), Side => Left));
    begin
       Execute_Widget_Command
-        (Menu_Widget, "insert",
-         New_Index & " " & To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
-         Item_Options_To_String(Options, Item_Type));
+        (Widget => Menu_Widget, Command_Name => "insert",
+         Options =>
+           New_Index & " " &
+           To_Lower(Item => Menu_Item_Types'Image(Item_Type)) & " " &
+           Item_Options_To_String(Options => Options, Item_Type => Item_Type));
    end Insert;
 
    procedure Insert
@@ -633,10 +637,11 @@ package body Tk.Menu is
       Item_Type: Menu_Item_Types; Options: Menu_Item_Options) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "insert",
-         To_Lower(Menu_Item_Indexes'Image(Menu_Index)) & " " &
-         To_Lower(Menu_Item_Types'Image(Item_Type)) & " " &
-         Item_Options_To_String(Options, Item_Type));
+        (Widget => Menu_Widget, Command_Name => "insert",
+         Options =>
+           To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)) & " " &
+           To_Lower(Item => Menu_Item_Types'Image(Item_Type)) & " " &
+           Item_Options_To_String(Options => Options, Item_Type => Item_Type));
    end Insert;
 
    procedure Invoke(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) is
