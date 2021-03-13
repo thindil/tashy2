@@ -469,10 +469,17 @@ package body Tk.Menu is
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
       return Menu_Item_Options is
       New_Index: constant Tcl_String :=
-        (if Is_Index then To_Tcl_String(Trim(Natural'Image(Menu_Index), Left))
-         else To_Tcl_String("@" & Trim(Natural'Image(Menu_Index), Left)));
+        (if Is_Index then
+           To_Tcl_String
+             (Source =>
+                Trim(Source => Natural'Image(Menu_Index), Side => Left))
+         else To_Tcl_String
+             (Source =>
+                "@" &
+                Trim(Source => Natural'Image(Menu_Index), Side => Left)));
    begin
-      return Entry_Get_Options(Menu_Widget, New_Index);
+      return Entry_Get_Options
+          (Menu_Widget => Menu_Widget, Menu_Index => New_Index);
    end Entry_Get_Options;
 
    function Entry_Get_Options
@@ -480,21 +487,30 @@ package body Tk.Menu is
       return Menu_Item_Options is
    begin
       return Entry_Get_Options
-          (Menu_Widget,
-           To_Tcl_String(To_Lower(Menu_Item_Indexes'Image(Menu_Index))));
+          (Menu_Widget => Menu_Widget,
+           Menu_Index =>
+             To_Tcl_String
+               (Source =>
+                  To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index))));
    end Entry_Get_Options;
 
    procedure Entry_Configure
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String;
       Options: Menu_Item_Options) is
    begin
-      Execute_Widget_Command(Menu_Widget, "type", To_Ada_String(Menu_Index));
       Execute_Widget_Command
-        (Menu_Widget, "entryconfigure",
-         To_Ada_String(Menu_Index) & " " &
-         Item_Options_To_String
-           (Options,
-            Menu_Item_Types'Value(Tcl_Get_Result(Tk_Interp(Menu_Widget)))));
+        (Widget => Menu_Widget, Command_Name => "type",
+         Options => To_Ada_String(Source => Menu_Index));
+      Execute_Widget_Command
+        (Widget => Menu_Widget, Command_Name => "entryconfigure",
+         Options =>
+           To_Ada_String(Source => Menu_Index) & " " &
+           Item_Options_To_String
+             (Options => Options,
+              Item_Type =>
+                Menu_Item_Types'Value
+                  (Tcl_Get_Result
+                     (Interpreter => Tk_Interp(Widget => Menu_Widget)))));
    end Entry_Configure;
 
    procedure Entry_Configure
