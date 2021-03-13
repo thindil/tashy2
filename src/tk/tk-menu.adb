@@ -422,23 +422,30 @@ package body Tk.Menu is
          Options.Image := Item_Value(Name => "image");
          Options.Label := Item_Value(Name => "label");
          Execute_Widget_Command
-           (Menu_Widget, "entrycget", To_Ada_String(Menu_Index) & " -state");
+           (Widget => Menu_Widget, Command_Name => "entrycget",
+            Options => To_Ada_String(Source => Menu_Index) & " -state");
          Options.State :=
-           State_Type'Value(Tcl_Get_Result(Tk_Interp(Menu_Widget)));
+           State_Type'Value
+             (Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget)));
          Execute_Widget_Command
-           (Menu_Widget, "entrycget",
-            To_Ada_String(Menu_Index) & " -underline");
+           (Widget => Menu_Widget, Command_Name => "entrycget",
+            Options => To_Ada_String(Source => Menu_Index) & " -underline");
          Options.Underline :=
-           Extended_Natural(Integer'(Tcl_Get_Result(Tk_Interp(Menu_Widget))));
+           Extended_Natural
+             (Integer'
+                (Tcl_Get_Result
+                   (Interpreter => Tk_Interp(Widget => Menu_Widget))));
          case Item_Type is
             when CASCADE =>
                Execute_Widget_Command
-                 (Menu_Widget, "entrycget",
-                  To_Ada_String(Menu_Index) & " -menu");
+                 (Widget => Menu_Widget, Command_Name => "entrycget",
+                  Options => To_Ada_String(Source => Menu_Index) & " -menu");
                Options.Menu :=
                  Get_Widget
-                   (Tcl_Get_Result(Tk_Interp(Menu_Widget)),
-                    Tk_Interp(Menu_Widget));
+                   (Path_Name =>
+                      Tcl_Get_Result
+                        (Interpreter => Tk_Interp(Widget => Menu_Widget)),
+                    Interpreter => Tk_Interp(Widget => Menu_Widget));
             when CHECKBUTTON | RADIOBUTTON =>
                Options.Indicator_On := Item_Value(Name => "inditatoron");
                Options.Select_Color := Item_Value(Name => "selectcolor");
