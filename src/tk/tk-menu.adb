@@ -557,24 +557,34 @@ package body Tk.Menu is
    function Index
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Extended_Natural is
    begin
-      Execute_Widget_Command(Menu_Widget, "index", To_Ada_String(Menu_Index));
-      if Tcl_Get_Result(Tk_Interp(Menu_Widget)) = "none" then
+      Execute_Widget_Command
+        (Widget => Menu_Widget, Command_Name => "index",
+         Options => To_Ada_String(Source => Menu_Index));
+      if Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget)) =
+        "none" then
          return -1;
       end if;
       return Extended_Natural
-          (Integer'(Tcl_Get_Result(Tk_Interp(Menu_Widget))));
+          (Integer'
+             (Tcl_Get_Result
+                (Interpreter => Tk_Interp(Widget => Menu_Widget))));
    end Index;
 
    function Index
      (Menu_Widget: Tk_Menu; Menu_Index: Natural) return Extended_Natural is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "index", "@" & Trim(Natural'Image(Menu_Index), Left));
-      if Tcl_Get_Result(Tk_Interp(Menu_Widget)) = "none" then
+        (Widget => Menu_Widget, Command_Name => "index",
+         Options =>
+           "@" & Trim(Source => Natural'Image(Menu_Index), Side => Left));
+      if Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget)) =
+        "none" then
          return -1;
       end if;
       return Extended_Natural
-          (Integer'(Tcl_Get_Result(Tk_Interp(Menu_Widget))));
+          (Integer'
+             (Tcl_Get_Result
+                (Interpreter => Tk_Interp(Widget => Menu_Widget))));
    end Index;
 
    function Index
@@ -582,12 +592,16 @@ package body Tk.Menu is
       return Extended_Natural is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "index", To_Lower(Menu_Item_Indexes'Image(Menu_Index)));
-      if Tcl_Get_Result(Tk_Interp(Menu_Widget)) = "none" then
+        (Widget => Menu_Widget, Command_Name => "index",
+         Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)));
+      if Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget)) =
+        "none" then
          return -1;
       end if;
       return Extended_Natural
-          (Integer'(Tcl_Get_Result(Tk_Interp(Menu_Widget))));
+          (Integer'
+             (Tcl_Get_Result
+                (Interpreter => Tk_Interp(Widget => Menu_Widget))));
    end Index;
 
    procedure Insert
