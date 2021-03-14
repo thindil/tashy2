@@ -690,35 +690,41 @@ package body Tk.Menu is
    function Invoke
      (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) return String is
    begin
-      Invoke(Menu_Widget, Menu_Index);
-      return Tcl_Get_Result(Tk_Interp(Menu_Widget));
+      Invoke(Menu_Widget => Menu_Widget, Menu_Index => Menu_Index);
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget));
    end Invoke;
 
    procedure Post(Menu_Widget: Tk_Menu; X, Y: Natural) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "post", Trim(Natural'Image(X), Left) & Natural'Image(Y));
+        (Widget => Menu_Widget, Command_Name => "post",
+         Options =>
+           Trim(Source => Natural'Image(X), Side => Left) & Natural'Image(Y));
    end Post;
 
    function Post(Menu_Widget: Tk_Menu; X, Y: Natural) return String is
    begin
-      Post(Menu_Widget, X, Y);
-      return Tcl_Get_Result(Tk_Interp(Menu_Widget));
+      Post(Menu_Widget => Menu_Widget, X => X, Y => Y);
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget));
    end Post;
 
    procedure Post_Cascade(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "postcascade", To_Ada_String(Menu_Index));
+        (Widget => Menu_Widget, Command_Name => "postcascade",
+         Options => To_Ada_String(Source => Menu_Index));
    end Post_Cascade;
 
    procedure Post_Cascade
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True) is
       New_Index: constant String :=
-        (if Is_Index then Trim(Natural'Image(Menu_Index), Left)
-         else "@" & Trim(Natural'Image(Menu_Index), Left));
+        (if Is_Index then
+           Trim(Source => Natural'Image(Menu_Index), Side => Left)
+         else "@" & Trim(Source => Natural'Image(Menu_Index), Side => Left));
    begin
-      Execute_Widget_Command(Menu_Widget, "postcascade", New_Index);
+      Execute_Widget_Command
+        (Widget => Menu_Widget, Command_Name => "postcascade",
+         Options => New_Index);
    end Post_Cascade;
 
    procedure Post_Cascade
