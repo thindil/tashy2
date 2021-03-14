@@ -646,37 +646,45 @@ package body Tk.Menu is
 
    procedure Invoke(Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) is
    begin
-      Execute_Widget_Command(Menu_Widget, "invoke", To_Ada_String(Menu_Index));
+      Execute_Widget_Command
+        (Widget => Menu_Widget, Command_Name => "invoke",
+         Options => To_Ada_String(Source => Menu_Index));
    end Invoke;
 
    procedure Invoke
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True) is
       New_Index: constant String :=
-        (if Is_Index then Trim(Natural'Image(Menu_Index), Left)
-         else "@" & Trim(Natural'Image(Menu_Index), Left));
+        (if Is_Index then
+           Trim(Source => Natural'Image(Menu_Index), Side => Left)
+         else "@" & Trim(Source => Natural'Image(Menu_Index), Side => Left));
    begin
-      Execute_Widget_Command(Menu_Widget, "invoke", New_Index);
+      Execute_Widget_Command
+        (Widget => Menu_Widget, Command_Name => "invoke",
+         Options => New_Index);
    end Invoke;
 
    procedure Invoke(Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "invoke", To_Lower(Menu_Item_Indexes'Image(Menu_Index)));
+        (Widget => Menu_Widget, Command_Name => "invoke",
+         Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)));
    end Invoke;
 
    function Invoke
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return String is
    begin
-      Invoke(Menu_Widget, Menu_Index);
-      return Tcl_Get_Result(Tk_Interp(Menu_Widget));
+      Invoke(Menu_Widget => Menu_Widget, Menu_Index => Menu_Index);
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget));
    end Invoke;
 
    function Invoke
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
       return String is
    begin
-      Invoke(Menu_Widget, Menu_Index, Is_Index);
-      return Tcl_Get_Result(Tk_Interp(Menu_Widget));
+      Invoke
+        (Menu_Widget => Menu_Widget, Menu_Index => Menu_Index,
+         Is_Index => Is_Index);
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget));
    end Invoke;
 
    function Invoke
