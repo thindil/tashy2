@@ -811,28 +811,32 @@ package body Tk.Menu is
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Natural is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "yposition", To_Ada_String(Menu_Index));
-      return Tcl_Get_Result(Tk_Interp(Menu_Widget));
+        (Widget => Menu_Widget, Command_Name => "yposition",
+         Options => To_Ada_String(Source => Menu_Index));
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget));
    end Y_Position;
 
    function Y_Position
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True)
       return Natural is
       New_Index: constant String :=
-        (if Is_Index then Trim(Natural'Image(Menu_Index), Left)
-         else "@" & Trim(Natural'Image(Menu_Index), Left));
+        (if Is_Index then
+           Trim(Source => Natural'Image(Menu_Index), Side => Left)
+         else "@" & Trim(Source => Natural'Image(Menu_Index), Side => Left));
    begin
-      Execute_Widget_Command(Menu_Widget, "yposition", New_Index);
-      return Tcl_Get_Result(Tk_Interp(Menu_Widget));
+      Execute_Widget_Command
+        (Widget => Menu_Widget, Command_Name => "yposition",
+         Options => New_Index);
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget));
    end Y_Position;
 
    function Y_Position
      (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) return Natural is
    begin
       Execute_Widget_Command
-        (Menu_Widget, "yposition",
-         To_Lower(Menu_Item_Indexes'Image(Menu_Index)));
-      return Tcl_Get_Result(Tk_Interp(Menu_Widget));
+        (Widget => Menu_Widget, Command_Name => "yposition",
+         Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)));
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Menu_Widget));
    end Y_Position;
 
 end Tk.Menu;
