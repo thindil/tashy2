@@ -49,6 +49,13 @@ package Tk.Widget is
    -- SOURCE
    type Relief_Type is (NONE, RAISED, SUNKEN, FLAT, RIDGE, SOLID, GROOVE) with
       Default_Value => NONE;
+      -- ****
+
+      -- ****d* Widget/Widget.Default_Relief
+      -- FUNCTION
+      -- Default value for Relief_Type
+      -- SOURCE
+   Default_Relief: constant Relief_Type := NONE;
    -- ****
 
    -- ****t* Widget/Widget.Pixel_Unit
@@ -59,6 +66,13 @@ package Tk.Widget is
    -- SOURCE
    type Pixel_Unit is (PIXEL, C, I, M, P) with
       Default_Value => PIXEL;
+      -- ****
+
+      -- ****d* Widget/Widget.Default_Pixel_Unit
+      -- FUNCTION
+      -- Default Pixel_Unit value
+      -- SOURCE
+   Default_Pixel_Unit: constant Pixel_Unit := PIXEL;
    -- ****
 
    -- ****t* Widget/Widget.Directions_Type
@@ -88,6 +102,13 @@ package Tk.Widget is
       Default_Value => -1.0;
       -- ****
 
+      -- ****d* Widget/Widget.Default_Positive_Float
+      -- FUNCTION
+      -- Default value for Positiive_Float
+      -- SOURCE
+   Default_Positive_Float: constant Positive_Float := -1.0;
+   -- ****
+
       -- ****t* Widget/Widget.Place_Type
       -- FUNCTION
       -- Type of possible place directions for various widgets configuration
@@ -99,13 +120,20 @@ package Tk.Widget is
       Default_Value => EMPTY;
       -- ****
 
-      -- ****t* Widget/Widget.Extended_Boolean
+      -- ****d* Widget/Widget.Default_Place
       -- FUNCTION
-      -- Type used for set boolean values of various widgets configuration
-      -- options
-      -- HISTORY
-      -- 8.6.0 - Added
+      -- Default value for Place_Type
       -- SOURCE
+   Default_Place: constant Place_Type := EMPTY;
+   -- ****
+
+   -- ****t* Widget/Widget.Extended_Boolean
+   -- FUNCTION
+   -- Type used for set boolean values of various widgets configuration
+   -- options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Extended_Boolean is (FALSE, TRUE, NONE) with
       Default_Value => NONE;
       -- ****
@@ -131,7 +159,7 @@ package Tk.Widget is
       -- FUNCTION
       -- Default value for Justify_Type
       -- SOURCE
-   Default_Justify_Type: constant Justify_Type := NONE;
+   Default_Justify: constant Justify_Type := NONE;
    -- ****
 
    -- ****t* Widget/Widget.Extended_Natural
@@ -162,21 +190,36 @@ package Tk.Widget is
       Default_Value => NONE;
       -- ****
 
-      -- ****s* Widget/Tk.Pixel_Data
+      -- ****d* Widget/Widget.Default_State
       -- FUNCTION
-      -- Data structure to store information about pixel
-      -- OPTIONS
-      -- Value      - Value of screen distance for the pixel
-      -- Value_Unit - Type of screen distance unit. Default are pixels
-      -- HISTORY
-      -- 8.6.0 - Added
+      -- Default value for State_Type
       -- SOURCE
+   Default_State: constant State_Type := NONE;
+   -- ****
+
+   -- ****s* Widget/Widget.Pixel_Data
+   -- FUNCTION
+   -- Data structure to store information about pixel
+   -- OPTIONS
+   -- Value      - Value of screen distance for the pixel
+   -- Value_Unit - Type of screen distance unit. Default are pixels
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Pixel_Data is record
       Value: Positive_Float;
       Value_Unit: Pixel_Unit := PIXEL;
    end record;
    -- ****
 
+   -- ****d* Widget/Widget.Empty_Pixel_Data
+   -- FUNCTION
+   -- Empty value for Pixel Data
+   -- SOURCE
+   Empty_Pixel_Data: constant Pixel_Data := Pixel_Data'(others => <>);
+   -- ****
+
+   --## rule off TYPE_INITIAL_VALUES
    -- ****s* Widget/Widget.Widget_Options
    -- FUNCTION
    -- Abstract records to store available options and their values for widgets.
@@ -203,6 +246,7 @@ package Tk.Widget is
    -- SOURCE
    type Widgets_Array is array(Positive range <>) of Tk_Widget;
    -- ****
+   --## rule on TYPE_INITIAL_VALUES
 
    -- ****t* Widget/Widget.Pad_Array
    -- FUNCTION
@@ -211,6 +255,13 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Pad_Array is array(1 .. 2) of Pixel_Data;
+   -- ****
+
+   -- ****d* Tk.Widget/Default_Pad_Array
+   -- FUNCTION
+   -- Pad_Array with default values
+   -- SOURCE
+   Default_Pad_Array: constant Pad_Array := (others => Empty_Pixel_Data);
    -- ****
 
    -- ****t* Widget/Widget.Bbox_Array
