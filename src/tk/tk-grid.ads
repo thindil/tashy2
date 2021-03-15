@@ -236,7 +236,7 @@ package Tk.Grid is
       -- SOURCE
    function Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
-      return BBox_Array with
+      return Bbox_Array with
       Pre => Master /= Null_Widget,
       Test_Case => (Name => "Test_BBox", Mode => Nominal);
       -- ****

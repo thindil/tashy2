@@ -235,7 +235,7 @@ package body Tk.Menu is
       if Item_Type = CASCADE and then Options.Menu /= Null_Widget then
          Append
            (Source => Options_String,
-            New_Item => " -menu " & Tk_PathName(Widget => Options.Menu));
+            New_Item => " -menu " & Tk_Path_Name(Widget => Options.Menu));
       end if;
       return To_String(Source => Options_String);
    end Item_Options_To_String;

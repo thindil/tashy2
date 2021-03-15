@@ -185,13 +185,13 @@ package Tk.Widget is
    type Pad_Array is array(1 .. 2) of Pixel_Data;
    -- ****
 
-   -- ****t* Widget/BBox_Array
+   -- ****t* Widget/Bbox_Array
    -- FUNCTION
    -- Array used mostly for take result of BBox commands of various Tk_Widgets
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type BBox_Array is array(1 .. 4) of Natural;
+   type Bbox_Array is array(1 .. 4) of Natural;
    -- ****
 
    -- ****t* Widget/Widget.Tk_Window
@@ -298,7 +298,7 @@ package Tk.Widget is
       Test_Case => (Name => "Test_Get_Widget", Mode => Nominal);
       -- ****
 
-      -- ****f* Widget/Widget.Tk_PathName
+      -- ****f* Widget/Widget.Tk_Path_Name
       -- FUNCTION
       -- Get the full Tk path name of the selected Tk widget
       -- PARAMETERS
@@ -309,9 +309,9 @@ package Tk.Widget is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the Tk path name of widget My_Button
-      -- Path_Name: constant String := Tk_PathName(My_Button);
+      -- Path_Name: constant String := Tk_Path_Name(My_Button);
       -- SOURCE
-   function Tk_PathName(Widget: Tk_Widget) return String with
+   function Tk_Path_Name(Widget: Tk_Widget) return String with
       Pre => Widget /= Null_Widget,
       Test_Case => (Name => "Test_Tk_PathName", Mode => Nominal);
    -- ****

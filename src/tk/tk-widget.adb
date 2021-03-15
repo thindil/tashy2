@@ -29,7 +29,7 @@ package body Tk.Widget is
       Widgets_Names: Unbounded_String;
    begin
       for Widget of Widgets loop
-         Append(Widgets_Names, Tk_PathName(Widget) & " ");
+         Append(Widgets_Names, Tk_Path_Name(Widget) & " ");
       end loop;
       return Trim(To_String(Widgets_Names), Right);
    end Widgets_Array_Image;
@@ -78,14 +78,14 @@ package body Tk.Widget is
           (Interpreter, New_String(Path_Name), Get_Main_Window(Interpreter));
    end Get_Widget;
 
-   function Tk_PathName(Widget: Tk_Widget) return String is
+   function Tk_Path_Name(Widget: Tk_Widget) return String is
       function Get_PathName(tkwin: Tk_Widget) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Get_PathName";
    begin
       return Value(Get_PathName(Widget));
-   end Tk_PathName;
+   end Tk_Path_Name;
 
    function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter is
       function TkInterp(tkwin: Tk_Widget) return Tcl_Interpreter with
@@ -206,7 +206,7 @@ package body Tk.Widget is
       Options_String: in out Unbounded_String) is
    begin
       if Value /= Null_Widget then
-         Append(Options_String, " -" & Name & " " & Tk_PathName(Value));
+         Append(Options_String, " -" & Name & " " & Tk_Path_Name(Value));
       end if;
    end Option_Image;
 
@@ -396,7 +396,7 @@ package body Tk.Widget is
      (Widget: Tk_Widget; Command_Name: String; Options: String := "") is
    begin
       Tcl_Eval
-        (Tk_PathName(Widget) & " " & Command_Name & " " & Options,
+        (Tk_Path_Name(Widget) & " " & Command_Name & " " & Options,
          Tk_Interp(Widget));
    end Execute_Widget_Command;
 
