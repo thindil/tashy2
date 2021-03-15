@@ -262,7 +262,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  begin read only
    function Wrap_Test_Bounding_Box_251762_896807
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
-      return BBox_Array is
+      return Bbox_Array is
    begin
       begin
          pragma Assert(Master /= Null_Widget);
@@ -274,7 +274,7 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_BBox test requirement violated");
       end;
       declare
-         Test_Bounding_Box_251762_896807_Result: constant BBox_Array :=
+         Test_Bounding_Box_251762_896807_Result: constant Bbox_Array :=
            GNATtest_Generated.GNATtest_Standard.Tk.Grid.Bounding_Box
              (Master, Column, Row, Column2, Row2);
       begin
@@ -300,7 +300,7 @@ package body Tk.Grid.Test_Data.Tests is
    procedure Test_Bounding_Box_test_bbox(Gnattest_T: in out Test) is
       function Bounding_Box
         (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
-         return BBox_Array renames
+         return Bbox_Array renames
         Wrap_Test_Bounding_Box_251762_896807;
 --  end read only
 
@@ -377,7 +377,7 @@ package body Tk.Grid.Test_Data.Tests is
       Create(Button, ".mybutton", Button_Options'(others => <>));
       Add(Button);
       Column_Configure
-        (Get_Main_Window, To_Tcl_String(Tk_PathName(Button)),
+        (Get_Main_Window, To_Tcl_String(Tk_Path_Name(Button)),
          Column_Options'(Weight => 5, others => <>));
       Options := Get_Column_Options(Get_Main_Window, 0);
       Assert
@@ -1103,7 +1103,7 @@ package body Tk.Grid.Test_Data.Tests is
       Create(Button, ".mybutton", Button_Options'(others => <>));
       Add(Button);
       Row_Configure
-        (Get_Main_Window, To_Tcl_String(Tk_PathName(Button)),
+        (Get_Main_Window, To_Tcl_String(Tk_Path_Name(Button)),
          Column_Options'(Weight => 5, others => <>));
       Options := Get_Row_Options(Get_Main_Window, 0);
       Assert
