@@ -156,93 +156,89 @@ package body Tk.Button is
    begin
       return Options: Button_Options := Default_Button_Options do
          Options.Active_Background :=
-           Option_Value(Widget => Button_Widget, Name => "activebackground");
+           Option_Value(Widgt => Button_Widget, Name => "activebackground");
          Options.Active_Foreground :=
-           Option_Value(Widget => Button_Widget, Name => "activeforeground");
+           Option_Value(Widgt => Button_Widget, Name => "activeforeground");
          Options.Anchor :=
-           Option_Value(Widget => Button_Widget, Name => "anchor");
+           Option_Value(Widgt => Button_Widget, Name => "anchor");
          Options.Background :=
-           Option_Value(Widget => Button_Widget, Name => "background");
+           Option_Value(Widgt => Button_Widget, Name => "background");
          Options.Bitmap :=
-           Option_Value(Widget => Button_Widget, Name => "bitmap");
+           Option_Value(Widgt => Button_Widget, Name => "bitmap");
          Options.Border_Width :=
-           Option_Value(Widget => Button_Widget, Name => "borderwidth");
+           Option_Value(Widgt => Button_Widget, Name => "borderwidth");
          Options.Command :=
-           Option_Value(Widget => Button_Widget, Name => "command");
+           Option_Value(Widgt => Button_Widget, Name => "command");
          Options.Compound :=
-           Option_Value(Widget => Button_Widget, Name => "compound");
+           Option_Value(Widgt => Button_Widget, Name => "compound");
          Options.Cursor :=
-           Option_Value(Widget => Button_Widget, Name => "cursor");
+           Option_Value(Widgt => Button_Widget, Name => "cursor");
          Options.Default :=
-           Option_Value(Widget => Button_Widget, Name => "default");
+           Option_Value(Widgt => Button_Widget, Name => "default");
          Options.Disabled_Foreground :=
-           Option_Value(Widget => Button_Widget, Name => "disabledforeground");
-         Options.Font := Option_Value(Widget => Button_Widget, Name => "font");
+           Option_Value(Widgt => Button_Widget, Name => "disabledforeground");
+         Options.Font := Option_Value(Widgt => Button_Widget, Name => "font");
          Options.Foreground :=
-           Option_Value(Widget => Button_Widget, Name => "foreground");
+           Option_Value(Widgt => Button_Widget, Name => "foreground");
          Options.Height :=
-           Option_Value(Widget => Button_Widget, Name => "height");
+           Option_Value(Widgt => Button_Widget, Name => "height");
          Options.Highlight_Background :=
-           Option_Value
-             (Widget => Button_Widget, Name => "highlightbackground");
+           Option_Value(Widgt => Button_Widget, Name => "highlightbackground");
          Options.Highlight_Color :=
-           Option_Value(Widget => Button_Widget, Name => "highlightcolor");
+           Option_Value(Widgt => Button_Widget, Name => "highlightcolor");
          Options.Highlight_Thickness :=
-           Option_Value(Widget => Button_Widget, Name => "highlightthickness");
+           Option_Value(Widgt => Button_Widget, Name => "highlightthickness");
          Options.Image :=
-           Option_Value(Widget => Button_Widget, Name => "image");
+           Option_Value(Widgt => Button_Widget, Name => "image");
          Options.Justify :=
-           Option_Value(Widget => Button_Widget, Name => "justify");
+           Option_Value(Widgt => Button_Widget, Name => "justify");
          Options.Over_Relief :=
-           Option_Value(Widget => Button_Widget, Name => "overrelief");
-         Options.Pad_X :=
-           Option_Value(Widget => Button_Widget, Name => "padx");
-         Options.Pad_Y :=
-           Option_Value(Widget => Button_Widget, Name => "pady");
+           Option_Value(Widgt => Button_Widget, Name => "overrelief");
+         Options.Pad_X := Option_Value(Widgt => Button_Widget, Name => "padx");
+         Options.Pad_Y := Option_Value(Widgt => Button_Widget, Name => "pady");
          Options.Relief :=
-           Option_Value(Widget => Button_Widget, Name => "relief");
+           Option_Value(Widgt => Button_Widget, Name => "relief");
          Options.Repeat_Delay :=
-           Option_Value(Widget => Button_Widget, Name => "repeatdelay");
+           Option_Value(Widgt => Button_Widget, Name => "repeatdelay");
          Options.Repeat_Interval :=
-           Option_Value(Widget => Button_Widget, Name => "repeatinterval");
+           Option_Value(Widgt => Button_Widget, Name => "repeatinterval");
          Options.State :=
-           Option_Value(Widget => Button_Widget, Name => "state");
+           Option_Value(Widgt => Button_Widget, Name => "state");
          Options.Take_Focus :=
-           Option_Value(Widget => Button_Widget, Name => "takefocus");
-         Options.Text := Option_Value(Widget => Button_Widget, Name => "text");
+           Option_Value(Widgt => Button_Widget, Name => "takefocus");
+         Options.Text := Option_Value(Widgt => Button_Widget, Name => "text");
          Options.Text_Variable :=
-           Option_Value(Widget => Button_Widget, Name => "textvariable");
+           Option_Value(Widgt => Button_Widget, Name => "textvariable");
          Options.Underline :=
-           Option_Value(Widget => Button_Widget, Name => "underline");
+           Option_Value(Widgt => Button_Widget, Name => "underline");
          Options.Width :=
-           Option_Value(Widget => Button_Widget, Name => "width");
+           Option_Value(Widgt => Button_Widget, Name => "width");
          Options.Wrap_Length :=
-           Option_Value(Widget => Button_Widget, Name => "wraplength");
+           Option_Value(Widgt => Button_Widget, Name => "wraplength");
       end return;
    end Get_Options;
 
    procedure Configure(Button_Widget: Tk_Button; Options: Button_Options) is
    begin
       Execute_Widget_Command
-        (Widget => Button_Widget, Command_Name => "configure",
+        (Widgt => Button_Widget, Command_Name => "configure",
          Options => Options_To_String(Options => Options));
    end Configure;
 
    procedure Flash(Button_Widget: Tk_Button) is
    begin
-      Execute_Widget_Command(Widget => Button_Widget, Command_Name => "flash");
+      Execute_Widget_Command(Widgt => Button_Widget, Command_Name => "flash");
    end Flash;
 
    procedure Invoke(Button_Widget: Tk_Button) is
    begin
-      Execute_Widget_Command
-        (Widget => Button_Widget, Command_Name => "invoke");
+      Execute_Widget_Command(Widgt => Button_Widget, Command_Name => "invoke");
    end Invoke;
 
    function Invoke(Button_Widget: Tk_Button) return String is
    begin
       Invoke(Button_Widget => Button_Widget);
-      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Button_Widget));
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Button_Widget));
    end Invoke;
 
 end Tk.Button;

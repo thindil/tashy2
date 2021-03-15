@@ -181,7 +181,8 @@ package Tk.TtkButton is
       -- FUNCTION
       -- The default options for the Ttk_Button
       -- SOURCE
-   Default_Ttk_Button_Options: constant Ttk_Button_Options := Ttk_Button_Options'(others => <>);
+   Default_Ttk_Button_Options: constant Ttk_Button_Options :=
+     Ttk_Button_Options'(others => <>);
    -- ****
 
       -- ****f* TtkButton/TtkButton.Invoke_(procedure)

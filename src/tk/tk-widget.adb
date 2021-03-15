@@ -78,31 +78,31 @@ package body Tk.Widget is
           (Interpreter, New_String(Path_Name), Get_Main_Window(Interpreter));
    end Get_Widget;
 
-   function Tk_Path_Name(Widget: Tk_Widget) return String is
+   function Tk_Path_Name(Widgt: Tk_Widget) return String is
       function Get_PathName(tkwin: Tk_Widget) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Get_PathName";
    begin
-      return Value(Get_PathName(Widget));
+      return Value(Get_PathName(Widgt));
    end Tk_Path_Name;
 
-   function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter is
+   function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter is
       function TkInterp(tkwin: Tk_Widget) return Tcl_Interpreter with
          Import => True,
          Convention => C,
          External_Name => "Tk_Interp";
    begin
-      return TkInterp(Widget);
+      return TkInterp(Widgt);
    end Tk_Interp;
 
-   function Tk_Window_Id(Widget: Tk_Widget) return Tk_Window is
+   function Tk_Window_Id(Widgt: Tk_Widget) return Tk_Window is
       function TkWindowId(tkwin: Tk_Widget) return Tk_Window with
          Import => True,
          Convention => C,
          External_Name => "Get_Window_Id";
    begin
-      return TkWindowId(Widget);
+      return TkWindowId(Widgt);
    end Tk_Window_Id;
 
    procedure Option_Image
@@ -261,18 +261,18 @@ package body Tk.Widget is
       end if;
    end Option_Image;
 
-   function Option_Value(Widget: Tk_Widget; Name: String) return Tcl_String is
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Tcl_String is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return To_Tcl_String(Tcl_Get_Result(Tk_Interp(Widget)));
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      return To_Tcl_String(Tcl_Get_Result(Tk_Interp(Widgt)));
    end Option_Value;
 
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Directions_Type is
+     (Widgt: Tk_Widget; Name: String) return Directions_Type is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widget));
+         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
       begin
          if Result'Length = 0 then
             return NONE;
@@ -282,30 +282,29 @@ package body Tk.Widget is
       end;
    end Option_Value;
 
-   function Option_Value(Widget: Tk_Widget; Name: String) return Pixel_Data is
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Pixel_Data is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Pixel_Data_Value(Tcl_Get_Result(Tk_Interp(Widget)));
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      return Pixel_Data_Value(Tcl_Get_Result(Tk_Interp(Widgt)));
    end Option_Value;
 
-   function Option_Value(Widget: Tk_Widget; Name: String) return Place_Type is
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Place_Type is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Place_Type'Value(Tcl_Get_Result(Tk_Interp(Widget)));
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      return Place_Type'Value(Tcl_Get_Result(Tk_Interp(Widgt)));
    end Option_Value;
 
-   function Option_Value(Widget: Tk_Widget; Name: String) return State_Type is
+   function Option_Value(Widgt: Tk_Widget; Name: String) return State_Type is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return State_Type'Value(Tcl_Get_Result(Tk_Interp(Widget)));
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      return State_Type'Value(Tcl_Get_Result(Tk_Interp(Widgt)));
    end Option_Value;
 
-   function Option_Value
-     (Widget: Tk_Widget; Name: String) return Justify_Type is
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Justify_Type is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widget));
+         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
       begin
          if Result'Length = 0 then
             return NONE;
@@ -315,11 +314,11 @@ package body Tk.Widget is
       end;
    end Option_Value;
 
-   function Option_Value(Widget: Tk_Widget; Name: String) return Relief_Type is
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Relief_Type is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widget));
+         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
       begin
          if Result'Length > 0 then
             return Relief_Type'Value(Result);
@@ -330,11 +329,11 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Extended_Natural is
+     (Widgt: Tk_Widget; Name: String) return Extended_Natural is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widget));
+         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
       begin
          if Result'Length > 0 then
             return Extended_Natural'Value(Result);
@@ -344,9 +343,9 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Extended_Boolean is
+     (Widgt: Tk_Widget; Name: String) return Extended_Boolean is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
       if Tcl_Get_Result = 1 then
          return TRUE;
       else
@@ -354,17 +353,17 @@ package body Tk.Widget is
       end if;
    end Option_Value;
 
-   function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Widget is
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Widget is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Get_Widget(Tcl_Get_Result(Tk_Interp(Widget)), Tk_Interp(Widget));
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      return Get_Widget(Tcl_Get_Result(Tk_Interp(Widgt)), Tk_Interp(Widgt));
    end Option_Value;
 
-   function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Window is
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Window is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widget));
+         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
       begin
          if Result'Length > 0 then
             return Tk_Window
@@ -376,28 +375,28 @@ package body Tk.Widget is
       end;
    end Option_Value;
 
-   function Option_Value(Widget: Tk_Widget; Name: String) return Integer is
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Integer is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Tcl_Get_Result(Tk_Interp(Widget));
+      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      return Tcl_Get_Result(Tk_Interp(Widgt));
    end Option_Value;
 
-   procedure Destroy(Widget: in out Tk_Widget) is
+   procedure Destroy(Widgt: in out Tk_Widget) is
       procedure Tk_DestroyWindow(tkwin: Tk_Widget) with
          Import => True,
          Convention => C,
          External_Name => "Tk_DestroyWindow";
    begin
-      Tk_DestroyWindow(Widget);
-      Widget := Null_Widget;
+      Tk_DestroyWindow(Widgt);
+      Widgt := Null_Widget;
    end Destroy;
 
    procedure Execute_Widget_Command
-     (Widget: Tk_Widget; Command_Name: String; Options: String := "") is
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "") is
    begin
       Tcl_Eval
-        (Tk_Path_Name(Widget) & " " & Command_Name & " " & Options,
-         Tk_Interp(Widget));
+        (Tk_Path_Name(Widgt) & " " & Command_Name & " " & Options,
+         Tk_Interp(Widgt));
    end Execute_Widget_Command;
 
 end Tk.Widget;

@@ -198,7 +198,8 @@ package Tk.TtkLabel is
       -- FUNCTION
       -- The default options for the Ttk_Label
       -- SOURCE
-   Default_Ttk_Label_Options: constant Ttk_Label_Options := Ttk_Label_Options'(others => <>);
+   Default_Ttk_Label_Options: constant Ttk_Label_Options :=
+     Ttk_Label_Options'(others => <>);
    -- ****
 
 end Tk.TtkLabel;
