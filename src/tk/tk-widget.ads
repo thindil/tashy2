@@ -71,12 +71,19 @@ package Tk.Widget is
       Default_Value => NONE;
       -- ****
 
-      -- ****t* Widget/Widget.Positive_Float
+      -- ****d* Widget/Widget.Default_Direction
       -- FUNCTION
-      -- Type used for positive float values, value -1 means empty value
-      -- HISTORY
-      -- 8.6.0 - Added
+      -- Default Direction_Type value
       -- SOURCE
+   Default_Direction: constant Directions_Type := NONE;
+   -- ****
+
+   -- ****t* Widget/Widget.Positive_Float
+   -- FUNCTION
+   -- Type used for positive float values, value -1 means empty value
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Positive_Float is digits 2 range -1.0 .. Float'Last with
       Default_Value => -1.0;
       -- ****
@@ -103,33 +110,54 @@ package Tk.Widget is
       Default_Value => NONE;
       -- ****
 
-      -- ****t* Widget/Widget.Justify_Type
+      -- ****d* Widget/Widget.Default_Extended_Boolean
       -- FUNCTION
-      -- Type used to set text justify option of various widgets
-      -- HISTORY
-      -- 8.6.0 - Added
+      -- Default value for Extended_Boolean
       -- SOURCE
+   Default_Extended_Boolean: constant Extended_Boolean := NONE;
+   -- ****
+
+   -- ****t* Widget/Widget.Justify_Type
+   -- FUNCTION
+   -- Type used to set text justify option of various widgets
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Justify_Type is (NONE, LEFT, CENTER, RIGHT) with
       Default_Value => NONE;
       -- ****
 
-      -- ****t* Widget/Widget.Extended_Natural
+      -- ****d* Widget/Widget.Default_Justify_Type
       -- FUNCTION
-      -- Type used for set non-negative values for various widgets
-      -- configuration options
-      -- HISTORY
-      -- 8.6.0 - Added
+      -- Default value for Justify_Type
       -- SOURCE
+   Default_Justify_Type: constant Justify_Type := NONE;
+   -- ****
+
+   -- ****t* Widget/Widget.Extended_Natural
+   -- FUNCTION
+   -- Type used for set non-negative values for various widgets
+   -- configuration options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Extended_Natural is new Integer range -1 .. Integer'Last with
       Default_Value => -1;
       -- ****
 
-      -- ****t* Widget/Widget.State_Type
+      -- ****d* Widget/Widget.Default_Extended_Natural
       -- FUNCTION
-      -- Type used to set the state of the selected widget
-      -- HISTORY
-      -- 8.6.0 - Added
+      -- Default value for Extended_Natural
       -- SOURCE
+   Default_Extended_Natural: constant Extended_Natural := -1;
+   -- ****
+
+   -- ****t* Widget/Widget.State_Type
+   -- FUNCTION
+   -- Type used to set the state of the selected widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type State_Type is (NORMAL, ACTIVE, DISABLED, NONE) with
       Default_Value => NONE;
       -- ****
@@ -185,13 +213,20 @@ package Tk.Widget is
    type Pad_Array is array(1 .. 2) of Pixel_Data;
    -- ****
 
-   -- ****t* Widget/Bbox_Array
+   -- ****t* Widget/Widget.Bbox_Array
    -- FUNCTION
    -- Array used mostly for take result of BBox commands of various Tk_Widgets
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    type Bbox_Array is array(1 .. 4) of Natural;
+   -- ****
+
+   -- ****d* Widget/Widget.Empty_Bbox_Array
+   -- FUNCTION
+   -- Bbox_Array with empty values
+   -- SOURCE
+   Empty_Bbox_Array: constant Bbox_Array := (others => 0);
    -- ****
 
    -- ****t* Widget/Widget.Tk_Window
