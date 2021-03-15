@@ -73,7 +73,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid " & Tk_PathName(Widget => Child) & " " &
+           "grid " & Tk_Path_Name(Widget => Child) & " " &
            Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widget => Child));
    end Add;
@@ -93,7 +93,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid anchor " & Tk_PathName(Widget => Master) & " " &
+           "grid anchor " & Tk_Path_Name(Widget => Master) & " " &
            To_Lower(Item => Directions_Type'Image(New_Direction)),
          Interpreter => Tk_Interp(Widget => Master));
    end Anchor;
@@ -101,14 +101,14 @@ package body Tk.Grid is
    function Anchor(Master: Tk_Widget) return Directions_Type is
    begin
       Tcl_Eval
-        (Tcl_Script => "grid anchor " & Tk_PathName(Widget => Master),
+        (Tcl_Script => "grid anchor " & Tk_Path_Name(Widget => Master),
          Interpreter => Tk_Interp(Widget => Master));
       return Directions_Type'Value(Tcl_Get_Result);
    end Anchor;
 
    function Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
-      return BBox_Array is
+      return Bbox_Array is
       Options: Unbounded_String := Null_Unbounded_String;
       Tokens: Slice_Set;
    begin
@@ -145,11 +145,11 @@ package body Tk.Grid is
       end if;
       Tcl_Eval
         (Tcl_Script =>
-           "grid bbox " & Tk_PathName(Widget => Master) &
+           "grid bbox " & Tk_Path_Name(Widget => Master) &
            To_String(Source => Options),
          Interpreter => Tk_Interp(Widget => Master));
       Create(S => Tokens, From => Tcl_Get_Result, Separators => " ");
-      return Coords: BBox_Array := (others => 0) do
+      return Coords: Bbox_Array := (others => 0) do
          Fill_BBox_Array_Loop :
          for I in 1 .. 4 loop
             Coords(I) :=
@@ -192,7 +192,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid columnconfigure " & Tk_PathName(Widget => Master) & " " &
+           "grid columnconfigure " & Tk_Path_Name(Widget => Master) & " " &
            To_String(Source => Child_Name) & " " &
            Column_Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widget => Master));
@@ -203,8 +203,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid columnconfigure " & Tk_PathName(Widget => Master) & " " &
-           Tk_PathName(Widget => Child) & " " &
+           "grid columnconfigure " & Tk_Path_Name(Widget => Master) & " " &
+           Tk_Path_Name(Widget => Child) & " " &
            Column_Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widget => Master));
    end Column_Configure;
@@ -214,7 +214,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid columnconfigure " & Tk_PathName(Widget => Master) &
+           "grid columnconfigure " & Tk_Path_Name(Widget => Master) &
            Natural'Image(Column) & " " &
            Column_Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widget => Master));
@@ -244,7 +244,7 @@ package body Tk.Grid is
       Tcl_Eval
         (Tcl_Script =>
            "grid " & Config_Type & "configure " &
-           Tk_PathName(Widget => Master) & Natural'Image(Index) & " -" & Name,
+           Tk_Path_Name(Widget => Master) & Natural'Image(Index) & " -" & Name,
          Interpreter => Tk_Interp(Widget => Master));
       return Pixel_Data_Value
           (Value =>
@@ -275,7 +275,7 @@ package body Tk.Grid is
       Tcl_Eval
         (Tcl_Script =>
            "grid " & Config_Type & "configure " &
-           Tk_PathName(Widget => Master) & Natural'Image(Index) & " -" & Name,
+           Tk_Path_Name(Widget => Master) & Natural'Image(Index) & " -" & Name,
          Interpreter => Tk_Interp(Widget => Master));
       return To_Tcl_String
           (Source =>
@@ -306,7 +306,7 @@ package body Tk.Grid is
       Tcl_Eval
         (Tcl_Script =>
            "grid " & Config_Type & "configure " &
-           Tk_PathName(Widget => Master) & Natural'Image(Index) & " -" & Name,
+           Tk_Path_Name(Widget => Master) & Natural'Image(Index) & " -" & Name,
          Interpreter => Tk_Interp(Widget => Master));
       return Extended_Natural'Value
           (Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)));
@@ -339,7 +339,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid configure " & Tk_PathName(Widget => Child) &
+           "grid configure " & Tk_Path_Name(Widget => Child) &
            Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widget => Child));
    end Configure;
@@ -356,7 +356,7 @@ package body Tk.Grid is
    procedure Forget(Child: Tk_Widget) is
    begin
       Tcl_Eval
-        (Tcl_Script => "grid forget " & Tk_PathName(Widget => Child),
+        (Tcl_Script => "grid forget " & Tk_Path_Name(Widget => Child),
          Interpreter => Tk_Interp(Widget => Child));
    end Forget;
 
@@ -384,7 +384,7 @@ package body Tk.Grid is
       Start_Index, End_Index: Positive := 1;
    begin
       Tcl_Eval
-        (Tcl_Script => "grid info " & Tk_PathName(Widget => Child),
+        (Tcl_Script => "grid info " & Tk_Path_Name(Widget => Child),
          Interpreter => Tk_Interp(Widget => Child));
       Parse_Result_Block :
       declare
@@ -476,7 +476,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid location " & Tk_PathName(Widget => Master) &
+           "grid location " & Tk_Path_Name(Widget => Master) &
            Positive_Float'Image(X.Value) &
            To_Lower(Item => Pixel_Unit'Image(X.Value_Unit)) &
            Positive_Float'Image(Y.Value) &
@@ -494,7 +494,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid propagate " & Tk_PathName(Widget => Master) & " " &
+           "grid propagate " & Tk_Path_Name(Widget => Master) & " " &
            To_Lower(Item => Boolean'Image(Enable)),
          Interpreter => Tk_Interp(Widget => Master));
    end Propagate;
@@ -502,7 +502,7 @@ package body Tk.Grid is
    function Propagate(Master: Tk_Widget) return Boolean is
    begin
       Tcl_Eval
-        (Tcl_Script => "grid propagate " & Tk_PathName(Widget => Master),
+        (Tcl_Script => "grid propagate " & Tk_Path_Name(Widget => Master),
          Interpreter => Tk_Interp(Widget => Master));
       if Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Master)) = 1 then
          return True;
@@ -515,7 +515,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid rowconfigure " & Tk_PathName(Widget => Master) & " " &
+           "grid rowconfigure " & Tk_Path_Name(Widget => Master) & " " &
            To_String(Source => Child_Name) & " " &
            Column_Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widget => Master));
@@ -526,8 +526,8 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid rowconfigure " & Tk_PathName(Widget => Master) & " " &
-           Tk_PathName(Widget => Child) & " " &
+           "grid rowconfigure " & Tk_Path_Name(Widget => Master) & " " &
+           Tk_Path_Name(Widget => Child) & " " &
            Column_Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widget => Master));
    end Row_Configure;
@@ -537,7 +537,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid rowconfigure " & Tk_PathName(Widget => Master) &
+           "grid rowconfigure " & Tk_Path_Name(Widget => Master) &
            Natural'Image(Row) & " " &
            Column_Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widget => Master));
@@ -569,7 +569,7 @@ package body Tk.Grid is
    procedure Remove(Child: Tk_Widget) is
    begin
       Tcl_Eval
-        (Tcl_Script => "grid remove " & Tk_PathName(Widget => Child),
+        (Tcl_Script => "grid remove " & Tk_Path_Name(Widget => Child),
          Interpreter => Tk_Interp(Widget => Child));
    end Remove;
 
@@ -585,7 +585,7 @@ package body Tk.Grid is
       Tokens: Slice_Set;
    begin
       Tcl_Eval
-        (Tcl_Script => "grid size " & Tk_PathName(Widget => Master),
+        (Tcl_Script => "grid size " & Tk_Path_Name(Widget => Master),
          Interpreter => Tk_Interp(Widget => Master));
       Create
         (S => Tokens,
@@ -613,7 +613,7 @@ package body Tk.Grid is
       end if;
       Tcl_Eval
         (Tcl_Script =>
-           "grid slaves " & Tk_PathName(Widget => Master) &
+           "grid slaves " & Tk_Path_Name(Widget => Master) &
            To_String(Source => Options),
          Interpreter => Tk_Interp(Widget => Master));
       Create
