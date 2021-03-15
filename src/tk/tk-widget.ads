@@ -302,7 +302,7 @@ package Tk.Widget is
       -- FUNCTION
       -- Get the full Tk path name of the selected Tk widget
       -- PARAMETERS
-      -- Widget - Tk widget which path name will be taken
+      -- Widgt - Tk widget which path name will be taken
       -- RESULT
       -- Full Tk path name of the selected Tk widget
       -- HISTORY
@@ -311,8 +311,8 @@ package Tk.Widget is
       -- -- Get the Tk path name of widget My_Button
       -- Path_Name: constant String := Tk_Path_Name(My_Button);
       -- SOURCE
-   function Tk_Path_Name(Widget: Tk_Widget) return String with
-      Pre => Widget /= Null_Widget,
+   function Tk_Path_Name(Widgt: Tk_Widget) return String with
+      Pre => Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Tk_PathName", Mode => Nominal);
    -- ****
 
@@ -320,7 +320,7 @@ package Tk.Widget is
    -- FUNCTION
    -- Get Tcl interpreter on which the selected Tk widget exists
    -- PARAMETERS
-   -- Widget - Tk widget which Tcl interpreter will be taken
+   -- Widgt - Tk widget which Tcl interpreter will be taken
    -- RESULT
    -- Tcl interpreter of the selected Tk widget
    -- HISTORY
@@ -329,8 +329,8 @@ package Tk.Widget is
    -- -- Get the Tcl interpreter of widget My_Label
    -- Interpreter: constant Tcl_Interpreter := Tk_Interp(My_Label);
    -- SOURCE
-   function Tk_Interp(Widget: Tk_Widget) return Tcl_Interpreter with
-      Pre => Widget /= Null_Widget,
+   function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter with
+      Pre => Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Tk_Interp", Mode => Nominal);
       -- ****
 
@@ -338,7 +338,7 @@ package Tk.Widget is
       -- FUNCTION
       -- Get the window manager identifier for the selected Tk_Widget
       -- PARAMETERS
-      -- Widget - Tk widget which identifier will be get
+      -- Widgt - Tk widget which identifier will be get
       -- RESULT
       -- The window manager identifier for the selected widget
       -- HISTORY
@@ -347,8 +347,8 @@ package Tk.Widget is
       -- -- Get the window manager identifier of widget My_Dialog
       -- Window: constant Tk_Window := Tk_Window_Id(My_Dialog);
       -- SOURCE
-   function Tk_Window_Id(Widget: Tk_Widget) return Tk_Window with
-      Pre => Widget /= Null_Widget,
+   function Tk_Window_Id(Widgt: Tk_Widget) return Tk_Window with
+      Pre => Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Tk_Window_Id", Mode => Nominal);
 
       -- ****f* Widget/Widget.Option_Image
@@ -479,7 +479,7 @@ package Tk.Widget is
    -- proper Widget_Options field value. It is mostly used in the widgets
    -- Get_Options funcion
    -- PARAMETERS
-   -- Widget - Tk_Widget which option will be get
+   -- Widgt - Tk_Widget which option will be get
    -- Name   - The name of the option to get
    -- RESULT
    -- Tcl string value converted to the proper Ada binding type
@@ -489,53 +489,49 @@ package Tk.Widget is
    -- -- Get the value of option text in My_Button widget
    -- Text: constant Tcl_String := Option_Value(My_Button, "text");
    -- SOURCE
-   function Option_Value
-     (Widget: Tk_Widget; Name: String) return Tcl_String with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Tcl_String with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Tcl_String", Mode => Nominal);
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Directions_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+     (Widgt: Tk_Widget; Name: String) return Directions_Type with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Direction_Type",
        Mode => Nominal);
-   function Option_Value
-     (Widget: Tk_Widget; Name: String) return Pixel_Data with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Pixel_Data with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Pixel_Data", Mode => Nominal);
-   function Option_Value
-     (Widget: Tk_Widget; Name: String) return Place_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Place_Type with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Place_Type", Mode => Nominal);
-   function Option_Value
-     (Widget: Tk_Widget; Name: String) return State_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+   function Option_Value(Widgt: Tk_Widget; Name: String) return State_Type with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_State_Type", Mode => Nominal);
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Justify_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+     (Widgt: Tk_Widget; Name: String) return Justify_Type with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Justify_Type", Mode => Nominal);
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Relief_Type with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+     (Widgt: Tk_Widget; Name: String) return Relief_Type with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Relief_Type", Mode => Nominal);
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Extended_Natural with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+     (Widgt: Tk_Widget; Name: String) return Extended_Natural with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Extended_Natural",
        Mode => Nominal);
    function Option_Value
-     (Widget: Tk_Widget; Name: String) return Extended_Boolean with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+     (Widgt: Tk_Widget; Name: String) return Extended_Boolean with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Extended_Boolean",
        Mode => Nominal);
-   function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Widget with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Widget with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Tk_Widget", Mode => Nominal);
-   function Option_Value(Widget: Tk_Widget; Name: String) return Tk_Window with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Window with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Tk_Window", Mode => Nominal);
-   function Option_Value(Widget: Tk_Widget; Name: String) return Integer with
-      Pre => Widget /= Null_Widget and Name'Length > 0,
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Integer with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Integer", Mode => Nominal);
    -- ****
 
@@ -548,7 +544,7 @@ package Tk.Widget is
    -- Destroy the selected Tk widget and everything what is related to it,
    -- like children, events, etc
    -- PARAMETERS
-   -- Widget - Tk widget to destroy
+   -- Widgt - Tk widget to destroy
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
@@ -557,7 +553,7 @@ package Tk.Widget is
    -- COMMANDS
    -- destroy Widget
    -- SOURCE
-   procedure Destroy(Widget: in out Tk_Widget) with
+   procedure Destroy(Widgt: in out Tk_Widget) with
       Test_Case => (Name => "Test_Destroy", Mode => Robustness);
    -- ****
 
@@ -582,8 +578,8 @@ package Tk.Widget is
    -- Execute_Widget_Command(My_Button, "text", "{click me}");
    -- SOURCE
    procedure Execute_Widget_Command
-     (Widget: Tk_Widget; Command_Name: String; Options: String := "") with
-      Pre => Widget /= Null_Widget and Command_Name'Length > 0,
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "") with
+      Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command", Mode => Nominal);
       -- ****
 

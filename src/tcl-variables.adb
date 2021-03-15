@@ -34,7 +34,7 @@ package body Tcl.Variables is
       Default_Unsigned_Integer: constant Unsigned_Integer := 0;
       Flag: Unsigned_Integer := Default_Unsigned_Integer;
    begin
-      Set_Flags_Loop:
+      Set_Flags_Loop :
       for Value of Flags loop
          Flag := Flag or Variables_Flags'Enum_Rep(Value);
       end loop Set_Flags_Loop;

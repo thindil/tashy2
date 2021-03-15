@@ -98,42 +98,42 @@ package body Tk.TtkButton is
    function Get_Options(Button: Ttk_Button) return Ttk_Button_Options is
    begin
       return Options: Ttk_Button_Options := Default_Ttk_Button_Options do
-         Options.Class := Option_Value(Widget => Button, Name => "class");
-         Options.Command := Option_Value(Widget => Button, Name => "command");
+         Options.Class := Option_Value(Widgt => Button, Name => "class");
+         Options.Command := Option_Value(Widgt => Button, Name => "command");
          Options.Compound :=
            Option_Value(Widget => Button, Name => "compound");
-         Options.Cursor := Option_Value(Widget => Button, Name => "cursor");
-         Options.Default := Option_Value(Widget => Button, Name => "default");
+         Options.Cursor := Option_Value(Widgt => Button, Name => "cursor");
+         Options.Default := Option_Value(Widgt => Button, Name => "default");
          Options.Image := Option_Value(Widget => Button, Name => "image");
          Options.State := Option_Value(Widget => Button, Name => "state");
-         Options.Style := Option_Value(Widget => Button, Name => "style");
+         Options.Style := Option_Value(Widgt => Button, Name => "style");
          Options.Take_Focus :=
-           Option_Value(Widget => Button, Name => "takefocus");
-         Options.Text := Option_Value(Widget => Button, Name => "text");
+           Option_Value(Widgt => Button, Name => "takefocus");
+         Options.Text := Option_Value(Widgt => Button, Name => "text");
          Options.Text_Variable :=
-           Option_Value(Widget => Button, Name => "textvariable");
+           Option_Value(Widgt => Button, Name => "textvariable");
          Options.Underline :=
-           Option_Value(Widget => Button, Name => "underline");
-         Options.Width := Option_Value(Widget => Button, Name => "width");
+           Option_Value(Widgt => Button, Name => "underline");
+         Options.Width := Option_Value(Widgt => Button, Name => "width");
       end return;
    end Get_Options;
 
    procedure Configure(Button: Ttk_Button; Options: Ttk_Button_Options) is
    begin
       Execute_Widget_Command
-        (Widget => Button, Command_Name => "configure",
+        (Widgt => Button, Command_Name => "configure",
          Options => Options_To_String(Options => Options));
    end Configure;
 
    procedure Invoke(Button: Ttk_Button) is
    begin
-      Execute_Widget_Command(Widget => Button, Command_Name => "invoke");
+      Execute_Widget_Command(Widgt => Button, Command_Name => "invoke");
    end Invoke;
 
    function Invoke(Button: Ttk_Button) return String is
    begin
       Invoke(Button => Button);
-      return Tcl_Get_Result(Interpreter => Tk_Interp(Widget => Button));
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Button));
    end Invoke;
 
 end Tk.TtkButton;

@@ -23,7 +23,8 @@ package body Tk is
          Convention => C,
          External_Name => "Tk_Init";
    begin
-      if Tk_Init_C(Interp => Interpreter) = int(Tcl_Results'Pos(TCL_ERROR)) then
+      if Tk_Init_C(Interp => Interpreter) =
+        int(Tcl_Results'Pos(TCL_ERROR)) then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
    end Tk_Init;
