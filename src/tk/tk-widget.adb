@@ -197,8 +197,9 @@ package body Tk.Widget is
    begin
       if Value /= NONE then
          Append
-           (Options_String,
-            " -" & Name & " " & To_Lower(Justify_Type'Image(Value)));
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " " & To_Lower(Item => Justify_Type'Image(Value)));
       end if;
    end Option_Image;
 
@@ -208,11 +209,15 @@ package body Tk.Widget is
    begin
       if Value(1).Value > -1.0 then
          Append
-           (Options_String, " -" & Name & " {" & Pixel_Data_Image(Value(1)));
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " {" & Pixel_Data_Image(Value => Value(1)));
          if Value(2).Value > -1.0 then
-            Append(Options_String, " " & Pixel_Data_Image(Value(2)));
+            Append
+              (Source => Options_String,
+               New_Item => " " & Pixel_Data_Image(Value => Value(2)));
          end if;
-         Append(Options_String, "}");
+         Append(Source => Options_String, New_Item => "}");
       end if;
    end Option_Image;
 
@@ -221,7 +226,9 @@ package body Tk.Widget is
       Options_String: in out Unbounded_String) is
    begin
       if Value /= Null_Widget then
-         Append(Options_String, " -" & Name & " " & Tk_Path_Name(Value));
+         Append
+           (Source => Options_String,
+            New_Item => " -" & Name & " " & Tk_Path_Name(Widgt => Value));
       end if;
    end Option_Image;
 
@@ -229,11 +236,14 @@ package body Tk.Widget is
      (Name: String; Value: Extended_Boolean;
       Options_String: in out Unbounded_String) is
    begin
-      if Value = FALSE then
-         Append(Options_String, " -" & Name & " 0");
-      elsif Value = TRUE then
-         Append(Options_String, " -" & Name & " 1");
-      end if;
+      case Value is
+         when FALSE =>
+            Append(Source => Options_String, New_Item => " -" & Name & " 0");
+         when TRUE =>
+            Append(Source => Options_String, New_Item => " -" & Name & " 1");
+         when NONE =>
+            null;
+      end case;
    end Option_Image;
 
    procedure Option_Image
@@ -244,9 +254,12 @@ package body Tk.Widget is
    begin
       if Value /= Null_Window then
          Append
-           (Options_String,
-            " -" & Name & " 0x" &
-            Trim(To_Lower(New_Value), To_Set('0'), Null_Set));
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " 0x" &
+              Trim
+                (Source => To_Lower(Item => New_Value),
+                 Left => To_Set(Singleton => '0'), Right => Null_Set));
       end if;
    end Option_Image;
 
