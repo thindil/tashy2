@@ -250,7 +250,7 @@ package body Tk.Widget is
      (Name: String; Value: Tk_Window;
       Options_String: in out Unbounded_String) is
       New_Value: constant String :=
-        System.Address_Image(System.Address(Value));
+        System.Address_Image(A => System.Address(Value));
    begin
       if Value /= Null_Window then
          Append
@@ -266,23 +266,30 @@ package body Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Integer; Options_String: in out Unbounded_String;
       Base: Positive := 10) is
-      Hex_Value: String(1 .. 32);
-      New_Value: Unbounded_String;
+      Hex_Value: String(1 .. 32) := (others => ' ');
+      New_Value: Unbounded_String := Null_Unbounded_String;
    begin
       if Value /= 0 then
-         Append(Options_String, " -" & Name);
+         Append(Source => Options_String, New_Item => " -" & Name);
          if Value < 0 then
-            Append(Options_String, " ");
+            Append(Source => Options_String, New_Item => " ");
          end if;
          case Base is
             when 10 =>
-               Append(Options_String, Integer'Image(Value));
-            when 16 =>
-               Put(Hex_Value, Value, 16);
-               New_Value := To_Unbounded_String(Trim(Hex_Value, Both));
                Append
-                 (Options_String,
-                  " 0x" & Slice(New_Value, 4, Length(New_Value) - 1));
+                 (Source => Options_String, New_Item => Integer'Image(Value));
+            when 16 =>
+               Put(To => Hex_Value, Item => Value, Base => 16);
+               New_Value :=
+                 To_Unbounded_String
+                   (Source => Trim(Source => Hex_Value, Side => Both));
+               Append
+                 (Source => Options_String,
+                  New_Item =>
+                    " 0x" &
+                    Slice
+                      (Source => New_Value, Low => 4,
+                       High => Length(Source => New_Value) - 1));
             when others =>
                null;
          end case;
