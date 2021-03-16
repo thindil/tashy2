@@ -70,50 +70,53 @@ package body Tk.Widget is
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget is
-      function Tk_NameToWindow
-        (interp: Tcl_Interpreter; pathName: chars_ptr; tkwin: Tk_Widget)
+      function Tk_Name_To_Window
+        (Interp: Tcl_Interpreter; Path_Name: chars_ptr; Tk_Win: Tk_Widget)
          return Tk_Widget with
          Import => True,
          Convention => C,
          External_Name => "Tk_NameToWindow";
    begin
-      return Tk_NameToWindow
-          (Interpreter, New_String(Path_Name), Get_Main_Window(Interpreter));
+      return Tk_Name_To_Window
+          (Interp => Interpreter, Path_Name => New_String(Str => Path_Name),
+           Tk_Win => Get_Main_Window(Interpreter => Interpreter));
    end Get_Widget;
 
    function Tk_Path_Name(Widgt: Tk_Widget) return String is
-      function Get_PathName(tkwin: Tk_Widget) return chars_ptr with
+      function Get_Path_Name(Tk_Win: Tk_Widget) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Get_PathName";
    begin
-      return Value(Get_PathName(Widgt));
+      return Value(Get_Path_Name(Tk_Win => Widgt));
    end Tk_Path_Name;
 
    function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter is
-      function TkInterp(tkwin: Tk_Widget) return Tcl_Interpreter with
+      function Tk_Interpreter(Tk_Win: Tk_Widget) return Tcl_Interpreter with
          Import => True,
          Convention => C,
          External_Name => "Tk_Interp";
    begin
-      return TkInterp(Widgt);
+      return Tk_Interpreter(Tk_Win => Widgt);
    end Tk_Interp;
 
    function Tk_Window_Id(Widgt: Tk_Widget) return Tk_Window is
-      function TkWindowId(tkwin: Tk_Widget) return Tk_Window with
+      function Tk_Window_Id_C(Tk_Win: Tk_Widget) return Tk_Window with
          Import => True,
          Convention => C,
          External_Name => "Get_Window_Id";
    begin
-      return TkWindowId(Widgt);
+      return Tk_Window_Id_C(Widgt);
    end Tk_Window_Id;
 
    procedure Option_Image
      (Name: String; Value: Tcl_String;
       Options_String: in out Unbounded_String) is
    begin
-      if Length(Value) > 0 then
-         Append(Options_String, " -" & Name & " " & To_String(Value));
+      if Length(Source => Value) > 0 then
+         Append
+           (Source => Options_String,
+            New_Item => " -" & Name & " " & To_String(Source => Value));
       end if;
    end Option_Image;
 
