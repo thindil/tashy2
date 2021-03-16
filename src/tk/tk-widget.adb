@@ -26,42 +26,45 @@ with Tk.MainWindow; use Tk.MainWindow;
 package body Tk.Widget is
 
    function Widgets_Array_Image(Widgets: Widgets_Array) return String is
-      Widgets_Names: Unbounded_String;
+      Widgets_Names: Unbounded_String := Null_Unbounded_String;
    begin
-      for Widget of Widgets loop
-         Append(Widgets_Names, Tk_Path_Name(Widget) & " ");
-      end loop;
-      return Trim(To_String(Widgets_Names), Right);
+      Set_Widgets_Array_Loop :
+      for Widgt of Widgets loop
+         Append
+           (Source => Widgets_Names,
+            New_Item => Tk_Path_Name(Widgt => Widgt) & " ");
+      end loop Set_Widgets_Array_Loop;
+      return Trim(Source => To_String(Source => Widgets_Names), Side => Right);
    end Widgets_Array_Image;
 
    function Pixel_Data_Value(Value: String) return Pixel_Data is
-      Result: Pixel_Data;
+      Result: Pixel_Data := Empty_Pixel_Data;
    begin
       if Value'Length = 0 then
          return Result;
       end if;
-      if not Is_Digit(Value(Value'Last)) then
-         Result.Value :=
-           Positive_Float'Value(Value(Value'First .. (Value'Last - 1)));
-         Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
-      else
+      if Is_Digit(Item => Value(Value'Last)) then
          Result.Value := Positive_Float'Value(Value);
          Result.Value_Unit := PIXEL;
+      else
+         Result.Value :=
+           Positive_Float'Value(Value(Value'First .. Value'Last - 1));
+         Result.Value_Unit := Pixel_Unit'Value("" & Value(Value'Last));
       end if;
       return Result;
    end Pixel_Data_Value;
 
    function Pixel_Data_Image(Value: Pixel_Data) return String is
-      ValueString: String(1 .. 255);
+      Value_String: String(1 .. 255);
    begin
       Put
-        (To => ValueString, Item => Float(Value.Value),
+        (To => Value_String, Item => Float(Value.Value),
          Aft => Positive_Float'Digits, Exp => 0);
       if Value.Value_Unit /= PIXEL then
-         return Trim(ValueString, Both) &
-           To_Lower(Pixel_Unit'Image(Value.Value_Unit));
+         return Trim(Source => Value_String, Side => Both) &
+           To_Lower(Item => Pixel_Unit'Image(Value.Value_Unit));
       end if;
-      return Trim(ValueString, Both);
+      return Trim(Source => Value_String, Side => Both);
    end Pixel_Data_Image;
 
    function Get_Widget
