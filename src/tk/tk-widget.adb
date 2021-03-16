@@ -71,14 +71,14 @@ package body Tk.Widget is
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget is
       function Tk_Name_To_Window
-        (Interp: Tcl_Interpreter; Path_Name: chars_ptr; Tk_Win: Tk_Widget)
+        (Interp: Tcl_Interpreter; Path_Name_C: chars_ptr; Tk_Win: Tk_Widget)
          return Tk_Widget with
          Import => True,
          Convention => C,
          External_Name => "Tk_NameToWindow";
    begin
       return Tk_Name_To_Window
-          (Interp => Interpreter, Path_Name => New_String(Str => Path_Name),
+          (Interp => Interpreter, Path_Name_C => New_String(Str => Path_Name),
            Tk_Win => Get_Main_Window(Interpreter => Interpreter));
    end Get_Widget;
 
@@ -88,7 +88,7 @@ package body Tk.Widget is
          Convention => C,
          External_Name => "Get_PathName";
    begin
-      return Value(Get_Path_Name(Tk_Win => Widgt));
+      return Value(Item => Get_Path_Name(Tk_Win => Widgt));
    end Tk_Path_Name;
 
    function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter is
@@ -106,7 +106,7 @@ package body Tk.Widget is
          Convention => C,
          External_Name => "Get_Window_Id";
    begin
-      return Tk_Window_Id_C(Widgt);
+      return Tk_Window_Id_C(Tk_Win => Widgt);
    end Tk_Window_Id;
 
    procedure Option_Image
@@ -125,7 +125,9 @@ package body Tk.Widget is
       Options_String: in out Unbounded_String) is
    begin
       if Value > -1 then
-         Append(Options_String, " -" & Name & Extended_Natural'Image(Value));
+         Append
+           (Source => Options_String,
+            New_Item => " -" & Name & Extended_Natural'Image(Value));
       end if;
    end Option_Image;
 
@@ -134,7 +136,9 @@ package body Tk.Widget is
       Options_String: in out Unbounded_String) is
    begin
       if Value.Value > -1.0 then
-         Append(Options_String, " -" & Name & " " & Pixel_Data_Image(Value));
+         Append
+           (Source => Options_String,
+            New_Item => " -" & Name & " " & Pixel_Data_Image(Value => Value));
       end if;
    end Option_Image;
 
@@ -144,8 +148,9 @@ package body Tk.Widget is
    begin
       if Value /= NONE then
          Append
-           (Options_String,
-            " -" & Name & " " & To_Lower(Relief_Type'Image(Value)));
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " " & To_Lower(Item => Relief_Type'Image(Value)));
       end if;
    end Option_Image;
 
@@ -155,8 +160,9 @@ package body Tk.Widget is
    begin
       if Value /= NONE then
          Append
-           (Options_String,
-            " -" & Name & " " & To_Lower(State_Type'Image(Value)));
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " " & To_Lower(Item => State_Type'Image(Value)));
       end if;
    end Option_Image;
 
@@ -166,8 +172,10 @@ package body Tk.Widget is
    begin
       if Value /= NONE then
          Append
-           (Options_String,
-            " -" & Name & " " & To_Lower(Directions_Type'Image(Value)));
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " " &
+              To_Lower(Item => Directions_Type'Image(Value)));
       end if;
    end Option_Image;
 
@@ -177,8 +185,9 @@ package body Tk.Widget is
    begin
       if Value /= EMPTY then
          Append
-           (Options_String,
-            " -" & Name & " " & To_Lower(Place_Type'Image(Value)));
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " " & To_Lower(Item => Place_Type'Image(Value)));
       end if;
    end Option_Image;
 
