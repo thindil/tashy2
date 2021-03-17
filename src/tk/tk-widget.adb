@@ -324,25 +324,29 @@ package body Tk.Widget is
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Pixel_Data is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       return Pixel_Data_Value(Tcl_Get_Result(Tk_Interp(Widgt)));
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Place_Type is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       return Place_Type'Value(Tcl_Get_Result(Tk_Interp(Widgt)));
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return State_Type is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       return State_Type'Value(Tcl_Get_Result(Tk_Interp(Widgt)));
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Justify_Type is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       declare
          Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
       begin
@@ -356,7 +360,8 @@ package body Tk.Widget is
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Relief_Type is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       declare
          Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
       begin
@@ -371,7 +376,8 @@ package body Tk.Widget is
    function Option_Value
      (Widgt: Tk_Widget; Name: String) return Extended_Natural is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       declare
          Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
       begin
@@ -385,7 +391,8 @@ package body Tk.Widget is
    function Option_Value
      (Widgt: Tk_Widget; Name: String) return Extended_Boolean is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       if Tcl_Get_Result = 1 then
          return TRUE;
       else
@@ -395,13 +402,15 @@ package body Tk.Widget is
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Widget is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       return Get_Widget(Tcl_Get_Result(Tk_Interp(Widgt)), Tk_Interp(Widgt));
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Window is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       declare
          Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
       begin
@@ -417,7 +426,8 @@ package body Tk.Widget is
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Integer is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       return Tcl_Get_Result(Tk_Interp(Widgt));
    end Option_Value;
 
