@@ -13,15 +13,15 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
-with Ada.Float_Text_IO; use Ada.Float_Text_IO;
-with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+with Ada.Float_Text_IO;
+with Ada.Integer_Text_IO;
 with Ada.Strings; use Ada.Strings;
-with Ada.Strings.Maps; use Ada.Strings.Maps;
+with Ada.Strings.Maps;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
-with Interfaces.C; use Interfaces.C;
+with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 with System.Address_Image;
-with Tk.MainWindow; use Tk.MainWindow;
+with Tk.MainWindow;
 
 package body Tk.Widget is
 
@@ -55,6 +55,8 @@ package body Tk.Widget is
    end Pixel_Data_Value;
 
    function Pixel_Data_Image(Value: Pixel_Data) return String is
+      use Ada.Float_Text_IO;
+
       Value_String: String(1 .. 255);
    begin
       Put
@@ -70,6 +72,8 @@ package body Tk.Widget is
    function Get_Widget
      (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Widget is
+      use Tk.MainWindow;
+
       function Tk_Name_To_Window
         (Interp: Tcl_Interpreter; Path_Name_C: chars_ptr; Tk_Win: Tk_Widget)
          return Tk_Widget with
@@ -249,6 +253,8 @@ package body Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Tk_Window;
       Options_String: in out Unbounded_String) is
+      use Ada.Strings.Maps;
+
       New_Value: constant String :=
         System.Address_Image(A => System.Address(Value));
    begin
@@ -266,6 +272,8 @@ package body Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Integer; Options_String: in out Unbounded_String;
       Base: Positive := 10) is
+      use Ada.Integer_Text_IO;
+
       Hex_Value: String(1 .. 32) := (others => ' ');
       New_Value: Unbounded_String := Null_Unbounded_String;
    begin
