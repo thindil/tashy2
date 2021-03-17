@@ -352,7 +352,8 @@ package body Tk.Widget is
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       Return_Value_Block :
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
+         Result: constant String :=
+           Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt));
       begin
          if Result'Length = 0 then
             return NONE;
@@ -368,7 +369,8 @@ package body Tk.Widget is
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       Return_Value_Block :
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
+         Result: constant String :=
+           Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt));
       begin
          if Result'Length > 0 then
             return Relief_Type'Value(Result);
@@ -385,7 +387,8 @@ package body Tk.Widget is
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       Return_Value_Block :
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
+         Result: constant String :=
+           Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt));
       begin
          if Result'Length > 0 then
             return Extended_Natural'Value(Result);
@@ -410,7 +413,10 @@ package body Tk.Widget is
    begin
       Execute_Widget_Command
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
-      return Get_Widget(Tcl_Get_Result(Tk_Interp(Widgt)), Tk_Interp(Widgt));
+      return Get_Widget
+          (Path_Name =>
+             Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt)),
+           Interpreter => Tk_Interp(Widgt => Widgt));
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Window is
@@ -419,7 +425,8 @@ package body Tk.Widget is
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       Return_Value_Block :
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
+         Result: constant String :=
+           Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt));
       begin
          if Result'Length > 0 then
             return Tk_Window
@@ -435,16 +442,16 @@ package body Tk.Widget is
    begin
       Execute_Widget_Command
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
-      return Tcl_Get_Result(Tk_Interp(Widgt));
+      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt));
    end Option_Value;
 
    procedure Destroy(Widgt: in out Tk_Widget) is
-      procedure Tk_DestroyWindow(tkwin: Tk_Widget) with
+      procedure Tk_Destroy_Window(Tk_Win: Tk_Widget) with
          Import => True,
          Convention => C,
          External_Name => "Tk_DestroyWindow";
    begin
-      Tk_DestroyWindow(Widgt);
+      Tk_Destroy_Window(Tk_Win => Widgt);
       Widgt := Null_Widget;
    end Destroy;
 
@@ -452,8 +459,9 @@ package body Tk.Widget is
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "") is
    begin
       Tcl_Eval
-        (Tk_Path_Name(Widgt) & " " & Command_Name & " " & Options,
-         Tk_Interp(Widgt));
+        (Tcl_Script =>
+           Tk_Path_Name(Widgt => Widgt) & " " & Command_Name & " " & Options,
+         Interpreter => Tk_Interp(Widgt => Widgt));
    end Execute_Widget_Command;
 
 end Tk.Widget;
