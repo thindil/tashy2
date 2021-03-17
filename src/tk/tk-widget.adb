@@ -298,23 +298,28 @@ package body Tk.Widget is
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tcl_String is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
-      return To_Tcl_String(Tcl_Get_Result(Tk_Interp(Widgt)));
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+      return To_Tcl_String
+          (Source => Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt)));
    end Option_Value;
 
    function Option_Value
      (Widgt: Tk_Widget; Name: String) return Directions_Type is
    begin
-      Execute_Widget_Command(Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+      Return_Value_Block :
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widgt));
+         Result: constant String :=
+           Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt));
       begin
          if Result'Length = 0 then
             return NONE;
          else
             return Directions_Type'Value(Result);
          end if;
-      end;
+      end Return_Value_Block;
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Pixel_Data is
