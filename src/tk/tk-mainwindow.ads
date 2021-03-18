@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Tk.TopLevel; use Tk.TopLevel;
+with Tk.TopLevel;
 
 -- ****h* Tk/MainWindow
 -- FUNCTION
@@ -36,7 +36,8 @@ package Tk.MainWindow is
    -- My_Main_Window: constant Tk_Toplevel := Get_Main_Window;
    -- SOURCE
    function Get_Main_Window
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel with
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk.TopLevel
+     .Tk_Toplevel with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Main_Window", Mode => Nominal);
       -- ****
