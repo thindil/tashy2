@@ -101,11 +101,11 @@ package body Tk.TtkButton is
          Options.Class := Option_Value(Widgt => Button, Name => "class");
          Options.Command := Option_Value(Widgt => Button, Name => "command");
          Options.Compound :=
-           Option_Value(TtkWidgt => Button, Name => "compound");
+           Option_Value(Ttk_Widgt => Button, Name => "compound");
          Options.Cursor := Option_Value(Widgt => Button, Name => "cursor");
          Options.Default := Option_Value(Widgt => Button, Name => "default");
-         Options.Image := Option_Value(TtkWidgt => Button, Name => "image");
-         Options.State := Option_Value(TtkWidgt => Button, Name => "state");
+         Options.Image := Option_Value(Ttk_Widgt => Button, Name => "image");
+         Options.State := Option_Value(Ttk_Widgt => Button, Name => "state");
          Options.Style := Option_Value(Widgt => Button, Name => "style");
          Options.Take_Focus :=
            Option_Value(Widgt => Button, Name => "takefocus");
