@@ -104,11 +104,11 @@ package body Tk.TtkWidget is
    end Option_Image;
 
    function Option_Value
-     (Widget: Ttk_Widget; Name: String) return Compound_Type is
+     (TtkWidgt: Ttk_Widget; Name: String) return Compound_Type is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Execute_Widget_Command(TtkWidgt, "cget", "-" & Name);
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Widget));
+         Result: constant String := Tcl_Get_Result(Tk_Interp(TtkWidgt));
       begin
          if Result'Length = 0 then
             return EMPTY;
@@ -119,20 +119,20 @@ package body Tk.TtkWidget is
    end Option_Value;
 
    function Option_Value
-     (Widget: Ttk_Widget; Name: String) return Disabled_State_Type is
+     (TtkWidgt: Ttk_Widget; Name: String) return Disabled_State_Type is
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
-      return Disabled_State_Type'Value(Tcl_Get_Result(Tk_Interp(Widget)));
+      Execute_Widget_Command(TtkWidgt, "cget", "-" & Name);
+      return Disabled_State_Type'Value(Tcl_Get_Result(Tk_Interp(TtkWidgt)));
    end Option_Value;
 
    function Option_Value
-     (Widget: Ttk_Widget; Name: String) return Ttk_Image_Option is
+     (TtkWidgt: Ttk_Widget; Name: String) return Ttk_Image_Option is
       Options: Ttk_Image_Option := Ttk_Image_Option'(others => <>);
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Execute_Widget_Command(TtkWidgt, "cget", "-" & Name);
       declare
          Options_Array: constant Array_List :=
-           Split_List(Tcl_Get_Result(Tk_Interp(Widget)));
+           Split_List(Tcl_Get_Result(Tk_Interp(TtkWidgt)));
          Index: Positive := 2;
       begin
          if Options_Array'Length < 1 then
@@ -170,10 +170,10 @@ package body Tk.TtkWidget is
    end Option_Value;
 
    function Option_Value
-     (Widget: Ttk_Widget; Name: String) return Padding_Array is
+     (TtkWidgt: Ttk_Widget; Name: String) return Padding_Array is
       Tokens: Slice_Set;
    begin
-      Execute_Widget_Command(Widget, "cget", "-" & Name);
+      Execute_Widget_Command(TtkWidgt, "cget", "-" & Name);
       Create(Tokens, Tcl_Get_Result, " ");
       return Padding: Padding_Array do
          for I in 1 .. Slice_Count(Tokens) loop
@@ -183,11 +183,11 @@ package body Tk.TtkWidget is
    end Option_Value;
 
    function In_State
-     (Widget: Ttk_Widget; State: Ttk_State_Type) return Boolean is
+     (TtkWidgt: Ttk_Widget; State: Ttk_State_Type) return Boolean is
    begin
       Execute_Widget_Command
-        (Widget, "instate", To_Lower(Ttk_State_Type'Image(State)));
-      if Tcl_Get_Result(Tk_Interp(Widget)) = 1 then
+        (TtkWidgt, "instate", To_Lower(Ttk_State_Type'Image(State)));
+      if Tcl_Get_Result(Tk_Interp(TtkWidgt)) = 1 then
          return True;
       else
          return False;
@@ -195,29 +195,29 @@ package body Tk.TtkWidget is
    end In_State;
 
    procedure In_State
-     (Widget: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) is
+     (TtkWidgt: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) is
    begin
       Execute_Widget_Command
-        (Widget, "instate",
+        (TtkWidgt, "instate",
          To_Lower(Ttk_State_Type'Image(State)) & " " & To_String(Tcl_Script));
    end In_State;
 
    procedure State
-     (Widget: Ttk_Widget; State: Ttk_State_Type; Disable: Boolean := False) is
+     (TtkWidgt: Ttk_Widget; State: Ttk_State_Type; Disable: Boolean := False) is
    begin
       if Disable then
          Execute_Widget_Command
-           (Widget, "state", "!" & To_Lower(Ttk_State_Type'Image(State)));
+           (TtkWidgt, "state", "!" & To_Lower(Ttk_State_Type'Image(State)));
       else
          Execute_Widget_Command
-           (Widget, "state", To_Lower(Ttk_State_Type'Image(State)));
+           (TtkWidgt, "state", To_Lower(Ttk_State_Type'Image(State)));
       end if;
    end State;
 
-   function State(Widget: Ttk_Widget) return Ttk_State_Array is
+   function State(TtkWidgt: Ttk_Widget) return Ttk_State_Array is
       Tokens: Slice_Set;
    begin
-      Execute_Widget_Command(Widget, "state");
+      Execute_Widget_Command(TtkWidgt, "state");
       Create(Tokens, Tcl_Get_Result, " ");
       return States: Ttk_State_Array(1 .. Natural(Slice_Count(Tokens))) do
          for I in 1 .. Slice_Count(Tokens) loop
