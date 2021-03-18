@@ -194,23 +194,23 @@ package Tk.TtkWidget is
    -- Button_State: constant Disabled_State_Type := Option_Value(My_Button, "state");
    -- SOURCE
    function Option_Value
-     (TtkWidgt: Ttk_Widget; Name: String) return Compound_Type with
-      Pre => TtkWidgt /= Null_Widget and Name'Length > 0,
+     (Ttk_Widgt: Ttk_Widget; Name: String) return Compound_Type with
+      Pre => Ttk_Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Compound_Type",
        Mode => Nominal);
    function Option_Value
-     (TtkWidgt: Ttk_Widget; Name: String) return Disabled_State_Type with
-      Pre => TtkWidgt /= Null_Widget and Name'Length > 0,
+     (Ttk_Widgt: Ttk_Widget; Name: String) return Disabled_State_Type with
+      Pre => Ttk_Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Disabled_State_Type",
        Mode => Nominal);
    function Option_Value
-     (TtkWidgt: Ttk_Widget; Name: String) return Ttk_Image_Option with
-      Pre => TtkWidgt /= Null_Widget and Name'Length > 0,
+     (Ttk_Widgt: Ttk_Widget; Name: String) return Ttk_Image_Option with
+      Pre => Ttk_Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Ttk_Image_Option",
        Mode => Nominal);
    function Option_Value
-     (TtkWidgt: Ttk_Widget; Name: String) return Padding_Array with
-      Pre => TtkWidgt /= Null_Widget and Name'Length > 0,
+     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Array with
+      Pre => Ttk_Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Padding_Array",
        Mode => Nominal);
       -- ****
@@ -235,8 +235,8 @@ package Tk.TtkWidget is
    -- Widget instate State
    -- SOURCE
    function In_State
-     (TtkWidgt: Ttk_Widget; State: Ttk_State_Type) return Boolean with
-      Pre => TtkWidgt /= Null_Widget,
+     (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type) return Boolean with
+      Pre => Ttk_Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Ttk_Widget_In_State", Mode => Nominal);
       -- ****
 
@@ -260,8 +260,9 @@ package Tk.TtkWidget is
       -- Widget instate State Tcl_Script
       -- SOURCE
    procedure In_State
-     (TtkWidgt: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) with
-      Pre => TtkWidgt /= Null_Widget and Length(Tcl_Script) > 0,
+     (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type;
+      Tcl_Script: Tcl_String) with
+      Pre => Ttk_Widgt /= Null_Widget and Length(Source => Tcl_Script) > 0,
       Test_Case => (Name => "Test_Ttk_Widget_In_State2", Mode => Nominal);
       -- ****
 
@@ -269,10 +270,10 @@ package Tk.TtkWidget is
       -- FUNCTION
       -- Set the selected state for the selected Ttk widget
       -- PARAMETERS
-      -- Widget  - The Ttk widget which state will be changed
-      -- State   - The selected state to set or unset
-      -- Disable - If True, disable the selected State. Otherwise enable it
-      --           for the selected Widget. Default value is False.
+      -- Widget       - The Ttk widget which state will be changed
+      -- Widget_State - The selected state to set or unset
+      -- Disable      - If True, disable the selected State. Otherwise enable
+      --                it for the selected Widget. Default value is False.
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -284,9 +285,9 @@ package Tk.TtkWidget is
       -- Widget state State
       -- SOURCE
    procedure State
-     (TtkWidgt: Ttk_Widget; State: Ttk_State_Type;
+     (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type;
       Disable: Boolean := False) with
-      Pre => TtkWidgt /= Null_Widget,
+      Pre => Ttk_Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Ttk_Widget_State", Mode => Nominal);
       -- ****
 
@@ -307,8 +308,8 @@ package Tk.TtkWidget is
       -- COMMANDS
       -- Widget state
       -- SOURCE
-   function State(TtkWidgt: Ttk_Widget) return Ttk_State_Array with
-      Pre => TtkWidgt /= Null_Widget,
+   function State(Ttk_Widgt: Ttk_Widget) return Ttk_State_Array with
+      Pre => Ttk_Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Ttk_Widget_State2", Mode => Nominal);
       -- ****
 
