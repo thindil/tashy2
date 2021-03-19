@@ -25,8 +25,10 @@ package body Tk.TtkWidget is
    begin
       if Value /= EMPTY then
          Append
-           (Options_String,
-            " -" & Name & " " & To_Lower(Compound_Type'Image(Value)));
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " " &
+              To_Lower(Item => Compound_Type'Image(Value)));
       end if;
    end Option_Image;
 
@@ -36,8 +38,10 @@ package body Tk.TtkWidget is
    begin
       if Value /= NONE then
          Append
-           (Options_String,
-            " -" & Name & " " & To_Lower(Disabled_State_Type'Image(Value)));
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " " &
+              To_Lower(Item => Disabled_State_Type'Image(Value)));
       end if;
    end Option_Image;
 
@@ -48,38 +52,61 @@ package body Tk.TtkWidget is
       if Value = Ttk_Image_Option'(others => <>) then
          return;
       end if;
-      Append(Options_String, " -" & Name & " {" & To_String(Value.Default));
+      Append
+        (Source => Options_String,
+         New_Item => " -" & Name & " {" & To_String(Source => Value.Default));
       if Value.Active /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " active " & To_String(Value.Active));
+         Append
+           (Source => Options_String,
+            New_Item => " active " & To_String(Source => Value.Active));
       end if;
       if Value.Disabled /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " disabled " & To_String(Value.Disabled));
+         Append
+           (Source => Options_String,
+            New_Item => " disabled " & To_String(Source => Value.Disabled));
       end if;
       if Value.Focus /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " focus " & To_String(Value.Focus));
+         Append
+           (Source => Options_String,
+            New_Item => " focus " & To_String(Source => Value.Focus));
       end if;
       if Value.Pressed /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " pressed " & To_String(Value.Pressed));
+         Append
+           (Source => Options_String,
+            New_Item => " pressed " & To_String(Source => Value.Pressed));
       end if;
       if Value.Selected /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " selected " & To_String(Value.Selected));
+         Append
+           (Source => Options_String,
+            New_Item => " selected " & To_String(Source => Value.Selected));
       end if;
       if Value.Background /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " background " & To_String(Value.Background));
+         Append
+           (Source => Options_String,
+            New_Item =>
+              " background " & To_String(Source => Value.Background));
       end if;
       if Value.Readonly /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " readonly " & To_String(Value.Readonly));
+         Append
+           (Source => Options_String,
+            New_Item => " readonly " & To_String(Source => Value.Readonly));
       end if;
       if Value.Alternate /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " alternate " & To_String(Value.Alternate));
+         Append
+           (Source => Options_String,
+            New_Item => " alternate " & To_String(Source => Value.Alternate));
       end if;
       if Value.Invalid /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " invalid " & To_String(Value.Invalid));
+         Append
+           (Source => Options_String,
+            New_Item => " invalid " & To_String(Source => Value.Invalid));
       end if;
       if Value.Hover /= Tcl_String(Null_Unbounded_String) then
-         Append(Options_String, " hover " & To_String(Value.Hover));
+         Append
+           (Source => Options_String,
+            New_Item => " hover " & To_String(Source => Value.Hover));
       end if;
-      Append(Options_String, "}");
+      Append(Source => Options_String, New_Item => "}");
    end Option_Image;
 
    procedure Option_Image
@@ -91,15 +118,18 @@ package body Tk.TtkWidget is
       for Padding of Value loop
          if Padding.Value > -1.0 then
             if First then
-               Append(Options_String, " -" & Name & " {");
+               Append
+                 (Source => Options_String, New_Item => " -" & Name & " {");
                First := False;
             end if;
-            Append(Options_String, Pixel_Data_Image(Padding) & " ");
+            Append
+              (Source => Options_String,
+               New_Item => Pixel_Data_Image(Padding) & " ");
          end if;
       end loop Convert_Padding_Array_Loop;
       if not First then
          Trim(Options_String, Right);
-         Append(Options_String, "}");
+         Append(Source => Options_String, New_Item => "}");
       end if;
    end Option_Image;
 
@@ -138,7 +168,8 @@ package body Tk.TtkWidget is
          if Options_Array'Length < 1 then
             return Options;
          end if;
-         Options.Default := To_Tcl_String(To_String(Options_Array(1)));
+         Options.Default :=
+           To_Tcl_String(To_String(Source => Options_Array(1)));
          Set_Options_Loop :
          loop
             exit Set_Options_Loop when Index > Options_Array'Length;
@@ -199,7 +230,8 @@ package body Tk.TtkWidget is
    begin
       Execute_Widget_Command
         (Ttk_Widgt, "instate",
-         To_Lower(Ttk_State_Type'Image(State)) & " " & To_String(Tcl_Script));
+         To_Lower(Ttk_State_Type'Image(State)) & " " &
+         To_String(Source => Tcl_Script));
    end In_State;
 
    procedure State
