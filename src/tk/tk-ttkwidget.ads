@@ -32,6 +32,7 @@ package Tk.TtkWidget is
    subtype Ttk_Widget is Tk_Widget;
    -- ****
 
+   --## rule off TYPE_INITIAL_VALUES
    -- ****s* TtkWidget/TtkWidget.Ttk_Widget_Options
    -- FUNCTION
    -- Abstract records to store available options and their values for widgets.
@@ -48,6 +49,7 @@ package Tk.TtkWidget is
       Style: Tcl_String;
    end record;
    -- ****
+   --## rule on TYPE_INITIAL_VALUES
 
       -- ****t* TtkWidget/TtkWidget.Ttk_State_Type
       -- FUNCTION
@@ -58,6 +60,13 @@ package Tk.TtkWidget is
       ALTERNATE, INVALID, HOVER);
    -- ****
 
+   -- ****d* TtkWidget/TtkWidget.Default_Ttk_State
+   -- FUNCTION
+   -- Default Ttk_State_Type value
+   -- SOURCE
+   Default_Ttk_State: constant Ttk_State_Type := ACTIVE;
+
+   --## rule off TYPE_INITIAL_VALUES
    -- ****t* TtkWidget/TtkWidget.Ttk_State_Array
    -- FUNCTION
    -- Array of Ttk_State_Type. Used mostly in taking information about the
@@ -65,6 +74,7 @@ package Tk.TtkWidget is
    -- SOURCE
    type Ttk_State_Array is array(Positive range <>) of Ttk_State_Type;
    -- ****
+   --## rule on TYPE_INITIAL_VALUES
 
       -- ****t* TtkWidget/TtkWidget.Compound_Type
       -- FUNCTION
@@ -78,6 +88,13 @@ package Tk.TtkWidget is
       Default_Value => EMPTY;
       -- ****
 
+      -- ****d* TtkWidget/TtkWidget.Default_Compound_Type
+      -- FUNCTION
+      -- Default value for Compound_Type
+      -- SOURCE
+   Default_Compound_Type: constant Compound_Type := EMPTY;
+   -- ****
+
       -- ****t* TtkWidget/TtkWidget.Disabled_State_Type
       -- FUNCTION
       -- Type used to set disabled bit of the Ttk widgets for compatybility
@@ -86,6 +103,13 @@ package Tk.TtkWidget is
    type Disabled_State_Type is (NORMAL, DISABLED, NONE) with
       Default_Value => NONE;
       -- ****
+
+      -- ****d* TtkWidget/TtkWidget.Default_Disabled_State
+      -- FUNCTION
+      -- Default value for Disabled_State_Type
+      -- SOURCE
+   Default_Disabled_State: constant Disabled_State_Type := NONE;
+   -- ****
 
       -- ****s* TtkWidget/TtkWidget.Ttk_Image_Option
       -- FUNCTION
@@ -119,6 +143,14 @@ package Tk.TtkWidget is
    end record;
    -- ****
 
+   -- ****d* TtkWidget/TtkWidget.Default_Ttk_Image_Option
+   -- FUNCTION
+   -- Default value for Ttk_Image_Option
+   -- SOURCE
+   Default_Ttk_Image_Option: constant Ttk_Image_Option :=
+     (others => Null_Tcl_String);
+   -- ****
+
    -- ****t* TtkWidget/TtkWidget.Padding_Array
    -- FUNCTION
    -- Array used mostly for setting padding in ttk widgets
@@ -126,6 +158,13 @@ package Tk.TtkWidget is
    -- 8.6.0 - Added
    -- SOURCE
    type Padding_Array is array(1 .. 4) of Pixel_Data;
+   -- ****
+
+   -- ****d* TtkWidget/TtkWidget.Empty_Padding_Array
+   -- FUNCTION
+   -- Empty Padding_Array value
+   -- SOURCE
+   Empty_Padding_Array: constant Padding_Array := (others => Empty_Pixel_Data);
    -- ****
 
    -- ****f* TtkWidget/TtkWidget.Option_Image
