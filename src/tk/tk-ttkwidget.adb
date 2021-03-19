@@ -124,11 +124,11 @@ package body Tk.TtkWidget is
             end if;
             Append
               (Source => Options_String,
-               New_Item => Pixel_Data_Image(Padding) & " ");
+               New_Item => Pixel_Data_Image(Value => Padding) & " ");
          end if;
       end loop Convert_Padding_Array_Loop;
       if not First then
-         Trim(Options_String, Right);
+         Trim(Source => Options_String, Side => Right);
          Append(Source => Options_String, New_Item => "}");
       end if;
    end Option_Image;
@@ -136,16 +136,19 @@ package body Tk.TtkWidget is
    function Option_Value
      (Ttk_Widgt: Ttk_Widget; Name: String) return Compound_Type is
    begin
-      Execute_Widget_Command(Ttk_Widgt, "cget", "-" & Name);
+      Execute_Widget_Command
+        (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
+      Return_Value_Block :
       declare
-         Result: constant String := Tcl_Get_Result(Tk_Interp(Ttk_Widgt));
+         Result: constant String :=
+           Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
       begin
          if Result'Length = 0 then
             return EMPTY;
          else
             return Compound_Type'Value(Result);
          end if;
-      end;
+      end Return_Value_Block;
    end Option_Value;
 
    function Option_Value
