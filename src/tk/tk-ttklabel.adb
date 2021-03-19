@@ -121,14 +121,16 @@ package body Tk.TtkLabel is
          Options.Background :=
            Option_Value(Widgt => Label, Name => "background");
          Options.Class := Option_Value(Widgt => Label, Name => "class");
-         Options.Compound := Option_Value(Ttk_Widgt => Label, Name => "compound");
+         Options.Compound :=
+           Option_Value(Ttk_Widgt => Label, Name => "compound");
          Options.Cursor := Option_Value(Widgt => Label, Name => "cursor");
          Options.Font := Option_Value(Widgt => Label, Name => "font");
          Options.Foreground :=
            Option_Value(Widgt => Label, Name => "foreground");
          Options.Image := Option_Value(Ttk_Widgt => Label, Name => "image");
          Options.Justify := Option_Value(Widgt => Label, Name => "justify");
-         Options.Padding := Option_Value(Ttk_Widgt => Label, Name => "padding");
+         Options.Padding :=
+           Option_Value(Ttk_Widgt => Label, Name => "padding");
          Options.Relief := Option_Value(Widgt => Label, Name => "relief");
          Options.State := Option_Value(Ttk_Widgt => Label, Name => "state");
          Options.Style := Option_Value(Widgt => Label, Name => "style");
