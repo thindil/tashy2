@@ -220,12 +220,18 @@ package body Tk.TtkWidget is
      (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Array is
       Tokens: Slice_Set;
    begin
-      Execute_Widget_Command(Ttk_Widgt, "cget", "-" & Name);
-      Create(Tokens, Tcl_Get_Result, " ");
-      return Padding: Padding_Array do
-         for I in 1 .. Slice_Count(Tokens) loop
-            Padding(Positive(I)) := Pixel_Data_Value(Slice(Tokens, I));
-         end loop;
+      Execute_Widget_Command
+        (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
+      Create
+        (S => Tokens,
+         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)),
+         Separators => " ");
+      return Padding: Padding_Array := Empty_Padding_Array do
+         Fill_Return_Value_Loop :
+         for I in 1 .. Slice_Count(S => Tokens) loop
+            Padding(Positive(I)) :=
+              Pixel_Data_Value(Value => Slice(S => Tokens, Index => I));
+         end loop Fill_Return_Value_Loop;
       end return;
    end Option_Value;
 
