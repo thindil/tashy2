@@ -13,9 +13,9 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
-with Ada.Strings; use Ada.Strings;
+with Ada.Strings;
 with GNAT.String_Split; use GNAT.String_Split;
-with Tcl.Lists; use Tcl.Lists;
+with Tcl.Lists;
 
 package body Tk.TtkWidget is
 
@@ -112,6 +112,8 @@ package body Tk.TtkWidget is
    procedure Option_Image
      (Name: String; Value: Padding_Array;
       Options_String: in out Unbounded_String) is
+      use Ada.Strings;
+
       First: Boolean := True;
    begin
       Convert_Padding_Array_Loop :
@@ -168,6 +170,8 @@ package body Tk.TtkWidget is
         (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
       Get_Options_Block :
       declare
+         use Tcl.Lists;
+
          Options_Array: constant Array_List :=
            Split_List
              (List =>
