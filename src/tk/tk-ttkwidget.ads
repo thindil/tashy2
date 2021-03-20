@@ -258,8 +258,8 @@ package Tk.TtkWidget is
    -- FUNCTION
    -- Check if the selected Ttk widget is in the selected state
    -- PARAMETERS
-   -- Widget - The Ttk widget which state will be tested
-   -- State  - Ttk_State to check
+   -- Widget    - The Ttk widget which state will be tested
+   -- State_Ttk - Ttk_State to check
    -- RESULT
    -- True if the selected Ttk widget is in the selected state, otherwise
    -- False
@@ -274,7 +274,7 @@ package Tk.TtkWidget is
    -- Widget instate State
    -- SOURCE
    function In_State
-     (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type) return Boolean with
+     (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type) return Boolean with
       Pre => Ttk_Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Ttk_Widget_In_State", Mode => Nominal);
       -- ****
@@ -285,7 +285,7 @@ package Tk.TtkWidget is
       -- then execute the selected Tcl commands
       -- PARAMETERS
       -- Widget     - The Ttk widget which state will be checked
-      -- State      - Ttk_State to check
+      -- State_Type - Ttk_State to check
       -- Tcl_Script - The Tcl commands which will be executed if the widget
       --              is in the selected state
       -- HISTORY
@@ -299,7 +299,7 @@ package Tk.TtkWidget is
       -- Widget instate State Tcl_Script
       -- SOURCE
    procedure In_State
-     (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type;
+     (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type;
       Tcl_Script: Tcl_String) with
       Pre => Ttk_Widgt /= Null_Widget and Length(Source => Tcl_Script) > 0,
       Test_Case => (Name => "Test_Ttk_Widget_In_State2", Mode => Nominal);
