@@ -282,7 +282,10 @@ package body Tk.TtkWidget is
       Tokens: Slice_Set;
    begin
       Execute_Widget_Command(Widgt => Ttk_Widgt, Command_Name => "state");
-      Create(S => Tokens, From => Tcl_Get_Result, Separators => " ");
+      Create
+        (S => Tokens,
+         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)),
+         Separators => " ");
       return
         States: Ttk_State_Array(1 .. Natural(Slice_Count(S => Tokens))) :=
           (others => Default_Ttk_State) do
