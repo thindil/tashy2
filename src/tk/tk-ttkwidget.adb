@@ -236,24 +236,26 @@ package body Tk.TtkWidget is
    end Option_Value;
 
    function In_State
-     (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type) return Boolean is
+     (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type) return Boolean is
    begin
       Execute_Widget_Command
-        (Ttk_Widgt, "instate", To_Lower(Ttk_State_Type'Image(State)));
-      if Tcl_Get_Result(Tk_Interp(Ttk_Widgt)) = 1 then
+        (Widgt => Ttk_Widgt, Command_Name => "instate",
+         Options => To_Lower(Item => Ttk_State_Type'Image(State_Ttk)));
+      if Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)) = 1 then
          return True;
-      else
-         return False;
       end if;
+      return False;
    end In_State;
 
    procedure In_State
-     (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) is
+     (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type;
+      Tcl_Script: Tcl_String) is
    begin
       Execute_Widget_Command
-        (Ttk_Widgt, "instate",
-         To_Lower(Ttk_State_Type'Image(State)) & " " &
-         To_String(Source => Tcl_Script));
+        (Widgt => Ttk_Widgt, Command_Name => "instate",
+         Options =>
+           To_Lower(Item => Ttk_State_Type'Image(State_Type)) & " " &
+           To_String(Source => Tcl_Script));
    end In_State;
 
    procedure State
@@ -262,24 +264,29 @@ package body Tk.TtkWidget is
    begin
       if Disable then
          Execute_Widget_Command
-           (Ttk_Widgt, "state",
-            "!" & To_Lower(Ttk_State_Type'Image(Widget_State)));
+           (Widgt => Ttk_Widgt, Command_Name => "state",
+            Options =>
+              "!" & To_Lower(Item => Ttk_State_Type'Image(Widget_State)));
       else
          Execute_Widget_Command
-           (Ttk_Widgt, "state", To_Lower(Ttk_State_Type'Image(Widget_State)));
+           (Widgt => Ttk_Widgt, Command_Name => "state",
+            Options => To_Lower(Item => Ttk_State_Type'Image(Widget_State)));
       end if;
    end State;
 
    function State(Ttk_Widgt: Ttk_Widget) return Ttk_State_Array is
       Tokens: Slice_Set;
    begin
-      Execute_Widget_Command(Ttk_Widgt, "state");
-      Create(Tokens, Tcl_Get_Result, " ");
-      return States: Ttk_State_Array(1 .. Natural(Slice_Count(Tokens))) do
-         for I in 1 .. Slice_Count(Tokens) loop
+      Execute_Widget_Command(Widgt => Ttk_Widgt, Command_Name => "state");
+      Create(S => Tokens, From => Tcl_Get_Result, Separators => " ");
+      return
+        States: Ttk_State_Array(1 .. Natural(Slice_Count(S => Tokens))) :=
+          (others => Default_Ttk_State) do
+         Fill_Return_Value_Loop :
+         for I in 1 .. Slice_Count(S => Tokens) loop
             States(Positive(I)) :=
-              Ttk_State_Type'Value(Slice(Tokens, Slice_Number(I)));
-         end loop;
+              Ttk_State_Type'Value(Slice(S => Tokens, Index => I));
+         end loop Fill_Return_Value_Loop;
       end return;
    end State;
 
