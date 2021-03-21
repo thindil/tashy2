@@ -28,6 +28,7 @@ package Tcl.Info is
      array(Positive range <>) of Unbounded_String;
    -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    --****d* Info/Empty_Unbounded_Strings_Array
    -- FUNCTION
    -- Empty unbounded strings array constant
@@ -500,5 +501,6 @@ package Tcl.Info is
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Vars", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tcl.Info;
