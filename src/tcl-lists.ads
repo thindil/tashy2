@@ -30,12 +30,14 @@ package Tcl.Lists is
    type Array_List is array(Positive range <>) of Tcl_String;
    -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    --****d* Tcl.Lists/Empty_Array_List
    -- FUNCTION
    -- Empty array list constant
    -- SOURCE
    Empty_Array_List: constant Array_List(1 .. 0) := (others => <>);
    -- ****
+   --## rule on REDUCEABLE_SCOPE
 
    -- ****f* Lists/Lists.Split_List
    -- FUNCTION
@@ -60,6 +62,7 @@ package Tcl.Lists is
       Test_Case => (Name => "Test_Split_List", Mode => Nominal);
       -- ****
 
+      --## rule off REDUCEABLE_SCOPE
       -- ****f* Lists/Lists.Split_List_Variable
       -- FUNCTION
       -- Convert Tcl list variable to Ada array
@@ -82,5 +85,6 @@ package Tcl.Lists is
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Split_List_Variable", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tcl.Lists;
