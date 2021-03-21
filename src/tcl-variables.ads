@@ -54,6 +54,7 @@ package Tcl.Variables is
    Default_Flags_Array: constant Flags_Array(1 .. 1) := (1 => Default_Flag);
    -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****f* Variables/Variables.Tcl_Set_Var
    -- FUNCTION
    -- Set value for the selected Tcl variable
@@ -341,5 +342,6 @@ package Tcl.Variables is
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_UnsetVar2", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tcl.Variables;
