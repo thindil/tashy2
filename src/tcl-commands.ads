@@ -97,6 +97,7 @@ package Tcl.Commands is
    type Tcl_Command is new System.Address;
    -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****d* Commands/Commands.Null_Tcl_Command
    -- FUNCTION
    -- Null Tcl command
@@ -130,6 +131,7 @@ package Tcl.Commands is
       Pre => Command_Name'Length > 0 and Proc /= Null_Tcl_Cmd_Proc,
       Test_Case => (Name => "Test_Tcl_CreateCommand", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
       -----------------------------------------
       -- Manipulating a Tcl command arguments
