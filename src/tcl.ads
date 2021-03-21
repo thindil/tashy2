@@ -54,6 +54,7 @@ package Tcl is
    -- Initialization of Tcl binding
    --------------------------------
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****f* Tcl/Tcl.Create_Interpreter
    -- FUNCTION
    -- Create a new Tcl interpreter
@@ -71,6 +72,7 @@ package Tcl is
    function Create_Interpreter
      (Default: Boolean := True) return Tcl_Interpreter;
      -- ****
+     --## rule off REDUCEABLE_SCOPE
 
      -- ****f* Tcl/Set_Interpreter
      -- FUNCTION
@@ -163,6 +165,7 @@ package Tcl is
    Default_Result_Type: constant Result_Types := TCL_STATIC;
    -- ****
 
+   --## rule off TYPE_INITIAL_VALUES
    -- ****t* Tcl/Tcl.Tcl_Results
    -- FUNCTION
    -- Used as return Tcl result for commands
@@ -177,13 +180,7 @@ package Tcl is
      (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE) with
       Default_Value => TCL_OK;
       -- ****
-
-      -- ****d* Tcl/Default_Tcl_Result
-      -- FUNCTION
-      -- The default Tcl result return code
-      -- SOURCE
-   Default_Tcl_Result: constant Tcl_Results := TCL_OK;
-   -- ****
+      --## rule off TYPE_INITIAL_VALUES
 
    -- ****f* Tcl/Tcl.Tcl_Get_Result_(String)
    -- FUNCTION
@@ -261,7 +258,7 @@ package Tcl is
      -- Tcl_Set_Result("OK");
      -- SOURCE
    procedure Tcl_Set_Result
-     (Tcl_Result: String; Result_Type: Result_Types := TCL_STATIC;
+     (Tcl_Result: String; Result_Type: Result_Types := Default_Result_Type;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Tcl_Result'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_SetResult", Mode => Nominal);

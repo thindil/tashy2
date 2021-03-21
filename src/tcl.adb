@@ -97,7 +97,7 @@ package body Tcl is
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
-     (Tcl_Result: String; Result_Type: Result_Types := TCL_STATIC;
+     (Tcl_Result: String; Result_Type: Result_Types := Default_Result_Type;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       procedure Native_Tcl_Set_Result
         (Interp: Tcl_Interpreter; Result: chars_ptr; Free_Proc: int) with
