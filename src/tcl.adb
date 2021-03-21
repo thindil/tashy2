@@ -17,12 +17,14 @@ with Interfaces.C.Strings; use Interfaces.C.Strings;
 
 package body Tcl is
 
+   --## rule off GLOBAL_REFERENCES
    -- ****iv* Tcl/Tcl.Default_Interpreter
    -- FUNCTION
    -- Pointer to the default Tcl interpreter
    -- SOURCE
    Default_Interpreter: Tcl_Interpreter := Null_Interpreter;
    -- ****
+   --## rule on GLOBAL_REFERENCES
 
    procedure Set_Interpreter(Interpreter: Tcl_Interpreter) is
    begin

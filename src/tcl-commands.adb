@@ -28,11 +28,16 @@ package body Tcl.Commands is
          Convention => C,
          External_Name => "Tcl_CreateCommand";
 
-   begin
-      return Tcl_Create_Command_C
+      Result: constant Tcl_Command :=
+        Tcl_Create_Command_C
           (Interp => Interpreter, Cmd_Name => New_String(Str => Command_Name),
            Ada_Proc => Proc, Client_Data => Null_Address,
            Delete_Proc_Ada => Delete_Proc);
+   begin
+      if Result = Null_Tcl_Command then
+         raise Tcl_Exception with "Can't create command " & Command_Name;
+      end if;
+      return Result;
    end Tcl_Create_Command;
 
    function Get_Argument
