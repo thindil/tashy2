@@ -58,6 +58,7 @@ package Tk.Grid is
    end record;
    -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****d* Grid/Grid.Default_Grid_Options
    -- FUNCTION
    -- Default options for the Tk grid
@@ -714,5 +715,6 @@ package Tk.Grid is
       Pre => Master /= Null_Widget,
       Test_Case => (Name => "Test_Slaves", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tk.Grid;
