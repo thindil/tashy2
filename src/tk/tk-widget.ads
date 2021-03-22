@@ -85,6 +85,7 @@ package Tk.Widget is
       Default_Value => NONE;
       -- ****
 
+      --## rule off REDUCEABLE_SCOPE
       -- ****d* Widget/Widget.Default_Direction
       -- FUNCTION
       -- Default Direction_Type value
@@ -668,5 +669,6 @@ package Tk.Widget is
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command", Mode => Nominal);
       -- ****
+      --## rule off REDUCEABLE_SCOPE
 
 end Tk.Widget;

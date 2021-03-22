@@ -90,6 +90,7 @@ package Tk.TopLevel is
       Test_Case => (Name => "Test_Configure_TopLevel", Mode => Nominal);
       -- ****
 
+      --## rule off REDUCEABLE_SCOPE
       -- ****d* TopLevel/TopLevel.Default_Toplevel_Options
       -- FUNCTION
       -- Default options for Toplevel widget
@@ -213,6 +214,7 @@ package Tk.TopLevel is
       -- SOURCE
    Default_Toplevel_Create_Options: constant Toplevel_Create_Options :=
      Toplevel_Create_Options'(others => <>);
-   -- ****
+     -- ****
+     --## rule on REDUCEABLE_SCOPE
 
 end Tk.TopLevel;

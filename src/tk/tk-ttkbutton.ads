@@ -177,6 +177,7 @@ package Tk.TtkButton is
       Test_Case => (Name => "Test_Configure_TtkButton", Mode => Nominal);
       -- ****
 
+      --## rule off REDUCEABLE_SCOPE
       -- ****d* TtkButton/TtkButton.Default_Ttk_Button_Options
       -- FUNCTION
       -- The default options for the Ttk_Button
@@ -280,5 +281,6 @@ package Tk.TtkButton is
       Pre => Button /= Null_Widget,
       Test_Case => (Name => "Test_Invoke_TtkButton4", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tk.TtkButton;

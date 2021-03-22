@@ -194,12 +194,14 @@ package Tk.TtkLabel is
       Test_Case => (Name => "Test_Configure_TtkLabel", Mode => Nominal);
       -- ****
 
+      --## rule off REDUCEABLE_SCOPE
       -- ****d* TtkLabel/TtkLabel.Default_Ttk_Label_Options
       -- FUNCTION
       -- The default options for the Ttk_Label
       -- SOURCE
    Default_Ttk_Label_Options: constant Ttk_Label_Options :=
      Ttk_Label_Options'(others => <>);
-   -- ****
+     -- ****
+     --## rule on REDUCEABLE_SCOPE
 
 end Tk.TtkLabel;
