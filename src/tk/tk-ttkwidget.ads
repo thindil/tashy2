@@ -60,6 +60,7 @@ package Tk.TtkWidget is
       ALTERNATE, INVALID, HOVER);
    -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****d* TtkWidget/TtkWidget.Default_Ttk_State
    -- FUNCTION
    -- Default Ttk_State_Type value
@@ -351,5 +352,6 @@ package Tk.TtkWidget is
       Pre => Ttk_Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Ttk_Widget_State2", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tk.TtkWidget;

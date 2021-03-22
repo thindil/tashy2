@@ -25,6 +25,7 @@ package Tk is
    -- Initialization of Tk binding
    -------------------------------
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****f* Tk/Tk.Tk_Init
    -- FUNCTION
    -- Initialize the Tk library on the selected Tcl interpreter
@@ -55,6 +56,7 @@ package Tk is
       Import => True,
       Convention => C,
       External_Name => "Tk_MainLoop";
-   -- ****
+      -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tk;
