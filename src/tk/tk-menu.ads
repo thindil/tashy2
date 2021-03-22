@@ -41,6 +41,7 @@ package Tk.Menu is
       Default_Value => NONE;
       -- ****
 
+      --## rule off REDUCEABLE_SCOPE
       -- ****d* Menu/Menu.Default_Menu_Type
       -- FUNCTION
       -- Default Tk menu type
@@ -873,5 +874,6 @@ package Tk.Menu is
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Y_Position_Menu3", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tk.Menu;
