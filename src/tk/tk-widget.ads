@@ -51,6 +51,7 @@ package Tk.Widget is
       Default_Value => NONE;
       -- ****
 
+      --## rule off REDUCEABLE_SCOPE
       -- ****d* Widget/Widget.Default_Relief
       -- FUNCTION
       -- Default value for Relief_Type
@@ -85,7 +86,6 @@ package Tk.Widget is
       Default_Value => NONE;
       -- ****
 
-      --## rule off REDUCEABLE_SCOPE
       -- ****d* Widget/Widget.Default_Direction
       -- FUNCTION
       -- Default Direction_Type value
