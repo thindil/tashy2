@@ -43,11 +43,8 @@ package body Tcl.Lists is
       if Amount = 0 then
          return Empty_Array_List;
       end if;
-      Convert_List_To_Array_Block :
-      declare
-         Ada_Array: Array_List(1 .. Amount) :=
-           (others => To_Tcl_String(Source => ""));
-      begin
+      return
+        Ada_Array: Array_List(1 .. Amount) := (others => Null_Tcl_String) do
          Convert_List_To_Array_Loop :
          for I in Ada_Array'Range loop
             Ada_Array(I) :=
@@ -55,8 +52,7 @@ package body Tcl.Lists is
                 (Source =>
                    Get_Argument(Arguments_Pointer => Values, Index => I - 1));
          end loop Convert_List_To_Array_Loop;
-         return Ada_Array;
-      end Convert_List_To_Array_Block;
+      end return;
    end Split_List;
 
    function Split_List_Variable
