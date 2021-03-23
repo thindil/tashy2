@@ -17,10 +17,26 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Generate the tests
+    - name: Set up the library
+      run: scripts/setup.tcl auto
+
+    - name: Style check
       run: |
-         scripts/setup.tcl auto
-         gnattest -P tashy2.gpr
+         gprbuild -P hunter.gpr
+         gprclean -P hunter.gpr
+
+    - name: Generate the tests
+      run: gnattest -P tashy2.gpr
 
     - name: Build and run the tests
       run: scripts/tests.tcl
+
+    - name: Run AdaControl
+      run: scripts/check.tcl
+
+    - name: Upload the log
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+         name: adacontrol.log
+         path: adacontrol.log
