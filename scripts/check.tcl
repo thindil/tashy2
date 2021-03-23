@@ -17,7 +17,11 @@ proc checkcode {dir} {
    foreach dirname $subdirs {
       set files [list {*}$files {*}[glob -directory $dirname *.adb]]
    }
-   exec adactl -f [file join $rootdir scripts rules.aru] {*}$files >@stdout
+   if {[catch {exec adactl -f [file join $rootdir scripts rules.aru] {*}$files -o [file join $rootdir adacontrol.log] -w} results options]} {
+      if {[file size [file join $rootdir adacontrol.log]] > 1} {
+         return -options $options -level 0 $results
+      }
+   }
 }
 
 exec gprclean -P tashy2.gpr -XLIBRARY_TYPE=static >@stdout
