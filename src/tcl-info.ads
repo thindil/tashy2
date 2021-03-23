@@ -20,6 +20,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 -- SOURCE
 package Tcl.Info is
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* Info/Info.Info_Result_Array
    -- FUNCTION
    -- Array used for take result from some Info functions
@@ -28,7 +29,6 @@ package Tcl.Info is
      array(Positive range <>) of Unbounded_String;
    -- ****
 
-   --## rule off REDUCEABLE_SCOPE
    --****d* Info/Empty_Unbounded_Strings_Array
    -- FUNCTION
    -- Empty unbounded strings array constant

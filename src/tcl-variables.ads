@@ -20,10 +20,11 @@
 package Tcl.Variables is
 -- ****
 
-      -- ****t* Variables/Variables.Variables_Flags
-      -- FUNCTION
-      -- Available flags for manipulation of Tcl variables
-      -- SOURCE
+   --## rule off REDUCEABLE_SCOPE
+   -- ****t* Variables/Variables.Variables_Flags
+   -- FUNCTION
+   -- Available flags for manipulation of Tcl variables
+   -- SOURCE
    type Variables_Flags is
      (NONE, TCL_GLOBAL_ONLY, TCL_NAMESPACE_ONLY, TCL_APPEND_VALUE,
       TCL_LIST_ELEMENT, TCL_LEAVE_ERR_MSG);
@@ -54,7 +55,6 @@ package Tcl.Variables is
    Default_Flags_Array: constant Flags_Array(1 .. 1) := (1 => Default_Flag);
    -- ****
 
-   --## rule off REDUCEABLE_SCOPE
    -- ****f* Variables/Variables.Tcl_Set_Var
    -- FUNCTION
    -- Set value for the selected Tcl variable

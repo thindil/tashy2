@@ -23,6 +23,7 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 package Tk.TtkLabel is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* TtkLabel/TtkLabel.Ttk_Label
    -- FUNCTION
    -- The Tk identifier of the ttk::label
@@ -194,7 +195,6 @@ package Tk.TtkLabel is
       Test_Case => (Name => "Test_Configure_TtkLabel", Mode => Nominal);
       -- ****
 
-      --## rule off REDUCEABLE_SCOPE
       -- ****d* TtkLabel/TtkLabel.Default_Ttk_Label_Options
       -- FUNCTION
       -- The default options for the Ttk_Label

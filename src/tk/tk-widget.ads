@@ -23,6 +23,7 @@ with Tcl.Strings; use Tcl.Strings;
 package Tk.Widget is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* Widget/Widget.Tk_Widget
    -- FUNCTION
    -- The identifier of the Tk Widget
@@ -51,7 +52,6 @@ package Tk.Widget is
       Default_Value => NONE;
       -- ****
 
-      --## rule off REDUCEABLE_SCOPE
       -- ****d* Widget/Widget.Default_Relief
       -- FUNCTION
       -- Default value for Relief_Type

@@ -22,6 +22,7 @@ with Tk.Widget; use Tk.Widget;
 package Tk.Grid is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****s* Grid/Grid.Grid_Options
    -- FUNCTION
    -- Data structure for all available grid slaves options
@@ -58,7 +59,6 @@ package Tk.Grid is
    end record;
    -- ****
 
-   --## rule off REDUCEABLE_SCOPE
    -- ****d* Grid/Grid.Default_Grid_Options
    -- FUNCTION
    -- Default options for the Tk grid

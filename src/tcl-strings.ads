@@ -21,6 +21,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package Tcl.Strings is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* Strings/Strings.Tcl_String
    -- FUNCTION
    -- Used to store Tcl string values. Strings in Tcl can be evaluated or
@@ -76,6 +77,7 @@ package Tcl.Strings is
       -- SOURCE
    function To_Ada_String(Source: Tcl_String) return String with
       Test_Case => (Name => "Test_To_Ada_String", Mode => Robustness);
-   -- ****
+      -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tcl.Strings;

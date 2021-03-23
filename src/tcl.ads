@@ -21,6 +21,7 @@ with System;
 package Tcl is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****e* Tcl/Tcl.Tcl_Exception
    -- FUNCTION
    -- Standard TASHY2 exception. Raised when something bad happens (mostly
@@ -54,7 +55,6 @@ package Tcl is
    -- Initialization of Tcl binding
    --------------------------------
 
-   --## rule off REDUCEABLE_SCOPE
    -- ****f* Tcl/Tcl.Create_Interpreter
    -- FUNCTION
    -- Create a new Tcl interpreter

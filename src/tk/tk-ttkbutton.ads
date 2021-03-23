@@ -23,6 +23,7 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 package Tk.TtkButton is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* TtkButton/TtkButton.Ttk_Button
    -- FUNCTION
    -- The Tk identifier of the ttk::button
@@ -177,7 +178,6 @@ package Tk.TtkButton is
       Test_Case => (Name => "Test_Configure_TtkButton", Mode => Nominal);
       -- ****
 
-      --## rule off REDUCEABLE_SCOPE
       -- ****d* TtkButton/TtkButton.Default_Ttk_Button_Options
       -- FUNCTION
       -- The default options for the Ttk_Button

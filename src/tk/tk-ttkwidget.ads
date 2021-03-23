@@ -23,6 +23,7 @@ with Tcl.Strings; use Tcl.Strings;
 package Tk.TtkWidget is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* TtkWidget/TtkWidget.Ttk_Widget
    -- FUNCTION
    -- The identifier of the Ttk Widget
@@ -60,7 +61,6 @@ package Tk.TtkWidget is
       ALTERNATE, INVALID, HOVER);
    -- ****
 
-   --## rule off REDUCEABLE_SCOPE
    -- ****d* TtkWidget/TtkWidget.Default_Ttk_State
    -- FUNCTION
    -- Default Ttk_State_Type value

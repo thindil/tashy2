@@ -22,6 +22,7 @@ with Tk.Widget; use Tk.Widget;
 package Tk.Menu is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* Menu/Menu.Tk_Menu
    -- FUNCTION
    -- The Tk identifier of the menu
@@ -41,7 +42,6 @@ package Tk.Menu is
       Default_Value => NONE;
       -- ****
 
-      --## rule off REDUCEABLE_SCOPE
       -- ****d* Menu/Menu.Default_Menu_Type
       -- FUNCTION
       -- Default Tk menu type
