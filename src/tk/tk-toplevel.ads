@@ -23,6 +23,7 @@ with Tk.Widget; use Tk.Widget;
 package Tk.TopLevel is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* TopLevel/Toplevel.Tk_Button
    -- FUNCTION
    -- The Tk identifier of the toplevel
@@ -90,7 +91,6 @@ package Tk.TopLevel is
       Test_Case => (Name => "Test_Configure_TopLevel", Mode => Nominal);
       -- ****
 
-      --## rule off REDUCEABLE_SCOPE
       -- ****d* TopLevel/TopLevel.Default_Toplevel_Options
       -- FUNCTION
       -- Default options for Toplevel widget

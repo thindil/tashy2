@@ -21,6 +21,7 @@ with Tk.TopLevel;
 package Tk.MainWindow is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****f* MainWindow/MainWindow.Get_Main_Window
    -- FUNCTION
    -- Get the main window widget of Tk application on the selected Tcl
@@ -41,5 +42,6 @@ package Tk.MainWindow is
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Main_Window", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tk.MainWindow;

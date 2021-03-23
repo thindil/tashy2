@@ -28,6 +28,7 @@ package Tcl.Commands is
    -- Creating a new Tcl command
    -----------------------------
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* Commands/Commands.Argv_Pointer
    -- FUNCTION
    -- Used to store arguments of the selected Tcl command
@@ -97,7 +98,6 @@ package Tcl.Commands is
    type Tcl_Command is new System.Address;
    -- ****
 
-   --## rule off REDUCEABLE_SCOPE
    -- ****d* Commands/Commands.Null_Tcl_Command
    -- FUNCTION
    -- Null Tcl command
@@ -131,7 +131,6 @@ package Tcl.Commands is
       Pre => Command_Name'Length > 0 and Proc /= Null_Tcl_Cmd_Proc,
       Test_Case => (Name => "Test_Tcl_CreateCommand", Mode => Nominal);
       -- ****
-      --## rule on REDUCEABLE_SCOPE
 
       -----------------------------------------
       -- Manipulating a Tcl command arguments
@@ -155,5 +154,6 @@ package Tcl.Commands is
    function Get_Argument
      (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String;
      -- ****
+     --## rule on REDUCEABLE_SCOPE
 
 end Tcl.Commands;

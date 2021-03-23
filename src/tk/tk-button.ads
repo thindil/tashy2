@@ -22,6 +22,7 @@ with Tk.Widget; use Tk.Widget;
 package Tk.Button is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****t* Button/Button.Tk_Button
    -- FUNCTION
    -- The Tk identifier of the button
@@ -223,7 +224,6 @@ package Tk.Button is
       Test_Case => (Name => "Test_Configure_Button", Mode => Nominal);
       -- ****
 
-      --## rule off REDUCEABLE_SCOPE
       -- ****d* Button/Button.Default_Button_Options
       -- FUNCTION
       -- Default values for Button widget options
