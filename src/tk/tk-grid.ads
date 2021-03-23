@@ -130,8 +130,7 @@ package Tk.Grid is
    -- grid widget ?options?
    -- SOURCE
    procedure Add
-     (Child: Tk_Widget;
-      Options: Grid_Options := Grid_Options'(others => <>)) with
+     (Child: Tk_Widget; Options: Grid_Options := Default_Grid_Options) with
       Pre => Child /= Null_Widget,
       Test_Case => (Name => "Test_Add1", Mode => Nominal);
       -- ****
@@ -155,7 +154,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Add
      (Widgets: Widgets_Array;
-      Options: Grid_Options := Grid_Options'(others => <>)) with
+      Options: Grid_Options := Default_Grid_Options) with
       Pre => Widgets'Length > 0,
       Test_Case => (Name => "Test_Add2", Mode => Nominal);
       -- ****

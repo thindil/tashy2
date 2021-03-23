@@ -68,8 +68,7 @@ package body Tk.Grid is
    end Options_To_String;
 
    procedure Add
-     (Child: Tk_Widget;
-      Options: Grid_Options := Grid_Options'(others => <>)) is
+     (Child: Tk_Widget; Options: Grid_Options := Default_Grid_Options) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -79,8 +78,7 @@ package body Tk.Grid is
    end Add;
 
    procedure Add
-     (Widgets: Widgets_Array;
-      Options: Grid_Options := Grid_Options'(others => <>)) is
+     (Widgets: Widgets_Array; Options: Grid_Options := Default_Grid_Options) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -149,7 +147,7 @@ package body Tk.Grid is
            To_String(Source => Options),
          Interpreter => Tk_Interp(Widgt => Master));
       Create(S => Tokens, From => Tcl_Get_Result, Separators => " ");
-      return Coords: Bbox_Array := (others => 0) do
+      return Coords: Bbox_Array := Empty_Bbox_Array do
          Fill_BBox_Array_Loop :
          for I in 1 .. 4 loop
             Coords(I) :=
@@ -379,7 +377,7 @@ package body Tk.Grid is
          8 => To_Unbounded_String(Source => "-padx"),
          9 => To_Unbounded_String(Source => "-pady"),
          10 => To_Unbounded_String(Source => "-sticky"));
-      Options: Grid_Options := Grid_Options'(others => <>);
+      Options: Grid_Options := Default_Grid_Options;
       Start_Index, End_Index: Positive := 1;
    begin
       Tcl_Eval
@@ -402,8 +400,7 @@ package body Tk.Grid is
             else
                Create(S => Tokens, From => Value, Separators => " ");
             end if;
-            return
-              Result_Pad: Pad_Array := (others => Pixel_Data'(others => <>)) do
+            return Result_Pad: Pad_Array := Default_Pad_Array do
                Set_Pad_Array_Loop :
                for I in 1 .. Slice_Count(S => Tokens) loop
                   Result_Pad(Positive(I)) :=
