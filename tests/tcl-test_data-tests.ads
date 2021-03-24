@@ -11,13 +11,13 @@ package Tcl.Test_Data.Tests is
    null record;
 
    procedure Test_Tcl_Eval_6f41cd_5b9cd5(Gnattest_T: in out Test);
-   --  tcl.ads:134:4:Tcl_Eval:Test_Tcl_Eval
+   --  tcl.ads:136:4:Tcl_Eval:Test_Tcl_Eval
 
    procedure Test_Tcl_Get_Result_9a7ac3_b83d43(Gnattest_T: in out Test);
-   --  tcl.ads:202:4:Tcl_Get_Result:Test_Tcl_GetResult
+   --  tcl.ads:199:4:Tcl_Get_Result:Test_Tcl_GetResult
 
    procedure Test_Tcl_Set_Result_2e8975_cb8f85(Gnattest_T: in out Test);
-   --  tcl.ads:263:4:Tcl_Set_Result:Test_Tcl_SetResult
+   --  tcl.ads:260:4:Tcl_Set_Result:Test_Tcl_SetResult
 
 end Tcl.Test_Data.Tests;
 --  end read only

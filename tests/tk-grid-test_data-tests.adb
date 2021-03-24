@@ -34,8 +34,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 --  begin read only
    procedure Wrap_Test_Add_09f411_b5946b
-     (Child: Tk_Widget;
-      Options: Grid_Options := Grid_Options'(others => <>)) is
+     (Child: Tk_Widget; Options: Grid_Options := Default_Grid_Options) is
    begin
       begin
          pragma Assert(Child /= Null_Widget);
@@ -67,7 +66,7 @@ package body Tk.Grid.Test_Data.Tests is
    procedure Test_1_Add_test_add1(Gnattest_T: in out Test) is
       procedure Add
         (Child: Tk_Widget;
-         Options: Grid_Options := Grid_Options'(others => <>)) renames
+         Options: Grid_Options := Default_Grid_Options) renames
         Wrap_Test_Add_09f411_b5946b;
 --  end read only
 
@@ -91,8 +90,7 @@ package body Tk.Grid.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Add_6de79c_257591
-     (Widgets: Widgets_Array;
-      Options: Grid_Options := Grid_Options'(others => <>)) is
+     (Widgets: Widgets_Array; Options: Grid_Options := Default_Grid_Options) is
    begin
       begin
          pragma Assert(Widgets'Length > 0);
@@ -124,7 +122,7 @@ package body Tk.Grid.Test_Data.Tests is
    procedure Test_2_Add_test_add2(Gnattest_T: in out Test) is
       procedure Add
         (Widgets: Widgets_Array;
-         Options: Grid_Options := Grid_Options'(others => <>)) renames
+         Options: Grid_Options := Default_Grid_Options) renames
         Wrap_Test_Add_6de79c_257591;
 --  end read only
 

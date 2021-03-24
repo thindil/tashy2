@@ -564,7 +564,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_In_State_46b68b_db2848
-     (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type) return Boolean is
+     (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type) return Boolean is
    begin
       begin
          pragma Assert(Ttk_Widgt /= Null_Widget);
@@ -578,7 +578,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
       declare
          Test_In_State_46b68b_db2848_Result: constant Boolean :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.In_State
-             (Ttk_Widgt, State);
+             (Ttk_Widgt, State_Ttk);
       begin
          begin
             pragma Assert(True);
@@ -602,7 +602,8 @@ package body Tk.TtkWidget.Test_Data.Tests is
    procedure Test_1_In_State_test_ttk_widget_in_state
      (Gnattest_T: in out Test) is
       function In_State
-        (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type) return Boolean renames
+        (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type)
+         return Boolean renames
         Wrap_Test_In_State_46b68b_db2848;
 --  end read only
 
@@ -628,7 +629,8 @@ package body Tk.TtkWidget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_In_State_318f72_d83e8c
-     (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type; Tcl_Script: Tcl_String) is
+     (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type;
+      Tcl_Script: Tcl_String) is
    begin
       begin
          pragma Assert
@@ -641,7 +643,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
                "req_sloc(tk-ttkwidget.ads:0):Test_Ttk_Widget_In_State2 test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.In_State
-        (Ttk_Widgt, State, Tcl_Script);
+        (Ttk_Widgt, State_Type, Tcl_Script);
       begin
          pragma Assert(True);
          null;
@@ -663,7 +665,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
    procedure Test_2_In_State_test_ttk_widget_in_state2
      (Gnattest_T: in out Test) is
       procedure In_State
-        (Ttk_Widgt: Ttk_Widget; State: Ttk_State_Type;
+        (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type;
          Tcl_Script: Tcl_String) renames
         Wrap_Test_In_State_318f72_d83e8c;
 --  end read only
