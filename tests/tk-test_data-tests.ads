@@ -10,7 +10,7 @@ package Tk.Test_Data.Tests is
    null record;
 
    procedure Test_Tk_Init_dae4dd_f1b9f1(Gnattest_T: in out Test);
-   --  tk.ads:40:4:Tk_Init:Test_Tk_Init
+   --  tk.ads:41:4:Tk_Init:Test_Tk_Init
 
 end Tk.Test_Data.Tests;
 --  end read only

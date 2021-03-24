@@ -135,7 +135,7 @@ package body Tcl.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Tcl_Set_Result_2e8975_cb8f85
-     (Tcl_Result: String; Result_Type: Result_Types := TCL_STATIC;
+     (Tcl_Result: String; Result_Type: Result_Types := Default_Result_Type;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -169,7 +169,7 @@ package body Tcl.Test_Data.Tests is
 --  id:2.2/2e8975e68b3f48df/Tcl_Set_Result/1/0/test_tcl_setresult/
    procedure Test_Tcl_Set_Result_test_tcl_setresult(Gnattest_T: in out Test) is
       procedure Tcl_Set_Result
-        (Tcl_Result: String; Result_Type: Result_Types := TCL_STATIC;
+        (Tcl_Result: String; Result_Type: Result_Types := Default_Result_Type;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Tcl_Set_Result_2e8975_cb8f85;
 --  end read only

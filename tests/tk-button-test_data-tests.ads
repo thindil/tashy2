@@ -11,19 +11,19 @@ package Tk.Button.Test_Data.Tests is
    null record;
 
    procedure Test_Flash_21d4a1_fe4617(Gnattest_T: in out Test);
-   --  tk-button.ads:247:4:Flash:Test_Flash_Button
+   --  tk-button.ads:248:4:Flash:Test_Flash_Button
 
    procedure Test_Invoke_05a9d3_ac3b13(Gnattest_T: in out Test);
-   --  tk-button.ads:269:4:Invoke:Test_Invoke_Button1
+   --  tk-button.ads:270:4:Invoke:Test_Invoke_Button1
 
    procedure Test_Invoke_89eee4_562019(Gnattest_T: in out Test);
-   --  tk-button.ads:293:4:Invoke:Test_Invoke_Button2
+   --  tk-button.ads:294:4:Invoke:Test_Invoke_Button2
 
    procedure Test_Invoke_e2c227_f37e05(Gnattest_T: in out Test);
-   --  tk-button.ads:317:4:Invoke:Test_Invoke_Button3
+   --  tk-button.ads:318:4:Invoke:Test_Invoke_Button3
 
    procedure Test_Invoke_6e0b2f_4c724f(Gnattest_T: in out Test);
-   --  tk-button.ads:342:4:Invoke:Test_Invoke_Button4
+   --  tk-button.ads:343:4:Invoke:Test_Invoke_Button4
 
 end Tk.Button.Test_Data.Tests;
 --  end read only
