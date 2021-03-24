@@ -59,13 +59,12 @@ package body Tcl is
    end Create_Interpreter;
 
    procedure Tcl_Init(Interpreter: Tcl_Interpreter) is
-      function Native_Tcl_Init(Interp: Tcl_Interpreter) return int with
+      function Native_Tcl_Init(Interp: Tcl_Interpreter) return Tcl_Results with
          Import => True,
          Convention => C,
          External_Name => "Tcl_Init";
    begin
-      if Native_Tcl_Init(Interp => Interpreter) =
-        int(Tcl_Results'Pos(TCL_ERROR)) then
+      if Native_Tcl_Init(Interp => Interpreter) = TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
    end Tcl_Init;
@@ -73,14 +72,14 @@ package body Tcl is
    procedure Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
       function Native_Tcl_Eval
-        (Interp: Tcl_Interpreter; Script: chars_ptr) return int with
+        (Interp: Tcl_Interpreter; Script: chars_ptr) return Tcl_Results with
          Import => True,
          Convention => C,
          External_Name => "Tcl_Eval";
    begin
       if Native_Tcl_Eval
           (Interp => Interpreter, Script => New_String(Str => Tcl_Script)) =
-        int(Tcl_Results'Pos(TCL_ERROR)) then
+        TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
    end Tcl_Eval;
