@@ -49,7 +49,7 @@ package body Tk.TtkWidget is
      (Name: String; Value: Ttk_Image_Option;
       Options_String: in out Unbounded_String) is
    begin
-      if Value = Ttk_Image_Option'(others => <>) then
+      if Value = Default_Ttk_Image_Option then
          return;
       end if;
       Append
@@ -164,7 +164,7 @@ package body Tk.TtkWidget is
 
    function Option_Value
      (Ttk_Widgt: Ttk_Widget; Name: String) return Ttk_Image_Option is
-      Options: Ttk_Image_Option := Ttk_Image_Option'(others => <>);
+      Options: Ttk_Image_Option := Default_Ttk_Image_Option;
    begin
       Execute_Widget_Command
         (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
