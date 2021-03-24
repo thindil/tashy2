@@ -22,8 +22,8 @@ jobs:
 
     - name: Style check
       run: |
-         gprbuild -P hunter.gpr
-         gprclean -P hunter.gpr
+         gprbuild -P tashy2.gpr
+         gprclean -P tashy2.gpr
 
     - name: Generate the tests
       run: gnattest -P tashy2.gpr
