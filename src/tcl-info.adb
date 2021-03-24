@@ -12,53 +12,17 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with GNAT.String_Split;
-
 package body Tcl.Info is
-
-   -- ****if* Info/Info.Get_Unbounded_Array_Result
-   -- FUNCTION
-   -- Get the last Tcl command result and convert it to Unbounded_Strings_Array
-   -- PARAMETERS
-   -- Interpreter - Tcl interpreter on which the last Tcl command result will
-   --               be get
-   -- RESULT
-   -- Unbounded_Strings_Array with result of the command
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   function Get_Unbounded_Array_Result
-     (Interpreter: Tcl_Interpreter) return Unbounded_Strings_Array is
-      -- ****
-      use GNAT.String_Split;
-      Tokens: Slice_Set;
-   begin
-      Create
-        (S => Tokens, From => Tcl_Get_Result(Interpreter => Interpreter),
-         Separators => " ");
-      if Slice_Count(S => Tokens) = 0 then
-         return Empty_Unbounded_Strings_Array;
-      end if;
-      return
-        Result: Unbounded_Strings_Array
-          (1 .. Positive(Slice_Count(S => Tokens))) :=
-          (others => Null_Unbounded_String) do
-         Get_Result_Array_Loop :
-         for I in 1 .. Positive(Slice_Count(S => Tokens)) loop
-            Result(I) :=
-              To_Unbounded_String
-                (Source => Slice(S => Tokens, Index => Slice_Number(I)));
-         end loop Get_Result_Array_Loop;
-      end return;
-   end Get_Unbounded_Array_Result;
 
    function Arguments
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array is
+      return Array_List is
    begin
       Tcl_Eval
         (Tcl_Script => "info args " & Proc_Name, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
+      return Split_List
+          (Tcl_Get_Result(Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Arguments;
 
    function Procedure_Body
@@ -79,11 +43,13 @@ package body Tcl.Info is
 
    function Commands
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array is
+      return Array_List is
    begin
       Tcl_Eval
         (Tcl_Script => "info commands " & Pattern, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
+      return Split_List
+          (Tcl_Get_Result(Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Commands;
 
    function Complete
@@ -140,21 +106,25 @@ package body Tcl.Info is
 
    function Functions
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array is
+      return Array_List is
    begin
       Tcl_Eval
         (Tcl_Script => "info functions " & Pattern,
          Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
+      return Split_List
+          (Tcl_Get_Result(Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Functions;
 
    function Globals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array is
+      return Array_List is
    begin
       Tcl_Eval
         (Tcl_Script => "info globals " & Pattern, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
+      return Split_List
+          (Tcl_Get_Result(Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Globals;
 
    function Host_Name
@@ -173,11 +143,13 @@ package body Tcl.Info is
 
    function Locals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array is
+      return Array_List is
    begin
       Tcl_Eval
         (Tcl_Script => "info locals " & Pattern, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
+      return Split_List
+          (Tcl_Get_Result(Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Locals;
 
    function Name_Of_Executable
@@ -197,11 +169,13 @@ package body Tcl.Info is
 
    function Procs
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array is
+      return Array_List is
    begin
       Tcl_Eval
         (Tcl_Script => "info procs " & Pattern, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
+      return Split_List
+          (Tcl_Get_Result(Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Procs;
 
    function Script
@@ -222,11 +196,13 @@ package body Tcl.Info is
 
    function Vars
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Unbounded_Strings_Array is
+      return Array_List is
    begin
       Tcl_Eval
         (Tcl_Script => "info vars " & Pattern, Interpreter => Interpreter);
-      return Get_Unbounded_Array_Result(Interpreter => Interpreter);
+      return Split_List
+          (Tcl_Get_Result(Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Vars;
 
 end Tcl.Info;
