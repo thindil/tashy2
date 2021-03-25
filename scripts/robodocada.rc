@@ -17,7 +17,8 @@ options:
   --masterindex "Index,index"
   --sourceindex "Source files,sources"
 headertypes:
-  h Packages robo_packages 7
+  h Packages robo_packages 8
+  g Generics robo_generics 7
   a Tasks robo_tasks 6
   t Types robo_types 5
   s Records robo_records 4
