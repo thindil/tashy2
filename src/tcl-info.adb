@@ -14,7 +14,8 @@
 
 package body Tcl.Info is
 
-   function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
+   function Get_Result is new Generic_Scalar_Tcl_Get_Result
+     (Result_Type => Integer);
 
    function Arguments
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -23,7 +24,7 @@ package body Tcl.Info is
       Tcl_Eval
         (Tcl_Script => "info args " & Proc_Name, Interpreter => Interpreter);
       return Split_List
-          (Tcl_Get_Result(Interpreter => Interpreter),
+          (List => Tcl_Get_Result(Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Arguments;
 
@@ -50,7 +51,7 @@ package body Tcl.Info is
       Tcl_Eval
         (Tcl_Script => "info commands " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (Tcl_Get_Result(Interpreter => Interpreter),
+          (List => Tcl_Get_Result(Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Commands;
 
@@ -114,7 +115,7 @@ package body Tcl.Info is
         (Tcl_Script => "info functions " & Pattern,
          Interpreter => Interpreter);
       return Split_List
-          (Tcl_Get_Result(Interpreter => Interpreter),
+          (List => Tcl_Get_Result(Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Functions;
 
@@ -125,7 +126,7 @@ package body Tcl.Info is
       Tcl_Eval
         (Tcl_Script => "info globals " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (Tcl_Get_Result(Interpreter => Interpreter),
+          (List => Tcl_Get_Result(Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Globals;
 
@@ -150,7 +151,7 @@ package body Tcl.Info is
       Tcl_Eval
         (Tcl_Script => "info locals " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (Tcl_Get_Result(Interpreter => Interpreter),
+          (List => Tcl_Get_Result(Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Locals;
 
@@ -176,7 +177,7 @@ package body Tcl.Info is
       Tcl_Eval
         (Tcl_Script => "info procs " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (Tcl_Get_Result(Interpreter => Interpreter),
+          (List => Tcl_Get_Result(Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Procs;
 
@@ -203,7 +204,7 @@ package body Tcl.Info is
       Tcl_Eval
         (Tcl_Script => "info vars " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (Tcl_Get_Result(Interpreter => Interpreter),
+          (List => Tcl_Get_Result(Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Vars;
 

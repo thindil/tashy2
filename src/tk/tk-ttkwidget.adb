@@ -241,7 +241,8 @@ package body Tk.TtkWidget is
 
    function In_State
      (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type) return Boolean is
-      function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
+      function Get_Result is new Generic_Scalar_Tcl_Get_Result
+        (Result_Type => Integer);
    begin
       Execute_Widget_Command
         (Widgt => Ttk_Widgt, Command_Name => "instate",
