@@ -20,10 +20,13 @@ proc checkcode {dir} {
    if {[catch {exec adactl -f [file join $rootdir scripts rules.aru] {*}$files -o [file join $rootdir adacontrol.log] -w} results options]} {
       if {[file size [file join $rootdir adacontrol.log]] > 1} {
          return -options $options -level 0 $results
+      } else {
+         file delete [file join $rootdir adacontrol.log]
       }
    }
 }
 
 exec gprclean -P tashy2.gpr -XLIBRARY_TYPE=static >@stdout
+file delete [file join $rootdir adacontrol.log]
 cd [file join obj static]
 checkcode [file join $rootdir src]
