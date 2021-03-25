@@ -25,6 +25,8 @@ with Tk.MainWindow;
 
 package body Tk.Widget is
 
+   function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
+
    function Widgets_Array_Image(Widgets: Widgets_Array) return String is
       Widgets_Names: Unbounded_String := Null_Unbounded_String;
    begin
@@ -410,7 +412,7 @@ package body Tk.Widget is
    begin
       Execute_Widget_Command
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
-      if Tcl_Get_Result = 1 then
+      if Get_Result = 1 then
          return TRUE;
       else
          return FALSE;
@@ -450,7 +452,7 @@ package body Tk.Widget is
    begin
       Execute_Widget_Command
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
-      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt));
+      return Get_Result(Interpreter => Tk_Interp(Widgt => Widgt));
    end Option_Value;
 
    procedure Destroy(Widgt: in out Tk_Widget) is

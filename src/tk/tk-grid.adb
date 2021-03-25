@@ -496,11 +496,12 @@ package body Tk.Grid is
    end Propagate;
 
    function Propagate(Master: Tk_Widget) return Boolean is
+      function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
    begin
       Tcl_Eval
         (Tcl_Script => "grid propagate " & Tk_Path_Name(Widgt => Master),
          Interpreter => Tk_Interp(Widgt => Master));
-      if Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Master)) = 1 then
+      if Get_Result(Interpreter => Tk_Interp(Widgt => Master)) = 1 then
          return True;
       end if;
       return False;

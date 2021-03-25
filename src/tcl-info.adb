@@ -14,6 +14,8 @@
 
 package body Tcl.Info is
 
+   function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
+
    function Arguments
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
@@ -38,7 +40,7 @@ package body Tcl.Info is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
    begin
       Tcl_Eval(Tcl_Script => "info cmdcount", Interpreter => Interpreter);
-      return Tcl_Get_Result(Interpreter => Interpreter);
+      return Get_Result(Interpreter => Interpreter);
    end Commands_Count;
 
    function Commands
@@ -58,7 +60,7 @@ package body Tcl.Info is
    begin
       Tcl_Eval
         (Tcl_Script => "info complete " & Command, Interpreter => Interpreter);
-      if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
+      if Get_Result(Interpreter => Interpreter) = 1 then
          return True;
       end if;
       return False;
@@ -79,7 +81,7 @@ package body Tcl.Info is
         (Tcl_Script =>
            "info default " & Proc_Name & " " & Argument & " " & Var_Name,
          Interpreter => Interpreter);
-      if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
+      if Get_Result(Interpreter => Interpreter) = 1 then
          return True;
       end if;
       return False;
@@ -98,7 +100,7 @@ package body Tcl.Info is
    begin
       Tcl_Eval
         (Tcl_Script => "info exists " & Var_Name, Interpreter => Interpreter);
-      if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
+      if Get_Result(Interpreter => Interpreter) = 1 then
          return True;
       end if;
       return False;
