@@ -496,7 +496,8 @@ package body Tk.Grid is
    end Propagate;
 
    function Propagate(Master: Tk_Widget) return Boolean is
-      function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
+      function Get_Result is new Generic_Scalar_Tcl_Get_Result
+        (Result_Type => Integer);
    begin
       Tcl_Eval
         (Tcl_Script => "grid propagate " & Tk_Path_Name(Widgt => Master),

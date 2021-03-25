@@ -25,7 +25,8 @@ with Tk.MainWindow;
 
 package body Tk.Widget is
 
-   function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
+   function Get_Result is new Generic_Scalar_Tcl_Get_Result
+     (Result_Type => Integer);
 
    function Widgets_Array_Image(Widgets: Widgets_Array) return String is
       Widgets_Names: Unbounded_String := Null_Unbounded_String;

@@ -19,7 +19,8 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Menu is
 
-   function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
+   function Get_Result is new Generic_Scalar_Tcl_Get_Result
+     (Result_Type => Integer);
 
    -- ****if* Menu/Menu.Options_To_String
    -- FUNCTION

@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Interfaces.C; use Interfaces.C;
+with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 
 package body Tcl is
@@ -118,6 +118,8 @@ package body Tcl is
    procedure Tcl_Set_Result
      (Tcl_Result: String; Result_Type: Result_Types := Default_Result_Type;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      use Interfaces.C;
+
       procedure Native_Tcl_Set_Result
         (Interp: Tcl_Interpreter; Result: chars_ptr; Free_Proc: int) with
          Import => True,
