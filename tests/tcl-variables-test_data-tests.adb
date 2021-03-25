@@ -26,6 +26,8 @@ package body Tcl.Variables.Test_Data.Tests is
 --
 --  end read only
 
+   function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
+
 --  begin read only
 --  end read only
 --  begin read only
@@ -76,8 +78,7 @@ package body Tcl.Variables.Test_Data.Tests is
 
       Tcl_Set_Var("myvar", "2");
       Tcl_Eval("expr 2 + $myvar");
-      Assert
-        (Tcl_Get_Result = 4, "Failed to set value of Tcl variable 'myvar'");
+      Assert(Get_Result = 4, "Failed to set value of Tcl variable 'myvar'");
 
 --  begin read only
    end Test_Tcl_Set_Var_test_tcl_setvar;
@@ -134,7 +135,7 @@ package body Tcl.Variables.Test_Data.Tests is
       Tcl_Set_Var2("myarray", "0", "2");
       Tcl_Eval("expr 2 + $myarray(0)");
       Assert
-        (Tcl_Get_Result = 4,
+        (Get_Result = 4,
          "Failed to set value of Tcl first element in 'myarray'");
 
 --  begin read only
