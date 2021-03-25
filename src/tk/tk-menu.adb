@@ -19,6 +19,8 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Menu is
 
+   function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
+
    -- ****if* Menu/Menu.Options_To_String
    -- FUNCTION
    -- Convert Ada structure to Tcl command
@@ -390,7 +392,7 @@ package body Tk.Menu is
          Execute_Widget_Command
            (Widgt => Menu_Widget, Command_Name => "entrycget",
             Options => To_Ada_String(Source => Menu_Index) & " -" & Name);
-         if Tcl_Get_Result = 1 then
+         if Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)) = 1 then
             return TRUE;
          end if;
          return FALSE;
@@ -433,8 +435,7 @@ package body Tk.Menu is
          Options.Underline :=
            Extended_Natural
              (Integer'
-                (Tcl_Get_Result
-                   (Interpreter => Tk_Interp(Widgt => Menu_Widget))));
+                (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
          case Item_Type is
             when CASCADE =>
                Execute_Widget_Command
@@ -566,7 +567,7 @@ package body Tk.Menu is
       end if;
       return Extended_Natural
           (Integer'
-             (Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
+             (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
    end Index;
 
    function Index
@@ -582,7 +583,7 @@ package body Tk.Menu is
       end if;
       return Extended_Natural
           (Integer'
-             (Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
+             (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
    end Index;
 
    function Index
@@ -598,7 +599,7 @@ package body Tk.Menu is
       end if;
       return Extended_Natural
           (Integer'
-             (Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
+             (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
    end Index;
 
    procedure Insert
@@ -777,7 +778,7 @@ package body Tk.Menu is
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "xposition",
          Options => To_Ada_String(Source => Menu_Index));
-      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
+      return Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
    end X_Position;
 
    function X_Position
@@ -791,7 +792,7 @@ package body Tk.Menu is
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "xposition",
          Options => New_Index);
-      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
+      return Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
    end X_Position;
 
    function X_Position
@@ -800,7 +801,7 @@ package body Tk.Menu is
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "xposition",
          Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)));
-      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
+      return Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
    end X_Position;
 
    function Y_Position
@@ -809,7 +810,7 @@ package body Tk.Menu is
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "yposition",
          Options => To_Ada_String(Source => Menu_Index));
-      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
+      return Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
    end Y_Position;
 
    function Y_Position
@@ -823,7 +824,7 @@ package body Tk.Menu is
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "yposition",
          Options => New_Index);
-      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
+      return Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
    end Y_Position;
 
    function Y_Position
@@ -832,7 +833,7 @@ package body Tk.Menu is
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "yposition",
          Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)));
-      return Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
+      return Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget));
    end Y_Position;
 
 end Tk.Menu;

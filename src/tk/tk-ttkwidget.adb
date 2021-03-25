@@ -241,11 +241,12 @@ package body Tk.TtkWidget is
 
    function In_State
      (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type) return Boolean is
+      function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
    begin
       Execute_Widget_Command
         (Widgt => Ttk_Widgt, Command_Name => "instate",
          Options => To_Lower(Item => Ttk_State_Type'Image(State_Ttk)));
-      if Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)) = 1 then
+      if Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)) = 1 then
          return True;
       end if;
       return False;
