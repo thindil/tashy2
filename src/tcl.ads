@@ -149,6 +149,8 @@ package Tcl is
       -- Tcl_Script  - Tcl script to evaluate
       -- Interpreter - Tcl interpreter on which the script will be evaluated.
       --               By default it is current default Tcl interpreter
+      -- RESULT
+      -- String with the result of the evaluation of Tcl_Script
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -162,6 +164,58 @@ package Tcl is
       return String with
       Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval2", Mode => Nominal);
+      -- ****
+
+      -- ****g* Tcl/Tcl.Generic_Scalar_Tcl_Eval
+      -- FUNCTION
+      -- Generic function to evaluate Tcl script and return its result as as
+      -- scalar type
+      -- PARAMETERS
+      -- Tcl_Script  - Tcl script to evaluate
+      -- Interpreter - Tcl interpreter on which the script will be evaluated.
+      --               By default it is current default Tcl interpreter
+      -- RESULT
+      -- Scalar type with the result of the Tcl_Script
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Evaluate expression on the default Tcl interpreter and get its result as Integer
+      -- Integer_Evaluate is new Generic_Scalar_Tcl_Eval(Integer);
+      -- Result: constant Integer := Integer_Evaluate("expr 2 + 2");
+      -- SEE ALSO
+      -- Tcl.Generic_Float_Tcl_Eval;
+      -- SOURCE
+   generic
+      type Result_Type is (<>);
+   function Generic_Scalar_Tcl_Eval
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Result_Type;
+      -- ****
+
+      -- ****g* Tcl/Tcl.Generic_Float_Tcl_Eval
+      -- FUNCTION
+      -- Generic function to evaluate Tcl script and return its result as as
+      -- float type
+      -- PARAMETERS
+      -- Tcl_Script  - Tcl script to evaluate
+      -- Interpreter - Tcl interpreter on which the script will be evaluated.
+      --               By default it is current default Tcl interpreter
+      -- RESULT
+      -- Float type with the result of the Tcl_Script
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Evaluate expression on the default Tcl interpreter and get its result as Float
+      -- Float_Evaluate is new Generic_Float_Tcl_Eval(Float);
+      -- Result: constant Float := Float_Evaluate("expr 2.5 + 2.2");
+      -- SEE ALSO
+      -- Tcl.Generic_Scalar_Tcl_Eval;
+      -- SOURCE
+   generic
+      type Result_Type is digits <>;
+   function Generic_Float_Tcl_Eval
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Result_Type;
       -- ****
 
    ---------------------------------------

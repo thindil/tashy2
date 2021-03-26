@@ -92,6 +92,30 @@ package body Tcl is
       return Tcl_Get_Result(Interpreter => Interpreter);
    end Tcl_Eval;
 
+   function Generic_Scalar_Tcl_Eval
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Result_Type is
+   begin
+      if Interpreter = Null_Interpreter then
+         raise Tcl_Exception
+           with "Can't evaluate Tcl code on non existing Tcl interpreter";
+      end if;
+      return Result_Type'Value
+          (Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter));
+   end Generic_Scalar_Tcl_Eval;
+
+   function Generic_Float_Tcl_Eval
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Result_Type is
+   begin
+      if Interpreter = Null_Interpreter then
+         raise Tcl_Exception
+           with "Can't get result from non existing Tcl interpreter";
+      end if;
+      return Result_Type'Value
+          (Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter));
+   end Generic_Float_Tcl_Eval;
+
    function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
       function Tcl_Get_String_Result
