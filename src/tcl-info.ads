@@ -39,7 +39,13 @@ package Tcl.Info is
    -- SOURCE
    function Arguments
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List with
+      return Array_List is
+     (Split_List
+        (List =>
+           Tcl_Eval
+             (Tcl_Script => "info args " & Proc_Name,
+              Interpreter => Interpreter),
+         Interpreter => Interpreter)) with
       Pre => Proc_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Arguments", Mode => Nominal);
       -- ****

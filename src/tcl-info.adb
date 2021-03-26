@@ -14,44 +14,33 @@
 
 package body Tcl.Info is
 
-   function Get_Result is new Generic_Scalar_Tcl_Get_Result
+   function Integer_Eval is new Generic_Scalar_Tcl_Eval
      (Result_Type => Integer);
-
-   function Arguments
-     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
-   begin
-      Tcl_Eval
-        (Tcl_Script => "info args " & Proc_Name, Interpreter => Interpreter);
-      return Split_List
-          (List => Tcl_Get_Result(Interpreter => Interpreter),
-           Interpreter => Interpreter);
-   end Arguments;
 
    function Procedure_Body
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info body " & Proc_Name, Interpreter => Interpreter);
-      return Tcl_Get_Result(Interpreter => Interpreter);
+      return Tcl_Eval
+          (Tcl_Script => "info body " & Proc_Name, Interpreter => Interpreter);
    end Procedure_Body;
 
    function Commands_Count
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
    begin
-      Tcl_Eval(Tcl_Script => "info cmdcount", Interpreter => Interpreter);
-      return Get_Result(Interpreter => Interpreter);
+      return Integer_Eval
+          (Tcl_Script => "info cmdcount", Interpreter => Interpreter);
    end Commands_Count;
 
    function Commands
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info commands " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (List => Tcl_Get_Result(Interpreter => Interpreter),
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "info commands " & Pattern,
+                Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Commands;
 
@@ -59,9 +48,10 @@ package body Tcl.Info is
      (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info complete " & Command, Interpreter => Interpreter);
-      if Get_Result(Interpreter => Interpreter) = 1 then
+      if Integer_Eval
+          (Tcl_Script => "info complete " & Command,
+           Interpreter => Interpreter) =
+        1 then
          return True;
       end if;
       return False;
@@ -70,19 +60,19 @@ package body Tcl.Info is
    function Coroutine
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval(Tcl_Script => "info coroutine", Interpreter => Interpreter);
-      return Tcl_Get_Result(Interpreter => Interpreter);
+      return Tcl_Eval
+          (Tcl_Script => "info coroutine", Interpreter => Interpreter);
    end Coroutine;
 
    function Default
      (Proc_Name, Argument, Var_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
    begin
-      Tcl_Eval
-        (Tcl_Script =>
-           "info default " & Proc_Name & " " & Argument & " " & Var_Name,
-         Interpreter => Interpreter);
-      if Get_Result(Interpreter => Interpreter) = 1 then
+      if Integer_Eval
+          (Tcl_Script =>
+             "info default " & Proc_Name & " " & Argument & " " & Var_Name,
+           Interpreter => Interpreter) =
+        1 then
          return True;
       end if;
       return False;
@@ -99,9 +89,10 @@ package body Tcl.Info is
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info exists " & Var_Name, Interpreter => Interpreter);
-      if Get_Result(Interpreter => Interpreter) = 1 then
+      if Integer_Eval
+          (Tcl_Script => "info exists " & Var_Name,
+           Interpreter => Interpreter) =
+        1 then
          return True;
       end if;
       return False;
@@ -111,11 +102,11 @@ package body Tcl.Info is
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info functions " & Pattern,
-         Interpreter => Interpreter);
       return Split_List
-          (List => Tcl_Get_Result(Interpreter => Interpreter),
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "info functions " & Pattern,
+                Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Functions;
 
@@ -123,61 +114,63 @@ package body Tcl.Info is
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info globals " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (List => Tcl_Get_Result(Interpreter => Interpreter),
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "info globals " & Pattern,
+                Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Globals;
 
    function Host_Name
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval(Tcl_Script => "info hostname", Interpreter => Interpreter);
-      return Tcl_Get_Result(Interpreter => Interpreter);
+      return Tcl_Eval
+          (Tcl_Script => "info hostname", Interpreter => Interpreter);
    end Host_Name;
 
    function Library
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval(Tcl_Script => "info library", Interpreter => Interpreter);
-      return Tcl_Get_Result(Interpreter => Interpreter);
+      return Tcl_Eval
+          (Tcl_Script => "info library", Interpreter => Interpreter);
    end Library;
 
    function Locals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info locals " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (List => Tcl_Get_Result(Interpreter => Interpreter),
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "info locals " & Pattern,
+                Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Locals;
 
    function Name_Of_Executable
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info nameofexecutable", Interpreter => Interpreter);
-      return Tcl_Get_Result(Interpreter => Interpreter);
+      return Tcl_Eval
+          (Tcl_Script => "info nameofexecutable", Interpreter => Interpreter);
    end Name_Of_Executable;
 
    function Patch_Level
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval(Tcl_Script => "info patchlevel", Interpreter => Interpreter);
-      return Tcl_Get_Result(Interpreter => Interpreter);
+      return Tcl_Eval
+          (Tcl_Script => "info patchlevel", Interpreter => Interpreter);
    end Patch_Level;
 
    function Procs
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info procs " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (List => Tcl_Get_Result(Interpreter => Interpreter),
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "info procs " & Pattern,
+                Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Procs;
 
@@ -185,26 +178,27 @@ package body Tcl.Info is
      (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info script " & File_Name, Interpreter => Interpreter);
-      return Tcl_Get_Result(Interpreter => Interpreter);
+      return Tcl_Eval
+          (Tcl_Script => "info script " & File_Name,
+           Interpreter => Interpreter);
    end Script;
 
    function Tcl_Version
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
-      Tcl_Eval(Tcl_Script => "info tclversion", Interpreter => Interpreter);
-      return Tcl_Get_Result(Interpreter => Interpreter);
+      return Tcl_Eval
+          (Tcl_Script => "info tclversion", Interpreter => Interpreter);
    end Tcl_Version;
 
    function Vars
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
-      Tcl_Eval
-        (Tcl_Script => "info vars " & Pattern, Interpreter => Interpreter);
       return Split_List
-          (List => Tcl_Get_Result(Interpreter => Interpreter),
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "info vars " & Pattern,
+                Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Vars;
 
