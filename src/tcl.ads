@@ -120,23 +120,48 @@ package Tcl is
    -- Evaluation of Tcl code
    -------------------------
 
-   -- ****f* Tcl/Tcl.Tcl_Eval
-   -- FUNCTION
-   -- Evaluate the selected Tcl script on the selected Tcl intepreter
-   -- PARAMETERS
-   -- Tcl_Script  - Tcl script to evaluate
-   -- Interpreter - Tcl interpreter on which the script will be evaluated.
-   --               By default it is current default Tcl interpreter
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- EXAMPLE
-   -- -- Print hello world on default Tcl interpreter
-   -- Tcl_Eval("puts {hello world}");
-   -- SOURCE
+      -- ****f* Tcl/Tcl.Tcl_Eval_(procedure)
+      -- FUNCTION
+      -- Evaluate the selected Tcl script on the selected Tcl intepreter
+      -- PARAMETERS
+      -- Tcl_Script  - Tcl script to evaluate
+      -- Interpreter - Tcl interpreter on which the script will be evaluated.
+      --               By default it is current default Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Print hello world on default Tcl interpreter
+      -- Tcl_Eval("puts {hello world}");
+      -- SEE ALSO
+      -- Tcl.Tcl_Eval_(function)
+      -- SOURCE
    procedure Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval", Mode => Nominal);
+      -- ****
+
+      -- ****f* Tcl/Tcl.Tcl_Eval_(function)
+      -- FUNCTION
+      -- Evaluate the selected Tcl script on the selected Tcl intepreter and
+      -- return its result as String
+      -- PARAMETERS
+      -- Tcl_Script  - Tcl script to evaluate
+      -- Interpreter - Tcl interpreter on which the script will be evaluated.
+      --               By default it is current default Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get result of expresion on default Tcl interpreter
+      -- Result: constant String := Tcl_Eval("expr 2 + 2");
+      -- SEE ALSO
+      -- Tcl.Tcl_Eval_(procedure)
+      -- SOURCE
+   function Tcl_Eval
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String with
+      Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Test_Tcl_Eval2", Mode => Nominal);
       -- ****
 
    ---------------------------------------
