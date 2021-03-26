@@ -57,11 +57,11 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Tcl_Eval_test_tcl_eval(Gnattest_T: in out Test);
+   procedure Test_1_Tcl_Eval_test_tcl_eval(Gnattest_T: in out Test);
    procedure Test_Tcl_Eval_6f41cd_5b9cd5(Gnattest_T: in out Test) renames
-     Test_Tcl_Eval_test_tcl_eval;
+     Test_1_Tcl_Eval_test_tcl_eval;
 --  id:2.2/6f41cdb0dd725e03/Tcl_Eval/1/0/test_tcl_eval/
-   procedure Test_Tcl_Eval_test_tcl_eval(Gnattest_T: in out Test) is
+   procedure Test_1_Tcl_Eval_test_tcl_eval(Gnattest_T: in out Test) is
       procedure Tcl_Eval
         (Tcl_Script: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
@@ -76,7 +76,65 @@ package body Tcl.Test_Data.Tests is
       Assert(Tcl_Get_Result = "4", "Failed to evaluate Tcl code.");
 
 --  begin read only
-   end Test_Tcl_Eval_test_tcl_eval;
+   end Test_1_Tcl_Eval_test_tcl_eval;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Tcl_Eval_907c70_916b02
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
+   begin
+      begin
+         pragma Assert
+           (Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl.ads:0):Test_Tcl_Eval2 test requirement violated");
+      end;
+      declare
+         Test_Tcl_Eval_907c70_916b02_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Eval
+             (Tcl_Script, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl.ads:0:):Test_Tcl_Eval2 test commitment violated");
+         end;
+         return Test_Tcl_Eval_907c70_916b02_Result;
+      end;
+   end Wrap_Test_Tcl_Eval_907c70_916b02;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Tcl_Eval_test_tcl_eval2(Gnattest_T: in out Test);
+   procedure Test_Tcl_Eval_907c70_916b02(Gnattest_T: in out Test) renames
+     Test_2_Tcl_Eval_test_tcl_eval2;
+--  id:2.2/907c70df81e5b2fb/Tcl_Eval/0/0/test_tcl_eval2/
+   procedure Test_2_Tcl_Eval_test_tcl_eval2(Gnattest_T: in out Test) is
+      function Tcl_Eval
+        (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return String renames
+        Wrap_Test_Tcl_Eval_907c70_916b02;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (Tcl_Eval("expr 2 + 5") = "7",
+         "Failed to evaluate and get result of Tcl code.");
+
+--  begin read only
+   end Test_2_Tcl_Eval_test_tcl_eval2;
 --  end read only
 
 --  begin read only
