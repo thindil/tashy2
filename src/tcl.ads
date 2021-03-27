@@ -141,7 +141,7 @@ package Tcl is
       Test_Case => (Name => "Test_Tcl_Eval", Mode => Nominal);
       -- ****
 
-      -- ****f* Tcl/Tcl.Tcl_Eval_(function)
+      -- ****f* Tcl/Tcl.Tcl_Eval_(function_string_result)
       -- FUNCTION
       -- Evaluate the selected Tcl script on the selected Tcl intepreter and
       -- return its result as String
@@ -157,13 +157,38 @@ package Tcl is
       -- -- Get result of expresion on default Tcl interpreter
       -- Result: constant String := Tcl_Eval("expr 2 + 2");
       -- SEE ALSO
-      -- Tcl.Tcl_Eval_(procedure)
+      -- Tcl.Tcl_Eval_(procedure), Tcl.Tcl_Eval(function_boolean_result)
       -- SOURCE
    function Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String with
       Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval2", Mode => Nominal);
+      -- ****
+
+      -- ****f* Tcl/Tcl.Tcl_Eval_(function_boolean_result)
+      -- FUNCTION
+      -- Evaluate the selected Tcl script on the selected Tcl intepreter and
+      -- return its result as Boolean
+      -- PARAMETERS
+      -- Tcl_Script  - Tcl script to evaluate
+      -- Interpreter - Tcl interpreter on which the script will be evaluated.
+      --               By default it is current default Tcl interpreter
+      -- RESULT
+      -- Boolean with the result of the evaluation of Tcl_Script
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get result of Tcl command on default Tcl interpreter
+      -- Result: constant Boolean := Tcl_Eval("info exists myvar");
+      -- SEE ALSO
+      -- Tcl.Tcl_Eval_(procedure), Tcl.Tcl_Eval(function_string_result)
+      -- SOURCE
+   function Tcl_Eval
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean with
+      Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Test_Tcl_Eval3", Mode => Nominal);
       -- ****
 
       -- ****g* Tcl/Tcl.Generic_Scalar_Tcl_Eval
