@@ -25,22 +25,22 @@ package Tk.Grid.Test_Data.Tests is
    procedure Test_Bounding_Box_251762_896807(Gnattest_T: in out Test);
    --  tk-grid.ads:237:4:Bounding_Box:Test_BBox
 
-   procedure Test_Column_Configure_b41aca_962233(Gnattest_T: in out Test);
+   procedure Test_Column_Configure_b41aca_dcc0a7(Gnattest_T: in out Test);
    --  tk-grid.ads:262:4:Column_Configure:Test_Column_Configure1
 
-   procedure Test_Column_Configure_dbcaa4_0c842f(Gnattest_T: in out Test);
+   procedure Test_Column_Configure_dbcaa4_baf62d(Gnattest_T: in out Test);
    --  tk-grid.ads:287:4:Column_Configure:Test_Column_Configure2
 
-   procedure Test_Column_Configure_86279e_2e0251(Gnattest_T: in out Test);
+   procedure Test_Column_Configure_86279e_3e25dc(Gnattest_T: in out Test);
    --  tk-grid.ads:312:4:Column_Configure:Test_Column_Configure3
 
    procedure Test_Get_Column_Options_22be63_f54751(Gnattest_T: in out Test);
    --  tk-grid.ads:336:4:Get_Column_Options:Test_Get_Column_Options
 
-   procedure Test_Configure_c67185_9bbd24(Gnattest_T: in out Test);
+   procedure Test_Configure_c67185_4765c0(Gnattest_T: in out Test);
    --  tk-grid.ads:358:4:Configure:Test_Configure1
 
-   procedure Test_Configure_f31b66_5acddf(Gnattest_T: in out Test);
+   procedure Test_Configure_f31b66_3e2feb(Gnattest_T: in out Test);
    --  tk-grid.ads:379:4:Configure:Test_Configure2
 
    procedure Test_Forget_7f8bc2_8fa399(Gnattest_T: in out Test);
@@ -61,13 +61,13 @@ package Tk.Grid.Test_Data.Tests is
    procedure Test_Propagate_306472_142129(Gnattest_T: in out Test);
    --  tk-grid.ads:520:4:Propagate:Test_Propagate2
 
-   procedure Test_Row_Configure_cd10c1_a3d733(Gnattest_T: in out Test);
+   procedure Test_Row_Configure_cd10c1_55f5f1(Gnattest_T: in out Test);
    --  tk-grid.ads:543:4:Row_Configure:Test_Row_Configure1
 
-   procedure Test_Row_Configure_0a2e60_b77dc7(Gnattest_T: in out Test);
+   procedure Test_Row_Configure_0a2e60_353acd(Gnattest_T: in out Test);
    --  tk-grid.ads:568:4:Row_Configure:Test_Row_Configure2
 
-   procedure Test_Row_Configure_7261aa_7ae33c(Gnattest_T: in out Test);
+   procedure Test_Row_Configure_7261aa_f7627e(Gnattest_T: in out Test);
    --  tk-grid.ads:593:4:Row_Configure:Test_Row_Configure3
 
    procedure Test_Get_Row_Options_192829_8edf28(Gnattest_T: in out Test);

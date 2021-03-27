@@ -138,6 +138,64 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Tcl_Eval_8c4419_19bef1
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean is
+   begin
+      begin
+         pragma Assert
+           (Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl.ads:0):Test_Tcl_Eval3 test requirement violated");
+      end;
+      declare
+         Test_Tcl_Eval_8c4419_19bef1_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Eval
+             (Tcl_Script, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl.ads:0:):Test_Tcl_Eval3 test commitment violated");
+         end;
+         return Test_Tcl_Eval_8c4419_19bef1_Result;
+      end;
+   end Wrap_Test_Tcl_Eval_8c4419_19bef1;
+--  end read only
+
+--  begin read only
+   procedure Test_3_Tcl_Eval_test_tcl_eval3(Gnattest_T: in out Test);
+   procedure Test_Tcl_Eval_8c4419_19bef1(Gnattest_T: in out Test) renames
+     Test_3_Tcl_Eval_test_tcl_eval3;
+--  id:2.2/8c4419ae7fa247fc/Tcl_Eval/0/0/test_tcl_eval3/
+   procedure Test_3_Tcl_Eval_test_tcl_eval3(Gnattest_T: in out Test) is
+      function Tcl_Eval
+        (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Boolean renames
+        Wrap_Test_Tcl_Eval_8c4419_19bef1;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (not Tcl_Eval("info exists asdfervariable"),
+         "Failed to get boolean value of Tcl command.");
+
+--  begin read only
+   end Test_3_Tcl_Eval_test_tcl_eval3;
+--  end read only
+
+--  begin read only
    function Wrap_Test_Tcl_Get_Result_9a7ac3_b83d43
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
