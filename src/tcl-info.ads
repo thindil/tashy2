@@ -144,7 +144,10 @@ package Tcl.Info is
       -- SOURCE
    function Complete
      (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean with
+      return Boolean is
+     (Tcl_Eval
+        (Tcl_Script => "info complete " & Command,
+         Interpreter => Interpreter)) with
       Pre => Command'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Complete", Mode => Nominal);
       -- ****
@@ -197,7 +200,11 @@ package Tcl.Info is
       -- SOURCE
    function Default
      (Proc_Name, Argument, Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean with
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
+     (Tcl_Eval
+        (Tcl_Script =>
+           "info default " & Proc_Name & " " & Argument & " " & Var_Name,
+         Interpreter => Interpreter)) with
       Pre => Proc_Name'Length > 0 and Argument'Length > 0 and
       Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Default", Mode => Nominal);
@@ -242,7 +249,10 @@ package Tcl.Info is
       -- SOURCE
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean with
+      return Boolean is
+     (Tcl_Eval
+        (Tcl_Script => "info exists " & Var_Name,
+         Interpreter => Interpreter)) with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Exists", Mode => Nominal);
       -- ****
