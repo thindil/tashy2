@@ -92,6 +92,18 @@ package body Tcl is
       return Tcl_Get_Result(Interpreter => Interpreter);
    end Tcl_Eval;
 
+   function Tcl_Eval
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean is
+   begin
+      Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter);
+      if Tcl_Get_Result(Interpreter => Interpreter) in "1" | "true" | "on" |
+            "yes" then
+         return True;
+      end if;
+      return False;
+   end Tcl_Eval;
+
    function Generic_Scalar_Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Result_Type is
