@@ -14,54 +14,13 @@
 
 package body Tcl.Info is
 
-   function Integer_Eval is new Generic_Scalar_Tcl_Eval
-     (Result_Type => Integer);
-
    function Commands_Count
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
+      function Integer_Eval is new Generic_Scalar_Tcl_Eval
+        (Result_Type => Integer);
    begin
       return Integer_Eval
           (Tcl_Script => "info cmdcount", Interpreter => Interpreter);
    end Commands_Count;
-
-   function Complete
-     (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
-   begin
-      if Integer_Eval
-          (Tcl_Script => "info complete " & Command,
-           Interpreter => Interpreter) =
-        1 then
-         return True;
-      end if;
-      return False;
-   end Complete;
-
-   function Default
-     (Proc_Name, Argument, Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
-   begin
-      if Integer_Eval
-          (Tcl_Script =>
-             "info default " & Proc_Name & " " & Argument & " " & Var_Name,
-           Interpreter => Interpreter) =
-        1 then
-         return True;
-      end if;
-      return False;
-   end Default;
-
-   function Exists
-     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
-   begin
-      if Integer_Eval
-          (Tcl_Script => "info exists " & Var_Name,
-           Interpreter => Interpreter) =
-        1 then
-         return True;
-      end if;
-      return False;
-   end Exists;
 
 end Tcl.Info;
