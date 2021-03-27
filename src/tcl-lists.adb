@@ -15,7 +15,6 @@
 with Interfaces.C;
 with Interfaces.C.Strings;
 with Tcl.Commands;
-with Tcl.Variables;
 
 package body Tcl.Lists is
 
@@ -54,15 +53,5 @@ package body Tcl.Lists is
          end loop Convert_List_To_Array_Loop;
       end return;
    end Split_List;
-
-   function Split_List_Variable
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
-      use Tcl.Variables;
-   begin
-      return Split_List
-          (List => Tcl_Get_Var(Var_Name => Name, Interpreter => Interpreter),
-           Interpreter => Interpreter);
-   end Split_List_Variable;
 
 end Tcl.Lists;
