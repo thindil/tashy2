@@ -170,7 +170,7 @@ package Tk.TopLevel is
       -- declare
       --    My_Dialog: Tk_Dialog;
       -- begin
-      --    Create(My_Dialog, ".mydialog", TopLevel_Create_Options'(others => <>));
+      --    Create(My_Dialog, ".mydialog", Default_Toplevel_Create_Options);
       -- end;
       -- SEE ALSO
       -- TopLevel.Create_(function)
