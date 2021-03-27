@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables;
 
 -- ****h* Tcl/Lists
 -- FUNCTION
@@ -79,7 +80,12 @@ package Tcl.Lists is
       -- SOURCE
    function Split_List_Variable
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List with
+      return Array_List is
+     (Split_List
+        (List =>
+           Tcl.Variables.Tcl_Get_Var
+             (Var_Name => Name, Interpreter => Interpreter),
+         Interpreter => Interpreter)) with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Split_List_Variable", Mode => Nominal);
       -- ****
