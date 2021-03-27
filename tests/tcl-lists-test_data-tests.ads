@@ -11,10 +11,10 @@ package Tcl.Lists.Test_Data.Tests is
    null record;
 
    procedure Test_Split_List_908c8a_b5e33c(Gnattest_T: in out Test);
-   --  tcl-lists.ads:57:4:Split_List:Test_Split_List
+   --  tcl-lists.ads:58:4:Split_List:Test_Split_List
 
    procedure Test_Split_List_Variable_b25096_53b238(Gnattest_T: in out Test);
-   --  tcl-lists.ads:80:4:Split_List_Variable:Test_Split_List_Variable
+   --  tcl-lists.ads:81:4:Split_List_Variable:Test_Split_List_Variable
 
 end Tcl.Lists.Test_Data.Tests;
 --  end read only

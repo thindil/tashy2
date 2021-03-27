@@ -319,13 +319,13 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Column_Configure_b41aca_962233
+   procedure Wrap_Test_Column_Configure_b41aca_dcc0a7
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) is
    begin
       begin
          pragma Assert
            (Master /= Null_Widget and Length(Source => Child_Name) > 0 and
-            Options /= Column_Options'(others => <>));
+            Options /= Default_Column_Options);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -344,13 +344,13 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Column_Configure1 test commitment violated");
       end;
-   end Wrap_Test_Column_Configure_b41aca_962233;
+   end Wrap_Test_Column_Configure_b41aca_dcc0a7;
 --  end read only
 
 --  begin read only
    procedure Test_1_Column_Configure_test_column_configure1
      (Gnattest_T: in out Test);
-   procedure Test_Column_Configure_b41aca_962233
+   procedure Test_Column_Configure_b41aca_dcc0a7
      (Gnattest_T: in out Test) renames
      Test_1_Column_Configure_test_column_configure1;
 --  id:2.2/b41aca7d33fda6d6/Column_Configure/1/0/test_column_configure1/
@@ -359,7 +359,7 @@ package body Tk.Grid.Test_Data.Tests is
       procedure Column_Configure
         (Master: Tk_Widget; Child_Name: Tcl_String;
          Options: Column_Options) renames
-        Wrap_Test_Column_Configure_b41aca_962233;
+        Wrap_Test_Column_Configure_b41aca_dcc0a7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -388,13 +388,13 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Column_Configure_dbcaa4_0c842f
+   procedure Wrap_Test_Column_Configure_dbcaa4_baf62d
      (Master, Child: Tk_Widget; Options: Column_Options) is
    begin
       begin
          pragma Assert
            (Master /= Null_Widget and Child /= Null_Widget and
-            Options /= Column_Options'(others => <>));
+            Options /= Default_Column_Options);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -413,13 +413,13 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Column_Configure2 test commitment violated");
       end;
-   end Wrap_Test_Column_Configure_dbcaa4_0c842f;
+   end Wrap_Test_Column_Configure_dbcaa4_baf62d;
 --  end read only
 
 --  begin read only
    procedure Test_2_Column_Configure_test_column_configure2
      (Gnattest_T: in out Test);
-   procedure Test_Column_Configure_dbcaa4_0c842f
+   procedure Test_Column_Configure_dbcaa4_baf62d
      (Gnattest_T: in out Test) renames
      Test_2_Column_Configure_test_column_configure2;
 --  id:2.2/dbcaa489b9b4b4dc/Column_Configure/0/0/test_column_configure2/
@@ -427,7 +427,7 @@ package body Tk.Grid.Test_Data.Tests is
      (Gnattest_T: in out Test) is
       procedure Column_Configure
         (Master, Child: Tk_Widget; Options: Column_Options) renames
-        Wrap_Test_Column_Configure_dbcaa4_0c842f;
+        Wrap_Test_Column_Configure_dbcaa4_baf62d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -455,13 +455,12 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Column_Configure_86279e_2e0251
+   procedure Wrap_Test_Column_Configure_86279e_3e25dc
      (Master: Tk_Widget; Column: Natural; Options: Column_Options) is
    begin
       begin
          pragma Assert
-           (Master /= Null_Widget and
-            Options /= Column_Options'(others => <>));
+           (Master /= Null_Widget and Options /= Default_Column_Options);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -480,13 +479,13 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Column_Configure3 test commitment violated");
       end;
-   end Wrap_Test_Column_Configure_86279e_2e0251;
+   end Wrap_Test_Column_Configure_86279e_3e25dc;
 --  end read only
 
 --  begin read only
    procedure Test_3_Column_Configure_test_column_configure3
      (Gnattest_T: in out Test);
-   procedure Test_Column_Configure_86279e_2e0251
+   procedure Test_Column_Configure_86279e_3e25dc
      (Gnattest_T: in out Test) renames
      Test_3_Column_Configure_test_column_configure3;
 --  id:2.2/86279edebadeb350/Column_Configure/0/0/test_column_configure3/
@@ -494,7 +493,7 @@ package body Tk.Grid.Test_Data.Tests is
      (Gnattest_T: in out Test) is
       procedure Column_Configure
         (Master: Tk_Widget; Column: Natural; Options: Column_Options) renames
-        Wrap_Test_Column_Configure_86279e_2e0251;
+        Wrap_Test_Column_Configure_86279e_3e25dc;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -582,12 +581,12 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Configure_c67185_9bbd24
+   procedure Wrap_Test_Configure_c67185_4765c0
      (Child: Tk_Widget; Options: Grid_Options) is
    begin
       begin
          pragma Assert
-           (Child /= Null_Widget and Options /= Grid_Options'(others => <>));
+           (Child /= Null_Widget and Options /= Default_Grid_Options);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -605,17 +604,17 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Configure1 test commitment violated");
       end;
-   end Wrap_Test_Configure_c67185_9bbd24;
+   end Wrap_Test_Configure_c67185_4765c0;
 --  end read only
 
 --  begin read only
    procedure Test_1_Configure_test_configure1(Gnattest_T: in out Test);
-   procedure Test_Configure_c67185_9bbd24(Gnattest_T: in out Test) renames
+   procedure Test_Configure_c67185_4765c0(Gnattest_T: in out Test) renames
      Test_1_Configure_test_configure1;
 --  id:2.2/c6718582592dc115/Configure/1/0/test_configure1/
    procedure Test_1_Configure_test_configure1(Gnattest_T: in out Test) is
       procedure Configure(Child: Tk_Widget; Options: Grid_Options) renames
-        Wrap_Test_Configure_c67185_9bbd24;
+        Wrap_Test_Configure_c67185_4765c0;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -640,12 +639,11 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Configure_f31b66_5acddf
+   procedure Wrap_Test_Configure_f31b66_3e2feb
      (Widgets: Widgets_Array; Options: Grid_Options) is
    begin
       begin
-         pragma Assert
-           (Widgets'Length > 0 and Options /= Grid_Options'(others => <>));
+         pragma Assert(Widgets'Length > 0 and Options /= Default_Grid_Options);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -663,18 +661,18 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Configure2 test commitment violated");
       end;
-   end Wrap_Test_Configure_f31b66_5acddf;
+   end Wrap_Test_Configure_f31b66_3e2feb;
 --  end read only
 
 --  begin read only
    procedure Test_2_Configure_test_configure2(Gnattest_T: in out Test);
-   procedure Test_Configure_f31b66_5acddf(Gnattest_T: in out Test) renames
+   procedure Test_Configure_f31b66_3e2feb(Gnattest_T: in out Test) renames
      Test_2_Configure_test_configure2;
 --  id:2.2/f31b66078cc53553/Configure/0/0/test_configure2/
    procedure Test_2_Configure_test_configure2(Gnattest_T: in out Test) is
       procedure Configure
         (Widgets: Widgets_Array; Options: Grid_Options) renames
-        Wrap_Test_Configure_f31b66_5acddf;
+        Wrap_Test_Configure_f31b66_3e2feb;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1047,13 +1045,13 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Row_Configure_cd10c1_a3d733
+   procedure Wrap_Test_Row_Configure_cd10c1_55f5f1
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) is
    begin
       begin
          pragma Assert
            (Master /= Null_Widget and Length(Source => Child_Name) > 0 and
-            Options /= Column_Options'(others => <>));
+            Options /= Default_Column_Options);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1072,12 +1070,12 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Row_Configure1 test commitment violated");
       end;
-   end Wrap_Test_Row_Configure_cd10c1_a3d733;
+   end Wrap_Test_Row_Configure_cd10c1_55f5f1;
 --  end read only
 
 --  begin read only
    procedure Test_1_Row_Configure_test_row_configure1(Gnattest_T: in out Test);
-   procedure Test_Row_Configure_cd10c1_a3d733(Gnattest_T: in out Test) renames
+   procedure Test_Row_Configure_cd10c1_55f5f1(Gnattest_T: in out Test) renames
      Test_1_Row_Configure_test_row_configure1;
 --  id:2.2/cd10c14861fb1027/Row_Configure/1/0/test_row_configure1/
    procedure Test_1_Row_Configure_test_row_configure1
@@ -1085,7 +1083,7 @@ package body Tk.Grid.Test_Data.Tests is
       procedure Row_Configure
         (Master: Tk_Widget; Child_Name: Tcl_String;
          Options: Column_Options) renames
-        Wrap_Test_Row_Configure_cd10c1_a3d733;
+        Wrap_Test_Row_Configure_cd10c1_55f5f1;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1114,13 +1112,13 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Row_Configure_0a2e60_b77dc7
+   procedure Wrap_Test_Row_Configure_0a2e60_353acd
      (Master, Child: Tk_Widget; Options: Column_Options) is
    begin
       begin
          pragma Assert
            (Master /= Null_Widget and Child /= Null_Widget and
-            Options /= Column_Options'(others => <>));
+            Options /= Default_Column_Options);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1139,19 +1137,19 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Row_Configure2 test commitment violated");
       end;
-   end Wrap_Test_Row_Configure_0a2e60_b77dc7;
+   end Wrap_Test_Row_Configure_0a2e60_353acd;
 --  end read only
 
 --  begin read only
    procedure Test_2_Row_Configure_test_row_configure2(Gnattest_T: in out Test);
-   procedure Test_Row_Configure_0a2e60_b77dc7(Gnattest_T: in out Test) renames
+   procedure Test_Row_Configure_0a2e60_353acd(Gnattest_T: in out Test) renames
      Test_2_Row_Configure_test_row_configure2;
 --  id:2.2/0a2e60e5acb5492e/Row_Configure/0/0/test_row_configure2/
    procedure Test_2_Row_Configure_test_row_configure2
      (Gnattest_T: in out Test) is
       procedure Row_Configure
         (Master, Child: Tk_Widget; Options: Column_Options) renames
-        Wrap_Test_Row_Configure_0a2e60_b77dc7;
+        Wrap_Test_Row_Configure_0a2e60_353acd;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1179,13 +1177,12 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Row_Configure_7261aa_7ae33c
+   procedure Wrap_Test_Row_Configure_7261aa_f7627e
      (Master: Tk_Widget; Row: Natural; Options: Column_Options) is
    begin
       begin
          pragma Assert
-           (Master /= Null_Widget and
-            Options /= Column_Options'(others => <>));
+           (Master /= Null_Widget and Options /= Default_Column_Options);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1204,19 +1201,19 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Row_Configure3 test commitment violated");
       end;
-   end Wrap_Test_Row_Configure_7261aa_7ae33c;
+   end Wrap_Test_Row_Configure_7261aa_f7627e;
 --  end read only
 
 --  begin read only
    procedure Test_3_Row_Configure_test_row_configure3(Gnattest_T: in out Test);
-   procedure Test_Row_Configure_7261aa_7ae33c(Gnattest_T: in out Test) renames
+   procedure Test_Row_Configure_7261aa_f7627e(Gnattest_T: in out Test) renames
      Test_3_Row_Configure_test_row_configure3;
 --  id:2.2/7261aa6fcbc4a5c1/Row_Configure/0/0/test_row_configure3/
    procedure Test_3_Row_Configure_test_row_configure3
      (Gnattest_T: in out Test) is
       procedure Row_Configure
         (Master: Tk_Widget; Row: Natural; Options: Column_Options) renames
-        Wrap_Test_Row_Configure_7261aa_7ae33c;
+        Wrap_Test_Row_Configure_7261aa_f7627e;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
