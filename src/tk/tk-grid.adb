@@ -98,10 +98,10 @@ package body Tk.Grid is
 
    function Anchor(Master: Tk_Widget) return Directions_Type is
    begin
-      Tcl_Eval
-        (Tcl_Script => "grid anchor " & Tk_Path_Name(Widgt => Master),
-         Interpreter => Tk_Interp(Widgt => Master));
-      return Directions_Type'Value(Tcl_Get_Result);
+      return Directions_Type'Value
+          (Tcl_Eval
+             (Tcl_Script => "grid anchor " & Tk_Path_Name(Widgt => Master),
+              Interpreter => Tk_Interp(Widgt => Master)));
    end Anchor;
 
    function Bounding_Box
@@ -239,13 +239,14 @@ package body Tk.Grid is
       return Pixel_Data is
    -- ****
    begin
-      Tcl_Eval
-        (Tcl_Script =>
-           "grid " & Config_Type & "configure " &
-           Tk_Path_Name(Widgt => Master) & Natural'Image(Index) & " -" & Name,
-         Interpreter => Tk_Interp(Widgt => Master));
       return Pixel_Data_Value
-          (Value => Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Master)));
+          (Value =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "grid " & Config_Type & "configure " &
+                  Tk_Path_Name(Widgt => Master) & Natural'Image(Index) & " -" &
+                  Name,
+                Interpreter => Tk_Interp(Widgt => Master)));
    end Get_Value;
 
    -- ****if* Grid/Grid.Get_Value_(Tcl_String)
@@ -269,14 +270,14 @@ package body Tk.Grid is
       return Tcl_String is
    -- ****
    begin
-      Tcl_Eval
-        (Tcl_Script =>
-           "grid " & Config_Type & "configure " &
-           Tk_Path_Name(Widgt => Master) & Natural'Image(Index) & " -" & Name,
-         Interpreter => Tk_Interp(Widgt => Master));
       return To_Tcl_String
           (Source =>
-             Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Master)));
+             Tcl_Eval
+               (Tcl_Script =>
+                  "grid " & Config_Type & "configure " &
+                  Tk_Path_Name(Widgt => Master) & Natural'Image(Index) & " -" &
+                  Name,
+                Interpreter => Tk_Interp(Widgt => Master)));
    end Get_Value;
 
    -- ****if* Grid/Grid.Get_Value_(Extended_Natural)
@@ -300,13 +301,13 @@ package body Tk.Grid is
       return Extended_Natural is
    -- ****
    begin
-      Tcl_Eval
-        (Tcl_Script =>
-           "grid " & Config_Type & "configure " &
-           Tk_Path_Name(Widgt => Master) & Natural'Image(Index) & " -" & Name,
-         Interpreter => Tk_Interp(Widgt => Master));
       return Extended_Natural'Value
-          (Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Master)));
+          (Tcl_Eval
+             (Tcl_Script =>
+                "grid " & Config_Type & "configure " &
+                Tk_Path_Name(Widgt => Master) & Natural'Image(Index) & " -" &
+                Name,
+              Interpreter => Tk_Interp(Widgt => Master)));
    end Get_Value;
 
    function Get_Column_Options
@@ -496,16 +497,10 @@ package body Tk.Grid is
    end Propagate;
 
    function Propagate(Master: Tk_Widget) return Boolean is
-      function Get_Result is new Generic_Scalar_Tcl_Get_Result
-        (Result_Type => Integer);
    begin
-      Tcl_Eval
-        (Tcl_Script => "grid propagate " & Tk_Path_Name(Widgt => Master),
-         Interpreter => Tk_Interp(Widgt => Master));
-      if Get_Result(Interpreter => Tk_Interp(Widgt => Master)) = 1 then
-         return True;
-      end if;
-      return False;
+      return Tcl_Eval
+          (Tcl_Script => "grid propagate " & Tk_Path_Name(Widgt => Master),
+           Interpreter => Tk_Interp(Widgt => Master));
    end Propagate;
 
    procedure Row_Configure
