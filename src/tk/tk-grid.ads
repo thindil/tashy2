@@ -262,7 +262,7 @@ package Tk.Grid is
    procedure Column_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
       Pre => Master /= Null_Widget and Length(Source => Child_Name) > 0 and
-      Options /= Column_Options'(others => <>),
+      Options /= Default_Column_Options,
       Test_Case => (Name => "Test_Column_Configure1", Mode => Nominal);
       -- ****
 
@@ -287,7 +287,7 @@ package Tk.Grid is
    procedure Column_Configure
      (Master, Child: Tk_Widget; Options: Column_Options) with
       Pre => Master /= Null_Widget and Child /= Null_Widget and
-      Options /= Column_Options'(others => <>),
+      Options /= Default_Column_Options,
       Test_Case => (Name => "Test_Column_Configure2", Mode => Nominal);
       -- ****
 
@@ -312,7 +312,7 @@ package Tk.Grid is
    procedure Column_Configure
      (Master: Tk_Widget; Column: Natural; Options: Column_Options) with
       Pre => Master /= Null_Widget and
-      Options /= Column_Options'(others => <>),
+      Options /= Default_Column_Options,
       Test_Case => (Name => "Test_Column_Configure3", Mode => Nominal);
       -- ****
 
@@ -356,7 +356,7 @@ package Tk.Grid is
       -- Grid.Configure_(many_widgets)
       -- SOURCE
    procedure Configure(Child: Tk_Widget; Options: Grid_Options) with
-      Pre => Child /= Null_Widget and Options /= Grid_Options'(others => <>),
+      Pre => Child /= Null_Widget and Options /= Default_Grid_Options,
       Test_Case => (Name => "Test_Configure1", Mode => Nominal);
       -- ****
 
@@ -377,7 +377,7 @@ package Tk.Grid is
       -- Grid.Configure_(single_widget)
       -- SOURCE
    procedure Configure(Widgets: Widgets_Array; Options: Grid_Options) with
-      Pre => Widgets'Length > 0 and Options /= Grid_Options'(others => <>),
+      Pre => Widgets'Length > 0 and Options /= Default_Grid_Options,
       Test_Case => (Name => "Test_Configure2", Mode => Nominal);
       -- ****
 
@@ -543,7 +543,7 @@ package Tk.Grid is
    procedure Row_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
       Pre => Master /= Null_Widget and Length(Source => Child_Name) > 0 and
-      Options /= Column_Options'(others => <>),
+      Options /= Default_Column_Options,
       Test_Case => (Name => "Test_Row_Configure1", Mode => Nominal);
       -- ****
 
@@ -568,7 +568,7 @@ package Tk.Grid is
    procedure Row_Configure
      (Master, Child: Tk_Widget; Options: Column_Options) with
       Pre => Master /= Null_Widget and Child /= Null_Widget and
-      Options /= Column_Options'(others => <>),
+      Options /= Default_Column_Options,
       Test_Case => (Name => "Test_Row_Configure2", Mode => Nominal);
       -- ****
 
@@ -593,7 +593,7 @@ package Tk.Grid is
    procedure Row_Configure
      (Master: Tk_Widget; Row: Natural; Options: Column_Options) with
       Pre => Master /= Null_Widget and
-      Options /= Column_Options'(others => <>),
+      Options /= Default_Column_Options,
       Test_Case => (Name => "Test_Row_Configure3", Mode => Nominal);
       -- ****
 
