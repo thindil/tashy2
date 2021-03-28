@@ -16,7 +16,7 @@ with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings;
 with Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
-with GNAT.String_Split; use GNAT.String_Split;
+with Tcl.Lists; use Tcl.Lists;
 
 package body Tk.Grid is
 
@@ -108,7 +108,7 @@ package body Tk.Grid is
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return Bbox_Array is
       Options: Unbounded_String := Null_Unbounded_String;
-      Tokens: Slice_Set;
+      Result_List: Array_List(1 .. 4);
    begin
       if Column > -1 then
          Append(Source => Options, New_Item => Extended_Natural'Image(Column));
@@ -141,17 +141,20 @@ package body Tk.Grid is
          end if;
          Append(Source => Options, New_Item => Extended_Natural'Image(Row2));
       end if;
-      Tcl_Eval
-        (Tcl_Script =>
-           "grid bbox " & Tk_Path_Name(Widgt => Master) &
-           To_String(Source => Options),
-         Interpreter => Tk_Interp(Widgt => Master));
-      Create(S => Tokens, From => Tcl_Get_Result, Separators => " ");
+      Result_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "grid bbox " & Tk_Path_Name(Widgt => Master) &
+                  To_String(Source => Options),
+                Interpreter => Tk_Interp(Widgt => Master)),
+           Interpreter => Tk_Interp(Widgt => Master));
       return Coords: Bbox_Array := Empty_Bbox_Array do
          Fill_BBox_Array_Loop :
-         for I in 1 .. 4 loop
+         for I in Result_List'Range loop
             Coords(I) :=
-              Natural'Value(Slice(S => Tokens, Index => Slice_Number(I)));
+              Natural'Value(To_Ada_String(Source => Result_List(I)));
          end loop Fill_BBox_Array_Loop;
       end return;
    end Bounding_Box;
@@ -391,21 +394,16 @@ package body Tk.Grid is
          Result: constant String :=
            Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Child));
          function Pad_Array_Value(Value: String) return Pad_Array is
-            Tokens: Slice_Set;
+            Result_List: constant Array_List :=
+              Split_List
+                (List => Value, Interpreter => Tk_Interp(Widgt => Child));
          begin
-            if Value(Value'First) = '{' then
-               Create
-                 (S => Tokens,
-                  From => Value(Value'First + 1 .. Value'Last - 1),
-                  Separators => " ");
-            else
-               Create(S => Tokens, From => Value, Separators => " ");
-            end if;
             return Result_Pad: Pad_Array := Default_Pad_Array do
                Set_Pad_Array_Loop :
-               for I in 1 .. Slice_Count(S => Tokens) loop
-                  Result_Pad(Positive(I)) :=
-                    Pixel_Data_Value(Value => Slice(S => Tokens, Index => 1));
+               for Pad_Value of Result_Pad loop
+                  Pad_Value :=
+                    Pixel_Data_Value
+                      (Value => To_Ada_String(Source => Result_List(1)));
                end loop Set_Pad_Array_Loop;
             end return;
          end Pad_Array_Value;
@@ -469,22 +467,22 @@ package body Tk.Grid is
 
    function Location
      (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array is
-      Tokens: Slice_Set;
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "grid location " & Tk_Path_Name(Widgt => Master) &
+                  Positive_Float'Image(X.Value) &
+                  To_Lower(Item => Pixel_Unit'Image(X.Value_Unit)) &
+                  Positive_Float'Image(Y.Value) &
+                  To_Lower(Item => Pixel_Unit'Image(Y.Value_Unit)),
+                Interpreter => Tk_Interp(Widgt => Master)),
+           Interpreter => Tk_Interp(Widgt => Master));
    begin
-      Tcl_Eval
-        (Tcl_Script =>
-           "grid location " & Tk_Path_Name(Widgt => Master) &
-           Positive_Float'Image(X.Value) &
-           To_Lower(Item => Pixel_Unit'Image(X.Value_Unit)) &
-           Positive_Float'Image(Y.Value) &
-           To_Lower(Item => Pixel_Unit'Image(Y.Value_Unit)),
-         Interpreter => Tk_Interp(Widgt => Master));
-      Create
-        (S => Tokens,
-         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Master)),
-         Separators => " ");
-      return (1 => Extended_Natural'Value(Slice(S => Tokens, Index => 1)),
-         2 => Extended_Natural'Value(Slice(S => Tokens, Index => 2)));
+      return
+        (1 => Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
+         2 => Extended_Natural'Value(To_Ada_String(Source => Result_List(2))));
    end Location;
 
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) is
@@ -575,23 +573,22 @@ package body Tk.Grid is
    end Remove;
 
    function Size(Master: Tk_Widget) return Result_Array is
-      Tokens: Slice_Set;
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "grid size " & Tk_Path_Name(Widgt => Master),
+                Interpreter => Tk_Interp(Widgt => Master)),
+           Interpreter => Tk_Interp(Widgt => Master));
    begin
-      Tcl_Eval
-        (Tcl_Script => "grid size " & Tk_Path_Name(Widgt => Master),
-         Interpreter => Tk_Interp(Widgt => Master));
-      Create
-        (S => Tokens,
-         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Master)),
-         Separators => " ");
-      return (1 => Extended_Natural'Value(Slice(S => Tokens, Index => 1)),
-         2 => Extended_Natural'Value(Slice(S => Tokens, Index => 2)));
+      return
+        (1 => Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
+         2 => Extended_Natural'Value(To_Ada_String(Source => Result_List(2))));
    end Size;
 
    function Slaves
      (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
       return Widgets_Array is
-      Tokens: Slice_Set;
       Options: Unbounded_String := Null_Unbounded_String;
    begin
       if Row > -1 then
@@ -604,26 +601,30 @@ package body Tk.Grid is
            (Source => Options,
             New_Item => " -column" & Extended_Natural'Image(Column));
       end if;
-      Tcl_Eval
-        (Tcl_Script =>
-           "grid slaves " & Tk_Path_Name(Widgt => Master) &
-           To_String(Source => Options),
-         Interpreter => Tk_Interp(Widgt => Master));
-      Create
-        (S => Tokens,
-         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Master)),
-         Separators => " ");
-      return
-        Widgets: Widgets_Array(1 .. Natural(Slice_Count(S => Tokens))) :=
-          (others => Null_Widget) do
-         Fill_Result_Array_Loop :
-         for I in 1 .. Slice_Count(S => Tokens) loop
-            Widgets(Positive(I)) :=
-              Get_Widget
-                (Path_Name => Slice(S => Tokens, Index => I),
-                 Interpreter => Tk_Interp(Widgt => Master));
-         end loop Fill_Result_Array_Loop;
-      end return;
+      Return_Block :
+      declare
+         Result_List: constant Array_List :=
+           Split_List
+             (List =>
+                Tcl_Eval
+                  (Tcl_Script =>
+                     "grid slaves " & Tk_Path_Name(Widgt => Master) &
+                     To_String(Source => Options),
+                   Interpreter => Tk_Interp(Widgt => Master)),
+              Interpreter => Tk_Interp(Widgt => Master));
+      begin
+         return
+           Widgets: Widgets_Array(1 .. Result_List'Last) :=
+             (others => Null_Widget) do
+            Fill_Result_Array_Loop :
+            for I in 1 .. Result_List'Last loop
+               Widgets(I) :=
+                 Get_Widget
+                   (Path_Name => To_Ada_String(Source => Result_List(I)),
+                    Interpreter => Tk_Interp(Widgt => Master));
+            end loop Fill_Result_Array_Loop;
+         end return;
+      end Return_Block;
    end Slaves;
 
 end Tk.Grid;
