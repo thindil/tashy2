@@ -747,7 +747,7 @@ package body Tk.Grid.Test_Data.Tests is
       Add(Button);
       Forget(Button);
       Assert
-        (Slaves(Get_Main_Window)(1) = Null_Widget,
+        (Slaves(Get_Main_Window)'Length = 0,
          "Failed to forget widget in grid.");
       Destroy(Button);
 
@@ -805,7 +805,7 @@ package body Tk.Grid.Test_Data.Tests is
       Add((Button1, Button2));
       Forget((Button1, Button2));
       Assert
-        (Slaves(Get_Main_Window)(1) = Null_Widget,
+        (Slaves(Get_Main_Window)'Length = 0,
          "Failed to forget widgets in grid.");
       Destroy(Button1);
       Destroy(Button2);
@@ -1348,7 +1348,7 @@ package body Tk.Grid.Test_Data.Tests is
       Add(Button);
       Remove(Button);
       Assert
-        (Slaves(Get_Main_Window)(1) = Null_Widget,
+        (Slaves(Get_Main_Window)'Length = 0,
          "Failed to remove widget in grid.");
       Destroy(Button);
 
@@ -1406,7 +1406,7 @@ package body Tk.Grid.Test_Data.Tests is
       Add((Button1, Button2));
       Remove((Button1, Button2));
       Assert
-        (Slaves(Get_Main_Window)(1) = Null_Widget,
+        (Slaves(Get_Main_Window)'Length = 0,
          "Failed to remove widgets in grid.");
       Destroy(Button1);
       Destroy(Button2);
