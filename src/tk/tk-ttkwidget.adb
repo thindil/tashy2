@@ -14,8 +14,8 @@
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings;
-with GNAT.String_Split; use GNAT.String_Split;
-with Tcl.Lists;
+-- with GNAT.String_Split; use GNAT.String_Split;
+with Tcl.Lists; use Tcl.Lists;
 
 package body Tk.TtkWidget is
 
@@ -170,8 +170,6 @@ package body Tk.TtkWidget is
         (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
       Get_Options_Block :
       declare
-         use Tcl.Lists;
-
          Options_Array: constant Array_List :=
            Split_List
              (List =>
@@ -222,21 +220,26 @@ package body Tk.TtkWidget is
 
    function Option_Value
      (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Array is
-      Tokens: Slice_Set;
    begin
       Execute_Widget_Command
         (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
-      Create
-        (S => Tokens,
-         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)),
-         Separators => " ");
-      return Padding: Padding_Array := Empty_Padding_Array do
-         Fill_Return_Value_Loop :
-         for I in 1 .. Slice_Count(S => Tokens) loop
-            Padding(Positive(I)) :=
-              Pixel_Data_Value(Value => Slice(S => Tokens, Index => I));
-         end loop Fill_Return_Value_Loop;
-      end return;
+      Return_Value_Block :
+      declare
+         Result_List: constant Array_List :=
+           Split_List
+             (List =>
+                Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)),
+              Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
+      begin
+         return Padding: Padding_Array := Empty_Padding_Array do
+            Fill_Return_Value_Loop :
+            for I in 1 .. Result_List'Last loop
+               Padding(I) :=
+                 Pixel_Data_Value
+                   (Value => To_Ada_String(Source => Result_List(I)));
+            end loop Fill_Return_Value_Loop;
+         end return;
+      end Return_Value_Block;
    end Option_Value;
 
    function In_State
@@ -281,22 +284,26 @@ package body Tk.TtkWidget is
    end State;
 
    function State(Ttk_Widgt: Ttk_Widget) return Ttk_State_Array is
-      Tokens: Slice_Set;
    begin
       Execute_Widget_Command(Widgt => Ttk_Widgt, Command_Name => "state");
-      Create
-        (S => Tokens,
-         From => Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)),
-         Separators => " ");
-      return
-        States: Ttk_State_Array(1 .. Natural(Slice_Count(S => Tokens))) :=
-          (others => Default_Ttk_State) do
-         Fill_Return_Value_Loop :
-         for I in 1 .. Slice_Count(S => Tokens) loop
-            States(Positive(I)) :=
-              Ttk_State_Type'Value(Slice(S => Tokens, Index => I));
-         end loop Fill_Return_Value_Loop;
-      end return;
+      Return_Value_Block :
+      declare
+         Result_List: constant Array_List :=
+           Split_List
+             (List =>
+                Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)),
+              Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
+      begin
+         return
+           States: Ttk_State_Array(1 .. Result_List'Last) :=
+             (others => Default_Ttk_State) do
+            Fill_Return_Value_Loop :
+            for I in 1 .. Result_List'Last loop
+               States(I) :=
+                 Ttk_State_Type'Value(To_Ada_String(Source => Result_List(I)));
+            end loop Fill_Return_Value_Loop;
+         end return;
+      end Return_Value_Block;
    end State;
 
 end Tk.TtkWidget;
