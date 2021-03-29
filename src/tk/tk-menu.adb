@@ -125,17 +125,11 @@ package body Tk.Menu is
    procedure Activate
      (Menu_Widget: Tk_Menu; Menu_Index: Natural; Is_Index: Boolean := True) is
    begin
-      if Is_Index then
-         Execute_Widget_Command
-           (Widgt => Menu_Widget, Command_Name => "activate",
-            Options =>
-              Trim(Source => Natural'Image(Menu_Index), Side => Left));
-      else
-         Execute_Widget_Command
-           (Widgt => Menu_Widget, Command_Name => "activate",
-            Options =>
-              "@" & Trim(Source => Natural'Image(Menu_Index), Side => Left));
-      end if;
+      Execute_Widget_Command
+        (Widgt => Menu_Widget, Command_Name => "activate",
+         Options =>
+           (if Is_Index then "" else "@") &
+           Trim(Source => Natural'Image(Menu_Index), Side => Left));
    end Activate;
 
    procedure Activate(Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes) is
@@ -299,17 +293,12 @@ package body Tk.Menu is
      (Menu_Widget: Tk_Menu; New_Path_Name: String;
       Menu_Type: Menu_Types := NONE) return Tk_Menu is
    begin
-      if Menu_Type = NONE then
-         Execute_Widget_Command
-           (Widgt => Menu_Widget, Command_Name => "clone",
-            Options => New_Path_Name);
-      else
-         Execute_Widget_Command
-           (Widgt => Menu_Widget, Command_Name => "clone",
-            Options =>
-              New_Path_Name & " " &
-              To_Lower(Item => Menu_Types'Image(Menu_Type)));
-      end if;
+      Execute_Widget_Command
+        (Widgt => Menu_Widget, Command_Name => "clone",
+         Options =>
+           New_Path_Name &
+           (if Menu_Type = NONE then ""
+            else To_Lower(Item => Menu_Types'Image(Menu_Type))));
       return Tk_Menu
           (Get_Widget
              (Path_Name => New_Path_Name,
@@ -346,33 +335,22 @@ package body Tk.Menu is
          else "@" &
            Trim(Source => Extended_Natural'Image(Index2), Side => Left));
    begin
-
-      if Index2 > -1 then
-         Execute_Widget_Command
-           (Widgt => Menu_Widget, Command_Name => "delete",
-            Options => New_Index1 & " " & New_Index2);
-      else
-         Execute_Widget_Command
-           (Widgt => Menu_Widget, Command_Name => "delete",
-            Options => New_Index1);
-      end if;
+      Execute_Widget_Command
+        (Widgt => Menu_Widget, Command_Name => "delete",
+         Options =>
+           New_Index1 & (if Index2 > -1 then " " & New_Index2 else ""));
    end Delete;
 
    procedure Delete
      (Menu_Widget: Tk_Menu; Index1: Menu_Item_Indexes;
       Index2: Menu_Item_Indexes := NONE) is
    begin
-      if Index2 = NONE then
-         Execute_Widget_Command
-           (Widgt => Menu_Widget, Command_Name => "delete",
-            Options => To_Lower(Item => Menu_Item_Indexes'Image(Index1)));
-      else
-         Execute_Widget_Command
-           (Widgt => Menu_Widget, Command_Name => "delete",
-            Options =>
-              To_Lower(Item => Menu_Item_Indexes'Image(Index1)) & " " &
-              To_Lower(Item => Menu_Item_Indexes'Image(Index2)));
-      end if;
+      Execute_Widget_Command
+        (Widgt => Menu_Widget, Command_Name => "delete",
+         Options =>
+           To_Lower(Item => Menu_Item_Indexes'Image(Index1)) &
+           (if Index2 = NONE then ""
+            else " " & To_Lower(Item => Menu_Item_Indexes'Image(Index2))));
    end Delete;
 
    function Entry_Get_Options
@@ -567,8 +545,7 @@ package body Tk.Menu is
          return -1;
       end if;
       return Extended_Natural
-          (Integer'
-             (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
+          (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)));
    end Index;
 
    function Index
@@ -583,8 +560,7 @@ package body Tk.Menu is
          return -1;
       end if;
       return Extended_Natural
-          (Integer'
-             (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
+          (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)));
    end Index;
 
    function Index
@@ -599,8 +575,7 @@ package body Tk.Menu is
          return -1;
       end if;
       return Extended_Natural
-          (Integer'
-             (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget))));
+          (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)));
    end Index;
 
    procedure Insert
