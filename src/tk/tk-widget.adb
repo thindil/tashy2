@@ -98,24 +98,6 @@ package body Tk.Widget is
       return Value(Item => Get_Path_Name(Tk_Win => Widgt));
    end Tk_Path_Name;
 
-   function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter is
-      function Tk_Interpreter(Tk_Win: Tk_Widget) return Tcl_Interpreter with
-         Import => True,
-         Convention => C,
-         External_Name => "Tk_Interp";
-   begin
-      return Tk_Interpreter(Tk_Win => Widgt);
-   end Tk_Interp;
-
-   function Tk_Window_Id(Widgt: Tk_Widget) return Tk_Window is
-      function Tk_Window_Id_C(Tk_Win: Tk_Widget) return Tk_Window with
-         Import => True,
-         Convention => C,
-         External_Name => "Get_Window_Id";
-   begin
-      return Tk_Window_Id_C(Tk_Win => Widgt);
-   end Tk_Window_Id;
-
    procedure Option_Image
      (Name: String; Value: Tcl_String;
       Options_String: in out Unbounded_String) is
