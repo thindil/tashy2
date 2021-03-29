@@ -197,7 +197,11 @@ package Tk.Grid is
       -- COMMANDS
       -- grid anchor master
       -- SOURCE
-   function Anchor(Master: Tk_Widget) return Directions_Type with
+   function Anchor(Master: Tk_Widget) return Directions_Type is
+     (Directions_Type'Value
+        (Tcl_Eval
+           (Tcl_Script => "grid anchor " & Tk_Path_Name(Widgt => Master),
+            Interpreter => Tk_Interp(Widgt => Master)))) with
       Pre => Master /= Null_Widget,
       Test_Case => (Name => "Test_Anchor2", Mode => Nominal);
       -- ****
@@ -311,8 +315,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Column_Configure
      (Master: Tk_Widget; Column: Natural; Options: Column_Options) with
-      Pre => Master /= Null_Widget and
-      Options /= Default_Column_Options,
+      Pre => Master /= Null_Widget and Options /= Default_Column_Options,
       Test_Case => (Name => "Test_Column_Configure3", Mode => Nominal);
       -- ****
 
@@ -517,7 +520,10 @@ package Tk.Grid is
       -- COMMANDS
       -- grid propagate master
       -- SOURCE
-   function Propagate(Master: Tk_Widget) return Boolean with
+   function Propagate(Master: Tk_Widget) return Boolean is
+     (Tcl_Eval
+        (Tcl_Script => "grid propagate " & Tk_Path_Name(Widgt => Master),
+         Interpreter => Tk_Interp(Widgt => Master))) with
       Pre => Master /= Null_Widget,
       Test_Case => (Name => "Test_Propagate2", Mode => Nominal);
       -- ****
@@ -592,8 +598,7 @@ package Tk.Grid is
       -- SOURCE
    procedure Row_Configure
      (Master: Tk_Widget; Row: Natural; Options: Column_Options) with
-      Pre => Master /= Null_Widget and
-      Options /= Default_Column_Options,
+      Pre => Master /= Null_Widget and Options /= Default_Column_Options,
       Test_Case => (Name => "Test_Row_Configure3", Mode => Nominal);
       -- ****
 
