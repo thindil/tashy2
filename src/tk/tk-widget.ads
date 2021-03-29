@@ -418,7 +418,10 @@ package Tk.Widget is
    -- SOURCE
    function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter with
       Pre => Widgt /= Null_Widget,
-      Test_Case => (Name => "Test_Tk_Interp", Mode => Nominal);
+      Test_Case => (Name => "Test_Tk_Interp", Mode => Nominal),
+      Import => True,
+      Convention => C,
+      External_Name => "Tk_Interp";
       -- ****
 
       -- ****f* Widget/Widget.Tk_Window_Id
@@ -436,7 +439,10 @@ package Tk.Widget is
       -- SOURCE
    function Tk_Window_Id(Widgt: Tk_Widget) return Tk_Window with
       Pre => Widgt /= Null_Widget,
-      Test_Case => (Name => "Test_Tk_Window_Id", Mode => Nominal);
+      Test_Case => (Name => "Test_Tk_Window_Id", Mode => Nominal),
+      Import => True,
+      Convention => C,
+      External_Name => "Get_Window_Id";
 
       -- ****f* Widget/Widget.Option_Image
       -- FUNCTION
