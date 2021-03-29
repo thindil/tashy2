@@ -96,14 +96,6 @@ package body Tk.Grid is
          Interpreter => Tk_Interp(Widgt => Master));
    end Anchor;
 
-   function Anchor(Master: Tk_Widget) return Directions_Type is
-   begin
-      return Directions_Type'Value
-          (Tcl_Eval
-             (Tcl_Script => "grid anchor " & Tk_Path_Name(Widgt => Master),
-              Interpreter => Tk_Interp(Widgt => Master)));
-   end Anchor;
-
    function Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return Bbox_Array is
@@ -492,13 +484,6 @@ package body Tk.Grid is
            "grid propagate " & Tk_Path_Name(Widgt => Master) & " " &
            To_Lower(Item => Boolean'Image(Enable)),
          Interpreter => Tk_Interp(Widgt => Master));
-   end Propagate;
-
-   function Propagate(Master: Tk_Widget) return Boolean is
-   begin
-      return Tcl_Eval
-          (Tcl_Script => "grid propagate " & Tk_Path_Name(Widgt => Master),
-           Interpreter => Tk_Interp(Widgt => Master));
    end Propagate;
 
    procedure Row_Configure
