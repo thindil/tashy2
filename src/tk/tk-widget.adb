@@ -457,4 +457,14 @@ package body Tk.Widget is
          Interpreter => Tk_Interp(Widgt => Widgt));
    end Execute_Widget_Command;
 
+   function Execute_Widget_Command
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+      return String is
+   begin
+      return Tcl_Eval
+          (Tcl_Script =>
+             Tk_Path_Name(Widgt => Widgt) & " " & Command_Name & " " & Options,
+           Interpreter => Tk_Interp(Widgt => Widgt));
+   end Execute_Widget_Command;
+
 end Tk.Widget;

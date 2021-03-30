@@ -654,26 +654,54 @@ package Tk.Widget is
    -- Miscellaneous
    ----------------
 
-   -- ****f* Widget/Widget.Execute_Widget_Command
-   -- FUNCTION
-   -- Execute the selected command on the selected widget. Generally the
-   -- function shouldn't be used, use it only when the selected Tk widget
-   -- command isn't implemented. If you want to get result of the command,
-   -- use Tcl_GetStringResult function.
-   -- PARAMETERS
-   -- Widget       - Tk widget on which the command will be executed
-   -- Command_Name - Tk command which will be executed
-   -- Options      - Option for the selected Tk command
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- EXAMPLE
-   -- -- Set text on My_Button to click me
-   -- Execute_Widget_Command(My_Button, "text", "{click me}");
-   -- SOURCE
+      -- ****f* Widget/Widget.Execute_Widget_Command_(procedure)
+      -- FUNCTION
+      -- Execute the selected command on the selected widget. Generally the
+      -- function shouldn't be used, use it only when the selected Tk widget
+      -- command isn't implemented. If you want to get result of the command,
+      -- use Tcl_GetStringResult function.
+      -- PARAMETERS
+      -- Widget       - Tk widget on which the command will be executed
+      -- Command_Name - Tk command which will be executed
+      -- Options      - Option for the selected Tk command
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set text on My_Button to click me
+      -- Execute_Widget_Command(My_Button, "text", "{click me}");
+      -- SEE ALSO
+      -- Widget.Execute_Widget_Command_(function)
+      -- SOURCE
    procedure Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "") with
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command", Mode => Nominal);
+      -- ****
+
+      -- ****f* Widget/Widget.Execute_Widget_Command_(function)
+      -- FUNCTION
+      -- Execute the selected command on the selected widget and returns its
+      -- result as Ada Strings. Generally the function shouldn't be used,
+      -- use it only when the selected Tk widget command isn't implemented.
+      -- PARAMETERS
+      -- Widget       - Tk widget on which the command will be executed
+      -- Command_Name - Tk command which will be executed
+      -- Options      - Option for the selected Tk command
+      -- RESULT
+      -- Ada String with result of the executed Tk widget command
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the type of menu entry of My_Menu second entry
+      -- Menu_Entry_Type: constant String := Execute_Widget_Command(My_Menu, "type", "1");
+      -- SEE ALSO
+      -- Widget.Execute_Widget_Command_(procedure)
+      -- SOURCE
+   function Execute_Widget_Command
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+      return String with
+      Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
+      Test_Case => (Name => "Test_Execute_Widget_Command2", Mode => Nominal);
       -- ****
       --## rule off REDUCEABLE_SCOPE
 
