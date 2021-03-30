@@ -137,109 +137,89 @@ package body Tk.TtkWidget is
 
    function Option_Value
      (Ttk_Widgt: Ttk_Widget; Name: String) return Compound_Type is
+      Result: constant String :=
+        Execute_Widget_Command
+          (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
    begin
-      Execute_Widget_Command
-        (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
-      Return_Value_Block :
-      declare
-         Result: constant String :=
-           Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
-      begin
-         if Result'Length = 0 then
-            return EMPTY;
-         else
-            return Compound_Type'Value(Result);
-         end if;
-      end Return_Value_Block;
+      if Result'Length = 0 then
+         return EMPTY;
+      end if;
+      return Compound_Type'Value(Result);
    end Option_Value;
 
    function Option_Value
      (Ttk_Widgt: Ttk_Widget; Name: String) return Disabled_State_Type is
    begin
-      Execute_Widget_Command
-        (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
       return Disabled_State_Type'Value
-          (Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)));
+          (Execute_Widget_Command
+             (Widgt => Ttk_Widgt, Command_Name => "cget",
+              Options => "-" & Name));
    end Option_Value;
 
    function Option_Value
      (Ttk_Widgt: Ttk_Widget; Name: String) return Ttk_Image_Option is
       Options: Ttk_Image_Option := Default_Ttk_Image_Option;
+      Options_Array: constant Array_List :=
+        Split_List
+          (List =>
+             Execute_Widget_Command
+               (Widgt => Ttk_Widgt, Command_Name => "cget",
+                Options => "-" & Name),
+           Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
+      Index: Positive := 2;
    begin
-      Execute_Widget_Command
-        (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
-      Get_Options_Block :
-      declare
-         Options_Array: constant Array_List :=
-           Split_List
-             (List =>
-                Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)),
-              Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
-         Index: Positive := 2;
-      begin
-         if Options_Array'Length < 1 then
-            return Options;
+      if Options_Array'Length < 1 then
+         return Options;
+      end if;
+      Options.Default :=
+        To_Tcl_String(Source => To_String(Source => Options_Array(1)));
+      Set_Options_Loop :
+      while Index <= Options_Array'Length loop
+         if Options_Array(Index) = To_Tcl_String(Source => "active") then
+            Options.Active := Options_Array(Index + 1);
+         elsif Options_Array(Index) = To_Tcl_String(Source => "disabled") then
+            Options.Disabled := Options_Array(Index + 1);
+         elsif Options_Array(Index) = To_Tcl_String(Source => "focus") then
+            Options.Focus := Options_Array(Index + 1);
+         elsif Options_Array(Index) = To_Tcl_String(Source => "pressed") then
+            Options.Pressed := Options_Array(Index + 1);
+         elsif Options_Array(Index) = To_Tcl_String(Source => "selected") then
+            Options.Selected := Options_Array(Index + 1);
+         elsif Options_Array(Index) =
+           To_Tcl_String(Source => "background") then
+            Options.Background := Options_Array(Index + 1);
+         elsif Options_Array(Index) = To_Tcl_String(Source => "readonly") then
+            Options.Readonly := Options_Array(Index + 1);
+         elsif Options_Array(Index) = To_Tcl_String(Source => "alternate") then
+            Options.Alternate := Options_Array(Index + 1);
+         elsif Options_Array(Index) = To_Tcl_String(Source => "invalid") then
+            Options.Invalid := Options_Array(Index + 1);
+         elsif Options_Array(Index) = To_Tcl_String(Source => "hover") then
+            Options.Hover := Options_Array(Index + 1);
          end if;
-         Options.Default :=
-           To_Tcl_String(Source => To_String(Source => Options_Array(1)));
-         Set_Options_Loop :
-         while Index <= Options_Array'Length loop
-            if Options_Array(Index) = To_Tcl_String(Source => "active") then
-               Options.Active := Options_Array(Index + 1);
-            elsif Options_Array(Index) =
-              To_Tcl_String(Source => "disabled") then
-               Options.Disabled := Options_Array(Index + 1);
-            elsif Options_Array(Index) = To_Tcl_String(Source => "focus") then
-               Options.Focus := Options_Array(Index + 1);
-            elsif Options_Array(Index) =
-              To_Tcl_String(Source => "pressed") then
-               Options.Pressed := Options_Array(Index + 1);
-            elsif Options_Array(Index) =
-              To_Tcl_String(Source => "selected") then
-               Options.Selected := Options_Array(Index + 1);
-            elsif Options_Array(Index) =
-              To_Tcl_String(Source => "background") then
-               Options.Background := Options_Array(Index + 1);
-            elsif Options_Array(Index) =
-              To_Tcl_String(Source => "readonly") then
-               Options.Readonly := Options_Array(Index + 1);
-            elsif Options_Array(Index) =
-              To_Tcl_String(Source => "alternate") then
-               Options.Alternate := Options_Array(Index + 1);
-            elsif Options_Array(Index) =
-              To_Tcl_String(Source => "invalid") then
-               Options.Invalid := Options_Array(Index + 1);
-            elsif Options_Array(Index) = To_Tcl_String(Source => "hover") then
-               Options.Hover := Options_Array(Index + 1);
-            end if;
-            Index := Index + 2;
-         end loop Set_Options_Loop;
-      end Get_Options_Block;
+         Index := Index + 2;
+      end loop Set_Options_Loop;
       return Options;
    end Option_Value;
 
    function Option_Value
      (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Array is
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Execute_Widget_Command
+               (Widgt => Ttk_Widgt, Command_Name => "cget",
+                Options => "-" & Name),
+           Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
    begin
-      Execute_Widget_Command
-        (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
-      Return_Value_Block :
-      declare
-         Result_List: constant Array_List :=
-           Split_List
-             (List =>
-                Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)),
-              Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
-      begin
-         return Padding: Padding_Array := Empty_Padding_Array do
-            Fill_Return_Value_Loop :
-            for I in 1 .. Result_List'Last loop
-               Padding(I) :=
-                 Pixel_Data_Value
-                   (Value => To_Ada_String(Source => Result_List(I)));
-            end loop Fill_Return_Value_Loop;
-         end return;
-      end Return_Value_Block;
+      return Padding: Padding_Array := Empty_Padding_Array do
+         Fill_Return_Value_Loop :
+         for I in 1 .. Result_List'Last loop
+            Padding(I) :=
+              Pixel_Data_Value
+                (Value => To_Ada_String(Source => Result_List(I)));
+         end loop Fill_Return_Value_Loop;
+      end return;
    end Option_Value;
 
    function In_State
@@ -284,26 +264,22 @@ package body Tk.TtkWidget is
    end State;
 
    function State(Ttk_Widgt: Ttk_Widget) return Ttk_State_Array is
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Execute_Widget_Command
+               (Widgt => Ttk_Widgt, Command_Name => "state"),
+           Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
    begin
-      Execute_Widget_Command(Widgt => Ttk_Widgt, Command_Name => "state");
-      Return_Value_Block :
-      declare
-         Result_List: constant Array_List :=
-           Split_List
-             (List =>
-                Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)),
-              Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
-      begin
-         return
-           States: Ttk_State_Array(1 .. Result_List'Last) :=
-             (others => Default_Ttk_State) do
-            Fill_Return_Value_Loop :
-            for I in 1 .. Result_List'Last loop
-               States(I) :=
-                 Ttk_State_Type'Value(To_Ada_String(Source => Result_List(I)));
-            end loop Fill_Return_Value_Loop;
-         end return;
-      end Return_Value_Block;
+      return
+        States: Ttk_State_Array(1 .. Result_List'Last) :=
+          (others => Default_Ttk_State) do
+         Fill_Return_Value_Loop :
+         for I in 1 .. Result_List'Last loop
+            States(I) :=
+              Ttk_State_Type'Value(To_Ada_String(Source => Result_List(I)));
+         end loop Fill_Return_Value_Loop;
+      end return;
    end State;
 
 end Tk.TtkWidget;

@@ -370,10 +370,11 @@ package body Tk.Menu is
       function Item_Value(Name: String) return Tcl_String is
       begin
          return To_Tcl_String
-             (Execute_Widget_Command
-                (Widgt => Menu_Widget, Command_Name => "entrycget",
-                 Options =>
-                   To_Ada_String(Source => Menu_Index) & " -" & Name));
+             (Source =>
+                Execute_Widget_Command
+                  (Widgt => Menu_Widget, Command_Name => "entrycget",
+                   Options =>
+                     To_Ada_String(Source => Menu_Index) & " -" & Name));
       end Item_Value;
       function Item_Value(Name: String) return Extended_Boolean is
       begin
