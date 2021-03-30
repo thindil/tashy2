@@ -108,7 +108,11 @@ package Tk.Widget.Test_Data.Tests is
 
    procedure Test_Execute_Widget_Command_7643c6_2f4d36
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:673:4:Execute_Widget_Command:Test_Execute_Widget_Command
+   --  tk-widget.ads:675:4:Execute_Widget_Command:Test_Execute_Widget_Command
+
+   procedure Test_Execute_Widget_Command_fc11cd_9808c7
+     (Gnattest_T: in out Test);
+   --  tk-widget.ads:700:4:Execute_Widget_Command:Test_Execute_Widget_Command2
 
 end Tk.Widget.Test_Data.Tests;
 --  end read only
