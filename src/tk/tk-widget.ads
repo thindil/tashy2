@@ -703,6 +703,59 @@ package Tk.Widget is
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command2", Mode => Nominal);
       -- ****
+
+      -- ****g* Widget/Widget.Generic_Scalar_Execute_Widget_Command
+      -- FUNCTION
+      -- Generic function to execute Tk widget command and return its result
+      -- as as scalar type
+      -- PARAMETERS
+      -- Widget       - Tk widget on which the command will be executed
+      -- Command_Name - Tk command which will be executed
+      -- Options      - Option for the selected Tk command
+      -- RESULT
+      -- Scalar type with the result of the Tk widget command
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Execute Tk widget command and get its result as Integer
+      -- Integer_Execute is new Generic_Scalar_Execute_Widget_Command(Integer);
+      -- Result: constant Integer := Integer_Execute(My_Grid, "slaves");
+      -- SEE ALSO
+      -- Widget.Generic_Float_Execute_Widget_Command;
+      -- SOURCE
+   generic
+      type Result_Type is (<>);
+   function Generic_Scalar_Execute_Widget_Command
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+      return Result_Type;
+      -- ****
+
+      -- ****g* Widget/Widget.Generic_Float_Execute_Widget_Command
+      -- FUNCTION
+      -- Generic function to execute Tk widget command and return its result
+      -- as as float type
+      -- PARAMETERS
+      -- Widget       - Tk widget on which the command will be executed
+      -- Command_Name - Tk command which will be executed
+      -- Options      - Option for the selected Tk command
+      -- RESULT
+      -- Float type with the result of the Tk widget command
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Execute Tk widget command and get its result as Float
+      -- Float_Execute is new Generic_Float_Execute_Widget_Command(Float);
+      -- Result: constant Float := Float_Execute(My_Grid, "slaves", "-row 0");
+      -- SEE ALSO
+      -- Widget.Generic_Scalar_Execute_Widget_Command;
+      -- SOURCE
+   generic
+      type Result_Type is digits <>;
+   function Generic_Float_Execute_Widget_Command
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+      return Result_Type;
+      -- ****
+
       --## rule off REDUCEABLE_SCOPE
 
 end Tk.Widget;
