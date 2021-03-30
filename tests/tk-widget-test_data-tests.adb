@@ -2094,13 +2094,13 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Execute_Widget_Command_test_execute_widget_command
+   procedure Test_1_Execute_Widget_Command_test_execute_widget_command
      (Gnattest_T: in out Test);
    procedure Test_Execute_Widget_Command_7643c6_2f4d36
      (Gnattest_T: in out Test) renames
-     Test_Execute_Widget_Command_test_execute_widget_command;
+     Test_1_Execute_Widget_Command_test_execute_widget_command;
 --  id:2.2/7643c6ae56a5b360/Execute_Widget_Command/1/0/test_execute_widget_command/
-   procedure Test_Execute_Widget_Command_test_execute_widget_command
+   procedure Test_1_Execute_Widget_Command_test_execute_widget_command
      (Gnattest_T: in out Test) is
       procedure Execute_Widget_Command
         (Widgt: Tk_Widget; Command_Name: String; Options: String := "") renames
@@ -2126,7 +2126,77 @@ package body Tk.Widget.Test_Data.Tests is
       Destroy(Button);
 
 --  begin read only
-   end Test_Execute_Widget_Command_test_execute_widget_command;
+   end Test_1_Execute_Widget_Command_test_execute_widget_command;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Execute_Widget_Command_fc11cd_9808c7
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+      return String is
+   begin
+      begin
+         pragma Assert(Widgt /= Null_Widget and Command_Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Execute_Widget_Command2 test requirement violated");
+      end;
+      declare
+         Test_Execute_Widget_Command_fc11cd_9808c7_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Widget
+             .Execute_Widget_Command
+             (Widgt, Command_Name, Options);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-widget.ads:0:):Test_Execute_Widget_Command2 test commitment violated");
+         end;
+         return Test_Execute_Widget_Command_fc11cd_9808c7_Result;
+      end;
+   end Wrap_Test_Execute_Widget_Command_fc11cd_9808c7;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Execute_Widget_Command_test_execute_widget_command2
+     (Gnattest_T: in out Test);
+   procedure Test_Execute_Widget_Command_fc11cd_9808c7
+     (Gnattest_T: in out Test) renames
+     Test_2_Execute_Widget_Command_test_execute_widget_command2;
+--  id:2.2/fc11cdf946a86007/Execute_Widget_Command/0/0/test_execute_widget_command2/
+   procedure Test_2_Execute_Widget_Command_test_execute_widget_command2
+     (Gnattest_T: in out Test) is
+      function Execute_Widget_Command
+        (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+         return String renames
+        Wrap_Test_Execute_Widget_Command_fc11cd_9808c7;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Button_Options'(Text => To_Tcl_String("NewQuit"), others => <>));
+      Assert
+        (Execute_Widget_Command(Button, "cget", "-text") = "NewQuit",
+         "Failed to execute and get result of Tcl command on the selected Tk_Widget.");
+      Destroy(Button);
+
+--  begin read only
+   end Test_2_Execute_Widget_Command_test_execute_widget_command2;
 --  end read only
 
 --  begin read only
