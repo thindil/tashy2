@@ -191,6 +191,13 @@ if {[lindex $argv 0] == "auto"} {
    exit
 }
 
+# Auto configure headless version of the library (only Tcl)
+if {[lindex $argv 0] == "headless"} {
+   set buildoption "tcl"
+   Save
+   exit
+}
+
 # Create GUI
 proc SaveGUI {} {
    global tashvar library_switches tcl_version tk_version
