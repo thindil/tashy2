@@ -367,6 +367,7 @@ package body Tk.Menu is
    function Entry_Get_Options
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Menu_Item_Options is
       Item_Type: Menu_Item_Types := Default_Menu_Item;
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Menu_Widget);
       function Item_Value(Name: String) return Tcl_String is
       begin
          return To_Tcl_String
@@ -381,7 +382,7 @@ package body Tk.Menu is
          Execute_Widget_Command
            (Widgt => Menu_Widget, Command_Name => "entrycget",
             Options => To_Ada_String(Source => Menu_Index) & " -" & Name);
-         if Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)) = 1 then
+         if Get_Result(Interpreter => Interpreter) = 1 then
             return TRUE;
          end if;
          return FALSE;
@@ -392,8 +393,7 @@ package body Tk.Menu is
            (Widgt => Menu_Widget, Command_Name => "type",
             Options => To_Ada_String(Source => Menu_Index));
          Item_Type :=
-           Menu_Item_Types'Value
-             (Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)));
+           Menu_Item_Types'Value(Tcl_Get_Result(Interpreter => Interpreter));
          Options.Active_Background := Item_Value(Name => "activebackground");
          Options.Active_Foreground := Item_Value(Name => "activeforeground");
          Options.Accelerator := Item_Value(Name => "accelerator");
@@ -432,7 +432,7 @@ package body Tk.Menu is
                         (Widgt => Menu_Widget, Command_Name => "entrycget",
                          Options =>
                            To_Ada_String(Source => Menu_Index) & " -menu"),
-                    Interpreter => Tk_Interp(Widgt => Menu_Widget));
+                    Interpreter => Interpreter);
             when CHECKBUTTON | RADIOBUTTON =>
                Options.Indicator_On := Item_Value(Name => "inditatoron");
                Options.Select_Color := Item_Value(Name => "selectcolor");
@@ -540,46 +540,43 @@ package body Tk.Menu is
 
    function Index
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Extended_Natural is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Menu_Widget);
    begin
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "index",
          Options => To_Ada_String(Source => Menu_Index));
-      if Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)) =
-        "none" then
+      if Tcl_Get_Result(Interpreter => Interpreter) = "none" then
          return -1;
       end if;
-      return Extended_Natural
-          (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)));
+      return Extended_Natural(Get_Result(Interpreter => Interpreter));
    end Index;
 
    function Index
      (Menu_Widget: Tk_Menu; Menu_Index: Natural) return Extended_Natural is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Menu_Widget);
    begin
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "index",
          Options =>
            "@" & Trim(Source => Natural'Image(Menu_Index), Side => Left));
-      if Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)) =
-        "none" then
+      if Tcl_Get_Result(Interpreter => Interpreter) = "none" then
          return -1;
       end if;
-      return Extended_Natural
-          (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)));
+      return Extended_Natural(Get_Result(Interpreter => Interpreter));
    end Index;
 
    function Index
      (Menu_Widget: Tk_Menu; Menu_Index: Menu_Item_Indexes)
       return Extended_Natural is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Menu_Widget);
    begin
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "index",
          Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)));
-      if Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)) =
-        "none" then
+      if Tcl_Get_Result(Interpreter => Interpreter) = "none" then
          return -1;
       end if;
-      return Extended_Natural
-          (Get_Result(Interpreter => Tk_Interp(Widgt => Menu_Widget)));
+      return Extended_Natural(Get_Result(Interpreter => Interpreter));
    end Index;
 
    procedure Insert
