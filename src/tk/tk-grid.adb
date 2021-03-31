@@ -101,6 +101,7 @@ package body Tk.Grid is
       return Bbox_Array is
       Options: Unbounded_String := Null_Unbounded_String;
       Result_List: Array_List(1 .. 4);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
    begin
       if Column > -1 then
          Append(Source => Options, New_Item => Extended_Natural'Image(Column));
@@ -140,8 +141,8 @@ package body Tk.Grid is
                (Tcl_Script =>
                   "grid bbox " & Tk_Path_Name(Widgt => Master) &
                   To_String(Source => Options),
-                Interpreter => Tk_Interp(Widgt => Master)),
-           Interpreter => Tk_Interp(Widgt => Master));
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
       return Coords: Bbox_Array := Empty_Bbox_Array do
          Fill_BBox_Array_Loop :
          for I in Result_List'Range loop
@@ -375,20 +376,19 @@ package body Tk.Grid is
          10 => To_Unbounded_String(Source => "-sticky"));
       Options: Grid_Options := Default_Grid_Options;
       Start_Index, End_Index: Positive := 1;
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Child);
    begin
       Tcl_Eval
         (Tcl_Script => "grid info " & Tk_Path_Name(Widgt => Child),
-         Interpreter => Tk_Interp(Widgt => Child));
+         Interpreter => Interpreter);
       Parse_Result_Block :
       declare
          use Ada.Strings.Fixed;
 
-         Result: constant String :=
-           Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Child));
+         Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
          function Pad_Array_Value(Value: String) return Pad_Array is
             Result_List: constant Array_List :=
-              Split_List
-                (List => Value, Interpreter => Tk_Interp(Widgt => Child));
+              Split_List(List => Value, Interpreter => Interpreter);
          begin
             return Result_Pad: Pad_Array := Default_Pad_Array do
                Set_Pad_Array_Loop :
@@ -421,7 +421,7 @@ package body Tk.Grid is
                   Options.In_Master :=
                     Get_Widget
                       (Path_Name => Result(Start_Index .. End_Index),
-                       Interpreter => Tk_Interp(Widgt => Child));
+                       Interpreter => Interpreter);
                when 2 =>
                   Options.Column :=
                     Extended_Natural'Value(Result(Start_Index .. End_Index));
@@ -459,6 +459,7 @@ package body Tk.Grid is
 
    function Location
      (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
       Result_List: constant Array_List :=
         Split_List
           (List =>
@@ -469,8 +470,8 @@ package body Tk.Grid is
                   To_Lower(Item => Pixel_Unit'Image(X.Value_Unit)) &
                   Positive_Float'Image(Y.Value) &
                   To_Lower(Item => Pixel_Unit'Image(Y.Value_Unit)),
-                Interpreter => Tk_Interp(Widgt => Master)),
-           Interpreter => Tk_Interp(Widgt => Master));
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
       return
         (1 => Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
@@ -558,13 +559,14 @@ package body Tk.Grid is
    end Remove;
 
    function Size(Master: Tk_Widget) return Result_Array is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
       Result_List: constant Array_List :=
         Split_List
           (List =>
              Tcl_Eval
                (Tcl_Script => "grid size " & Tk_Path_Name(Widgt => Master),
-                Interpreter => Tk_Interp(Widgt => Master)),
-           Interpreter => Tk_Interp(Widgt => Master));
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
       return
         (1 => Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
@@ -575,6 +577,7 @@ package body Tk.Grid is
      (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
       return Widgets_Array is
       Options: Unbounded_String := Null_Unbounded_String;
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
    begin
       if Row > -1 then
          Append
@@ -595,8 +598,8 @@ package body Tk.Grid is
                   (Tcl_Script =>
                      "grid slaves " & Tk_Path_Name(Widgt => Master) &
                      To_String(Source => Options),
-                   Interpreter => Tk_Interp(Widgt => Master)),
-              Interpreter => Tk_Interp(Widgt => Master));
+                   Interpreter => Interpreter),
+              Interpreter => Interpreter);
       begin
          return
            Widgets: Widgets_Array(1 .. Result_List'Last) :=
@@ -606,7 +609,7 @@ package body Tk.Grid is
                Widgets(I) :=
                  Get_Widget
                    (Path_Name => To_Ada_String(Source => Result_List(I)),
-                    Interpreter => Tk_Interp(Widgt => Master));
+                    Interpreter => Interpreter);
             end loop Fill_Result_Array_Loop;
          end return;
       end Return_Block;
