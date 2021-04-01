@@ -237,6 +237,7 @@ package Tk.Widget is
       Take_Focus: Tcl_String;
    end record;
    -- ****
+   --## rule on TYPE_INITIAL_VALUES
 
    -- ****t* Widget/Widget.Widgets_Array
    -- FUNCTION
@@ -247,7 +248,13 @@ package Tk.Widget is
    -- SOURCE
    type Widgets_Array is array(Positive range <>) of Tk_Widget;
    -- ****
-   --## rule on TYPE_INITIAL_VALUES
+
+   --****d* Widget/Empty_Widgets_Array
+   -- FUNCTION
+   -- Empty array of widgets constant
+   -- SOURCE
+   Empty_Widgets_Array: constant Widgets_Array(1 .. 0) := (others => <>);
+   -- ****
 
    -- ****t* Widget/Widget.Pad_Array
    -- FUNCTION
