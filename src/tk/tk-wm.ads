@@ -46,6 +46,8 @@ package Tk.Wm is
       end case;
    end record;
 
+   type Focus_Model_Types is (ACTIVE, PASSIVE);
+
    procedure Aspect
      (Window: Tk_Widget;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
@@ -56,27 +58,33 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Aspect2", Mode => Nominal);
 
-   function Get_Attributes(Window: Tk_Widget) return Window_Attributes_Data with
+   function Get_Attributes
+     (Window: Tk_Widget) return Window_Attributes_Data with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Get_Attributes", Mode => Nominal);
 
-   procedure Set_Attributes(Window: Tk_Widget; Attributes_Data: Window_Attributes_Data) with
+   procedure Set_Attributes
+     (Window: Tk_Widget; Attributes_Data: Window_Attributes_Data) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Set_Attributes", Mode => Nominal);
 
-   function Get_Attribute(Window: Tk_Widget; Name: String) return Tcl_String with
+   function Get_Attribute
+     (Window: Tk_Widget; Name: String) return Tcl_String with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute", Mode => Nominal);
 
-   function Get_Attribute(Window: Tk_Widget; Name: String) return Extended_Boolean with
+   function Get_Attribute
+     (Window: Tk_Widget; Name: String) return Extended_Boolean with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute2", Mode => Nominal);
 
-   function Get_Attribute(Window: Tk_Widget; Name: String) return Alpha_Type with
+   function Get_Attribute
+     (Window: Tk_Widget; Name: String) return Alpha_Type with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute3", Mode => Nominal);
 
-   function Get_Attribute(Window: Tk_Widget; Name: String) return Window_Types with
+   function Get_Attribute
+     (Window: Tk_Widget; Name: String) return Window_Types with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute4", Mode => Nominal);
 
@@ -92,8 +100,32 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows", Mode => Nominal);
 
-   procedure Color_Map_Windows(Window: Tk_Widget; Widgets: Widgets_Array) with
-      Pre => Window /= Null_Widget and Widgets /= Empty_Widgets_Array,
+   procedure Color_Map_Windows(Window: Tk_Widget; Windows: Widgets_Array) with
+      Pre => Window /= Null_Widget and Windows /= Empty_Widgets_Array,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows2", Mode => Nominal);
+
+   function Command(Window: Tk_Widget) return Tcl_String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Command", Mode => Nominal);
+
+   procedure Command(Window: Tk_Widget; Command: Tcl_String) with
+      Pre => Window /= Null_Widget and Length(Command) > 0,
+      Test_Case => (Name => "Test_Wm_Command2", Mode => Nominal);
+
+   procedure Deiconify(Window: Tk_Widget) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Deiconify", Mode => Nominal);
+
+   function Focus_Model(Window: Tk_Widget) return Focus_Model_Types with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Focus_Model", Mode => Nominal);
+
+   procedure Focus_Model(Window: Tk_Widget; Model: Focus_Model_Types) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Focus_Model2", Mode => Nominal);
+
+   procedure Forget(Window: Tk_Widget) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Forget", Mode => Nominal);
 
 end Tk.Wm;
