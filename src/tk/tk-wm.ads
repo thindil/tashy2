@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Lists; use Tcl.Lists;
 with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
@@ -86,5 +87,13 @@ package Tk.Wm is
    procedure Client(Window: Tk_Widget; Name: Tcl_String) with
       Pre => Window /= Null_Widget and Length(Name) > 0,
       Test_Case => (Name => "Test_Wm_Client2", Mode => Nominal);
+
+   function Color_Map_Windows(Window: Tk_Widget) return Array_List with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Color_Map_Windows", Mode => Nominal);
+
+   procedure Color_Map_Windows(Window: Tk_Widget; Widgets: Widgets_Array) with
+      Pre => Window /= Null_Widget and Widgets /= Empty_Widgets_Array,
+      Test_Case => (Name => "Test_Wm_Color_Map_Windows2", Mode => Nominal);
 
 end Tk.Wm;
