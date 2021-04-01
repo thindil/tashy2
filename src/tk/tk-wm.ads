@@ -48,6 +48,16 @@ package Tk.Wm is
 
    type Focus_Model_Types is (ACTIVE, PASSIVE);
 
+   type Window_Geometry_Data is record
+      X: Natural;
+      Y: Natural;
+      Height: Natural;
+      Width: Natural;
+   end record;
+
+   Empty_Window_Geometry_Data: constant Window_Geometry_Data :=
+     Window_Geometry_Data'(others => 0);
+
    procedure Aspect
      (Window: Tk_Widget;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
@@ -127,5 +137,19 @@ package Tk.Wm is
    procedure Forget(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Forget", Mode => Nominal);
+
+   function Frame(Window: Tk_Widget) return Tk_Window with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Frame", Mode => Nominal);
+
+   function Geometry(Window: Tk_Widget) return Window_Geometry_Data with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Geometry", Mode => Nominal);
+
+   procedure Geometry
+     (Window: Tk_Widget; New_Geometry: Window_Geometry_Data) with
+      Pre => Window /= Null_Widget and
+      New_Geometry /= Empty_Window_Geometry_Data,
+      Test_Case => (Name => "Test_Wm_Geometry2", Mode => Nominal);
 
 end Tk.Wm;
