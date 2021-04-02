@@ -137,9 +137,9 @@ package Tcl.Variables is
       Test_Case => (Name => "Test_Tcl_GetVar", Mode => Nominal);
       -- ****
 
-      -- ****f* Variables/Variables.Tcl_Get_Var_(Integer)
+      -- ****g* Tcl/Tcl.Generic_Scalar_Tcl_Get_Var
       -- FUNCTION
-      -- Get the value for the selected Tcl variable as an Integer
+      -- Generic function to get the value of Tcl variable as a scalar type
       -- PARAMETERS
       -- Var_Name    - Name of the Tcl variable to get. If contains open and
       --               close parenthesis it will be treated as index of the item
@@ -149,50 +149,50 @@ package Tcl.Variables is
       -- Flags       - Array of flags used in getting variable. Can be empty.
       --               Default value is one element array NONE
       -- RESULT
-      -- Integer with the value of the selected Tcl varible
+      -- Scalar type result with the value of Tcl variable
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
-      -- -- Get the value of the Tcl variable $myvar on default Tcl interpreter
-      -- Value: constant Integer := Tcl_GetVar("myvar");
+      -- -- Get the value of the variable $myvar the default Tcl interpreter as Integer
+      -- function Integer_Get_Var is new Generic_Scalar_Tcl_Get_Var(Integer);
+      -- Variable: constant Integer := Integer_Get_Var("myvar");
+      -- SEE ALSO
+      -- Tcl.Generic_Float_Tcl_Get_Var;
       -- SOURCE
-   function Tcl_Get_Var
+   generic
+      type Result_Type is (<>);
+   function Generic_Scalar_Tcl_Get_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) return Integer is
-     (Integer'Value
-        (Tcl_Get_Var
-           (Var_Name => Var_Name, Interpreter => Interpreter,
-            Flags => Flags))) with
-      Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter;
-     -- ****
+      Flags: Flags_Array := Default_Flags_Array) return Result_Type;
+      -- ****
 
-     -- ****f* Variables/Variables.Tcl_Get_Var_(Float)
-     -- FUNCTION
-     -- Get the value for the selected Tcl variable as a Float
-     -- PARAMETERS
-     -- Var_Name    - Name of the Tcl variable to get. If contains open and
-     --               close parenthesis it will be treated as index of the item
-     --               in the array. Cannot be empty.
-     -- Interpreter - Tcl interpreter on which the result will be get. By
-     --               default it is current default Tcl interpreter.
-     -- Flags       - Array of flags used in getting variable. Can be empty.
-     --               Default value is one element array NONE
-     -- RESULT
-     -- Float with the value of the selected Tcl varible
-     -- HISTORY
-     -- 8.6.0 - Added
-     -- EXAMPLE
-     -- -- Get the value of the Tcl variable $myvar on default Tcl interpreter
-     -- Value: constant Float := Tcl_GetVar("myvar");
-   -- SOURCE
-   function Tcl_Get_Var
+      -- ****g* Tcl/Tcl.Generic_Float_Tcl_Get_Var
+      -- FUNCTION
+      -- Generic function to get the value of Tcl variable as a float type
+      -- PARAMETERS
+      -- Var_Name    - Name of the Tcl variable to get. If contains open and
+      --               close parenthesis it will be treated as index of the item
+      --               in the array. Cannot be empty.
+      -- Interpreter - Tcl interpreter on which the result will be get. By
+      --               default it is current default Tcl interpreter.
+      -- Flags       - Array of flags used in getting variable. Can be empty.
+      --               Default value is one element array NONE
+      -- RESULT
+      -- Float type result with the value of Tcl variable
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the value of the variable $myvar the default Tcl interpreter as Float
+      -- function Float_Get_Var is new Generic_Float_Tcl_Get_Var(Float);
+      -- Variable: constant Float := Integer_Get_Var("myvar");
+      -- SEE ALSO
+      -- Tcl.Generic_Scalar_Tcl_Get_Var;
+      -- SOURCE
+   generic
+      type Result_Type is digits <>;
+   function Generic_Float_Tcl_Get_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) return Float is
-     (Float'Value
-        (Tcl_Get_Var
-           (Var_Name => Var_Name, Interpreter => Interpreter,
-            Flags => Flags))) with
-      Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter;
+      Flags: Flags_Array := Default_Flags_Array) return Result_Type;
       -- ****
 
       -- ****f* Variables/Variables.Tcl_Get_Var2_(String)
