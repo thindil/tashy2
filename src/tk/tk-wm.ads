@@ -22,9 +22,13 @@ package Tk.Wm is
 
    type Alpha_Type is digits 2 range -1.0 .. 1.0;
 
+   Default_Alpha: constant Alpha_Type := 1.0;
+
    type Window_Types is
      (DESKTOP, DOCK, TOOLBAR, MENU, UTILITY, SPLASH, DIALOG, DROPDOWN_MENU,
       POPUP_MENU, TOOLTIP, NOTIFICATION, COMBO, DND, NORMAL);
+
+   Default_Window_Type: constant Window_Types := NORMAL;
 
    type Window_Attributes_Data(WM_Type: Window_Manager_Types := X11) is record
       Alpha: Alpha_Type;
@@ -46,17 +50,13 @@ package Tk.Wm is
       end case;
    end record;
 
+   Default_Window_Attributes: constant Window_Attributes_Data := Window_Attributes_Data'(others => <>);
+
    type Focus_Model_Types is (ACTIVE, PASSIVE);
 
-   type Window_Geometry_Data is record
-      X: Natural;
-      Y: Natural;
-      Height: Natural;
-      Width: Natural;
-   end record;
+   type Geometry_Array is array(1 .. 4) of Extended_Natural;
 
-   Empty_Window_Geometry_Data: constant Window_Geometry_Data :=
-     Window_Geometry_Data'(others => 0);
+   Empty_Geometry_Array: constant Geometry_Array := (others => 0);
 
    procedure Aspect
      (Window: Tk_Widget;
@@ -142,14 +142,13 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Frame", Mode => Nominal);
 
-   function Geometry(Window: Tk_Widget) return Window_Geometry_Data with
+   function Geometry(Window: Tk_Widget) return Geometry_Array with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Geometry", Mode => Nominal);
 
    procedure Geometry
-     (Window: Tk_Widget; New_Geometry: Window_Geometry_Data) with
-      Pre => Window /= Null_Widget and
-      New_Geometry /= Empty_Window_Geometry_Data,
+     (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) with
+      Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Geometry2", Mode => Nominal);
 
 end Tk.Wm;
