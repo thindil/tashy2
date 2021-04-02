@@ -445,7 +445,7 @@ package body Tcl.Info.Test_Data.Tests is
          "Failed to get info about no default value in Tcl procedure.");
       if Default("myproc", "arg2", "myvalue") then
          Assert
-           (Tcl_Get_Var("myvalue") = 2,
+           (Tcl_Get_Var("myvalue") = "2",
             "Failed to get default value for Tcl procedure.");
       else
          Assert
