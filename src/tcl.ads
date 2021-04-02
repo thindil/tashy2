@@ -205,7 +205,7 @@ package Tcl is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Evaluate expression on the default Tcl interpreter and get its result as Integer
-      -- Integer_Evaluate is new Generic_Scalar_Tcl_Eval(Integer);
+      -- function Integer_Evaluate is new Generic_Scalar_Tcl_Eval(Integer);
       -- Result: constant Integer := Integer_Evaluate("expr 2 + 2");
       -- SEE ALSO
       -- Tcl.Generic_Float_Tcl_Eval;
@@ -231,7 +231,7 @@ package Tcl is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Evaluate expression on the default Tcl interpreter and get its result as Float
-      -- Float_Evaluate is new Generic_Float_Tcl_Eval(Float);
+      -- function Float_Evaluate is new Generic_Float_Tcl_Eval(Float);
       -- Result: constant Float := Float_Evaluate("expr 2.5 + 2.2");
       -- SEE ALSO
       -- Tcl.Generic_Scalar_Tcl_Eval;
