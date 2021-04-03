@@ -19,11 +19,5 @@ package Tk.Button.Test_Data.Tests is
    procedure Test_Invoke_89eee4_562019(Gnattest_T: in out Test);
    --  tk-button.ads:294:4:Invoke:Test_Invoke_Button2
 
-   procedure Test_Invoke_e2c227_f37e05(Gnattest_T: in out Test);
-   --  tk-button.ads:318:4:Invoke:Test_Invoke_Button3
-
-   procedure Test_Invoke_6e0b2f_4c724f(Gnattest_T: in out Test);
-   --  tk-button.ads:343:4:Invoke:Test_Invoke_Button4
-
 end Tk.Button.Test_Data.Tests;
 --  end read only
