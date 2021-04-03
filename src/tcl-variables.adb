@@ -164,6 +164,36 @@ package body Tcl.Variables is
       return Value(Item => Result);
    end Tcl_Get_Var2;
 
+   function Generic_Scalar_Tcl_Get_Var2
+     (Var_Name, Index_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := Default_Flags_Array) return Result_Type is
+   begin
+      if Interpreter = Null_Interpreter then
+         raise Tcl_Exception
+           with "Can't get variable value on non existing Tcl interpreter";
+      end if;
+      return Result_Type'Value
+          (Tcl_Get_Var2
+             (Var_Name => Var_Name, Index_Name => Index_Name,
+              Interpreter => Interpreter, Flags => Flags));
+   end Generic_Scalar_Tcl_Get_Var2;
+
+   function Generic_Float_Tcl_Get_Var2
+     (Var_Name, Index_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Flags: Flags_Array := Default_Flags_Array) return Result_Type is
+   begin
+      if Interpreter = Null_Interpreter then
+         raise Tcl_Exception
+           with "Can't get variable value on non existing Tcl interpreter";
+      end if;
+      return Result_Type'Value
+          (Tcl_Get_Var2
+             (Var_Name => Var_Name, Index_Name => Index_Name,
+              Interpreter => Interpreter, Flags => Flags));
+   end Generic_Float_Tcl_Get_Var2;
+
    procedure Tcl_Unset_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
