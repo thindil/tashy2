@@ -272,7 +272,7 @@ package Tk.Button is
       Test_Case => (Name => "Test_Invoke_Button1", Mode => Nominal);
       -- ****
 
-      -- ****f* Button/Button.Invoke_(function_and_string_result)
+      -- ****f* Button/Button.Invoke_(function)
       -- FUNCTION
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
@@ -296,54 +296,54 @@ package Tk.Button is
       Test_Case => (Name => "Test_Invoke_Button2", Mode => Nominal);
       -- ****
 
-      -- ****f* Button/Button.Invoke_(function_and_integer_result)
+      -- ****f* Button/Button.Generic_Scalar_Invoke_Button
       -- FUNCTION
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
       -- Button_Widget - Tk_Button which the command will be invoked
       -- RESULT
-      -- The integer return value of the associated Tcl command.
+      -- Scalar type result with the value of associated Tcl command.
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Invoke the Tcl command of the Tk_Button My_Button
-      -- Result: constant Integer := Invoke(My_Button);
+      -- function Integer_Invoke is new Generic_Scalar_Invoke_Button(Integer);
+      -- Result: constant Integer := Integer_Invoke(My_Button);
       -- SEE ALSO
-      -- Button.Invoke_(function_and_string_result), Button.Invoke_(procedure),
-      -- Button.Invoke_(function_and_float_result)
+      -- Button.Invoke_(function), Button.Generic_Float_Invoke_Button,
       -- COMMANDS
       -- Button_Widget invoke
       -- SOURCE
-   function Invoke(Button_Widget: Tk_Button) return Integer is
-     (Integer'Value(Invoke(Button_Widget => Button_Widget))) with
-      Pre => Button_Widget /= Null_Widget,
-      Test_Case => (Name => "Test_Invoke_Button3", Mode => Nominal);
+   generic
+      type Result_Type is (<>);
+   function Generic_Scalar_Invoke_Button
+     (Button_Widget: Tk_Button) return Result_Type;
       -- ****
 
-      -- ****f* Button/Button.Invoke_(function_and_float_result)
+      -- ****f* Button/Button.Generic_Float_Invoke_Button
       -- FUNCTION
       -- Invoke the Tcl command associated with the selected button. Does
       -- nothing if the button state is disabled.
       -- PARAMETERS
       -- Button_Widget - Tk_Button which the command will be invoked
       -- RESULT
-      -- The float return value of the associated Tcl command.
+      -- Float type result with the value of associated Tcl command.
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Invoke the Tcl command of the Tk_Button My_Button
-      -- Result: constant Float := Invoke(My_Button);
+      -- function Float_Invoke is new Generic_Float_Invoke_Button(Float);
+      -- Result: constant Float := Float_Invoke(My_Button);
       -- SEE ALSO
-      -- Button.Invoke_(function_and_string_result), Button.Invoke_(function_and_integer_result),
-      -- Button.Invoke_(procedure)
+      -- Button.Invoke_(function), Button.Generic_Scalar_Invoke_Button,
       -- COMMANDS
       -- Button_Widget invoke
       -- SOURCE
-   function Invoke(Button_Widget: Tk_Button) return Float is
-     (Float'Value(Invoke(Button_Widget => Button_Widget))) with
-      Pre => Button_Widget /= Null_Widget,
-      Test_Case => (Name => "Test_Invoke_Button4", Mode => Nominal);
+   generic
+      type Result_Type is digits <>;
+   function Generic_Float_Invoke_Button
+     (Button_Widget: Tk_Button) return Result_Type;
       -- ****
       --## rule on REDUCEABLE_SCOPE
 
