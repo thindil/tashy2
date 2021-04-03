@@ -24,10 +24,10 @@ package Tcl.Variables.Test_Data.Tests is
    --  tcl-variables.ads:219:4:Tcl_Get_Var2:Test_Tcl_GetVar2
 
    procedure Test_Tcl_Unset_Var_044aaf_5d27f9(Gnattest_T: in out Test);
-   --  tcl-variables.ads:311:4:Tcl_Unset_Var:Test_Tcl_UnsetVar
+   --  tcl-variables.ads:309:4:Tcl_Unset_Var:Test_Tcl_UnsetVar
 
    procedure Test_Tcl_Unset_Var2_e9c900_618eb3(Gnattest_T: in out Test);
-   --  tcl-variables.ads:337:4:Tcl_Unset_Var2:Test_Tcl_UnsetVar2
+   --  tcl-variables.ads:335:4:Tcl_Unset_Var2:Test_Tcl_UnsetVar2
 
 end Tcl.Variables.Test_Data.Tests;
 --  end read only
