@@ -66,4 +66,40 @@ package body Tk.Wm is
       return Default_Window_Type;
    end Get_Attribute;
 
+   function Client(Window: Tk_Widget) return String is
+      pragma Unreferenced(Window);
+   begin
+      return "";
+   end Client;
+
+   procedure Client(Window: Tk_Widget; Name: Tcl_String) is
+      pragma Unreferenced(Window, Name);
+   begin
+      null;
+   end Client;
+
+   function Color_Map_Windows(Window: Tk_Widget) return Array_List is
+      pragma Unreferenced(Window);
+   begin
+      return Empty_Array_List;
+   end Color_Map_Windows;
+
+   procedure Color_Map_Windows(Window: Tk_Widget; Windows: Widgets_Array) is
+      pragma Unreferenced(Window, Windows);
+   begin
+      null;
+   end Color_Map_Windows;
+
+   function Command(Window: Tk_Widget) return Tcl_String is
+      pragma Unreferenced(Window);
+   begin
+      return Null_Tcl_String;
+   end Command;
+
+   procedure Command(Window: Tk_Widget; Command: Tcl_String) is
+      pragma Unreferenced(Window, Command);
+   begin
+      null;
+   end Command;
+
 end Tk.Wm;
