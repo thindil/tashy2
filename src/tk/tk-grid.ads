@@ -62,6 +62,8 @@ package Tk.Grid is
    -- ****d* Grid/Grid.Default_Grid_Options
    -- FUNCTION
    -- Default options for the Tk grid
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Grid_Options: constant Grid_Options := Grid_Options'(others => <>);
    -- ****
@@ -90,25 +92,37 @@ package Tk.Grid is
    -- ****d* Grid/Grid.Default_Column_Options
    -- FUNCTION
    -- Default values for Tk grid column and row options
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Column_Options: constant Column_Options :=
      Column_Options'(others => <>);
      -- ****
 
-   -- ****t* Grid/Grid.Result_Array
+     -- ****s* Grid/Grid.Location_Position
+     -- FUNCTION
+     -- Data structure for get grid location in columns and rows for various
+     -- Tk grid commands
+     -- OPTIONS
+     -- Column - Column position of the location
+     -- Row    - Row position of the location
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SOURCE
+   type Location_Position is record
+      Column: Extended_Natural;
+      Row: Extended_Natural;
+   end record;
+   -- ****
+
+   -- ****d* Grid/Grid.Empty_Location
    -- FUNCTION
-   -- Array used mostly as a return value for some functions
+   -- Empty grid location
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Result_Array is array(1 .. 2) of Extended_Natural;
-   -- ****
-
-   -- ****d* Grid/Grid.Empty_Result_Array
-   -- FUNCTION
-   -- Empty result's values array
-   -- SOURCE
-   Empty_Result_Array: constant Result_Array := (others => 0);
+   Empty_Location: constant Location_Position :=
+     Location_Position'(others => <>);
    -- ****
 
    -- ****f* Grid/Grid.Add_(single_widget)
@@ -458,25 +472,18 @@ package Tk.Grid is
       -- X      - X coordinate of point relative to the Master window
       -- Y      - Y coordinate of point relative to the Master window
       -- RESULT
-      -- Result_Array with the first value as column number and the second
-      -- value as row number. If location is above, return -1 for row, if
+      -- Location_Position value. If location is above, return -1 for row, if
       -- to the left of grid, return -1 for column.
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the column at point (10, 10) in My_Frame window grid
-      -- declare
-      --    Values: constant Result_Array := Location(My_Frame, (10.0, PIXEL), (10.0, PIXEL));
-      --    Column, Row: Extended_Natural;
-      -- begin
-      --    Column := Values(1);
-      --    Row := Values(2);
-      -- end;
+      -- Location: constant Location_Position := Location(My_Frame, (10.0, PIXEL), (10.0, PIXEL));
       -- COMMANDS
       -- grid location master x y
       -- SOURCE
    function Location
-     (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array with
+     (Master: Tk_Widget; X, Y: Pixel_Data) return Location_Position with
       Pre => Master /= Null_Widget and X.Value > -1.0 and Y.Value > -1.0,
       Test_Case => (Name => "Test_Location", Mode => Nominal);
       -- ****
@@ -679,17 +686,17 @@ package Tk.Grid is
       -- PARAMETERS
       -- Master  - Tk_Widget in which the grid is. Must be existing widget
       -- RESULT
-      -- The Result_Array with two values: the first is amount of columns in
-      -- the grid, the second is amount of rows in the grid
+      -- The Location_Position with the amount of columns in
+      -- the grid, and amount of rows in the grid
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the size of the grid in My_Frame widget
-      -- Grid_Size: constant Result_Array := Size(My_Frame);
+      -- Grid_Size: constant Location_Position := Size(My_Frame);
       -- COMMANDS
       -- grid size master
       -- SOURCE
-   function Size(Master: Tk_Widget) return Result_Array with
+   function Size(Master: Tk_Widget) return Location_Position with
       Pre => Master /= Null_Widget,
       Test_Case => (Name => "Test_Size", Mode => Nominal);
       -- ****
