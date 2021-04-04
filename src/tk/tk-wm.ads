@@ -54,6 +54,8 @@ package Tk.Wm is
 
    type Focus_Model_Types is (ACTIVE, PASSIVE);
 
+   Default_Focus_Model: constant Focus_Model_Types := ACTIVE;
+
    type Geometry_Array is array(1 .. 4) of Extended_Natural;
 
    Empty_Geometry_Array: constant Geometry_Array := (others => 0);
