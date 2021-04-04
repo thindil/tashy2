@@ -876,8 +876,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Location_01f15c_74cec4
-     (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array is
+   function Wrap_Test_Location_f4bfd3_74cec4
+     (Master: Tk_Widget; X, Y: Pixel_Data) return Location_Position is
    begin
       begin
          pragma Assert
@@ -890,7 +890,7 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Location test requirement violated");
       end;
       declare
-         Test_Location_01f15c_74cec4_Result: constant Result_Array :=
+         Test_Location_f4bfd3_74cec4_Result: constant Location_Position :=
            GNATtest_Generated.GNATtest_Standard.Tk.Grid.Location(Master, X, Y);
       begin
          begin
@@ -902,20 +902,20 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Location test commitment violated");
          end;
-         return Test_Location_01f15c_74cec4_Result;
+         return Test_Location_f4bfd3_74cec4_Result;
       end;
-   end Wrap_Test_Location_01f15c_74cec4;
+   end Wrap_Test_Location_f4bfd3_74cec4;
 --  end read only
 
 --  begin read only
    procedure Test_Location_test_location(Gnattest_T: in out Test);
-   procedure Test_Location_01f15c_74cec4(Gnattest_T: in out Test) renames
+   procedure Test_Location_f4bfd3_74cec4(Gnattest_T: in out Test) renames
      Test_Location_test_location;
---  id:2.2/01f15c117585542f/Location/1/0/test_location/
+--  id:2.2/f4bfd362db3aad8e/Location/1/0/test_location/
    procedure Test_Location_test_location(Gnattest_T: in out Test) is
       function Location
-        (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array renames
-        Wrap_Test_Location_01f15c_74cec4;
+        (Master: Tk_Widget; X, Y: Pixel_Data) return Location_Position renames
+        Wrap_Test_Location_f4bfd3_74cec4;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -927,7 +927,8 @@ package body Tk.Grid.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Location(Get_Main_Window, (0.0, PIXEL), (0.0, PIXEL)) = (0, 0),
+        (Location(Get_Main_Window, (0.0, PIXEL), (0.0, PIXEL)) =
+         (Column => 0, Row => 0),
          "Failed to get location in grid.");
 
 --  begin read only
@@ -1416,8 +1417,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Size_ec983b_a60758
-     (Master: Tk_Widget) return Result_Array is
+   function Wrap_Test_Size_2a2937_a60758
+     (Master: Tk_Widget) return Location_Position is
    begin
       begin
          pragma Assert(Master /= Null_Widget);
@@ -1429,7 +1430,7 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Size test requirement violated");
       end;
       declare
-         Test_Size_ec983b_a60758_Result: constant Result_Array :=
+         Test_Size_2a2937_a60758_Result: constant Location_Position :=
            GNATtest_Generated.GNATtest_Standard.Tk.Grid.Size(Master);
       begin
          begin
@@ -1441,19 +1442,19 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Size test commitment violated");
          end;
-         return Test_Size_ec983b_a60758_Result;
+         return Test_Size_2a2937_a60758_Result;
       end;
-   end Wrap_Test_Size_ec983b_a60758;
+   end Wrap_Test_Size_2a2937_a60758;
 --  end read only
 
 --  begin read only
    procedure Test_Size_test_size(Gnattest_T: in out Test);
-   procedure Test_Size_ec983b_a60758(Gnattest_T: in out Test) renames
+   procedure Test_Size_2a2937_a60758(Gnattest_T: in out Test) renames
      Test_Size_test_size;
---  id:2.2/ec983b0cc0c0c3f1/Size/1/0/test_size/
+--  id:2.2/2a2937e646446840/Size/1/0/test_size/
    procedure Test_Size_test_size(Gnattest_T: in out Test) is
-      function Size(Master: Tk_Widget) return Result_Array renames
-        Wrap_Test_Size_ec983b_a60758;
+      function Size(Master: Tk_Widget) return Location_Position renames
+        Wrap_Test_Size_2a2937_a60758;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1469,7 +1470,9 @@ package body Tk.Grid.Test_Data.Tests is
       Create(Button1, ".mybutton", Button_Options'(others => <>));
       Create(Button2, ".mybutton2", Button_Options'(others => <>));
       Add((Button1, Button2));
-      Assert(Size(Get_Main_Window) = (2, 1), "Failed to get grid size.");
+      Assert
+        (Size(Get_Main_Window) = (Column => 2, Row => 1),
+         "Failed to get grid size.");
       Destroy(Button1);
       Destroy(Button2);
 
