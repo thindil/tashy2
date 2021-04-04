@@ -132,4 +132,17 @@ package body Tk.Wm is
       return Null_Window;
    end Frame;
 
+   function Geometry(Window: Tk_Widget) return Window_Geometry is
+      pragma Unreferenced(Window);
+   begin
+      return Empty_Window_Geometry;
+   end Geometry;
+
+   procedure Geometry
+     (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) is
+      pragma Unreferenced(Window, Width, Height, X, Y);
+   begin
+      null;
+   end Geometry;
+
 end Tk.Wm;

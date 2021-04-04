@@ -50,11 +50,22 @@ package Tk.Wm is
       end case;
    end record;
 
-   Default_Window_Attributes: constant Window_Attributes_Data := Window_Attributes_Data'(others => <>);
+   Default_Window_Attributes: constant Window_Attributes_Data :=
+     Window_Attributes_Data'(others => <>);
 
    type Focus_Model_Types is (ACTIVE, PASSIVE);
 
    Default_Focus_Model: constant Focus_Model_Types := ACTIVE;
+
+   type Window_Geometry is record
+      Width: Natural;
+      Height: Natural;
+      X: Natural;
+      Y: Natural;
+   end record;
+
+   Empty_Window_Geometry: constant Window_Geometry :=
+     Window_Geometry'(others => <>);
 
    type Geometry_Array is array(1 .. 4) of Extended_Natural;
 
@@ -144,7 +155,7 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Frame", Mode => Nominal);
 
-   function Geometry(Window: Tk_Widget) return Geometry_Array with
+   function Geometry(Window: Tk_Widget) return Window_Geometry with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Geometry", Mode => Nominal);
 
