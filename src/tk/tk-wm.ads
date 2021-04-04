@@ -67,9 +67,15 @@ package Tk.Wm is
    Empty_Window_Geometry: constant Window_Geometry :=
      Window_Geometry'(others => <>);
 
-   type Geometry_Array is array(1 .. 4) of Extended_Natural;
+   type Window_Grid_Geometry is record
+      Base_Width: Natural;
+      Base_Height: Natural;
+      Width_Inc: Natural;
+      Height_Inc: Natural;
+   end record;
 
-   Empty_Geometry_Array: constant Geometry_Array := (others => 0);
+   Empty_Window_Grid_Geometry: constant Window_Grid_Geometry :=
+     Window_Grid_Geometry'(others => <>);
 
    procedure Aspect
      (Window: Tk_Widget;
@@ -163,5 +169,44 @@ package Tk.Wm is
      (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Geometry2", Mode => Nominal);
+
+   function Grid(Window: Tk_Widget) return Window_Grid_Geometry with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Grid", Mode => Nominal);
+
+   procedure Grid
+     (Window: Tk_Widget;
+      Base_Width, Base_Height, Width_Inc, Height_Inc: Extended_Natural :=
+        -1) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Grid2", Mode => Nominal);
+
+   function Group(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Group", Mode => Nominal);
+
+   procedure Group(Window: Tk_Widget; Path_Name: Tcl_String) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Group2", Mode => Nominal);
+
+   function Icon_Bitmap(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Bitmap", Mode => Nominal);
+
+   procedure Icon_Bitmap(Window: Tk_Widget; Bitmap: Tcl_String) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Bitmap2", Mode => Nominal);
+
+   procedure Iconify(Window: Tk_Widget) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Iconify", Mode => Nominal);
+
+   function Icon_Mask(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Mask", Mode => Nominal);
+
+   procedure Icon_Mask(Window: Tk_Widget; Bitmap: Tcl_String) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Mask2", Mode => Nominal);
 
 end Tk.Wm;
