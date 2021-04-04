@@ -145,4 +145,62 @@ package body Tk.Wm is
       null;
    end Geometry;
 
+   function Grid(Window: Tk_Widget) return Window_Grid_Geometry is
+      pragma Unreferenced(Window);
+   begin
+      return Empty_Window_Grid_Geometry;
+   end Grid;
+
+   procedure Grid
+     (Window: Tk_Widget;
+      Base_Width, Base_Height, Width_Inc, Height_Inc: Extended_Natural :=
+        -1) is
+      pragma Unreferenced(Window, Base_Width, Base_Height, Width_Inc,
+         Height_Inc);
+   begin
+      null;
+   end Grid;
+
+   function Group(Window: Tk_Widget) return String is
+      pragma Unreferenced(Window);
+   begin
+      return "";
+   end Group;
+
+   procedure Group(Window: Tk_Widget; Path_Name: Tcl_String) is
+      pragma Unreferenced(Window, Path_Name);
+   begin
+      null;
+   end Group;
+
+   function Icon_Bitmap(Window: Tk_Widget) return String is
+      pragma Unreferenced(Window);
+   begin
+      return "";
+   end Icon_Bitmap;
+
+   procedure Icon_Bitmap(Window: Tk_Widget; Bitmap: Tcl_String) is
+      pragma Unreferenced(Window, Bitmap);
+   begin
+      null;
+   end Icon_Bitmap;
+
+   procedure Iconify(Window: Tk_Widget) is
+      pragma Unreferenced(Window);
+   begin
+      null;
+   end Iconify;
+
+   function Icon_Mask(Window: Tk_Widget) return String is
+      pragma Unreferenced(Window);
+   begin
+      return "";
+   end Icon_Mask;
+
+   procedure Icon_Mask(Window: Tk_Widget; Bitmap: Tcl_String) is
+      pragma Unreferenced(Window, Bitmap);
+   begin
+      null;
+   end Icon_Mask;
+
 end Tk.Wm;
