@@ -102,4 +102,34 @@ package body Tk.Wm is
       null;
    end Command;
 
+   procedure Deiconify(Window: Tk_Widget) is
+      pragma Unreferenced(Window);
+   begin
+      null;
+   end Deiconify;
+
+   function Focus_Model(Window: Tk_Widget) return Focus_Model_Types is
+      pragma Unreferenced(Window);
+   begin
+      return Default_Focus_Model;
+   end Focus_Model;
+
+   procedure Focus_Model(Window: Tk_Widget; Model: Focus_Model_Types) is
+      pragma Unreferenced(Window, Model);
+   begin
+      null;
+   end Focus_Model;
+
+   procedure Forget(Window: Tk_Widget) is
+      pragma Unreferenced(Window);
+   begin
+      null;
+   end Forget;
+
+   function Frame(Window: Tk_Widget) return Tk_Window is
+      pragma Unreferenced(Window);
+   begin
+      return Null_Window;
+   end Frame;
+
 end Tk.Wm;
