@@ -458,7 +458,7 @@ package body Tk.Grid is
    end Info;
 
    function Location
-     (Master: Tk_Widget; X, Y: Pixel_Data) return Result_Array is
+     (Master: Tk_Widget; X, Y: Pixel_Data) return Location_Position is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
       Result_List: constant Array_List :=
         Split_List
@@ -474,8 +474,10 @@ package body Tk.Grid is
            Interpreter => Interpreter);
    begin
       return
-        (1 => Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
-         2 => Extended_Natural'Value(To_Ada_String(Source => Result_List(2))));
+        (Column =>
+           Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
+         Row =>
+           Extended_Natural'Value(To_Ada_String(Source => Result_List(2))));
    end Location;
 
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) is
@@ -558,7 +560,7 @@ package body Tk.Grid is
          Interpreter => Tk_Interp(Widgt => Widgets(1)));
    end Remove;
 
-   function Size(Master: Tk_Widget) return Result_Array is
+   function Size(Master: Tk_Widget) return Location_Position is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
       Result_List: constant Array_List :=
         Split_List
@@ -569,8 +571,10 @@ package body Tk.Grid is
            Interpreter => Interpreter);
    begin
       return
-        (1 => Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
-         2 => Extended_Natural'Value(To_Ada_String(Source => Result_List(2))));
+        (Column =>
+           Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
+         Row =>
+           Extended_Natural'Value(To_Ada_String(Source => Result_List(2))));
    end Size;
 
    function Slaves
