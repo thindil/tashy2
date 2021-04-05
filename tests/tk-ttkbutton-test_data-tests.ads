@@ -14,13 +14,7 @@ package Tk.TtkButton.Test_Data.Tests is
    --  tk-ttkbutton.ads:206:4:Invoke:Test_Invoke_TtkButton1
 
    procedure Test_Invoke_89eee4_5d3252(Gnattest_T: in out Test);
-   --  tk-ttkbutton.ads:230:4:Invoke:Test_Invoke_TtkButton2
-
-   procedure Test_Invoke_e2c227_1db43e(Gnattest_T: in out Test);
-   --  tk-ttkbutton.ads:254:4:Invoke:Test_Invoke_TtkButton3
-
-   procedure Test_Invoke_6e0b2f_ed279d(Gnattest_T: in out Test);
-   --  tk-ttkbutton.ads:279:4:Invoke:Test_Invoke_TtkButton4
+   --  tk-ttkbutton.ads:229:4:Invoke:Test_Invoke_TtkButton2
 
 end Tk.TtkButton.Test_Data.Tests;
 --  end read only
