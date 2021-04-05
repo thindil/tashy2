@@ -209,4 +209,17 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Mask2", Mode => Nominal);
 
+   function Icon_Name(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Name", Mode => Nominal);
+
+   procedure Icon_Name(Window: Tk_Widget; New_Name: Tcl_String) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Name2", Mode => Nominal);
+
+   procedure Icon_Photo
+     (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) with
+      Pre => Window /= Null_Widget and Images'Length > 0,
+      Test_Case => (Name => "Test_Wm_Icon_Photo", Mode => Nominal);
+
 end Tk.Wm;
