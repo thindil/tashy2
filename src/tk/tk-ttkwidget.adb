@@ -14,7 +14,6 @@
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings;
--- with GNAT.String_Split; use GNAT.String_Split;
 with Tcl.Lists; use Tcl.Lists;
 
 package body Tk.TtkWidget is
@@ -110,15 +109,14 @@ package body Tk.TtkWidget is
    end Option_Image;
 
    procedure Option_Image
-     (Name: String; Value: Padding_Array;
+     (Name: String; Value: Padding_Data;
       Options_String: in out Unbounded_String) is
       use Ada.Strings;
 
       First: Boolean := True;
-   begin
-      Convert_Padding_Array_Loop :
-      for Padding of Value loop
-         if Padding.Value > -1.0 then
+      procedure Append_Value(New_Value: Pixel_Data) is
+      begin
+         if New_Value.Value > -1.0 then
             if First then
                Append
                  (Source => Options_String, New_Item => " -" & Name & " {");
@@ -126,9 +124,14 @@ package body Tk.TtkWidget is
             end if;
             Append
               (Source => Options_String,
-               New_Item => Pixel_Data_Image(Value => Padding) & " ");
+               New_Item => Pixel_Data_Image(Value => New_Value) & " ");
          end if;
-      end loop Convert_Padding_Array_Loop;
+      end Append_Value;
+   begin
+      Append_Value(Value.Left);
+      Append_Value(Value.Top);
+      Append_Value(Value.Right);
+      Append_Value(Value.Bottom);
       if not First then
          Trim(Source => Options_String, Side => Right);
          Append(Source => Options_String, New_Item => "}");
@@ -203,7 +206,7 @@ package body Tk.TtkWidget is
    end Option_Value;
 
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Array is
+     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Data is
       Result_List: constant Array_List :=
         Split_List
           (List =>
@@ -212,13 +215,24 @@ package body Tk.TtkWidget is
                 Options => "-" & Name),
            Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
    begin
-      return Padding: Padding_Array := Empty_Padding_Array do
-         Fill_Return_Value_Loop :
-         for I in 1 .. Result_List'Last loop
-            Padding(I) :=
+      return Padding: Padding_Data := Empty_Padding_Data do
+         Padding.Left :=
+           Pixel_Data_Value(Value => To_Ada_String(Source => Result_List(1)));
+         if Result_List'Length > 1 then
+            Padding.Top :=
               Pixel_Data_Value
-                (Value => To_Ada_String(Source => Result_List(I)));
-         end loop Fill_Return_Value_Loop;
+                (Value => To_Ada_String(Source => Result_List(2)));
+         end if;
+         if Result_List'Length > 2 then
+            Padding.Right :=
+              Pixel_Data_Value
+                (Value => To_Ada_String(Source => Result_List(3)));
+         end if;
+         if Result_List'Length = 4 then
+            Padding.Bottom :=
+              Pixel_Data_Value
+                (Value => To_Ada_String(Source => Result_List(4)));
+         end if;
       end return;
    end Option_Value;
 
