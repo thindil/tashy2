@@ -203,4 +203,23 @@ package body Tk.Wm is
       null;
    end Icon_Mask;
 
+   function Icon_Name(Window: Tk_Widget) return String is
+      pragma Unreferenced(Window);
+   begin
+      return "";
+   end Icon_Name;
+
+   procedure Icon_Name(Window: Tk_Widget; New_Name: Tcl_String) is
+      pragma Unreferenced(Window, New_Name);
+   begin
+      null;
+   end Icon_Name;
+
+   procedure Icon_Photo
+     (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) is
+      pragma Unreferenced(Window, Images, Default);
+   begin
+      null;
+   end Icon_Photo;
+
 end Tk.Wm;
