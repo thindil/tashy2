@@ -152,20 +152,32 @@ package Tk.TtkWidget is
      (others => Null_Tcl_String);
    -- ****
 
-   -- ****t* TtkWidget/TtkWidget.Padding_Array
+   -- ****s* TtkWidget/TtkWidget.Padding_Data
    -- FUNCTION
-   -- Array used mostly for setting padding in ttk widgets
+   -- Store padding information for ttk widgets
+   -- OPTIONS
+   -- Left   - Free space added at the left side of the widget
+   -- Top    - Free space added at the top of the widget
+   -- Right  - Free space added at the right side of the widget
+   -- Bottom - Free space added at the bottom of the widget
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Padding_Array is array(1 .. 4) of Pixel_Data;
+   type Padding_Data is record
+      Left: Pixel_Data;
+      Top: Pixel_Data;
+      Right: Pixel_Data;
+      Bottom: Pixel_Data;
+   end record;
    -- ****
 
-   -- ****d* TtkWidget/TtkWidget.Empty_Padding_Array
+   -- ****d* Tk.TtkWidget/Empty_Padding_Data
    -- FUNCTION
-   -- Empty Padding_Array value
+   -- Empty value for Padding_Data
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
-   Empty_Padding_Array: constant Padding_Array := (others => Empty_Pixel_Data);
+   Empty_Padding_Data: constant Padding_Data := Padding_Data'(others => <>);
    -- ****
 
    -- ****f* TtkWidget/TtkWidget.Option_Image
@@ -210,11 +222,10 @@ package Tk.TtkWidget is
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Image_Option", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Padding_Array;
+     (Name: String; Value: Padding_Data;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Image_Padding_Array",
-       Mode => Nominal);
+      Test_Case => (Name => "Test_Option_Image_Padding_Data", Mode => Nominal);
       -- ****
 
    -- ****f* TtkWidget/TtkWidget.Option_Value
@@ -249,10 +260,9 @@ package Tk.TtkWidget is
       Test_Case => (Name => "Test_Option_Value_Ttk_Image_Option",
        Mode => Nominal);
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Array with
+     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Data with
       Pre => Ttk_Widgt /= Null_Widget and Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Value_Padding_Array",
-       Mode => Nominal);
+      Test_Case => (Name => "Test_Option_Value_Padding_Data", Mode => Nominal);
       -- ****
 
    -- ****f* TtkWidget/TtkWidget.In_State_(function)

@@ -76,7 +76,7 @@ package Tk.TtkLabel is
       Foreground: Tcl_String;
       Image: Ttk_Image_Option;
       Justify: Justify_Type;
-      Padding: Padding_Array;
+      Padding: Padding_Data;
       Relief: Relief_Type;
       State: Disabled_State_Type;
       Text: Tcl_String;
