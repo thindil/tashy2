@@ -215,8 +215,8 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Option_Image_81babf_9e329f
-     (Name: String; Value: Padding_Array;
+   procedure Wrap_Test_Option_Image_fac0b4_5f511f
+     (Name: String; Value: Padding_Data;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -226,7 +226,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Padding_Array test requirement violated");
+               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Padding_Data test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image
         (Name, Value, Options_String);
@@ -237,23 +237,23 @@ package body Tk.TtkWidget.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Image_Padding_Array test commitment violated");
+               "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Image_Padding_Data test commitment violated");
       end;
-   end Wrap_Test_Option_Image_81babf_9e329f;
+   end Wrap_Test_Option_Image_fac0b4_5f511f;
 --  end read only
 
 --  begin read only
-   procedure Test_4_Option_Image_test_option_image_padding_array
+   procedure Test_4_Option_Image_test_option_image_padding_data
      (Gnattest_T: in out Test);
-   procedure Test_Option_Image_81babf_9e329f(Gnattest_T: in out Test) renames
-     Test_4_Option_Image_test_option_image_padding_array;
---  id:2.2/81babfe21f52b417/Option_Image/0/0/test_option_image_padding_array/
-   procedure Test_4_Option_Image_test_option_image_padding_array
+   procedure Test_Option_Image_fac0b4_5f511f(Gnattest_T: in out Test) renames
+     Test_4_Option_Image_test_option_image_padding_data;
+--  id:2.2/fac0b4180283eb8c/Option_Image/0/0/test_option_image_padding_data/
+   procedure Test_4_Option_Image_test_option_image_padding_data
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Padding_Array;
+        (Name: String; Value: Padding_Data;
          Options_String: in out Unbounded_String) renames
-        Wrap_Test_Option_Image_81babf_9e329f;
+        Wrap_Test_Option_Image_fac0b4_5f511f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -267,15 +267,14 @@ package body Tk.TtkWidget.Test_Data.Tests is
       end if;
       Option_Image
         ("padding",
-         Padding_Array'
-           ((1.0, PIXEL), (2.0, PIXEL), (3.0, PIXEL), (4.0, PIXEL)),
+         Padding_Data'((1.0, PIXEL), (2.0, PIXEL), (3.0, PIXEL), (4.0, PIXEL)),
          Options);
       Assert
         (Options = To_Unbounded_String(" -padding {1.00 2.00 3.00 4.00}"),
          "Failed to get image for Padding_Array option");
 
 --  begin read only
-   end Test_4_Option_Image_test_option_image_padding_array;
+   end Test_4_Option_Image_test_option_image_padding_data;
 --  end read only
 
 --  begin read only
@@ -489,8 +488,8 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_069321_c8487c
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Array is
+   function Wrap_Test_Option_Value_08ea7f_956d9f
+     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Data is
    begin
       begin
          pragma Assert(Ttk_Widgt /= Null_Widget and Name'Length > 0);
@@ -499,10 +498,10 @@ package body Tk.TtkWidget.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Padding_Array test requirement violated");
+               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Padding_Data test requirement violated");
       end;
       declare
-         Test_Option_Value_069321_c8487c_Result: constant Padding_Array :=
+         Test_Option_Value_08ea7f_956d9f_Result: constant Padding_Data :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value
              (Ttk_Widgt, Name);
       begin
@@ -513,29 +512,29 @@ package body Tk.TtkWidget.Test_Data.Tests is
             when System.Assertions.Assert_Failure =>
                AUnit.Assertions.Assert
                  (False,
-                  "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Value_Padding_Array test commitment violated");
+                  "ens_sloc(tk-ttkwidget.ads:0:):Test_Option_Value_Padding_Data test commitment violated");
          end;
-         return Test_Option_Value_069321_c8487c_Result;
+         return Test_Option_Value_08ea7f_956d9f_Result;
       end;
-   end Wrap_Test_Option_Value_069321_c8487c;
+   end Wrap_Test_Option_Value_08ea7f_956d9f;
 --  end read only
 
 --  begin read only
-   procedure Test_4_Option_Value_test_option_value_padding_array
+   procedure Test_4_Option_Value_test_option_value_padding_data
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_069321_c8487c(Gnattest_T: in out Test) renames
-     Test_4_Option_Value_test_option_value_padding_array;
---  id:2.2/069321a6137b6ef1/Option_Value/0/0/test_option_value_padding_array/
-   procedure Test_4_Option_Value_test_option_value_padding_array
+   procedure Test_Option_Value_08ea7f_956d9f(Gnattest_T: in out Test) renames
+     Test_4_Option_Value_test_option_value_padding_data;
+--  id:2.2/08ea7f83934101c8/Option_Value/0/0/test_option_value_padding_data/
+   procedure Test_4_Option_Value_test_option_value_padding_data
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Array renames
-        Wrap_Test_Option_Value_069321_c8487c;
+        (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Data renames
+        Wrap_Test_Option_Value_08ea7f_956d9f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
       Widget: Ttk_Widget;
-      Option: Padding_Array;
+      Option: Padding_Data;
 
    begin
 
@@ -559,7 +558,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
       Destroy(Widget);
 
 --  begin read only
-   end Test_4_Option_Value_test_option_value_padding_array;
+   end Test_4_Option_Value_test_option_value_padding_data;
 --  end read only
 
 --  begin read only
@@ -815,6 +814,71 @@ package body Tk.TtkWidget.Test_Data.Tests is
 
 --  begin read only
    end Test_2_State_test_ttk_widget_state2;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Option_Value_test_option_value_padding_array (Gnattest_T : in out Test_);
+   --  procedure Test_Option_Value_069321_test_option_value_padding_array (Gnattest_T : in out Test_) renames Test_Option_Value_test_option_value_padding_array;
+--  id:2.2/069321a6137b6ef1/Option_Value/0/1/test_option_value_padding_array/
+   --  procedure Test_Option_Value_test_option_value_padding_array (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--        Widget: Ttk_Widget;
+--        Option: Padding_Array;
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Tcl_Eval("ttk::button .test -padding {1 2 3 4}");
+--        Widget := Get_Widget(".test");
+--        Option := Option_Value(Widget, "padding");
+--        Assert
+--          (Option = ((1.0, PIXEL), (2.0, PIXEL), (3.0, PIXEL), (4.0, PIXEL)),
+--           "Failed to get value of Ttk_Widget option Padding_Array.");
+--        Destroy(Widget);
+--        Tcl_Eval("ttk::label .test");
+--        Widget := Get_Widget(".test");
+--        Option := Option_Value(Widget, "padding");
+--        Assert
+--          (Option = ((-1.0, PIXEL), (-1.0, PIXEL), (-1.0, PIXEL), (-1.0, PIXEL)),
+--           "Failed to get empty value of Ttk_Widget option Padding_Array.");
+--        Destroy(Widget);
+--
+--  begin read only
+   --  end Test_Option_Value_test_option_value_padding_array;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Option_Image_test_option_image_padding_array (Gnattest_T : in out Test_);
+   --  procedure Test_Option_Image_81babf_test_option_image_padding_array (Gnattest_T : in out Test_) renames Test_Option_Image_test_option_image_padding_array;
+--  id:2.2/81babfe21f52b417/Option_Image/0/1/test_option_image_padding_array/
+   --  procedure Test_Option_Image_test_option_image_padding_array (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--        Options: Unbounded_String;
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Option_Image
+--          ("padding",
+--           Padding_Array'
+--             ((1.0, PIXEL), (2.0, PIXEL), (3.0, PIXEL), (4.0, PIXEL)),
+--           Options);
+--        Assert
+--          (Options = To_Unbounded_String(" -padding {1.00 2.00 3.00 4.00}"),
+--           "Failed to get image for Padding_Array option");
+--
+--  begin read only
+   --  end Test_Option_Image_test_option_image_padding_array;
 --  end read only
 
 --  begin read only
