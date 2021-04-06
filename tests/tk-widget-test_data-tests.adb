@@ -872,8 +872,8 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Option_Image_219f6d_cd5c79
-     (Name: String; Value: Pad_Array;
+   procedure Wrap_Test_Option_Image_26a8f7_f0d5d6
+     (Name: String; Value: Pad_Data;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -883,7 +883,7 @@ package body Tk.Widget.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-widget.ads:0):Test_Option_Image_Pad_Array test requirement violated");
+               "req_sloc(tk-widget.ads:0):Test_Option_Image_Pad_Data test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Image
         (Name, Value, Options_String);
@@ -894,23 +894,23 @@ package body Tk.Widget.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Pad_Array test commitment violated");
+               "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Pad_Data test commitment violated");
       end;
-   end Wrap_Test_Option_Image_219f6d_cd5c79;
+   end Wrap_Test_Option_Image_26a8f7_f0d5d6;
 --  end read only
 
 --  begin read only
-   procedure Test_9_Option_Image_test_option_image_pad_array
+   procedure Test_9_Option_Image_test_option_image_pad_data
      (Gnattest_T: in out Test);
-   procedure Test_Option_Image_219f6d_cd5c79(Gnattest_T: in out Test) renames
-     Test_9_Option_Image_test_option_image_pad_array;
---  id:2.2/219f6dc9998e100f/Option_Image/0/0/test_option_image_pad_array/
-   procedure Test_9_Option_Image_test_option_image_pad_array
+   procedure Test_Option_Image_26a8f7_f0d5d6(Gnattest_T: in out Test) renames
+     Test_9_Option_Image_test_option_image_pad_data;
+--  id:2.2/26a8f79d8b2d466a/Option_Image/0/0/test_option_image_pad_data/
+   procedure Test_9_Option_Image_test_option_image_pad_data
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Pad_Array;
+        (Name: String; Value: Pad_Data;
          Options_String: in out Unbounded_String) renames
-        Wrap_Test_Option_Image_219f6d_cd5c79;
+        Wrap_Test_Option_Image_26a8f7_f0d5d6;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -919,13 +919,13 @@ package body Tk.Widget.Test_Data.Tests is
    begin
 
       Option_Image
-        ("myoption", Pad_Array'((2.0, PIXEL), (5.0, PIXEL)), Options_String);
+        ("myoption", Pad_Data'((2.0, PIXEL), (5.0, PIXEL)), Options_String);
       Assert
         (To_String(Options_String) = " -myoption {2.00 5.00}",
          "Failed to get image for Pad_Array option");
 
 --  begin read only
-   end Test_9_Option_Image_test_option_image_pad_array;
+   end Test_9_Option_Image_test_option_image_pad_data;
 --  end read only
 
 --  begin read only
