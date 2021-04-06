@@ -386,19 +386,19 @@ package body Tk.Grid is
          use Ada.Strings.Fixed;
 
          Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
-         function Pad_Array_Value(Value: String) return Pad_Array is
+         function Pad_Data_Value(Value: String) return Pad_Data is
             Result_List: constant Array_List :=
               Split_List(List => Value, Interpreter => Interpreter);
          begin
-            return Result_Pad: Pad_Array := Default_Pad_Array do
-               Set_Pad_Array_Loop :
-               for Pad_Value of Result_Pad loop
-                  Pad_Value :=
-                    Pixel_Data_Value
-                      (Value => To_Ada_String(Source => Result_List(1)));
-               end loop Set_Pad_Array_Loop;
+            return Result_Pad: Pad_Data := Default_Pad_Data do
+               Result_Pad.Left :=
+                 Pixel_Data_Value
+                   (Value => To_Ada_String(Source => Result_List(1)));
+               Result_Pad.Right :=
+                 Pixel_Data_Value
+                   (Value => To_Ada_String(Source => Result_List(1)));
             end return;
-         end Pad_Array_Value;
+         end Pad_Data_Value;
       begin
          Set_Options_Loop :
          for I in Options_Names'Range loop
@@ -444,10 +444,10 @@ package body Tk.Grid is
                       (Value => Result(Start_Index .. End_Index));
                when 8 =>
                   Options.Pad_X :=
-                    Pad_Array_Value(Value => Result(Start_Index .. End_Index));
+                    Pad_Data_Value(Value => Result(Start_Index .. End_Index));
                when 9 =>
                   Options.Pad_Y :=
-                    Pad_Array_Value(Value => Result(Start_Index .. End_Index));
+                    Pad_Data_Value(Value => Result(Start_Index .. End_Index));
                when 10 =>
                   Options.Sticky :=
                     To_Tcl_String(Source => Result(Start_Index .. End_Index));

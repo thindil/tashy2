@@ -51,8 +51,8 @@ package Tk.Grid is
       In_Master: Tk_Widget := Null_Widget;
       Internal_Pad_X: Pixel_Data;
       Internal_Pad_Y: Pixel_Data;
-      Pad_X: Pad_Array := (others => <>);
-      Pad_Y: Pad_Array := (others => <>);
+      Pad_X: Pad_Data := Default_Pad_Data;
+      Pad_Y: Pad_Data := Default_Pad_Data;
       Row: Extended_Natural;
       Row_Span: Extended_Natural;
       Sticky: Tcl_String;

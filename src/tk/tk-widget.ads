@@ -256,20 +256,29 @@ package Tk.Widget is
    Empty_Widgets_Array: constant Widgets_Array(1 .. 0) := (others => <>);
    -- ****
 
-   -- ****t* Widget/Widget.Pad_Array
+   -- ****s* Widget/Widget.Pad_Data
    -- FUNCTION
-   -- Array used mostly for setting padding in grid and pack geometry managers
+   -- Data structure used to store infomation about padding
+   -- OPTIONS
+   -- Left  - Padding on the left of the widget
+   -- Right - Padding on the right of the widget
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Pad_Array is array(1 .. 2) of Pixel_Data;
+   type Pad_Data is record
+      Left: Pixel_Data;
+      Right: Pixel_Data;
+   end record;
    -- ****
 
-   -- ****d* Tk.Widget/Default_Pad_Array
+   -- ****d* Widget/Widget.Empty_Pad_Data
    -- FUNCTION
-   -- Pad_Array with default values
+   -- Default value for Pad_Data - no padding at all
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
-   Default_Pad_Array: constant Pad_Array := (others => Empty_Pixel_Data);
+   Default_Pad_Data: constant Pad_Data :=
+     Pad_Data'(others => Empty_Pixel_Data);
    -- ****
 
    -- ****t* Widget/Widget.Bbox_Array
@@ -518,10 +527,10 @@ package Tk.Widget is
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Justify_Type", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Pad_Array;
+     (Name: String; Value: Pad_Data;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Image_Pad_Array", Mode => Nominal);
+      Test_Case => (Name => "Test_Option_Image_Pad_Data", Mode => Nominal);
    procedure Option_Image
      (Name: String; Value: Tk_Widget;
       Options_String: in out Unbounded_String) with
