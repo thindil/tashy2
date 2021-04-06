@@ -190,18 +190,18 @@ package body Tk.Widget is
    end Option_Image;
 
    procedure Option_Image
-     (Name: String; Value: Pad_Array;
+     (Name: String; Value: Pad_Data;
       Options_String: in out Unbounded_String) is
    begin
-      if Value(1).Value > -1.0 then
+      if Value.Left.Value > -1.0 then
          Append
            (Source => Options_String,
             New_Item =>
-              " -" & Name & " {" & Pixel_Data_Image(Value => Value(1)));
-         if Value(2).Value > -1.0 then
+              " -" & Name & " {" & Pixel_Data_Image(Value => Value.Left));
+         if Value.Right.Value > -1.0 then
             Append
               (Source => Options_String,
-               New_Item => " " & Pixel_Data_Image(Value => Value(2)));
+               New_Item => " " & Pixel_Data_Image(Value => Value.Right));
          end if;
          Append(Source => Options_String, New_Item => "}");
       end if;
