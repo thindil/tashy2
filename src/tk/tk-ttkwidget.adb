@@ -215,6 +215,9 @@ package body Tk.TtkWidget is
                 Options => "-" & Name),
            Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
    begin
+      if Result_List'Length = 0 then
+         return Empty_Padding_Data;
+      end if;
       return Padding: Padding_Data := Empty_Padding_Data do
          Padding.Left :=
            Pixel_Data_Value(Value => To_Ada_String(Source => Result_List(1)));
