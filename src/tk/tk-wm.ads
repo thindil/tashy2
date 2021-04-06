@@ -77,6 +77,14 @@ package Tk.Wm is
    Empty_Window_Grid_Geometry: constant Window_Grid_Geometry :=
      Window_Grid_Geometry'(others => <>);
 
+   type Window_Position is record
+      X: Natural;
+      Y: Natural;
+   end record;
+
+   Empty_Window_Position: constant Window_Position :=
+     Window_Position'(others => <>);
+
    procedure Aspect
      (Window: Tk_Widget;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
@@ -221,5 +229,21 @@ package Tk.Wm is
      (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) with
       Pre => Window /= Null_Widget and Images'Length > 0,
       Test_Case => (Name => "Test_Wm_Icon_Photo", Mode => Nominal);
+
+   function Icon_Position(Window: Tk_Widget) return Window_Position with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Position", Mode => Nominal);
+
+   procedure Icon_Position(Window: Tk_Widget; X, Y: Natural) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Position2", Mode => Nominal);
+
+   function Icon_Window(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Window", Mode => Nominal);
+
+   procedure Icon_Window(Window: Tk_Widget; Path_Name: Tcl_String) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Window2", Mode => Nominal);
 
 end Tk.Wm;
