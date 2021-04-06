@@ -52,10 +52,12 @@ package Tk.TtkWidget is
    -- ****
    --## rule on TYPE_INITIAL_VALUES
 
-      -- ****t* TtkWidget/TtkWidget.Ttk_State_Type
-      -- FUNCTION
-      -- Type used to set the current state of the selected Ttk widget
-      -- SOURCE
+   -- ****t* TtkWidget/TtkWidget.Ttk_State_Type
+   -- FUNCTION
+   -- Type used to set the current state of the selected Ttk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Ttk_State_Type is
      (ACTIVE, DISABLED, FOCUS, PRESSED, SELECTED, BACKGROUND, READONLY,
       ALTERNATE, INVALID, HOVER);
@@ -64,6 +66,8 @@ package Tk.TtkWidget is
    -- ****d* TtkWidget/TtkWidget.Default_Ttk_State
    -- FUNCTION
    -- Default Ttk_State_Type value
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Ttk_State: constant Ttk_State_Type := ACTIVE;
 
@@ -72,18 +76,20 @@ package Tk.TtkWidget is
    -- FUNCTION
    -- Array of Ttk_State_Type. Used mostly in taking information about the
    -- state of the selecte Ttk widget
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Ttk_State_Array is array(Positive range <>) of Ttk_State_Type;
    -- ****
    --## rule on TYPE_INITIAL_VALUES
 
-      -- ****t* TtkWidget/TtkWidget.Compound_Type
-      -- FUNCTION
-      -- Type of possible place directions for text and image on the Ttk
-      -- widgets
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- SOURCE
+   -- ****t* TtkWidget/TtkWidget.Compound_Type
+   -- FUNCTION
+   -- Type of possible place directions for text and image on the Ttk
+   -- widgets
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Compound_Type is
      (EMPTY, NONE, BOTTOM, TOP, LEFT, RIGHT, CENTER, TEXT, IMAGE) with
       Default_Value => EMPTY;
@@ -92,15 +98,19 @@ package Tk.TtkWidget is
       -- ****d* TtkWidget/TtkWidget.Default_Compound_Type
       -- FUNCTION
       -- Default value for Compound_Type
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Compound_Type: constant Compound_Type := EMPTY;
    -- ****
 
-      -- ****t* TtkWidget/TtkWidget.Disabled_State_Type
-      -- FUNCTION
-      -- Type used to set disabled bit of the Ttk widgets for compatybility
-      -- with old Tk widgets
-      -- SOURCE
+   -- ****t* TtkWidget/TtkWidget.Disabled_State_Type
+   -- FUNCTION
+   -- Type used to set disabled bit of the Ttk widgets for compatybility
+   -- with old Tk widgets
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Disabled_State_Type is (NORMAL, DISABLED, NONE) with
       Default_Value => NONE;
       -- ****
@@ -108,27 +118,31 @@ package Tk.TtkWidget is
       -- ****d* TtkWidget/TtkWidget.Default_Disabled_State
       -- FUNCTION
       -- Default value for Disabled_State_Type
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Disabled_State: constant Disabled_State_Type := NONE;
    -- ****
 
-      -- ****s* TtkWidget/TtkWidget.Ttk_Image_Option
-      -- FUNCTION
-      -- Used to store configuration of images used by the selected Ttk_Widget
-      -- OPTIONS
-      -- Default    - The default image, used when no other specified for other
-      --              states
-      -- Active     - The image used when widget is in active state
-      -- Disabled   - The image used when widget is in disabled state
-      -- Focus      - The image used when widget is in focus state
-      -- Pressed    - The image used when widget is in pressed state
-      -- Selected   - The image used when widget is in selected state
-      -- Background - The image used when widget is in background state
-      -- Readonly   - The image used when widget is in readonly state
-      -- Alternate  - The image used when widget is in alternate state
-      -- Invalid    - The image used when widget is in invalid state
-      -- Hover      - The image used when widget is in hover state
-      -- SOURCE
+   -- ****s* TtkWidget/TtkWidget.Ttk_Image_Option
+   -- FUNCTION
+   -- Used to store configuration of images used by the selected Ttk_Widget
+   -- OPTIONS
+   -- Default    - The default image, used when no other specified for other
+   --              states
+   -- Active     - The image used when widget is in active state
+   -- Disabled   - The image used when widget is in disabled state
+   -- Focus      - The image used when widget is in focus state
+   -- Pressed    - The image used when widget is in pressed state
+   -- Selected   - The image used when widget is in selected state
+   -- Background - The image used when widget is in background state
+   -- Readonly   - The image used when widget is in readonly state
+   -- Alternate  - The image used when widget is in alternate state
+   -- Invalid    - The image used when widget is in invalid state
+   -- Hover      - The image used when widget is in hover state
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Ttk_Image_Option is record
       Default: Tcl_String;
       Active: Tcl_String;
@@ -147,6 +161,8 @@ package Tk.TtkWidget is
    -- ****d* TtkWidget/TtkWidget.Default_Ttk_Image_Option
    -- FUNCTION
    -- Default value for Ttk_Image_Option
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Ttk_Image_Option: constant Ttk_Image_Option :=
      (others => Null_Tcl_String);
