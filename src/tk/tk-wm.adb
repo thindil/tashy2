@@ -222,4 +222,28 @@ package body Tk.Wm is
       null;
    end Icon_Photo;
 
+   function Icon_Position(Window: Tk_Widget) return Window_Position is
+      pragma Unreferenced(Window);
+   begin
+      return Empty_Window_Position;
+   end Icon_Position;
+
+   procedure Icon_Position(Window: Tk_Widget; X, Y: Natural) is
+      pragma Unreferenced(Window, X, Y);
+   begin
+      null;
+   end Icon_Position;
+
+   function Icon_Window(Window: Tk_Widget) return String is
+      pragma Unreferenced(Window);
+   begin
+      return "";
+   end Icon_Window;
+
+   procedure Icon_Window(Window: Tk_Widget; Path_Name: Tcl_String) is
+      pragma Unreferenced(Window, Path_Name);
+   begin
+      null;
+   end Icon_Window;
+
 end Tk.Wm;
