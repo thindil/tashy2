@@ -85,13 +85,22 @@ package Tk.Wm is
    Empty_Window_Position: constant Window_Position :=
      Window_Position'(others => <>);
 
+   type Aspect_Data is record
+      Min_Numer: Natural;
+      Min_Denom: Natural;
+      Max_Numer: Natural;
+      Max_Denom: Natural;
+   end record;
+
+   Empty_Aspect_Data: constant Aspect_Data := (others => <>);
+
    procedure Aspect
      (Window: Tk_Widget;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Aspect", Mode => Nominal);
 
-   function Aspect(Window: Tk_Widget) return Bbox_Array with
+   function Aspect(Window: Tk_Widget) return Aspect_Data with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Aspect2", Mode => Nominal);
 
