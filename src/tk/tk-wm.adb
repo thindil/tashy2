@@ -15,7 +15,7 @@
 package body Tk.Wm is
 
    procedure Aspect
-     (Window: Tk_Widget;
+     (Window: Tk_Toplevel;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) is
    begin
       Tcl_Eval
@@ -26,7 +26,7 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Aspect;
 
-   function Aspect(Window: Tk_Widget) return Aspect_Data is
+   function Aspect(Window: Tk_Toplevel) return Aspect_Data is
       pragma Unreferenced(Window);
    begin
       return Empty_Aspect_Data;

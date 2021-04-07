@@ -14,6 +14,7 @@
 
 with Tcl.Lists; use Tcl.Lists;
 with Tcl.Strings; use Tcl.Strings;
+with Tk.TopLevel; use Tk.TopLevel;
 with Tk.Widget; use Tk.Widget;
 
 package Tk.Wm is
@@ -95,12 +96,12 @@ package Tk.Wm is
    Empty_Aspect_Data: constant Aspect_Data := (others => <>);
 
    procedure Aspect
-     (Window: Tk_Widget;
+     (Window: Tk_Toplevel;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Aspect", Mode => Nominal);
 
-   function Aspect(Window: Tk_Widget) return Aspect_Data with
+   function Aspect(Window: Tk_Toplevel) return Aspect_Data with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Aspect2", Mode => Nominal);
 
