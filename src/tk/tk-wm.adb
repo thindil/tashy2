@@ -18,7 +18,12 @@ package body Tk.Wm is
      (Window: Tk_Widget;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) is
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm aspect " & Tk_Path_Name(Widgt => Window) &
+           Natural'Image(Min_Numer) & Natural'Image(Min_Denom) &
+           Natural'Image(Max_Numer) & Natural'Image(Max_Denom),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Aspect;
 
    function Aspect(Window: Tk_Widget) return Bbox_Array is
