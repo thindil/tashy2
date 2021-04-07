@@ -86,8 +86,8 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Aspect_ae95d1_d6b574
-     (Window: Tk_Widget) return Bbox_Array is
+   function Wrap_Test_Aspect_d213ed_d6b574
+     (Window: Tk_Widget) return Aspect_Data is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -99,7 +99,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Aspect2 test requirement violated");
       end;
       declare
-         Test_Aspect_ae95d1_d6b574_Result: constant Bbox_Array :=
+         Test_Aspect_d213ed_d6b574_Result: constant Aspect_Data :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Aspect(Window);
       begin
          begin
@@ -111,19 +111,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Aspect2 test commitment violated");
          end;
-         return Test_Aspect_ae95d1_d6b574_Result;
+         return Test_Aspect_d213ed_d6b574_Result;
       end;
-   end Wrap_Test_Aspect_ae95d1_d6b574;
+   end Wrap_Test_Aspect_d213ed_d6b574;
 --  end read only
 
 --  begin read only
    procedure Test_2_Aspect_test_wm_aspect2(Gnattest_T: in out Test);
-   procedure Test_Aspect_ae95d1_d6b574(Gnattest_T: in out Test) renames
+   procedure Test_Aspect_d213ed_d6b574(Gnattest_T: in out Test) renames
      Test_2_Aspect_test_wm_aspect2;
---  id:2.2/ae95d1711cbc0e50/Aspect/0/0/test_wm_aspect2/
+--  id:2.2/d213edf401f929ff/Aspect/0/0/test_wm_aspect2/
    procedure Test_2_Aspect_test_wm_aspect2(Gnattest_T: in out Test) is
-      function Aspect(Window: Tk_Widget) return Bbox_Array renames
-        Wrap_Test_Aspect_ae95d1_d6b574;
+      function Aspect(Window: Tk_Widget) return Aspect_Data renames
+        Wrap_Test_Aspect_d213ed_d6b574;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
