@@ -26,10 +26,10 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Aspect;
 
-   function Aspect(Window: Tk_Widget) return Bbox_Array is
+   function Aspect(Window: Tk_Widget) return Aspect_Data is
       pragma Unreferenced(Window);
    begin
-      return Empty_Bbox_Array;
+      return Empty_Aspect_Data;
    end Aspect;
 
    function Get_Attributes(Window: Tk_Widget) return Window_Attributes_Data is
