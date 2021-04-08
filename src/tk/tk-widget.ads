@@ -279,22 +279,32 @@ package Tk.Widget is
    -- SOURCE
    Default_Pad_Data: constant Pad_Data :=
      Pad_Data'(others => Empty_Pixel_Data);
+     -- ****
+
+     -- ****s* Widget/Widget.Bbox_Data
+     -- FUNCTION
+     -- Data structure used to store values for bounding boxes of widgets
+     -- OPTIONS
+     -- Start_X - Start X coordinate of the bounding box
+     -- Start_Y - Start Y coordinate of the bounding box
+     -- End_X   - End X coordinate of the bounding box
+     -- End_Y   - End Y coordinate of the bounding box
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SOURCE
+   type Bbox_Data is record
+      Start_X: Natural;
+      Start_Y: Natural;
+      End_X: Natural;
+      End_Y: Natural;
+   end record;
    -- ****
 
-   -- ****t* Widget/Widget.Bbox_Array
+   -- ****d* Widget/Widget.mpty_Bbox_Data
    -- FUNCTION
-   -- Array used mostly for take result of BBox commands of various Tk_Widgets
-   -- HISTORY
-   -- 8.6.0 - Added
+   -- Empty bounding box data
    -- SOURCE
-   type Bbox_Array is array(1 .. 4) of Natural;
-   -- ****
-
-   -- ****d* Widget/Widget.Empty_Bbox_Array
-   -- FUNCTION
-   -- Bbox_Array with empty values
-   -- SOURCE
-   Empty_Bbox_Array: constant Bbox_Array := (others => 0);
+   Empty_Bbox_Data: constant Bbox_Data := (others => 0);
    -- ****
 
    -- ****t* Widget/Widget.Tk_Window

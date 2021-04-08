@@ -98,7 +98,7 @@ package body Tk.Grid is
 
    function Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
-      return Bbox_Array is
+      return Bbox_Data is
       Options: Unbounded_String := Null_Unbounded_String;
       Result_List: Array_List(1 .. 4);
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
@@ -143,12 +143,15 @@ package body Tk.Grid is
                   To_String(Source => Options),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
-      return Coords: Bbox_Array := Empty_Bbox_Array do
-         Fill_BBox_Array_Loop :
-         for I in Result_List'Range loop
-            Coords(I) :=
-              Natural'Value(To_Ada_String(Source => Result_List(I)));
-         end loop Fill_BBox_Array_Loop;
+      return Coords: Bbox_Data := Empty_Bbox_Data do
+         Coords.Start_X :=
+           Natural'Value(To_Ada_String(Source => Result_List(1)));
+         Coords.Start_Y :=
+           Natural'Value(To_Ada_String(Source => Result_List(2)));
+         Coords.End_X :=
+           Natural'Value(To_Ada_String(Source => Result_List(3)));
+         Coords.End_Y :=
+           Natural'Value(To_Ada_String(Source => Result_List(4)));
       end return;
    end Bounding_Box;
 
