@@ -27,9 +27,24 @@ package body Tk.Wm is
    end Aspect;
 
    function Aspect(Window: Tk_Toplevel) return Aspect_Data is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
+      Result: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "wm aspect " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
-      return Empty_Aspect_Data;
+      if Result = Empty_Array_List then
+         return Empty_Aspect_Data;
+      end if;
+      return Result_Value: Aspect_Data := Empty_Aspect_Data do
+         Result_Value.Min_Numer := Natural'Value(To_Ada_String(Result(1)));
+         Result_Value.Min_Denom := Natural'Value(To_Ada_String(Result(2)));
+         Result_Value.Max_Numer := Natural'Value(To_Ada_String(Result(3)));
+         Result_Value.Max_Denom := Natural'Value(To_Ada_String(Result(4)));
+      end return;
    end Aspect;
 
    function Get_Attributes(Window: Tk_Widget) return Window_Attributes_Data is
