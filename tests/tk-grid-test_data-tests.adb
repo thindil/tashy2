@@ -258,9 +258,9 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Bounding_Box_251762_896807
+   function Wrap_Test_Bounding_Box_a54e2e_896807
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
-      return Bbox_Array is
+      return Bbox_Data is
    begin
       begin
          pragma Assert(Master /= Null_Widget);
@@ -272,7 +272,7 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_BBox test requirement violated");
       end;
       declare
-         Test_Bounding_Box_251762_896807_Result: constant Bbox_Array :=
+         Test_Bounding_Box_a54e2e_896807_Result: constant Bbox_Data :=
            GNATtest_Generated.GNATtest_Standard.Tk.Grid.Bounding_Box
              (Master, Column, Row, Column2, Row2);
       begin
@@ -285,21 +285,21 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_BBox test commitment violated");
          end;
-         return Test_Bounding_Box_251762_896807_Result;
+         return Test_Bounding_Box_a54e2e_896807_Result;
       end;
-   end Wrap_Test_Bounding_Box_251762_896807;
+   end Wrap_Test_Bounding_Box_a54e2e_896807;
 --  end read only
 
 --  begin read only
    procedure Test_Bounding_Box_test_bbox(Gnattest_T: in out Test);
-   procedure Test_Bounding_Box_251762_896807(Gnattest_T: in out Test) renames
+   procedure Test_Bounding_Box_a54e2e_896807(Gnattest_T: in out Test) renames
      Test_Bounding_Box_test_bbox;
---  id:2.2/2517628ff83349c1/Bounding_Box/1/0/test_bbox/
+--  id:2.2/a54e2e6b55dbabd5/Bounding_Box/1/0/test_bbox/
    procedure Test_Bounding_Box_test_bbox(Gnattest_T: in out Test) is
       function Bounding_Box
         (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
-         return Bbox_Array renames
-        Wrap_Test_Bounding_Box_251762_896807;
+         return Bbox_Data renames
+        Wrap_Test_Bounding_Box_a54e2e_896807;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

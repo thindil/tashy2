@@ -22,7 +22,7 @@ package Tk.Grid.Test_Data.Tests is
    procedure Test_Anchor_ba152c_19ef1e(Gnattest_T: in out Test);
    --  tk-grid.ads:214:4:Anchor:Test_Anchor2
 
-   procedure Test_Bounding_Box_251762_896807(Gnattest_T: in out Test);
+   procedure Test_Bounding_Box_a54e2e_896807(Gnattest_T: in out Test);
    --  tk-grid.ads:255:4:Bounding_Box:Test_BBox
 
    procedure Test_Column_Configure_b41aca_dcc0a7(Gnattest_T: in out Test);
