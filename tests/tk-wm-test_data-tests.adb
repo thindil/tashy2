@@ -80,6 +80,9 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Aspect(Get_Main_Window, 10, 10, 20, 20);
+      Assert
+        (Aspect(Get_Main_Window).Min_Numer = 10,
+         "Failed to set aspect for the selected widget.");
 
 --  begin read only
    end Test_1_Aspect_test_wm_aspect;
@@ -130,8 +133,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Aspect(Get_Main_Window, 20, 20, 30, 30);
+      Assert
+        (Aspect(Get_Main_Window).Min_Denom = 20,
+         "Failed to get aspect for the selected widget.");
 
 --  begin read only
    end Test_2_Aspect_test_wm_aspect2;
