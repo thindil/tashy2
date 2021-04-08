@@ -238,7 +238,7 @@ package Tk.Grid is
       --           value is -1 (as empty). If Row2 has other than default
       --           value, Column, Row and Column2 must be specified too
       -- RESULT
-      -- BBox_Array with 4 values. The first two are staring point (x, y) of
+      -- BBox_Data with 4 values. The first two are staring point (x, y) of
       -- the bounding box, the third is width and the fourth is height of the
       -- bounding box. If Column and Row are specified, then return the
       -- bouding box of the selected cell. If Column, Row, Column2 and Row2
@@ -248,13 +248,13 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the bounding box of grid in My_Frame widget
-      -- Bounding_Box: constant BBox_Array := BBox(My_Frame);
+      -- Bounding_Box: constant BBox_Data := BBox(My_Frame);
       -- COMMANDS
       -- grid bbox master ?column row? ?column2 row2?
       -- SOURCE
    function Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
-      return Bbox_Array with
+      return Bbox_Data with
       Pre => Master /= Null_Widget,
       Test_Case => (Name => "Test_BBox", Mode => Nominal);
       -- ****
