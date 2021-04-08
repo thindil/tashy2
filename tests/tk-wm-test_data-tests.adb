@@ -33,7 +33,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 --  begin read only
    procedure Wrap_Test_Aspect_a5b4d0_4b5997
-     (Window: Tk_Widget;
+     (Window: Tk_Toplevel;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) is
    begin
       begin
@@ -66,7 +66,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  id:2.2/a5b4d0bd0c5bfd55/Aspect/1/0/test_wm_aspect/
    procedure Test_1_Aspect_test_wm_aspect(Gnattest_T: in out Test) is
       procedure Aspect
-        (Window: Tk_Widget;
+        (Window: Tk_Toplevel;
          Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) renames
         Wrap_Test_Aspect_a5b4d0_4b5997;
 --  end read only
@@ -87,7 +87,7 @@ package body Tk.Wm.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_Aspect_d213ed_d6b574
-     (Window: Tk_Widget) return Aspect_Data is
+     (Window: Tk_Toplevel) return Aspect_Data is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -122,7 +122,7 @@ package body Tk.Wm.Test_Data.Tests is
      Test_2_Aspect_test_wm_aspect2;
 --  id:2.2/d213edf401f929ff/Aspect/0/0/test_wm_aspect2/
    procedure Test_2_Aspect_test_wm_aspect2(Gnattest_T: in out Test) is
-      function Aspect(Window: Tk_Widget) return Aspect_Data renames
+      function Aspect(Window: Tk_Toplevel) return Aspect_Data renames
         Wrap_Test_Aspect_d213ed_d6b574;
 --  end read only
 
