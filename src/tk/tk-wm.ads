@@ -54,8 +54,7 @@ package Tk.Wm is
       end case;
    end record;
 
-   Default_Window_Attributes: constant Window_Attributes_Data :=
-     Window_Attributes_Data'(others => <>);
+   Empty_Window_Attributes: constant Window_Attributes_Data := (others => <>);
 
    type Focus_Model_Types is (ACTIVE, PASSIVE);
 
