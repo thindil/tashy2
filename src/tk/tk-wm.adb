@@ -63,27 +63,38 @@ package body Tk.Wm is
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
       Index: Positive := 1;
-      Window_Attributes: Window_Attributes_Data
-        (Wm_Type =>
-           (if
-              Tcl_Get_Var2
-                (Var_Name => "tcl_platform", Index_Name => "os",
-                 Interpreter => Interpreter) =
-              "Windows"
-            then WINDOWS
-            elsif
-              Tcl_Get_Var2
-                (Var_Name => "tcl_platform", Index_Name => "os",
-                 Interpreter => Interpreter) =
-              "Darwin"
-            then MACOSX
-            else X_11)) :=
+      Window_Manager: constant Window_Manager_Types :=
+        (if
+           Tcl_Get_Var2
+             (Var_Name => "tcl_platform", Index_Name => "os",
+              Interpreter => Interpreter) =
+           "Windows"
+         then WINDOWS
+         elsif
+           Tcl_Get_Var2
+             (Var_Name => "tcl_platform", Index_Name => "os",
+              Interpreter => Interpreter) =
+           "Darwin"
+         then MACOSX
+         else X_11);
+      Window_Attributes: Window_Attributes_Data (Wm_Type => Window_Manager) :=
         Empty_Window_Attributes;
+      function Get_Boolean return Extended_Boolean is
+      begin
+         if To_Ada_String(Source => Result(Index + 1)) = "1" then
+            return TRUE;
+         end if;
+         return FALSE;
+      end Get_Boolean;
    begin
       while Index < Result'Last loop
          if Result(Index) = "-alpha" then
             Window_Attributes.Alpha :=
-              Alpha_Type'Value(To_Ada_String(Result(Index + 1)));
+              Alpha_Type'Value(To_Ada_String(Source => Result(Index + 1)));
+         elsif Result(Index) = "-fullscreen" then
+            Window_Attributes.Full_Screen := Get_Boolean;
+         elsif Result(Index) = "-topmost" then
+            Window_Attributes.Topmost := Get_Boolean;
          end if;
          Index := Index + 2;
       end loop;
