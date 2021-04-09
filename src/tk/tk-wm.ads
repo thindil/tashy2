@@ -19,7 +19,9 @@ with Tk.Widget; use Tk.Widget;
 
 package Tk.Wm is
 
-   type Window_Manager_Types is (X11, WINDOWS, MACOSX);
+   type Window_Manager_Types is (X_11, WINDOWS, MACOSX);
+
+   Default_Window_Manager: constant Window_Manager_Types := X_11;
 
    type Alpha_Type is digits 2 range -1.0 .. 1.0;
 
@@ -31,12 +33,13 @@ package Tk.Wm is
 
    Default_Window_Type: constant Window_Types := NORMAL;
 
-   type Window_Attributes_Data(WM_Type: Window_Manager_Types := X11) is record
+   type Window_Attributes_Data
+     (Wm_Type: Window_Manager_Types := Default_Window_Manager) is record
       Alpha: Alpha_Type;
       Full_Screen: Extended_Boolean;
       Topmost: Extended_Boolean;
-      case WM_Type is
-         when X11 =>
+      case Wm_Type is
+         when X_11 =>
             Window_Type: Window_Types;
             Zoomed: Extended_Boolean;
          when WINDOWS =>
@@ -140,23 +143,23 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Client", Mode => Nominal);
 
    procedure Client(Window: Tk_Widget; Name: Tcl_String) with
-      Pre => Window /= Null_Widget and Length(Name) > 0,
+      Pre => Window /= Null_Widget and Length(Source => Name) > 0,
       Test_Case => (Name => "Test_Wm_Client2", Mode => Nominal);
 
    function Color_Map_Windows(Window: Tk_Widget) return Array_List with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows", Mode => Nominal);
 
-   procedure Color_Map_Windows(Window: Tk_Widget; Windows: Widgets_Array) with
-      Pre => Window /= Null_Widget and Windows /= Empty_Widgets_Array,
+   procedure Color_Map_Windows(Window: Tk_Widget; Widgets: Widgets_Array) with
+      Pre => Window /= Null_Widget and Widgets /= Empty_Widgets_Array,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows2", Mode => Nominal);
 
    function Command(Window: Tk_Widget) return Tcl_String with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Command", Mode => Nominal);
 
-   procedure Command(Window: Tk_Widget; Command: Tcl_String) with
-      Pre => Window /= Null_Widget and Length(Command) > 0,
+   procedure Command(Window: Tk_Widget; Wm_Command: Tcl_String) with
+      Pre => Window /= Null_Widget and Length(Source => Wm_Command) > 0,
       Test_Case => (Name => "Test_Wm_Command2", Mode => Nominal);
 
    procedure Deiconify(Window: Tk_Widget) with
