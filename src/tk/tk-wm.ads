@@ -29,9 +29,9 @@ package Tk.Wm is
 
    type Window_Types is
      (DESKTOP, DOCK, TOOLBAR, MENU, UTILITY, SPLASH, DIALOG, DROPDOWN_MENU,
-      POPUP_MENU, TOOLTIP, NOTIFICATION, COMBO, DND, NORMAL);
+      POPUP_MENU, TOOLTIP, NOTIFICATION, COMBO, DND, NORMAL, NONE);
 
-   Default_Window_Type: constant Window_Types := NORMAL;
+   Default_Window_Type: constant Window_Types := NONE;
 
    type Window_Attributes_Data
      (Wm_Type: Window_Manager_Types := Default_Window_Manager) is record
