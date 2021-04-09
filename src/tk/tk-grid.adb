@@ -148,9 +148,9 @@ package body Tk.Grid is
            Natural'Value(To_Ada_String(Source => Result_List(1)));
          Coords.Start_Y :=
            Natural'Value(To_Ada_String(Source => Result_List(2)));
-         Coords.End_X :=
+         Coords.Width :=
            Natural'Value(To_Ada_String(Source => Result_List(3)));
-         Coords.End_Y :=
+         Coords.Height :=
            Natural'Value(To_Ada_String(Source => Result_List(4)));
       end return;
    end Bounding_Box;

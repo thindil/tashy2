@@ -287,16 +287,16 @@ package Tk.Widget is
      -- OPTIONS
      -- Start_X - Start X coordinate of the bounding box
      -- Start_Y - Start Y coordinate of the bounding box
-     -- End_X   - End X coordinate of the bounding box
-     -- End_Y   - End Y coordinate of the bounding box
+     -- Width   - Width of the bounding box
+     -- Height  - Height of the bounding box
      -- HISTORY
      -- 8.6.0 - Added
      -- SOURCE
    type Bbox_Data is record
       Start_X: Natural;
       Start_Y: Natural;
-      End_X: Natural;
-      End_Y: Natural;
+      Width: Natural;
+      Height: Natural;
    end record;
    -- ****
 
