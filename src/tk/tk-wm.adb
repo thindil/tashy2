@@ -40,10 +40,14 @@ package body Tk.Wm is
          return Empty_Aspect_Data;
       end if;
       return Result_Value: Aspect_Data := Empty_Aspect_Data do
-         Result_Value.Min_Numer := Natural'Value(To_Ada_String(Result(1)));
-         Result_Value.Min_Denom := Natural'Value(To_Ada_String(Result(2)));
-         Result_Value.Max_Numer := Natural'Value(To_Ada_String(Result(3)));
-         Result_Value.Max_Denom := Natural'Value(To_Ada_String(Result(4)));
+         Result_Value.Min_Numer :=
+           Natural'Value(To_Ada_String(Source => Result(1)));
+         Result_Value.Min_Denom :=
+           Natural'Value(To_Ada_String(Source => Result(2)));
+         Result_Value.Max_Numer :=
+           Natural'Value(To_Ada_String(Source => Result(3)));
+         Result_Value.Max_Denom :=
+           Natural'Value(To_Ada_String(Source => Result(4)));
       end return;
    end Aspect;
 
@@ -104,8 +108,8 @@ package body Tk.Wm is
       return Empty_Array_List;
    end Color_Map_Windows;
 
-   procedure Color_Map_Windows(Window: Tk_Widget; Windows: Widgets_Array) is
-      pragma Unreferenced(Window, Windows);
+   procedure Color_Map_Windows(Window: Tk_Widget; Widgets: Widgets_Array) is
+      pragma Unreferenced(Window, Widgets);
    begin
       null;
    end Color_Map_Windows;
@@ -116,8 +120,8 @@ package body Tk.Wm is
       return Null_Tcl_String;
    end Command;
 
-   procedure Command(Window: Tk_Widget; Command: Tcl_String) is
-      pragma Unreferenced(Window, Command);
+   procedure Command(Window: Tk_Widget; Wm_Command: Tcl_String) is
+      pragma Unreferenced(Window, Wm_Command);
    begin
       null;
    end Command;
