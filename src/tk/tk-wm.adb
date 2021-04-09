@@ -12,6 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Variables; use Tcl.Variables;
+
 package body Tk.Wm is
 
    procedure Aspect
@@ -52,9 +54,40 @@ package body Tk.Wm is
    end Aspect;
 
    function Get_Attributes(Window: Tk_Widget) return Window_Attributes_Data is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
+      Result: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "wm attributes " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
+      Index: Positive := 1;
+      Window_Attributes: Window_Attributes_Data
+        (Wm_Type =>
+           (if
+              Tcl_Get_Var2
+                (Var_Name => "tcl_platform", Index_Name => "os",
+                 Interpreter => Interpreter) =
+              "Windows"
+            then WINDOWS
+            elsif
+              Tcl_Get_Var2
+                (Var_Name => "tcl_platform", Index_Name => "os",
+                 Interpreter => Interpreter) =
+              "Darwin"
+            then MACOSX
+            else X_11)) :=
+        Empty_Window_Attributes;
    begin
-      return Default_Window_Attributes;
+      while Index < Result'Last loop
+         if Result(Index) = "-alpha" then
+            Window_Attributes.Alpha :=
+              Alpha_Type'Value(To_Ada_String(Result(Index + 1)));
+         end if;
+         Index := Index + 2;
+      end loop;
+      return Window_Attributes;
    end Get_Attributes;
 
    procedure Set_Attributes
