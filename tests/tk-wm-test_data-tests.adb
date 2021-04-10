@@ -16,6 +16,7 @@ with System.Assertions;
 --  end read only
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tcl.Variables; use Tcl.Variables;
 with Tk.MainWindow; use Tk.MainWindow;
 
 --  begin read only
@@ -191,11 +192,28 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Window_Manager: constant Window_Manager_Types :=
+        (if
+           Tcl_Get_Var2
+             (Var_Name => "tcl_platform", Index_Name => "os") =
+           "Windows"
+         then WINDOWS
+         elsif
+           Tcl_Get_Var2
+             (Var_Name => "tcl_platform", Index_Name => "os") =
+           "Darwin"
+         then MACOSX
+         else X_11);
+      Attributes: constant Window_Attributes_Data(Window_Manager) := (Alpha => 0.5, others => <>);
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Set_Attributes(Get_Main_Window, Attributes);
+      Assert(Get_Attributes(Get_Main_Window).Alpha = 0.5, "Failed to get alpha attribute for the main window");
 
 --  begin read only
    end Test_Get_Attributes_test_wm_get_attributes;
