@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Tcl.Variables; use Tcl.Variables;
 
@@ -150,7 +151,8 @@ package body Tk.Wm is
             if Attributes_Data.Window_Type /= NONE then
                Append
                  (Values_List,
-                  "-type " & Window_Types'Image(Attributes_Data.Window_Type));
+                  "-type " &
+                  To_Lower(Window_Types'Image(Attributes_Data.Window_Type)));
             end if;
             Set_Boolean("zoomed", Attributes_Data.Zoomed);
          when WINDOWS =>
