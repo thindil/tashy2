@@ -23,13 +23,15 @@ package Tk.Wm is
 
    Default_Window_Manager: constant Window_Manager_Types := X_11;
 
-   type Alpha_Type is digits 2 range -1.0 .. 1.0;
+   type Alpha_Type is digits 2 range -1.0 .. 1.0 with
+      Default_Value => 1.0;
 
    Default_Alpha: constant Alpha_Type := 1.0;
 
    type Window_Types is
      (DESKTOP, DOCK, TOOLBAR, MENU, UTILITY, SPLASH, DIALOG, DROPDOWN_MENU,
-      POPUP_MENU, TOOLTIP, NOTIFICATION, COMBO, DND, NORMAL, NONE);
+      POPUP_MENU, TOOLTIP, NOTIFICATION, COMBO, DND, NORMAL, NONE) with
+      Default_Value => NONE;
 
    Default_Window_Type: constant Window_Types := NONE;
 
