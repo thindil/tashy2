@@ -265,6 +265,8 @@ package Tcl is
    -- ****d* Tcl/Default_Result_Type
    -- FUNCTION
    -- The default type of Tcl result
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Result_Type: constant Result_Types := TCL_STATIC;
    -- ****
@@ -279,6 +281,8 @@ package Tcl is
    -- TCL_RETURN   - Used when a command want to emulate Tcl command return
    -- TCL_BREAK    - Used when a command want to emulate Tcl command break
    -- TCL_CONTINUE - Used when a command want to emulate Tcl command continue
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Tcl_Results is
      (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE) with

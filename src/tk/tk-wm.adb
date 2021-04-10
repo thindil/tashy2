@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Tcl.Variables; use Tcl.Variables;
 
 package body Tk.Wm is
@@ -128,9 +129,54 @@ package body Tk.Wm is
 
    procedure Set_Attributes
      (Window: Tk_Widget; Attributes_Data: Window_Attributes_Data) is
-      pragma Unreferenced(Window, Attributes_Data);
+      Values_List: Unbounded_String := Null_Unbounded_String;
+      procedure Set_Boolean(Name: String; Value: Extended_Boolean) is
+      begin
+         if Value = TRUE then
+            Append(Values_List, "-" & Name & " 1");
+         elsif Value = FALSE then
+            Append(Values_List, "-" & Name & " 0");
+         end if;
+      end Set_Boolean;
    begin
-      null;
+      if Attributes_Data.Alpha >= 0.0 then
+         Append
+           (Values_List, "-alpha" & Alpha_Type'Image(Attributes_Data.Alpha));
+      end if;
+      Set_Boolean("fullscreen", Attributes_Data.Full_Screen);
+      Set_Boolean("topmost", Attributes_Data.Topmost);
+      case Attributes_Data.Wm_Type is
+         when X_11 =>
+            if Attributes_Data.Window_Type /= NONE then
+               Append
+                 (Values_List,
+                  "-type " & Window_Types'Image(Attributes_Data.Window_Type));
+            end if;
+            Set_Boolean("zoomed", Attributes_Data.Zoomed);
+         when WINDOWS =>
+            Set_Boolean("disabled", Attributes_Data.Disabled);
+            Set_Boolean("toolwindow", Attributes_Data.Tool_Window);
+            if To_Ada_String(Attributes_Data.Transparent_Color)'Length > 0 then
+               Append
+                 (Values_List,
+                  "-transparentcolor " &
+                  To_Ada_String(Attributes_Data.Transparent_Color));
+            end if;
+         when MACOSX =>
+            Set_Boolean("modified", Attributes_Data.Modified);
+            Set_Boolean("notify", Attributes_Data.Notify);
+            if To_Ada_String(Attributes_Data.Title_Path)'Length > 0 then
+               Append
+                 (Values_List,
+                  "-titlepath " & To_Ada_String(Attributes_Data.Title_Path));
+            end if;
+            Set_Boolean("transparent", Attributes_Data.Transparent);
+      end case;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm attributes " & Tk_Path_Name(Widgt => Window) & " " &
+           To_String(Values_List),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Set_Attributes;
 
    function Get_Attribute(Window: Tk_Widget; Name: String) return Tcl_String is
