@@ -95,6 +95,31 @@ package body Tk.Wm is
             Window_Attributes.Full_Screen := Get_Boolean;
          elsif Result(Index) = "-topmost" then
             Window_Attributes.Topmost := Get_Boolean;
+         elsif Result(Index) = "-type" and Window_Manager = X_11 then
+            if To_Ada_String(Source => Result(Index + 1)) = "" then
+               Window_Attributes.Window_Type := NONE;
+            else
+               Window_Attributes.Window_Type :=
+                 Window_Types'Value
+                   (To_Ada_String(Source => Result(Index + 1)));
+            end if;
+         elsif Result(Index) = "-zoomed" and Window_Manager = X_11 then
+            Window_Attributes.Zoomed := Get_Boolean;
+         elsif Result(Index) = "-disabled" and Window_Manager = WINDOWS then
+            Window_Attributes.Disabled := Get_Boolean;
+         elsif Result(Index) = "-toolwindow" and Window_Manager = WINDOWS then
+            Window_Attributes.Tool_Window := Get_Boolean;
+         elsif Result(Index) = "-transparentcolor" and
+           Window_Manager = WINDOWS then
+            Window_Attributes.Transparent_Color := Result(Index + 1);
+         elsif Result(Index) = "-modified" and Window_Manager = MACOSX then
+            Window_Attributes.Modified := Get_Boolean;
+         elsif Result(Index) = "-notify" and Window_Manager = MACOSX then
+            Window_Attributes.Notify := Get_Boolean;
+         elsif Result(Index) = "-titlepath" and Window_Manager = MACOSX then
+            Window_Attributes.Title_Path := Result(Index + 1);
+         elsif Result(Index) = "-transparent" and Window_Manager = MACOSX then
+            Window_Attributes.Transparent := Get_Boolean;
          end if;
          Index := Index + 2;
       end loop;
