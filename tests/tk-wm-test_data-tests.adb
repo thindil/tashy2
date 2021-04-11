@@ -194,17 +194,16 @@ package body Tk.Wm.Test_Data.Tests is
       pragma Unreferenced(Gnattest_T);
       Window_Manager: constant Window_Manager_Types :=
         (if
-           Tcl_Get_Var2
-             (Var_Name => "tcl_platform", Index_Name => "os") =
+           Tcl_Get_Var2(Var_Name => "tcl_platform", Index_Name => "os") =
            "Windows"
          then WINDOWS
          elsif
-           Tcl_Get_Var2
-             (Var_Name => "tcl_platform", Index_Name => "os") =
+           Tcl_Get_Var2(Var_Name => "tcl_platform", Index_Name => "os") =
            "Darwin"
          then MACOSX
          else X_11);
-      Attributes: constant Window_Attributes_Data(Window_Manager) := (Alpha => 0.5, others => <>);
+      Attributes: Window_Attributes_Data (Window_Manager) :=
+        (Alpha => 0.5, others => <>);
 
    begin
 
@@ -213,7 +212,16 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Set_Attributes(Get_Main_Window, Attributes);
-      Assert(Get_Attributes(Get_Main_Window).Alpha = 0.5, "Failed to get alpha attribute for the main window");
+      Assert
+        (Get_Attributes(Get_Main_Window).Alpha = 0.5,
+         "Failed to get alpha attribute for the main window");
+      if Window_Manager = X_11 then
+         Attributes.Window_Type := DESKTOP;
+         Set_Attributes(Get_Main_Window, Attributes);
+         Assert
+           (Get_Attributes(Get_Main_Window).Window_Type = DESKTOP,
+            "Failed to get window type attribute for the main window in X11 window manager");
+      end if;
 
 --  begin read only
    end Test_Get_Attributes_test_wm_get_attributes;
