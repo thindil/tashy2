@@ -185,16 +185,27 @@ package body Tk.Wm is
    end Set_Attributes;
 
    function Get_Attribute(Window: Tk_Widget; Name: String) return Tcl_String is
-      pragma Unreferenced(Window, Name);
    begin
-      return Null_Tcl_String;
+      return To_Tcl_String
+          (Source =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
+                  Name,
+                Interpreter => Tk_Interp(Widgt => Window)));
    end Get_Attribute;
 
    function Get_Attribute
      (Window: Tk_Widget; Name: String) return Extended_Boolean is
-      pragma Unreferenced(Window, Name);
    begin
-      return NONE;
+      if Tcl_Eval
+          (Tcl_Script =>
+             "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+           Interpreter => Tk_Interp(Widgt => Window)) =
+        "1" then
+         return TRUE;
+      end if;
+      return FALSE;
    end Get_Attribute;
 
    function Get_Attribute(Window: Tk_Widget; Name: String) return Alpha_Type is
