@@ -268,11 +268,36 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Window_Manager: constant Window_Manager_Types :=
+        (if
+           Tcl_Get_Var2(Var_Name => "tcl_platform", Index_Name => "os") =
+           "Windows"
+         then WINDOWS
+         elsif
+           Tcl_Get_Var2(Var_Name => "tcl_platform", Index_Name => "os") =
+           "Darwin"
+         then MACOSX
+         else X_11);
+      Attributes: Window_Attributes_Data (Window_Manager) :=
+        (Alpha => 0.3, others => <>);
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Set_Attributes(Get_Main_Window, Attributes);
+      Assert
+        (Get_Attributes(Get_Main_Window).Alpha = 0.3,
+         "Failed to set alpha attribute for the main window");
+      if Window_Manager = X_11 then
+         Attributes.Window_Type := DOCK;
+         Set_Attributes(Get_Main_Window, Attributes);
+         Assert
+           (Get_Attributes(Get_Main_Window).Window_Type = DOCK,
+            "Failed to set window type attribute for the main window in X11 window manager");
+      end if;
 
 --  begin read only
    end Test_Set_Attributes_test_wm_set_attributes;
@@ -327,8 +352,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Get_Attribute(Get_Main_Window, "alpha") = To_Tcl_String("0.3"),
+         "Failed to get widget attribute as Tcl_String");
 
 --  begin read only
    end Test_1_Get_Attribute_test_wm_get_attribute;
@@ -383,8 +413,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Get_Attribute(Get_Main_Window, "fullscreen") = FALSE,
+         "Failed to get widget attribute as Extended_Boolean");
 
 --  begin read only
    end Test_2_Get_Attribute_test_wm_get_attribute2;
