@@ -21,6 +21,8 @@ package body Tcl is
    -- ****iv* Tcl/Tcl.Default_Interpreter
    -- FUNCTION
    -- Pointer to the default Tcl interpreter
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Interpreter: Tcl_Interpreter := Null_Interpreter;
    -- ****
