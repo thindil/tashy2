@@ -134,15 +134,16 @@ package body Tk.Wm is
       procedure Set_Boolean(Name: String; Value: Extended_Boolean) is
       begin
          if Value = TRUE then
-            Append(Values_List, "-" & Name & " 1");
+            Append(Values_List, "-" & Name & " 1 ");
          elsif Value = FALSE then
-            Append(Values_List, "-" & Name & " 0");
+            Append(Values_List, "-" & Name & " 0 ");
          end if;
       end Set_Boolean;
    begin
       if Attributes_Data.Alpha >= 0.0 then
          Append
-           (Values_List, "-alpha" & Alpha_Type'Image(Attributes_Data.Alpha));
+           (Values_List,
+            "-alpha" & Alpha_Type'Image(Attributes_Data.Alpha) & " ");
       end if;
       Set_Boolean("fullscreen", Attributes_Data.Full_Screen);
       Set_Boolean("topmost", Attributes_Data.Topmost);
@@ -152,7 +153,8 @@ package body Tk.Wm is
                Append
                  (Values_List,
                   "-type " &
-                  To_Lower(Window_Types'Image(Attributes_Data.Window_Type)));
+                  To_Lower(Window_Types'Image(Attributes_Data.Window_Type)) &
+                  " ");
             end if;
             Set_Boolean("zoomed", Attributes_Data.Zoomed);
          when WINDOWS =>
@@ -162,7 +164,7 @@ package body Tk.Wm is
                Append
                  (Values_List,
                   "-transparentcolor " &
-                  To_Ada_String(Attributes_Data.Transparent_Color));
+                  To_Ada_String(Attributes_Data.Transparent_Color) & " ");
             end if;
          when MACOSX =>
             Set_Boolean("modified", Attributes_Data.Modified);
@@ -170,7 +172,8 @@ package body Tk.Wm is
             if To_Ada_String(Attributes_Data.Title_Path)'Length > 0 then
                Append
                  (Values_List,
-                  "-titlepath " & To_Ada_String(Attributes_Data.Title_Path));
+                  "-titlepath " & To_Ada_String(Attributes_Data.Title_Path) &
+                  " ");
             end if;
             Set_Boolean("transparent", Attributes_Data.Transparent);
       end case;
