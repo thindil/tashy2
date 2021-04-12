@@ -281,8 +281,8 @@ package body Tk.Wm is
       end loop Convert_List_To_String_Loop;
       Tcl_Eval
         (Tcl_Script =>
-           "wm colormapwindows " & Tk_Path_Name(Widgt => Window) &
-           To_String(Windows_List),
+           "wm colormapwindows " & Tk_Path_Name(Widgt => Window) & " {" &
+           To_String(Source => Windows_List) & "}",
          Interpreter => Tk_Interp(Widgt => Window));
    end Color_Map_Windows;
 
