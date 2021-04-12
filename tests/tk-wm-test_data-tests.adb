@@ -474,8 +474,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Get_Attribute(Get_Main_Window, "alpha") = 0.3,
+         "Failed to get widget attribute as Alpha_Type");
 
 --  begin read only
    end Test_3_Get_Attribute_test_wm_get_attribute3;
@@ -527,11 +532,30 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Window_Manager: constant Window_Manager_Types :=
+        (if
+           Tcl_Get_Var2(Var_Name => "tcl_platform", Index_Name => "os") =
+           "Windows"
+         then WINDOWS
+         elsif
+           Tcl_Get_Var2(Var_Name => "tcl_platform", Index_Name => "os") =
+           "Darwin"
+         then MACOSX
+         else X_11);
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      if Window_Manager /= X_11 then
+         Assert(True, "This option is available only on X11 window manager");
+         return;
+      end if;
+      Assert
+        (Get_Attributes(Get_Main_Window).Window_Type = DOCK,
+         "Failed to get window type attribute for the main window");
 
 --  begin read only
    end Test_4_Get_Attribute_test_wm_get_attribute4;
