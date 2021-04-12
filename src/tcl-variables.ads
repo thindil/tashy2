@@ -24,6 +24,8 @@ package Tcl.Variables is
    -- ****t* Variables/Variables.Variables_Flags
    -- FUNCTION
    -- Available flags for manipulation of Tcl variables
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Variables_Flags is
      (NONE, TCL_GLOBAL_ONLY, TCL_NAMESPACE_ONLY, TCL_APPEND_VALUE,
@@ -37,6 +39,8 @@ package Tcl.Variables is
    -- ****d* Variables/Variables.Default_Flag
    -- FUNCTION
    -- Default flag for Tcl variables
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Flag: constant Variables_Flags := NONE;
    -- ****
@@ -44,6 +48,8 @@ package Tcl.Variables is
    -- ****t* Variables/Variables.Flags_Array
    -- FUNCTION
    -- Used as to set flags for Tcl variables manipulation subprograms
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Flags_Array is array(Positive range <>) of Variables_Flags;
    -- ****
@@ -51,6 +57,8 @@ package Tcl.Variables is
    -- ****d* Variables/Variables.Default_Flags_Array
    -- FUNCTION
    -- Default flags array
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Flags_Array: constant Flags_Array(1 .. 1) := (1 => Default_Flag);
    -- ****
