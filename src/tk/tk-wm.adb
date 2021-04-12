@@ -89,6 +89,7 @@ package body Tk.Wm is
          return FALSE;
       end Get_Boolean;
    begin
+      Read_Attributes_Loop :
       while Index < Result'Last loop
          if Result(Index) = "-alpha" then
             Window_Attributes.Alpha :=
@@ -124,7 +125,7 @@ package body Tk.Wm is
             Window_Attributes.Transparent := Get_Boolean;
          end if;
          Index := Index + 2;
-      end loop;
+      end loop Read_Attributes_Loop;
       return Window_Attributes;
    end Get_Attributes;
 
@@ -133,54 +134,70 @@ package body Tk.Wm is
       Values_List: Unbounded_String := Null_Unbounded_String;
       procedure Set_Boolean(Name: String; Value: Extended_Boolean) is
       begin
-         if Value = TRUE then
-            Append(Values_List, "-" & Name & " 1 ");
-         elsif Value = FALSE then
-            Append(Values_List, "-" & Name & " 0 ");
-         end if;
+         case Value is
+            when TRUE =>
+               Append(Source => Values_List, New_Item => "-" & Name & " 1 ");
+            when FALSE =>
+               Append(Source => Values_List, New_Item => "-" & Name & " 0 ");
+            when NONE =>
+               null;
+         end case;
       end Set_Boolean;
    begin
       if Attributes_Data.Alpha >= 0.0 then
          Append
-           (Values_List,
-            "-alpha" & Alpha_Type'Image(Attributes_Data.Alpha) & " ");
+           (Source => Values_List,
+            New_Item =>
+              "-alpha" & Alpha_Type'Image(Attributes_Data.Alpha) & " ");
       end if;
-      Set_Boolean("fullscreen", Attributes_Data.Full_Screen);
-      Set_Boolean("topmost", Attributes_Data.Topmost);
+      Set_Boolean(Name => "fullscreen", Value => Attributes_Data.Full_Screen);
+      Set_Boolean(Name => "topmost", Value => Attributes_Data.Topmost);
       case Attributes_Data.Wm_Type is
          when X_11 =>
             if Attributes_Data.Window_Type /= NONE then
                Append
-                 (Values_List,
-                  "-type " &
-                  To_Lower(Window_Types'Image(Attributes_Data.Window_Type)) &
-                  " ");
+                 (Source => Values_List,
+                  New_Item =>
+                    "-type " &
+                    To_Lower
+                      (Item =>
+                         Window_Types'Image(Attributes_Data.Window_Type)) &
+                    " ");
             end if;
-            Set_Boolean("zoomed", Attributes_Data.Zoomed);
+            Set_Boolean(Name => "zoomed", Value => Attributes_Data.Zoomed);
          when WINDOWS =>
-            Set_Boolean("disabled", Attributes_Data.Disabled);
-            Set_Boolean("toolwindow", Attributes_Data.Tool_Window);
-            if To_Ada_String(Attributes_Data.Transparent_Color)'Length > 0 then
+            Set_Boolean(Name => "disabled", Value => Attributes_Data.Disabled);
+            Set_Boolean
+              (Name => "toolwindow", Value => Attributes_Data.Tool_Window);
+            if To_Ada_String(Source => Attributes_Data.Transparent_Color)'
+                Length >
+              0 then
                Append
-                 (Values_List,
-                  "-transparentcolor " &
-                  To_Ada_String(Attributes_Data.Transparent_Color) & " ");
+                 (Source => Values_List,
+                  New_Item =>
+                    "-transparentcolor " &
+                    To_Ada_String
+                      (Source => Attributes_Data.Transparent_Color) &
+                    " ");
             end if;
          when MACOSX =>
-            Set_Boolean("modified", Attributes_Data.Modified);
-            Set_Boolean("notify", Attributes_Data.Notify);
-            if To_Ada_String(Attributes_Data.Title_Path)'Length > 0 then
+            Set_Boolean(Name => "modified", Value => Attributes_Data.Modified);
+            Set_Boolean(Name => "notify", Value => Attributes_Data.Notify);
+            if To_Ada_String(Source => Attributes_Data.Title_Path)'Length >
+              0 then
                Append
-                 (Values_List,
-                  "-titlepath " & To_Ada_String(Attributes_Data.Title_Path) &
-                  " ");
+                 (Source => Values_List,
+                  New_Item =>
+                    "-titlepath " &
+                    To_Ada_String(Source => Attributes_Data.Title_Path) & " ");
             end if;
-            Set_Boolean("transparent", Attributes_Data.Transparent);
+            Set_Boolean
+              (Name => "transparent", Value => Attributes_Data.Transparent);
       end case;
       Tcl_Eval
         (Tcl_Script =>
            "wm attributes " & Tk_Path_Name(Widgt => Window) & " " &
-           To_String(Values_List),
+           To_String(Source => Values_List),
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Attributes;
 
@@ -209,16 +226,22 @@ package body Tk.Wm is
    end Get_Attribute;
 
    function Get_Attribute(Window: Tk_Widget; Name: String) return Alpha_Type is
-      pragma Unreferenced(Window, Name);
    begin
-      return Default_Alpha;
+      return Alpha_Type'Value
+          (Tcl_Eval
+             (Tcl_Script =>
+                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+              Interpreter => Tk_Interp(Widgt => Window)));
    end Get_Attribute;
 
    function Get_Attribute
      (Window: Tk_Widget; Name: String) return Window_Types is
-      pragma Unreferenced(Window, Name);
    begin
-      return Default_Window_Type;
+      return Window_Types'Value
+          (Tcl_Eval
+             (Tcl_Script =>
+                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+              Interpreter => Tk_Interp(Widgt => Window)));
    end Get_Attribute;
 
    function Client(Window: Tk_Widget) return String is
