@@ -245,27 +245,45 @@ package body Tk.Wm is
    end Get_Attribute;
 
    function Client(Window: Tk_Widget) return String is
-      pragma Unreferenced(Window);
    begin
-      return "";
+      return Tcl_Eval
+          (Tcl_Script => "wm client " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Client;
 
    procedure Client(Window: Tk_Widget; Name: Tcl_String) is
-      pragma Unreferenced(Window, Name);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm client " & Tk_Path_Name(Widgt => Window) & " " &
+           To_String(Source => Name),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Client;
 
    function Color_Map_Windows(Window: Tk_Widget) return Array_List is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
    begin
-      return Empty_Array_List;
+      return Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "wm colormapwindows " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Color_Map_Windows;
 
    procedure Color_Map_Windows(Window: Tk_Widget; Widgets: Widgets_Array) is
-      pragma Unreferenced(Window, Widgets);
+      Windows_List: Unbounded_String := Null_Unbounded_String;
    begin
-      null;
+      Convert_List_To_String_Loop :
+      for Widget of Widgets loop
+         Append(Windows_List, " " & Tk_Path_Name(Widgt => Widget));
+      end loop Convert_List_To_String_Loop;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm colormapwindows " & Tk_Path_Name(Widgt => Window) &
+           To_String(Windows_List),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Color_Map_Windows;
 
    function Command(Window: Tk_Widget) return Tcl_String is
