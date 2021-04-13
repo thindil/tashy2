@@ -276,8 +276,10 @@ package body Tk.Wm is
       Windows_List: Unbounded_String := Null_Unbounded_String;
    begin
       Convert_List_To_String_Loop :
-      for Widget of Widgets loop
-         Append(Windows_List, " " & Tk_Path_Name(Widgt => Widget));
+      for Widgt of Widgets loop
+         Append
+           (Source => Windows_List,
+            New_Item => " " & Tk_Path_Name(Widgt => Widgt));
       end loop Convert_List_To_String_Loop;
       Tcl_Eval
         (Tcl_Script =>
