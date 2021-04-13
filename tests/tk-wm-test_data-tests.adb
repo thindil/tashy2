@@ -842,8 +842,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (To_Ada_String(Command(Get_Main_Window))'Length = 0,
+         "Failed to get WM_COMMAND property for main window.");
 
 --  begin read only
    end Test_1_Command_test_wm_command;
@@ -889,8 +894,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Command(Get_Main_Window, To_Tcl_String("my command"));
+      Assert
+        (To_Ada_String(Command(Get_Main_Window)) = "my command",
+         "Failed to set WM_COMMAND property for main window.");
 
 --  begin read only
    end Test_2_Command_test_wm_command2;
@@ -935,8 +946,12 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Deiconify(Get_Main_Window);
+      Assert(True, "This test can only crash.");
 
 --  begin read only
    end Test_Deiconify_test_wm_deiconify;
