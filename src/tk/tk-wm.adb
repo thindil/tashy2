@@ -289,21 +289,28 @@ package body Tk.Wm is
    end Color_Map_Windows;
 
    function Command(Window: Tk_Widget) return Tcl_String is
-      pragma Unreferenced(Window);
    begin
-      return Null_Tcl_String;
+      return To_Tcl_String
+          (Source =>
+             Tcl_Eval
+               (Tcl_Script => "wm command " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Tk_Interp(Widgt => Window)));
    end Command;
 
    procedure Command(Window: Tk_Widget; Wm_Command: Tcl_String) is
-      pragma Unreferenced(Window, Wm_Command);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm command " & Tk_Path_Name(Widgt => Window) & " " &
+           To_String(Wm_Command),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Command;
 
    procedure Deiconify(Window: Tk_Widget) is
-      pragma Unreferenced(Window);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script => "wm deiconify " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Deiconify;
 
    function Focus_Model(Window: Tk_Widget) return Focus_Model_Types is
