@@ -35,6 +35,8 @@ package Tcl.Strings is
    -- ****d* Tcl.Strings/Null_Tcl_String
    -- FUNCTION
    -- Empty Tcl_String
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Null_Tcl_String: constant Tcl_String := Tcl_String(Null_Unbounded_String);
    -- ****
