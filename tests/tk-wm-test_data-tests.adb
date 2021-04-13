@@ -17,6 +17,8 @@ with System.Assertions;
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
 with Tcl.Variables; use Tcl.Variables;
+with Tk.Button; use Tk.Button;
+with Tk.Grid; use Tk.Grid;
 with Tk.MainWindow; use Tk.MainWindow;
 
 --  begin read only
@@ -605,8 +607,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Client(Get_Main_Window) = "",
+         "Failed to get client name for main window.");
 
 --  begin read only
    end Test_1_Client_test_wm_client;
@@ -652,8 +659,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Client(Get_Main_Window, To_Tcl_String("test"));
+      Assert
+        (Client(Get_Main_Window) = "test",
+         "Failed to set the client name for main window.");
 
 --  begin read only
    end Test_2_Client_test_wm_client2;
@@ -708,8 +721,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Color_Map_Windows(Get_Main_Window) = Empty_Array_List,
+         "Failed to get color map windows for main window.");
 
 --  begin read only
    end Test_1_Color_Map_Windows_test_wm_color_map_windows;
@@ -758,11 +776,22 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button, Button2: Tk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".test", Default_Button_Options);
+      Add(Button);
+      Create(Button2, ".test2", Default_Button_Options);
+      Add(Button2);
+      Color_Map_Windows(Get_Main_Window, (1 => Button, 2 => Button2));
+      Assert
+        (Color_Map_Windows(Get_Main_Window)'Length = 2,
+         "Failed to get list of color map windows for main window.");
 
 --  begin read only
    end Test_2_Color_Map_Windows_test_wm_color_map_windows2;
