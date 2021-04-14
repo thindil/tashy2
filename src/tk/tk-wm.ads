@@ -60,7 +60,7 @@ package Tk.Wm is
 
    type Focus_Model_Types is (ACTIVE, PASSIVE);
 
-   Default_Focus_Model: constant Focus_Model_Types := ACTIVE;
+   Default_Focus_Model: constant Focus_Model_Types := PASSIVE;
 
    type Window_Geometry is record
       Width: Natural;
