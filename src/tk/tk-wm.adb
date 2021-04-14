@@ -302,7 +302,7 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm command " & Tk_Path_Name(Widgt => Window) & " " &
-           To_String(Wm_Command),
+           To_String(Source => Wm_Command),
          Interpreter => Tk_Interp(Widgt => Window));
    end Command;
 
@@ -329,7 +329,7 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm focusmodel " & Tk_Path_Name(Widgt => Window) & " " &
-           To_Lower(Focus_Model_Types'Image(Model)),
+           To_Lower(Item => Focus_Model_Types'Image(Model)),
          Interpreter => Tk_Interp(Widgt => Window));
    end Focus_Model;
 
