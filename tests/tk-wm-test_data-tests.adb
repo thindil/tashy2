@@ -1002,8 +1002,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Focus_Model(Get_Main_Window) = PASSIVE,
+         "Failed to get default focus model for main window.");
 
 --  begin read only
    end Test_1_Focus_Model_test_wm_focus_model;
@@ -1051,8 +1056,15 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Focus_Model(Get_Main_Window, ACTIVE);
+      Assert
+        (Focus_Model(Get_Main_Window) = ACTIVE,
+         "Failed to set default focus model for main window.");
+      Focus_Model(Get_Main_Window, PASSIVE);
 
 --  begin read only
    end Test_2_Focus_Model_test_wm_focus_model2;
