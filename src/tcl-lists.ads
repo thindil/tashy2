@@ -35,6 +35,8 @@ package Tcl.Lists is
    --****d* Tcl.Lists/Empty_Array_List
    -- FUNCTION
    -- Empty array list constant
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Empty_Array_List: constant Array_List(1 .. 0) := (others => <>);
    -- ****
