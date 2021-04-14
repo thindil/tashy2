@@ -314,15 +314,23 @@ package body Tk.Wm is
    end Deiconify;
 
    function Focus_Model(Window: Tk_Widget) return Focus_Model_Types is
-      pragma Unreferenced(Window);
    begin
-      return Default_Focus_Model;
+      if Tcl_Eval
+          (Tcl_Script => "wm focusmodel " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window)) =
+        "passive" then
+         return PASSIVE;
+      end if;
+      return ACTIVE;
    end Focus_Model;
 
    procedure Focus_Model(Window: Tk_Widget; Model: Focus_Model_Types) is
-      pragma Unreferenced(Window, Model);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm focusmodel " & Tk_Path_Name(Widgt => Window) & " " &
+           To_Lower(Focus_Model_Types'Image(Model)),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Focus_Model;
 
    procedure Forget(Window: Tk_Widget) is
