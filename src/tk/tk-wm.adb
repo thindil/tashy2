@@ -14,6 +14,7 @@
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with System;
 with Tcl.Variables; use Tcl.Variables;
 
 package body Tk.Wm is
@@ -334,14 +335,23 @@ package body Tk.Wm is
    end Focus_Model;
 
    procedure Forget(Window: Tk_Widget) is
-      pragma Unreferenced(Window);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script => "wm forget " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Forget;
 
    function Frame(Window: Tk_Widget) return Tk_Window is
-      pragma Unreferenced(Window);
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "wm frame " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    begin
+      if Result'Length > 0 then
+         return Tk_Window
+             (System'To_Address
+                (Integer'Value("16#" & Result(3 .. Result'Last) & "#")));
+      end if;
       return Null_Window;
    end Frame;
 
