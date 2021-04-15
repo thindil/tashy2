@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
 with Tcl.Variables; use Tcl.Variables;
@@ -356,9 +357,23 @@ package body Tk.Wm is
    end Frame;
 
    function Geometry(Window: Tk_Widget) return Window_Geometry is
-      pragma Unreferenced(Window);
+      Result: constant String :=
+        Tcl_Eval(Tcl_Script => "wm geometry " & Tk_Path_Name(Widgt => Window));
+      Start_Index, End_Index: Positive;
    begin
-      return Empty_Window_Geometry;
+      return Win_Geometry: Window_Geometry do
+         End_Index := Index(Result, "x");
+         Win_Geometry.Width := Natural'Value(Result(1 .. End_Index - 1));
+         Start_Index := End_Index + 1;
+         End_Index := Index(Result, "+", Start_Index);
+         Win_Geometry.Height :=
+           Natural'Value(Result(Start_Index .. End_Index - 1));
+         Start_Index := End_Index + 1;
+         End_Index := Index(Result, "+", Start_Index);
+         Win_Geometry.X := Natural'Value(Result(Start_Index .. End_Index - 1));
+         Start_Index := End_Index + 1;
+         Win_Geometry.X := Natural'Value(Result(Start_Index .. Result'Last));
+      end return;
    end Geometry;
 
    procedure Geometry
