@@ -20,6 +20,7 @@ with Tcl.Variables; use Tcl.Variables;
 with Tk.Button; use Tk.Button;
 with Tk.Grid; use Tk.Grid;
 with Tk.MainWindow; use Tk.MainWindow;
+with Tk.TopLevel; use Tk.TopLevel;
 
 --  begin read only
 --  end read only
@@ -792,6 +793,8 @@ package body Tk.Wm.Test_Data.Tests is
       Assert
         (Color_Map_Windows(Get_Main_Window)'Length = 2,
          "Failed to get list of color map windows for main window.");
+      Destroy(Button);
+      Destroy(Button2);
 
 --  begin read only
    end Test_2_Color_Map_Windows_test_wm_color_map_windows2;
@@ -1106,11 +1109,18 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Button, ".test", Default_Button_Options);
+      Forget(Button);
+      Assert(True, "This test can only crash.");
+      Destroy(Button);
 
 --  begin read only
    end Test_Forget_test_wm_forget;
@@ -1158,11 +1168,19 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Frame_Window: Tk_Toplevel;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Frame_Window, ".test", Default_Toplevel_Create_Options);
+      Assert
+        (Frame(Frame_Window) = Tk_Window_Id(Frame_Window),
+         "Failed to get frame for Tk toplevel.");
+      Destroy(Frame_Window);
 
 --  begin read only
    end Test_Frame_test_wm_frame;
