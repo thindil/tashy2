@@ -64,6 +64,8 @@ package Tcl.Commands is
       -- ****d* Commands/Commands.Null_Tcl_Cmd_Proc
       -- FUNCTION
       -- Null Tcl command procedure
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Null_Tcl_Cmd_Proc: constant Tcl_Cmd_Proc := null;
    -- ****
@@ -85,6 +87,8 @@ package Tcl.Commands is
       -- ****d* Commands/Commands.Null_Tcl_Cmd_Delete_Proc
       -- FUNCTION
       -- Null Tcl command delete procedure
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Null_Tcl_Cmd_Delete_Proc: constant Tcl_Cmd_Delete_Proc := null;
    -- ****
@@ -101,6 +105,8 @@ package Tcl.Commands is
    -- ****d* Commands/Commands.Null_Tcl_Command
    -- FUNCTION
    -- Null Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Null_Tcl_Command: constant Tcl_Command := Tcl_Command(System.Null_Address);
    -- ****
