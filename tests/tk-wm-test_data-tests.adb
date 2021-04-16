@@ -621,11 +621,11 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Client_563118_ac4719
+   procedure Wrap_Test_Client_563118_d2f7a7
      (Window: Tk_Widget; Name: Tcl_String) is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Length(Name) > 0);
+         pragma Assert(Window /= Null_Widget and Length(Source => Name) > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -643,17 +643,17 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Client2 test commitment violated");
       end;
-   end Wrap_Test_Client_563118_ac4719;
+   end Wrap_Test_Client_563118_d2f7a7;
 --  end read only
 
 --  begin read only
    procedure Test_2_Client_test_wm_client2(Gnattest_T: in out Test);
-   procedure Test_Client_563118_ac4719(Gnattest_T: in out Test) renames
+   procedure Test_Client_563118_d2f7a7(Gnattest_T: in out Test) renames
      Test_2_Client_test_wm_client2;
 --  id:2.2/563118a630e4082c/Client/0/0/test_wm_client2/
    procedure Test_2_Client_test_wm_client2(Gnattest_T: in out Test) is
       procedure Client(Window: Tk_Widget; Name: Tcl_String) renames
-        Wrap_Test_Client_563118_ac4719;
+        Wrap_Test_Client_563118_d2f7a7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -735,12 +735,12 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Color_Map_Windows_81bc98_d4205a
-     (Window: Tk_Widget; Windows: Widgets_Array) is
+   procedure Wrap_Test_Color_Map_Windows_81bc98_93136d
+     (Window: Tk_Widget; Widgets: Widgets_Array) is
    begin
       begin
          pragma Assert
-           (Window /= Null_Widget and Windows /= Empty_Widgets_Array);
+           (Window /= Null_Widget and Widgets /= Empty_Widgets_Array);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -749,7 +749,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Color_Map_Windows2 test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Wm.Color_Map_Windows
-        (Window, Windows);
+        (Window, Widgets);
       begin
          pragma Assert(True);
          null;
@@ -759,21 +759,21 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Color_Map_Windows2 test commitment violated");
       end;
-   end Wrap_Test_Color_Map_Windows_81bc98_d4205a;
+   end Wrap_Test_Color_Map_Windows_81bc98_93136d;
 --  end read only
 
 --  begin read only
    procedure Test_2_Color_Map_Windows_test_wm_color_map_windows2
      (Gnattest_T: in out Test);
-   procedure Test_Color_Map_Windows_81bc98_d4205a
+   procedure Test_Color_Map_Windows_81bc98_93136d
      (Gnattest_T: in out Test) renames
      Test_2_Color_Map_Windows_test_wm_color_map_windows2;
 --  id:2.2/81bc988c26eb22cd/Color_Map_Windows/0/0/test_wm_color_map_windows2/
    procedure Test_2_Color_Map_Windows_test_wm_color_map_windows2
      (Gnattest_T: in out Test) is
       procedure Color_Map_Windows
-        (Window: Tk_Widget; Windows: Widgets_Array) renames
-        Wrap_Test_Color_Map_Windows_81bc98_d4205a;
+        (Window: Tk_Widget; Widgets: Widgets_Array) renames
+        Wrap_Test_Color_Map_Windows_81bc98_93136d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -858,11 +858,12 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Command_7808c4_2c724c
-     (Window: Tk_Widget; Command: Tcl_String) is
+   procedure Wrap_Test_Command_7808c4_7c33cf
+     (Window: Tk_Widget; Wm_Command: Tcl_String) is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Length(Command) > 0);
+         pragma Assert
+           (Window /= Null_Widget and Length(Source => Wm_Command) > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -870,7 +871,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Command2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Command(Window, Command);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Command(Window, Wm_Command);
       begin
          pragma Assert(True);
          null;
@@ -880,17 +881,17 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Command2 test commitment violated");
       end;
-   end Wrap_Test_Command_7808c4_2c724c;
+   end Wrap_Test_Command_7808c4_7c33cf;
 --  end read only
 
 --  begin read only
    procedure Test_2_Command_test_wm_command2(Gnattest_T: in out Test);
-   procedure Test_Command_7808c4_2c724c(Gnattest_T: in out Test) renames
+   procedure Test_Command_7808c4_7c33cf(Gnattest_T: in out Test) renames
      Test_2_Command_test_wm_command2;
 --  id:2.2/7808c4f1398ab62c/Command/0/0/test_wm_command2/
    procedure Test_2_Command_test_wm_command2(Gnattest_T: in out Test) is
-      procedure Command(Window: Tk_Widget; Command: Tcl_String) renames
-        Wrap_Test_Command_7808c4_2c724c;
+      procedure Command(Window: Tk_Widget; Wm_Command: Tcl_String) renames
+        Wrap_Test_Command_7808c4_7c33cf;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1286,8 +1287,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Geometry(Get_Main_Window, -1, -1, 10, 12);
+      Assert
+        (Geometry(Get_Main_Window).X = 10,
+         "Failed to set geometry for Tk main window.");
 
 --  begin read only
    end Test_2_Geometry_test_wm_geometry2;
