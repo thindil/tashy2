@@ -198,8 +198,7 @@ package Tk.Wm is
 
    procedure Grid
      (Window: Tk_Widget;
-      Base_Width, Base_Height, Width_Inc, Height_Inc: Extended_Natural :=
-        -1) with
+      Base_Width, Base_Height, Width_Inc, Height_Inc: Positive) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Grid2", Mode => Nominal);
 

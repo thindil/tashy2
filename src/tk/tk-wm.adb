@@ -359,7 +359,9 @@ package body Tk.Wm is
 
    function Geometry(Window: Tk_Widget) return Window_Geometry is
       Result: constant String :=
-        Tcl_Eval(Tcl_Script => "wm geometry " & Tk_Path_Name(Widgt => Window));
+        Tcl_Eval
+          (Tcl_Script => "wm geometry " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
       Start_Index, End_Index: Positive := 1;
    begin
       return Win_Geometry: Window_Geometry := Empty_Window_Geometry do
@@ -416,23 +418,45 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm geometry " & Tk_Path_Name(Widgt => Window) & " " &
-           To_String(Source => Win_Geometry));
+           To_String(Source => Win_Geometry),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Geometry;
 
    function Grid(Window: Tk_Widget) return Window_Grid_Geometry is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
+      Result: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "wm grid " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
-      return Empty_Window_Grid_Geometry;
+      if Result'Length = 0 then
+         return Empty_Window_Grid_Geometry;
+      end if;
+      return Win_Grid: Window_Grid_Geometry := Empty_Window_Grid_Geometry do
+         Win_Grid.Base_Width :=
+           Natural'Value(To_Ada_String(Source => Result(1)));
+         Win_Grid.Base_Height :=
+           Natural'Value(To_Ada_String(Source => Result(2)));
+         Win_Grid.Width_Inc :=
+           Natural'Value(To_Ada_String(Source => Result(3)));
+         Win_Grid.Height_Inc :=
+           Natural'Value(To_Ada_String(Source => Result(4)));
+      end return;
    end Grid;
 
    procedure Grid
      (Window: Tk_Widget;
-      Base_Width, Base_Height, Width_Inc, Height_Inc: Extended_Natural :=
-        -1) is
-      pragma Unreferenced(Window, Base_Width, Base_Height, Width_Inc,
-         Height_Inc);
+      Base_Width, Base_Height, Width_Inc, Height_Inc: Positive) is
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm grid " & Tk_Path_Name(Widgt => Window) &
+           Positive'Image(Base_Width) & Positive'Image(Base_Height) &
+           Positive'Image(Width_Inc) & Positive'Image(Height_Inc),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Grid;
 
    function Group(Window: Tk_Widget) return String is
