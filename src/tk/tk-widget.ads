@@ -55,6 +55,8 @@ package Tk.Widget is
       -- ****d* Widget/Widget.Default_Relief
       -- FUNCTION
       -- Default value for Relief_Type
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Relief: constant Relief_Type := NONE;
    -- ****
@@ -72,6 +74,8 @@ package Tk.Widget is
       -- ****d* Widget/Widget.Default_Pixel_Unit
       -- FUNCTION
       -- Default Pixel_Unit value
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Pixel_Unit: constant Pixel_Unit := PIXEL;
    -- ****
@@ -89,6 +93,8 @@ package Tk.Widget is
       -- ****d* Widget/Widget.Default_Direction
       -- FUNCTION
       -- Default Direction_Type value
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Direction: constant Directions_Type := NONE;
    -- ****
@@ -106,6 +112,8 @@ package Tk.Widget is
       -- ****d* Widget/Widget.Default_Positive_Float
       -- FUNCTION
       -- Default value for Positiive_Float
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Positive_Float: constant Positive_Float := -1.0;
    -- ****
@@ -124,6 +132,8 @@ package Tk.Widget is
       -- ****d* Widget/Widget.Default_Place
       -- FUNCTION
       -- Default value for Place_Type
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Place: constant Place_Type := EMPTY;
    -- ****
@@ -142,6 +152,8 @@ package Tk.Widget is
       -- ****d* Widget/Widget.Default_Extended_Boolean
       -- FUNCTION
       -- Default value for Extended_Boolean
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Extended_Boolean: constant Extended_Boolean := NONE;
    -- ****
@@ -159,6 +171,8 @@ package Tk.Widget is
       -- ****d* Widget/Widget.Default_Justify_Type
       -- FUNCTION
       -- Default value for Justify_Type
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Justify: constant Justify_Type := NONE;
    -- ****
@@ -177,6 +191,8 @@ package Tk.Widget is
       -- ****d* Widget/Widget.Default_Extended_Natural
       -- FUNCTION
       -- Default value for Extended_Natural
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Extended_Natural: constant Extended_Natural := -1;
    -- ****
@@ -194,6 +210,8 @@ package Tk.Widget is
       -- ****d* Widget/Widget.Default_State
       -- FUNCTION
       -- Default value for State_Type
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_State: constant State_Type := NONE;
    -- ****
@@ -216,6 +234,8 @@ package Tk.Widget is
    -- ****d* Widget/Widget.Empty_Pixel_Data
    -- FUNCTION
    -- Empty value for Pixel Data
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Empty_Pixel_Data: constant Pixel_Data := Pixel_Data'(others => <>);
    -- ****
@@ -252,6 +272,8 @@ package Tk.Widget is
    --****d* Widget/Empty_Widgets_Array
    -- FUNCTION
    -- Empty array of widgets constant
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Empty_Widgets_Array: constant Widgets_Array(1 .. 0) := (others => <>);
    -- ****
@@ -303,6 +325,8 @@ package Tk.Widget is
    -- ****d* Widget/Widget.mpty_Bbox_Data
    -- FUNCTION
    -- Empty bounding box data
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Empty_Bbox_Data: constant Bbox_Data := (others => 0);
    -- ****
