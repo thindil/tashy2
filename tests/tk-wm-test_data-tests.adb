@@ -1345,18 +1345,22 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Grid(Get_Main_Window) = Empty_Window_Grid_Geometry,
+         "Failed to get grid geometry for Tk main window.");
 
 --  begin read only
    end Test_1_Grid_test_wm_grid;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Grid_504629_1fe5bc
+   procedure Wrap_Test_Grid_2fb8dc_1fe5bc
      (Window: Tk_Widget;
-      Base_Width, Base_Height, Width_Inc, Height_Inc: Extended_Natural :=
-        -1) is
+      Base_Width, Base_Height, Width_Inc, Height_Inc: Positive) is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -1378,28 +1382,33 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Grid2 test commitment violated");
       end;
-   end Wrap_Test_Grid_504629_1fe5bc;
+   end Wrap_Test_Grid_2fb8dc_1fe5bc;
 --  end read only
 
 --  begin read only
    procedure Test_2_Grid_test_wm_grid2(Gnattest_T: in out Test);
-   procedure Test_Grid_504629_1fe5bc(Gnattest_T: in out Test) renames
+   procedure Test_Grid_2fb8dc_1fe5bc(Gnattest_T: in out Test) renames
      Test_2_Grid_test_wm_grid2;
---  id:2.2/504629e2294fb4c2/Grid/0/0/test_wm_grid2/
+--  id:2.2/2fb8dca433bc9116/Grid/0/0/test_wm_grid2/
    procedure Test_2_Grid_test_wm_grid2(Gnattest_T: in out Test) is
       procedure Grid
         (Window: Tk_Widget;
-         Base_Width, Base_Height, Width_Inc, Height_Inc: Extended_Natural :=
-           -1) renames
-        Wrap_Test_Grid_504629_1fe5bc;
+         Base_Width, Base_Height, Width_Inc, Height_Inc: Positive) renames
+        Wrap_Test_Grid_2fb8dc_1fe5bc;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Grid(Get_Main_Window, 10, 10, 10, 10);
+      Assert
+        (Grid(Get_Main_Window).Base_Width = 10,
+         "Failed to set grid geometry for Tk main window.");
 
 --  begin read only
    end Test_2_Grid_test_wm_grid2;

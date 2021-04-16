@@ -76,50 +76,50 @@ package Tk.Wm.Test_Data.Tests is
    procedure Test_Grid_200f57_fc763d(Gnattest_T: in out Test);
    --  tk-wm.ads:195:4:Grid:Test_Wm_Grid
 
-   procedure Test_Grid_504629_1fe5bc(Gnattest_T: in out Test);
+   procedure Test_Grid_2fb8dc_1fe5bc(Gnattest_T: in out Test);
    --  tk-wm.ads:199:4:Grid:Test_Wm_Grid2
 
    procedure Test_Group_928167_42ff38(Gnattest_T: in out Test);
-   --  tk-wm.ads:206:4:Group:Test_Wm_Group
+   --  tk-wm.ads:205:4:Group:Test_Wm_Group
 
    procedure Test_Group_fe3a0f_95a2e7(Gnattest_T: in out Test);
-   --  tk-wm.ads:210:4:Group:Test_Wm_Group2
+   --  tk-wm.ads:209:4:Group:Test_Wm_Group2
 
    procedure Test_Icon_Bitmap_51d509_127eea(Gnattest_T: in out Test);
-   --  tk-wm.ads:214:4:Icon_Bitmap:Test_Wm_Icon_Bitmap
+   --  tk-wm.ads:213:4:Icon_Bitmap:Test_Wm_Icon_Bitmap
 
    procedure Test_Icon_Bitmap_93e489_31ebac(Gnattest_T: in out Test);
-   --  tk-wm.ads:218:4:Icon_Bitmap:Test_Wm_Icon_Bitmap2
+   --  tk-wm.ads:217:4:Icon_Bitmap:Test_Wm_Icon_Bitmap2
 
    procedure Test_Iconify_b7aad2_844804(Gnattest_T: in out Test);
-   --  tk-wm.ads:222:4:Iconify:Test_Wm_Iconify
+   --  tk-wm.ads:221:4:Iconify:Test_Wm_Iconify
 
    procedure Test_Icon_Mask_001121_818a6a(Gnattest_T: in out Test);
-   --  tk-wm.ads:226:4:Icon_Mask:Test_Wm_Icon_Mask
+   --  tk-wm.ads:225:4:Icon_Mask:Test_Wm_Icon_Mask
 
    procedure Test_Icon_Mask_66e29a_b2153c(Gnattest_T: in out Test);
-   --  tk-wm.ads:230:4:Icon_Mask:Test_Wm_Icon_Mask2
+   --  tk-wm.ads:229:4:Icon_Mask:Test_Wm_Icon_Mask2
 
    procedure Test_Icon_Name_4b1072_55536b(Gnattest_T: in out Test);
-   --  tk-wm.ads:234:4:Icon_Name:Test_Wm_Icon_Name
+   --  tk-wm.ads:233:4:Icon_Name:Test_Wm_Icon_Name
 
    procedure Test_Icon_Name_5bfbf7_3f7273(Gnattest_T: in out Test);
-   --  tk-wm.ads:238:4:Icon_Name:Test_Wm_Icon_Name2
+   --  tk-wm.ads:237:4:Icon_Name:Test_Wm_Icon_Name2
 
    procedure Test_Icon_Photo_69d087_a0feb6(Gnattest_T: in out Test);
-   --  tk-wm.ads:242:4:Icon_Photo:Test_Wm_Icon_Photo
+   --  tk-wm.ads:241:4:Icon_Photo:Test_Wm_Icon_Photo
 
    procedure Test_Icon_Position_1b8212_0e4e31(Gnattest_T: in out Test);
-   --  tk-wm.ads:247:4:Icon_Position:Test_Wm_Icon_Position
+   --  tk-wm.ads:246:4:Icon_Position:Test_Wm_Icon_Position
 
    procedure Test_Icon_Position_277e3f_ebaaaa(Gnattest_T: in out Test);
-   --  tk-wm.ads:251:4:Icon_Position:Test_Wm_Icon_Position2
+   --  tk-wm.ads:250:4:Icon_Position:Test_Wm_Icon_Position2
 
    procedure Test_Icon_Window_6943ef_44e6ae(Gnattest_T: in out Test);
-   --  tk-wm.ads:255:4:Icon_Window:Test_Wm_Icon_Window
+   --  tk-wm.ads:254:4:Icon_Window:Test_Wm_Icon_Window
 
    procedure Test_Icon_Window_7f7484_c90d51(Gnattest_T: in out Test);
-   --  tk-wm.ads:259:4:Icon_Window:Test_Wm_Icon_Window2
+   --  tk-wm.ads:258:4:Icon_Window:Test_Wm_Icon_Window2
 
 end Tk.Wm.Test_Data.Tests;
 --  end read only
