@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
@@ -359,28 +360,63 @@ package body Tk.Wm is
    function Geometry(Window: Tk_Widget) return Window_Geometry is
       Result: constant String :=
         Tcl_Eval(Tcl_Script => "wm geometry " & Tk_Path_Name(Widgt => Window));
-      Start_Index, End_Index: Positive;
+      Start_Index, End_Index: Positive := 1;
    begin
-      return Win_Geometry: Window_Geometry do
-         End_Index := Index(Result, "x");
+      return Win_Geometry: Window_Geometry := Empty_Window_Geometry do
+         End_Index := Index(Source => Result, Pattern => "x");
          Win_Geometry.Width := Natural'Value(Result(1 .. End_Index - 1));
          Start_Index := End_Index + 1;
-         End_Index := Index(Result, "+", Start_Index);
+         --## rule off ASSIGNMENTS
+         End_Index :=
+           Index(Source => Result, Pattern => "+", From => Start_Index);
          Win_Geometry.Height :=
            Natural'Value(Result(Start_Index .. End_Index - 1));
          Start_Index := End_Index + 1;
-         End_Index := Index(Result, "+", Start_Index);
+         End_Index :=
+           Index(Source => Result, Pattern => "+", From => Start_Index);
          Win_Geometry.X := Natural'Value(Result(Start_Index .. End_Index - 1));
          Start_Index := End_Index + 1;
-         Win_Geometry.X := Natural'Value(Result(Start_Index .. Result'Last));
+         --## rule on ASSIGNMENTS
+         Win_Geometry.Y := Natural'Value(Result(Start_Index .. Result'Last));
       end return;
    end Geometry;
 
    procedure Geometry
      (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) is
-      pragma Unreferenced(Window, Width, Height, X, Y);
+      Win_Geometry: Unbounded_String := Null_Unbounded_String;
    begin
-      null;
+      if Width = -1 and Height > -1 then
+         raise Tcl_Exception with "Width value not specified";
+      end if;
+      if Width > -1 and Height = -1 then
+         raise Tcl_Exception with "Height value not specified";
+      end if;
+      if X = -1 and Y > -1 then
+         raise Tcl_Exception with "X value not specified";
+      end if;
+      if X > -1 and Y = -1 then
+         raise Tcl_Exception with "Y value not specified";
+      end if;
+      if Width > -1 and Height > -1 then
+         Append
+           (Source => Win_Geometry,
+            New_Item =>
+              "=" &
+              Trim(Source => Extended_Natural'Image(Width), Side => Left) &
+              "x" &
+              Trim(Source => Extended_Natural'Image(Height), Side => Left));
+      end if;
+      if X > -1 and Y > -1 then
+         Append
+           (Source => Win_Geometry,
+            New_Item =>
+              "+" & Trim(Source => Extended_Natural'Image(X), Side => Left) &
+              "+" & Trim(Source => Extended_Natural'Image(Y), Side => Left));
+      end if;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm geometry " & Tk_Path_Name(Widgt => Window) & " " &
+           To_String(Source => Win_Geometry));
    end Geometry;
 
    function Grid(Window: Tk_Widget) return Window_Grid_Geometry is
