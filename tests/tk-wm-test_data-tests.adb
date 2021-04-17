@@ -1673,8 +1673,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Iconify(Get_Main_Window);
+      Deiconify(Get_Main_Window);
+      Assert(True, "This test can only crash.");
 
 --  begin read only
    end Test_Iconify_test_wm_iconify;
@@ -1725,8 +1730,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Icon_Mask(Get_Main_Window)'Length = 0,
+         "Failed to get icon mask for the Tk main window.");
 
 --  begin read only
    end Test_1_Icon_Mask_test_wm_icon_mask;
@@ -1772,8 +1782,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Icon_Mask(Get_Main_Window, To_Tcl_String("error"));
+      Assert
+        (Icon_Mask(Get_Main_Window) = "error",
+         "Failed to set icon mask for the Tk main window.");
 
 --  begin read only
    end Test_2_Icon_Mask_test_wm_icon_mask2;
