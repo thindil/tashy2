@@ -67,6 +67,8 @@ package Tk.TtkLabel is
    -- Wrap_Length   - Maximum line lenght in pixels. If equal to zero, then automatic
    --                 wrapping is not performed, otherwise the text is split into
    --                 lines such that no line is longer than the specified value.
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Label_Options is new Ttk_Widget_Options with record
       Anchor: Directions_Type;
@@ -198,6 +200,8 @@ package Tk.TtkLabel is
       -- ****d* TtkLabel/TtkLabel.Default_Ttk_Label_Options
       -- FUNCTION
       -- The default options for the Ttk_Label
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Ttk_Label_Options: constant Ttk_Label_Options :=
      Ttk_Label_Options'(others => <>);
