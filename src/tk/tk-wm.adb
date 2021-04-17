@@ -17,7 +17,7 @@ with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
-with Tcl.Variables; use Tcl.Variables;
+with Tcl.Variables;
 
 package body Tk.Wm is
 
@@ -59,6 +59,8 @@ package body Tk.Wm is
    end Aspect;
 
    function Get_Attributes(Window: Tk_Widget) return Window_Attributes_Data is
+      use Tcl.Variables;
+
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
@@ -460,27 +462,35 @@ package body Tk.Wm is
    end Grid;
 
    function Group(Window: Tk_Widget) return String is
-      pragma Unreferenced(Window);
    begin
-      return "";
+      return Tcl_Eval
+          (Tcl_Script => "wm group " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Group;
 
    procedure Group(Window: Tk_Widget; Path_Name: Tcl_String) is
-      pragma Unreferenced(Window, Path_Name);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm group " & Tk_Path_Name(Widgt => Window) & " " &
+           To_Ada_String(Source => Path_Name),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Group;
 
    function Icon_Bitmap(Window: Tk_Widget) return String is
-      pragma Unreferenced(Window);
    begin
-      return "";
+      return Tcl_Eval
+          (Tcl_Script => "wm iconbitmap " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Bitmap;
 
    procedure Icon_Bitmap(Window: Tk_Widget; Bitmap: Tcl_String) is
-      pragma Unreferenced(Window, Bitmap);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm iconbitmap " & Tk_Path_Name(Widgt => Window) & " " &
+           To_Ada_String(Source => Bitmap),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Bitmap;
 
    procedure Iconify(Window: Tk_Widget) is
