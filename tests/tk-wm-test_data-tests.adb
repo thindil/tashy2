@@ -1458,8 +1458,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Group(Get_Main_Window)'Length = 0,
+         "Failed to get group of Tk main window.");
 
 --  begin read only
    end Test_1_Group_test_wm_group;
@@ -1505,8 +1510,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Group(Get_Main_Window, To_Tcl_String("."));
+      Assert
+        (Group(Get_Main_Window) = ".",
+         "Failed to set group for the Tk main window.");
 
 --  begin read only
    end Test_2_Group_test_wm_group2;
@@ -1557,8 +1568,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Icon_Bitmap(Get_Main_Window)'Length = 0,
+         "Failed to get bitmap icon name for Tk main window.");
 
 --  begin read only
    end Test_1_Icon_Bitmap_test_wm_icon_bitmap;
@@ -1605,8 +1621,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Icon_Bitmap(Get_Main_Window, To_Tcl_String("info"));
+      Assert
+        (Icon_Bitmap(Get_Main_Window) = "info",
+         "Failed to set icon bitmap for Tk main window.");
 
 --  begin read only
    end Test_2_Icon_Bitmap_test_wm_icon_bitmap2;
