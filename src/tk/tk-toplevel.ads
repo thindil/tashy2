@@ -53,6 +53,8 @@ package Tk.TopLevel is
    -- Pad_Y                - Extra space requested for the toplevel in Y-direction
    -- Relief               - 3-D effect desired for the toplevel
    -- Width                - Width of the toplevel
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Toplevel_Options is new Widget_Options with record
       Background: Tcl_String;
@@ -94,6 +96,8 @@ package Tk.TopLevel is
       -- ****d* TopLevel/TopLevel.Default_Toplevel_Options
       -- FUNCTION
       -- Default options for Toplevel widget
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Toplevel_Options: constant Toplevel_Options :=
      Toplevel_Options'(others => <>);
@@ -112,6 +116,8 @@ package Tk.TopLevel is
    -- Screen        - The name of the screen on which the widget will be placed
    -- Use_Container - Tk_Window which will be used as container for the widget
    -- Visual        - Type of visual information for the widget
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Toplevel_Create_Options is new Toplevel_Options with record
       Class: Tcl_String;
@@ -211,6 +217,8 @@ package Tk.TopLevel is
       -- ****d* TopLevel/TopLevel.Default_Toplevel_Create_Options
       -- FUNCTION
       -- Default options used during creating Toplevel widget
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Toplevel_Create_Options: constant Toplevel_Create_Options :=
      Toplevel_Create_Options'(others => <>);
