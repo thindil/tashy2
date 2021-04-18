@@ -514,19 +514,22 @@ package body Tk.Wm is
            "wm iconmask " & Tk_Path_Name(Widgt => Window) & " " &
            To_Ada_String(Source => Bitmap),
          Interpreter => Tk_Interp(Widgt => Window));
-      null;
    end Icon_Mask;
 
    function Icon_Name(Window: Tk_Widget) return String is
-      pragma Unreferenced(Window);
    begin
-      return "";
+      return Tcl_Eval
+          (Tcl_Script => "wm iconname " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Name;
 
    procedure Icon_Name(Window: Tk_Widget; New_Name: Tcl_String) is
-      pragma Unreferenced(Window, New_Name);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm iconname " & Tk_Path_Name(Widgt => Window) & " " &
+           To_Ada_String(Source => New_Name),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Name;
 
    procedure Icon_Photo
