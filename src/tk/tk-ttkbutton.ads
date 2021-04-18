@@ -56,6 +56,8 @@ package Tk.TtkButton is
    -- Width         - Width of the button. If greater than 0, allocate that
    --                 much space for the button, if less than zero, it is
    --                 minimum width, if zero, use natural width
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Button_Options is new Ttk_Widget_Options with record
       Command: Tcl_String;
@@ -181,6 +183,8 @@ package Tk.TtkButton is
       -- ****d* TtkButton/TtkButton.Default_Ttk_Button_Options
       -- FUNCTION
       -- The default options for the Ttk_Button
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Ttk_Button_Options: constant Ttk_Button_Options :=
      Ttk_Button_Options'(others => <>);
