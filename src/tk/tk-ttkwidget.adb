@@ -114,13 +114,14 @@ package body Tk.TtkWidget is
       use Ada.Strings;
 
       First: Boolean := True;
-      procedure Append_Value(New_Value: Pixel_Data) is
+      procedure Append_Value
+        (New_Value: Pixel_Data; Is_First: in out Boolean) is
       begin
          if New_Value.Value > -1.0 then
-            if First then
+            if Is_First then
                Append
                  (Source => Options_String, New_Item => " -" & Name & " {");
-               First := False;
+               Is_First := False;
             end if;
             Append
               (Source => Options_String,
@@ -128,10 +129,10 @@ package body Tk.TtkWidget is
          end if;
       end Append_Value;
    begin
-      Append_Value(Value.Left);
-      Append_Value(Value.Top);
-      Append_Value(Value.Right);
-      Append_Value(Value.Bottom);
+      Append_Value(New_Value => Value.Left, Is_First => First);
+      Append_Value(New_Value => Value.Top, Is_First => First);
+      Append_Value(New_Value => Value.Right, Is_First => First);
+      Append_Value(New_Value => Value.Bottom, Is_First => First);
       if not First then
          Trim(Source => Options_String, Side => Right);
          Append(Source => Options_String, New_Item => "}");
