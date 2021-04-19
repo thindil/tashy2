@@ -45,6 +45,8 @@ package Tk.Menu is
       -- ****d* Menu/Menu.Default_Menu_Type
       -- FUNCTION
       -- Default Tk menu type
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Menu_Type: constant Menu_Types := NORMAL;
    -- ****
@@ -106,6 +108,8 @@ package Tk.Menu is
    -- ****d* Menu/Menu.Default_Menu_Item
    -- FUNCTION
    -- Default type for Tk menu item
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Menu_Item: constant Menu_Item_Types := COMMAND;
    -- ****
@@ -206,6 +210,8 @@ package Tk.Menu is
    -- ****d* Menu/Menu.Default_Menu_Item_Options
    -- FUNCTION
    -- Default values for options for Tk menu item
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Default_Menu_Item_Options: constant Menu_Item_Options :=
      Menu_Item_Options'(others => <>);
@@ -223,6 +229,8 @@ package Tk.Menu is
    -- ****d* Menu/Menu.Empty_Menu_Item_Index
    -- FUNCTION
    -- Empty index type for menu item
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Empty_Menu_Item_Index: constant Menu_Item_Indexes := NONE;
    -- ****
@@ -413,6 +421,8 @@ package Tk.Menu is
       -- ****d* Tk.Menu/Default_Menu_Options
       -- FUNCTION
       -- Default Tk menu options values
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Menu_Options: constant Menu_Options := Menu_Options'(others => <>);
    -- ****
