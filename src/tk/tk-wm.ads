@@ -19,6 +19,7 @@ with Tk.Widget; use Tk.Widget;
 
 package Tk.Wm is
 
+   --## rule off REDUCEABLE_SCOPE
    type Window_Manager_Types is (X_11, WINDOWS, MACOSX);
 
    Default_Window_Manager: constant Window_Manager_Types := X_11;
@@ -259,4 +260,5 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Window2", Mode => Nominal);
 
+   --## rule on REDUCEABLE_SCOPE
 end Tk.Wm;
