@@ -13,7 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
-with Ada.Strings; use Ada.Strings;
+with Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
@@ -387,6 +387,8 @@ package body Tk.Wm is
 
    procedure Geometry
      (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) is
+      use Ada.Strings;
+
       Win_Geometry: Unbounded_String := Null_Unbounded_String;
    begin
       if Width = -1 and Height > -1 then
