@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Bartek thindil Jasicki <thindil@laeran.pl>
+ * Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@
 * tkwin - Tk_Window which path name will be returned
 * RESULT
 * Tk path name of the selected Tk_Window
+* HISTORY
+* 8.6.0 - Added
 * SOURCE */
 char* Get_PathName(Tk_Window tkwin)
 {
@@ -39,6 +41,8 @@ char* Get_PathName(Tk_Window tkwin)
 * tkwin - Tk_Window which identifier will be returned
 * RESULT
 * The window manager identifier of the selected Tk_Window
+* HISTORY
+* 8.6.0 - Added
 * SOURCE */
 Window Get_Window_Id(Tk_Window tkwin)
 {
