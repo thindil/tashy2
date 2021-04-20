@@ -100,9 +100,9 @@ package body Tk.Wm is
             Window_Attributes.Alpha :=
               Alpha_Type'Value(To_Ada_String(Source => Result(Index + 1)));
          elsif Result(Index) = "-fullscreen" then
-            Window_Attributes.Full_Screen := Get_Boolean(Index);
+            Window_Attributes.Full_Screen := Get_Boolean(Array_Index => Index);
          elsif Result(Index) = "-topmost" then
-            Window_Attributes.Topmost := Get_Boolean(Index);
+            Window_Attributes.Topmost := Get_Boolean(Array_Index => Index);
          elsif Result(Index) = "-type" and Window_Manager = X_11 then
             if To_Ada_String(Source => Result(Index + 1)) = "" then
                Window_Attributes.Window_Type := NONE;
@@ -112,22 +112,22 @@ package body Tk.Wm is
                    (To_Ada_String(Source => Result(Index + 1)));
             end if;
          elsif Result(Index) = "-zoomed" and Window_Manager = X_11 then
-            Window_Attributes.Zoomed := Get_Boolean(Index);
+            Window_Attributes.Zoomed := Get_Boolean(Array_Index => Index);
          elsif Result(Index) = "-disabled" and Window_Manager = WINDOWS then
-            Window_Attributes.Disabled := Get_Boolean(Index);
+            Window_Attributes.Disabled := Get_Boolean(Array_Index => Index);
          elsif Result(Index) = "-toolwindow" and Window_Manager = WINDOWS then
-            Window_Attributes.Tool_Window := Get_Boolean(Index);
+            Window_Attributes.Tool_Window := Get_Boolean(Array_Index => Index);
          elsif Result(Index) = "-transparentcolor" and
            Window_Manager = WINDOWS then
             Window_Attributes.Transparent_Color := Result(Index + 1);
          elsif Result(Index) = "-modified" and Window_Manager = MACOSX then
-            Window_Attributes.Modified := Get_Boolean(Index);
+            Window_Attributes.Modified := Get_Boolean(Array_Index => Index);
          elsif Result(Index) = "-notify" and Window_Manager = MACOSX then
-            Window_Attributes.Notify := Get_Boolean(Index);
+            Window_Attributes.Notify := Get_Boolean(Array_Index => Index);
          elsif Result(Index) = "-titlepath" and Window_Manager = MACOSX then
             Window_Attributes.Title_Path := Result(Index + 1);
          elsif Result(Index) = "-transparent" and Window_Manager = MACOSX then
-            Window_Attributes.Transparent := Get_Boolean(Index);
+            Window_Attributes.Transparent := Get_Boolean(Array_Index => Index);
          end if;
          Index := Index + 2;
       end loop Read_Attributes_Loop;
