@@ -12,11 +12,45 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Lists; use Tcl.Lists;
+
 -- ****d* Tk/Image
 -- FUNCTION
 -- Provides code for manipulate Tk images
 -- SOURCE
 package Tk.Image is
 -- ****
+
+   type Tk_Image is new String;
+
+   procedure Delete(Image: Tk_Image) with
+      Pre => Image'Length > 0,
+      Test_Case => (Name => "Test_Image_Delete", Mode => Nominal);
+
+   procedure Delete(Images: Array_List) with
+      Pre => Images'Length > 0,
+      Test_Case => (Name => "Test_Image_Delete2", Mode => Nominal);
+
+   function Height(Image: Tk_Image) return Natural with
+      Pre => Image'Length > 0,
+      Test_Case => (Name => "Test_Image_Height", Mode => Nominal);
+
+   function In_Use(Image: Tk_Image) return Boolean with
+      Pre => Image'Length > 0,
+      Test_Case => (Name => "Test_Image_In_Use", Mode => Nominal);
+
+   function Names return Array_List with
+      Test_Case => (Name => "Test_Image_Names", Mode => Nominal);
+
+   function Image_Type(Image: Tk_Image) return String with
+      Pre => Image'Length > 0,
+      Test_Case => (Name => "Test_Image_Type", Mode => Nominal);
+
+   function Types return Array_List with
+      Test_Case => (Name => "Test_Image_Types", Mode => Nominal);
+
+   function Width(Image: Tk_Image) return Natural with
+      Pre => Image'Length > 0,
+      Test_Case => (Name => "Test_Image_Width", Mode => Nominal);
 
 end Tk.Image;
