@@ -203,6 +203,8 @@ package Tk.Grid is
       -- Master - Tk_Widget in which the grid is. Must be existing widget
       -- RESULT
       -- Direction_Type with value of current the grid anchor
+      -- HISTORY
+      -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get anchor of grid in My_Frame widget to west
       -- Anchor(My_Frame);
