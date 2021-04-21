@@ -227,6 +227,8 @@ package Tk.Button is
       -- ****d* Button/Button.Default_Button_Options
       -- FUNCTION
       -- Default values for Button widget options
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Button_Options: constant Button_Options :=
      Button_Options'(others => <>);
