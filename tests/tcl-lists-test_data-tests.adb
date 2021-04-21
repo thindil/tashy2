@@ -154,6 +154,59 @@ package body Tcl.Lists.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Merge_List_46a169_8803ae
+     (List: Array_List) return String is
+   begin
+      begin
+         pragma Assert(List'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl-lists.ads:0):Test_Merge_List test requirement violated");
+      end;
+      declare
+         Test_Merge_List_46a169_8803ae_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Merge_List(List);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-lists.ads:0:):Test_Merge_List test commitment violated");
+         end;
+         return Test_Merge_List_46a169_8803ae_Result;
+      end;
+   end Wrap_Test_Merge_List_46a169_8803ae;
+--  end read only
+
+--  begin read only
+   procedure Test_Merge_List_test_merge_list(Gnattest_T: in out Test);
+   procedure Test_Merge_List_46a169_8803ae(Gnattest_T: in out Test) renames
+     Test_Merge_List_test_merge_list;
+--  id:2.2/46a1691971009546/Merge_List/1/0/test_merge_list/
+   procedure Test_Merge_List_test_merge_list(Gnattest_T: in out Test) is
+      function Merge_List(List: Array_List) return String renames
+        Wrap_Test_Merge_List_46a169_8803ae;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (Merge_List((To_Tcl_String("Ada"), To_Tcl_String("Tcl"))) = "Ada Tcl",
+         "Failed to merge Ada array into Tcl list");
+
+--  begin read only
+   end Test_Merge_List_test_merge_list;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
