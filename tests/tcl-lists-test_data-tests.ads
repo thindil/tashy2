@@ -16,5 +16,8 @@ package Tcl.Lists.Test_Data.Tests is
    procedure Test_Split_List_Variable_b25096_53b238(Gnattest_T: in out Test);
    --  tcl-lists.ads:83:4:Split_List_Variable:Test_Split_List_Variable
 
+   procedure Test_Merge_List_46a169_8803ae(Gnattest_T: in out Test);
+   --  tcl-lists.ads:109:4:Merge_List:Test_Merge_List
+
 end Tcl.Lists.Test_Data.Tests;
 --  end read only
