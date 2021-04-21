@@ -29,10 +29,11 @@ package body Tk.Image.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Delete_b97706_7e380b(Image: Tk_Image) is
+   procedure Wrap_Test_Delete_02be75_407edb
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert(Image'Length > 0);
+         pragma Assert(Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -40,7 +41,7 @@ package body Tk.Image.Test_Data.Tests is
               (False,
                "req_sloc(tk-image.ads:0):Test_Image_Delete test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Image.Delete(Image);
+      GNATtest_Generated.GNATtest_Standard.Tk.Image.Delete(Image, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -50,16 +51,19 @@ package body Tk.Image.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image.ads:0:):Test_Image_Delete test commitment violated");
       end;
-   end Wrap_Test_Delete_b97706_7e380b;
+   end Wrap_Test_Delete_02be75_407edb;
 --  end read only
 
 --  begin read only
    procedure Test_1_Delete_test_image_delete(Gnattest_T: in out Test);
-   procedure Test_Delete_b97706_7e380b(Gnattest_T: in out Test) renames
+   procedure Test_Delete_02be75_407edb(Gnattest_T: in out Test) renames
      Test_1_Delete_test_image_delete;
---  id:2.2/b97706006ddde954/Delete/1/0/test_image_delete/
+--  id:2.2/02be755dc483111d/Delete/1/0/test_image_delete/
    procedure Test_1_Delete_test_image_delete(Gnattest_T: in out Test) is
-      procedure Delete(Image: Tk_Image) renames Wrap_Test_Delete_b97706_7e380b;
+      procedure Delete
+        (Image: Tk_Image;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) renames
+        Wrap_Test_Delete_02be75_407edb;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -74,10 +78,11 @@ package body Tk.Image.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Delete_2a8343_2d1cc0(Images: Array_List) is
+   procedure Wrap_Test_Delete_c4bccc_dad5cd
+     (Images: Array_List; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert(Images'Length > 0);
+         pragma Assert(Images'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -85,7 +90,8 @@ package body Tk.Image.Test_Data.Tests is
               (False,
                "req_sloc(tk-image.ads:0):Test_Image_Delete2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Image.Delete(Images);
+      GNATtest_Generated.GNATtest_Standard.Tk.Image.Delete
+        (Images, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -95,17 +101,19 @@ package body Tk.Image.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image.ads:0:):Test_Image_Delete2 test commitment violated");
       end;
-   end Wrap_Test_Delete_2a8343_2d1cc0;
+   end Wrap_Test_Delete_c4bccc_dad5cd;
 --  end read only
 
 --  begin read only
    procedure Test_2_Delete_test_image_delete2(Gnattest_T: in out Test);
-   procedure Test_Delete_2a8343_2d1cc0(Gnattest_T: in out Test) renames
+   procedure Test_Delete_c4bccc_dad5cd(Gnattest_T: in out Test) renames
      Test_2_Delete_test_image_delete2;
---  id:2.2/2a83436cb1332dfa/Delete/0/0/test_image_delete2/
+--  id:2.2/c4bccce0d4280cf5/Delete/0/0/test_image_delete2/
    procedure Test_2_Delete_test_image_delete2(Gnattest_T: in out Test) is
-      procedure Delete(Images: Array_List) renames
-        Wrap_Test_Delete_2a8343_2d1cc0;
+      procedure Delete
+        (Images: Array_List;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) renames
+        Wrap_Test_Delete_c4bccc_dad5cd;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -120,10 +128,12 @@ package body Tk.Image.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Height_f068d4_56791f(Image: Tk_Image) return Natural is
+   function Wrap_Test_Height_1f214e_6ff6eb
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Natural is
    begin
       begin
-         pragma Assert(Image'Length > 0);
+         pragma Assert(Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -132,8 +142,9 @@ package body Tk.Image.Test_Data.Tests is
                "req_sloc(tk-image.ads:0):Test_Image_Height test requirement violated");
       end;
       declare
-         Test_Height_f068d4_56791f_Result: constant Natural :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Image.Height(Image);
+         Test_Height_1f214e_6ff6eb_Result: constant Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.Height
+             (Image, Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -144,19 +155,21 @@ package body Tk.Image.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image.ads:0:):Test_Image_Height test commitment violated");
          end;
-         return Test_Height_f068d4_56791f_Result;
+         return Test_Height_1f214e_6ff6eb_Result;
       end;
-   end Wrap_Test_Height_f068d4_56791f;
+   end Wrap_Test_Height_1f214e_6ff6eb;
 --  end read only
 
 --  begin read only
    procedure Test_Height_test_image_height(Gnattest_T: in out Test);
-   procedure Test_Height_f068d4_56791f(Gnattest_T: in out Test) renames
+   procedure Test_Height_1f214e_6ff6eb(Gnattest_T: in out Test) renames
      Test_Height_test_image_height;
---  id:2.2/f068d4307b9c7258/Height/1/0/test_image_height/
+--  id:2.2/1f214e14d7f3b2e1/Height/1/0/test_image_height/
    procedure Test_Height_test_image_height(Gnattest_T: in out Test) is
-      function Height(Image: Tk_Image) return Natural renames
-        Wrap_Test_Height_f068d4_56791f;
+      function Height
+        (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Natural renames
+        Wrap_Test_Height_1f214e_6ff6eb;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -171,10 +184,12 @@ package body Tk.Image.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_In_Use_875a8e_af3ec4(Image: Tk_Image) return Boolean is
+   function Wrap_Test_In_Use_8f1fc6_922053
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean is
    begin
       begin
-         pragma Assert(Image'Length > 0);
+         pragma Assert(Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -183,8 +198,9 @@ package body Tk.Image.Test_Data.Tests is
                "req_sloc(tk-image.ads:0):Test_Image_In_Use test requirement violated");
       end;
       declare
-         Test_In_Use_875a8e_af3ec4_Result: constant Boolean :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Image.In_Use(Image);
+         Test_In_Use_8f1fc6_922053_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.In_Use
+             (Image, Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -195,19 +211,21 @@ package body Tk.Image.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image.ads:0:):Test_Image_In_Use test commitment violated");
          end;
-         return Test_In_Use_875a8e_af3ec4_Result;
+         return Test_In_Use_8f1fc6_922053_Result;
       end;
-   end Wrap_Test_In_Use_875a8e_af3ec4;
+   end Wrap_Test_In_Use_8f1fc6_922053;
 --  end read only
 
 --  begin read only
    procedure Test_In_Use_test_image_in_use(Gnattest_T: in out Test);
-   procedure Test_In_Use_875a8e_af3ec4(Gnattest_T: in out Test) renames
+   procedure Test_In_Use_8f1fc6_922053(Gnattest_T: in out Test) renames
      Test_In_Use_test_image_in_use;
---  id:2.2/875a8e1aa0909f6c/In_Use/1/0/test_image_in_use/
+--  id:2.2/8f1fc6b8984721ef/In_Use/1/0/test_image_in_use/
    procedure Test_In_Use_test_image_in_use(Gnattest_T: in out Test) is
-      function In_Use(Image: Tk_Image) return Boolean renames
-        Wrap_Test_In_Use_875a8e_af3ec4;
+      function In_Use
+        (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Boolean renames
+        Wrap_Test_In_Use_8f1fc6_922053;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -222,10 +240,11 @@ package body Tk.Image.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Names_57ef5a_264ce7 return Array_List is
+   function Wrap_Test_Names_eadae1_91e953
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
    begin
       begin
-         pragma Assert(True);
+         pragma Assert(Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -234,8 +253,8 @@ package body Tk.Image.Test_Data.Tests is
                "req_sloc(tk-image.ads:0):Test_Image_Names test requirement violated");
       end;
       declare
-         Test_Names_57ef5a_264ce7_Result: constant Array_List :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Image.Names;
+         Test_Names_eadae1_91e953_Result: constant Array_List :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.Names(Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -246,18 +265,21 @@ package body Tk.Image.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image.ads:0:):Test_Image_Names test commitment violated");
          end;
-         return Test_Names_57ef5a_264ce7_Result;
+         return Test_Names_eadae1_91e953_Result;
       end;
-   end Wrap_Test_Names_57ef5a_264ce7;
+   end Wrap_Test_Names_eadae1_91e953;
 --  end read only
 
 --  begin read only
    procedure Test_Names_test_image_names(Gnattest_T: in out Test);
-   procedure Test_Names_57ef5a_264ce7(Gnattest_T: in out Test) renames
+   procedure Test_Names_eadae1_91e953(Gnattest_T: in out Test) renames
      Test_Names_test_image_names;
---  id:2.2/57ef5af432727fcc/Names/1/0/test_image_names/
+--  id:2.2/eadae19ee57308fa/Names/1/0/test_image_names/
    procedure Test_Names_test_image_names(Gnattest_T: in out Test) is
-      function Names return Array_List renames Wrap_Test_Names_57ef5a_264ce7;
+      function Names
+        (Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Array_List renames
+        Wrap_Test_Names_eadae1_91e953;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -272,11 +294,12 @@ package body Tk.Image.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Image_Type_60ce82_23a77d
-     (Image: Tk_Image) return String is
+   function Wrap_Test_Image_Type_870a74_6201ff
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
    begin
       begin
-         pragma Assert(Image'Length > 0);
+         pragma Assert(Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -285,8 +308,9 @@ package body Tk.Image.Test_Data.Tests is
                "req_sloc(tk-image.ads:0):Test_Image_Type test requirement violated");
       end;
       declare
-         Test_Image_Type_60ce82_23a77d_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Image.Image_Type(Image);
+         Test_Image_Type_870a74_6201ff_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.Image_Type
+             (Image, Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -297,19 +321,21 @@ package body Tk.Image.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image.ads:0:):Test_Image_Type test commitment violated");
          end;
-         return Test_Image_Type_60ce82_23a77d_Result;
+         return Test_Image_Type_870a74_6201ff_Result;
       end;
-   end Wrap_Test_Image_Type_60ce82_23a77d;
+   end Wrap_Test_Image_Type_870a74_6201ff;
 --  end read only
 
 --  begin read only
    procedure Test_Image_Type_test_image_type(Gnattest_T: in out Test);
-   procedure Test_Image_Type_60ce82_23a77d(Gnattest_T: in out Test) renames
+   procedure Test_Image_Type_870a74_6201ff(Gnattest_T: in out Test) renames
      Test_Image_Type_test_image_type;
---  id:2.2/60ce82789c1d9312/Image_Type/1/0/test_image_type/
+--  id:2.2/870a7451303b4013/Image_Type/1/0/test_image_type/
    procedure Test_Image_Type_test_image_type(Gnattest_T: in out Test) is
-      function Image_Type(Image: Tk_Image) return String renames
-        Wrap_Test_Image_Type_60ce82_23a77d;
+      function Image_Type
+        (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return String renames
+        Wrap_Test_Image_Type_870a74_6201ff;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -324,7 +350,8 @@ package body Tk.Image.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Types_0cdb5f_6aacf5 return Array_List is
+   function Wrap_Test_Types_efe030_6aacf5
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
    begin
       begin
          pragma Assert(True);
@@ -336,8 +363,8 @@ package body Tk.Image.Test_Data.Tests is
                "req_sloc(tk-image.ads:0):Test_Image_Types test requirement violated");
       end;
       declare
-         Test_Types_0cdb5f_6aacf5_Result: constant Array_List :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Image.Types;
+         Test_Types_efe030_6aacf5_Result: constant Array_List :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.Types(Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -348,18 +375,21 @@ package body Tk.Image.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image.ads:0:):Test_Image_Types test commitment violated");
          end;
-         return Test_Types_0cdb5f_6aacf5_Result;
+         return Test_Types_efe030_6aacf5_Result;
       end;
-   end Wrap_Test_Types_0cdb5f_6aacf5;
+   end Wrap_Test_Types_efe030_6aacf5;
 --  end read only
 
 --  begin read only
    procedure Test_Types_test_image_types(Gnattest_T: in out Test);
-   procedure Test_Types_0cdb5f_6aacf5(Gnattest_T: in out Test) renames
+   procedure Test_Types_efe030_6aacf5(Gnattest_T: in out Test) renames
      Test_Types_test_image_types;
---  id:2.2/0cdb5f8662d081e8/Types/1/0/test_image_types/
+--  id:2.2/efe03054d1e26056/Types/1/0/test_image_types/
    procedure Test_Types_test_image_types(Gnattest_T: in out Test) is
-      function Types return Array_List renames Wrap_Test_Types_0cdb5f_6aacf5;
+      function Types
+        (Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Array_List renames
+        Wrap_Test_Types_efe030_6aacf5;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -374,10 +404,12 @@ package body Tk.Image.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Width_16447c_88856b(Image: Tk_Image) return Natural is
+   function Wrap_Test_Width_c01d59_31497f
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Natural is
    begin
       begin
-         pragma Assert(Image'Length > 0);
+         pragma Assert(Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -386,8 +418,9 @@ package body Tk.Image.Test_Data.Tests is
                "req_sloc(tk-image.ads:0):Test_Image_Width test requirement violated");
       end;
       declare
-         Test_Width_16447c_88856b_Result: constant Natural :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Image.Width(Image);
+         Test_Width_c01d59_31497f_Result: constant Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.Width
+             (Image, Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -398,19 +431,21 @@ package body Tk.Image.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image.ads:0:):Test_Image_Width test commitment violated");
          end;
-         return Test_Width_16447c_88856b_Result;
+         return Test_Width_c01d59_31497f_Result;
       end;
-   end Wrap_Test_Width_16447c_88856b;
+   end Wrap_Test_Width_c01d59_31497f;
 --  end read only
 
 --  begin read only
    procedure Test_Width_test_image_width(Gnattest_T: in out Test);
-   procedure Test_Width_16447c_88856b(Gnattest_T: in out Test) renames
+   procedure Test_Width_c01d59_31497f(Gnattest_T: in out Test) renames
      Test_Width_test_image_width;
---  id:2.2/16447cb0edb05202/Width/1/0/test_image_width/
+--  id:2.2/c01d594adc4d6ac3/Width/1/0/test_image_width/
    procedure Test_Width_test_image_width(Gnattest_T: in out Test) is
-      function Width(Image: Tk_Image) return Natural renames
-        Wrap_Test_Width_16447c_88856b;
+      function Width
+        (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Natural renames
+        Wrap_Test_Width_c01d59_31497f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
