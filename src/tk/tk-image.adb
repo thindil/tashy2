@@ -14,48 +14,62 @@
 
 package body Tk.Image is
 
-   procedure Delete(Image: Tk_Image) is
-      pragma Unreferenced(Image);
+   procedure Delete
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Image, Interpreter);
    begin
       null;
    end Delete;
 
-   procedure Delete(Images: Array_List) is
-      pragma Unreferenced(Images);
+   procedure Delete
+     (Images: Array_List; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Images, Interpreter);
    begin
       null;
    end Delete;
 
-   function Height(Image: Tk_Image) return Natural is
-      pragma Unreferenced(Image);
+   function Height
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Natural is
+      pragma Unreferenced(Image, Interpreter);
    begin
       return 0;
    end Height;
 
-   function In_Use(Image: Tk_Image) return Boolean is
-      pragma Unreferenced(Image);
+   function In_Use
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean is
+      pragma Unreferenced(Image, Interpreter);
    begin
       return False;
    end In_Use;
 
-   function Names return Array_List is
+   function Names
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
+      pragma Unreferenced(Interpreter);
    begin
       return Empty_Array_List;
    end Names;
 
-   function Image_Type(Image: Tk_Image) return String is
-      pragma Unreferenced(Image);
+   function Image_Type
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
+      pragma Unreferenced(Image, Interpreter);
    begin
       return "";
    end Image_Type;
 
-   function Types return Array_List is
+   function Types
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
+      pragma Unreferenced(Interpreter);
    begin
       return Empty_Array_List;
    end Types;
 
-   function Width(Image: Tk_Image) return Natural is
-      pragma Unreferenced(Image);
+   function Width
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Natural is
+      pragma Unreferenced(Image, Interpreter);
    begin
       return 0;
    end Width;

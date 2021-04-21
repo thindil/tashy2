@@ -23,34 +23,47 @@ package Tk.Image is
 
    type Tk_Image is new String;
 
-   procedure Delete(Image: Tk_Image) with
-      Pre => Image'Length > 0,
+   procedure Delete
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Delete", Mode => Nominal);
 
-   procedure Delete(Images: Array_List) with
-      Pre => Images'Length > 0,
+   procedure Delete
+     (Images: Array_List; Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Images'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Delete2", Mode => Nominal);
 
-   function Height(Image: Tk_Image) return Natural with
-      Pre => Image'Length > 0,
+   function Height
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Natural with
+      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Height", Mode => Nominal);
 
-   function In_Use(Image: Tk_Image) return Boolean with
-      Pre => Image'Length > 0,
+   function In_Use
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean with
+      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_In_Use", Mode => Nominal);
 
-   function Names return Array_List with
+   function Names
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Names", Mode => Nominal);
 
-   function Image_Type(Image: Tk_Image) return String with
-      Pre => Image'Length > 0,
+   function Image_Type
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String with
+      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Type", Mode => Nominal);
 
-   function Types return Array_List with
+   function Types
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
       Test_Case => (Name => "Test_Image_Types", Mode => Nominal);
 
-   function Width(Image: Tk_Image) return Natural with
-      Pre => Image'Length > 0,
+   function Width
+     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Natural with
+      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Width", Mode => Nominal);
 
 end Tk.Image;
