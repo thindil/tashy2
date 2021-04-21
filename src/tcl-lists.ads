@@ -93,4 +93,21 @@ package Tcl.Lists is
       -- ****
       --## rule on REDUCEABLE_SCOPE
 
+      -- ****f* Tcl.Lists/List.Merge_List
+      -- FUNCTION
+      -- Merge Ada array into Tcl list
+      -- PARAMETERS
+      -- List - The Ada array which will be merged into Tcl list
+      -- RESULT
+      -- The Ada string with values merged into Tcl list
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Convert array ("Ada", "Tcl") into Tcl list
+      -- New_List: constant String := Merge_List((To_Tcl_String("Ada"), To_Tcl_String("Tcl")));
+      -- SOURCE
+   function Merge_List(List: Array_List) return String with
+      Pre => List'Length > 0,
+      Test_Case => (Name => "Test_Merge_List", Mode => Nominal);
+
 end Tcl.Lists;
