@@ -12,8 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Interfaces.C;
-with Interfaces.C.Strings;
+with Interfaces.C; use Interfaces.C;
+with Interfaces.C.Strings; use Interfaces.C.Strings;
 with Tcl.Commands;
 
 package body Tcl.Lists is
@@ -21,8 +21,6 @@ package body Tcl.Lists is
    function Split_List
      (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
-      use Interfaces.C;
-      use Interfaces.C.Strings;
       use Tcl.Commands;
       function Tcl_Split_List
         (Interp: Tcl_Interpreter; Tcl_List: chars_ptr; Argc_Ptr: out int;
@@ -53,5 +51,21 @@ package body Tcl.Lists is
          end loop Convert_List_To_Array_Loop;
       end return;
    end Split_List;
+
+   function Merge_List(List: Array_List) return String is
+      function Tcl_Merge
+        (Argc: int; Argv: chars_ptr_array) return chars_ptr with
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_Merge";
+      New_List: chars_ptr_array(1 .. List'Length);
+   begin
+      Convert_Ada_String_To_C_Loop :
+      for I in List'Range loop
+         New_List(size_t(I)) :=
+           New_String(Str => To_Ada_String(Source => List(I)));
+      end loop Convert_Ada_String_To_C_Loop;
+      return Value(Item => Tcl_Merge(Argc => List'Length, Argv => New_List));
+   end Merge_List;
 
 end Tcl.Lists;
