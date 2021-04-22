@@ -15,6 +15,10 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tcl.Lists; use Tcl.Lists;
+with Tcl.Strings; use Tcl.Strings;
+
 --  begin read only
 --  end read only
 package body Tk.Image.Test_Data.Tests is
@@ -72,8 +76,13 @@ package body Tk.Image.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("image create bitmap mybitmap -background red");
+      Delete("mybitmap");
+      Assert(True, "This test can only crash.");
 
 --  begin read only
    end Test_1_Delete_test_image_delete;
@@ -122,8 +131,15 @@ package body Tk.Image.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("image create bitmap mybitmap -background red");
+      Tcl_Eval("image create bitmap mybitmap2 -background red");
+      Delete
+        (Array_List'(To_Tcl_String("mybitmap"), To_Tcl_String("mybitmap2")));
+      Assert(True, "This test can only crash.");
 
 --  begin read only
    end Test_2_Delete_test_image_delete2;
