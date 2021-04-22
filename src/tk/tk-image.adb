@@ -14,6 +14,20 @@
 
 package body Tk.Image is
 
+   -- ****if* Image/Image.Eval_Script
+   -- FUNCTION
+   -- Used to get Integer result from the selected Tcl command
+   -- PARAMETERS
+   -- Tcl_Script  - Tcl comamnd to evaluate
+   -- Interpreter - Tcl interpreter from which result will be get
+   -- RESULT
+   -- Integer value for the last Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Eval_Script is new Generic_Scalar_Tcl_Eval(Result_Type => Natural);
+   -- ****
+
    procedure Delete
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -33,47 +47,55 @@ package body Tk.Image is
    function Height
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural is
-      pragma Unreferenced(Image_Name, Interpreter);
    begin
-      return 0;
+      return Eval_Script
+          (Tcl_Script => "image height " & Image_Name,
+           Interpreter => Interpreter);
    end Height;
 
    function In_Use
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
-      pragma Unreferenced(Image_Name, Interpreter);
    begin
-      return False;
+      return Tcl_Eval
+          (Tcl_Script => "image inuse " & Image_Name,
+           Interpreter => Interpreter);
    end In_Use;
 
    function Names
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
-      pragma Unreferenced(Interpreter);
    begin
-      return Empty_Array_List;
+      return Split_List
+          (List =>
+             Tcl_Eval(Tcl_Script => "image names", Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Names;
 
    function Image_Type
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
-      pragma Unreferenced(Image_Name, Interpreter);
    begin
-      return "";
+      return Tcl_Eval
+          (Tcl_Script => "image type " & Image_Name,
+           Interpreter => Interpreter);
    end Image_Type;
 
    function Types
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
-      pragma Unreferenced(Interpreter);
    begin
-      return Empty_Array_List;
+      return Split_List
+          (List =>
+             Tcl_Eval(Tcl_Script => "image types", Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Types;
 
    function Width
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural is
-      pragma Unreferenced(Image_Name, Interpreter);
    begin
-      return 0;
+      return Eval_Script
+          (Tcl_Script => "image width " & Image_Name,
+           Interpreter => Interpreter);
    end Width;
 
 end Tk.Image;
