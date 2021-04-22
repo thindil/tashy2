@@ -24,9 +24,10 @@ package body Tk.Image is
 
    procedure Delete
      (Images: Array_List; Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Images, Interpreter);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script => "image delete " & Merge_List(List => Images),
+         Interpreter => Interpreter);
    end Delete;
 
    function Height
