@@ -21,11 +21,12 @@ with Tcl.Lists; use Tcl.Lists;
 package Tk.Image is
 -- ****
 
-   type Tk_Image is new String;
+   subtype Tk_Image is String;
 
    procedure Delete
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
+     (Image_Name: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Delete", Mode => Nominal);
 
    procedure Delete
@@ -34,15 +35,15 @@ package Tk.Image is
       Test_Case => (Name => "Test_Image_Delete2", Mode => Nominal);
 
    function Height
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural with
-      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Height", Mode => Nominal);
 
    function In_Use
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean with
-      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_In_Use", Mode => Nominal);
 
    function Names
@@ -51,9 +52,9 @@ package Tk.Image is
       Test_Case => (Name => "Test_Image_Names", Mode => Nominal);
 
    function Image_Type
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String with
-      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Type", Mode => Nominal);
 
    function Types
@@ -61,9 +62,9 @@ package Tk.Image is
       Test_Case => (Name => "Test_Image_Types", Mode => Nominal);
 
    function Width
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural with
-      Pre => Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Width", Mode => Nominal);
 
 end Tk.Image;

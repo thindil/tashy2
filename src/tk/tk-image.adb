@@ -15,10 +15,11 @@
 package body Tk.Image is
 
    procedure Delete
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Image, Interpreter);
+     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script => "image delete " & Image_Name,
+         Interpreter => Interpreter);
    end Delete;
 
    procedure Delete
@@ -29,17 +30,17 @@ package body Tk.Image is
    end Delete;
 
    function Height
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural is
-      pragma Unreferenced(Image, Interpreter);
+      pragma Unreferenced(Image_Name, Interpreter);
    begin
       return 0;
    end Height;
 
    function In_Use
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
-      pragma Unreferenced(Image, Interpreter);
+      pragma Unreferenced(Image_Name, Interpreter);
    begin
       return False;
    end In_Use;
@@ -52,9 +53,9 @@ package body Tk.Image is
    end Names;
 
    function Image_Type
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
-      pragma Unreferenced(Image, Interpreter);
+      pragma Unreferenced(Image_Name, Interpreter);
    begin
       return "";
    end Image_Type;
@@ -67,9 +68,9 @@ package body Tk.Image is
    end Types;
 
    function Width
-     (Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural is
-      pragma Unreferenced(Image, Interpreter);
+      pragma Unreferenced(Image_Name, Interpreter);
    begin
       return 0;
    end Width;
