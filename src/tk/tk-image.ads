@@ -94,7 +94,7 @@ package Tk.Image is
       -- SEE ALSO
       -- Image.Width
       -- COMMANDS
-      -- image width Image_Name
+      -- image height Image_Name
       -- SOURCE
    function Height
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -146,21 +146,72 @@ package Tk.Image is
       Test_Case => (Name => "Test_Image_Names", Mode => Nominal);
       -- ****
 
+      -- ****f* Image/Image.Image_Type
+      -- FUNCTION
+      -- Get the type of the selected Tk image
+      -- PARAMETERS
+      -- Image_Name  - The name of the Tk image which type will be get
+      -- Interpreter - Tcl interpreter on which the image type will be get. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the type of Tk image "myimage" on the default Tcl interpreter
+      -- My_Image_Type: constant String := Image_Type("myimage");
+      -- COMMANDS
+      -- image type Image_Name
+      -- SOURCE
    function Image_Type
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String with
       Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Type", Mode => Nominal);
+      -- ****
 
+      -- ****f* Image/Image.Types
+      -- FUNCTION
+      -- Get all possible types of the Tk images on the selected Tcl
+      -- interpreter
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which the types will be get. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the available types of Tk images on the default Tcl interpreter
+      -- Available_Types: constant Array_List := Types;
+      -- COMMANDS
+      -- image types
+      -- SOURCE
    function Types
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
       Test_Case => (Name => "Test_Image_Types", Mode => Nominal);
+      -- ****
 
+      -- ****f* Image/Image.Width
+      -- FUNCTION
+      -- Get the width in pixels for the selected Tk image
+      -- PARAMETERS
+      -- Image_Name  - The name of the Tk image which width will be get
+      -- Interpreter - Tcl interpreter on which the image which width will be
+      --               get. Can be empty. Default value is the default Tcl
+      --               interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the width of the Tk image "myimage" on default Tcl interpreter
+      -- Image_Width: constant Natural := Width("myimage");
+      -- SEE ALSO
+      -- Image.Height
+      -- COMMANDS
+      -- image width Image_Name
+      -- SOURCE
    function Width
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural with
       Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Width", Mode => Nominal);
-   --## rule on REDUCEABLE_SCOPE
+      -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tk.Image;
