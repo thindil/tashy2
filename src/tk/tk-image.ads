@@ -31,7 +31,7 @@ package Tk.Image is
    subtype Tk_Image is String;
    -- ****
 
-   -- ****f* Tk.Image/Image.Delete_(single_image)
+   -- ****f* Image/Image.Delete_(single_image)
    -- FUNCTION
    -- Delete the selected Tk image
    -- PARAMETERS
@@ -44,7 +44,7 @@ package Tk.Image is
    -- -- Delete Tk image named mybitmap on default Tcl interpreter
    -- Delete("mybitmap");
    -- SEE ALSO
-   -- Delete_(many_images)
+   -- Image.Delete_(many_images)
    -- COMMANDS
    -- image delete Image_Name
    -- SOURCE
@@ -55,7 +55,7 @@ package Tk.Image is
       Test_Case => (Name => "Test_Image_Delete", Mode => Nominal);
       -- ****
 
-   -- ****f* Tk.Image/Image.Delete_(many_images)
+   -- ****f* Image/Image.Delete_(many_images)
    -- FUNCTION
    -- Delete the selected Tk images
    -- PARAMETERS
@@ -68,7 +68,7 @@ package Tk.Image is
    -- -- Delete Tk images named mybitmap and mybitmap2 on default Tcl interpreter
    -- Delete(Array_List'(To_Tcl_String("mybitmap"), To_Tcl_String("mybitmap2")));
    -- SEE ALSO
-   -- Delete_(single_image)
+   -- Image.Delete_(single_image)
    -- COMMANDS
    -- image delete Images
    -- SOURCE
@@ -78,22 +78,73 @@ package Tk.Image is
       Test_Case => (Name => "Test_Image_Delete2", Mode => Nominal);
       -- ****
 
+      -- ****f* Image/Image.Height
+      -- FUNCTION
+      -- Get the height in pixels for the selected Tk image
+      -- PARAMETERS
+      -- Image_Name  - The name of the Tk image which height will be get
+      -- Interpreter - Tcl interpreter on which the image which height will be
+      --               get. Can be empty. Default value is the default Tcl
+      --               interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the height of the Tk image "myimage" on default Tcl interpreter
+      -- Image_Height: constant Natural := Height("myimage");
+      -- SEE ALSO
+      -- Image.Width
+      -- COMMANDS
+      -- image width Image_Name
+      -- SOURCE
    function Height
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural with
       Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Height", Mode => Nominal);
+      -- ****
 
+      -- ****f* Image/Image.In_Use
+      -- FUNCTION
+      -- Check if the selected Tk image is used by any widget
+      -- PARAMETERS
+      -- Image_Name  - The name of the Tk image which will be checked
+      -- Interpreter - Tcl interpreter on which the image will be check. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if the Tk image "myimage" on default Tcl interpreter is used
+      -- Is_Used: constant Boolean := In_Use("myimage");
+      -- COMMANDS
+      -- image inuse Image_Name
+      -- SOURCE
    function In_Use
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean with
       Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_In_Use", Mode => Nominal);
+      -- ****
 
+      -- ****f* Image/Image.Names
+      -- FUNCTION
+      -- Get the names of the all existing Tk images on the selected Tcl
+      -- interpreter
+      -- PARAMETERS
+      -- Interpreter - Tcl interpreter on which the names will be get. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the names of Tk images on the default Tcl interpreter
+      -- Available_Images: constant Array_List := Names;
+      -- COMMANDS
+      -- image names
+      -- SOURCE
    function Names
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Names", Mode => Nominal);
+      -- ****
 
    function Image_Type
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
