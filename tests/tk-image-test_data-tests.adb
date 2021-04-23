@@ -195,8 +195,13 @@ package body Tk.Image.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("image create bitmap mybitmap -background red");
+      Assert(Height("mybitmap") = 0, "Failed to get height of the image.");
+      Delete("mybitmap");
 
 --  begin read only
    end Test_Height_test_image_height;
@@ -252,8 +257,13 @@ package body Tk.Image.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("image create bitmap mybitmap -background red");
+      Assert(not In_Use("mybitmap"), "Failed to get image in use state.");
+      Delete("mybitmap");
 
 --  begin read only
    end Test_In_Use_test_image_in_use;
@@ -306,8 +316,11 @@ package body Tk.Image.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert(Names'Length > 0, "Failed to get images names.");
 
 --  begin read only
    end Test_Names_test_image_names;
@@ -363,8 +376,13 @@ package body Tk.Image.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("image create bitmap mybitmap -background red");
+      Assert(Image_Type("mybitmap") = "bitmap", "Failed to get image type.");
+      Delete("mybitmap");
 
 --  begin read only
    end Test_Image_Type_test_image_type;
@@ -417,8 +435,11 @@ package body Tk.Image.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert(Types'Length >= 2, "Failed to get images types.");
 
 --  begin read only
    end Test_Types_test_image_types;
@@ -474,8 +495,13 @@ package body Tk.Image.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("image create bitmap mybitmap -background red");
+      Assert(Width("mybitmap") = 0, "Failed to get width of the image.");
+      Delete("mybitmap");
 
 --  begin read only
    end Test_Width_test_image_width;
