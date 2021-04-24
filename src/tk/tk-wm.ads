@@ -120,8 +120,13 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Set_Attributes", Mode => Nominal);
 
-   function Get_Attribute
-     (Window: Tk_Widget; Name: String) return Tcl_String with
+   function Get_Attribute(Window: Tk_Widget; Name: String) return Tcl_String is
+     (To_Tcl_String
+        (Source =>
+           Tcl_Eval
+             (Tcl_Script =>
+                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+              Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute", Mode => Nominal);
 
@@ -130,17 +135,29 @@ package Tk.Wm is
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute2", Mode => Nominal);
 
-   function Get_Attribute
-     (Window: Tk_Widget; Name: String) return Alpha_Type with
+   function Get_Attribute(Window: Tk_Widget; Name: String) return Alpha_Type is
+     (Alpha_Type'Value
+        (Tcl_Eval
+           (Tcl_Script =>
+              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+            Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute3", Mode => Nominal);
 
    function Get_Attribute
-     (Window: Tk_Widget; Name: String) return Window_Types with
+     (Window: Tk_Widget; Name: String) return Window_Types is
+     (Window_Types'Value
+        (Tcl_Eval
+           (Tcl_Script =>
+              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+            Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute4", Mode => Nominal);
 
-   function Client(Window: Tk_Widget) return String with
+   function Client(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "wm client " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Client", Mode => Nominal);
 
@@ -156,7 +173,12 @@ package Tk.Wm is
       Pre => Window /= Null_Widget and Widgets /= Empty_Widgets_Array,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows2", Mode => Nominal);
 
-   function Command(Window: Tk_Widget) return Tcl_String with
+   function Command(Window: Tk_Widget) return Tcl_String is
+     (To_Tcl_String
+        (Source =>
+           Tcl_Eval
+             (Tcl_Script => "wm command " & Tk_Path_Name(Widgt => Window),
+              Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Command", Mode => Nominal);
 
