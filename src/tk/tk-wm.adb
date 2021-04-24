@@ -552,33 +552,75 @@ package body Tk.Wm is
 
    procedure Icon_Photo
      (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) is
-      pragma Unreferenced(Window, Images, Default);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm iconphoto " & Tk_Path_Name(Widgt => Window) & " " &
+           (if Default then "-default" else "") & Merge_List(List => Images),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Photo;
 
    function Icon_Position(Window: Tk_Widget) return Window_Position is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
+      Result: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "wm iconposition " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
-      return Empty_Window_Position;
+      return Icon_Pos: Window_Position := Empty_Window_Position do
+         Icon_Pos.X := Natural'Value(To_Ada_String(Source => Result(1)));
+         Icon_Pos.Y := Natural'Value(To_Ada_String(Source => Result(2)));
+      end return;
    end Icon_Position;
 
-   procedure Icon_Position(Window: Tk_Widget; X, Y: Natural) is
-      pragma Unreferenced(Window, X, Y);
+   procedure Icon_Position(Window: Tk_Widget; X, Y: Extended_Natural) is
    begin
-      null;
+      if (X = -1 and Y > -1) or (X > -1 and Y = -1) then
+         raise Tcl_Exception with "You have to specify both coordinates";
+      end if;
+      if X = -1 and Y = -1 then
+         Tcl_Eval
+           (Tcl_Script =>
+              "wm iconposition " & Tk_Path_Name(Widgt => Window) & " {} {}",
+            Interpreter => Tk_Interp(Widgt => Window));
+      else
+         Tcl_Eval
+           (Tcl_Script =>
+              "wm iconposition " & Tk_Path_Name(Widgt => Window) &
+              Extended_Natural'Image(X) & Extended_Natural'Image(Y),
+            Interpreter => Tk_Interp(Widgt => Window));
+      end if;
    end Icon_Position;
 
-   function Icon_Window(Window: Tk_Widget) return String is
-      pragma Unreferenced(Window);
+   function Icon_Window(Window: Tk_Widget) return Tk_Toplevel is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
+      Path_Name: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "wm iconwindow " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Interpreter);
    begin
-      return "";
+      if Path_Name'Length = 0 then
+         return Null_Widget;
+      end if;
+      return Get_Widget
+          (Path_Name =>
+             Tcl_Eval
+               (Tcl_Script => "wm iconwindow " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Icon_Window;
 
-   procedure Icon_Window(Window: Tk_Widget; Path_Name: Tcl_String) is
-      pragma Unreferenced(Window, Path_Name);
+   procedure Icon_Window(Window, New_Icon_Window: Tk_Toplevel) is
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm iconwindow " & Tk_Path_Name(Widgt => Window) & " " &
+           Tk_Path_Name(Widgt => New_Icon_Window),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Window;
 
 end Tk.Wm;
