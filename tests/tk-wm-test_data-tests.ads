@@ -112,13 +112,13 @@ package Tk.Wm.Test_Data.Tests is
    procedure Test_Icon_Position_1b8212_0e4e31(Gnattest_T: in out Test);
    --  tk-wm.ads:247:4:Icon_Position:Test_Wm_Icon_Position
 
-   procedure Test_Icon_Position_277e3f_ebaaaa(Gnattest_T: in out Test);
+   procedure Test_Icon_Position_965e91_ebaaaa(Gnattest_T: in out Test);
    --  tk-wm.ads:251:4:Icon_Position:Test_Wm_Icon_Position2
 
-   procedure Test_Icon_Window_6943ef_44e6ae(Gnattest_T: in out Test);
+   procedure Test_Icon_Window_5eafd1_44e6ae(Gnattest_T: in out Test);
    --  tk-wm.ads:255:4:Icon_Window:Test_Wm_Icon_Window
 
-   procedure Test_Icon_Window_7f7484_c90d51(Gnattest_T: in out Test);
+   procedure Test_Icon_Window_8ccb84_e657dc(Gnattest_T: in out Test);
    --  tk-wm.ads:259:4:Icon_Window:Test_Wm_Icon_Window2
 
 end Tk.Wm.Test_Data.Tests;
