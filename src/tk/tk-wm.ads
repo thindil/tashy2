@@ -225,7 +225,10 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Grid2", Mode => Nominal);
 
-   function Group(Window: Tk_Widget) return String with
+   function Group(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "wm group " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Group", Mode => Nominal);
 
@@ -233,7 +236,10 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Group2", Mode => Nominal);
 
-   function Icon_Bitmap(Window: Tk_Widget) return String with
+   function Icon_Bitmap(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "wm iconbitmap " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Bitmap", Mode => Nominal);
 
@@ -245,7 +251,10 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Iconify", Mode => Nominal);
 
-   function Icon_Mask(Window: Tk_Widget) return String with
+   function Icon_Mask(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "wm iconmask " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Mask", Mode => Nominal);
 
@@ -253,7 +262,10 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Mask2", Mode => Nominal);
 
-   function Icon_Name(Window: Tk_Widget) return String with
+   function Icon_Name(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "wm iconname " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Name", Mode => Nominal);
 

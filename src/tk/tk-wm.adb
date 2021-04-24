@@ -433,13 +433,6 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Grid;
 
-   function Group(Window: Tk_Widget) return String is
-   begin
-      return Tcl_Eval
-          (Tcl_Script => "wm group " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Group;
-
    procedure Group(Window: Tk_Widget; Path_Name: Tcl_String) is
    begin
       Tcl_Eval
@@ -448,13 +441,6 @@ package body Tk.Wm is
            To_Ada_String(Source => Path_Name),
          Interpreter => Tk_Interp(Widgt => Window));
    end Group;
-
-   function Icon_Bitmap(Window: Tk_Widget) return String is
-   begin
-      return Tcl_Eval
-          (Tcl_Script => "wm iconbitmap " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Icon_Bitmap;
 
    procedure Icon_Bitmap(Window: Tk_Widget; Bitmap: Tcl_String) is
    begin
@@ -472,13 +458,6 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Iconify;
 
-   function Icon_Mask(Window: Tk_Widget) return String is
-   begin
-      return Tcl_Eval
-          (Tcl_Script => "wm iconmask " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Icon_Mask;
-
    procedure Icon_Mask(Window: Tk_Widget; Bitmap: Tcl_String) is
    begin
       Tcl_Eval
@@ -487,13 +466,6 @@ package body Tk.Wm is
            To_Ada_String(Source => Bitmap),
          Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Mask;
-
-   function Icon_Name(Window: Tk_Widget) return String is
-   begin
-      return Tcl_Eval
-          (Tcl_Script => "wm iconname " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Icon_Name;
 
    procedure Icon_Name(Window: Tk_Widget; New_Name: Tcl_String) is
    begin
