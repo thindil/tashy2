@@ -222,17 +222,6 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Attributes;
 
-   function Get_Attribute(Window: Tk_Widget; Name: String) return Tcl_String is
-   begin
-      return To_Tcl_String
-          (Source =>
-             Tcl_Eval
-               (Tcl_Script =>
-                  "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
-                  Name,
-                Interpreter => Tk_Interp(Widgt => Window)));
-   end Get_Attribute;
-
    function Get_Attribute
      (Window: Tk_Widget; Name: String) return Extended_Boolean is
    begin
@@ -245,32 +234,6 @@ package body Tk.Wm is
       end if;
       return FALSE;
    end Get_Attribute;
-
-   function Get_Attribute(Window: Tk_Widget; Name: String) return Alpha_Type is
-   begin
-      return Alpha_Type'Value
-          (Tcl_Eval
-             (Tcl_Script =>
-                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
-              Interpreter => Tk_Interp(Widgt => Window)));
-   end Get_Attribute;
-
-   function Get_Attribute
-     (Window: Tk_Widget; Name: String) return Window_Types is
-   begin
-      return Window_Types'Value
-          (Tcl_Eval
-             (Tcl_Script =>
-                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
-              Interpreter => Tk_Interp(Widgt => Window)));
-   end Get_Attribute;
-
-   function Client(Window: Tk_Widget) return String is
-   begin
-      return Tcl_Eval
-          (Tcl_Script => "wm client " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Client;
 
    procedure Client(Window: Tk_Widget; Name: Tcl_String) is
    begin
@@ -308,15 +271,6 @@ package body Tk.Wm is
            To_String(Source => Windows_List) & "}",
          Interpreter => Tk_Interp(Widgt => Window));
    end Color_Map_Windows;
-
-   function Command(Window: Tk_Widget) return Tcl_String is
-   begin
-      return To_Tcl_String
-          (Source =>
-             Tcl_Eval
-               (Tcl_Script => "wm command " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Tk_Interp(Widgt => Window)));
-   end Command;
 
    procedure Command(Window: Tk_Widget; Wm_Command: Tcl_String) is
    begin
