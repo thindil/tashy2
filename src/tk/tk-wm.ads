@@ -248,16 +248,16 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Position", Mode => Nominal);
 
-   procedure Icon_Position(Window: Tk_Widget; X, Y: Natural) with
+   procedure Icon_Position(Window: Tk_Widget; X, Y: Extended_Natural) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Position2", Mode => Nominal);
 
-   function Icon_Window(Window: Tk_Widget) return String with
+   function Icon_Window(Window: Tk_Widget) return Tk_Toplevel with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Window", Mode => Nominal);
 
-   procedure Icon_Window(Window: Tk_Widget; Path_Name: Tcl_String) with
-      Pre => Window /= Null_Widget,
+   procedure Icon_Window(Window, New_Icon_Window: Tk_Toplevel) with
+      Pre => Window /= Null_Widget and New_Icon_Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Window2", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE
