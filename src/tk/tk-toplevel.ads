@@ -174,7 +174,7 @@ package Tk.TopLevel is
       -- EXAMPLE
       -- -- Create the toplevel with pathname .mydialog
       -- declare
-      --    My_Dialog: Tk_Dialog;
+      --    My_Dialog: Tk_Toplevel;
       -- begin
       --    Create(My_Dialog, ".mydialog", Default_Toplevel_Create_Options);
       -- end;
@@ -203,7 +203,7 @@ package Tk.TopLevel is
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
-   -- -- Get all values of option of topplevel with pathname .mydialog
+   -- -- Get all values of option of toplevel with pathname .mydialog
    -- My_Dialog_Options: constant TopLevel_Create_Options := Get_Options(Get_Widget(".mydialog"));
    -- COMMANDS
    -- Widget configure
