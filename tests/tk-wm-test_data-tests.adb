@@ -1948,8 +1948,12 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Icon_Photo(Get_Main_Window, Array_List'(1 => To_Tcl_String("image14")));
+      Assert(True, "This test can only crash.");
 
 --  begin read only
    end Test_Icon_Photo_test_wm_icon_photo;
@@ -2002,8 +2006,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Icon_Position(Get_Main_Window, 10, 11);
+      Assert
+        (Icon_Position(Get_Main_Window).X = 10,
+         "Failed to get icon position for main window.");
 
 --  begin read only
    end Test_1_Icon_Position_test_wm_icon_position;
@@ -2052,8 +2062,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Icon_Position(Get_Main_Window, 12, 13);
+      Assert
+        (Icon_Position(Get_Main_Window).X = 12,
+         "Failed to set icon position for main window.");
 
 --  begin read only
    end Test_2_Icon_Position_test_wm_icon_position2;
@@ -2101,11 +2117,20 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      IconWindow: Tk_Toplevel;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      IconWindow := Create(".test", Default_Toplevel_Create_Options);
+      Icon_Window(Get_Main_Window, IconWindow);
+      Assert
+        (Icon_Window(Get_Main_Window) = IconWindow,
+         "Failed to get icon window for main window");
+      Destroy(IconWindow);
 
 --  begin read only
    end Test_1_Icon_Window_test_wm_icon_window;
@@ -2151,11 +2176,20 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      IconWindow: Tk_Toplevel;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      IconWindow := Create(".test", Default_Toplevel_Create_Options);
+      Icon_Window(Get_Main_Window, IconWindow);
+      Assert
+        (Icon_Window(Get_Main_Window) = IconWindow,
+         "Failed to set icon window for main window");
+      Destroy(IconWindow);
 
 --  begin read only
    end Test_2_Icon_Window_test_wm_icon_window2;
