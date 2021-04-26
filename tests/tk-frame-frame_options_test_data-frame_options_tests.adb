@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+
 --  begin read only
 --  end read only
 package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
@@ -70,11 +72,19 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Frame: Tk_Frame;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Frame, ".myframe", Frame_Create_Options'(others => <>));
+      Configure(Frame, Frame_Options'(Relief => RAISED, others => <>));
+      Assert
+        (Option_Value(Frame, "relief") = RAISED,
+         "Failed to set new value for frame option.");
 
 --  begin read only
    end Test_Configure_test_configure_frame;

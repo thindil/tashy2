@@ -15,15 +15,15 @@ package Tk.Frame.Frame_Create_Options_Test_Data.Frame_Create_Options_Tests is
 
    procedure Test_Create_32e405_f18995
      (Gnattest_T: in out Test_Frame_Create_Options);
-   --  tk-frame.ads:148:4:Create:Test_Create_Frame1
+   --  tk-frame.ads:145:4:Create:Test_Create_Frame1
 
    procedure Test_Create_ebbdc1_94cd82
      (Gnattest_T: in out Test_Frame_Create_Options);
-   --  tk-frame.ads:181:4:Create:Test_Create_Frame2
+   --  tk-frame.ads:178:4:Create:Test_Create_Frame2
 
    procedure Test_Get_Options_ded36e_681455
      (Gnattest_T: in out Test_Frame_Create_Options);
-   --  tk-frame.ads:206:4:Get_Options:Test_Get_Options_Frame
+   --  tk-frame.ads:203:4:Get_Options:Test_Get_Options_Frame
 
 end Tk.Frame.Frame_Create_Options_Test_Data.Frame_Create_Options_Tests;
 --  end read only

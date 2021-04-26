@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+
 --  begin read only
 --  end read only
 package body Tk.Frame.Frame_Create_Options_Test_Data
@@ -80,11 +82,17 @@ package body Tk.Frame.Frame_Create_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Frame: Tk_Frame := Null_Widget;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Frame, ".myframe", Frame_Create_Options'(others => <>));
+      Assert(Frame /= Null_Widget, "Failed to create a new frame.");
+      Destroy(Frame);
 
 --  begin read only
    end Test_1_Create_test_create_frame1;
@@ -137,11 +145,17 @@ package body Tk.Frame.Frame_Create_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Frame: Tk_Frame := Null_Widget;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Frame := Create(".myframe", Frame_Create_Options'(others => <>));
+      Assert(Frame /= Null_Widget, "Failed to create a new frame.");
+      Destroy(Frame);
 
 --  begin read only
    end Test_2_Create_test_create_frame2;
@@ -194,11 +208,21 @@ package body Tk.Frame.Frame_Create_Options_Test_Data
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Frame: Tk_Frame;
+      Options: Frame_Create_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Frame, ".myframe",
+         Frame_Create_Options'(Relief => RAISED, others => <>));
+      Options := Get_Options(Frame);
+      Assert(Options.Relief = RAISED, "Failed to get frame options.");
+      Destroy(Frame);
 
 --  begin read only
    end Test_Get_Options_test_get_options_frame;
