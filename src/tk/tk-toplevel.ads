@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tk.Frame; use Tk.Frame;
 with Tk.Menu; use Tk.Menu;
 with Tk.Widget; use Tk.Widget;
 
@@ -24,7 +25,7 @@ package Tk.TopLevel is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
-   -- ****t* TopLevel/Toplevel.Tk_Button
+   -- ****t* TopLevel/Toplevel.Tk_Toplevel
    -- FUNCTION
    -- The Tk identifier of the toplevel
    -- HISTORY
@@ -56,18 +57,8 @@ package Tk.TopLevel is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Toplevel_Options is new Widget_Options with record
-      Background: Tcl_String;
-      Border_Width: Pixel_Data;
-      Height: Pixel_Data;
-      Highlight_Background: Tcl_String;
-      Highlight_Color: Tcl_String;
-      Highlight_Thickness: Pixel_Data;
+   type Toplevel_Options is new Frame_Options with record
       Menu: Tk_Menu := Null_Widget;
-      Pad_X: Pixel_Data;
-      Pad_Y: Pixel_Data;
-      Relief: Relief_Type;
-      Width: Pixel_Data;
    end record;
    -- ****
 
@@ -87,7 +78,7 @@ package Tk.TopLevel is
    -- COMMANDS
    -- Widget configure Options
    -- SOURCE
-   procedure Configure
+   overriding procedure Configure
      (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) with
       Pre => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TopLevel", Mode => Nominal);
@@ -119,13 +110,10 @@ package Tk.TopLevel is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Toplevel_Create_Options is new Toplevel_Options with record
-      Class: Tcl_String;
-      Color_Map: Tcl_String;
-      Container: Extended_Boolean;
+   type Toplevel_Create_Options is new Frame_Create_Options with record
+      Menu: Tk_Menu := Null_Widget;
       Screen: Tcl_String;
       Use_Container: Tk_Window := Null_Window;
-      Visual: Tcl_String;
    end record;
    -- ****
 
@@ -150,7 +138,7 @@ package Tk.TopLevel is
    -- COMMANDS
    -- toplevel Path_Name Options
    -- SOURCE
-   function Create
+   overriding function Create
      (Path_Name: String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
@@ -183,7 +171,7 @@ package Tk.TopLevel is
       -- COMMANDS
       -- toplevel Path_Name Options
       -- SOURCE
-   procedure Create
+   overriding procedure Create
      (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
@@ -208,7 +196,7 @@ package Tk.TopLevel is
    -- COMMANDS
    -- Widget configure
    -- SOURCE
-   function Get_Options
+   overriding function Get_Options
      (Toplevel_Widget: Tk_Toplevel) return Toplevel_Create_Options with
       Pre => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TopLevel", Mode => Nominal);
