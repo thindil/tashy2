@@ -61,9 +61,6 @@ package body Tk.Frame is
         (Name => "relief", Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "screen", Value => Options.Screen,
-         Options_String => Options_String);
-      Option_Image
         (Name => "takefocus", Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
@@ -123,8 +120,6 @@ package body Tk.Frame is
            Option_Value(Widgt => Frame_Widget, Name => "pady");
          Options.Relief :=
            Option_Value(Widgt => Frame_Widget, Name => "relief");
-         Options.Screen :=
-           Option_Value(Widgt => Frame_Widget, Name => "screen");
          Options.Take_Focus :=
            Option_Value(Widgt => Frame_Widget, Name => "takefocus");
          Options.Visual :=

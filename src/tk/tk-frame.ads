@@ -109,8 +109,6 @@ package Tk.Frame is
    --                 `new` or name of the color map from another widget
    -- Container     - If true, the widget will be used as container for another
    --                 embedded application
-   -- Screen        - The name of the screen on which the widget will be placed
-   -- Use_Container - Tk_Window which will be used as container for the widget
    -- Visual        - Type of visual information for the widget
    -- HISTORY
    -- 8.6.0 - Added
@@ -119,7 +117,6 @@ package Tk.Frame is
       Class: Tcl_String;
       Color_Map: Tcl_String;
       Container: Extended_Boolean;
-      Screen: Tcl_String;
       Visual: Tcl_String;
    end record;
    -- ****
