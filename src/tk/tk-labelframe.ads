@@ -38,12 +38,13 @@ package Tk.Labelframe is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Anchor_Directions is (NONE, NW, N, NE, EN, E, ES, SE, S, SW, WS, W, WN);
+   type Anchor_Directions is
+     (NONE, NW, N, NE, EN, E, ES, SE, S, SW, WS, W, WN);
    -- ****
 
    -- ****s* Labelframe/Labelframe.Frame_Options
    -- FUNCTION
-   -- Data structure for all available options for the Tk frame which can
+   -- Data structure for all available options for the Tk labelframe which can
    -- be changed after creation of a widget
    -- OPTIONS
    -- Background           - Normal Background color of the frame
@@ -55,16 +56,23 @@ package Tk.Labelframe is
    --                        frame
    -- Highlight_Thickness  - The width of highlight traversal rectangle for the
    --                        frame
+   -- Label_Anchor         - The direction where to place the lable of Tk
+   --                        labelframe. Works only when Text option isn't empty
+   -- Label_Widget         - Tk_Widget used as a label for Tk labelframe.
    -- Menu                 - Menu widget which will be used as menubar in the
    --                        frame
    -- Pad_X                - Extra space requested for the frame in X-direction
    -- Pad_Y                - Extra space requested for the frame in Y-direction
    -- Relief               - 3-D effect desired for the frame
+   -- Text                 - The text which will be displayed in label of Tk
+   --                        labelframe
    -- Width                - Width of the frame
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    type Label_Frame_Options is new Frame_Options with record
+      Label_Anchor: Anchor_Directions;
+      Label_Widget: Tk_Widget;
       Text: Tcl_String;
    end record;
    -- ****
@@ -85,7 +93,8 @@ package Tk.Labelframe is
    -- COMMANDS
    -- Widget configure Options
    -- SOURCE
-   overriding procedure Configure(Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) with
+   overriding procedure Configure
+     (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) with
       Pre => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_Label_Frame", Mode => Nominal);
       -- ****
@@ -108,8 +117,6 @@ package Tk.Labelframe is
    -- Class         - The name of the class for the widget
    -- Color_Map     - The name of the color map used by the widget. Can be
    --                 `new` or name of the color map from another widget
-   -- Container     - If true, the widget will be used as container for another
-   --                 embedded application
    -- Visual        - Type of visual information for the widget
    -- HISTORY
    -- 8.6.0 - Added
@@ -145,7 +152,8 @@ package Tk.Labelframe is
    -- SOURCE
    function Create
      (Path_Name: String; Options: Frame_Create_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Label_Frame with
+      Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tk_Label_Frame with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Label_Frame1", Mode => Nominal);
