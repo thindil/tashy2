@@ -151,7 +151,7 @@ package Tk.Labelframe is
    -- frame Path_Name Options
    -- SOURCE
    function Create
-     (Path_Name: String; Options: Frame_Create_Options;
+     (Path_Name: String; Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Label_Frame with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
@@ -186,7 +186,7 @@ package Tk.Labelframe is
       -- SOURCE
    procedure Create
      (Frame_Widget: out Tk_Label_Frame; Path_Name: String;
-      Options: Frame_Create_Options;
+      Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Frame_Widget /= Null_Widget,
