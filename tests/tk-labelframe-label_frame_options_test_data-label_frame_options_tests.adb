@@ -3,7 +3,7 @@
 --  Such changes will be kept during further regeneration of this file.
 --  All code placed outside of test routine bodies will be lost. The
 --  code intended to set up and tear down the test environment should be
---  placed into Tk.Frame.Frame_Options_Test_Data.
+--  placed into Tk.Labelframe.Label_Frame_Options_Test_Data.
 
 with AUnit.Assertions; use AUnit.Assertions;
 with System.Assertions;
@@ -19,7 +19,8 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 
 --  begin read only
 --  end read only
-package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
+package body Tk.Labelframe.Label_Frame_Options_Test_Data
+  .Label_Frame_Options_Tests is
 
 --  begin read only
 --  id:2.2/01/
@@ -31,8 +32,8 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_380f02
-     (Frame_Widget: Tk_Frame; Options: Frame_Options) is
+   procedure Wrap_Test_Configure_0076be_84934b
+     (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) is
    begin
       begin
          pragma Assert(Frame_Widget /= Null_Widget);
@@ -41,9 +42,9 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-frame.ads:0):Test_Configure_Frame test requirement violated");
+               "req_sloc(tk-labelframe.ads:0):Test_Configure_Label_Frame test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Frame.Configure
+      GNATtest_Generated.GNATtest_Standard.Tk.Labelframe.Configure
         (Frame_Widget, Options);
       begin
          pragma Assert(True);
@@ -52,27 +53,27 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "ens_sloc(tk-frame.ads:0:):Test_Configure_Frame test commitment violated");
+               "ens_sloc(tk-labelframe.ads:0:):Test_Configure_Label_Frame test commitment violated");
       end;
-   end Wrap_Test_Configure_0076be_380f02;
+   end Wrap_Test_Configure_0076be_84934b;
 --  end read only
 
 --  begin read only
-   procedure Test_Configure_test_configure_frame
-     (Gnattest_T: in out Test_Frame_Options);
-   procedure Test_Configure_0076be_380f02
-     (Gnattest_T: in out Test_Frame_Options) renames
-     Test_Configure_test_configure_frame;
---  id:2.2/0076be6725db0897/Configure/1/0/test_configure_frame/
-   procedure Test_Configure_test_configure_frame
-     (Gnattest_T: in out Test_Frame_Options) is
+   procedure Test_Configure_test_configure_label_frame
+     (Gnattest_T: in out Test_Label_Frame_Options);
+   procedure Test_Configure_0076be_84934b
+     (Gnattest_T: in out Test_Label_Frame_Options) renames
+     Test_Configure_test_configure_label_frame;
+--  id:2.2/0076be6725db0897/Configure/1/0/test_configure_label_frame/
+   procedure Test_Configure_test_configure_label_frame
+     (Gnattest_T: in out Test_Label_Frame_Options) is
       procedure Configure
-        (Frame_Widget: Tk_Frame; Options: Frame_Options) renames
-        Wrap_Test_Configure_0076be_380f02;
+        (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) renames
+        Wrap_Test_Configure_0076be_84934b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      Frame: Tk_Frame;
+      Frame: Tk_Label_Frame;
 
    begin
 
@@ -84,11 +85,11 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
       Configure(Frame, Frame_Options'(Relief => RAISED, others => <>));
       Assert
         (Option_Value(Frame, "relief") = RAISED,
-         "Failed to set new value for frame option.");
+         "Failed to set new value for labelframe option.");
       Destroy(Frame);
 
 --  begin read only
-   end Test_Configure_test_configure_frame;
+   end Test_Configure_test_configure_label_frame;
 --  end read only
 
 --  begin read only
@@ -101,4 +102,4 @@ begin
    null;
 --  begin read only
 --  end read only
-end Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests;
+end Tk.Labelframe.Label_Frame_Options_Test_Data.Label_Frame_Options_Tests;
