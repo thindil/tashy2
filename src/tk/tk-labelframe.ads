@@ -39,7 +39,8 @@ package Tk.Labelframe is
    -- 8.6.0 - Added
    -- SOURCE
    type Anchor_Directions is
-     (NONE, NW, N, NE, EN, E, ES, SE, S, SW, WS, W, WN);
+     (NONE, NW, N, NE, EN, E, ES, SE, S, SW, WS, W, WN) with
+      Default_Value => NONE;
    -- ****
 
    -- ****s* Labelframe/Labelframe.Frame_Options
@@ -72,7 +73,7 @@ package Tk.Labelframe is
    -- SOURCE
    type Label_Frame_Options is new Frame_Options with record
       Label_Anchor: Anchor_Directions;
-      Label_Widget: Tk_Widget;
+      Label_Widget: Tk_Widget := Null_Widget;
       Text: Tcl_String;
    end record;
    -- ****
