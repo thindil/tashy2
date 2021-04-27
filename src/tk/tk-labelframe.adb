@@ -17,7 +17,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Tk.Labelframe is
 
    function Create
-     (Path_Name: String; Options: Frame_Create_Options;
+     (Path_Name: String; Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Label_Frame is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
@@ -52,6 +52,9 @@ package body Tk.Labelframe is
         (Name => "highlighthickness", Value => Options.Highlight_Thickness,
          Options_String => Options_String);
       Option_Image
+        (Name => "labelwidget", Value => Options.Label_Widget,
+         Options_String => Options_String);
+      Option_Image
         (Name => "padx", Value => Options.Pad_X,
          Options_String => Options_String);
       Option_Image
@@ -64,21 +67,32 @@ package body Tk.Labelframe is
         (Name => "takefocus", Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
+        (Name => "text", Value => Options.Text,
+         Options_String => Options_String);
+      Option_Image
         (Name => "visual", Value => Options.Visual,
          Options_String => Options_String);
       Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
+      if Options.Label_Anchor /= NONE then
+         Append
+           (Source => Options_String,
+            New_Item =>
+              " -labelanchor " &
+              Anchor_Directions'Image(Options.Label_Anchor));
+      end if;
       Tcl_Eval
         (Tcl_Script =>
-           "frame " & Path_Name & " " & To_String(Source => Options_String),
+           "labelframe " & Path_Name & " " &
+           To_String(Source => Options_String),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
      (Frame_Widget: out Tk_Label_Frame; Path_Name: String;
-      Options: Frame_Create_Options;
+      Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Frame_Widget :=
@@ -91,13 +105,13 @@ package body Tk.Labelframe is
      (Frame_Widget: Tk_Label_Frame) return Label_Frame_Create_Options is
    begin
       return
-        Options: Label_Frame_Create_Options := Default_Label_Frame_Create_Options do
+        Options: Label_Frame_Create_Options :=
+          Default_Label_Frame_Create_Options do
          Options.Background :=
            Option_Value(Widgt => Frame_Widget, Name => "background");
          Options.Border_Width :=
            Option_Value(Widgt => Frame_Widget, Name => "borderwidth");
-         Options.Class :=
-           Option_Value(Widgt => Frame_Widget, Name => "class");
+         Options.Class := Option_Value(Widgt => Frame_Widget, Name => "class");
          Options.Color_Map :=
            Option_Value(Widgt => Frame_Widget, Name => "colormap");
          Options.Container :=
@@ -107,25 +121,29 @@ package body Tk.Labelframe is
          Options.Height :=
            Option_Value(Widgt => Frame_Widget, Name => "height");
          Options.Highlight_Background :=
-           Option_Value
-             (Widgt => Frame_Widget, Name => "highlightbackground");
+           Option_Value(Widgt => Frame_Widget, Name => "highlightbackground");
          Options.Highlight_Color :=
            Option_Value(Widgt => Frame_Widget, Name => "highlightcolor");
          Options.Highlight_Thickness :=
-           Option_Value
-             (Widgt => Frame_Widget, Name => "highlightthickness");
-         Options.Pad_X :=
-           Option_Value(Widgt => Frame_Widget, Name => "padx");
-         Options.Pad_Y :=
-           Option_Value(Widgt => Frame_Widget, Name => "pady");
+           Option_Value(Widgt => Frame_Widget, Name => "highlightthickness");
+         Options.Label_Anchor :=
+           Anchor_Directions'Value
+             (Tcl_Eval
+                (Tcl_Script =>
+                   Tk_Path_Name(Widgt => Frame_Widget) & " cget -labelanchor",
+                 Interpreter => Tk_Interp(Widgt => Frame_Widget)));
+         Options.Label_Widget :=
+           Option_Value(Widgt => Frame_Widget, Name => "labelwidget");
+         Options.Pad_X := Option_Value(Widgt => Frame_Widget, Name => "padx");
+         Options.Pad_Y := Option_Value(Widgt => Frame_Widget, Name => "pady");
          Options.Relief :=
            Option_Value(Widgt => Frame_Widget, Name => "relief");
          Options.Take_Focus :=
            Option_Value(Widgt => Frame_Widget, Name => "takefocus");
+         Options.Text := Option_Value(Widgt => Frame_Widget, Name => "text");
          Options.Visual :=
            Option_Value(Widgt => Frame_Widget, Name => "visual");
-         Options.Width :=
-           Option_Value(Widgt => Frame_Widget, Name => "width");
+         Options.Width := Option_Value(Widgt => Frame_Widget, Name => "width");
       end return;
    end Get_Options;
 
@@ -155,6 +173,9 @@ package body Tk.Labelframe is
         (Name => "highlighthickness", Value => Options.Highlight_Thickness,
          Options_String => Options_String);
       Option_Image
+        (Name => "labelwidget", Value => Options.Label_Widget,
+         Options_String => Options_String);
+      Option_Image
         (Name => "padx", Value => Options.Pad_X,
          Options_String => Options_String);
       Option_Image
@@ -167,8 +188,18 @@ package body Tk.Labelframe is
         (Name => "takefocus", Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
+        (Name => "text", Value => Options.Text,
+         Options_String => Options_String);
+      Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
+      if Options.Label_Anchor /= NONE then
+         Append
+           (Source => Options_String,
+            New_Item =>
+              " -labelanchor " &
+              Anchor_Directions'Image(Options.Label_Anchor));
+      end if;
       Execute_Widget_Command
         (Widgt => Frame_Widget, Command_Name => "configure",
          Options => To_String(Source => Options_String));
