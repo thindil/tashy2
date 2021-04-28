@@ -41,6 +41,15 @@ package Tk.Labelframe is
    type Anchor_Directions is
      (NONE, NW, N, NE, EN, E, ES, SE, S, SW, WS, W, WN) with
       Default_Value => NONE;
+      -- ****
+
+      -- ****d* Tk.Labelframe/Default_Anchor_Direction
+      -- FUNCTION
+      -- Default value for text anchor direction for Tk_Label_Frame
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
+   Default_Anchor_Direction: constant Anchor_Directions := NW;
    -- ****
 
    -- ****s* Labelframe/Labelframe.Frame_Options
@@ -80,10 +89,10 @@ package Tk.Labelframe is
 
    -- ****f* Labelframe/Labelframe.Configure
    -- FUNCTION
-   -- Set the selected options for the selected frame
+   -- Set the selected options for the selected labelframe
    -- PARAMETERS
    -- Frame_Widget - Tk_Label_Frame which options will be set
-   -- Options      - The record with new values for the button options
+   -- Options      - The record with new values for the labelframe options
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
@@ -165,10 +174,10 @@ package Tk.Labelframe is
       -- Create a new Tk frame widget with the selected pathname and options
       -- PARAMETERS
       -- Frame_Widget - Tk_Label_Frame identifier which will be returned
-      -- Path_Name       - Tk pathname for the newly created frame
-      -- Options         - Options for the newly created frame
-      -- Interpreter     - Tcl interpreter on which the toplelve will be created. Can
-      --                   be empty. Default value is the default Tcl interpreter
+      -- Path_Name    - Tk pathname for the newly created frame
+      -- Options      - Options for the newly created frame
+      -- Interpreter  - Tcl interpreter on which the toplelve will be created. Can
+      --                be empty. Default value is the default Tcl interpreter
       -- OUTPUT
       -- The Widget parameter as Tk identifier of the newly created frame widget
       -- HISTORY
