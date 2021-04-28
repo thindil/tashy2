@@ -73,7 +73,7 @@ package Tk.Frame is
    -- Set the selected options for the selected frame
    -- PARAMETERS
    -- Frame_Widget - Tk_Frame which options will be set
-   -- Options      - The record with new values for the button options
+   -- Options      - The record with new values for the frame options
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
@@ -155,10 +155,10 @@ package Tk.Frame is
       -- Create a new Tk frame widget with the selected pathname and options
       -- PARAMETERS
       -- Frame_Widget - Tk_Frame identifier which will be returned
-      -- Path_Name       - Tk pathname for the newly created frame
-      -- Options         - Options for the newly created frame
-      -- Interpreter     - Tcl interpreter on which the toplelve will be created. Can
-      --                   be empty. Default value is the default Tcl interpreter
+      -- Path_Name    - Tk pathname for the newly created frame
+      -- Options      - Options for the newly created frame
+      -- Interpreter  - Tcl interpreter on which the toplelve will be created. Can
+      --                be empty. Default value is the default Tcl interpreter
       -- OUTPUT
       -- The Widget parameter as Tk identifier of the newly created frame widget
       -- HISTORY
