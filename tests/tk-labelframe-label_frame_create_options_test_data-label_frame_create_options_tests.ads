@@ -18,15 +18,15 @@ is
 
    procedure Test_Create_32e405_997ec9
      (Gnattest_T: in out Test_Label_Frame_Create_Options);
-   --  tk-labelframe.ads:154:4:Create:Test_Create_Label_Frame1
+   --  tk-labelframe.ads:163:4:Create:Test_Create_Label_Frame1
 
    procedure Test_Create_ebbdc1_5d5480
      (Gnattest_T: in out Test_Label_Frame_Create_Options);
-   --  tk-labelframe.ads:188:4:Create:Test_Create_Label_Frame2
+   --  tk-labelframe.ads:197:4:Create:Test_Create_Label_Frame2
 
    procedure Test_Get_Options_ded36e_d97566
      (Gnattest_T: in out Test_Label_Frame_Create_Options);
-   --  tk-labelframe.ads:213:4:Get_Options:Test_Get_Options_Label_Frame
+   --  tk-labelframe.ads:222:4:Get_Options:Test_Get_Options_Label_Frame
 
 end Tk.Labelframe.Label_Frame_Create_Options_Test_Data
   .Label_Frame_Create_Options_Tests;
