@@ -14,7 +14,6 @@
 
 with Tk.Widget; use Tk.Widget;
 with Tk.TtkWidget; use Tk.TtkWidget;
-with Tcl.Strings; use Tcl.Strings;
 
 -- ****h* Tk/TtkFrame
 -- FUNCTION
