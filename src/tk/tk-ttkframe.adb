@@ -13,7 +13,6 @@
 -- limitations under the License.
 
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
-with Tcl.Strings; use Tcl.Strings;
 
 package body Tk.TtkFrame is
 
