@@ -35,6 +35,9 @@ package body Tk.TtkFrame is
         (Name => "height", Value => Options.Height,
          Options_String => Options_String);
       Option_Image
+        (Name => "padding", Value => Options.Padding,
+         Options_String => Options_String);
+      Option_Image
         (Name => "relief", Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
@@ -45,7 +48,8 @@ package body Tk.TtkFrame is
          Options_String => Options_String);
       Tcl_Eval
         (Tcl_Script =>
-           "ttk::frame " & Path_Name & " " & To_String(Source => Options_String),
+           "ttk::frame " & Path_Name & " " &
+           To_String(Source => Options_String),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
@@ -61,30 +65,27 @@ package body Tk.TtkFrame is
            Interpreter => Interpreter);
    end Create;
 
-   function Get_Options
-     (Frame_Widget: Ttk_Frame) return Ttk_Frame_Options is
+   function Get_Options(Frame_Widget: Ttk_Frame) return Ttk_Frame_Options is
    begin
-      return
-        Options: Ttk_Frame_Options := Default_Ttk_Frame_Options do
+      return Options: Ttk_Frame_Options := Default_Ttk_Frame_Options do
          Options.Border_Width :=
            Option_Value(Widgt => Frame_Widget, Name => "borderwidth");
-         Options.Class :=
-           Option_Value(Widgt => Frame_Widget, Name => "class");
+         Options.Class := Option_Value(Widgt => Frame_Widget, Name => "class");
          Options.Cursor :=
            Option_Value(Widgt => Frame_Widget, Name => "cursor");
          Options.Height :=
            Option_Value(Widgt => Frame_Widget, Name => "height");
+         Options.Padding :=
+           Option_Value(Ttk_Widgt => Frame_Widget, Name => "padding");
          Options.Relief :=
            Option_Value(Widgt => Frame_Widget, Name => "relief");
          Options.Take_Focus :=
            Option_Value(Widgt => Frame_Widget, Name => "takefocus");
-         Options.Width :=
-           Option_Value(Widgt => Frame_Widget, Name => "width");
+         Options.Width := Option_Value(Widgt => Frame_Widget, Name => "width");
       end return;
    end Get_Options;
 
-   procedure Configure
-     (Frame_Widget: Ttk_Frame; Options: Ttk_Frame_Options) is
+   procedure Configure(Frame_Widget: Ttk_Frame; Options: Ttk_Frame_Options) is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
@@ -95,6 +96,9 @@ package body Tk.TtkFrame is
          Options_String => Options_String);
       Option_Image
         (Name => "height", Value => Options.Height,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "padding", Value => Options.Padding,
          Options_String => Options_String);
       Option_Image
         (Name => "relief", Value => Options.Relief,
