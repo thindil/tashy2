@@ -32,26 +32,6 @@ package Tk.Labelframe is
    subtype Tk_Label_Frame is Tk_Widget;
    -- ****
 
-   -- ****t* Labelframe/Labelframe.Anchor_Directions
-   -- FUNCTION
-   -- Possible directions for text in label of Tk_Label_Frame
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   type Anchor_Directions is
-     (NONE, NW, N, NE, EN, E, ES, SE, S, SW, WS, W, WN) with
-      Default_Value => NONE;
-      -- ****
-
-      -- ****d* Tk.Labelframe/Default_Anchor_Direction
-      -- FUNCTION
-      -- Default value for text anchor direction for Tk_Label_Frame
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- SOURCE
-   Default_Anchor_Direction: constant Anchor_Directions := NW;
-   -- ****
-
    -- ****s* Labelframe/Labelframe.Frame_Options
    -- FUNCTION
    -- Data structure for all available options for the Tk labelframe which can

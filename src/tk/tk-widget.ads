@@ -349,6 +349,26 @@ package Tk.Widget is
    Null_Window: constant Tk_Window := Tk_Window(System.Null_Address);
    -- ****
 
+   -- ****t* Widget/Widget.Anchor_Directions
+   -- FUNCTION
+   -- Possible directions for text in label of some widgets (mostly Label_Frame)
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Anchor_Directions is
+     (NONE, NW, N, NE, EN, E, ES, SE, S, SW, WS, W, WN) with
+      Default_Value => NONE;
+      -- ****
+
+      -- ****d* Widget/Widget.Default_Anchor_Direction
+      -- FUNCTION
+      -- Default value for text anchor direction for Tk_Label_Frame
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
+   Default_Anchor_Direction: constant Anchor_Directions := NW;
+   -- ****
+
    -----------------------------------------------
    -- Various functions to convert types to String
    -----------------------------------------------
