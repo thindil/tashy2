@@ -36,16 +36,21 @@ package Tk.TtkFrame is
    -- Data structure for all available options for the Tk ttk::frame which can
    -- be changed after creation of a widget
    -- OPTIONS
-   -- Border_Width         - The width of the ttk::frame's border
-   -- Height               - Height of the ttk::frame.
-   -- Relief               - 3-D effect desired for the frame
-   -- Width                - Width of the frame
+   -- Border_Width - The width of the ttk::frame's border
+   -- Height       - Height of the ttk::frame.
+   -- Padding      - Amount of extra space to allocate for the frame. If some
+   --                elemets are empty then, bottom defaults to top, right defaults
+   --                to left, and top defaults to left. Order of the elements:
+   --                left, top, right, bottom
+   -- Relief       - 3-D effect desired for the frame
+   -- Width        - Width of the frame
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Frame_Options is new Ttk_Widget_Options with record
       Border_Width: Pixel_Data;
       Height: Pixel_Data;
+      Padding: Padding_Data;
       Relief: Relief_Type;
       Width: Pixel_Data;
    end record;
