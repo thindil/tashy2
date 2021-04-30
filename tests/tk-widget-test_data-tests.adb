@@ -750,7 +750,7 @@ package body Tk.Widget.Test_Data.Tests is
 
    begin
 
-      Option_Image("myoption", SE, Options_String);
+      Option_Image("myoption", Directions_Type'(SE), Options_String);
       Assert
         (To_String(Options_String) = " -myoption se",
          "Failed to get image for Directions_Type option");
@@ -1116,6 +1116,62 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Option_Image_183a44_55069e
+     (Name: String; Value: Anchor_Directions;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Image_Anchor_Directions test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Anchor_Directions test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_183a44_55069e;
+--  end read only
+
+--  begin read only
+   procedure Test_13_Option_Image_test_option_image_anchor_directions
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_183a44_55069e(Gnattest_T: in out Test) renames
+     Test_13_Option_Image_test_option_image_anchor_directions;
+--  id:2.2/183a44bf51805f78/Option_Image/0/0/test_option_image_anchor_directions/
+   procedure Test_13_Option_Image_test_option_image_anchor_directions
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Anchor_Directions;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_183a44_55069e;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
+
+   begin
+
+      Option_Image("myoption", WN, Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption wn",
+         "Failed to get image for Anchor_Directions option");
+
+--  begin read only
+   end Test_13_Option_Image_test_option_image_anchor_directions;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Option_Image_e5f273_81a16f
      (Name: String; Value: Integer; Options_String: in out Unbounded_String;
       Base: Positive := 10) is
@@ -1144,12 +1200,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_13_Option_Image_test_option_image_integer
+   procedure Test_14_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_e5f273_81a16f(Gnattest_T: in out Test) renames
-     Test_13_Option_Image_test_option_image_integer;
+     Test_14_Option_Image_test_option_image_integer;
 --  id:2.2/e5f273869df45ad5/Option_Image/0/0/test_option_image_integer/
-   procedure Test_13_Option_Image_test_option_image_integer
+   procedure Test_14_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Integer; Options_String: in out Unbounded_String;
@@ -1168,7 +1224,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Integer option");
 
 --  begin read only
-   end Test_13_Option_Image_test_option_image_integer;
+   end Test_14_Option_Image_test_option_image_integer;
 --  end read only
 
 --  begin read only
