@@ -601,6 +601,12 @@ package Tk.Widget is
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Tk_Window", Mode => Nominal);
+   procedure Option_Image
+     (Name: String; Value: Anchor_Directions;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0,
+      Test_Case => (Name => "Test_Option_Image_Anchor_Directions",
+       Mode => Nominal);
       -- ****
 
       -- ****f* Widget/Widget.Option_Image_(Integer)
