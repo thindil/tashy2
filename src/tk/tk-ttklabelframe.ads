@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 with Tk.TtkWidget; use Tk.TtkWidget;
 
@@ -38,20 +39,31 @@ package Tk.TtkLabelFrame is
    -- OPTIONS
    -- Border_Width - The width of the ttk::labelframe's border
    -- Height       - Height of the ttk::labelframe.
+   -- Label_Anchor - The direction where to place the lable of Tk
+   --                ttk::labelframe. Works only when Text option isn't empty
+   -- Label_Widget - Tk_Widget used as a label for Tk ttk::labelframe.
    -- Padding      - Amount of extra space to allocate for the frame. If some
    --                elemets are empty then, bottom defaults to top, right defaults
    --                to left, and top defaults to left. Order of the elements:
    --                left, top, right, bottom
    -- Relief       - 3-D effect desired for the frame
+   -- Text         - The text which will be displayed in label of Tk
+   --                ttk::labelframe
    -- Width        - Width of the frame
+   -- Underline    - The index of the character in the ttk::labelframe text
+   --                which will be underlined. The index starts from 0
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Label_Frame_Options is new Ttk_Widget_Options with record
       Border_Width: Pixel_Data;
       Height: Pixel_Data;
+      LabelAnchor: Anchor_Directions;
+      LabelWidget: Tk_Widget := Null_Widget;
       Padding: Padding_Data;
       Relief: Relief_Type;
+      Text: Tcl_String;
+      Underline: Extended_Natural;
       Width: Pixel_Data;
    end record;
    -- ****
