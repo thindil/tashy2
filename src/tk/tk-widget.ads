@@ -702,6 +702,11 @@ package Tk.Widget is
    function Option_Value(Widgt: Tk_Widget; Name: String) return Integer with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Integer", Mode => Nominal);
+   function Option_Value
+     (Widgt: Tk_Widget; Name: String) return Anchor_Directions with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
+      Test_Case => (Name => "Test_Option_Value_Anchor_Directions",
+       Mode => Nominal);
    -- ****
 
    --------------------------------
