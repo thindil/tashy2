@@ -418,6 +418,13 @@ package body Tk.Widget is
              (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name));
    end Option_Value;
 
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Anchor_Directions is
+   begin
+      return Anchor_Directions'Value
+          (Execute_Widget_Command
+             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name));
+   end Option_Value;
+
    procedure Destroy(Widgt: in out Tk_Widget) is
       procedure Tk_Destroy_Window(Tk_Win: Tk_Widget) with
          Import => True,
