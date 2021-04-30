@@ -75,13 +75,9 @@ package body Tk.Labelframe is
       Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
-      if Options.Label_Anchor /= NONE then
-         Append
-           (Source => Options_String,
-            New_Item =>
-              " -labelanchor " &
-              Anchor_Directions'Image(Options.Label_Anchor));
-      end if;
+      Option_Image
+        (Name => "labelanchor", Value => Options.Label_Anchor,
+         Options_String => Options_String);
       Tcl_Eval
         (Tcl_Script =>
            "labelframe " & Path_Name & " " &
@@ -193,13 +189,9 @@ package body Tk.Labelframe is
       Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
-      if Options.Label_Anchor /= NONE then
-         Append
-           (Source => Options_String,
-            New_Item =>
-              " -labelanchor " &
-              Anchor_Directions'Image(Options.Label_Anchor));
-      end if;
+      Option_Image
+        (Name => "labelanchor", Value => Options.Label_Anchor,
+         Options_String => Options_String);
       Execute_Widget_Command
         (Widgt => Frame_Widget, Command_Name => "configure",
          Options => To_String(Source => Options_String));
