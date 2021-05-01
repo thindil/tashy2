@@ -19,6 +19,7 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 with System.Address_Image;
 with Tk.Button; use Tk.Button;
 with Tk.Grid; use Tk.Grid;
+with Tk.Labelframe; use Tk.Labelframe;
 with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
 with Tk.TtkButton; use Tk.TtkButton;
@@ -2086,6 +2087,74 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    end Test_12_Option_Value_test_option_value_integer;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Option_Value_54a47c_6cc903
+     (Widgt: Tk_Widget; Name: String) return Anchor_Directions is
+   begin
+      begin
+         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Value_Anchor_Directions test requirement violated");
+      end;
+      declare
+         Test_Option_Value_54a47c_6cc903_Result: constant Anchor_Directions :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
+             (Widgt, Name);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Anchor_Directions test commitment violated");
+         end;
+         return Test_Option_Value_54a47c_6cc903_Result;
+      end;
+   end Wrap_Test_Option_Value_54a47c_6cc903;
+--  end read only
+
+--  begin read only
+   procedure Test_13_Option_Value_test_option_value_anchor_directions
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Value_54a47c_6cc903(Gnattest_T: in out Test) renames
+     Test_13_Option_Value_test_option_value_anchor_directions;
+--  id:2.2/54a47c075654f531/Option_Value/0/0/test_option_value_anchor_directions/
+   procedure Test_13_Option_Value_test_option_value_anchor_directions
+     (Gnattest_T: in out Test) is
+      function Option_Value
+        (Widgt: Tk_Widget; Name: String) return Anchor_Directions renames
+        Wrap_Test_Option_Value_54a47c_6cc903;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Frame: Tk_Label_Frame;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Frame, ".myframe",
+         Label_Frame_Create_Options'(Label_Anchor => N, others => <>));
+      Add(Frame);
+      Tcl_Eval("update");
+      Assert
+        (Option_Value(Frame, "labelanchor") = Anchor_Directions'(N),
+         "Failed to get value for Anchor_Directions widget option");
+      Destroy(Frame);
+
+--  begin read only
+   end Test_13_Option_Value_test_option_value_anchor_directions;
 --  end read only
 
 --  begin read only
