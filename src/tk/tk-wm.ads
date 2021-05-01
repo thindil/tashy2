@@ -100,6 +100,13 @@ package Tk.Wm is
 
    Empty_Aspect_Data: constant Aspect_Data := (others => <>);
 
+   type Window_Size is record
+      Width: Natural;
+      Height: Natural;
+   end record;
+
+   Empty_Window_Size: constant Window_Size := (others => <>);
+
    procedure Aspect
      (Window: Tk_Toplevel;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
@@ -293,6 +300,26 @@ package Tk.Wm is
    procedure Icon_Window(Window, New_Icon_Window: Tk_Toplevel) with
       Pre => Window /= Null_Widget and New_Icon_Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Window2", Mode => Nominal);
+
+   procedure Manage(Window: Tk_Widget) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Manage", Mode => Nominal);
+
+   function Max_Size(Window: Tk_Widget) return Window_Size with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Max_Size", Mode => Nominal);
+
+   procedure Max_Size(Window: Tk_Widget; New_Size: Window_Size) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Max_Size2", Mode => Nominal);
+
+   function Min_Size(Window: Tk_Widget) return Window_Size with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Min_Size", Mode => Nominal);
+
+   procedure Min_Size(Window: Tk_Widget; New_Size: Window_Size) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Min_Size2", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE
 end Tk.Wm;
