@@ -123,11 +123,7 @@ package body Tk.Labelframe is
          Options.Highlight_Thickness :=
            Option_Value(Widgt => Frame_Widget, Name => "highlightthickness");
          Options.Label_Anchor :=
-           Anchor_Directions'Value
-             (Tcl_Eval
-                (Tcl_Script =>
-                   Tk_Path_Name(Widgt => Frame_Widget) & " cget -labelanchor",
-                 Interpreter => Tk_Interp(Widgt => Frame_Widget)));
+           Option_Value(Widgt => Frame_Widget, Name => "labelanchor");
          Options.Label_Widget :=
            Option_Value(Widgt => Frame_Widget, Name => "labelwidget");
          Options.Pad_X := Option_Value(Widgt => Frame_Widget, Name => "padx");
