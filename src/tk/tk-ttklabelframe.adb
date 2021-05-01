@@ -18,7 +18,8 @@ package body Tk.TtkLabelFrame is
 
    function Create
      (Path_Name: String; Options: Ttk_Label_Frame_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label_Frame is
+      Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Ttk_Label_Frame is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
@@ -34,6 +35,12 @@ package body Tk.TtkLabelFrame is
         (Name => "height", Value => Options.Height,
          Options_String => Options_String);
       Option_Image
+        (Name => "labelanchor", Value => Options.Label_Anchor,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "labelwidget", Value => Options.Label_Widget,
+         Options_String => Options_String);
+      Option_Image
         (Name => "padding", Value => Options.Padding,
          Options_String => Options_String);
       Option_Image
@@ -43,11 +50,17 @@ package body Tk.TtkLabelFrame is
         (Name => "takefocus", Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
+        (Name => "text", Value => Options.Text,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "underline", Value => Options.Underline,
+         Options_String => Options_String);
+      Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
       Tcl_Eval
         (Tcl_Script =>
-           "ttk::frame " & Path_Name & " " &
+           "ttk::labelframe " & Path_Name & " " &
            To_String(Source => Options_String),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
@@ -64,9 +77,11 @@ package body Tk.TtkLabelFrame is
            Interpreter => Interpreter);
    end Create;
 
-   function Get_Options(Frame_Widget: Ttk_Label_Frame) return Ttk_Label_Frame_Options is
+   function Get_Options
+     (Frame_Widget: Ttk_Label_Frame) return Ttk_Label_Frame_Options is
    begin
-      return Options: Ttk_Label_Frame_Options := Default_Ttk_Label_Frame_Options do
+      return
+        Options: Ttk_Label_Frame_Options := Default_Ttk_Label_Frame_Options do
          Options.Border_Width :=
            Option_Value(Widgt => Frame_Widget, Name => "borderwidth");
          Options.Class := Option_Value(Widgt => Frame_Widget, Name => "class");
@@ -74,17 +89,25 @@ package body Tk.TtkLabelFrame is
            Option_Value(Widgt => Frame_Widget, Name => "cursor");
          Options.Height :=
            Option_Value(Widgt => Frame_Widget, Name => "height");
+         Options.Label_Anchor :=
+           Option_Value(Widgt => Frame_Widget, Name => "labelanchor");
+         Options.Label_Widget :=
+           Option_Value(Widgt => Frame_Widget, Name => "labelwidget");
          Options.Padding :=
            Option_Value(Ttk_Widgt => Frame_Widget, Name => "padding");
          Options.Relief :=
            Option_Value(Widgt => Frame_Widget, Name => "relief");
          Options.Take_Focus :=
            Option_Value(Widgt => Frame_Widget, Name => "takefocus");
+         Options.Text := Option_Value(Widgt => Frame_Widget, Name => "text");
+         Options.Underline :=
+           Option_Value(Widgt => Frame_Widget, Name => "underline");
          Options.Width := Option_Value(Widgt => Frame_Widget, Name => "width");
       end return;
    end Get_Options;
 
-   procedure Configure(Frame_Widget: Ttk_Label_Frame; Options: Ttk_Label_Frame_Options) is
+   procedure Configure
+     (Frame_Widget: Ttk_Label_Frame; Options: Ttk_Label_Frame_Options) is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
@@ -97,6 +120,12 @@ package body Tk.TtkLabelFrame is
         (Name => "height", Value => Options.Height,
          Options_String => Options_String);
       Option_Image
+        (Name => "labelanchor", Value => Options.Label_Anchor,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "labelwidget", Value => Options.Label_Widget,
+         Options_String => Options_String);
+      Option_Image
         (Name => "padding", Value => Options.Padding,
          Options_String => Options_String);
       Option_Image
@@ -104,6 +133,12 @@ package body Tk.TtkLabelFrame is
          Options_String => Options_String);
       Option_Image
         (Name => "takefocus", Value => Options.Take_Focus,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "text", Value => Options.Text,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "underline", Value => Options.Underline,
          Options_String => Options_String);
       Option_Image
         (Name => "width", Value => Options.Width,
