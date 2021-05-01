@@ -58,8 +58,8 @@ package Tk.TtkLabelFrame is
    type Ttk_Label_Frame_Options is new Ttk_Widget_Options with record
       Border_Width: Pixel_Data;
       Height: Pixel_Data;
-      LabelAnchor: Anchor_Directions;
-      LabelWidget: Tk_Widget := Null_Widget;
+      Label_Anchor: Anchor_Directions;
+      Label_Widget: Tk_Widget := Null_Widget;
       Padding: Padding_Data;
       Relief: Relief_Type;
       Text: Tcl_String;
