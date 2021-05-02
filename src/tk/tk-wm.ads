@@ -107,6 +107,10 @@ package Tk.Wm is
 
    Empty_Window_Size: constant Window_Size := (others => <>);
 
+   type Position_From_Value is (USER, PROGRAM);
+
+   Default_Position_From: constant Position_From_Value := PROGRAM;
+
    procedure Aspect
      (Window: Tk_Toplevel;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
@@ -320,6 +324,34 @@ package Tk.Wm is
    procedure Min_Size(Window: Tk_Widget; New_Size: Window_Size) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Min_Size2", Mode => Nominal);
+
+   function Override_Redirect(Window: Tk_Widget) return Boolean with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Override_Redirect", Mode => Nominal);
+
+   procedure Override_Redirect(Window: Tk_Widget; Override: Boolean) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Override_Redirect", Mode => Nominal);
+
+   function Position_From(Window: Tk_Widget) return Position_From_Value with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Position_From", Mode => Nominal);
+
+   procedure Position_From(Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Position_From2", Mode => Nominal);
+
+   function Protocol(Window: Tk_Widget) return Array_List with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Protocol", Mode => Nominal);
+
+   function Protocol(Window: Tk_Widget; Name: String) return String with
+      Pre => Window /= Null_Widget and Name'Length > 0,
+      Test_Case => (Name => "Test_Wm_Protocol2", Mode => Nominal);
+
+   procedure Protocol(Window: Tk_Widget; Name: String; Command: Tcl_String) with
+      Pre => Window /= Null_Widget and Name'Length > 0 and Length(Command) > 0,
+      Test_Case => (Name => "Test_Wm_Protocol3", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE
 end Tk.Wm;
