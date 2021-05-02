@@ -549,4 +549,98 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Window;
 
+   procedure Manage(Window: Tk_Widget) is
+   begin
+      null;
+   end Manage;
+
+   function Max_Size(Window: Tk_Widget) return Window_Size is
+   begin
+      return Empty_Window_Size;
+   end Max_Size;
+
+   procedure Max_Size(Window: Tk_Widget; New_Size: Window_Size) is
+   begin
+      null;
+   end Max_Size;
+
+   function Min_Size(Window: Tk_Widget) return Window_Size is
+   begin
+      return Empty_Window_Size;
+   end Min_Size;
+
+   procedure Min_Size(Window: Tk_Widget; New_Size: Window_Size) is
+   begin
+      null;
+   end Min_Size;
+
+   function Override_Redirect(Window: Tk_Widget) return Boolean is
+   begin
+      return False;
+   end Override_Redirect;
+
+   procedure Override_Redirect(Window: Tk_Widget; Override: Boolean) is
+   begin
+      null;
+   end Override_Redirect;
+
+   function Position_From(Window: Tk_Widget) return Position_From_Value is
+   begin
+      return Default_Position_From;
+   end Position_From;
+
+   procedure Position_From
+     (Window: Tk_Widget;
+      Who: Position_From_Value := Default_Position_From) is
+   begin
+      null;
+   end Position_From;
+
+   function Protocol(Window: Tk_Widget) return Array_List is
+   begin
+      return Empty_Array_List;
+   end Protocol;
+
+   function Protocol(Window: Tk_Widget; Name: String) return String is
+   begin
+      return "";
+   end Protocol;
+
+   procedure Protocol
+     (Window: Tk_Widget; Name: String; Command: Tcl_String) is
+   begin
+      null;
+   end Protocol;
+
+   function Resizeable(Window: Tk_Widget) return Resizeable_Data with
+
+   procedure Resizeable(Window: Tk_Widget; Width, Height: Boolean) with
+
+   function Size_From(Window: Tk_Widget) return Position_From_Value with
+
+   procedure Size_From
+     (Window: Tk_Widget;
+      Who: Position_From_Value := Default_Position_From) with
+
+   function Stack_Order(Window: Tk_Widget) return Widgets_Array with
+
+   function Stack_Order
+     (Window, Second_Window: Tk_Widget; Above: Boolean := True)
+      return Boolean with
+
+   function State(Window: Tk_Widget) return Window_States with
+
+   procedure State
+     (Window: Tk_Widget; New_State: Window_States := Default_Window_State) with
+
+   function Title(Window: Tk_Widget) return Tcl_String with
+
+   procedure Title(Window: Tk_Widget; New_Title: Tcl_String) with
+
+   function Transient(Window: Tk_Widget) return Tk_Widget with
+
+   procedure Transient(Window, Master: Tk_Widget) with
+
+   procedure Withdraw(Window: Tk_Widget) with
+
 end Tk.Wm;
