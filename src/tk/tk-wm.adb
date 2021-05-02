@@ -590,8 +590,7 @@ package body Tk.Wm is
    end Position_From;
 
    procedure Position_From
-     (Window: Tk_Widget;
-      Who: Position_From_Value := Default_Position_From) is
+     (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
    begin
       null;
    end Position_From;
@@ -606,41 +605,78 @@ package body Tk.Wm is
       return "";
    end Protocol;
 
-   procedure Protocol
-     (Window: Tk_Widget; Name: String; Command: Tcl_String) is
+   procedure Protocol(Window: Tk_Widget; Name: String; Command: Tcl_String) is
    begin
       null;
    end Protocol;
 
-   function Resizeable(Window: Tk_Widget) return Resizeable_Data with
+   function Resizeable(Window: Tk_Widget) return Resizeable_Data is
+   begin
+      return Default_Resizeable_Data;
+   end Resizeable;
 
-   procedure Resizeable(Window: Tk_Widget; Width, Height: Boolean) with
+   procedure Resizeable(Window: Tk_Widget; Width, Height: Boolean) is
+   begin
+      null;
+   end Resizeable;
 
-   function Size_From(Window: Tk_Widget) return Position_From_Value with
+   function Size_From(Window: Tk_Widget) return Position_From_Value is
+   begin
+      return Default_Position_From;
+   end Size_From;
 
    procedure Size_From
-     (Window: Tk_Widget;
-      Who: Position_From_Value := Default_Position_From) with
+     (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
+   begin
+      null;
+   end Size_From;
 
-   function Stack_Order(Window: Tk_Widget) return Widgets_Array with
+   function Stack_Order(Window: Tk_Widget) return Widgets_Array is
+   begin
+      return Empty_Widgets_Array;
+   end Stack_Order;
 
    function Stack_Order
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
-      return Boolean with
+      return Boolean is
+   begin
+      return False;
+   end Stack_Order;
 
-   function State(Window: Tk_Widget) return Window_States with
+   function State(Window: Tk_Widget) return Window_States is
+   begin
+      return Default_Window_State;
+   end State;
 
    procedure State
-     (Window: Tk_Widget; New_State: Window_States := Default_Window_State) with
+     (Window: Tk_Widget; New_State: Window_States := Default_Window_State) is
+   begin
+      null;
+   end State;
 
-   function Title(Window: Tk_Widget) return Tcl_String with
+   function Title(Window: Tk_Widget) return Tcl_String is
+   begin
+      return Null_Tcl_String;
+   end Title;
 
-   procedure Title(Window: Tk_Widget; New_Title: Tcl_String) with
+   procedure Title(Window: Tk_Widget; New_Title: Tcl_String) is
+   begin
+      null;
+   end Title;
 
-   function Transient(Window: Tk_Widget) return Tk_Widget with
+   function Transient(Window: Tk_Widget) return Tk_Widget is
+   begin
+      return Null_Widget;
+   end Transient;
 
-   procedure Transient(Window, Master: Tk_Widget) with
+   procedure Transient(Window, Master: Tk_Widget) is
+   begin
+      null;
+   end Transient;
 
-   procedure Withdraw(Window: Tk_Widget) with
+   procedure Withdraw(Window: Tk_Widget) is
+   begin
+      null;
+   end Withdraw;
 
 end Tk.Wm;
