@@ -111,6 +111,17 @@ package Tk.Wm is
 
    Default_Position_From: constant Position_From_Value := PROGRAM;
 
+   type Resizeable_Data is record
+      Width: Boolean;
+      Height: Boolean;
+   end record;
+
+   Default_Resizeable_Data: constant Resizeable_Data := (others => <>);
+
+   type Window_States is (NORMAL, ICONIC, WITHDRAWN, ICON, ZOOMED);
+
+   Default_Window_State: constant Window_States := NORMAL;
+
    procedure Aspect
      (Window: Tk_Toplevel;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
@@ -337,7 +348,9 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Position_From", Mode => Nominal);
 
-   procedure Position_From(Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) with
+   procedure Position_From
+     (Window: Tk_Widget;
+      Who: Position_From_Value := Default_Position_From) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Position_From2", Mode => Nominal);
 
@@ -349,9 +362,47 @@ package Tk.Wm is
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Protocol2", Mode => Nominal);
 
-   procedure Protocol(Window: Tk_Widget; Name: String; Command: Tcl_String) with
+   procedure Protocol
+     (Window: Tk_Widget; Name: String; Command: Tcl_String) with
       Pre => Window /= Null_Widget and Name'Length > 0 and Length(Command) > 0,
       Test_Case => (Name => "Test_Wm_Protocol3", Mode => Nominal);
+
+   function Resizeable(Window: Tk_Widget) return Resizeable_Data with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Resizeable", Mode => Nominal);
+
+   procedure Resizeable(Window: Tk_Widget; Width, Height: Boolean) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Resizeable2", Mode => Nominal);
+
+   function Size_From(Window: Tk_Widget) return Position_From_Value with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Size_From", Mode => Nominal);
+
+   procedure Size_From
+     (Window: Tk_Widget;
+      Who: Position_From_Value := Default_Position_From) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Size_From2", Mode => Nominal);
+
+   function Stack_Order(Window: Tk_Widget) return Widgets_Array with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Stack_Order", Mode => Nominal);
+
+   function Stack_Order
+     (Window, Second_Window: Tk_Widget; Above: Boolean := True)
+      return Boolean with
+      Pre => Window /= Null_Widget and Second_Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Stack_Order2", Mode => Nominal);
+
+   function State(Window: Tk_Widget) return Window_States with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_State", Mode => Nominal);
+
+   procedure State
+     (Window: Tk_Widget; New_State: Window_States := Default_Window_State) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_State2", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE
 end Tk.Wm;
