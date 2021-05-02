@@ -404,5 +404,25 @@ package Tk.Wm is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_State2", Mode => Nominal);
 
+   function Title(Window: Tk_Widget) return Tcl_String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Title", Mode => Nominal);
+
+   procedure Title(Window: Tk_Widget; New_Title: Tcl_String) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Title2", Mode => Nominal);
+
+   function Transient(Window: Tk_Widget) return Tk_Widget with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Transient", Mode => Nominal);
+
+   procedure Transient(Window, Master: Tk_Widget) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Transient2", Mode => Nominal);
+
+   procedure Withdraw(Window: Tk_Widget) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Withdraw", Mode => Nominal);
+
    --## rule on REDUCEABLE_SCOPE
 end Tk.Wm;
