@@ -86,9 +86,11 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
       Create
         (Frame, ".myframe",
          Ttk_Label_Frame_Options'(Relief => RAISED, others => <>));
-      Configure(Frame, Ttk_Label_Frame_Options'(Relief => SOLID, others => <>));
+      Configure
+        (Frame, Ttk_Label_Frame_Options'(Relief => SOLID, others => <>));
       Options := Get_Options(Frame);
-      Assert(Options.Relief = SOLID, "Failed to set options for Ttk labelframe.");
+      Assert
+        (Options.Relief = SOLID, "Failed to set options for Ttk labelframe.");
       Destroy(Frame);
 
 --  begin read only
@@ -290,7 +292,8 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
         (Frame, ".myframe",
          Ttk_Label_Frame_Options'(Relief => RAISED, others => <>));
       Options := Get_Options(Frame);
-      Assert(Options.Relief = Raised, "Failed to get options of Ttk labelframe.");
+      Assert
+        (Options.Relief = Raised, "Failed to get options of Ttk labelframe.");
       Destroy(Frame);
 
 --  begin read only

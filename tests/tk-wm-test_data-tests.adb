@@ -2196,6 +2196,1271 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Manage_691f50_c53d0d(Window: Tk_Widget) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Manage test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Manage(Window);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Manage test commitment violated");
+      end;
+   end Wrap_Test_Manage_691f50_c53d0d;
+--  end read only
+
+--  begin read only
+   procedure Test_Manage_test_wm_manage(Gnattest_T: in out Test);
+   procedure Test_Manage_691f50_c53d0d(Gnattest_T: in out Test) renames
+     Test_Manage_test_wm_manage;
+--  id:2.2/691f50aadaddd631/Manage/1/0/test_wm_manage/
+   procedure Test_Manage_test_wm_manage(Gnattest_T: in out Test) is
+      procedure Manage(Window: Tk_Widget) renames
+        Wrap_Test_Manage_691f50_c53d0d;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Manage_test_wm_manage;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Max_Size_35a7bd_4463a7
+     (Window: Tk_Widget) return Window_Size is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Max_Size test requirement violated");
+      end;
+      declare
+         Test_Max_Size_35a7bd_4463a7_Result: constant Window_Size :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Max_Size(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Max_Size test commitment violated");
+         end;
+         return Test_Max_Size_35a7bd_4463a7_Result;
+      end;
+   end Wrap_Test_Max_Size_35a7bd_4463a7;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Max_Size_test_wm_max_size(Gnattest_T: in out Test);
+   procedure Test_Max_Size_35a7bd_4463a7(Gnattest_T: in out Test) renames
+     Test_1_Max_Size_test_wm_max_size;
+--  id:2.2/35a7bd60af3a2f9b/Max_Size/1/0/test_wm_max_size/
+   procedure Test_1_Max_Size_test_wm_max_size(Gnattest_T: in out Test) is
+      function Max_Size(Window: Tk_Widget) return Window_Size renames
+        Wrap_Test_Max_Size_35a7bd_4463a7;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Max_Size_test_wm_max_size;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Max_Size_d91852_efa6b3
+     (Window: Tk_Widget; New_Size: Window_Size) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Max_Size2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Max_Size(Window, New_Size);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Max_Size2 test commitment violated");
+      end;
+   end Wrap_Test_Max_Size_d91852_efa6b3;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Max_Size_test_wm_max_size2(Gnattest_T: in out Test);
+   procedure Test_Max_Size_d91852_efa6b3(Gnattest_T: in out Test) renames
+     Test_2_Max_Size_test_wm_max_size2;
+--  id:2.2/d91852a86705cae9/Max_Size/0/0/test_wm_max_size2/
+   procedure Test_2_Max_Size_test_wm_max_size2(Gnattest_T: in out Test) is
+      procedure Max_Size(Window: Tk_Widget; New_Size: Window_Size) renames
+        Wrap_Test_Max_Size_d91852_efa6b3;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Max_Size_test_wm_max_size2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Min_Size_9ffcbc_7d5aa0
+     (Window: Tk_Widget) return Window_Size is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Min_Size test requirement violated");
+      end;
+      declare
+         Test_Min_Size_9ffcbc_7d5aa0_Result: constant Window_Size :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Min_Size(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Min_Size test commitment violated");
+         end;
+         return Test_Min_Size_9ffcbc_7d5aa0_Result;
+      end;
+   end Wrap_Test_Min_Size_9ffcbc_7d5aa0;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Min_Size_test_wm_min_size(Gnattest_T: in out Test);
+   procedure Test_Min_Size_9ffcbc_7d5aa0(Gnattest_T: in out Test) renames
+     Test_1_Min_Size_test_wm_min_size;
+--  id:2.2/9ffcbc4a91fe793e/Min_Size/1/0/test_wm_min_size/
+   procedure Test_1_Min_Size_test_wm_min_size(Gnattest_T: in out Test) is
+      function Min_Size(Window: Tk_Widget) return Window_Size renames
+        Wrap_Test_Min_Size_9ffcbc_7d5aa0;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Min_Size_test_wm_min_size;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Min_Size_9638c5_86115b
+     (Window: Tk_Widget; New_Size: Window_Size) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Min_Size2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Min_Size(Window, New_Size);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Min_Size2 test commitment violated");
+      end;
+   end Wrap_Test_Min_Size_9638c5_86115b;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Min_Size_test_wm_min_size2(Gnattest_T: in out Test);
+   procedure Test_Min_Size_9638c5_86115b(Gnattest_T: in out Test) renames
+     Test_2_Min_Size_test_wm_min_size2;
+--  id:2.2/9638c5259ce2a299/Min_Size/0/0/test_wm_min_size2/
+   procedure Test_2_Min_Size_test_wm_min_size2(Gnattest_T: in out Test) is
+      procedure Min_Size(Window: Tk_Widget; New_Size: Window_Size) renames
+        Wrap_Test_Min_Size_9638c5_86115b;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Min_Size_test_wm_min_size2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Override_Redirect_44db73_fdca84
+     (Window: Tk_Widget) return Boolean is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Override_Redirect test requirement violated");
+      end;
+      declare
+         Test_Override_Redirect_44db73_fdca84_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Override_Redirect
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Override_Redirect test commitment violated");
+         end;
+         return Test_Override_Redirect_44db73_fdca84_Result;
+      end;
+   end Wrap_Test_Override_Redirect_44db73_fdca84;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Override_Redirect_test_wm_override_redirect
+     (Gnattest_T: in out Test);
+   procedure Test_Override_Redirect_44db73_fdca84
+     (Gnattest_T: in out Test) renames
+     Test_1_Override_Redirect_test_wm_override_redirect;
+--  id:2.2/44db73585214744e/Override_Redirect/1/0/test_wm_override_redirect/
+   procedure Test_1_Override_Redirect_test_wm_override_redirect
+     (Gnattest_T: in out Test) is
+      function Override_Redirect(Window: Tk_Widget) return Boolean renames
+        Wrap_Test_Override_Redirect_44db73_fdca84;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Override_Redirect_test_wm_override_redirect;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Override_Redirect_1b76bc_fdca84
+     (Window: Tk_Widget; Override: Boolean) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Override_Redirect test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Override_Redirect
+        (Window, Override);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Override_Redirect test commitment violated");
+      end;
+   end Wrap_Test_Override_Redirect_1b76bc_fdca84;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Override_Redirect_test_wm_override_redirect
+     (Gnattest_T: in out Test);
+   procedure Test_Override_Redirect_1b76bc_fdca84
+     (Gnattest_T: in out Test) renames
+     Test_2_Override_Redirect_test_wm_override_redirect;
+--  id:2.2/1b76bc0410270544/Override_Redirect/0/0/test_wm_override_redirect/
+   procedure Test_2_Override_Redirect_test_wm_override_redirect
+     (Gnattest_T: in out Test) is
+      procedure Override_Redirect(Window: Tk_Widget; Override: Boolean) renames
+        Wrap_Test_Override_Redirect_1b76bc_fdca84;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Override_Redirect_test_wm_override_redirect;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Position_From_20b302_48bfdf
+     (Window: Tk_Widget) return Position_From_Value is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Position_From test requirement violated");
+      end;
+      declare
+         Test_Position_From_20b302_48bfdf_Result: constant Position_From_Value :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Position_From(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Position_From test commitment violated");
+         end;
+         return Test_Position_From_20b302_48bfdf_Result;
+      end;
+   end Wrap_Test_Position_From_20b302_48bfdf;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Position_From_test_wm_position_from
+     (Gnattest_T: in out Test);
+   procedure Test_Position_From_20b302_48bfdf(Gnattest_T: in out Test) renames
+     Test_1_Position_From_test_wm_position_from;
+--  id:2.2/20b3027f5a7ae356/Position_From/1/0/test_wm_position_from/
+   procedure Test_1_Position_From_test_wm_position_from
+     (Gnattest_T: in out Test) is
+      function Position_From
+        (Window: Tk_Widget) return Position_From_Value renames
+        Wrap_Test_Position_From_20b302_48bfdf;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Position_From_test_wm_position_from;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Position_From_aaffd4_a97a4c
+     (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Position_From2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Position_From(Window, Who);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Position_From2 test commitment violated");
+      end;
+   end Wrap_Test_Position_From_aaffd4_a97a4c;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Position_From_test_wm_position_from2
+     (Gnattest_T: in out Test);
+   procedure Test_Position_From_aaffd4_a97a4c(Gnattest_T: in out Test) renames
+     Test_2_Position_From_test_wm_position_from2;
+--  id:2.2/aaffd4e2abc359ed/Position_From/0/0/test_wm_position_from2/
+   procedure Test_2_Position_From_test_wm_position_from2
+     (Gnattest_T: in out Test) is
+      procedure Position_From
+        (Window: Tk_Widget;
+         Who: Position_From_Value := Default_Position_From) renames
+        Wrap_Test_Position_From_aaffd4_a97a4c;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Position_From_test_wm_position_from2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Protocol_548901_4c2c40
+     (Window: Tk_Widget) return Array_List is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Protocol test requirement violated");
+      end;
+      declare
+         Test_Protocol_548901_4c2c40_Result: constant Array_List :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Protocol(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Protocol test commitment violated");
+         end;
+         return Test_Protocol_548901_4c2c40_Result;
+      end;
+   end Wrap_Test_Protocol_548901_4c2c40;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Protocol_test_wm_protocol(Gnattest_T: in out Test);
+   procedure Test_Protocol_548901_4c2c40(Gnattest_T: in out Test) renames
+     Test_1_Protocol_test_wm_protocol;
+--  id:2.2/5489011eb5b824ea/Protocol/1/0/test_wm_protocol/
+   procedure Test_1_Protocol_test_wm_protocol(Gnattest_T: in out Test) is
+      function Protocol(Window: Tk_Widget) return Array_List renames
+        Wrap_Test_Protocol_548901_4c2c40;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Protocol_test_wm_protocol;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Protocol_f31455_f4acbb
+     (Window: Tk_Widget; Name: String) return String is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget and Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Protocol2 test requirement violated");
+      end;
+      declare
+         Test_Protocol_f31455_f4acbb_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Protocol(Window, Name);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Protocol2 test commitment violated");
+         end;
+         return Test_Protocol_f31455_f4acbb_Result;
+      end;
+   end Wrap_Test_Protocol_f31455_f4acbb;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Protocol_test_wm_protocol2(Gnattest_T: in out Test);
+   procedure Test_Protocol_f31455_f4acbb(Gnattest_T: in out Test) renames
+     Test_2_Protocol_test_wm_protocol2;
+--  id:2.2/f3145558fa44b9b4/Protocol/0/0/test_wm_protocol2/
+   procedure Test_2_Protocol_test_wm_protocol2(Gnattest_T: in out Test) is
+      function Protocol(Window: Tk_Widget; Name: String) return String renames
+        Wrap_Test_Protocol_f31455_f4acbb;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Protocol_test_wm_protocol2;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Protocol_08ce2d_59a265
+     (Window: Tk_Widget; Name: String; Command: Tcl_String) is
+   begin
+      begin
+         pragma Assert
+           (Window /= Null_Widget and Name'Length > 0 and Length(Command) > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Protocol3 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Protocol
+        (Window, Name, Command);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Protocol3 test commitment violated");
+      end;
+   end Wrap_Test_Protocol_08ce2d_59a265;
+--  end read only
+
+--  begin read only
+   procedure Test_3_Protocol_test_wm_protocol3(Gnattest_T: in out Test);
+   procedure Test_Protocol_08ce2d_59a265(Gnattest_T: in out Test) renames
+     Test_3_Protocol_test_wm_protocol3;
+--  id:2.2/08ce2daafbc89885/Protocol/0/0/test_wm_protocol3/
+   procedure Test_3_Protocol_test_wm_protocol3(Gnattest_T: in out Test) is
+      procedure Protocol
+        (Window: Tk_Widget; Name: String; Command: Tcl_String) renames
+        Wrap_Test_Protocol_08ce2d_59a265;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_3_Protocol_test_wm_protocol3;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Resizeable_483148_c45ac7
+     (Window: Tk_Widget) return Resizeable_Data is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Resizeable test requirement violated");
+      end;
+      declare
+         Test_Resizeable_483148_c45ac7_Result: constant Resizeable_Data :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Resizeable(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Resizeable test commitment violated");
+         end;
+         return Test_Resizeable_483148_c45ac7_Result;
+      end;
+   end Wrap_Test_Resizeable_483148_c45ac7;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Resizeable_test_wm_resizeable(Gnattest_T: in out Test);
+   procedure Test_Resizeable_483148_c45ac7(Gnattest_T: in out Test) renames
+     Test_1_Resizeable_test_wm_resizeable;
+--  id:2.2/483148c8fa71532c/Resizeable/1/0/test_wm_resizeable/
+   procedure Test_1_Resizeable_test_wm_resizeable(Gnattest_T: in out Test) is
+      function Resizeable(Window: Tk_Widget) return Resizeable_Data renames
+        Wrap_Test_Resizeable_483148_c45ac7;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Resizeable_test_wm_resizeable;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Resizeable_61e216_7a9114
+     (Window: Tk_Widget; Width, Height: Boolean) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Resizeable2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Resizeable
+        (Window, Width, Height);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Resizeable2 test commitment violated");
+      end;
+   end Wrap_Test_Resizeable_61e216_7a9114;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Resizeable_test_wm_resizeable2(Gnattest_T: in out Test);
+   procedure Test_Resizeable_61e216_7a9114(Gnattest_T: in out Test) renames
+     Test_2_Resizeable_test_wm_resizeable2;
+--  id:2.2/61e2162135df922d/Resizeable/0/0/test_wm_resizeable2/
+   procedure Test_2_Resizeable_test_wm_resizeable2(Gnattest_T: in out Test) is
+      procedure Resizeable(Window: Tk_Widget; Width, Height: Boolean) renames
+        Wrap_Test_Resizeable_61e216_7a9114;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Resizeable_test_wm_resizeable2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Size_From_35c19a_7bb223
+     (Window: Tk_Widget) return Position_From_Value is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Size_From test requirement violated");
+      end;
+      declare
+         Test_Size_From_35c19a_7bb223_Result: constant Position_From_Value :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Size_From(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Size_From test commitment violated");
+         end;
+         return Test_Size_From_35c19a_7bb223_Result;
+      end;
+   end Wrap_Test_Size_From_35c19a_7bb223;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Size_From_test_wm_size_from(Gnattest_T: in out Test);
+   procedure Test_Size_From_35c19a_7bb223(Gnattest_T: in out Test) renames
+     Test_1_Size_From_test_wm_size_from;
+--  id:2.2/35c19a68a2456fd8/Size_From/1/0/test_wm_size_from/
+   procedure Test_1_Size_From_test_wm_size_from(Gnattest_T: in out Test) is
+      function Size_From(Window: Tk_Widget) return Position_From_Value renames
+        Wrap_Test_Size_From_35c19a_7bb223;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Size_From_test_wm_size_from;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Size_From_8b7927_bc3e6a
+     (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Size_From2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Size_From(Window, Who);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Size_From2 test commitment violated");
+      end;
+   end Wrap_Test_Size_From_8b7927_bc3e6a;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Size_From_test_wm_size_from2(Gnattest_T: in out Test);
+   procedure Test_Size_From_8b7927_bc3e6a(Gnattest_T: in out Test) renames
+     Test_2_Size_From_test_wm_size_from2;
+--  id:2.2/8b7927e33fde514a/Size_From/0/0/test_wm_size_from2/
+   procedure Test_2_Size_From_test_wm_size_from2(Gnattest_T: in out Test) is
+      procedure Size_From
+        (Window: Tk_Widget;
+         Who: Position_From_Value := Default_Position_From) renames
+        Wrap_Test_Size_From_8b7927_bc3e6a;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Size_From_test_wm_size_from2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Stack_Order_2d6e08_ada760
+     (Window: Tk_Widget) return Widgets_Array is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Stack_Order test requirement violated");
+      end;
+      declare
+         Test_Stack_Order_2d6e08_ada760_Result: constant Widgets_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Stack_Order(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Stack_Order test commitment violated");
+         end;
+         return Test_Stack_Order_2d6e08_ada760_Result;
+      end;
+   end Wrap_Test_Stack_Order_2d6e08_ada760;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Stack_Order_test_wm_stack_order(Gnattest_T: in out Test);
+   procedure Test_Stack_Order_2d6e08_ada760(Gnattest_T: in out Test) renames
+     Test_1_Stack_Order_test_wm_stack_order;
+--  id:2.2/2d6e08911932b44e/Stack_Order/1/0/test_wm_stack_order/
+   procedure Test_1_Stack_Order_test_wm_stack_order(Gnattest_T: in out Test) is
+      function Stack_Order(Window: Tk_Widget) return Widgets_Array renames
+        Wrap_Test_Stack_Order_2d6e08_ada760;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Stack_Order_test_wm_stack_order;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Stack_Order_4063e5_065f0c
+     (Window, Second_Window: Tk_Widget; Above: Boolean := True)
+      return Boolean is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget and Second_Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Stack_Order2 test requirement violated");
+      end;
+      declare
+         Test_Stack_Order_4063e5_065f0c_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Stack_Order
+             (Window, Second_Window, Above);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Stack_Order2 test commitment violated");
+         end;
+         return Test_Stack_Order_4063e5_065f0c_Result;
+      end;
+   end Wrap_Test_Stack_Order_4063e5_065f0c;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Stack_Order_test_wm_stack_order2(Gnattest_T: in out Test);
+   procedure Test_Stack_Order_4063e5_065f0c(Gnattest_T: in out Test) renames
+     Test_2_Stack_Order_test_wm_stack_order2;
+--  id:2.2/4063e54489ef174f/Stack_Order/0/0/test_wm_stack_order2/
+   procedure Test_2_Stack_Order_test_wm_stack_order2
+     (Gnattest_T: in out Test) is
+      function Stack_Order
+        (Window, Second_Window: Tk_Widget; Above: Boolean := True)
+         return Boolean renames
+        Wrap_Test_Stack_Order_4063e5_065f0c;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Stack_Order_test_wm_stack_order2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_State_193cfa_369ab4
+     (Window: Tk_Widget) return Window_States is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_State test requirement violated");
+      end;
+      declare
+         Test_State_193cfa_369ab4_Result: constant Window_States :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.State(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_State test commitment violated");
+         end;
+         return Test_State_193cfa_369ab4_Result;
+      end;
+   end Wrap_Test_State_193cfa_369ab4;
+--  end read only
+
+--  begin read only
+   procedure Test_1_State_test_wm_state(Gnattest_T: in out Test);
+   procedure Test_State_193cfa_369ab4(Gnattest_T: in out Test) renames
+     Test_1_State_test_wm_state;
+--  id:2.2/193cfa43938a1bc2/State/1/0/test_wm_state/
+   procedure Test_1_State_test_wm_state(Gnattest_T: in out Test) is
+      function State(Window: Tk_Widget) return Window_States renames
+        Wrap_Test_State_193cfa_369ab4;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_State_test_wm_state;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_State_c8a3e9_b6b816
+     (Window: Tk_Widget; New_State: Window_States := Default_Window_State) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_State2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.State(Window, New_State);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_State2 test commitment violated");
+      end;
+   end Wrap_Test_State_c8a3e9_b6b816;
+--  end read only
+
+--  begin read only
+   procedure Test_2_State_test_wm_state2(Gnattest_T: in out Test);
+   procedure Test_State_c8a3e9_b6b816(Gnattest_T: in out Test) renames
+     Test_2_State_test_wm_state2;
+--  id:2.2/c8a3e96d75cb85a1/State/0/0/test_wm_state2/
+   procedure Test_2_State_test_wm_state2(Gnattest_T: in out Test) is
+      procedure State
+        (Window: Tk_Widget;
+         New_State: Window_States := Default_Window_State) renames
+        Wrap_Test_State_c8a3e9_b6b816;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_State_test_wm_state2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Title_01b6e1_70d180
+     (Window: Tk_Widget) return Tcl_String is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Title test requirement violated");
+      end;
+      declare
+         Test_Title_01b6e1_70d180_Result: constant Tcl_String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Title(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Title test commitment violated");
+         end;
+         return Test_Title_01b6e1_70d180_Result;
+      end;
+   end Wrap_Test_Title_01b6e1_70d180;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Title_test_wm_title(Gnattest_T: in out Test);
+   procedure Test_Title_01b6e1_70d180(Gnattest_T: in out Test) renames
+     Test_1_Title_test_wm_title;
+--  id:2.2/01b6e1957b3c0914/Title/1/0/test_wm_title/
+   procedure Test_1_Title_test_wm_title(Gnattest_T: in out Test) is
+      function Title(Window: Tk_Widget) return Tcl_String renames
+        Wrap_Test_Title_01b6e1_70d180;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Title_test_wm_title;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Title_1f8dd2_35ca12
+     (Window: Tk_Widget; New_Title: Tcl_String) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Title2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Title(Window, New_Title);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Title2 test commitment violated");
+      end;
+   end Wrap_Test_Title_1f8dd2_35ca12;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Title_test_wm_title2(Gnattest_T: in out Test);
+   procedure Test_Title_1f8dd2_35ca12(Gnattest_T: in out Test) renames
+     Test_2_Title_test_wm_title2;
+--  id:2.2/1f8dd244664971f3/Title/0/0/test_wm_title2/
+   procedure Test_2_Title_test_wm_title2(Gnattest_T: in out Test) is
+      procedure Title(Window: Tk_Widget; New_Title: Tcl_String) renames
+        Wrap_Test_Title_1f8dd2_35ca12;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Title_test_wm_title2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Transient_600247_b820a7
+     (Window: Tk_Widget) return Tk_Widget is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Transient test requirement violated");
+      end;
+      declare
+         Test_Transient_600247_b820a7_Result: constant Tk_Widget :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Transient(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Transient test commitment violated");
+         end;
+         return Test_Transient_600247_b820a7_Result;
+      end;
+   end Wrap_Test_Transient_600247_b820a7;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Transient_test_wm_transient(Gnattest_T: in out Test);
+   procedure Test_Transient_600247_b820a7(Gnattest_T: in out Test) renames
+     Test_1_Transient_test_wm_transient;
+--  id:2.2/600247ae2a247faa/Transient/1/0/test_wm_transient/
+   procedure Test_1_Transient_test_wm_transient(Gnattest_T: in out Test) is
+      function Transient(Window: Tk_Widget) return Tk_Widget renames
+        Wrap_Test_Transient_600247_b820a7;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_1_Transient_test_wm_transient;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Transient_6697c9_9ec765(Window, Master: Tk_Widget) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Transient2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Transient(Window, Master);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Transient2 test commitment violated");
+      end;
+   end Wrap_Test_Transient_6697c9_9ec765;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Transient_test_wm_transient2(Gnattest_T: in out Test);
+   procedure Test_Transient_6697c9_9ec765(Gnattest_T: in out Test) renames
+     Test_2_Transient_test_wm_transient2;
+--  id:2.2/6697c9aec91a8b4e/Transient/0/0/test_wm_transient2/
+   procedure Test_2_Transient_test_wm_transient2(Gnattest_T: in out Test) is
+      procedure Transient(Window, Master: Tk_Widget) renames
+        Wrap_Test_Transient_6697c9_9ec765;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Transient_test_wm_transient2;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Withdraw_9bd119_51d547(Window: Tk_Widget) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Withdraw test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Withdraw(Window);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Withdraw test commitment violated");
+      end;
+   end Wrap_Test_Withdraw_9bd119_51d547;
+--  end read only
+
+--  begin read only
+   procedure Test_Withdraw_test_wm_withdraw(Gnattest_T: in out Test);
+   procedure Test_Withdraw_9bd119_51d547(Gnattest_T: in out Test) renames
+     Test_Withdraw_test_wm_withdraw;
+--  id:2.2/9bd119988312fe9b/Withdraw/1/0/test_wm_withdraw/
+   procedure Test_Withdraw_test_wm_withdraw(Gnattest_T: in out Test) is
+      procedure Withdraw(Window: Tk_Widget) renames
+        Wrap_Test_Withdraw_9bd119_51d547;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Withdraw_test_wm_withdraw;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
