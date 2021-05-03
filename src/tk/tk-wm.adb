@@ -714,42 +714,69 @@ package body Tk.Wm is
    end Size_From;
 
    function Stack_Order(Window: Tk_Widget) return Widgets_Array is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
+      Result: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "wm stackorder " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
-      return Empty_Widgets_Array;
+      return
+        Widgets: Widgets_Array (Result'Range) := (others => Null_Widget) do
+         for I in Result'Range loop
+            Widgets(I) := Get_Widget(To_String(Source => Result(I)));
+         end loop;
+      end return;
    end Stack_Order;
 
    function Stack_Order
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
       return Boolean is
-      pragma Unreferenced(Window, Second_Window, Above);
    begin
-      return False;
+      return Tcl_Eval
+          (Tcl_Script =>
+             "wm stackorder " & Tk_Path_Name(Widgt => Window) & " " &
+             (if Above then "isabove" else "isbelow") & " " &
+             Tk_Path_Name(Widgt => Second_Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Stack_Order;
 
    function State(Window: Tk_Widget) return Window_States is
-      pragma Unreferenced(Window);
    begin
-      return Default_Window_State;
+      return Window_States'Value
+          (Tcl_Eval
+             (Tcl_Script => "wm state " & Tk_Path_Name(Widgt => Window),
+              Interpreter => Tk_Interp(Widgt => Window)));
    end State;
 
    procedure State
      (Window: Tk_Widget; New_State: Window_States := Default_Window_State) is
-      pragma Unreferenced(Window, New_State);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm state " & Tk_Path_Name(Widgt => Window) & " " &
+           Window_States'Image(New_State),
+         Interpreter => Tk_Interp(Widgt => Window));
    end State;
 
    function Title(Window: Tk_Widget) return Tcl_String is
-      pragma Unreferenced(Window);
    begin
-      return Null_Tcl_String;
+      return To_Tcl_String
+          (Source =>
+             Tcl_Eval
+               (Tcl_Script => "wm title " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Tk_Interp(Widgt => Window)));
    end Title;
 
    procedure Title(Window: Tk_Widget; New_Title: Tcl_String) is
-      pragma Unreferenced(Window, New_Title);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm title " & Tk_Path_Name(Widgt => Window) & " " &
+           To_String(Source => New_Title),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Title;
 
    function Transient(Window: Tk_Widget) return Tk_Widget is
