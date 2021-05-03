@@ -624,59 +624,93 @@ package body Tk.Wm is
    end Override_Redirect;
 
    function Position_From(Window: Tk_Widget) return Position_From_Value is
-      pragma Unreferenced(Window);
    begin
-      return Default_Position_From;
+      return Position_From_Value'Value
+          (Tcl_Eval
+             (Tcl_Script => "wm positionfrom " & Tk_Path_Name(Widgt => Window),
+              Interpreter => Tk_Interp(Widgt => Window)));
    end Position_From;
 
    procedure Position_From
      (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
-      pragma Unreferenced(Window, Who);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm positionfrom " & Tk_Path_Name(Widgt => Window) & " " &
+           Position_From_Value'Image(Who),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Position_From;
 
    function Protocol(Window: Tk_Widget) return Array_List is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
    begin
-      return Empty_Array_List;
+      return Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "wm protocol " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Protocol;
 
    function Protocol(Window: Tk_Widget; Name: String) return String is
-      pragma Unreferenced(Window, Name);
    begin
-      return "";
+      return Tcl_Eval
+          (Tcl_Script =>
+             "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name,
+           Interpreter => Tk_Interp(Widgt => Window));
    end Protocol;
 
    procedure Protocol(Window: Tk_Widget; Name: String; Command: Tcl_String) is
-      pragma Unreferenced(Window, Name, Command);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name & " " &
+           To_String(Source => Command),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Protocol;
 
    function Resizeable(Window: Tk_Widget) return Resizeable_Data is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
+      Result: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "wm resizeable " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
-      return Default_Resizeable_Data;
+      return Resizeable_Result: Resizeable_Data := Default_Resizeable_Data do
+         Resizeable_Result.Width := (if Result(1) = "0" then False else True);
+         Resizeable_Result.Height := (if Result(2) = "0" then False else True);
+      end return;
    end Resizeable;
 
    procedure Resizeable(Window: Tk_Widget; Width, Height: Boolean) is
-      pragma Unreferenced(Window, Width, Height);
    begin
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm overrideredirect " & Tk_Path_Name(Widgt => Window) & " " &
+           (if Width then "1" else "0") & " " & (if Height then "1" else "0"),
+         Interpreter => Tk_Interp(Widgt => Window));
       null;
    end Resizeable;
 
    function Size_From(Window: Tk_Widget) return Position_From_Value is
-      pragma Unreferenced(Window);
    begin
-      return Default_Position_From;
+      return Position_From_Value'Value
+          (Tcl_Eval
+             (Tcl_Script => "wm sizefrom " & Tk_Path_Name(Widgt => Window),
+              Interpreter => Tk_Interp(Widgt => Window)));
    end Size_From;
 
    procedure Size_From
      (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
-      pragma Unreferenced(Window, Who);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm sizefrom " & Tk_Path_Name(Widgt => Window) & " " &
+           Position_From_Value'Image(Who),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Size_From;
 
    function Stack_Order(Window: Tk_Widget) return Widgets_Array is
