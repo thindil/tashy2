@@ -550,45 +550,77 @@ package body Tk.Wm is
    end Icon_Window;
 
    procedure Manage(Window: Tk_Widget) is
-      pragma Unreferenced(Window);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script => "wm manage " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Manage;
 
    function Max_Size(Window: Tk_Widget) return Window_Size is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
+      Result: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "wm maxsize " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
-      return Empty_Window_Size;
+      return Current_Size: Window_Size := Empty_Window_Size do
+         Current_Size.Width := Natural'Value(To_String(Source => Result(1)));
+         Current_Size.Height := Natural'Value(To_String(Source => Result(2)));
+      end return;
    end Max_Size;
 
    procedure Max_Size(Window: Tk_Widget; New_Size: Window_Size) is
-      pragma Unreferenced(Window, New_Size);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm maxsize " & Tk_Path_Name(Widgt => Window) &
+           Natural'Image(New_Size.Width) & Natural'Image(New_Size.Height),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Max_Size;
 
    function Min_Size(Window: Tk_Widget) return Window_Size is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
+      Result: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "wm minsize " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
-      return Empty_Window_Size;
+      return Current_Size: Window_Size := Empty_Window_Size do
+         Current_Size.Width := Natural'Value(To_String(Source => Result(1)));
+         Current_Size.Height := Natural'Value(To_String(Source => Result(2)));
+      end return;
    end Min_Size;
 
    procedure Min_Size(Window: Tk_Widget; New_Size: Window_Size) is
-      pragma Unreferenced(Window, New_Size);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm minsize " & Tk_Path_Name(Widgt => Window) &
+           Natural'Image(New_Size.Width) & Natural'Image(New_Size.Height),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Min_Size;
 
    function Override_Redirect(Window: Tk_Widget) return Boolean is
-      pragma Unreferenced(Window);
    begin
-      return False;
+      return Tcl_Eval
+          (Tcl_Script =>
+             "wm overrideredirect " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Override_Redirect;
 
    procedure Override_Redirect(Window: Tk_Widget; Override: Boolean) is
-      pragma Unreferenced(Window, Override);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm overrideredirect " & Tk_Path_Name(Widgt => Window) & " " &
+           (if Override then "1" else "0"),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Override_Redirect;
 
    function Position_From(Window: Tk_Widget) return Position_From_Value is
