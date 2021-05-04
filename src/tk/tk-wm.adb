@@ -637,7 +637,7 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm positionfrom " & Tk_Path_Name(Widgt => Window) & " " &
-           Position_From_Value'Image(Who),
+           To_Lower(Position_From_Value'Image(Who)),
          Interpreter => Tk_Interp(Widgt => Window));
    end Position_From;
 
@@ -709,7 +709,7 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm sizefrom " & Tk_Path_Name(Widgt => Window) & " " &
-           Position_From_Value'Image(Who),
+           To_Lower(Position_From_Value'Image(Who)),
          Interpreter => Tk_Interp(Widgt => Window));
    end Size_From;
 
