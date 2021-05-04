@@ -18,6 +18,7 @@ with System.Assertions;
 with Ada.Environment_Variables; use Ada.Environment_Variables;
 with Tcl.Variables; use Tcl.Variables;
 with Tk.Button; use Tk.Button;
+with Tk.Frame; use Tk.Frame;
 with Tk.Grid; use Tk.Grid;
 with Tk.MainWindow; use Tk.MainWindow;
 with Tk.TopLevel; use Tk.TopLevel;
@@ -2231,11 +2232,18 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Frame: Tk_Frame;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Frame := Create(".myframe", Default_Frame_Create_Options);
+      Manage(Frame);
+      Assert(True, "This test can only crash.");
+      Destroy(Frame);
 
 --  begin read only
    end Test_Manage_test_wm_manage;
@@ -2286,8 +2294,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Max_Size(Get_Main_Window, (100, 100));
+      Assert
+        (Max_Size(Get_Main_Window).Width = 100,
+         "Failed to get max size of Tk main window.");
 
 --  begin read only
    end Test_1_Max_Size_test_wm_max_size;
@@ -2333,8 +2347,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Max_Size(Get_Main_Window, (200, 201));
+      Assert
+        (Max_Size(Get_Main_Window).Height = 201,
+         "Failed to set max size of Tk main window.");
 
 --  begin read only
    end Test_2_Max_Size_test_wm_max_size2;
@@ -2385,8 +2405,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Min_Size(Get_Main_Window, (100, 100));
+      Assert
+        (Min_Size(Get_Main_Window).Width = 100,
+         "Failed to get min size of Tk main window.");
 
 --  begin read only
    end Test_1_Min_Size_test_wm_min_size;
@@ -2432,8 +2458,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Min_Size(Get_Main_Window, (200, 201));
+      Assert
+        (Min_Size(Get_Main_Window).Height = 201,
+         "Failed to set min size of Tk main window.");
 
 --  begin read only
    end Test_2_Min_Size_test_wm_min_size2;
@@ -2488,8 +2520,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (not Override_Redirect(Get_Main_Window),
+         "Failed to get override redirect value for Tk main window.");
 
 --  begin read only
    end Test_1_Override_Redirect_test_wm_override_redirect;
@@ -2539,8 +2576,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Override_Redirect(Get_Main_Window, True);
+      Assert
+        (Override_Redirect(Get_Main_Window),
+         "Failed to set override redirect value for Tk main window.");
 
 --  begin read only
    end Test_2_Override_Redirect_test_wm_override_redirect;
