@@ -2637,8 +2637,10 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Position_From(Get_Main_Window, Default_Position_From);
+      Assert
+        (Position_From(Get_Main_Window) = Default_Position_From,
+         "Failed to get default position from for Tk main window.");
 
 --  begin read only
    end Test_1_Position_From_test_wm_position_from;
