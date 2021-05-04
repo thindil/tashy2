@@ -418,7 +418,8 @@ package body Tk.Widget is
              (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name));
    end Option_Value;
 
-   function Option_Value(Widgt: Tk_Widget; Name: String) return Anchor_Directions is
+   function Option_Value
+     (Widgt: Tk_Widget; Name: String) return Anchor_Directions is
    begin
       return Anchor_Directions'Value
           (Execute_Widget_Command
