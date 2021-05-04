@@ -84,7 +84,8 @@ package Tk.TtkLabelFrame is
    -- COMMANDS
    -- Widget configure Options
    -- SOURCE
-   procedure Configure(Frame_Widget: Ttk_Label_Frame; Options: Ttk_Label_Frame_Options) with
+   procedure Configure
+     (Frame_Widget: Ttk_Label_Frame; Options: Ttk_Label_Frame_Options) with
       Pre => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TtkLabelFrame", Mode => Nominal);
       -- ****
@@ -112,7 +113,8 @@ package Tk.TtkLabelFrame is
    -- SOURCE
    function Create
      (Path_Name: String; Options: Ttk_Label_Frame_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label_Frame with
+      Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Ttk_Label_Frame with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabelFrame1", Mode => Nominal);

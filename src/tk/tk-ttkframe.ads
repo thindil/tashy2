@@ -72,7 +72,8 @@ package Tk.TtkFrame is
    -- COMMANDS
    -- Widget configure Options
    -- SOURCE
-   procedure Configure(Frame_Widget: Ttk_Frame; Options: Ttk_Frame_Options) with
+   procedure Configure
+     (Frame_Widget: Ttk_Frame; Options: Ttk_Frame_Options) with
       Pre => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_Frame", Mode => Nominal);
       -- ****
@@ -156,8 +157,7 @@ package Tk.TtkFrame is
    -- COMMANDS
    -- Widget configure
    -- SOURCE
-   function Get_Options
-     (Frame_Widget: Ttk_Frame) return Ttk_Frame_Options with
+   function Get_Options(Frame_Widget: Ttk_Frame) return Ttk_Frame_Options with
       Pre => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_Frame", Mode => Nominal);
       -- ****

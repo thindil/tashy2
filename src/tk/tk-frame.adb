@@ -87,17 +87,14 @@ package body Tk.Frame is
            Interpreter => Interpreter);
    end Create;
 
-   function Get_Options
-     (Frame_Widget: Tk_Frame) return Frame_Create_Options is
+   function Get_Options(Frame_Widget: Tk_Frame) return Frame_Create_Options is
    begin
-      return
-        Options: Frame_Create_Options := Default_Frame_Create_Options do
+      return Options: Frame_Create_Options := Default_Frame_Create_Options do
          Options.Background :=
            Option_Value(Widgt => Frame_Widget, Name => "background");
          Options.Border_Width :=
            Option_Value(Widgt => Frame_Widget, Name => "borderwidth");
-         Options.Class :=
-           Option_Value(Widgt => Frame_Widget, Name => "class");
+         Options.Class := Option_Value(Widgt => Frame_Widget, Name => "class");
          Options.Color_Map :=
            Option_Value(Widgt => Frame_Widget, Name => "colormap");
          Options.Container :=
@@ -107,30 +104,24 @@ package body Tk.Frame is
          Options.Height :=
            Option_Value(Widgt => Frame_Widget, Name => "height");
          Options.Highlight_Background :=
-           Option_Value
-             (Widgt => Frame_Widget, Name => "highlightbackground");
+           Option_Value(Widgt => Frame_Widget, Name => "highlightbackground");
          Options.Highlight_Color :=
            Option_Value(Widgt => Frame_Widget, Name => "highlightcolor");
          Options.Highlight_Thickness :=
-           Option_Value
-             (Widgt => Frame_Widget, Name => "highlightthickness");
-         Options.Pad_X :=
-           Option_Value(Widgt => Frame_Widget, Name => "padx");
-         Options.Pad_Y :=
-           Option_Value(Widgt => Frame_Widget, Name => "pady");
+           Option_Value(Widgt => Frame_Widget, Name => "highlightthickness");
+         Options.Pad_X := Option_Value(Widgt => Frame_Widget, Name => "padx");
+         Options.Pad_Y := Option_Value(Widgt => Frame_Widget, Name => "pady");
          Options.Relief :=
            Option_Value(Widgt => Frame_Widget, Name => "relief");
          Options.Take_Focus :=
            Option_Value(Widgt => Frame_Widget, Name => "takefocus");
          Options.Visual :=
            Option_Value(Widgt => Frame_Widget, Name => "visual");
-         Options.Width :=
-           Option_Value(Widgt => Frame_Widget, Name => "width");
+         Options.Width := Option_Value(Widgt => Frame_Widget, Name => "width");
       end return;
    end Get_Options;
 
-   procedure Configure
-     (Frame_Widget: Tk_Frame; Options: Frame_Options) is
+   procedure Configure(Frame_Widget: Tk_Frame; Options: Frame_Options) is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
