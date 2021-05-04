@@ -726,7 +726,10 @@ package body Tk.Wm is
       return
         Widgets: Widgets_Array (Result'Range) := (others => Null_Widget) do
          for I in Result'Range loop
-            Widgets(I) := Get_Widget(To_String(Source => Result(I)));
+            Widgets(I) :=
+              Get_Widget
+                (Path_Name => To_String(Source => Result(I)),
+                 Interpreter => Interpreter);
          end loop;
       end return;
    end Stack_Order;
@@ -780,21 +783,30 @@ package body Tk.Wm is
    end Title;
 
    function Transient(Window: Tk_Widget) return Tk_Widget is
-      pragma Unreferenced(Window);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
    begin
-      return Null_Widget;
+      return Get_Widget
+          (Path_Name =>
+             Tcl_Eval
+               (Tcl_Script => "wm transient " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    end Transient;
 
    procedure Transient(Window, Master: Tk_Widget) is
-      pragma Unreferenced(Window, Master);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm transient " & Tk_Path_Name(Widgt => Window) & " " &
+           Tk_Path_Name(Widgt => Master),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Transient;
 
    procedure Withdraw(Window: Tk_Widget) is
-      pragma Unreferenced(Window);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script => "wm withdraw " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Withdraw;
 
 end Tk.Wm;
