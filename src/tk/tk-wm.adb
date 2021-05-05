@@ -669,23 +669,23 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Protocol;
 
-   function Resizeable(Window: Tk_Widget) return Resizeable_Data is
+   function Resizable(Window: Tk_Widget) return Resizable_Data is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
           (List =>
              Tcl_Eval
-               (Tcl_Script => "wm resizeable " & Tk_Path_Name(Widgt => Window),
+               (Tcl_Script => "wm resizable " & Tk_Path_Name(Widgt => Window),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin
-      return Resizeable_Result: Resizeable_Data := Default_Resizeable_Data do
-         Resizeable_Result.Width := (if Result(1) = "0" then False else True);
-         Resizeable_Result.Height := (if Result(2) = "0" then False else True);
+      return Resizable_Result: Resizable_Data := Default_Resizable_Data do
+         Resizable_Result.Width := (if Result(1) = "0" then False else True);
+         Resizable_Result.Height := (if Result(2) = "0" then False else True);
       end return;
-   end Resizeable;
+   end Resizable;
 
-   procedure Resizeable(Window: Tk_Widget; Width, Height: Boolean) is
+   procedure Resizable(Window: Tk_Widget; Width, Height: Boolean) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -693,7 +693,7 @@ package body Tk.Wm is
            (if Width then "1" else "0") & " " & (if Height then "1" else "0"),
          Interpreter => Tk_Interp(Widgt => Window));
       null;
-   end Resizeable;
+   end Resizable;
 
    function Size_From(Window: Tk_Widget) return Position_From_Value is
    begin
