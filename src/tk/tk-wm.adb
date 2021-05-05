@@ -624,11 +624,15 @@ package body Tk.Wm is
    end Override_Redirect;
 
    function Position_From(Window: Tk_Widget) return Position_From_Value is
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "wm positionfrom " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    begin
-      return Position_From_Value'Value
-          (Tcl_Eval
-             (Tcl_Script => "wm positionfrom " & Tk_Path_Name(Widgt => Window),
-              Interpreter => Tk_Interp(Widgt => Window)));
+      if Result'Length = 0 then
+         return Default_Position_From;
+      end if;
+      return Position_From_Value'Value(Result);
    end Position_From;
 
    procedure Position_From
@@ -696,11 +700,15 @@ package body Tk.Wm is
    end Resizable;
 
    function Size_From(Window: Tk_Widget) return Position_From_Value is
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "wm sizefrom " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    begin
-      return Position_From_Value'Value
-          (Tcl_Eval
-             (Tcl_Script => "wm sizefrom " & Tk_Path_Name(Widgt => Window),
-              Interpreter => Tk_Interp(Widgt => Window)));
+      if Result'Length = 0 then
+         return Default_Position_From;
+      end if;
+      return Position_From_Value'Value(Result);
    end Size_From;
 
    procedure Size_From
