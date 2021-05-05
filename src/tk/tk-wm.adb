@@ -689,7 +689,7 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm overrideredirect " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm resizable " & Tk_Path_Name(Widgt => Window) & " " &
            (if Width then "1" else "0") & " " & (if Height then "1" else "0"),
          Interpreter => Tk_Interp(Widgt => Window));
       null;
