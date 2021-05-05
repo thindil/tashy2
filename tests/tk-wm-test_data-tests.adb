@@ -2637,6 +2637,10 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Position_From(Get_Main_Window, Default_Position_From);
       Assert
         (Position_From(Get_Main_Window) = Default_Position_From,
@@ -2690,6 +2694,10 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Position_From(Get_Main_Window, USER);
       Assert
         (Position_From(Get_Main_Window) = USER,
@@ -2744,6 +2752,10 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Assert
         (Protocol(Get_Main_Window)'Length = 0,
          "Failed to get default protocols for Tk main window.");
@@ -2797,6 +2809,10 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
       Assert
         (Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
@@ -2849,6 +2865,10 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
       Assert
         (Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
@@ -2903,8 +2923,11 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert(Resizable(Get_Main_Window).Height, "Failed to get resizable info for Tk main window.");
 
 --  begin read only
    end Test_1_Resizable_test_wm_resizable;
@@ -2951,8 +2974,12 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Resizable(Get_Main_Window, True, False);
+      Assert(not Resizable(Get_Main_Window).Height, "Failed to set resizable info for Tk main window.");
 
 --  begin read only
    end Test_2_Resizable_test_wm_resizable2;
