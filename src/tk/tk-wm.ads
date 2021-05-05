@@ -111,12 +111,12 @@ package Tk.Wm is
 
    Default_Position_From: constant Position_From_Value := PROGRAM;
 
-   type Resizeable_Data is record
+   type Resizable_Data is record
       Width: Boolean;
       Height: Boolean;
    end record;
 
-   Default_Resizeable_Data: constant Resizeable_Data := (others => <>);
+   Default_Resizable_Data: constant Resizable_Data := (others => <>);
 
    type Window_States is (NORMAL, ICONIC, WITHDRAWN, ICON, ZOOMED);
 
@@ -367,13 +367,13 @@ package Tk.Wm is
       Pre => Window /= Null_Widget and Name'Length > 0 and Length(Command) > 0,
       Test_Case => (Name => "Test_Wm_Protocol3", Mode => Nominal);
 
-   function Resizeable(Window: Tk_Widget) return Resizeable_Data with
+   function Resizable(Window: Tk_Widget) return Resizable_Data with
       Pre => Window /= Null_Widget,
-      Test_Case => (Name => "Test_Wm_Resizeable", Mode => Nominal);
+      Test_Case => (Name => "Test_Wm_Resizable", Mode => Nominal);
 
-   procedure Resizeable(Window: Tk_Widget; Width, Height: Boolean) with
+   procedure Resizable(Window: Tk_Widget; Width, Height: Boolean) with
       Pre => Window /= Null_Widget,
-      Test_Case => (Name => "Test_Wm_Resizeable2", Mode => Nominal);
+      Test_Case => (Name => "Test_Wm_Resizable2", Mode => Nominal);
 
    function Size_From(Window: Tk_Widget) return Position_From_Value with
       Pre => Window /= Null_Widget,
