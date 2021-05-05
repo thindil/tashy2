@@ -157,11 +157,11 @@ package Tk.Wm.Test_Data.Tests is
    procedure Test_Protocol_08ce2d_59a265(Gnattest_T: in out Test);
    --  tk-wm.ads:365:4:Protocol:Test_Wm_Protocol3
 
-   procedure Test_Resizeable_483148_c45ac7(Gnattest_T: in out Test);
-   --  tk-wm.ads:370:4:Resizeable:Test_Wm_Resizeable
+   procedure Test_Resizable_4a4f98_2b8386(Gnattest_T: in out Test);
+   --  tk-wm.ads:370:4:Resizable:Test_Wm_Resizable
 
-   procedure Test_Resizeable_61e216_7a9114(Gnattest_T: in out Test);
-   --  tk-wm.ads:374:4:Resizeable:Test_Wm_Resizeable2
+   procedure Test_Resizable_70137c_b49918(Gnattest_T: in out Test);
+   --  tk-wm.ads:374:4:Resizable:Test_Wm_Resizable2
 
    procedure Test_Size_From_35c19a_7bb223(Gnattest_T: in out Test);
    --  tk-wm.ads:378:4:Size_From:Test_Wm_Size_From

@@ -2640,7 +2640,7 @@ package body Tk.Wm.Test_Data.Tests is
       Position_From(Get_Main_Window, Default_Position_From);
       Assert
         (Position_From(Get_Main_Window) = Default_Position_From,
-         "Failed to get default position from for Tk main window.");
+         "Failed to get position from for Tk main window.");
 
 --  begin read only
    end Test_1_Position_From_test_wm_position_from;
@@ -2690,8 +2690,10 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Position_From(Get_Main_Window, USER);
+      Assert
+        (Position_From(Get_Main_Window) = USER,
+         "Failed to set position from for Tk main window.");
 
 --  begin read only
    end Test_2_Position_From_test_wm_position_from2;
@@ -2742,8 +2744,9 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (Protocol(Get_Main_Window)'Length = 0,
+         "Failed to get default protocols for Tk main window.");
 
 --  begin read only
    end Test_1_Protocol_test_wm_protocol;
@@ -2794,8 +2797,10 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
+      Assert
+        (Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
+         "Failed to get command associated to WM_TAKE_FOCUS for Tk main window");
 
 --  begin read only
    end Test_2_Protocol_test_wm_protocol2;
@@ -2844,16 +2849,18 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
+      Assert
+        (Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
+         "Failed to set command associated to WM_TAKE_FOCUS for Tk main window");
 
 --  begin read only
    end Test_3_Protocol_test_wm_protocol3;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Resizeable_483148_c45ac7
-     (Window: Tk_Widget) return Resizeable_Data is
+   function Wrap_Test_Resizable_4a4f98_2b8386
+     (Window: Tk_Widget) return Resizable_Data is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -2862,11 +2869,11 @@ package body Tk.Wm.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-wm.ads:0):Test_Wm_Resizeable test requirement violated");
+               "req_sloc(tk-wm.ads:0):Test_Wm_Resizable test requirement violated");
       end;
       declare
-         Test_Resizeable_483148_c45ac7_Result: constant Resizeable_Data :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Resizeable(Window);
+         Test_Resizable_4a4f98_2b8386_Result: constant Resizable_Data :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Resizable(Window);
       begin
          begin
             pragma Assert(True);
@@ -2875,21 +2882,21 @@ package body Tk.Wm.Test_Data.Tests is
             when System.Assertions.Assert_Failure =>
                AUnit.Assertions.Assert
                  (False,
-                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Resizeable test commitment violated");
+                  "ens_sloc(tk-wm.ads:0:):Test_Wm_Resizable test commitment violated");
          end;
-         return Test_Resizeable_483148_c45ac7_Result;
+         return Test_Resizable_4a4f98_2b8386_Result;
       end;
-   end Wrap_Test_Resizeable_483148_c45ac7;
+   end Wrap_Test_Resizable_4a4f98_2b8386;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Resizeable_test_wm_resizeable(Gnattest_T: in out Test);
-   procedure Test_Resizeable_483148_c45ac7(Gnattest_T: in out Test) renames
-     Test_1_Resizeable_test_wm_resizeable;
---  id:2.2/483148c8fa71532c/Resizeable/1/0/test_wm_resizeable/
-   procedure Test_1_Resizeable_test_wm_resizeable(Gnattest_T: in out Test) is
-      function Resizeable(Window: Tk_Widget) return Resizeable_Data renames
-        Wrap_Test_Resizeable_483148_c45ac7;
+   procedure Test_1_Resizable_test_wm_resizable(Gnattest_T: in out Test);
+   procedure Test_Resizable_4a4f98_2b8386(Gnattest_T: in out Test) renames
+     Test_1_Resizable_test_wm_resizable;
+--  id:2.2/4a4f98c7c6bf5c44/Resizable/1/0/test_wm_resizable/
+   procedure Test_1_Resizable_test_wm_resizable(Gnattest_T: in out Test) is
+      function Resizable(Window: Tk_Widget) return Resizable_Data renames
+        Wrap_Test_Resizable_4a4f98_2b8386;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2900,11 +2907,11 @@ package body Tk.Wm.Test_Data.Tests is
         (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_1_Resizeable_test_wm_resizeable;
+   end Test_1_Resizable_test_wm_resizable;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Resizeable_61e216_7a9114
+   procedure Wrap_Test_Resizable_70137c_b49918
      (Window: Tk_Widget; Width, Height: Boolean) is
    begin
       begin
@@ -2914,9 +2921,9 @@ package body Tk.Wm.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-wm.ads:0):Test_Wm_Resizeable2 test requirement violated");
+               "req_sloc(tk-wm.ads:0):Test_Wm_Resizable2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Resizeable
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Resizable
         (Window, Width, Height);
       begin
          pragma Assert(True);
@@ -2925,19 +2932,19 @@ package body Tk.Wm.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "ens_sloc(tk-wm.ads:0:):Test_Wm_Resizeable2 test commitment violated");
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Resizable2 test commitment violated");
       end;
-   end Wrap_Test_Resizeable_61e216_7a9114;
+   end Wrap_Test_Resizable_70137c_b49918;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Resizeable_test_wm_resizeable2(Gnattest_T: in out Test);
-   procedure Test_Resizeable_61e216_7a9114(Gnattest_T: in out Test) renames
-     Test_2_Resizeable_test_wm_resizeable2;
---  id:2.2/61e2162135df922d/Resizeable/0/0/test_wm_resizeable2/
-   procedure Test_2_Resizeable_test_wm_resizeable2(Gnattest_T: in out Test) is
-      procedure Resizeable(Window: Tk_Widget; Width, Height: Boolean) renames
-        Wrap_Test_Resizeable_61e216_7a9114;
+   procedure Test_2_Resizable_test_wm_resizable2(Gnattest_T: in out Test);
+   procedure Test_Resizable_70137c_b49918(Gnattest_T: in out Test) renames
+     Test_2_Resizable_test_wm_resizable2;
+--  id:2.2/70137c9fb8c71010/Resizable/0/0/test_wm_resizable2/
+   procedure Test_2_Resizable_test_wm_resizable2(Gnattest_T: in out Test) is
+      procedure Resizable(Window: Tk_Widget; Width, Height: Boolean) renames
+        Wrap_Test_Resizable_70137c_b49918;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2948,7 +2955,7 @@ package body Tk.Wm.Test_Data.Tests is
         (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_2_Resizeable_test_wm_resizeable2;
+   end Test_2_Resizable_test_wm_resizable2;
 --  end read only
 
 --  begin read only
