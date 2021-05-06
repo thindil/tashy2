@@ -641,7 +641,7 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm positionfrom " & Tk_Path_Name(Widgt => Window) & " " &
-           To_Lower(Position_From_Value'Image(Who)),
+           To_Lower(Item => Position_From_Value'Image(Who)),
          Interpreter => Tk_Interp(Widgt => Window));
    end Position_From;
 
@@ -664,12 +664,13 @@ package body Tk.Wm is
            Interpreter => Tk_Interp(Widgt => Window));
    end Protocol;
 
-   procedure Protocol(Window: Tk_Widget; Name: String; Command: Tcl_String) is
+   procedure Protocol
+     (Window: Tk_Widget; Name: String; New_Command: Tcl_String) is
    begin
       Tcl_Eval
         (Tcl_Script =>
            "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name & " " &
-           To_String(Source => Command),
+           To_String(Source => New_Command),
          Interpreter => Tk_Interp(Widgt => Window));
    end Protocol;
 
@@ -696,7 +697,6 @@ package body Tk.Wm is
            "wm resizable " & Tk_Path_Name(Widgt => Window) & " " &
            (if Width then "1" else "0") & " " & (if Height then "1" else "0"),
          Interpreter => Tk_Interp(Widgt => Window));
-      null;
    end Resizable;
 
    function Size_From(Window: Tk_Widget) return Position_From_Value is
@@ -717,7 +717,7 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm sizefrom " & Tk_Path_Name(Widgt => Window) & " " &
-           To_Lower(Position_From_Value'Image(Who)),
+           To_Lower(Item => Position_From_Value'Image(Who)),
          Interpreter => Tk_Interp(Widgt => Window));
    end Size_From;
 
@@ -733,12 +733,13 @@ package body Tk.Wm is
    begin
       return
         Widgets: Widgets_Array (Result'Range) := (others => Null_Widget) do
+         Set_Widgets_Array_Loop :
          for I in Result'Range loop
             Widgets(I) :=
               Get_Widget
                 (Path_Name => To_String(Source => Result(I)),
                  Interpreter => Interpreter);
-         end loop;
+         end loop Set_Widgets_Array_Loop;
       end return;
    end Stack_Order;
 
@@ -768,7 +769,7 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm state " & Tk_Path_Name(Widgt => Window) & " " &
-           To_Lower(Window_States'Image(New_State)),
+           To_Lower(Item => Window_States'Image(New_State)),
          Interpreter => Tk_Interp(Widgt => Window));
    end State;
 

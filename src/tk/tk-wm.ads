@@ -363,8 +363,9 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Protocol2", Mode => Nominal);
 
    procedure Protocol
-     (Window: Tk_Widget; Name: String; Command: Tcl_String) with
-      Pre => Window /= Null_Widget and Name'Length > 0 and Length(Command) > 0,
+     (Window: Tk_Widget; Name: String; New_Command: Tcl_String) with
+      Pre => Window /= Null_Widget and Name'Length > 0 and
+      Length(Source => New_Command) > 0,
       Test_Case => (Name => "Test_Wm_Protocol3", Mode => Nominal);
 
    function Resizable(Window: Tk_Widget) return Resizable_Data with
