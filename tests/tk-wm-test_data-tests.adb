@@ -2584,6 +2584,7 @@ package body Tk.Wm.Test_Data.Tests is
       Assert
         (Override_Redirect(Get_Main_Window),
          "Failed to set override redirect value for Tk main window.");
+      Override_Redirect(Get_Main_Window, False);
 
 --  begin read only
    end Test_2_Override_Redirect_test_wm_override_redirect;
@@ -2927,7 +2928,9 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Assert(Resizable(Get_Main_Window).Height, "Failed to get resizable info for Tk main window.");
+      Assert
+        (Resizable(Get_Main_Window).Height,
+         "Failed to get resizable info for Tk main window.");
 
 --  begin read only
    end Test_1_Resizable_test_wm_resizable;
@@ -2979,7 +2982,9 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Resizable(Get_Main_Window, True, False);
-      Assert(not Resizable(Get_Main_Window).Height, "Failed to set resizable info for Tk main window.");
+      Assert
+        (not Resizable(Get_Main_Window).Height,
+         "Failed to set resizable info for Tk main window.");
 
 --  begin read only
    end Test_2_Resizable_test_wm_resizable2;
@@ -3030,8 +3035,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Size_From(Get_Main_Window) = Default_Position_From,
+         "Failed to get default size from for Tk main window.");
 
 --  begin read only
    end Test_1_Size_From_test_wm_size_from;
@@ -3079,8 +3089,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Size_From(Get_Main_Window, USER);
+      Assert
+        (Size_From(Get_Main_Window) = USER,
+         "Failed to get default size from for Tk main window.");
 
 --  begin read only
    end Test_2_Size_From_test_wm_size_from2;
@@ -3131,8 +3147,17 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      declare
+         Result: constant Widgets_Array := Stack_Order(Get_Main_Window);
+      begin
+         Assert
+           (Result(1) = Get_Main_Window,
+            "Failed to get stack order for Tk main window");
+      end;
 
 --  begin read only
    end Test_1_Stack_Order_test_wm_stack_order;
@@ -3188,8 +3213,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (not Stack_Order(Get_Main_Window, Get_Main_Window),
+         "Failed to get if Tk main window is above self.");
 
 --  begin read only
    end Test_2_Stack_Order_test_wm_stack_order2;
@@ -3240,8 +3270,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (State(Get_Main_Window) = Default_Window_State,
+         "Failed to get default Tk main window state.");
 
 --  begin read only
    end Test_1_State_test_wm_state;
@@ -3289,8 +3324,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      State(Get_Main_Window, WITHDRAWN);
+      Assert
+        (State(Get_Main_Window) = WITHDRAWN,
+         "Failed to set Tk main window state.");
 
 --  begin read only
    end Test_2_State_test_wm_state2;
