@@ -768,7 +768,7 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm state " & Tk_Path_Name(Widgt => Window) & " " &
-           Window_States'Image(New_State),
+           To_Lower(Window_States'Image(New_State)),
          Interpreter => Tk_Interp(Widgt => Window));
    end State;
 
