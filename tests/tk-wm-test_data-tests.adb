@@ -2824,12 +2824,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Protocol_08ce2d_59a265
-     (Window: Tk_Widget; Name: String; Command: Tcl_String) is
+   procedure Wrap_Test_Protocol_08ce2d_4c09c4
+     (Window: Tk_Widget; Name: String; New_Command: Tcl_String) is
    begin
       begin
          pragma Assert
-           (Window /= Null_Widget and Name'Length > 0 and Length(Command) > 0);
+           (Window /= Null_Widget and Name'Length > 0 and
+            Length(Source => New_Command) > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2838,7 +2839,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Protocol3 test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Wm.Protocol
-        (Window, Name, Command);
+        (Window, Name, New_Command);
       begin
          pragma Assert(True);
          null;
@@ -2848,18 +2849,18 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Protocol3 test commitment violated");
       end;
-   end Wrap_Test_Protocol_08ce2d_59a265;
+   end Wrap_Test_Protocol_08ce2d_4c09c4;
 --  end read only
 
 --  begin read only
    procedure Test_3_Protocol_test_wm_protocol3(Gnattest_T: in out Test);
-   procedure Test_Protocol_08ce2d_59a265(Gnattest_T: in out Test) renames
+   procedure Test_Protocol_08ce2d_4c09c4(Gnattest_T: in out Test) renames
      Test_3_Protocol_test_wm_protocol3;
 --  id:2.2/08ce2daafbc89885/Protocol/0/0/test_wm_protocol3/
    procedure Test_3_Protocol_test_wm_protocol3(Gnattest_T: in out Test) is
       procedure Protocol
-        (Window: Tk_Widget; Name: String; Command: Tcl_String) renames
-        Wrap_Test_Protocol_08ce2d_59a265;
+        (Window: Tk_Widget; Name: String; New_Command: Tcl_String) renames
+        Wrap_Test_Protocol_08ce2d_4c09c4;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
