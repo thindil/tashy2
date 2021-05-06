@@ -3382,8 +3382,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Title(Get_Main_Window) = To_Tcl_String("tk"),
+         "Failed to get default title for Tk main window.");
 
 --  begin read only
    end Test_1_Title_test_wm_title;
@@ -3429,8 +3434,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Title(Get_Main_Window, To_Tcl_String("My Title"));
+      Assert
+        (Title(Get_Main_Window) = To_Tcl_String("My Title"),
+         "Failed to set title for Tk main window.");
 
 --  begin read only
    end Test_2_Title_test_wm_title2;
@@ -3481,8 +3492,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Transient(Get_Main_Window) = Null_Widget,
+         "Failed to get default transient widget for Tk window.");
 
 --  begin read only
    end Test_1_Transient_test_wm_transient;
@@ -3524,11 +3540,20 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Dialog: Tk_Toplevel;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Dialog := Create(".myframe", Default_Toplevel_Create_Options);
+      Transient(Dialog, Get_Main_Window);
+      Assert
+        (Transient(Dialog) = Get_Main_Window,
+         "Failed to set transient window for Tk widget.");
+      Destroy(Dialog);
 
 --  begin read only
    end Test_2_Transient_test_wm_transient2;
@@ -3573,8 +3598,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Withdraw(Get_Main_Window);
+      Assert
+        (State(Get_Main_Window) = WITHDRAWN,
+         "Failed to withdraw Tk main window.");
 
 --  begin read only
    end Test_Withdraw_test_wm_withdraw;
