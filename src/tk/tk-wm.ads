@@ -242,21 +242,62 @@ package Tk.Wm is
      Window_Position'(others => 0);
      -- ****
 
+     -- ****s* Wm/Wm.Aspect_Data
+     -- FUNCTION
+     -- Data structure used to set the Tk widget aspects ratios
+     -- PARAMETERS
+     -- Min_Numer - The minimum number for width/height for couting aspect
+     --             ratios of Tk widget
+     -- Min_Denom - The minumum denom for width/height for couting aspect
+     --             ratios of Tk widget
+     -- Max_Numer - The maximum number for width/height for couting aspect
+     --             ratios of Tk widget
+     -- Max_Denom - The maximum denom for width/height for couting aspect
+     --             ratios of Tk widget
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SOURCE
    type Aspect_Data is record
       Min_Numer: Natural;
       Min_Denom: Natural;
       Max_Numer: Natural;
       Max_Denom: Natural;
    end record;
+   -- ****
 
+   -- ****d* Wm/Wm.Empty_Aspect_Data
+   -- FUNCTION
+   -- Empty values for aspect ratios of Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Empty_Aspect_Data: constant Aspect_Data := (others => 0);
+   -- ****
 
+   -- ****s* Tk.Wm/Window_Size
+   -- FUNCTION
+   -- Data structure used to manipulate maximum and minimum size of the Tk
+   -- widget
+   -- PARAMETERS
+   -- Width  - For gridded windows, width size in grid units for the selected
+   --          Tk widget. Otherwise, size in pixels.
+   -- Height - For gridded windows, height size in grid units for the selected
+   --          Tk widget. Otherwise, size in pixels.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Window_Size is record
       Width: Natural;
       Height: Natural;
    end record;
+   -- ****
 
+   -- ****d* Wm/Wm.Empty_Window_Size
+   -- FUNCTION
+   -- Empty values for the Tk widget size
+   -- SOURCE
    Empty_Window_Size: constant Window_Size := (others => 0);
+   -- ****
 
    type Position_From_Value is (USER, PROGRAM);
 
