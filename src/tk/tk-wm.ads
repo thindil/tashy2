@@ -139,19 +139,53 @@ package Tk.Wm is
    Empty_Window_Attributes: constant Window_Attributes_Data := (others => <>);
    -- ****
 
+   -- ****t* Wm/Wm.Focus_Model_Types
+   -- FUNCTION
+   -- Types of Tk widget focus models. Active means that widget will take
+   -- focus even from the other applications.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Focus_Model_Types is (ACTIVE, PASSIVE);
+   -- ****
 
+   -- ****d* Wm/Wm.Default_Focus_Model
+   -- FUNCTION
+   -- Default focus model for Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Default_Focus_Model: constant Focus_Model_Types := PASSIVE;
+   -- ****
 
+   -- ****s* Wm/Wm.Window_Geometry
+   -- FUNCTION
+   -- Data structure used in setting the Tk widget geometry
+   -- PARAMETERS
+   -- Width  - The width in pixels of Tk widget
+   -- Height - The height in pixels of Tk widget
+   -- X      - The X coordinate on the screen of Tk widget
+   -- Y      - The Y coordinate on the screen of Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Window_Geometry is record
       Width: Natural;
       Height: Natural;
       X: Natural;
       Y: Natural;
    end record;
+   -- ****
 
+   -- ****d* Wm/Wm.Empty_Window_Geometry
+   -- FUNCTION
+   -- Empty values for Tk widget geometry
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Empty_Window_Geometry: constant Window_Geometry :=
-     Window_Geometry'(others => <>);
+     Window_Geometry'(others => 0);
+     -- ****
 
    type Window_Grid_Geometry is record
       Base_Width: Natural;
@@ -161,7 +195,7 @@ package Tk.Wm is
    end record;
 
    Empty_Window_Grid_Geometry: constant Window_Grid_Geometry :=
-     Window_Grid_Geometry'(others => <>);
+     Window_Grid_Geometry'(others => 0);
 
    type Window_Position is record
       X: Natural;
@@ -178,14 +212,14 @@ package Tk.Wm is
       Max_Denom: Natural;
    end record;
 
-   Empty_Aspect_Data: constant Aspect_Data := (others => <>);
+   Empty_Aspect_Data: constant Aspect_Data := (others => 0);
 
    type Window_Size is record
       Width: Natural;
       Height: Natural;
    end record;
 
-   Empty_Window_Size: constant Window_Size := (others => <>);
+   Empty_Window_Size: constant Window_Size := (others => 0);
 
    type Position_From_Value is (USER, PROGRAM);
 
@@ -196,7 +230,7 @@ package Tk.Wm is
       Height: Boolean;
    end record;
 
-   Default_Resizable_Data: constant Resizable_Data := (others => <>);
+   Default_Resizable_Data: constant Resizable_Data := (others => True);
 
    type Window_States is (NORMAL, ICONIC, WITHDRAWN, ICON, ZOOMED);
 
