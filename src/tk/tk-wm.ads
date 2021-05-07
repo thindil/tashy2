@@ -17,17 +17,51 @@ with Tcl.Strings; use Tcl.Strings;
 with Tk.TopLevel; use Tk.TopLevel;
 with Tk.Widget; use Tk.Widget;
 
+-- ****h* Tk/Wm
+-- FUNCTION
+-- Provide bindings for Tk command wm (communication with the window manager)
+-- SOURCE
 package Tk.Wm is
+-- ****
 
    --## rule off REDUCEABLE_SCOPE
+   -- ****t* Wm/Wm.Window_Manager_Types
+   -- FUNCTION
+   -- Type of current window manager
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Window_Manager_Types is (X_11, WINDOWS, MACOSX);
+   -- ****
 
+   -- ****d* Wm/Wm.Default_Window_Manager
+   -- FUNCTION
+   -- Default window manager
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Default_Window_Manager: constant Window_Manager_Types := X_11;
+   -- ****
 
+   -- ****t* Wm/Wm.Alpha_Type
+   -- FUNCTION
+   -- Type used to set alpha value for the selected Tk widget. Values below
+   -- 0.0 are interpreted as empty value. 0.0 means full transparency.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Alpha_Type is digits 2 range -1.0 .. 1.0 with
       Default_Value => 1.0;
+      -- ****
 
+      -- ****d* Wm/Wm.Default_Alpha
+      -- FUNCTION
+      -- Default alpha value for Tk widget (not transparent)
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
    Default_Alpha: constant Alpha_Type := 1.0;
+   -- ****
 
    type Window_Types is
      (DESKTOP, DOCK, TOOLBAR, MENU, UTILITY, SPLASH, DIALOG, DROPDOWN_MENU,
