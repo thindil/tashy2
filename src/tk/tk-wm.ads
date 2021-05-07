@@ -187,23 +187,60 @@ package Tk.Wm is
      Window_Geometry'(others => 0);
      -- ****
 
+     -- ****s* Wm/Wm.Window_Grid_Geometry
+     -- FUNCTION
+     -- Data structure used in setting the Tk widget grid geometry
+     -- PARAMETERS
+     -- Base_Width  - Number of grid units corresponding to the Tk widget
+     --               width in pixels
+     -- Base_Height - Number of grid units corresponding to the Tk widget
+     --               height in pixels
+     -- Width_Inc   - Number of pixels in one width grid unit
+     -- Height_Inc  - Number of pixels in one height grid unit
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SOURCE
    type Window_Grid_Geometry is record
       Base_Width: Natural;
       Base_Height: Natural;
       Width_Inc: Natural;
       Height_Inc: Natural;
    end record;
+   -- ****
 
+   -- ****d* Tk.Wm/Empty_Window_Grid_Geometry
+   -- FUNCTION
+   -- Empty values for Tk widget grid geometry
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Empty_Window_Grid_Geometry: constant Window_Grid_Geometry :=
      Window_Grid_Geometry'(others => 0);
+     -- ****
 
+     -- ****s* Wm/Wm.Window_Position
+     -- FUNCTION
+     -- Data structure used to set position of Tk widget icon
+     -- X - The X coordinate of the icon
+     -- Y - The Y coordinate of the icon
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SOURCE
    type Window_Position is record
       X: Natural;
       Y: Natural;
    end record;
+   -- ****
 
+   -- ****d* Wm/Wm.Empty_Window_Position
+   -- FUNCTION
+   -- Empty values for position of Tk widget icon
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Empty_Window_Position: constant Window_Position :=
-     Window_Position'(others => <>);
+     Window_Position'(others => 0);
+     -- ****
 
    type Aspect_Data is record
       Min_Numer: Natural;
