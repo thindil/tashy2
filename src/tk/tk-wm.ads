@@ -63,13 +63,51 @@ package Tk.Wm is
    Default_Alpha: constant Alpha_Type := 1.0;
    -- ****
 
+   -- ****t* Wm/Wm.Window_Types
+   -- FUNCTION
+   -- Available types of widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Window_Types is
      (DESKTOP, DOCK, TOOLBAR, MENU, UTILITY, SPLASH, DIALOG, DROPDOWN_MENU,
       POPUP_MENU, TOOLTIP, NOTIFICATION, COMBO, DND, NORMAL, NONE) with
       Default_Value => NONE;
+      -- ****
 
+      -- ****d* Wm/Wm.Default_Window_Type
+      -- FUNCTION
+      -- Default type of Tk widget (no type)
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
    Default_Window_Type: constant Window_Types := NONE;
+   -- ****
 
+   -- ****s* Wm/Wm.Window_Attributes_Data
+   -- FUNCTION
+   -- Data structure used to set or get Tk widget attributes. Depends on
+   -- currently used window manager.
+   -- PARAMETERS
+   -- Alpha             - Alpha transparency value for the selected Tk widget
+   --                     from 0.0 (full transparent) to 1.0 (opaque). Any
+   --                     value below 0.0 will be ignored
+   -- Full_Screen       - The widget takes the whole screen
+   -- Topmost           - The widget is displayed above all other windows
+   -- Window_Type       - The type of widget (X11 only)
+   -- Zoomed            - The widget is maximized (X11 only)
+   -- Disabled          - The widget is in the disabled state (Windows only)
+   -- Tool_Window       - The widget is tool window (Windows only)
+   -- Transparent_Color - The color used for the widget transparency (Windows
+   --                     only)
+   -- Modified          - The widget is in the modified state (Mac OS X only)
+   -- Notify            - The widget notification state (Mac OS X only)
+   -- Title_Path        - The path to the widget proxy icon (Mac OS X only)
+   -- Transparent       - Makes the widget content are transparent (Mac OS X
+   --                     only)
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Window_Attributes_Data
      (Wm_Type: Window_Manager_Types := Default_Window_Manager) is record
       Alpha: Alpha_Type;
@@ -90,8 +128,16 @@ package Tk.Wm is
             Transparent: Extended_Boolean;
       end case;
    end record;
+   -- ****
 
+   -- ****d* Wm/Wm.Empty_Window_Attributes
+   -- FUNCTION
+   -- Empty attributes for Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Empty_Window_Attributes: constant Window_Attributes_Data := (others => <>);
+   -- ****
 
    type Focus_Model_Types is (ACTIVE, PASSIVE);
 
