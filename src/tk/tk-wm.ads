@@ -295,24 +295,72 @@ package Tk.Wm is
    -- ****d* Wm/Wm.Empty_Window_Size
    -- FUNCTION
    -- Empty values for the Tk widget size
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    Empty_Window_Size: constant Window_Size := (others => 0);
    -- ****
 
+   -- ****t* Wm/Wm.Position_From_Value
+   -- FUNCTION
+   -- Type used to set source of position and size.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Position_From_Value is (USER, PROGRAM);
+   -- ****
 
+   -- ****d* Wm/Wm.Default_Position_From
+   -- FUNCTION
+   -- Default value for Position_From type
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Default_Position_From: constant Position_From_Value := PROGRAM;
+   -- ****
 
+   -- ****s* Wm/Wm.Resizable_Data
+   -- FUNCTION
+   -- Data structure used to manipulate the Tk widget resizability by the user
+   -- PARAMETERS
+   -- Width  - The Tk widget is resizable horizontaly
+   -- Height - The Tk widget is resizable vertically
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Resizable_Data is record
       Width: Boolean;
       Height: Boolean;
    end record;
+   -- ****
 
+   -- ****d* Wm/Wm.Default_Resizable_Data
+   -- FUNCTION
+   -- Default value for Tk widget resizability
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Default_Resizable_Data: constant Resizable_Data := (others => True);
+   -- ****
 
+   -- ****t* Tk.Wm/Window_States
+   -- FUNCTION
+   -- Types of the Tk widget states. ZOOMED is avaliable only on Window and
+   -- Mac OS X
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Window_States is (NORMAL, ICONIC, WITHDRAWN, ICON, ZOOMED);
+   -- ****
 
+   -- ****d* Wm/Wm.Default_Window_State
+   -- FUNCTION
+   -- The default state for the Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Default_Window_State: constant Window_States := NORMAL;
+   -- ****
 
    procedure Aspect
      (Window: Tk_Toplevel;
