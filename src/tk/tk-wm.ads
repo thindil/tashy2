@@ -524,17 +524,66 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Client", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Client_(procedure)
+      -- FUNCTION
+      -- Set the value of Window property WM_CLIENT_MACHINE
+      -- PARAMETERS
+      -- Window - Tk_Widget which the property will be set
+      -- Name   - The host on which the application is executing
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the property for the Tk main window to Localhost
+      -- Client(Get_Main_Window, To_Tcl_String("Localhost"));
+      -- SEE ALSO
+      -- Wm.Client_(function)
+      -- SOURCE
    procedure Client(Window: Tk_Widget; Name: Tcl_String) with
       Pre => Window /= Null_Widget and Length(Source => Name) > 0,
       Test_Case => (Name => "Test_Wm_Client2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Color_Map_Windows_(function)
+      -- FUNCTION
+      -- Get the list of Tk widgets which have different color maps than their
+      -- parents (property WM_COLORMAP_WINDOWS)
+      -- PARAMETERS
+      -- Window - Tk_Widget which the list of the Tk widgets will be get
+      -- RESULT
+      -- Array_List with the names of Tk widgets which have different color
+      -- maps than their parents
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the list of widgets for the Tk main window
+      -- Different_Colors: constant Array_List := Color_Map_Windows(Get_Main_Window);
+      -- SEE ALSO
+      -- Color_Map_Windows_(procedure)
+      -- SOURCE
    function Color_Map_Windows(Window: Tk_Widget) return Array_List with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Color_Map_Windows_(procedure)
+      -- FUNCTION
+      -- Set the list of Tk widgets which have different color maps than their
+      -- parents (property WM_COLORMAP_WINDOWS)
+      -- PARAMETERS
+      -- Window  - Tk_Widget which the list of the Tk widgets will be set
+      -- Widgets - The list of Tk widgets to set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the list of widgets to My_Label and My_Button for the Tk main window
+      -- Color_Map_Windows(Get_Main_Window, (MyLabel, My_Button));
+      -- SEE ALSO
+      -- Color_Map_Windows_(function)
+      -- SOURCE
    procedure Color_Map_Windows(Window: Tk_Widget; Widgets: Widgets_Array) with
       Pre => Window /= Null_Widget and Widgets /= Empty_Widgets_Array,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows2", Mode => Nominal);
+      -- ****
 
    function Command(Window: Tk_Widget) return Tcl_String is
      (To_Tcl_String
