@@ -433,11 +433,42 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Get_Attributes", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Set_Attributes
+      -- FUNCTION
+      -- Set the platform dependent attributes for the selected Tk widget
+      -- PARAMETERS
+      -- Window          - Tk_Widget which parameters will be set
+      -- Attributes_Data - The parameters to set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the Tk main window on Linux as full screen window
+      -- Set_Attributes(Get_Main_Window, (Full_Screen => True, others => <>));
+      -- SEE ALSO
+      -- Wm.Get_Attributes
+      -- SOURCE
    procedure Set_Attributes
      (Window: Tk_Widget; Attributes_Data: Window_Attributes_Data) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Set_Attributes", Mode => Nominal);
+      -- ****
 
+      -- ****f* Tk.Wm/Get_Attribute
+      -- FUNCTION
+      -- Get the selected attribute as a selected type of the selected Tk_Widget.
+      -- It is mostly used in Wm.Get_Attributes and Wm.Set_Attributes
+      -- subprograms, which generally should be prefered to manipulate widgets
+      -- attributes.
+      -- Window - The Tk_Widget which attribute will be get
+      -- Name   - The name of the attribute to get
+      -- RESULT
+      -- The value of the selected attribute of the selected Tk_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the transparent color on Windows for the main Tk window
+      -- Transparent_Color: constant Tcl_String := Get_Attribute(Get_Main_Window, "transparentcolor");
+      -- SOURCE
    function Get_Attribute(Window: Tk_Widget; Name: String) return Tcl_String is
      (To_Tcl_String
         (Source =>
@@ -447,12 +478,10 @@ package Tk.Wm is
               Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute", Mode => Nominal);
-
    function Get_Attribute
      (Window: Tk_Widget; Name: String) return Extended_Boolean with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute2", Mode => Nominal);
-
    function Get_Attribute(Window: Tk_Widget; Name: String) return Alpha_Type is
      (Alpha_Type'Value
         (Tcl_Eval
@@ -461,7 +490,6 @@ package Tk.Wm is
             Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute3", Mode => Nominal);
-
    function Get_Attribute
      (Window: Tk_Widget; Name: String) return Window_Types is
      (Window_Types'Value
@@ -471,13 +499,30 @@ package Tk.Wm is
             Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute4", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Client_(function)
+      -- FUNCTION
+      -- Get the value of Window property WM_CLIENT_MACHINE
+      -- PARAMETERS
+      -- Window - Tk_Widget which the property will be get
+      -- RESULT
+      -- String with value of the property
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the property for the Tk main window
+      -- Client_Machine: constant String := Client(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Client_(procecdure)
+      -- SOURCE
    function Client(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm client " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Client", Mode => Nominal);
+      -- ****
 
    procedure Client(Window: Tk_Widget; Name: Tcl_String) with
       Pre => Window /= Null_Widget and Length(Source => Name) > 0,
