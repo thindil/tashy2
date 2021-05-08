@@ -362,20 +362,76 @@ package Tk.Wm is
    Default_Window_State: constant Window_States := NORMAL;
    -- ****
 
+   -- ****f* Wm/Wm.Aspect_(procedure)
+   -- FUNCTION
+   -- Set the aspect ratio for the selected Tk_Toplevel widget
+   -- PARAMETERS
+   -- Window    - Tk_Toplevel which aspect ratio will be set
+   -- Min_Numer - The minimum number for width/height for couting aspect
+   --             ratios of Tk_Toplevel
+   -- Min_Denom - The minumum denom for width/height for couting aspect
+   --             ratios of Tk_Toplevel
+   -- Max_Numer - The maximum number for width/height for couting aspect
+   --             ratios of Tk_Toplevel
+   -- Max_Denom - The maximum denom for width/height for couting aspect
+   --             ratios of Tk_Toplevel
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Set the aspect ratio for the main Tk window to 10 10 20 20
+   -- Aspect(Get_Main_Window, 10, 10, 20, 20);
+   -- SEE ALSO
+   -- Wm.Aspect_(function)
+   -- SOURCE
    procedure Aspect
      (Window: Tk_Toplevel;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Aspect", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Aspect_(function)
+      -- FUNCTION
+      -- Get the aspect ratio for the selected Tk_Toplevel widget
+      -- PARAMETERS
+      -- Window - Tk_Toplevel which aspect ratio will be get
+      -- RESULT
+      -- Aspect_Data record with current aspect ratio for the selected
+      -- Tk_Toplevel
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the aspect ratio for the main Tk window
+      -- Aspect_Ratio: constant Aspect_Data := Aspect(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Aspect_(procedure)
+      -- SOURCE
    function Aspect(Window: Tk_Toplevel) return Aspect_Data with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Aspect2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Get_Attributes
+      -- FUNCTION
+      -- Get the platform dependent attributes for the selected Tk widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which parameters will be get
+      -- RESULT
+      -- Window_Attributes_Data record with platform dependent attributes of
+      -- the selected Tk_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the attributes of main Tk window on Linux
+      -- Window_Attributes: constant Window_Attributes_Data(X_11) := Get_Attributes(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Set_Attributes
+      -- SOURCE
    function Get_Attributes
      (Window: Tk_Widget) return Window_Attributes_Data with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Get_Attributes", Mode => Nominal);
+      -- ****
 
    procedure Set_Attributes
      (Window: Tk_Widget; Attributes_Data: Window_Attributes_Data) with
