@@ -585,6 +585,21 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Color_Map_Windows2", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Command_(function)
+      -- FUNCTION
+      -- Get the value of the Tk_Widget property WM_COMMAND
+      -- PARAMETERS
+      -- Window - Tk_Widget which the property will be get
+      -- RESULT
+      -- Tcl_String with the value of the property for the selected Tk_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the property for the Tk main window
+      -- Wm_Command: constant Tcl_String := Command(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Command_(procedure)
+      -- SOURCE
    function Command(Window: Tk_Widget) return Tcl_String is
      (To_Tcl_String
         (Source =>
@@ -593,14 +608,45 @@ package Tk.Wm is
               Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Command", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Command
+      -- FUNCTION
+      -- Set the value of the Tk_Widget property WM_COMMAND
+      -- PARAMETERS
+      -- Window     - Tk_Widget which the property will be set
+      -- Wm_Command - The command which will be set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the property for the Tk main window
+      -- Command(Get_Main_Window, To_Tcl_String("puts hello"));
+      -- SEE ALSO
+      -- Wm.Command_(function)
+      -- SOURCE
    procedure Command(Window: Tk_Widget; Wm_Command: Tcl_String) with
       Pre => Window /= Null_Widget and Length(Source => Wm_Command) > 0,
       Test_Case => (Name => "Test_Wm_Command2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Deiconify
+      -- FUNCTION
+      -- Arrange the selected Tk_Widget to be displayed in normal
+      -- (non-iconified) form.
+      -- PARAMETERS
+      -- Window - Tk_Widget to deiconify
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Deicoinify the main Tk window
+      -- Deiconify(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Iconify
+      -- SOURCE
    procedure Deiconify(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Deiconify", Mode => Nominal);
+      -- ****
 
    function Focus_Model(Window: Tk_Widget) return Focus_Model_Types with
       Pre => Window /= Null_Widget,
