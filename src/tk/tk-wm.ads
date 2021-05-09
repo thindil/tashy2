@@ -704,18 +704,70 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Forget", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Frame
+      -- FUNCTION
+      -- Get the parent frame for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which parent frame will be get
+      -- RESULT
+      -- If Window was reparented to the other frame by windows manager,
+      -- returns that frame Tk_Window identifier. Otherwise return the
+      -- Window Tk_Window identifier
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the parent frame for Tk main window
+      -- Parent_Frame: constant Tk_Window := Frame(Get_Main_Window);
+      -- SOURCE
    function Frame(Window: Tk_Widget) return Tk_Window with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Frame", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Geometry_(function)
+      -- FUNCTION
+      -- Get the current geometry of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which geometry will be get
+      -- RESULT
+      -- Window_Geometry record with the current geometry of the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the geometry of the Tk main window
+      -- Widget_Geometry: constant Window_Geometry := Geometry(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Geometry_(procedure)
+      -- SOURCE
    function Geometry(Window: Tk_Widget) return Window_Geometry with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Geometry", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Geometry_(procedure)
+      -- FUNCTION
+      -- Set the new geometry for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which geometry will be set
+      -- Width  - The new width for the Window. Must be set with Height together.
+      -- Height - The new height for the Window Must be set with Width together.
+      -- X      - The new X coordinate for top left corner of the Window. Must
+      --          be set with Y together.
+      -- Y      - The new X coordinate for top left corner of the Window. Must
+      --          be set with Y together.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the main Tk window geometry to 800x600 and at top left corner of the screen
+      -- Geometry(Get_Main_Window, 800, 600, 0, 0);
+      -- SEE ALSO
+      -- Wm.Geometry_(function)
+      -- SOURCE
    procedure Geometry
      (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Geometry2", Mode => Nominal);
+      -- ****
 
    function Grid(Window: Tk_Widget) return Window_Grid_Geometry with
       Pre => Window /= Null_Widget,
