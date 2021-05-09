@@ -769,22 +769,78 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Geometry2", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Grid_(function)
+      -- FUNCTION
+      -- Get the current setting of the selected Tk_Widget as gridded window
+      -- PARAMTERS
+      -- Window -  Tk_Widget which grid setting will be get
+      -- RESULT
+      -- Window_Grid_Geometry record with current setting of Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the setting for the Tk main window
+      -- Grid_Setting: constant Window_Grid_Geometry := Grid(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Grid_(procedure)
+      -- SOURCE
    function Grid(Window: Tk_Widget) return Window_Grid_Geometry with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Grid", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Grid_(procedure)
+      -- FUNCTION
+      -- Set the selected Tk_Widget as a gridded window or change it gridded
+      -- setting
+      -- PARAMETERS
+      -- Window      - Tk_Widget which will be set as gridded window
+      -- Base_Width  - The amount of grid units corresponding to the pixels
+      --               width dimension
+      -- Base_Height - The amount of grid units corresponding to the pixels
+      --               height dimension
+      -- Width_Inc   - The amount of pixels in horizontal grid unit
+      -- Height_Inc  - The amount of pixels in vertical grid unit
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the Tk main window as gridded window with base values 10, 10 and amount of pixels to 5, 5
+      -- Grid(Get_Main_Window, 10, 10, 5, 5);
+      -- SEE ALSO
+      -- Wm.Grid_(function)
+      -- SOURCE
    procedure Grid
      (Window: Tk_Widget;
       Base_Width, Base_Height, Width_Inc, Height_Inc: Positive) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Grid2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Group_(function)
+      -- FUNCTION
+      -- Get the path name of the leader window in the group of windows to
+      -- which the selected Tk_Widget belongs
+      -- PARAMETERS
+      -- Window - Tk_Widget which leader's group windows name will be get
+      -- RESULT
+      -- The Tk path name of the leader window of the group windows to
+      -- which the Window belongs or empty string if Window isn't in a group
+      -- of windows.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of the leader window for Tk main window
+      -- Leader_Path: constant String := Group(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Group_(procedure)
+      -- SOURCE
    function Group(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm group " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Group", Mode => Nominal);
+      -- ****
 
    procedure Group(Window: Tk_Widget; Path_Name: Tcl_String) with
       Pre => Window /= Null_Widget,
