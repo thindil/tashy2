@@ -648,17 +648,61 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Deiconify", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Focus_Model_(function)
+      -- FUNCTION
+      -- Get the focus model for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which focus model will be get
+      -- RESULT
+      -- The current focus model of the selected Tk_Widget.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the focus model for the Tk main window
+      -- Focus: constant Focus_Model_Types := Focus_Model(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Focus_Model_(procedure)
+      -- SOURCE
    function Focus_Model(Window: Tk_Widget) return Focus_Model_Types with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Focus_Model", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Focus_Model_(procedure)
+      -- FUNCTION
+      -- Set the focus model for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - The Tk_Widget which the focus model will be set
+      -- Model  - The new value for the focus model
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the focus model of the Tk main window to ACTIVE
+      -- Focus_Model(Get_Main_Window, ACTIVE);
+      -- SEE ALSO
+      -- Wm.Focus_Model_(function)
+      -- SOURCE
    procedure Focus_Model(Window: Tk_Widget; Model: Focus_Model_Types) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Focus_Model2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Forget
+      -- FUNCTION
+      -- Unmap the selected Tk_Widget from the screen. It will be no longer
+      -- managed by the windows manager
+      -- PARAMETERS
+      -- Window - Tk_Widget to forget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Unmap the main Tk window
+      -- Forget(Get_Main_Window);
+      -- SOURCE
    procedure Forget(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Forget", Mode => Nominal);
+      -- ****
 
    function Frame(Window: Tk_Widget) return Tk_Window with
       Pre => Window /= Null_Widget,
