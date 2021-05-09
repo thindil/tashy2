@@ -906,27 +906,90 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Icon_Bitmap2", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Iconify
+      -- FUNCTION
+      -- Iconify the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which will be iconified
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Iconify Tk main window
+      -- Iconify(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Deiconify
+      -- SOURCE
    procedure Iconify(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Iconify", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Icon_Mask_(function)
+      -- FUNCTION
+      -- Get the name of bitmap used as mask for the selected Tk_Widget icon
+      -- PARAMETERS
+      -- Window - Tk_Widget which bitmap mask will be taken
+      -- RESULT
+      -- String with name of the current bitmap used a mask for the Window
+      -- icon
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the mask for the Tk main window
+      -- Mask_Name: constant String := Icon_Mask(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Icon_Mask_(procedure)
+      -- SOURCE
    function Icon_Mask(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm iconmask " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Mask", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Icon_Mask_(procedure)
+      -- FUNCTION
+      -- Set the selected bitmap as a mask for the selected Tk_Widget icon
+      -- PARAMETERS
+      -- Window - Tk_Widget which bitmap mask will be set
+      -- Bitmap - The name of bitmap to set as the mask
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the warning bitmap as mask for the Tk main window
+      -- Icon_Mask(Get_Main_Window, To_Tcl_String("warning"));
+      -- SEE ALSO
+      -- Wm.Icon_Mask_(function)
+      -- SOURCE
    procedure Icon_Mask(Window: Tk_Widget; Bitmap: Tcl_String) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Mask2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Icon_Name_(function)
+      -- FUNCTION
+      -- Get the name of the icon of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which icon's name will be get
+      -- RESULT
+      -- String with the name of the icon of the Window or empty String if
+      -- the Window doesn't have set any icon.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of icon for the Tk main window
+      -- Name_Of_Icon: constant String := Icon_Name(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Icon_Name_(procedure)
+      -- SOURCE
    function Icon_Name(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm iconname " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Name", Mode => Nominal);
+      -- ****
 
    procedure Icon_Name(Window: Tk_Widget; New_Name: Tcl_String) with
       Pre => Window /= Null_Widget,
