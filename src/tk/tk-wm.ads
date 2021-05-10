@@ -1128,13 +1128,45 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Manage", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Max_Size_(function)
+      -- FUNCTION
+      -- Get the maximum allowed size for the selected Tk_Widget. For gridded
+      -- windows it will be in grid unit, for others in pixels
+      -- PARAMETERS
+      -- Window - Tk_Widget which maximum allowed size will be get
+      -- RESULT
+      -- Window_Size record with information about maximum allowed size for
+      -- the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the maximum allowed size of Tk main window
+      -- Allowed_Size: constant Window_Size := Max_Size(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Max_Size_(procedure)
+      -- SOURCE
    function Max_Size(Window: Tk_Widget) return Window_Size with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Max_Size", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Max_Size_(procedure)
+      -- FUNCTION
+      -- Set the maximum allowed size for the selected Tk_Widget. For gridded
+      -- windows it will be in grid unit, for others in pixels
+      -- PARAMETERS
+      -- Window   - Tk_Widget which maximum allowed size will be set
+      -- New_Size - The new maximum size for the selected Tk_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the maximum allowed size of Tk main window to 100, 120
+      -- Max_Size(Get_Main_Window, Window_Size'(Width => 100, Height => 120));
+      -- SOURCE
    procedure Max_Size(Window: Tk_Widget; New_Size: Window_Size) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Max_Size2", Mode => Nominal);
+      -- ****
 
    function Min_Size(Window: Tk_Widget) return Window_Size with
       Pre => Window /= Null_Widget,
