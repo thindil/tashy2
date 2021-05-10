@@ -1155,15 +1155,16 @@ package Tk.Wm is
       -- Set the maximum allowed size for the selected Tk_Widget. For gridded
       -- windows it will be in grid unit, for others in pixels
       -- PARAMETERS
-      -- Window   - Tk_Widget which maximum allowed size will be set
-      -- New_Size - The new maximum size for the selected Tk_Widget
+      -- Window - Tk_Widget which maximum allowed size will be set
+      -- Width  - The new maximum width for the selected Tk_Widget
+      -- Height - The new maximum height for the selected Tk_Widget
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the maximum allowed size of Tk main window to 100, 120
-      -- Max_Size(Get_Main_Window, Window_Size'(Width => 100, Height => 120));
+      -- Max_Size(Get_Main_Window, 100, 120);
       -- SOURCE
-   procedure Max_Size(Window: Tk_Widget; New_Size: Window_Size) with
+   procedure Max_Size(Window: Tk_Widget; Width, Height: Positive) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Max_Size2", Mode => Nominal);
       -- ****
