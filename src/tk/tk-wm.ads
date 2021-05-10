@@ -1070,17 +1070,63 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Icon_Position2", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Icon_Window_(function)
+      -- FUNCTION
+      -- Get the Tk_Toplevel which is set as the current icon window for the
+      -- selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which icon window will be get
+      -- RESULT
+      -- Tk_Toplevel widget which is icon window of Window or Null_Widget if
+      -- is not set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the icon window for the Tk main window
+      -- Icon: constant Tk_Toplevel := Icon_Window(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Icon_Window_(procedure)
+      -- SOURCE
    function Icon_Window(Window: Tk_Widget) return Tk_Toplevel with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Window", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Icon_Window_(procedure)
+      -- FUNCTION
+      -- Set the Tk_Toplevel as the current icon window for the selected
+      -- Tk_Widget
+      -- PARAMETERS
+      -- Window          - Tk_Widget which icon window will be set
+      -- New_Icon_Window - Tk_Toplevel which will be set as new icon window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set My_Icon_Window as the icon window for the Tk main window
+      -- Icon_Window(Get_Main_Window, My_Icon_Window);
+      -- SEE ALSO
+      -- Wm.Icon_Window_(function)
+      -- SOURCE
    procedure Icon_Window(Window, New_Icon_Window: Tk_Toplevel) with
       Pre => Window /= Null_Widget and New_Icon_Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Window2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Manage
+      -- FUNCTION
+      -- Made the selected Tk_Widget as stand alone toplevel window
+      -- PARAMETERS
+      -- Window - Tk_Widget which will become a stand alone toplevel window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set My_Dialog Tk_Frame as stand alone window
+      -- Manage(My_Dialog);
+      -- SOURCE
    procedure Manage(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Manage", Mode => Nominal);
+      -- ****
 
    function Max_Size(Window: Tk_Widget) return Window_Size with
       Pre => Window /= Null_Widget,
