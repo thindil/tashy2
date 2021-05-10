@@ -2298,7 +2298,7 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Max_Size(Get_Main_Window, (100, 100));
+      Max_Size(Get_Main_Window, 100, 100);
       Assert
         (Max_Size(Get_Main_Window).Width = 100,
          "Failed to get max size of Tk main window.");
@@ -2308,8 +2308,8 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Max_Size_d91852_efa6b3
-     (Window: Tk_Widget; New_Size: Window_Size) is
+   procedure Wrap_Test_Max_Size_cc0b42_efa6b3
+     (Window: Tk_Widget; Width, Height: Positive) is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -2320,7 +2320,8 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Max_Size2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Max_Size(Window, New_Size);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Max_Size
+        (Window, Width, Height);
       begin
          pragma Assert(True);
          null;
@@ -2330,17 +2331,17 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Max_Size2 test commitment violated");
       end;
-   end Wrap_Test_Max_Size_d91852_efa6b3;
+   end Wrap_Test_Max_Size_cc0b42_efa6b3;
 --  end read only
 
 --  begin read only
    procedure Test_2_Max_Size_test_wm_max_size2(Gnattest_T: in out Test);
-   procedure Test_Max_Size_d91852_efa6b3(Gnattest_T: in out Test) renames
+   procedure Test_Max_Size_cc0b42_efa6b3(Gnattest_T: in out Test) renames
      Test_2_Max_Size_test_wm_max_size2;
---  id:2.2/d91852a86705cae9/Max_Size/0/0/test_wm_max_size2/
+--  id:2.2/cc0b4264bb7f0310/Max_Size/0/0/test_wm_max_size2/
    procedure Test_2_Max_Size_test_wm_max_size2(Gnattest_T: in out Test) is
-      procedure Max_Size(Window: Tk_Widget; New_Size: Window_Size) renames
-        Wrap_Test_Max_Size_d91852_efa6b3;
+      procedure Max_Size(Window: Tk_Widget; Width, Height: Positive) renames
+        Wrap_Test_Max_Size_cc0b42_efa6b3;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2351,7 +2352,7 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Max_Size(Get_Main_Window, (200, 201));
+      Max_Size(Get_Main_Window, 200, 201);
       Assert
         (Max_Size(Get_Main_Window).Height = 201,
          "Failed to set max size of Tk main window.");
