@@ -991,22 +991,84 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Icon_Name", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Icon_Name
+      -- FUNCTION
+      -- Get the name of the icon of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window   - Tk_Widget which icon's name will be set
+      -- New_Name - The name of the icon which will be set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the name of icon for the Tk main window to myicon
+      -- Icon_Name(Get_Main_Window, To_Tcl_String("myicon"));
+      -- SEE ALSO
+      -- Wm.Icon_Name_(function)
+      -- SOURCE
    procedure Icon_Name(Window: Tk_Widget; New_Name: Tcl_String) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Name2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Icon_Photo
+      -- FUNCTION
+      -- Set the titlebar icons for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window  - Tk_Widget which titlebar icons will be set
+      -- Images  - The array of the Tk icons which will be set
+      -- Default - If True, use the selected Images as icons also for future
+      --           toplevel widgets. Can be empty. Default value is False.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set titlebar icons for the Tk main window to myicon and mybigicon
+      -- Icon_Photo(Get_Main_Window, (To_Tcl_String("myicon"), To_Tcl_String("mybigicon")));
+      -- SOURCE
    procedure Icon_Photo
      (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) with
       Pre => Window /= Null_Widget and Images'Length > 0,
       Test_Case => (Name => "Test_Wm_Icon_Photo", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Icon_Position_(function)
+      -- FUNCTION
+      -- Get the position of the icon for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which icon's position will be get
+      -- RESULT
+      -- Window_Position record with the current position of the Window's icon
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the position of the Tk main window icon
+      -- Position: constant Window_Position := Icon_Position(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Icon_Position_(procedure)
+      -- SOURCE
    function Icon_Position(Window: Tk_Widget) return Window_Position with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Position", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Icon_Position_(procedure)
+      -- FUNCTION
+      -- Set the position of the icon for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which icon's position will be set
+      -- X      - New X coordinate of the Window icon
+      -- Y      - New Y coordinate of the Window icon
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the position of the Tk main window icon to pixel coordinates 20, 20
+      -- Icon_Position(Get_Main_Window, 20, 20);
+      -- SEE ALSO
+      -- Wm.Icon_Position_(function)
+      -- SOURCE
    procedure Icon_Position(Window: Tk_Widget; X, Y: Extended_Natural) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Position2", Mode => Nominal);
+      -- ****
 
    function Icon_Window(Window: Tk_Widget) return Tk_Toplevel with
       Pre => Window /= Null_Widget,
