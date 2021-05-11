@@ -1209,7 +1209,7 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Min_Size_(function)
       -- SOURCE
-   procedure Min_Size(Window: Tk_Widget; New_Size: Window_Size) with
+   procedure Min_Size(Window: Tk_Widget; Width, Height: Positive) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Min_Size2", Mode => Nominal);
       -- ****

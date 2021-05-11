@@ -597,12 +597,12 @@ package body Tk.Wm is
       end return;
    end Min_Size;
 
-   procedure Min_Size(Window: Tk_Widget; New_Size: Window_Size) is
+   procedure Min_Size(Window: Tk_Widget; Width, Height: Positive) is
    begin
       Tcl_Eval
         (Tcl_Script =>
            "wm minsize " & Tk_Path_Name(Widgt => Window) &
-           Natural'Image(New_Size.Width) & Natural'Image(New_Size.Height),
+           Positive'Image(Width) & Positive'Image(Height),
          Interpreter => Tk_Interp(Widgt => Window));
    end Min_Size;
 
