@@ -1163,19 +1163,56 @@ package Tk.Wm is
       -- EXAMPLE
       -- -- Set the maximum allowed size of Tk main window to 100, 120
       -- Max_Size(Get_Main_Window, 100, 120);
+      -- SEE ALSO
+      -- Wm.Max_Size_(function)
       -- SOURCE
    procedure Max_Size(Window: Tk_Widget; Width, Height: Positive) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Max_Size2", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Min_Size_(function)
+      -- FUNCTION
+      -- Get the minumum allowed size for the selected Tk_Widget. For gridded
+      -- windows it will be in grid unit, for others in pixels
+      -- PARAMETERS
+      -- Window - Tk_Widget which minimum allowed size will be get
+      -- RESULT
+      -- Window_Size record with information about minimum allowed size for
+      -- the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the minimum allowed size of Tk main window
+      -- Minimum_Size: constant Window_Size := Min_Size(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Min_Size_(procedure)
+      -- SOURCE
    function Min_Size(Window: Tk_Widget) return Window_Size with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Min_Size", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Min_Size_(procedure)
+      -- FUNCTION
+      -- Set the minimum allowed size for the selected Tk_Widget. For gridded
+      -- windows it will be in grid unit, for others in pixels
+      -- PARAMETERS
+      -- Window - Tk_Widget which minimum allowed size will be set
+      -- Width  - The new minimum width for the selected Tk_Widget
+      -- Height - The new minimum height for the selected Tk_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the minimum allowed size of Tk main window to 200, 240
+      -- Min_Size(Get_Main_Window, 200, 240);
+      -- SEE ALSO
+      -- Wm.Min_Size_(function)
+      -- SOURCE
    procedure Min_Size(Window: Tk_Widget; New_Size: Window_Size) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Min_Size2", Mode => Nominal);
+      -- ****
 
    function Override_Redirect(Window: Tk_Widget) return Boolean with
       Pre => Window /= Null_Widget,
