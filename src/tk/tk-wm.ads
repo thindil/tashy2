@@ -1274,19 +1274,75 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Position_From", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Position_From_(procedure)
+      -- FUNCTION
+      -- Get the information who requested the current position for the
+      -- selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which position requester will be set
+      -- Who    - The new requester for the current Window's position. Can be
+      --          PROGRAM or USER
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the requester for the position of Tk main window to requested by the user
+      -- Position_From(Get_Main_Window, USER);
+      -- SEE ALSO
+      -- Wm.Position_From_(function)
+      -- SOURCE
    procedure Position_From
      (Window: Tk_Widget;
       Who: Position_From_Value := Default_Position_From) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Position_From2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Protocol_(function_all)
+      -- FUNCTION
+      -- Get the list of all specified window manager protocols for the
+      -- selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which specified window manager protocols will
+      --          be get
+      -- RESULT
+      -- Array_List with all specified window manager protocols. If nothing
+      -- was specified, return empty list.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the protocols for the Tk main window
+      -- Protocols: constant Array_List := Protocol(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Protocol_(function_selected), Wm.Protocol_(procedure)
+      -- SOURCE
    function Protocol(Window: Tk_Widget) return Array_List with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Protocol", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Protocol_(function_selected)
+      -- FUNCTION
+      -- Get the value of the specified window manager protocol for the
+      -- selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which specified window manager protocol will
+      --          be get
+      -- Name   - The name of the window manager protocol value to get
+      -- RESULT
+      -- String with the value of specified window manager protocol. If it
+      -- wasn't specified, return empty string.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the value of WM_DELETE_WINDOW for the Tk main window
+      -- Value: constant String := Protocol(Get_Main_Window, "WM_DELETE_WINDOW");
+      -- SEE ALSO
+      -- Wm.Protocol_(function_all), Wm.Protocol_(procedure)
+      -- SOURCE
    function Protocol(Window: Tk_Widget; Name: String) return String with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Protocol2", Mode => Nominal);
+      -- ****
 
    procedure Protocol
      (Window: Tk_Widget; Name: String; New_Command: Tcl_String) with
