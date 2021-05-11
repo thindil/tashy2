@@ -1214,17 +1214,65 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Min_Size2", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Override_Redirect_(function)
+      -- FUNCTION
+      -- Get the value of flag overrideredirect for the selected Tk_Widget.
+      -- PARAMETERS
+      -- Window - Tk_Widget which value of flag will be taken
+      -- RESULT
+      -- True if the Window is ignored by the window manager, otherwise False.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the flag value for the Tk main window
+      -- Is_Ignored: constant Boolean := Override_Redirect(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Override_Redirect_(procedure)
+      -- SOURCE
    function Override_Redirect(Window: Tk_Widget) return Boolean with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Override_Redirect", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Override_Redirect_(procedure)
+      -- FUNCTION
+      -- Set the value of flag overrideredirect for the selected Tk_Widget.
+      -- PARAMETERS
+      -- Window - Tk_Widget which value of flag will be set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the flag value for the Tk main window to be ignored
+      -- Override_Redirect(Get_Main_Window, True);
+      -- SEE ALSO
+      -- Wm.Override_Redirect_(function)
+      -- SOURCE
    procedure Override_Redirect(Window: Tk_Widget; Override: Boolean) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Override_Redirect", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Position_From_(function)
+      -- FUNCTION
+      -- Get the information who requested the current position for the
+      -- selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which position requester will be get
+      -- RESULT
+      -- If PROGRAM, then the current position of Window was requested by the
+      -- program, if USER then user requested the position.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the requester for the position of Tk main window
+      -- Requester: constant Position_From_Value := Position_From(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Position_From_(procedure)
+      -- SOURCE
    function Position_From(Window: Tk_Widget) return Position_From_Value with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Position_From", Mode => Nominal);
+      -- ****
 
    procedure Position_From
      (Window: Tk_Widget;
