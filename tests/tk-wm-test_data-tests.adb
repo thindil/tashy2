@@ -2410,7 +2410,7 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Min_Size(Get_Main_Window, (100, 100));
+      Min_Size(Get_Main_Window, 100, 100);
       Assert
         (Min_Size(Get_Main_Window).Width = 100,
          "Failed to get min size of Tk main window.");
@@ -2420,8 +2420,8 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Min_Size_9638c5_86115b
-     (Window: Tk_Widget; New_Size: Window_Size) is
+   procedure Wrap_Test_Min_Size_d01a4f_86115b
+     (Window: Tk_Widget; Width, Height: Positive) is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -2432,7 +2432,8 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Min_Size2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Min_Size(Window, New_Size);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Min_Size
+        (Window, Width, Height);
       begin
          pragma Assert(True);
          null;
@@ -2442,17 +2443,17 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Min_Size2 test commitment violated");
       end;
-   end Wrap_Test_Min_Size_9638c5_86115b;
+   end Wrap_Test_Min_Size_d01a4f_86115b;
 --  end read only
 
 --  begin read only
    procedure Test_2_Min_Size_test_wm_min_size2(Gnattest_T: in out Test);
-   procedure Test_Min_Size_9638c5_86115b(Gnattest_T: in out Test) renames
+   procedure Test_Min_Size_d01a4f_86115b(Gnattest_T: in out Test) renames
      Test_2_Min_Size_test_wm_min_size2;
---  id:2.2/9638c5259ce2a299/Min_Size/0/0/test_wm_min_size2/
+--  id:2.2/d01a4f9f082c83b8/Min_Size/0/0/test_wm_min_size2/
    procedure Test_2_Min_Size_test_wm_min_size2(Gnattest_T: in out Test) is
-      procedure Min_Size(Window: Tk_Widget; New_Size: Window_Size) renames
-        Wrap_Test_Min_Size_9638c5_86115b;
+      procedure Min_Size(Window: Tk_Widget; Width, Height: Positive) renames
+        Wrap_Test_Min_Size_d01a4f_86115b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2463,7 +2464,7 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Min_Size(Get_Main_Window, (200, 201));
+      Min_Size(Get_Main_Window, 200, 201);
       Assert
         (Min_Size(Get_Main_Window).Height = 201,
          "Failed to set min size of Tk main window.");
