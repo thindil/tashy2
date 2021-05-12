@@ -1344,19 +1344,73 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Protocol2", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Protocol_(procedure)
+      -- FUNCTION
+      -- Set the value of the specified window manager protocol for the
+      -- selected Tk_Widget
+      -- PARAMETERS
+      -- Window      - Tk_Widget which specified window manager protocol will
+      --               be set
+      -- Name        - The name of the window manager protocol value to set
+      -- New_Command - The new Tcl command which will be associated with the
+      --               selected window manager protocol
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the value of WM_DELETE_WINDOW to Tcl command exit for the Tk main window
+      -- Protocol(Get_Main_Window, "WM_DELETE_WINDOW", To_Tcl_String("exit"));
+      -- SEE ALSO
+      -- Wm.Protocol_(function_all), Wm.Protocol_(function_selected)
+      -- SOURCE
    procedure Protocol
      (Window: Tk_Widget; Name: String; New_Command: Tcl_String) with
       Pre => Window /= Null_Widget and Name'Length > 0 and
       Length(Source => New_Command) > 0,
       Test_Case => (Name => "Test_Wm_Protocol3", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Resizable_(function)
+      -- FUNCTION
+      -- Get the information if the selected Tk_Widget can be resized by the
+      -- user
+      -- PARAMETERS
+      -- Window - Tk_Widget which resizable ability will be get
+      -- RESULT
+      -- Resizable_Data record with information about resizable ability by
+      -- the user. If Height is True, the user can resize Window vertically,
+      -- if Width is True, the user can resize Window horizontally
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the resizable ability for the Tk main window
+      -- Is_Resizable: constant Resizable_Data := Resizable(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Resizable_(procedure)
+      -- SOURCE
    function Resizable(Window: Tk_Widget) return Resizable_Data with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Resizable", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Resizable_(procedure)
+      -- FUNCTION
+      -- Set the information if the selected Tk_Widget can be resized by the
+      -- user
+      -- PARAMETERS
+      -- Window - Tk_Widget which resizable ability will be set
+      -- Width  - If True, the user can resize Window horizontally
+      -- Height - If True, the user can resize Window vertically
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Block the resizable ability for the Tk main window
+      -- Resizable(Get_Main_Window, False, False);
+      -- SEE ALSO
+      -- Wm.Resizable_(function)
    procedure Resizable(Window: Tk_Widget; Width, Height: Boolean) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Resizable2", Mode => Nominal);
+      -- ****
 
    function Size_From(Window: Tk_Widget) return Position_From_Value with
       Pre => Window /= Null_Widget,
