@@ -1610,13 +1610,40 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Transient", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Transient_(procedure)
+      -- FUNCTION
+      -- Set the Tk_Widget for which the selected Tk_Widget as transient
+      -- PARAMETERS
+      -- Window - Tk_Widget which transient value will be set
+      -- Master - Tk_Widget which will be used as master for the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the Tk main window as transient window for the My_Menu Tk_Menu
+      -- Transient(My_Menu, Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Transient_(function)
+      -- SOURCE
    procedure Transient(Window, Master: Tk_Widget) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Transient2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Tk.Wm/Withdraw
+      -- FUNCTION
+      -- Withdraw from the screen and unmap the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which will be withdrawn
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Withdraw the Tk main window
+      -- Withdraw(Get_Main_Window);
+      -- SOURCE
    procedure Withdraw(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Withdraw", Mode => Nominal);
+      -- ****
 
    --## rule on REDUCEABLE_SCOPE
 end Tk.Wm;
