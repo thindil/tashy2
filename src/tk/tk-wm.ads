@@ -1412,19 +1412,72 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Resizable2", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Size_From_(function)
+      -- FUNCTION
+      -- Get the information who requested the current size for the selected
+      -- Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which size requester will be get
+      -- RESULT
+      -- If PROGRAM, then the current size of Window was requested by the
+      -- program, if USER then user requested the size.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the requester for the size of Tk main window
+      -- Requester: constant Position_From_Value := Size_From(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Size_From_(procedure)
+      -- SOURCE
    function Size_From(Window: Tk_Widget) return Position_From_Value with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Size_From", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Size_From_(procedure)
+      -- FUNCTION
+      -- Get the information who requested the current size for the selected
+      -- Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which size requester will be set
+      -- Who    - The new requester for the current Window's size. Can be
+      --          PROGRAM or USER
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the requester for the size of Tk main window to requested by the user
+      -- Size_From(Get_Main_Window, USER);
+      -- SEE ALSO
+      -- Wm.Size_From_(function)
+      -- SOURCE
    procedure Size_From
      (Window: Tk_Widget;
       Who: Position_From_Value := Default_Position_From) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Size_From2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Stack_Order_(selected)
+      -- FUNCTION
+      -- Get the stacking order from the lowest to highest of children of the
+      -- selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which stacking order will be get
+      -- RESULT
+      -- Widgets_Array with children widgets (including Window as the first)
+      -- in stacking order
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the stacking order of Tk main window
+      -- Stacking_Order: constant Widgets_Array := Stack_Order(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Stack_Order_(above)
+      -- SOURCE
    function Stack_Order(Window: Tk_Widget) return Widgets_Array with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Stack_Order", Mode => Nominal);
+      -- ****
 
    function Stack_Order
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
