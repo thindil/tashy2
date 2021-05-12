@@ -1550,17 +1550,65 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_State2", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Title_(function)
+      -- FUNCTION
+      -- Get the current title of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which the title will be get
+      -- RESULT
+      -- Tcl_String with the current title of the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the current title of Tk main window
+      -- Window_Title: constant Tcl_String := Title(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Title_(procedure)
+      -- SOURCE
    function Title(Window: Tk_Widget) return Tcl_String with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Title", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Title_(procedure)
+      -- FUNCTION
+      -- Set the current title of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window    - Tk_Widget which the title will be set
+      -- New_Title - The new title for the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the current title of Tk main window to "My window"
+      -- Title(Get_Main_Window, To_Tcl_String("My window"));
+      -- SEE ALSO
+      -- Wm.Title_(function)
+      -- SOURCE
    procedure Title(Window: Tk_Widget; New_Title: Tcl_String) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Title2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.Transient_(function)
+      -- FUNCTION
+      -- Get the Tk_Widget for which the selected Tk_Widget is transient
+      -- PARAMETERS
+      -- Window - Tk_Widget which transient value will be get
+      -- RESULT
+      -- Tk_Widget which is the master for the Window or Null_Widget if
+      -- Window don't have any
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the transient window for the My_Menu Tk_Menu
+      -- Master: constant Tk_Widget := Transient(My_Menu);
+      -- SEE ALSO
+      -- Wm.Transient_(procedure)
+      -- SOURCE
    function Transient(Window: Tk_Widget) return Tk_Widget with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Transient", Mode => Nominal);
+      -- ****
 
    procedure Transient(Window, Master: Tk_Widget) with
       Pre => Window /= Null_Widget,
