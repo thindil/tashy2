@@ -1479,20 +1479,76 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Stack_Order", Mode => Nominal);
       -- ****
 
+      -- ****f* Wm/Wm.Stack_Order_(above)
+      -- FUNCTION
+      -- Check if the selected Tk_Widget is above or below the other Tk_Widget
+      -- in stacking order
+      -- PARAMETERS
+      -- Window         - Tk_Widget which position in stacking order will be
+      --                  check
+      -- Second_Window  - Tk_Widget which will be reference to check for
+      --                  stacking order
+      -- Above          - If true, check if Window is above Second_Window.
+      --                  Otherwise check if Window is below. Default value is
+      --                  True.
+      -- RESULT
+      -- True if Window is above (or below if Above was False) the Second_Window
+      -- otherwise False
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if Tk main window is above My_Dialog in stacking order
+      -- Is_Above: constant Boolean := Stack_Order(Get_Main_Window, My_Dialog);
+      -- SEE ALSO
+      -- Wm.Stack_Order_(selected)
+      -- SOURCE
    function Stack_Order
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
       return Boolean with
       Pre => Window /= Null_Widget and Second_Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Stack_Order2", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.State_(function)
+      -- FUNCTION
+      -- Get the current state of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which state will be get
+      -- RESULT
+      -- Window_States with current state of the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the current state of Tk main window
+      -- Current_State: constant Window_States := State(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.State_(procedure)
+      -- SOURCE
    function State(Window: Tk_Widget) return Window_States with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_State", Mode => Nominal);
+      -- ****
 
+      -- ****f* Wm/Wm.State_(procedure)
+      -- FUNCTION
+      -- Set the current state of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window    - Tk_Widget which state will be set
+      -- New_State - The new state for the Window. Can be empty. Default value
+      --             is Default_Window_State
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the current state of Tk main window to withdrawn state
+      -- State(Get_Main_Window, WITHDRAWN);
+      -- SEE ALSO
+      -- Wm.State_(function)
+      -- SOURCE
    procedure State
      (Window: Tk_Widget; New_State: Window_States := Default_Window_State) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_State2", Mode => Nominal);
+      -- ****
 
    function Title(Window: Tk_Widget) return Tcl_String with
       Pre => Window /= Null_Widget,
