@@ -20,7 +20,8 @@ package body Tcl.Info is
         (Result_Type => Integer);
    begin
       return Integer_Eval
-          (Tcl_Script => "info cmdcount", Interpreter => Interpreter);
+          (Tcl_Script => "info cmdcount",
+           Interpreter => Interpreter);
    end Commands_Count;
 
 end Tcl.Info;

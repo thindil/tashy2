@@ -59,8 +59,16 @@ package Tk.TtkWidget is
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_State_Type is
-     (ACTIVE, DISABLED, FOCUS, PRESSED, SELECTED, BACKGROUND, READONLY,
-      ALTERNATE, INVALID, HOVER);
+     (ACTIVE,
+      DISABLED,
+      FOCUS,
+      PRESSED,
+      SELECTED,
+      BACKGROUND,
+      READONLY,
+      ALTERNATE,
+      INVALID,
+      HOVER);
    -- ****
 
    -- ****d* TtkWidget/TtkWidget.Default_Ttk_State
@@ -92,7 +100,7 @@ package Tk.TtkWidget is
    -- SOURCE
    type Compound_Type is
      (EMPTY, NONE, BOTTOM, TOP, LEFT, RIGHT, CENTER, TEXT, IMAGE) with
-      Default_Value => EMPTY;
+        Default_Value => EMPTY;
       -- ****
 
       -- ****d* TtkWidget/TtkWidget.Default_Compound_Type
@@ -112,7 +120,7 @@ package Tk.TtkWidget is
    -- 8.6.0 - Added
    -- SOURCE
    type Disabled_State_Type is (NORMAL, DISABLED, NONE) with
-      Default_Value => NONE;
+        Default_Value => NONE;
       -- ****
 
       -- ****d* TtkWidget/TtkWidget.Default_Disabled_State
@@ -221,24 +229,30 @@ package Tk.TtkWidget is
    -- end;
    -- SOURCE
    procedure Option_Image
-     (Name: String; Value: Compound_Type;
+     (Name: String;
+      Value: Compound_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Image_Compound_Type",
+      Test_Case =>
+      (Name => "Test_Option_Image_Compound_Type",
        Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Disabled_State_Type;
+     (Name: String;
+      Value: Disabled_State_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Image_Distabled_State_Type",
+      Test_Case =>
+      (Name => "Test_Option_Image_Distabled_State_Type",
        Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Ttk_Image_Option;
+     (Name: String;
+      Value: Ttk_Image_Option;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Image_Option", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Padding_Data;
+     (Name: String;
+      Value: Padding_Data;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Padding_Data", Mode => Nominal);
@@ -261,22 +275,29 @@ package Tk.TtkWidget is
    -- Button_State: constant Disabled_State_Type := Option_Value(My_Button, "state");
    -- SOURCE
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Compound_Type with
+     (Ttk_Widgt: Ttk_Widget;
+      Name: String) return Compound_Type with
       Pre => Ttk_Widgt /= Null_Widget and Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Value_Compound_Type",
+      Test_Case =>
+      (Name => "Test_Option_Value_Compound_Type",
        Mode => Nominal);
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Disabled_State_Type with
+     (Ttk_Widgt: Ttk_Widget;
+      Name: String) return Disabled_State_Type with
       Pre => Ttk_Widgt /= Null_Widget and Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Value_Disabled_State_Type",
+      Test_Case =>
+      (Name => "Test_Option_Value_Disabled_State_Type",
        Mode => Nominal);
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Ttk_Image_Option with
+     (Ttk_Widgt: Ttk_Widget;
+      Name: String) return Ttk_Image_Option with
       Pre => Ttk_Widgt /= Null_Widget and Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Value_Ttk_Image_Option",
+      Test_Case =>
+      (Name => "Test_Option_Value_Ttk_Image_Option",
        Mode => Nominal);
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Data with
+     (Ttk_Widgt: Ttk_Widget;
+      Name: String) return Padding_Data with
       Pre => Ttk_Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Padding_Data", Mode => Nominal);
       -- ****
@@ -301,7 +322,8 @@ package Tk.TtkWidget is
    -- Widget instate State
    -- SOURCE
    function In_State
-     (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type) return Boolean with
+     (Ttk_Widgt: Ttk_Widget;
+      State_Ttk: Ttk_State_Type) return Boolean with
       Pre => Ttk_Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Ttk_Widget_In_State", Mode => Nominal);
       -- ****
@@ -326,7 +348,8 @@ package Tk.TtkWidget is
       -- Widget instate State Tcl_Script
       -- SOURCE
    procedure In_State
-     (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type;
+     (Ttk_Widgt: Ttk_Widget;
+      State_Type: Ttk_State_Type;
       Tcl_Script: Tcl_String) with
       Pre => Ttk_Widgt /= Null_Widget and Length(Source => Tcl_Script) > 0,
       Test_Case => (Name => "Test_Ttk_Widget_In_State2", Mode => Nominal);
@@ -351,7 +374,8 @@ package Tk.TtkWidget is
       -- Widget state State
       -- SOURCE
    procedure State
-     (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type;
+     (Ttk_Widgt: Ttk_Widget;
+      Widget_State: Ttk_State_Type;
       Disable: Boolean := False) with
       Pre => Ttk_Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Ttk_Widget_State", Mode => Nominal);

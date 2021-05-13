@@ -17,83 +17,107 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Tk.Labelframe is
 
    function Create
-     (Path_Name: String; Options: Label_Frame_Create_Options;
+     (Path_Name: String;
+      Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Label_Frame is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        (Name => "background", Value => Options.Background,
+        (Name => "background",
+         Value => Options.Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "borderwidth", Value => Options.Border_Width,
+        (Name => "borderwidth",
+         Value => Options.Border_Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "class", Value => Options.Class,
+        (Name => "class",
+         Value => Options.Class,
          Options_String => Options_String);
       Option_Image
-        (Name => "colormap", Value => Options.Color_Map,
+        (Name => "colormap",
+         Value => Options.Color_Map,
          Options_String => Options_String);
       Option_Image
-        (Name => "container", Value => Options.Container,
+        (Name => "container",
+         Value => Options.Container,
          Options_String => Options_String);
       Option_Image
-        (Name => "cursor", Value => Options.Cursor,
+        (Name => "cursor",
+         Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        (Name => "height", Value => Options.Height,
+        (Name => "height",
+         Value => Options.Height,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightbackground", Value => Options.Highlight_Background,
+        (Name => "highlightbackground",
+         Value => Options.Highlight_Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightcolot", Value => Options.Highlight_Color,
+        (Name => "highlightcolot",
+         Value => Options.Highlight_Color,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlighthickness", Value => Options.Highlight_Thickness,
+        (Name => "highlighthickness",
+         Value => Options.Highlight_Thickness,
          Options_String => Options_String);
       Option_Image
-        (Name => "labelwidget", Value => Options.Label_Widget,
+        (Name => "labelwidget",
+         Value => Options.Label_Widget,
          Options_String => Options_String);
       Option_Image
-        (Name => "padx", Value => Options.Pad_X,
+        (Name => "padx",
+         Value => Options.Pad_X,
          Options_String => Options_String);
       Option_Image
-        (Name => "pady", Value => Options.Pad_Y,
+        (Name => "pady",
+         Value => Options.Pad_Y,
          Options_String => Options_String);
       Option_Image
-        (Name => "relief", Value => Options.Relief,
+        (Name => "relief",
+         Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "takefocus", Value => Options.Take_Focus,
+        (Name => "takefocus",
+         Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
-        (Name => "text", Value => Options.Text,
+        (Name => "text",
+         Value => Options.Text,
          Options_String => Options_String);
       Option_Image
-        (Name => "visual", Value => Options.Visual,
+        (Name => "visual",
+         Value => Options.Visual,
          Options_String => Options_String);
       Option_Image
-        (Name => "width", Value => Options.Width,
+        (Name => "width",
+         Value => Options.Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "labelanchor", Value => Options.Label_Anchor,
+        (Name => "labelanchor",
+         Value => Options.Label_Anchor,
          Options_String => Options_String);
       Tcl_Eval
         (Tcl_Script =>
-           "labelframe " & Path_Name & " " &
+           "labelframe " &
+           Path_Name &
+           " " &
            To_String(Source => Options_String),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
-     (Frame_Widget: out Tk_Label_Frame; Path_Name: String;
+     (Frame_Widget: out Tk_Label_Frame;
+      Path_Name: String;
       Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Frame_Widget :=
         Create
-          (Path_Name => Path_Name, Options => Options,
+          (Path_Name => Path_Name,
+           Options => Options,
            Interpreter => Interpreter);
    end Create;
 
@@ -102,7 +126,8 @@ package body Tk.Labelframe is
    begin
       return
         Options: Label_Frame_Create_Options :=
-          Default_Label_Frame_Create_Options do
+          Default_Label_Frame_Create_Options
+      do
          Options.Background :=
            Option_Value(Widgt => Frame_Widget, Name => "background");
          Options.Border_Width :=
@@ -140,56 +165,73 @@ package body Tk.Labelframe is
    end Get_Options;
 
    overriding procedure Configure
-     (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) is
+     (Frame_Widget: Tk_Label_Frame;
+      Options: Label_Frame_Options) is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        (Name => "background", Value => Options.Background,
+        (Name => "background",
+         Value => Options.Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "borderwidth", Value => Options.Border_Width,
+        (Name => "borderwidth",
+         Value => Options.Border_Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "cursor", Value => Options.Cursor,
+        (Name => "cursor",
+         Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        (Name => "height", Value => Options.Height,
+        (Name => "height",
+         Value => Options.Height,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightbackground", Value => Options.Highlight_Background,
+        (Name => "highlightbackground",
+         Value => Options.Highlight_Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightcolot", Value => Options.Highlight_Color,
+        (Name => "highlightcolot",
+         Value => Options.Highlight_Color,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlighthickness", Value => Options.Highlight_Thickness,
+        (Name => "highlighthickness",
+         Value => Options.Highlight_Thickness,
          Options_String => Options_String);
       Option_Image
-        (Name => "labelwidget", Value => Options.Label_Widget,
+        (Name => "labelwidget",
+         Value => Options.Label_Widget,
          Options_String => Options_String);
       Option_Image
-        (Name => "padx", Value => Options.Pad_X,
+        (Name => "padx",
+         Value => Options.Pad_X,
          Options_String => Options_String);
       Option_Image
-        (Name => "pady", Value => Options.Pad_Y,
+        (Name => "pady",
+         Value => Options.Pad_Y,
          Options_String => Options_String);
       Option_Image
-        (Name => "relief", Value => Options.Relief,
+        (Name => "relief",
+         Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "takefocus", Value => Options.Take_Focus,
+        (Name => "takefocus",
+         Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
-        (Name => "text", Value => Options.Text,
+        (Name => "text",
+         Value => Options.Text,
          Options_String => Options_String);
       Option_Image
-        (Name => "width", Value => Options.Width,
+        (Name => "width",
+         Value => Options.Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "labelanchor", Value => Options.Label_Anchor,
+        (Name => "labelanchor",
+         Value => Options.Label_Anchor,
          Options_String => Options_String);
       Execute_Widget_Command
-        (Widgt => Frame_Widget, Command_Name => "configure",
+        (Widgt => Frame_Widget,
+         Command_Name => "configure",
          Options => To_String(Source => Options_String));
    end Configure;
 

@@ -79,7 +79,8 @@ package Tk.TopLevel is
    -- Widget configure Options
    -- SOURCE
    overriding procedure Configure
-     (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) with
+     (Toplevel_Widget: Tk_Toplevel;
+      Options: Toplevel_Options) with
       Pre => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TopLevel", Mode => Nominal);
       -- ****
@@ -139,7 +140,8 @@ package Tk.TopLevel is
    -- toplevel Path_Name Options
    -- SOURCE
    overriding function Create
-     (Path_Name: String; Options: Toplevel_Create_Options;
+     (Path_Name: String;
+      Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
@@ -172,7 +174,8 @@ package Tk.TopLevel is
       -- toplevel Path_Name Options
       -- SOURCE
    overriding procedure Create
-     (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
+     (Toplevel_Widget: out Tk_Toplevel;
+      Path_Name: String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,

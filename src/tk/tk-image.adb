@@ -29,7 +29,8 @@ package body Tk.Image is
    -- ****
 
    procedure Delete
-     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+     (Image_Name: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Tcl_Eval
         (Tcl_Script => "image delete " & Image_Name,
@@ -37,7 +38,8 @@ package body Tk.Image is
    end Delete;
 
    procedure Delete
-     (Images: Array_List; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+     (Images: Array_List;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Tcl_Eval
         (Tcl_Script => "image delete " & Merge_List(List => Images),
@@ -45,8 +47,8 @@ package body Tk.Image is
    end Delete;
 
    function Height
-     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Natural is
+     (Image_Name: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
    begin
       return Eval_Script
           (Tcl_Script => "image height " & Image_Name,
@@ -54,8 +56,8 @@ package body Tk.Image is
    end Height;
 
    function In_Use
-     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+     (Image_Name: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
    begin
       return Tcl_Eval
           (Tcl_Script => "image inuse " & Image_Name,
@@ -72,8 +74,8 @@ package body Tk.Image is
    end Names;
 
    function Image_Type
-     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return String is
+     (Image_Name: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       return Tcl_Eval
           (Tcl_Script => "image type " & Image_Name,
@@ -90,8 +92,8 @@ package body Tk.Image is
    end Types;
 
    function Width
-     (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Natural is
+     (Image_Name: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
    begin
       return Eval_Script
           (Tcl_Script => "image width " & Image_Name,

@@ -136,7 +136,8 @@ package Tcl is
       -- Tcl.Tcl_Eval_(function)
       -- SOURCE
    procedure Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval", Mode => Nominal);
       -- ****
@@ -160,8 +161,8 @@ package Tcl is
       -- Tcl.Tcl_Eval_(procedure), Tcl.Tcl_Eval(function_boolean_result)
       -- SOURCE
    function Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return String with
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval2", Mode => Nominal);
       -- ****
@@ -185,8 +186,8 @@ package Tcl is
       -- Tcl.Tcl_Eval_(procedure), Tcl.Tcl_Eval(function_string_result)
       -- SOURCE
    function Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean with
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean with
       Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval3", Mode => Nominal);
       -- ****
@@ -213,8 +214,8 @@ package Tcl is
    generic
       type Result_Type is (<>);
    function Generic_Scalar_Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Result_Type;
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type;
       -- ****
 
       -- ****g* Tcl/Tcl.Generic_Float_Tcl_Eval
@@ -239,8 +240,8 @@ package Tcl is
    generic
       type Result_Type is digits <>;
    function Generic_Float_Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Result_Type;
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type;
       -- ****
 
    ---------------------------------------
@@ -258,7 +259,7 @@ package Tcl is
       -- 8.6.0 - Added
       -- SOURCE
    type Result_Types is (TCL_STATIC, TCL_VOLATILE, TCL_DYNAMIC) with
-      Default_Value => TCL_STATIC;
+        Default_Value => TCL_STATIC;
    for Result_Types use (TCL_STATIC => 0, TCL_VOLATILE => 1, TCL_DYNAMIC => 3);
    -- ****
 
@@ -286,7 +287,7 @@ package Tcl is
    -- SOURCE
    type Tcl_Results is
      (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE) with
-      Default_Value => TCL_OK;
+        Default_Value => TCL_OK;
       -- ****
       --## rule off TYPE_INITIAL_VALUES
 
@@ -372,7 +373,8 @@ package Tcl is
      -- Tcl_Set_Result("OK");
      -- SOURCE
    procedure Tcl_Set_Result
-     (Tcl_Result: String; Result_Type: Result_Types := Default_Result_Type;
+     (Tcl_Result: String;
+      Result_Type: Result_Types := Default_Result_Type;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Tcl_Result'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_SetResult", Mode => Nominal);

@@ -38,8 +38,8 @@ package Tcl.Info is
    -- Arguments_Names: constant Array_List := Arguments("myproc");
    -- SOURCE
    function Arguments
-     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+     (Proc_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
      (Split_List
         (List =>
            Tcl_Eval
@@ -66,8 +66,8 @@ package Tcl.Info is
       -- Proc_Body: constant String := Procedure_Body("myproc2");
       -- SOURCE
    function Procedure_Body
-     (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return String is
+     (Proc_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
         (Tcl_Script => "info body " & Proc_Name,
          Interpreter => Interpreter)) with
@@ -114,8 +114,8 @@ package Tcl.Info is
       -- Commands_Names: constant Array_List := Commands;
       -- SOURCE
    function Commands
-     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+     (Pattern: String := "";
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
      (Split_List
         (List =>
            Tcl_Eval
@@ -143,8 +143,8 @@ package Tcl.Info is
       -- Is_Complete: constant Boolean := Complete("mycommand");
       -- SOURCE
    function Complete
-     (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+     (Command: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
      (Tcl_Eval
         (Tcl_Script => "info complete " & Command,
          Interpreter => Interpreter)) with
@@ -170,7 +170,8 @@ package Tcl.Info is
    function Coroutine
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
-        (Tcl_Script => "info coroutine", Interpreter => Interpreter)) with
+        (Tcl_Script => "info coroutine",
+         Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Coroutine", Mode => Nominal);
       -- ****
@@ -205,8 +206,10 @@ package Tcl.Info is
         (Tcl_Script =>
            "info default " & Proc_Name & " " & Argument & " " & Var_Name,
          Interpreter => Interpreter)) with
-      Pre => Proc_Name'Length > 0 and Argument'Length > 0 and
-      Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Proc_Name'Length > 0 and
+      Argument'Length > 0 and
+      Var_Name'Length > 0 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Default", Mode => Nominal);
       -- ****
 
@@ -227,7 +230,8 @@ package Tcl.Info is
    function Error_Stack
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
-        (Tcl_Script => "info errorstack", Interpreter => Interpreter)) with
+        (Tcl_Script => "info errorstack",
+         Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_ErrorStack", Mode => Nominal);
       -- ****
@@ -248,8 +252,8 @@ package Tcl.Info is
       -- Var_Exists: constant Boolean := Exists("myvar");
       -- SOURCE
    function Exists
-     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+     (Var_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
      (Tcl_Eval
         (Tcl_Script => "info exists " & Var_Name,
          Interpreter => Interpreter)) with
@@ -277,8 +281,8 @@ package Tcl.Info is
       -- Functions_Names: constant Array_List := Functions;
       -- SOURCE
    function Functions
-     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+     (Pattern: String := "";
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
      (Split_List
         (List =>
            Tcl_Eval
@@ -309,8 +313,8 @@ package Tcl.Info is
       -- Global_Variables_Names: constant Array_List := Globals;
       -- SOURCE
    function Globals
-     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+     (Pattern: String := "";
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
      (Split_List
         (List =>
            Tcl_Eval
@@ -385,8 +389,8 @@ package Tcl.Info is
       -- Local_Variables_Names: constant Array_List := Locals;
       -- SOURCE
    function Locals
-     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+     (Pattern: String := "";
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
      (Split_List
         (List =>
            Tcl_Eval
@@ -437,7 +441,8 @@ package Tcl.Info is
    function Patch_Level
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
-        (Tcl_Script => "info patchlevel", Interpreter => Interpreter)) with
+        (Tcl_Script => "info patchlevel",
+         Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Patch_Level", Mode => Nominal);
       -- ****
@@ -463,8 +468,8 @@ package Tcl.Info is
       -- Procedures_Names: constant Array_List := Procs;
       -- SOURCE
    function Procs
-     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+     (Pattern: String := "";
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
      (Split_List
         (List =>
            Tcl_Eval
@@ -493,8 +498,8 @@ package Tcl.Info is
       -- File_Name: constant String := Script;
       -- SOURCE
    function Script
-     (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return String is
+     (File_Name: String := "";
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
         (Tcl_Script => "info script " & File_Name,
          Interpreter => Interpreter)) with
@@ -520,7 +525,8 @@ package Tcl.Info is
    function Tcl_Version
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
-        (Tcl_Script => "info tclversion", Interpreter => Interpreter)) with
+        (Tcl_Script => "info tclversion",
+         Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Tcl_Version", Mode => Nominal);
       -- ****
@@ -545,8 +551,8 @@ package Tcl.Info is
       -- Variables_Names: constant Array_List := Vars;
       -- SOURCE
    function Vars
-     (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+     (Pattern: String := "";
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
      (Split_List
         (List =>
            Tcl_Eval

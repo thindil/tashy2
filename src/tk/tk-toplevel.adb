@@ -17,66 +17,86 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Tk.TopLevel is
 
    overriding function Create
-     (Path_Name: String; Options: Toplevel_Create_Options;
+     (Path_Name: String;
+      Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        (Name => "background", Value => Options.Background,
+        (Name => "background",
+         Value => Options.Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "borderwidth", Value => Options.Border_Width,
+        (Name => "borderwidth",
+         Value => Options.Border_Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "class", Value => Options.Class,
+        (Name => "class",
+         Value => Options.Class,
          Options_String => Options_String);
       Option_Image
-        (Name => "colormap", Value => Options.Color_Map,
+        (Name => "colormap",
+         Value => Options.Color_Map,
          Options_String => Options_String);
       Option_Image
-        (Name => "container", Value => Options.Container,
+        (Name => "container",
+         Value => Options.Container,
          Options_String => Options_String);
       Option_Image
-        (Name => "cursor", Value => Options.Cursor,
+        (Name => "cursor",
+         Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        (Name => "height", Value => Options.Height,
+        (Name => "height",
+         Value => Options.Height,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightbackground", Value => Options.Highlight_Background,
+        (Name => "highlightbackground",
+         Value => Options.Highlight_Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightcolot", Value => Options.Highlight_Color,
+        (Name => "highlightcolot",
+         Value => Options.Highlight_Color,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlighthickness", Value => Options.Highlight_Thickness,
+        (Name => "highlighthickness",
+         Value => Options.Highlight_Thickness,
          Options_String => Options_String);
       Option_Image
-        (Name => "menu", Value => Options.Menu,
+        (Name => "menu",
+         Value => Options.Menu,
          Options_String => Options_String);
       Option_Image
-        (Name => "padx", Value => Options.Pad_X,
+        (Name => "padx",
+         Value => Options.Pad_X,
          Options_String => Options_String);
       Option_Image
-        (Name => "pady", Value => Options.Pad_Y,
+        (Name => "pady",
+         Value => Options.Pad_Y,
          Options_String => Options_String);
       Option_Image
-        (Name => "relief", Value => Options.Relief,
+        (Name => "relief",
+         Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "screen", Value => Options.Screen,
+        (Name => "screen",
+         Value => Options.Screen,
          Options_String => Options_String);
       Option_Image
-        (Name => "takefocus", Value => Options.Take_Focus,
+        (Name => "takefocus",
+         Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
-        (Name => "use", Value => Options.Use_Container,
+        (Name => "use",
+         Value => Options.Use_Container,
          Options_String => Options_String);
       Option_Image
-        (Name => "visual", Value => Options.Visual,
+        (Name => "visual",
+         Value => Options.Visual,
          Options_String => Options_String);
       Option_Image
-        (Name => "width", Value => Options.Width,
+        (Name => "width",
+         Value => Options.Width,
          Options_String => Options_String);
       Tcl_Eval
         (Tcl_Script =>
@@ -86,13 +106,15 @@ package body Tk.TopLevel is
    end Create;
 
    overriding procedure Create
-     (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
+     (Toplevel_Widget: out Tk_Toplevel;
+      Path_Name: String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Toplevel_Widget :=
         Create
-          (Path_Name => Path_Name, Options => Options,
+          (Path_Name => Path_Name,
+           Options => Options,
            Interpreter => Interpreter);
    end Create;
 
@@ -100,7 +122,8 @@ package body Tk.TopLevel is
      (Toplevel_Widget: Tk_Toplevel) return Toplevel_Create_Options is
    begin
       return
-        Options: Toplevel_Create_Options := Default_Toplevel_Create_Options do
+        Options: Toplevel_Create_Options := Default_Toplevel_Create_Options
+      do
          Options.Background :=
            Option_Value(Widgt => Toplevel_Widget, Name => "background");
          Options.Border_Width :=
@@ -117,12 +140,14 @@ package body Tk.TopLevel is
            Option_Value(Widgt => Toplevel_Widget, Name => "height");
          Options.Highlight_Background :=
            Option_Value
-             (Widgt => Toplevel_Widget, Name => "highlightbackground");
+             (Widgt => Toplevel_Widget,
+              Name => "highlightbackground");
          Options.Highlight_Color :=
            Option_Value(Widgt => Toplevel_Widget, Name => "highlightcolor");
          Options.Highlight_Thickness :=
            Option_Value
-             (Widgt => Toplevel_Widget, Name => "highlightthickness");
+             (Widgt => Toplevel_Widget,
+              Name => "highlightthickness");
          Options.Menu :=
            Option_Value(Widgt => Toplevel_Widget, Name => "menu");
          Options.Pad_X :=
@@ -145,50 +170,65 @@ package body Tk.TopLevel is
    end Get_Options;
 
    overriding procedure Configure
-     (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) is
+     (Toplevel_Widget: Tk_Toplevel;
+      Options: Toplevel_Options) is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        (Name => "background", Value => Options.Background,
+        (Name => "background",
+         Value => Options.Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "borderwidth", Value => Options.Border_Width,
+        (Name => "borderwidth",
+         Value => Options.Border_Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "cursor", Value => Options.Cursor,
+        (Name => "cursor",
+         Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        (Name => "height", Value => Options.Height,
+        (Name => "height",
+         Value => Options.Height,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightbackground", Value => Options.Highlight_Background,
+        (Name => "highlightbackground",
+         Value => Options.Highlight_Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightcolot", Value => Options.Highlight_Color,
+        (Name => "highlightcolot",
+         Value => Options.Highlight_Color,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlighthickness", Value => Options.Highlight_Thickness,
+        (Name => "highlighthickness",
+         Value => Options.Highlight_Thickness,
          Options_String => Options_String);
       Option_Image
-        (Name => "menu", Value => Options.Menu,
+        (Name => "menu",
+         Value => Options.Menu,
          Options_String => Options_String);
       Option_Image
-        (Name => "padx", Value => Options.Pad_X,
+        (Name => "padx",
+         Value => Options.Pad_X,
          Options_String => Options_String);
       Option_Image
-        (Name => "pady", Value => Options.Pad_Y,
+        (Name => "pady",
+         Value => Options.Pad_Y,
          Options_String => Options_String);
       Option_Image
-        (Name => "relief", Value => Options.Relief,
+        (Name => "relief",
+         Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "takefocus", Value => Options.Take_Focus,
+        (Name => "takefocus",
+         Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
-        (Name => "width", Value => Options.Width,
+        (Name => "width",
+         Value => Options.Width,
          Options_String => Options_String);
       Execute_Widget_Command
-        (Widgt => Toplevel_Widget, Command_Name => "configure",
+        (Widgt => Toplevel_Widget,
+         Command_Name => "configure",
          Options => To_String(Source => Options_String));
    end Configure;
 

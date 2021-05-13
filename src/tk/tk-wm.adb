@@ -27,9 +27,12 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm aspect " & Tk_Path_Name(Widgt => Window) &
-           Natural'Image(Min_Numer) & Natural'Image(Min_Denom) &
-           Natural'Image(Max_Numer) & Natural'Image(Max_Denom),
+           "wm aspect " &
+           Tk_Path_Name(Widgt => Window) &
+           Natural'Image(Min_Numer) &
+           Natural'Image(Min_Denom) &
+           Natural'Image(Max_Numer) &
+           Natural'Image(Max_Denom),
          Interpreter => Tk_Interp(Widgt => Window));
    end Aspect;
 
@@ -73,16 +76,20 @@ package body Tk.Wm is
       Window_Manager: constant Window_Manager_Types :=
         (if
            Tcl_Get_Var2
-             (Var_Name => "tcl_platform", Index_Name => "os",
+             (Var_Name => "tcl_platform",
+              Index_Name => "os",
               Interpreter => Interpreter) =
            "Windows"
-         then WINDOWS
+         then
+           WINDOWS
          elsif
            Tcl_Get_Var2
-             (Var_Name => "tcl_platform", Index_Name => "os",
+             (Var_Name => "tcl_platform",
+              Index_Name => "os",
               Interpreter => Interpreter) =
            "Darwin"
-         then MACOSX
+         then
+           MACOSX
          else X_11);
       Window_Attributes: Window_Attributes_Data (Wm_Type => Window_Manager) :=
         Empty_Window_Attributes;
@@ -94,7 +101,7 @@ package body Tk.Wm is
          return FALSE;
       end Get_Boolean;
    begin
-      Read_Attributes_Loop :
+      Read_Attributes_Loop:
       while Index < Result'Last loop
          if Result(Index) = "-alpha" then
             Window_Attributes.Alpha :=
@@ -135,10 +142,12 @@ package body Tk.Wm is
    end Get_Attributes;
 
    procedure Set_Attributes
-     (Window: Tk_Widget; Attributes_Data: Window_Attributes_Data) is
+     (Window: Tk_Widget;
+      Attributes_Data: Window_Attributes_Data) is
       Values_List: Unbounded_String := Null_Unbounded_String;
       procedure Set_Boolean
-        (Name: String; Value: Extended_Boolean;
+        (Name: String;
+         Value: Extended_Boolean;
          List: in out Unbounded_String) is
       begin
          case Value is
@@ -158,10 +167,12 @@ package body Tk.Wm is
               "-alpha" & Alpha_Type'Image(Attributes_Data.Alpha) & " ");
       end if;
       Set_Boolean
-        (Name => "fullscreen", Value => Attributes_Data.Full_Screen,
+        (Name => "fullscreen",
+         Value => Attributes_Data.Full_Screen,
          List => Values_List);
       Set_Boolean
-        (Name => "topmost", Value => Attributes_Data.Topmost,
+        (Name => "topmost",
+         Value => Attributes_Data.Topmost,
          List => Values_List);
       case Attributes_Data.Wm_Type is
          when X_11 =>
@@ -176,14 +187,17 @@ package body Tk.Wm is
                     " ");
             end if;
             Set_Boolean
-              (Name => "zoomed", Value => Attributes_Data.Zoomed,
+              (Name => "zoomed",
+               Value => Attributes_Data.Zoomed,
                List => Values_List);
          when WINDOWS =>
             Set_Boolean
-              (Name => "disabled", Value => Attributes_Data.Disabled,
+              (Name => "disabled",
+               Value => Attributes_Data.Disabled,
                List => Values_List);
             Set_Boolean
-              (Name => "toolwindow", Value => Attributes_Data.Tool_Window,
+              (Name => "toolwindow",
+               Value => Attributes_Data.Tool_Window,
                List => Values_List);
             if To_Ada_String(Source => Attributes_Data.Transparent_Color)'
                 Length >
@@ -198,10 +212,12 @@ package body Tk.Wm is
             end if;
          when MACOSX =>
             Set_Boolean
-              (Name => "modified", Value => Attributes_Data.Modified,
+              (Name => "modified",
+               Value => Attributes_Data.Modified,
                List => Values_List);
             Set_Boolean
-              (Name => "notify", Value => Attributes_Data.Notify,
+              (Name => "notify",
+               Value => Attributes_Data.Notify,
                List => Values_List);
             if To_Ada_String(Source => Attributes_Data.Title_Path)'Length >
               0 then
@@ -209,21 +225,26 @@ package body Tk.Wm is
                  (Source => Values_List,
                   New_Item =>
                     "-titlepath " &
-                    To_Ada_String(Source => Attributes_Data.Title_Path) & " ");
+                    To_Ada_String(Source => Attributes_Data.Title_Path) &
+                    " ");
             end if;
             Set_Boolean
-              (Name => "transparent", Value => Attributes_Data.Transparent,
+              (Name => "transparent",
+               Value => Attributes_Data.Transparent,
                List => Values_List);
       end case;
       Tcl_Eval
         (Tcl_Script =>
-           "wm attributes " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm attributes " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_String(Source => Values_List),
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Attributes;
 
    function Get_Attribute
-     (Window: Tk_Widget; Name: String) return Extended_Boolean is
+     (Window: Tk_Widget;
+      Name: String) return Extended_Boolean is
    begin
       if Tcl_Eval
           (Tcl_Script =>
@@ -239,7 +260,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm client " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm client " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_String(Source => Name),
          Interpreter => Tk_Interp(Widgt => Window));
    end Client;
@@ -259,7 +282,7 @@ package body Tk.Wm is
    procedure Color_Map_Windows(Window: Tk_Widget; Widgets: Widgets_Array) is
       Windows_List: Unbounded_String := Null_Unbounded_String;
    begin
-      Convert_List_To_String_Loop :
+      Convert_List_To_String_Loop:
       for Widgt of Widgets loop
          Append
            (Source => Windows_List,
@@ -267,8 +290,11 @@ package body Tk.Wm is
       end loop Convert_List_To_String_Loop;
       Tcl_Eval
         (Tcl_Script =>
-           "wm colormapwindows " & Tk_Path_Name(Widgt => Window) & " {" &
-           To_String(Source => Windows_List) & "}",
+           "wm colormapwindows " &
+           Tk_Path_Name(Widgt => Window) &
+           " {" &
+           To_String(Source => Windows_List) &
+           "}",
          Interpreter => Tk_Interp(Widgt => Window));
    end Color_Map_Windows;
 
@@ -276,7 +302,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm command " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm command " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_String(Source => Wm_Command),
          Interpreter => Tk_Interp(Widgt => Window));
    end Command;
@@ -303,7 +331,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm focusmodel " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm focusmodel " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_Lower(Item => Focus_Model_Types'Image(Model)),
          Interpreter => Tk_Interp(Widgt => Window));
    end Focus_Model;
@@ -323,8 +353,9 @@ package body Tk.Wm is
    begin
       if Result'Length > 0 then
          return Tk_Window
-             (System'To_Address
-                (Integer'Value("16#" & Result(3 .. Result'Last) & "#")));
+             (System'
+                To_Address
+                  (Integer'Value("16#" & Result(3 .. Result'Last) & "#")));
       end if;
       return Null_Window;
    end Frame;
@@ -356,7 +387,8 @@ package body Tk.Wm is
    end Geometry;
 
    procedure Geometry
-     (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) is
+     (Window: Tk_Widget;
+      Width, Height, X, Y: Extended_Natural := -1) is
       use Ada.Strings;
 
       Win_Geometry: Unbounded_String := Null_Unbounded_String;
@@ -386,12 +418,16 @@ package body Tk.Wm is
          Append
            (Source => Win_Geometry,
             New_Item =>
-              "+" & Trim(Source => Extended_Natural'Image(X), Side => Left) &
-              "+" & Trim(Source => Extended_Natural'Image(Y), Side => Left));
+              "+" &
+              Trim(Source => Extended_Natural'Image(X), Side => Left) &
+              "+" &
+              Trim(Source => Extended_Natural'Image(Y), Side => Left));
       end if;
       Tcl_Eval
         (Tcl_Script =>
-           "wm geometry " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm geometry " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_String(Source => Win_Geometry),
          Interpreter => Tk_Interp(Widgt => Window));
    end Geometry;
@@ -427,9 +463,12 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm grid " & Tk_Path_Name(Widgt => Window) &
-           Positive'Image(Base_Width) & Positive'Image(Base_Height) &
-           Positive'Image(Width_Inc) & Positive'Image(Height_Inc),
+           "wm grid " &
+           Tk_Path_Name(Widgt => Window) &
+           Positive'Image(Base_Width) &
+           Positive'Image(Base_Height) &
+           Positive'Image(Width_Inc) &
+           Positive'Image(Height_Inc),
          Interpreter => Tk_Interp(Widgt => Window));
    end Grid;
 
@@ -437,7 +476,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm group " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm group " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_Ada_String(Source => Path_Name),
          Interpreter => Tk_Interp(Widgt => Window));
    end Group;
@@ -446,7 +487,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm iconbitmap " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm iconbitmap " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_Ada_String(Source => Bitmap),
          Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Bitmap;
@@ -462,7 +505,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm iconmask " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm iconmask " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_Ada_String(Source => Bitmap),
          Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Mask;
@@ -471,18 +516,25 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm iconname " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm iconname " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_Ada_String(Source => New_Name),
          Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Name;
 
    procedure Icon_Photo
-     (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) is
+     (Window: Tk_Widget;
+      Images: Array_List;
+      Default: Boolean := False) is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm iconphoto " & Tk_Path_Name(Widgt => Window) & " " &
-           (if Default then "-default" else "") & Merge_List(List => Images),
+           "wm iconphoto " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
+           (if Default then "-default" else "") &
+           Merge_List(List => Images),
          Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Photo;
 
@@ -516,8 +568,10 @@ package body Tk.Wm is
       else
          Tcl_Eval
            (Tcl_Script =>
-              "wm iconposition " & Tk_Path_Name(Widgt => Window) &
-              Extended_Natural'Image(X) & Extended_Natural'Image(Y),
+              "wm iconposition " &
+              Tk_Path_Name(Widgt => Window) &
+              Extended_Natural'Image(X) &
+              Extended_Natural'Image(Y),
             Interpreter => Tk_Interp(Widgt => Window));
       end if;
    end Icon_Position;
@@ -544,7 +598,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm iconwindow " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm iconwindow " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            Tk_Path_Name(Widgt => New_Icon_Window),
          Interpreter => Tk_Interp(Widgt => Window));
    end Icon_Window;
@@ -576,8 +632,10 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm maxsize " & Tk_Path_Name(Widgt => Window) &
-           Positive'Image(Width) & Positive'Image(Height),
+           "wm maxsize " &
+           Tk_Path_Name(Widgt => Window) &
+           Positive'Image(Width) &
+           Positive'Image(Height),
          Interpreter => Tk_Interp(Widgt => Window));
    end Max_Size;
 
@@ -601,8 +659,10 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm minsize " & Tk_Path_Name(Widgt => Window) &
-           Positive'Image(Width) & Positive'Image(Height),
+           "wm minsize " &
+           Tk_Path_Name(Widgt => Window) &
+           Positive'Image(Width) &
+           Positive'Image(Height),
          Interpreter => Tk_Interp(Widgt => Window));
    end Min_Size;
 
@@ -618,7 +678,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm overrideredirect " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm overrideredirect " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            (if Override then "1" else "0"),
          Interpreter => Tk_Interp(Widgt => Window));
    end Override_Redirect;
@@ -636,11 +698,14 @@ package body Tk.Wm is
    end Position_From;
 
    procedure Position_From
-     (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
+     (Window: Tk_Widget;
+      Who: Position_From_Value := Default_Position_From) is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm positionfrom " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm positionfrom " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_Lower(Item => Position_From_Value'Image(Who)),
          Interpreter => Tk_Interp(Widgt => Window));
    end Position_From;
@@ -665,11 +730,17 @@ package body Tk.Wm is
    end Protocol;
 
    procedure Protocol
-     (Window: Tk_Widget; Name: String; New_Command: Tcl_String) is
+     (Window: Tk_Widget;
+      Name: String;
+      New_Command: Tcl_String) is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name & " " &
+           "wm protocol " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
+           Name &
+           " " &
            To_String(Source => New_Command),
          Interpreter => Tk_Interp(Widgt => Window));
    end Protocol;
@@ -694,8 +765,12 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm resizable " & Tk_Path_Name(Widgt => Window) & " " &
-           (if Width then "1" else "0") & " " & (if Height then "1" else "0"),
+           "wm resizable " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
+           (if Width then "1" else "0") &
+           " " &
+           (if Height then "1" else "0"),
          Interpreter => Tk_Interp(Widgt => Window));
    end Resizable;
 
@@ -712,11 +787,14 @@ package body Tk.Wm is
    end Size_From;
 
    procedure Size_From
-     (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
+     (Window: Tk_Widget;
+      Who: Position_From_Value := Default_Position_From) is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm sizefrom " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm sizefrom " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_Lower(Item => Position_From_Value'Image(Who)),
          Interpreter => Tk_Interp(Widgt => Window));
    end Size_From;
@@ -731,9 +809,8 @@ package body Tk.Wm is
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin
-      return
-        Widgets: Widgets_Array (Result'Range) := (others => Null_Widget) do
-         Set_Widgets_Array_Loop :
+      return Widgets: Widgets_Array(Result'Range) := (others => Null_Widget) do
+         Set_Widgets_Array_Loop:
          for I in Result'Range loop
             Widgets(I) :=
               Get_Widget
@@ -744,13 +821,16 @@ package body Tk.Wm is
    end Stack_Order;
 
    function Stack_Order
-     (Window, Second_Window: Tk_Widget; Above: Boolean := True)
-      return Boolean is
+     (Window, Second_Window: Tk_Widget;
+      Above: Boolean := True) return Boolean is
    begin
       return Tcl_Eval
           (Tcl_Script =>
-             "wm stackorder " & Tk_Path_Name(Widgt => Window) & " " &
-             (if Above then "isabove" else "isbelow") & " " &
+             "wm stackorder " &
+             Tk_Path_Name(Widgt => Window) &
+             " " &
+             (if Above then "isabove" else "isbelow") &
+             " " &
              Tk_Path_Name(Widgt => Second_Window),
            Interpreter => Tk_Interp(Widgt => Window));
    end Stack_Order;
@@ -764,11 +844,14 @@ package body Tk.Wm is
    end State;
 
    procedure State
-     (Window: Tk_Widget; New_State: Window_States := Default_Window_State) is
+     (Window: Tk_Widget;
+      New_State: Window_States := Default_Window_State) is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm state " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm state " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_Lower(Item => Window_States'Image(New_State)),
          Interpreter => Tk_Interp(Widgt => Window));
    end State;
@@ -786,7 +869,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm title " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm title " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            To_String(Source => New_Title),
          Interpreter => Tk_Interp(Widgt => Window));
    end Title;
@@ -806,7 +891,9 @@ package body Tk.Wm is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "wm transient " & Tk_Path_Name(Widgt => Window) & " " &
+           "wm transient " &
+           Tk_Path_Name(Widgt => Window) &
+           " " &
            Tk_Path_Name(Widgt => Master),
          Interpreter => Tk_Interp(Widgt => Window));
    end Transient;

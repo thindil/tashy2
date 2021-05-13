@@ -32,66 +32,85 @@ package body Tk.TtkButton is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        (Name => "class", Value => Options.Class,
+        (Name => "class",
+         Value => Options.Class,
          Options_String => Options_String);
       Option_Image
-        (Name => "command", Value => Options.Command,
+        (Name => "command",
+         Value => Options.Command,
          Options_String => Options_String);
       Option_Image
-        (Name => "compound", Value => Options.Compound,
+        (Name => "compound",
+         Value => Options.Compound,
          Options_String => Options_String);
       Option_Image
-        (Name => "cursor", Value => Options.Cursor,
+        (Name => "cursor",
+         Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        (Name => "default", Value => Options.Default,
+        (Name => "default",
+         Value => Options.Default,
          Options_String => Options_String);
       Option_Image
-        (Name => "image", Value => Options.Image,
+        (Name => "image",
+         Value => Options.Image,
          Options_String => Options_String);
       Option_Image
-        (Name => "state", Value => Options.State,
+        (Name => "state",
+         Value => Options.State,
          Options_String => Options_String);
       Option_Image
-        (Name => "style", Value => Options.Style,
+        (Name => "style",
+         Value => Options.Style,
          Options_String => Options_String);
       Option_Image
-        (Name => "takefocus", Value => Options.Take_Focus,
+        (Name => "takefocus",
+         Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
-        (Name => "text", Value => Options.Text,
+        (Name => "text",
+         Value => Options.Text,
          Options_String => Options_String);
       Option_Image
-        (Name => "textvariable", Value => Options.Text_Variable,
+        (Name => "textvariable",
+         Value => Options.Text_Variable,
          Options_String => Options_String);
       Option_Image
-        (Name => "underline", Value => Options.Underline,
+        (Name => "underline",
+         Value => Options.Underline,
          Options_String => Options_String);
       Option_Image
-        (Name => "width", Value => Options.Width,
+        (Name => "width",
+         Value => Options.Width,
          Options_String => Options_String);
       return To_String(Source => Options_String);
    end Options_To_String;
 
    function Create
-     (Path_Name: String; Options: Ttk_Button_Options;
+     (Path_Name: String;
+      Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "ttk::button " & Path_Name & " " &
+           "ttk::button " &
+           Path_Name &
+           " " &
            Options_To_String(Options => Options),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
-     (Button: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
+     (Button: out Ttk_Button;
+      Path_Name: String;
+      Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Button :=
         Create
-          (Path_Name => Path_Name, Options => Options,
+          (Path_Name => Path_Name,
+           Options => Options,
            Interpreter => Interpreter);
    end Create;
 
@@ -121,7 +140,8 @@ package body Tk.TtkButton is
    procedure Configure(Button: Ttk_Button; Options: Ttk_Button_Options) is
    begin
       Execute_Widget_Command
-        (Widgt => Button, Command_Name => "configure",
+        (Widgt => Button,
+         Command_Name => "configure",
          Options => Options_To_String(Options => Options));
    end Configure;
 

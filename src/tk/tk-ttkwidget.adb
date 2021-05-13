@@ -19,33 +19,40 @@ with Tcl.Lists; use Tcl.Lists;
 package body Tk.TtkWidget is
 
    procedure Option_Image
-     (Name: String; Value: Compound_Type;
+     (Name: String;
+      Value: Compound_Type;
       Options_String: in out Unbounded_String) is
    begin
       if Value /= EMPTY then
          Append
            (Source => Options_String,
             New_Item =>
-              " -" & Name & " " &
+              " -" &
+              Name &
+              " " &
               To_Lower(Item => Compound_Type'Image(Value)));
       end if;
    end Option_Image;
 
    procedure Option_Image
-     (Name: String; Value: Disabled_State_Type;
+     (Name: String;
+      Value: Disabled_State_Type;
       Options_String: in out Unbounded_String) is
    begin
       if Value /= NONE then
          Append
            (Source => Options_String,
             New_Item =>
-              " -" & Name & " " &
+              " -" &
+              Name &
+              " " &
               To_Lower(Item => Disabled_State_Type'Image(Value)));
       end if;
    end Option_Image;
 
    procedure Option_Image
-     (Name: String; Value: Ttk_Image_Option;
+     (Name: String;
+      Value: Ttk_Image_Option;
       Options_String: in out Unbounded_String) is
    begin
       if Value = Default_Ttk_Image_Option then
@@ -109,18 +116,21 @@ package body Tk.TtkWidget is
    end Option_Image;
 
    procedure Option_Image
-     (Name: String; Value: Padding_Data;
+     (Name: String;
+      Value: Padding_Data;
       Options_String: in out Unbounded_String) is
       use Ada.Strings;
 
       First: Boolean := True;
       procedure Append_Value
-        (New_Value: Pixel_Data; Is_First: in out Boolean) is
+        (New_Value: Pixel_Data;
+         Is_First: in out Boolean) is
       begin
          if New_Value.Value > -1.0 then
             if Is_First then
                Append
-                 (Source => Options_String, New_Item => " -" & Name & " {");
+                 (Source => Options_String,
+                  New_Item => " -" & Name & " {");
                Is_First := False;
             end if;
             Append
@@ -140,10 +150,13 @@ package body Tk.TtkWidget is
    end Option_Image;
 
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Compound_Type is
+     (Ttk_Widgt: Ttk_Widget;
+      Name: String) return Compound_Type is
       Result: constant String :=
         Execute_Widget_Command
-          (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
+          (Widgt => Ttk_Widgt,
+           Command_Name => "cget",
+           Options => "-" & Name);
    begin
       if Result'Length = 0 then
          return EMPTY;
@@ -152,22 +165,26 @@ package body Tk.TtkWidget is
    end Option_Value;
 
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Disabled_State_Type is
+     (Ttk_Widgt: Ttk_Widget;
+      Name: String) return Disabled_State_Type is
    begin
       return Disabled_State_Type'Value
           (Execute_Widget_Command
-             (Widgt => Ttk_Widgt, Command_Name => "cget",
+             (Widgt => Ttk_Widgt,
+              Command_Name => "cget",
               Options => "-" & Name));
    end Option_Value;
 
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Ttk_Image_Option is
+     (Ttk_Widgt: Ttk_Widget;
+      Name: String) return Ttk_Image_Option is
       Options: Ttk_Image_Option := Default_Ttk_Image_Option;
       Options_Array: constant Array_List :=
         Split_List
           (List =>
              Execute_Widget_Command
-               (Widgt => Ttk_Widgt, Command_Name => "cget",
+               (Widgt => Ttk_Widgt,
+                Command_Name => "cget",
                 Options => "-" & Name),
            Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
       Index: Positive := 2;
@@ -177,7 +194,7 @@ package body Tk.TtkWidget is
       end if;
       Options.Default :=
         To_Tcl_String(Source => To_String(Source => Options_Array(1)));
-      Set_Options_Loop :
+      Set_Options_Loop:
       while Index <= Options_Array'Length loop
          if Options_Array(Index) = To_Tcl_String(Source => "active") then
             Options.Active := Options_Array(Index + 1);
@@ -207,12 +224,14 @@ package body Tk.TtkWidget is
    end Option_Value;
 
    function Option_Value
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Data is
+     (Ttk_Widgt: Ttk_Widget;
+      Name: String) return Padding_Data is
       Result_List: constant Array_List :=
         Split_List
           (List =>
              Execute_Widget_Command
-               (Widgt => Ttk_Widgt, Command_Name => "cget",
+               (Widgt => Ttk_Widgt,
+                Command_Name => "cget",
                 Options => "-" & Name),
            Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
    begin
@@ -241,12 +260,14 @@ package body Tk.TtkWidget is
    end Option_Value;
 
    function In_State
-     (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type) return Boolean is
+     (Ttk_Widgt: Ttk_Widget;
+      State_Ttk: Ttk_State_Type) return Boolean is
       function Get_Result is new Generic_Scalar_Tcl_Get_Result
         (Result_Type => Integer);
    begin
       Execute_Widget_Command
-        (Widgt => Ttk_Widgt, Command_Name => "instate",
+        (Widgt => Ttk_Widgt,
+         Command_Name => "instate",
          Options => To_Lower(Item => Ttk_State_Type'Image(State_Ttk)));
       if Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)) = 1 then
          return True;
@@ -255,28 +276,34 @@ package body Tk.TtkWidget is
    end In_State;
 
    procedure In_State
-     (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type;
+     (Ttk_Widgt: Ttk_Widget;
+      State_Type: Ttk_State_Type;
       Tcl_Script: Tcl_String) is
    begin
       Execute_Widget_Command
-        (Widgt => Ttk_Widgt, Command_Name => "instate",
+        (Widgt => Ttk_Widgt,
+         Command_Name => "instate",
          Options =>
-           To_Lower(Item => Ttk_State_Type'Image(State_Type)) & " " &
+           To_Lower(Item => Ttk_State_Type'Image(State_Type)) &
+           " " &
            To_String(Source => Tcl_Script));
    end In_State;
 
    procedure State
-     (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type;
+     (Ttk_Widgt: Ttk_Widget;
+      Widget_State: Ttk_State_Type;
       Disable: Boolean := False) is
    begin
       if Disable then
          Execute_Widget_Command
-           (Widgt => Ttk_Widgt, Command_Name => "state",
+           (Widgt => Ttk_Widgt,
+            Command_Name => "state",
             Options =>
               "!" & To_Lower(Item => Ttk_State_Type'Image(Widget_State)));
       else
          Execute_Widget_Command
-           (Widgt => Ttk_Widgt, Command_Name => "state",
+           (Widgt => Ttk_Widgt,
+            Command_Name => "state",
             Options => To_Lower(Item => Ttk_State_Type'Image(Widget_State)));
       end if;
    end State;
@@ -286,13 +313,15 @@ package body Tk.TtkWidget is
         Split_List
           (List =>
              Execute_Widget_Command
-               (Widgt => Ttk_Widgt, Command_Name => "state"),
+               (Widgt => Ttk_Widgt,
+                Command_Name => "state"),
            Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
    begin
       return
         States: Ttk_State_Array(1 .. Result_List'Last) :=
-          (others => Default_Ttk_State) do
-         Fill_Return_Value_Loop :
+          (others => Default_Ttk_State)
+      do
+         Fill_Return_Value_Loop:
          for I in 1 .. Result_List'Last loop
             States(I) :=
               Ttk_State_Type'Value(To_Ada_String(Source => Result_List(I)));

@@ -17,50 +17,63 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Tk.TtkFrame is
 
    function Create
-     (Path_Name: String; Options: Ttk_Frame_Options;
+     (Path_Name: String;
+      Options: Ttk_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Frame is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        (Name => "borderwidth", Value => Options.Border_Width,
+        (Name => "borderwidth",
+         Value => Options.Border_Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "class", Value => Options.Class,
+        (Name => "class",
+         Value => Options.Class,
          Options_String => Options_String);
       Option_Image
-        (Name => "cursor", Value => Options.Cursor,
+        (Name => "cursor",
+         Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        (Name => "height", Value => Options.Height,
+        (Name => "height",
+         Value => Options.Height,
          Options_String => Options_String);
       Option_Image
-        (Name => "padding", Value => Options.Padding,
+        (Name => "padding",
+         Value => Options.Padding,
          Options_String => Options_String);
       Option_Image
-        (Name => "relief", Value => Options.Relief,
+        (Name => "relief",
+         Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "takefocus", Value => Options.Take_Focus,
+        (Name => "takefocus",
+         Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
-        (Name => "width", Value => Options.Width,
+        (Name => "width",
+         Value => Options.Width,
          Options_String => Options_String);
       Tcl_Eval
         (Tcl_Script =>
-           "ttk::frame " & Path_Name & " " &
+           "ttk::frame " &
+           Path_Name &
+           " " &
            To_String(Source => Options_String),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
-     (Frame_Widget: out Ttk_Frame; Path_Name: String;
+     (Frame_Widget: out Ttk_Frame;
+      Path_Name: String;
       Options: Ttk_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Frame_Widget :=
         Create
-          (Path_Name => Path_Name, Options => Options,
+          (Path_Name => Path_Name,
+           Options => Options,
            Interpreter => Interpreter);
    end Create;
 
@@ -88,28 +101,36 @@ package body Tk.TtkFrame is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        (Name => "borderwidth", Value => Options.Border_Width,
+        (Name => "borderwidth",
+         Value => Options.Border_Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "cursor", Value => Options.Cursor,
+        (Name => "cursor",
+         Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        (Name => "height", Value => Options.Height,
+        (Name => "height",
+         Value => Options.Height,
          Options_String => Options_String);
       Option_Image
-        (Name => "padding", Value => Options.Padding,
+        (Name => "padding",
+         Value => Options.Padding,
          Options_String => Options_String);
       Option_Image
-        (Name => "relief", Value => Options.Relief,
+        (Name => "relief",
+         Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "takefocus", Value => Options.Take_Focus,
+        (Name => "takefocus",
+         Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
-        (Name => "width", Value => Options.Width,
+        (Name => "width",
+         Value => Options.Width,
          Options_String => Options_String);
       Execute_Widget_Command
-        (Widgt => Frame_Widget, Command_Name => "configure",
+        (Widgt => Frame_Widget,
+         Command_Name => "configure",
          Options => To_String(Source => Options_String));
    end Configure;
 
