@@ -177,4 +177,14 @@ package body Tcl is
          Free_Proc => Result_Types'Enum_Rep(Result_Type));
    end Tcl_Set_Result;
 
+   procedure Tcl_Update
+     (Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Idle_Tasks_Only: Boolean := False) is
+   begin
+      Tcl_Eval
+        (Tcl_Script =>
+           "update" & (if Idle_Tasks_Only then " idletasks" else ""),
+         Interpreter => Interpreter);
+   end Tcl_Update;
+
 end Tcl;

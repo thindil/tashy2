@@ -378,4 +378,29 @@ package Tcl is
       Test_Case => (Name => "Test_Tcl_SetResult", Mode => Nominal);
       -- ****
 
+   -------------------
+   -- Various commands
+   -------------------
+
+      -- ****f* Tcl/Tcl.Tcl_Update
+      -- FUNCTION
+      -- Process pending Tcl events and idle callbacks
+      -- PARAMETERS
+      -- Interpreter     - Tcl interpreter on which events will be processed
+      -- Idle_Tasks_Only - If true, process only idle events and callbacks, no
+      --                   new errors or events are processed. Default value
+      --                   is False: process everythings.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Process all events and callbacks on the default Tcl interpreter
+      -- Tcl_Update;
+      -- SOURCE
+   procedure Tcl_Update
+     (Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Idle_Tasks_Only: Boolean := False) with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Test_Tcl_Update", Mode => Nominal);
+      -- ****
+
 end Tcl;
