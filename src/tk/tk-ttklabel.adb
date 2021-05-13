@@ -33,84 +33,109 @@ package body Tk.TtkLabel is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        (Name => "anchor", Value => Options.Anchor,
+        (Name => "anchor",
+         Value => Options.Anchor,
          Options_String => Options_String);
       Option_Image
-        (Name => "background", Value => Options.Background,
+        (Name => "background",
+         Value => Options.Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "class", Value => Options.Class,
+        (Name => "class",
+         Value => Options.Class,
          Options_String => Options_String);
       Option_Image
-        (Name => "compound", Value => Options.Compound,
+        (Name => "compound",
+         Value => Options.Compound,
          Options_String => Options_String);
       Option_Image
-        (Name => "cursor", Value => Options.Cursor,
+        (Name => "cursor",
+         Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        (Name => "font", Value => Options.Font,
+        (Name => "font",
+         Value => Options.Font,
          Options_String => Options_String);
       Option_Image
-        (Name => "foreground", Value => Options.Foreground,
+        (Name => "foreground",
+         Value => Options.Foreground,
          Options_String => Options_String);
       Option_Image
-        (Name => "image", Value => Options.Image,
+        (Name => "image",
+         Value => Options.Image,
          Options_String => Options_String);
       Option_Image
-        (Name => "justify", Value => Options.Justify,
+        (Name => "justify",
+         Value => Options.Justify,
          Options_String => Options_String);
       Option_Image
-        (Name => "padding", Value => Options.Padding,
+        (Name => "padding",
+         Value => Options.Padding,
          Options_String => Options_String);
       Option_Image
-        (Name => "relief", Value => Options.Relief,
+        (Name => "relief",
+         Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "state", Value => Options.State,
+        (Name => "state",
+         Value => Options.State,
          Options_String => Options_String);
       Option_Image
-        (Name => "style", Value => Options.Style,
+        (Name => "style",
+         Value => Options.Style,
          Options_String => Options_String);
       Option_Image
-        (Name => "takefocus", Value => Options.Take_Focus,
+        (Name => "takefocus",
+         Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
-        (Name => "text", Value => Options.Text,
+        (Name => "text",
+         Value => Options.Text,
          Options_String => Options_String);
       Option_Image
-        (Name => "textvariable", Value => Options.Text_Variable,
+        (Name => "textvariable",
+         Value => Options.Text_Variable,
          Options_String => Options_String);
       Option_Image
-        (Name => "underline", Value => Options.Underline,
+        (Name => "underline",
+         Value => Options.Underline,
          Options_String => Options_String);
       Option_Image
-        (Name => "width", Value => Options.Width,
+        (Name => "width",
+         Value => Options.Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "wraplength", Value => Options.Wrap_Length,
+        (Name => "wraplength",
+         Value => Options.Wrap_Length,
          Options_String => Options_String);
       return To_String(Source => Options_String);
    end Options_To_String;
 
    function Create
-     (Path_Name: String; Options: Ttk_Label_Options;
+     (Path_Name: String;
+      Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "ttk::label " & Path_Name & " " &
+           "ttk::label " &
+           Path_Name &
+           " " &
            Options_To_String(Options => Options),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
-     (Label: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
+     (Label: out Ttk_Label;
+      Path_Name: String;
+      Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Label :=
         Create
-          (Path_Name => Path_Name, Options => Options,
+          (Path_Name => Path_Name,
+           Options => Options,
            Interpreter => Interpreter);
    end Create;
 
@@ -150,7 +175,8 @@ package body Tk.TtkLabel is
    procedure Configure(Label: Ttk_Label; Options: Ttk_Label_Options) is
    begin
       Execute_Widget_Command
-        (Widgt => Label, Command_Name => "configure",
+        (Widgt => Label,
+         Command_Name => "configure",
          Options => Options_To_String(Options => Options));
    end Configure;
 

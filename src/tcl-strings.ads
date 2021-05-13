@@ -60,7 +60,8 @@ package Tcl.Strings is
    -- My_String: constant Tcl_String := To_Tcl_String("hello world");
    -- SOURCE
    function To_Tcl_String
-     (Source: String; Evaluate: Boolean := False) return Tcl_String with
+     (Source: String;
+      Evaluate: Boolean := False) return Tcl_String with
       Test_Case => (Name => "Test_To_Tcl_String", Mode => Nominal);
       -- ****
 

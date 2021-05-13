@@ -72,34 +72,40 @@ package body Tcl is
    end Tcl_Init;
 
    procedure Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
       function Native_Tcl_Eval
-        (Interp: Tcl_Interpreter; Script: chars_ptr) return Tcl_Results with
+        (Interp: Tcl_Interpreter;
+         Script: chars_ptr) return Tcl_Results with
          Import => True,
          Convention => C,
          External_Name => "Tcl_Eval";
    begin
       if Native_Tcl_Eval
-          (Interp => Interpreter, Script => New_String(Str => Tcl_Script)) =
+          (Interp => Interpreter,
+           Script => New_String(Str => Tcl_Script)) =
         TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
    end Tcl_Eval;
 
    function Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return String is
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter);
       return Tcl_Get_Result(Interpreter => Interpreter);
    end Tcl_Eval;
 
    function Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
    begin
       Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter);
-      if Tcl_Get_Result(Interpreter => Interpreter) in "1" | "true" | "on" |
+      if Tcl_Get_Result(Interpreter => Interpreter) in
+          "1" |
+            "true" |
+            "on" |
             "yes" then
          return True;
       end if;
@@ -107,8 +113,8 @@ package body Tcl is
    end Tcl_Eval;
 
    function Generic_Scalar_Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Result_Type is
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type is
    begin
       if Interpreter = Null_Interpreter then
          raise Tcl_Exception
@@ -119,8 +125,8 @@ package body Tcl is
    end Generic_Scalar_Tcl_Eval;
 
    function Generic_Float_Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Result_Type is
+     (Tcl_Script: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type is
    begin
       if Interpreter = Null_Interpreter then
          raise Tcl_Exception
@@ -162,18 +168,22 @@ package body Tcl is
    end Generic_Float_Tcl_Get_Result;
 
    procedure Tcl_Set_Result
-     (Tcl_Result: String; Result_Type: Result_Types := Default_Result_Type;
+     (Tcl_Result: String;
+      Result_Type: Result_Types := Default_Result_Type;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       use Interfaces.C;
 
       procedure Native_Tcl_Set_Result
-        (Interp: Tcl_Interpreter; Result: chars_ptr; Free_Proc: int) with
+        (Interp: Tcl_Interpreter;
+         Result: chars_ptr;
+         Free_Proc: int) with
          Import => True,
          Convention => C,
          External_Name => "Tcl_SetResult";
    begin
       Native_Tcl_Set_Result
-        (Interp => Interpreter, Result => New_String(Str => Tcl_Result),
+        (Interp => Interpreter,
+         Result => New_String(Str => Tcl_Result),
          Free_Proc => Result_Types'Enum_Rep(Result_Type));
    end Tcl_Set_Result;
 

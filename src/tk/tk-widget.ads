@@ -49,7 +49,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Relief_Type is (NONE, RAISED, SUNKEN, FLAT, RIDGE, SOLID, GROOVE) with
-      Default_Value => NONE;
+        Default_Value => NONE;
       -- ****
 
       -- ****d* Widget/Widget.Default_Relief
@@ -68,7 +68,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Pixel_Unit is (PIXEL, C, I, M, P) with
-      Default_Value => PIXEL;
+        Default_Value => PIXEL;
       -- ****
 
       -- ****d* Widget/Widget.Default_Pixel_Unit
@@ -87,7 +87,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Directions_Type is (NONE, N, NE, E, SE, S, SW, W, NW, CENTER) with
-      Default_Value => NONE;
+        Default_Value => NONE;
       -- ****
 
       -- ****d* Widget/Widget.Default_Direction
@@ -106,7 +106,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Positive_Float is digits 2 range -1.0 .. Float'Last with
-      Default_Value => -1.0;
+        Default_Value => -1.0;
       -- ****
 
       -- ****d* Widget/Widget.Default_Positive_Float
@@ -126,7 +126,7 @@ package Tk.Widget is
       -- 8.6.0 - Added
       -- SOURCE
    type Place_Type is (EMPTY, NONE, BOTTOM, TOP, LEFT, RIGHT, CENTER) with
-      Default_Value => EMPTY;
+        Default_Value => EMPTY;
       -- ****
 
       -- ****d* Widget/Widget.Default_Place
@@ -146,7 +146,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Extended_Boolean is (FALSE, TRUE, NONE) with
-      Default_Value => NONE;
+        Default_Value => NONE;
       -- ****
 
       -- ****d* Widget/Widget.Default_Extended_Boolean
@@ -165,7 +165,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Justify_Type is (NONE, LEFT, CENTER, RIGHT) with
-      Default_Value => NONE;
+        Default_Value => NONE;
       -- ****
 
       -- ****d* Widget/Widget.Default_Justify_Type
@@ -185,7 +185,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Extended_Natural is new Integer range -1 .. Integer'Last with
-      Default_Value => -1;
+        Default_Value => -1;
       -- ****
 
       -- ****d* Widget/Widget.Default_Extended_Natural
@@ -204,7 +204,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type State_Type is (NORMAL, ACTIVE, DISABLED, NONE) with
-      Default_Value => NONE;
+        Default_Value => NONE;
       -- ****
 
       -- ****d* Widget/Widget.Default_State
@@ -357,7 +357,7 @@ package Tk.Widget is
    -- SOURCE
    type Anchor_Directions is
      (NONE, NW, N, NE, EN, E, ES, SE, S, SW, WS, W, WN) with
-      Default_Value => NONE;
+        Default_Value => NONE;
       -- ****
 
       -- ****d* Widget/Widget.Default_Anchor_Direction
@@ -449,8 +449,8 @@ package Tk.Widget is
    -- My_Button: constant Tk_Widget := Get_Widget(".mybutton");
    -- SOURCE
    function Get_Widget
-     (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_Widget with
+     (Path_Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Get_Widget", Mode => Nominal);
       -- ****
@@ -539,73 +539,90 @@ package Tk.Widget is
       -- end;
       -- SOURCE
    procedure Option_Image
-     (Name: String; Value: Tcl_String;
+     (Name: String;
+      Value: Tcl_String;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Tcl_String", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Extended_Natural;
+     (Name: String;
+      Value: Extended_Natural;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Image_Extended_Natural",
+      Test_Case =>
+      (Name => "Test_Option_Image_Extended_Natural",
        Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Pixel_Data;
+     (Name: String;
+      Value: Pixel_Data;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Pixed_Data", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Relief_Type;
+     (Name: String;
+      Value: Relief_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Relief_Type", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: State_Type;
+     (Name: String;
+      Value: State_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_State_Type", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Directions_Type;
+     (Name: String;
+      Value: Directions_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Image_Directions_Type",
+      Test_Case =>
+      (Name => "Test_Option_Image_Directions_Type",
        Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Place_Type;
+     (Name: String;
+      Value: Place_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Place_Type", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Justify_Type;
+     (Name: String;
+      Value: Justify_Type;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Justify_Type", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Pad_Data;
+     (Name: String;
+      Value: Pad_Data;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Pad_Data", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Tk_Widget;
+     (Name: String;
+      Value: Tk_Widget;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Tk_Widget", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Extended_Boolean;
+     (Name: String;
+      Value: Extended_Boolean;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Image_Extended_Boolean",
+      Test_Case =>
+      (Name => "Test_Option_Image_Extended_Boolean",
        Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Tk_Window;
+     (Name: String;
+      Value: Tk_Window;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Tk_Window", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Anchor_Directions;
+     (Name: String;
+      Value: Anchor_Directions;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Image_Anchor_Directions",
+      Test_Case =>
+      (Name => "Test_Option_Image_Anchor_Directions",
        Mode => Nominal);
       -- ****
 
@@ -636,7 +653,9 @@ package Tk.Widget is
       -- end;
       -- SOURCE
    procedure Option_Image
-     (Name: String; Value: Integer; Options_String: in out Unbounded_String;
+     (Name: String;
+      Value: Integer;
+      Options_String: in out Unbounded_String;
       Base: Positive := 10) with
       Pre => Name'Length > 0 and Base in 10 | 16,
       Test_Case => (Name => "Test_Option_Image_Integer", Mode => Nominal);
@@ -662,9 +681,11 @@ package Tk.Widget is
       Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Tcl_String", Mode => Nominal);
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Directions_Type with
+     (Widgt: Tk_Widget;
+      Name: String) return Directions_Type with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Value_Direction_Type",
+      Test_Case =>
+      (Name => "Test_Option_Value_Direction_Type",
        Mode => Nominal);
    function Option_Value(Widgt: Tk_Widget; Name: String) return Pixel_Data with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
@@ -676,22 +697,28 @@ package Tk.Widget is
       Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_State_Type", Mode => Nominal);
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Justify_Type with
+     (Widgt: Tk_Widget;
+      Name: String) return Justify_Type with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Justify_Type", Mode => Nominal);
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Relief_Type with
+     (Widgt: Tk_Widget;
+      Name: String) return Relief_Type with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Relief_Type", Mode => Nominal);
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Extended_Natural with
+     (Widgt: Tk_Widget;
+      Name: String) return Extended_Natural with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Value_Extended_Natural",
+      Test_Case =>
+      (Name => "Test_Option_Value_Extended_Natural",
        Mode => Nominal);
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Extended_Boolean with
+     (Widgt: Tk_Widget;
+      Name: String) return Extended_Boolean with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Value_Extended_Boolean",
+      Test_Case =>
+      (Name => "Test_Option_Value_Extended_Boolean",
        Mode => Nominal);
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Widget with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
@@ -703,9 +730,11 @@ package Tk.Widget is
       Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Integer", Mode => Nominal);
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Anchor_Directions with
+     (Widgt: Tk_Widget;
+      Name: String) return Anchor_Directions with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Value_Anchor_Directions",
+      Test_Case =>
+      (Name => "Test_Option_Value_Anchor_Directions",
        Mode => Nominal);
    -- ****
 
@@ -754,7 +783,9 @@ package Tk.Widget is
       -- Widget.Execute_Widget_Command_(function)
       -- SOURCE
    procedure Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "") with
+     (Widgt: Tk_Widget;
+      Command_Name: String;
+      Options: String := "") with
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command", Mode => Nominal);
       -- ****
@@ -779,8 +810,9 @@ package Tk.Widget is
       -- Widget.Execute_Widget_Command_(procedure)
       -- SOURCE
    function Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return String with
+     (Widgt: Tk_Widget;
+      Command_Name: String;
+      Options: String := "") return String with
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command2", Mode => Nominal);
       -- ****
@@ -807,8 +839,9 @@ package Tk.Widget is
    generic
       type Result_Type is (<>);
    function Generic_Scalar_Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return Result_Type;
+     (Widgt: Tk_Widget;
+      Command_Name: String;
+      Options: String := "") return Result_Type;
       -- ****
 
       -- ****g* Widget/Widget.Generic_Float_Execute_Widget_Command
@@ -833,8 +866,9 @@ package Tk.Widget is
    generic
       type Result_Type is digits <>;
    function Generic_Float_Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return Result_Type;
+     (Widgt: Tk_Widget;
+      Command_Name: String;
+      Options: String := "") return Result_Type;
       -- ****
 
       --## rule off REDUCEABLE_SCOPE

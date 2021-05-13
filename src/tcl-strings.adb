@@ -17,7 +17,8 @@ with Ada.Strings.Maps;
 package body Tcl.Strings is
 
    function To_Tcl_String
-     (Source: String; Evaluate: Boolean := False) return Tcl_String is
+     (Source: String;
+      Evaluate: Boolean := False) return Tcl_String is
       New_String: Tcl_String := Null_Tcl_String;
       Element_Index: Natural := 1;
    begin
@@ -26,14 +27,18 @@ package body Tcl.Strings is
          return New_String;
       end if;
       if Evaluate then
-         Evaluated_String_Loop :
+         Evaluated_String_Loop:
          loop
             Element_Index :=
               Index
-                (Source => New_String, Pattern => """", From => Element_Index);
+                (Source => New_String,
+                 Pattern => """",
+                 From => Element_Index);
             exit Evaluated_String_Loop when Element_Index = 0;
             Insert
-              (Source => New_String, Before => Element_Index, New_Item => "\");
+              (Source => New_String,
+               Before => Element_Index,
+               New_Item => "\");
             Element_Index := Element_Index + 2;
          end loop Evaluated_String_Loop;
          Insert(Source => New_String, Before => 1, New_Item => """");
@@ -55,27 +60,32 @@ package body Tcl.Strings is
       end if;
       if Element(Source => New_String, Index => 1) = '{' then
          Trim
-           (Source => New_String, Left => To_Set(Sequence => "{"),
+           (Source => New_String,
+            Left => To_Set(Sequence => "{"),
             Right => To_Set(Sequence => "}"));
       elsif Element(Source => New_String, Index => 1) = '"' then
          Trim
-           (Source => New_String, Left => To_Set(Sequence => """"),
+           (Source => New_String,
+            Left => To_Set(Sequence => """"),
             Right => To_Set(Sequence => """"));
-         Remove_Quotes_Loop :
+         Remove_Quotes_Loop:
          loop
             Element_Index :=
               Index
-                (Source => New_String, Pattern => "\""",
+                (Source => New_String,
+                 Pattern => "\""",
                  From => Element_Index);
             exit Remove_Quotes_Loop when Element_Index = 0;
             Delete
-              (Source => New_String, From => Element_Index,
+              (Source => New_String,
+               From => Element_Index,
                Through => Element_Index);
             Element_Index := Element_Index + 1;
          end loop Remove_Quotes_Loop;
       end if;
       return Slice
-          (Source => New_String, Low => 1,
+          (Source => New_String,
+           Low => 1,
            High => Length(Source => New_String));
    end To_Ada_String;
 
