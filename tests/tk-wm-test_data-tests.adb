@@ -3389,9 +3389,10 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
+      Title(Get_Main_Window, To_Tcl_String("new title"));
       Assert
-        (Title(Get_Main_Window) = To_Tcl_String("tk"),
-         "Failed to get default title for Tk main window.");
+        (Title(Get_Main_Window) = To_Tcl_String("new title"),
+         "Failed to get title for Tk main window.");
 
 --  begin read only
    end Test_1_Title_test_wm_title;
