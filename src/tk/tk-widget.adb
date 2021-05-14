@@ -464,12 +464,16 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Integer is
+      Result: constant String :=
+        Execute_Widget_Command
+          (Widgt => Widgt,
+           Command_Name => "cget",
+           Options => "-" & Name);
    begin
-      return Integer'Value
-          (Execute_Widget_Command
-             (Widgt => Widgt,
-              Command_Name => "cget",
-              Options => "-" & Name));
+      if Result'Length = 0 then
+         return 0;
+      end if;
+      return Integer'Value(Result);
    end Option_Value;
 
    function Option_Value
