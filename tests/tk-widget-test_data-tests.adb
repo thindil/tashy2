@@ -2079,8 +2079,10 @@ package body Tk.Widget.Test_Data.Tests is
          return;
       end if;
       Create
-        (Widget, ".button", Ttk_Button_Options'(Width => -15, others => <>));
-      Tcl_Eval("update");
+        (Widget, ".button", Default_Ttk_Button_Options);
+      Result := Option_Value(Widget, "width");
+      Assert(Result = 0, "Failed to get empty value for Integer widget option");
+      Configure(Widget, Ttk_Button_Options'(Width => -15, others => <>));
       Result := Option_Value(Widget, "width");
       Assert(Result = -15, "Failed to get value for Integer widget option");
       Destroy(Widget);
