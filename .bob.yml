@@ -80,7 +80,6 @@ version: 3.0
    name: pretty
    execute:
       - gnatpp -P tashy2.gpr
-      - gnatpp -P tests/prettytests.gpr
       - gnatpp -P demos/demos.gpr
    description: Pretty print Tashy2 source code
 - command:
