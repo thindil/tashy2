@@ -15,8 +15,10 @@ begin
 
    -- Create the button with text Quit which will be closing the application
    Create
-     (Button, ".button",
-      (Text => To_Tcl_String("Quit"), Command => To_Tcl_String("exit"),
+     (Button,
+      ".button",
+      (Text => To_Tcl_String("Quit"),
+       Command => To_Tcl_String("exit"),
        others => <>));
    -- Add the button to the main window
    Add(Button);
