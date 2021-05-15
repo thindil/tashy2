@@ -107,11 +107,6 @@ version: 3.0
    flags:
       - unixpath
 - command:
-   name: prettytests
-   execute:
-      - gnatpp -P tests/prettytests.gpr
-   description: Pretty print unit tests source code
-- command:
    name: prettydemos
    execute:
       - gnatpp -P demos/demos.gpr
