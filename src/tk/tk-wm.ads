@@ -396,6 +396,8 @@ package Tk.Wm is
    -- Aspect(Get_Main_Window, 10, 10, 20, 20);
    -- SEE ALSO
    -- Wm.Aspect_(function)
+   -- COMMANDS
+   -- wm aspect Window Min_Numer Min_Denom Max_Numer Max_Denom
    -- SOURCE
    procedure Aspect
      (Window: Tk_Toplevel;
@@ -419,6 +421,8 @@ package Tk.Wm is
       -- Aspect_Ratio: constant Aspect_Data := Aspect(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Aspect_(procedure)
+      -- COMMANDS
+      -- wm aspect Window
       -- SOURCE
    function Aspect(Window: Tk_Toplevel) return Aspect_Data with
       Pre => Window /= Null_Widget,
@@ -440,6 +444,8 @@ package Tk.Wm is
       -- Window_Attributes: constant Window_Attributes_Data(X_11) := Get_Attributes(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Attributes
+      -- COMMANDS
+      -- wm attributes Window
       -- SOURCE
    function Get_Attributes
      (Window: Tk_Widget) return Window_Attributes_Data with
@@ -460,6 +466,8 @@ package Tk.Wm is
       -- Set_Attributes(Get_Main_Window, (Full_Screen => True, others => <>));
       -- SEE ALSO
       -- Wm.Get_Attributes
+      -- COMMANDS
+      -- wm attributes Window Atributes_Data
       -- SOURCE
    procedure Set_Attributes
      (Window: Tk_Widget;
@@ -483,6 +491,8 @@ package Tk.Wm is
       -- EXAMPLE
       -- -- Get the transparent color on Windows for the main Tk window
       -- Transparent_Color: constant Tcl_String := Get_Attribute(Get_Main_Window, "transparentcolor");
+      -- COMMANDS
+      -- wm attributes Window Name
       -- SOURCE
    function Get_Attribute
      (Window: Tk_Widget;
