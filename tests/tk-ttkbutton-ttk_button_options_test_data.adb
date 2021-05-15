@@ -3,6 +3,9 @@
 --  automatically. Contents of this package can be modified in any way
 --  except for sections surrounded by a 'read only' marker.
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tcl.Info; use Tcl.Info;
+
 package body Tk.TtkButton.Ttk_Button_Options_Test_Data is
 
    Local_Ttk_Button_Options: aliased GNATtest_Generated.GNATtest_Standard.Tk
@@ -34,6 +37,9 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data is
            .Ttk_Widget_Options_Tests
            .Test_Ttk_Widget_Options
            (Gnattest_T));
+      if Value("DISPLAY", "")'Length = 0 then
+         return;
+      end if;
       Button := Get_Widget(".mybutton");
       if Button /= Null_Widget then
          Destroy(Button);
