@@ -376,7 +376,7 @@ package Tk.Wm is
    Default_Window_State: constant Window_States := NORMAL;
    -- ****
 
-   -- ****f* Wm/Wm.Aspect_(procedure)
+   -- ****f* Wm/Wm.Set_Aspect
    -- FUNCTION
    -- Set the aspect ratio for the selected Tk_Toplevel widget
    -- PARAMETERS
@@ -393,20 +393,20 @@ package Tk.Wm is
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Set the aspect ratio for the main Tk window to 10 10 20 20
-   -- Aspect(Get_Main_Window, 10, 10, 20, 20);
+   -- Set_Aspect(Get_Main_Window, 10, 10, 20, 20);
    -- SEE ALSO
-   -- Wm.Aspect_(function)
+   -- Wm.Get_Aspect
    -- COMMANDS
    -- wm aspect Window Min_Numer Min_Denom Max_Numer Max_Denom
    -- SOURCE
-   procedure Aspect
+   procedure Set_Aspect
      (Window: Tk_Toplevel;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Aspect", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Aspect_(function)
+      -- ****f* Wm/Wm.Get_Aspect
       -- FUNCTION
       -- Get the aspect ratio for the selected Tk_Toplevel widget
       -- PARAMETERS
@@ -418,13 +418,13 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the aspect ratio for the main Tk window
-      -- Aspect_Ratio: constant Aspect_Data := Aspect(Get_Main_Window);
+      -- Aspect_Ratio: constant Aspect_Data := Get_Aspect(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Aspect_(procedure)
+      -- Wm.Set_Aspect
       -- COMMANDS
       -- wm aspect Window
       -- SOURCE
-   function Aspect(Window: Tk_Toplevel) return Aspect_Data with
+   function Get_Aspect(Window: Tk_Toplevel) return Aspect_Data with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Aspect2", Mode => Nominal);
       -- ****
@@ -532,7 +532,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Get_Attribute4", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Client_(function)
+      -- ****f* Wm/Wm.Get_Client
       -- FUNCTION
       -- Get the value of Window property WM_CLIENT_MACHINE
       -- PARAMETERS
@@ -543,11 +543,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the property for the Tk main window
-      -- Client_Machine: constant String := Client(Get_Main_Window);
+      -- Client_Machine: constant String := Get_Client(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Client_(procecdure)
+      -- Wm.Set_Client
       -- SOURCE
-   function Client
+   function Get_Client
      (Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm client " & Tk_Path_Name(Widgt => Window),
@@ -556,7 +556,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Client", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Client_(procedure)
+      -- ****f* Wm/Wm.Set_Client
       -- FUNCTION
       -- Set the value of Window property WM_CLIENT_MACHINE
       -- PARAMETERS
@@ -566,16 +566,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the property for the Tk main window to Localhost
-      -- Client(Get_Main_Window, To_Tcl_String("Localhost"));
+      -- Set_Client(Get_Main_Window, To_Tcl_String("Localhost"));
       -- SEE ALSO
-      -- Wm.Client_(function)
+      -- Wm.Get_Client
       -- SOURCE
-   procedure Client(Window: Tk_Widget; Name: Tcl_String) with
+   procedure Set_Client(Window: Tk_Widget; Name: Tcl_String) with
       Pre => Window /= Null_Widget and Length(Source => Name) > 0,
       Test_Case => (Name => "Test_Wm_Client2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Color_Map_Windows_(function)
+      -- ****f* Wm/Wm.Get_Color_Map_Windows
       -- FUNCTION
       -- Get the list of Tk widgets which have different color maps than their
       -- parents (property WM_COLORMAP_WINDOWS)
@@ -588,16 +588,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the list of widgets for the Tk main window
-      -- Different_Colors: constant Array_List := Color_Map_Windows(Get_Main_Window);
+      -- Different_Colors: constant Array_List := Get_Color_Map_Windows(Get_Main_Window);
       -- SEE ALSO
-      -- Color_Map_Windows_(procedure)
+      -- Set_Color_Map_Windows
       -- SOURCE
-   function Color_Map_Windows(Window: Tk_Widget) return Array_List with
+   function Get_Color_Map_Windows(Window: Tk_Widget) return Array_List with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Color_Map_Windows_(procedure)
+      -- ****f* Wm/Wm.Set_Color_Map_Windows
       -- FUNCTION
       -- Set the list of Tk widgets which have different color maps than their
       -- parents (property WM_COLORMAP_WINDOWS)
@@ -608,11 +608,13 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the list of widgets to My_Label and My_Button for the Tk main window
-      -- Color_Map_Windows(Get_Main_Window, (MyLabel, My_Button));
+      -- Set_Color_Map_Windows(Get_Main_Window, (MyLabel, My_Button));
       -- SEE ALSO
-      -- Color_Map_Windows_(function)
+      -- Get_Color_Map_Windows
       -- SOURCE
-   procedure Color_Map_Windows(Window: Tk_Widget; Widgets: Widgets_Array) with
+   procedure Set_Color_Map_Windows
+     (Window: Tk_Widget;
+      Widgets: Widgets_Array) with
       Pre => Window /= Null_Widget and Widgets /= Empty_Widgets_Array,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows2", Mode => Nominal);
       -- ****

@@ -21,7 +21,7 @@ with Tcl.Variables;
 
 package body Tk.Wm is
 
-   procedure Aspect
+   procedure Set_Aspect
      (Window: Tk_Toplevel;
       Min_Numer, Min_Denom, Max_Numer, Max_Denom: Natural) is
    begin
@@ -34,9 +34,9 @@ package body Tk.Wm is
            Natural'Image(Max_Numer) &
            Natural'Image(Max_Denom),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Aspect;
+   end Set_Aspect;
 
-   function Aspect(Window: Tk_Toplevel) return Aspect_Data is
+   function Get_Aspect(Window: Tk_Toplevel) return Aspect_Data is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
@@ -59,7 +59,7 @@ package body Tk.Wm is
          Result_Value.Max_Denom :=
            Natural'Value(To_Ada_String(Source => Result(4)));
       end return;
-   end Aspect;
+   end Get_Aspect;
 
    function Get_Attributes(Window: Tk_Widget) return Window_Attributes_Data is
       use Tcl.Variables;
@@ -256,7 +256,7 @@ package body Tk.Wm is
       return FALSE;
    end Get_Attribute;
 
-   procedure Client(Window: Tk_Widget; Name: Tcl_String) is
+   procedure Set_Client(Window: Tk_Widget; Name: Tcl_String) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -265,9 +265,9 @@ package body Tk.Wm is
            " " &
            To_String(Source => Name),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Client;
+   end Set_Client;
 
-   function Color_Map_Windows(Window: Tk_Widget) return Array_List is
+   function Get_Color_Map_Windows(Window: Tk_Widget) return Array_List is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
    begin
       return Split_List
@@ -277,9 +277,11 @@ package body Tk.Wm is
                   "wm colormapwindows " & Tk_Path_Name(Widgt => Window),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
-   end Color_Map_Windows;
+   end Get_Color_Map_Windows;
 
-   procedure Color_Map_Windows(Window: Tk_Widget; Widgets: Widgets_Array) is
+   procedure Set_Color_Map_Windows
+     (Window: Tk_Widget;
+      Widgets: Widgets_Array) is
       Windows_List: Unbounded_String := Null_Unbounded_String;
    begin
       Convert_List_To_String_Loop:
@@ -296,7 +298,7 @@ package body Tk.Wm is
            To_String(Source => Windows_List) &
            "}",
          Interpreter => Tk_Interp(Widgt => Window));
-   end Color_Map_Windows;
+   end Set_Color_Map_Windows;
 
    procedure Command(Window: Tk_Widget; Wm_Command: Tcl_String) is
    begin
