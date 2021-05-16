@@ -29,26 +29,25 @@ package body Tcl.Lists.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Split_List_908c8a_b5e33c
-     (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+   function Wrap_Test_Split_List_908c8a_b5e33c (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)  return Array_List
+   is
    begin
       begin
-         pragma Assert(List'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (List'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tcl-lists.ads:0):Test_Split_List test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tcl-lists.ads:0):Test_Split_List test requirement violated");
       end;
       declare
-         Test_Split_List_908c8a_b5e33c_Result: constant Array_List :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Split_List
-             (List, Interpreter);
+         Test_Split_List_908c8a_b5e33c_Result : constant Array_List := GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Split_List (List, Interpreter);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -62,15 +61,11 @@ package body Tcl.Lists.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Split_List_test_split_list(Gnattest_T: in out Test);
-   procedure Test_Split_List_908c8a_b5e33c(Gnattest_T: in out Test) renames
-     Test_Split_List_test_split_list;
+   procedure Test_Split_List_test_split_list (Gnattest_T : in out Test);
+   procedure Test_Split_List_908c8a_b5e33c (Gnattest_T : in out Test) renames Test_Split_List_test_split_list;
 --  id:2.2/908c8a0cca9c184f/Split_List/1/0/test_split_list/
-   procedure Test_Split_List_test_split_list(Gnattest_T: in out Test) is
-      function Split_List
-        (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Array_List renames
-        Wrap_Test_Split_List_908c8a_b5e33c;
+   procedure Test_Split_List_test_split_list (Gnattest_T : in out Test) is
+      function Split_List (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List renames Wrap_Test_Split_List_908c8a_b5e33c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -89,26 +84,25 @@ package body Tcl.Lists.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Split_List_Variable_b25096_53b238
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+   function Wrap_Test_Split_List_Variable_b25096_53b238 (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)  return Array_List
+   is
    begin
       begin
-         pragma Assert(Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Name'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tcl-lists.ads:0):Test_Split_List_Variable test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tcl-lists.ads:0):Test_Split_List_Variable test requirement violated");
       end;
       declare
-         Test_Split_List_Variable_b25096_53b238_Result: constant Array_List :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Split_List_Variable
-             (Name, Interpreter);
+         Test_Split_List_Variable_b25096_53b238_Result : constant Array_List := GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Split_List_Variable (Name, Interpreter);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -122,18 +116,11 @@ package body Tcl.Lists.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Split_List_Variable_test_split_list_variable
-     (Gnattest_T: in out Test);
-   procedure Test_Split_List_Variable_b25096_53b238
-     (Gnattest_T: in out Test) renames
-     Test_Split_List_Variable_test_split_list_variable;
+   procedure Test_Split_List_Variable_test_split_list_variable (Gnattest_T : in out Test);
+   procedure Test_Split_List_Variable_b25096_53b238 (Gnattest_T : in out Test) renames Test_Split_List_Variable_test_split_list_variable;
 --  id:2.2/b25096b8f19adb69/Split_List_Variable/1/0/test_split_list_variable/
-   procedure Test_Split_List_Variable_test_split_list_variable
-     (Gnattest_T: in out Test) is
-      function Split_List_Variable
-        (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Array_List renames
-        Wrap_Test_Split_List_Variable_b25096_53b238;
+   procedure Test_Split_List_Variable_test_split_list_variable (Gnattest_T : in out Test) is
+      function Split_List_Variable (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List renames Wrap_Test_Split_List_Variable_b25096_53b238;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -154,24 +141,25 @@ package body Tcl.Lists.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Merge_List_46a169_8803ae
-     (List: Array_List) return String is
+   function Wrap_Test_Merge_List_46a169_8803ae (List: Array_List)  return String
+   is
    begin
       begin
-         pragma Assert(List'Length > 0);
+         pragma Assert
+           (List'Length > 0);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tcl-lists.ads:0):Test_Merge_List test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tcl-lists.ads:0):Test_Merge_List test requirement violated");
       end;
       declare
-         Test_Merge_List_46a169_8803ae_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Merge_List(List);
+         Test_Merge_List_46a169_8803ae_Result : constant String := GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Merge_List (List);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -185,13 +173,11 @@ package body Tcl.Lists.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Merge_List_test_merge_list(Gnattest_T: in out Test);
-   procedure Test_Merge_List_46a169_8803ae(Gnattest_T: in out Test) renames
-     Test_Merge_List_test_merge_list;
+   procedure Test_Merge_List_test_merge_list (Gnattest_T : in out Test);
+   procedure Test_Merge_List_46a169_8803ae (Gnattest_T : in out Test) renames Test_Merge_List_test_merge_list;
 --  id:2.2/46a1691971009546/Merge_List/1/0/test_merge_list/
-   procedure Test_Merge_List_test_merge_list(Gnattest_T: in out Test) is
-      function Merge_List(List: Array_List) return String renames
-        Wrap_Test_Merge_List_46a169_8803ae;
+   procedure Test_Merge_List_test_merge_list (Gnattest_T : in out Test) is
+      function Merge_List (List: Array_List) return String renames Wrap_Test_Merge_List_46a169_8803ae;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

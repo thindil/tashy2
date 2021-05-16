@@ -6,27 +6,20 @@ with GNATtest_Generated;
 
 package Tk.TtkButton.Ttk_Button_Options_Test_Data.Ttk_Button_Options_Tests is
 
-   type Test_Ttk_Button_Options is new GNATtest_Generated.GNATtest_Standard.Tk
-     .TtkButton
-     .Ttk_Button_Options_Test_Data
-     .Test_Ttk_Button_Options with
-   null record;
+   type Test_Ttk_Button_Options is new
+     GNATtest_Generated.GNATtest_Standard.Tk.TtkButton.Ttk_Button_Options_Test_Data.Test_Ttk_Button_Options with null record;
 
-   procedure Test_Create_32e405_868367
-     (Gnattest_T: in out Test_Ttk_Button_Options);
+   procedure Test_Create_32e405_868367 (Gnattest_T : in out Test_Ttk_Button_Options);
    --  tk-ttkbutton.ads:97:4:Create:Test_Create_TtkButton1
 
-   procedure Test_Create_ebbdc1_db14c8
-     (Gnattest_T: in out Test_Ttk_Button_Options);
-   --  tk-ttkbutton.ads:132:4:Create:Test_Create_TtkButton2
+   procedure Test_Create_ebbdc1_db14c8 (Gnattest_T : in out Test_Ttk_Button_Options);
+   --  tk-ttkbutton.ads:133:4:Create:Test_Create_TtkButton2
 
-   procedure Test_Get_Options_ded36e_addfb4
-     (Gnattest_T: in out Test_Ttk_Button_Options);
-   --  tk-ttkbutton.ads:157:4:Get_Options:Test_Get_Options_TtkButton
+   procedure Test_Get_Options_ded36e_addfb4 (Gnattest_T : in out Test_Ttk_Button_Options);
+   --  tk-ttkbutton.ads:160:4:Get_Options:Test_Get_Options_TtkButton
 
-   procedure Test_Configure_0076be_e2c160
-     (Gnattest_T: in out Test_Ttk_Button_Options);
-   --  tk-ttkbutton.ads:178:4:Configure:Test_Configure_TtkButton
+   procedure Test_Configure_0076be_e2c160 (Gnattest_T : in out Test_Ttk_Button_Options);
+   --  tk-ttkbutton.ads:181:4:Configure:Test_Configure_TtkButton
 
 end Tk.TtkButton.Ttk_Button_Options_Test_Data.Ttk_Button_Options_Tests;
 --  end read only

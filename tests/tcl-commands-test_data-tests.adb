@@ -46,28 +46,26 @@ package body Tcl.Commands.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Tcl_Create_Command_5606e9_496635
-     (Command_Name: String; Proc: Tcl_Cmd_Proc;
-      Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Delete_Proc: Tcl_Cmd_Delete_Proc := Null_Tcl_Cmd_Delete_Proc)
-      return Tcl_Command is
+   function Wrap_Test_Tcl_Create_Command_5606e9_496635 (Command_Name: String; Proc: Tcl_Cmd_Proc; Interpreter: Tcl_Interpreter := Get_Interpreter; Delete_Proc: Tcl_Cmd_Delete_Proc :=
+        Null_Tcl_Cmd_Delete_Proc)  return Tcl_Command
+   is
    begin
       begin
-         pragma Assert(Command_Name'Length > 0 and Proc /= Null_Tcl_Cmd_Proc);
+         pragma Assert
+           (Command_Name'Length > 0 and Proc /= Null_Tcl_Cmd_Proc);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tcl-commands.ads:0):Test_Tcl_CreateCommand test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tcl-commands.ads:0):Test_Tcl_CreateCommand test requirement violated");
       end;
       declare
-         Test_Tcl_Create_Command_5606e9_496635_Result: constant Tcl_Command :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Commands.Tcl_Create_Command
-             (Command_Name, Proc, Interpreter, Delete_Proc);
+         Test_Tcl_Create_Command_5606e9_496635_Result : constant Tcl_Command := GNATtest_Generated.GNATtest_Standard.Tcl.Commands.Tcl_Create_Command (Command_Name, Proc, Interpreter, Delete_Proc);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -81,20 +79,12 @@ package body Tcl.Commands.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Tcl_Create_Command_test_tcl_createcommand
-     (Gnattest_T: in out Test);
-   procedure Test_Tcl_Create_Command_5606e9_496635
-     (Gnattest_T: in out Test) renames
-     Test_Tcl_Create_Command_test_tcl_createcommand;
+   procedure Test_Tcl_Create_Command_test_tcl_createcommand (Gnattest_T : in out Test);
+   procedure Test_Tcl_Create_Command_5606e9_496635 (Gnattest_T : in out Test) renames Test_Tcl_Create_Command_test_tcl_createcommand;
 --  id:2.2/5606e960122df3a5/Tcl_Create_Command/1/0/test_tcl_createcommand/
-   procedure Test_Tcl_Create_Command_test_tcl_createcommand
-     (Gnattest_T: in out Test) is
-      function Tcl_Create_Command
-        (Command_Name: String; Proc: Tcl_Cmd_Proc;
-         Interpreter: Tcl_Interpreter := Get_Interpreter;
-         Delete_Proc: Tcl_Cmd_Delete_Proc := Null_Tcl_Cmd_Delete_Proc)
-         return Tcl_Command renames
-        Wrap_Test_Tcl_Create_Command_5606e9_496635;
+   procedure Test_Tcl_Create_Command_test_tcl_createcommand (Gnattest_T : in out Test) is
+      function Tcl_Create_Command (Command_Name: String; Proc: Tcl_Cmd_Proc; Interpreter: Tcl_Interpreter := Get_Interpreter; Delete_Proc: Tcl_Cmd_Delete_Proc :=
+        Null_Tcl_Cmd_Delete_Proc) return Tcl_Command renames Wrap_Test_Tcl_Create_Command_5606e9_496635;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

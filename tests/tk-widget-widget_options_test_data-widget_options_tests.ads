@@ -6,13 +6,8 @@ with GNATtest_Generated;
 
 package Tk.Widget.Widget_Options_Test_Data.Widget_Options_Tests is
 
-   type Test_Widget_Options is abstract new GNATtest_Generated
-     .GNATtest_Standard
-     .Tk
-     .Widget
-     .Widget_Options_Test_Data
-     .Test_Widget_Options with
-   null record;
+   type Test_Widget_Options is abstract new
+     GNATtest_Generated.GNATtest_Standard.Tk.Widget.Widget_Options_Test_Data.Test_Widget_Options with null record;
 
 end Tk.Widget.Widget_Options_Test_Data.Widget_Options_Tests;
 --  end read only

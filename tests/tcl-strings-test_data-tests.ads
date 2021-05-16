@@ -6,15 +6,14 @@ with Gnattest_Generated;
 
 package Tcl.Strings.Test_Data.Tests is
 
-   type Test is new GNATtest_Generated.GNATtest_Standard.Tcl.Strings.Test_Data
-     .Test with
-   null record;
+   type Test is new GNATtest_Generated.GNATtest_Standard.Tcl.Strings.Test_Data.Test
+   with null record;
 
-   procedure Test_To_Tcl_String_05e111_cc0b40(Gnattest_T: in out Test);
+   procedure Test_To_Tcl_String_05e111_cc0b40 (Gnattest_T : in out Test);
    --  tcl-strings.ads:62:4:To_Tcl_String:Test_To_Tcl_String
 
-   procedure Test_To_Ada_String_9fab6f_7961da(Gnattest_T: in out Test);
-   --  tcl-strings.ads:80:4:To_Ada_String:Test_To_Ada_String
+   procedure Test_To_Ada_String_9fab6f_7961da (Gnattest_T : in out Test);
+   --  tcl-strings.ads:81:4:To_Ada_String:Test_To_Ada_String
 
 end Tcl.Strings.Test_Data.Tests;
 --  end read only

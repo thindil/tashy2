@@ -6,18 +6,17 @@ with Gnattest_Generated;
 
 package Tk.Button.Test_Data.Tests is
 
-   type Test is new GNATtest_Generated.GNATtest_Standard.Tk.Button.Test_Data
-     .Test with
-   null record;
+   type Test is new GNATtest_Generated.GNATtest_Standard.Tk.Button.Test_Data.Test
+   with null record;
 
-   procedure Test_Flash_21d4a1_fe4617(Gnattest_T: in out Test);
-   --  tk-button.ads:250:4:Flash:Test_Flash_Button
+   procedure Test_Flash_21d4a1_fe4617 (Gnattest_T : in out Test);
+   --  tk-button.ads:253:4:Flash:Test_Flash_Button
 
-   procedure Test_Invoke_05a9d3_ac3b13(Gnattest_T: in out Test);
-   --  tk-button.ads:272:4:Invoke:Test_Invoke_Button1
+   procedure Test_Invoke_05a9d3_ac3b13 (Gnattest_T : in out Test);
+   --  tk-button.ads:275:4:Invoke:Test_Invoke_Button1
 
-   procedure Test_Invoke_89eee4_562019(Gnattest_T: in out Test);
-   --  tk-button.ads:296:4:Invoke:Test_Invoke_Button2
+   procedure Test_Invoke_89eee4_562019 (Gnattest_T : in out Test);
+   --  tk-button.ads:299:4:Invoke:Test_Invoke_Button2
 
 end Tk.Button.Test_Data.Tests;
 --  end read only

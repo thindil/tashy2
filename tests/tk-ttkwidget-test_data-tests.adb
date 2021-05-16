@@ -32,12 +32,12 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Option_Image_a3facf_ddcb4f
-     (Name: String; Value: Compound_Type;
-      Options_String: in out Unbounded_String) is
+   procedure Wrap_Test_Option_Image_a3facf_ddcb4f (Name: String; Value: Compound_Type; Options_String: in out Unbounded_String) 
+   is
    begin
       begin
-         pragma Assert(Name'Length > 0);
+         pragma Assert
+           (Name'Length > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -45,10 +45,10 @@ package body Tk.TtkWidget.Test_Data.Tests is
               (False,
                "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Compound_Type test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image
-        (Name, Value, Options_String);
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image (Name, Value, Options_String);
       begin
-         pragma Assert(True);
+         pragma Assert
+           (True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -60,17 +60,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_1_Option_Image_test_option_image_compound_type
-     (Gnattest_T: in out Test);
-   procedure Test_Option_Image_a3facf_ddcb4f(Gnattest_T: in out Test) renames
-     Test_1_Option_Image_test_option_image_compound_type;
+   procedure Test_1_Option_Image_test_option_image_compound_type (Gnattest_T : in out Test);
+   procedure Test_Option_Image_a3facf_ddcb4f (Gnattest_T : in out Test) renames Test_1_Option_Image_test_option_image_compound_type;
 --  id:2.2/a3facf0235c97b50/Option_Image/1/0/test_option_image_compound_type/
-   procedure Test_1_Option_Image_test_option_image_compound_type
-     (Gnattest_T: in out Test) is
-      procedure Option_Image
-        (Name: String; Value: Compound_Type;
-         Options_String: in out Unbounded_String) renames
-        Wrap_Test_Option_Image_a3facf_ddcb4f;
+   procedure Test_1_Option_Image_test_option_image_compound_type (Gnattest_T : in out Test) is
+   procedure Option_Image (Name: String; Value: Compound_Type; Options_String: in out Unbounded_String) renames Wrap_Test_Option_Image_a3facf_ddcb4f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -92,12 +86,12 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Option_Image_5ac754_8ca289
-     (Name: String; Value: Disabled_State_Type;
-      Options_String: in out Unbounded_String) is
+   procedure Wrap_Test_Option_Image_5ac754_8ca289 (Name: String; Value: Disabled_State_Type; Options_String: in out Unbounded_String) 
+   is
    begin
       begin
-         pragma Assert(Name'Length > 0);
+         pragma Assert
+           (Name'Length > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -105,10 +99,10 @@ package body Tk.TtkWidget.Test_Data.Tests is
               (False,
                "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Distabled_State_Type test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image
-        (Name, Value, Options_String);
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image (Name, Value, Options_String);
       begin
-         pragma Assert(True);
+         pragma Assert
+           (True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -120,17 +114,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_2_Option_Image_test_option_image_distabled_state_type
-     (Gnattest_T: in out Test);
-   procedure Test_Option_Image_5ac754_8ca289(Gnattest_T: in out Test) renames
-     Test_2_Option_Image_test_option_image_distabled_state_type;
+   procedure Test_2_Option_Image_test_option_image_distabled_state_type (Gnattest_T : in out Test);
+   procedure Test_Option_Image_5ac754_8ca289 (Gnattest_T : in out Test) renames Test_2_Option_Image_test_option_image_distabled_state_type;
 --  id:2.2/5ac754e1ee99f3f1/Option_Image/0/0/test_option_image_distabled_state_type/
-   procedure Test_2_Option_Image_test_option_image_distabled_state_type
-     (Gnattest_T: in out Test) is
-      procedure Option_Image
-        (Name: String; Value: Disabled_State_Type;
-         Options_String: in out Unbounded_String) renames
-        Wrap_Test_Option_Image_5ac754_8ca289;
+   procedure Test_2_Option_Image_test_option_image_distabled_state_type (Gnattest_T : in out Test) is
+   procedure Option_Image (Name: String; Value: Disabled_State_Type; Options_String: in out Unbounded_String) renames Wrap_Test_Option_Image_5ac754_8ca289;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -152,12 +140,12 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Option_Image_a0749a_9522a2
-     (Name: String; Value: Ttk_Image_Option;
-      Options_String: in out Unbounded_String) is
+   procedure Wrap_Test_Option_Image_a0749a_9522a2 (Name: String; Value: Ttk_Image_Option; Options_String: in out Unbounded_String) 
+   is
    begin
       begin
-         pragma Assert(Name'Length > 0);
+         pragma Assert
+           (Name'Length > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -165,10 +153,10 @@ package body Tk.TtkWidget.Test_Data.Tests is
               (False,
                "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Image_Option test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image
-        (Name, Value, Options_String);
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image (Name, Value, Options_String);
       begin
-         pragma Assert(True);
+         pragma Assert
+           (True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -180,17 +168,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_3_Option_Image_test_option_image_image_option
-     (Gnattest_T: in out Test);
-   procedure Test_Option_Image_a0749a_9522a2(Gnattest_T: in out Test) renames
-     Test_3_Option_Image_test_option_image_image_option;
+   procedure Test_3_Option_Image_test_option_image_image_option (Gnattest_T : in out Test);
+   procedure Test_Option_Image_a0749a_9522a2 (Gnattest_T : in out Test) renames Test_3_Option_Image_test_option_image_image_option;
 --  id:2.2/a0749a45436a2e7b/Option_Image/0/0/test_option_image_image_option/
-   procedure Test_3_Option_Image_test_option_image_image_option
-     (Gnattest_T: in out Test) is
-      procedure Option_Image
-        (Name: String; Value: Ttk_Image_Option;
-         Options_String: in out Unbounded_String) renames
-        Wrap_Test_Option_Image_a0749a_9522a2;
+   procedure Test_3_Option_Image_test_option_image_image_option (Gnattest_T : in out Test) is
+   procedure Option_Image (Name: String; Value: Ttk_Image_Option; Options_String: in out Unbounded_String) renames Wrap_Test_Option_Image_a0749a_9522a2;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -215,12 +197,12 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Option_Image_fac0b4_5f511f
-     (Name: String; Value: Padding_Data;
-      Options_String: in out Unbounded_String) is
+   procedure Wrap_Test_Option_Image_fac0b4_5f511f (Name: String; Value: Padding_Data; Options_String: in out Unbounded_String) 
+   is
    begin
       begin
-         pragma Assert(Name'Length > 0);
+         pragma Assert
+           (Name'Length > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -228,10 +210,10 @@ package body Tk.TtkWidget.Test_Data.Tests is
               (False,
                "req_sloc(tk-ttkwidget.ads:0):Test_Option_Image_Padding_Data test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image
-        (Name, Value, Options_String);
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Image (Name, Value, Options_String);
       begin
-         pragma Assert(True);
+         pragma Assert
+           (True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -243,17 +225,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_4_Option_Image_test_option_image_padding_data
-     (Gnattest_T: in out Test);
-   procedure Test_Option_Image_fac0b4_5f511f(Gnattest_T: in out Test) renames
-     Test_4_Option_Image_test_option_image_padding_data;
+   procedure Test_4_Option_Image_test_option_image_padding_data (Gnattest_T : in out Test);
+   procedure Test_Option_Image_fac0b4_5f511f (Gnattest_T : in out Test) renames Test_4_Option_Image_test_option_image_padding_data;
 --  id:2.2/fac0b4180283eb8c/Option_Image/0/0/test_option_image_padding_data/
-   procedure Test_4_Option_Image_test_option_image_padding_data
-     (Gnattest_T: in out Test) is
-      procedure Option_Image
-        (Name: String; Value: Padding_Data;
-         Options_String: in out Unbounded_String) renames
-        Wrap_Test_Option_Image_fac0b4_5f511f;
+   procedure Test_4_Option_Image_test_option_image_padding_data (Gnattest_T : in out Test) is
+   procedure Option_Image (Name: String; Value: Padding_Data; Options_String: in out Unbounded_String) renames Wrap_Test_Option_Image_fac0b4_5f511f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -278,25 +254,25 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_5bd68b_a92add
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Compound_Type is
+   function Wrap_Test_Option_Value_5bd68b_a92add (Ttk_Widgt: Ttk_Widget; Name: String)  return Compound_Type
+   is
    begin
       begin
-         pragma Assert(Ttk_Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert
+           (Ttk_Widgt /= Null_Widget and Name'Length > 0);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Compound_Type test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Compound_Type test requirement violated");
       end;
       declare
-         Test_Option_Value_5bd68b_a92add_Result: constant Compound_Type :=
-           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value
-             (Ttk_Widgt, Name);
+         Test_Option_Value_5bd68b_a92add_Result : constant Compound_Type := GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value (Ttk_Widgt, Name);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -310,16 +286,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_1_Option_Value_test_option_value_compound_type
-     (Gnattest_T: in out Test);
-   procedure Test_Option_Value_5bd68b_a92add(Gnattest_T: in out Test) renames
-     Test_1_Option_Value_test_option_value_compound_type;
+   procedure Test_1_Option_Value_test_option_value_compound_type (Gnattest_T : in out Test);
+   procedure Test_Option_Value_5bd68b_a92add (Gnattest_T : in out Test) renames Test_1_Option_Value_test_option_value_compound_type;
 --  id:2.2/5bd68b7026ba67cc/Option_Value/1/0/test_option_value_compound_type/
-   procedure Test_1_Option_Value_test_option_value_compound_type
-     (Gnattest_T: in out Test) is
-      function Option_Value
-        (Ttk_Widgt: Ttk_Widget; Name: String) return Compound_Type renames
-        Wrap_Test_Option_Value_5bd68b_a92add;
+   procedure Test_1_Option_Value_test_option_value_compound_type (Gnattest_T : in out Test) is
+      function Option_Value (Ttk_Widgt: Ttk_Widget; Name: String) return Compound_Type renames Wrap_Test_Option_Value_5bd68b_a92add;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -351,25 +322,25 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_e44442_1318d9
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Disabled_State_Type is
+   function Wrap_Test_Option_Value_e44442_1318d9 (Ttk_Widgt: Ttk_Widget; Name: String)  return Disabled_State_Type
+   is
    begin
       begin
-         pragma Assert(Ttk_Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert
+           (Ttk_Widgt /= Null_Widget and Name'Length > 0);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Disabled_State_Type test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Disabled_State_Type test requirement violated");
       end;
       declare
-         Test_Option_Value_e44442_1318d9_Result: constant Disabled_State_Type :=
-           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value
-             (Ttk_Widgt, Name);
+         Test_Option_Value_e44442_1318d9_Result : constant Disabled_State_Type := GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value (Ttk_Widgt, Name);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -383,17 +354,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_2_Option_Value_test_option_value_disabled_state_type
-     (Gnattest_T: in out Test);
-   procedure Test_Option_Value_e44442_1318d9(Gnattest_T: in out Test) renames
-     Test_2_Option_Value_test_option_value_disabled_state_type;
+   procedure Test_2_Option_Value_test_option_value_disabled_state_type (Gnattest_T : in out Test);
+   procedure Test_Option_Value_e44442_1318d9 (Gnattest_T : in out Test) renames Test_2_Option_Value_test_option_value_disabled_state_type;
 --  id:2.2/e4444212d9605a79/Option_Value/0/0/test_option_value_disabled_state_type/
-   procedure Test_2_Option_Value_test_option_value_disabled_state_type
-     (Gnattest_T: in out Test) is
-      function Option_Value
-        (Ttk_Widgt: Ttk_Widget; Name: String)
-         return Disabled_State_Type renames
-        Wrap_Test_Option_Value_e44442_1318d9;
+   procedure Test_2_Option_Value_test_option_value_disabled_state_type (Gnattest_T : in out Test) is
+      function Option_Value (Ttk_Widgt: Ttk_Widget; Name: String) return Disabled_State_Type renames Wrap_Test_Option_Value_e44442_1318d9;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -419,25 +384,25 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_7d1d95_d2d94b
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Ttk_Image_Option is
+   function Wrap_Test_Option_Value_7d1d95_d2d94b (Ttk_Widgt: Ttk_Widget; Name: String)  return Ttk_Image_Option
+   is
    begin
       begin
-         pragma Assert(Ttk_Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert
+           (Ttk_Widgt /= Null_Widget and Name'Length > 0);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Ttk_Image_Option test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Ttk_Image_Option test requirement violated");
       end;
       declare
-         Test_Option_Value_7d1d95_d2d94b_Result: constant Ttk_Image_Option :=
-           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value
-             (Ttk_Widgt, Name);
+         Test_Option_Value_7d1d95_d2d94b_Result : constant Ttk_Image_Option := GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value (Ttk_Widgt, Name);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -451,16 +416,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_3_Option_Value_test_option_value_ttk_image_option
-     (Gnattest_T: in out Test);
-   procedure Test_Option_Value_7d1d95_d2d94b(Gnattest_T: in out Test) renames
-     Test_3_Option_Value_test_option_value_ttk_image_option;
+   procedure Test_3_Option_Value_test_option_value_ttk_image_option (Gnattest_T : in out Test);
+   procedure Test_Option_Value_7d1d95_d2d94b (Gnattest_T : in out Test) renames Test_3_Option_Value_test_option_value_ttk_image_option;
 --  id:2.2/7d1d95f7e386ba50/Option_Value/0/0/test_option_value_ttk_image_option/
-   procedure Test_3_Option_Value_test_option_value_ttk_image_option
-     (Gnattest_T: in out Test) is
-      function Option_Value
-        (Ttk_Widgt: Ttk_Widget; Name: String) return Ttk_Image_Option renames
-        Wrap_Test_Option_Value_7d1d95_d2d94b;
+   procedure Test_3_Option_Value_test_option_value_ttk_image_option (Gnattest_T : in out Test) is
+      function Option_Value (Ttk_Widgt: Ttk_Widget; Name: String) return Ttk_Image_Option renames Wrap_Test_Option_Value_7d1d95_d2d94b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -488,25 +448,25 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_08ea7f_956d9f
-     (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Data is
+   function Wrap_Test_Option_Value_08ea7f_956d9f (Ttk_Widgt: Ttk_Widget; Name: String)  return Padding_Data
+   is
    begin
       begin
-         pragma Assert(Ttk_Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert
+           (Ttk_Widgt /= Null_Widget and Name'Length > 0);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Padding_Data test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tk-ttkwidget.ads:0):Test_Option_Value_Padding_Data test requirement violated");
       end;
       declare
-         Test_Option_Value_08ea7f_956d9f_Result: constant Padding_Data :=
-           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value
-             (Ttk_Widgt, Name);
+         Test_Option_Value_08ea7f_956d9f_Result : constant Padding_Data := GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Option_Value (Ttk_Widgt, Name);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -520,16 +480,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_4_Option_Value_test_option_value_padding_data
-     (Gnattest_T: in out Test);
-   procedure Test_Option_Value_08ea7f_956d9f(Gnattest_T: in out Test) renames
-     Test_4_Option_Value_test_option_value_padding_data;
+   procedure Test_4_Option_Value_test_option_value_padding_data (Gnattest_T : in out Test);
+   procedure Test_Option_Value_08ea7f_956d9f (Gnattest_T : in out Test) renames Test_4_Option_Value_test_option_value_padding_data;
 --  id:2.2/08ea7f83934101c8/Option_Value/0/0/test_option_value_padding_data/
-   procedure Test_4_Option_Value_test_option_value_padding_data
-     (Gnattest_T: in out Test) is
-      function Option_Value
-        (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Data renames
-        Wrap_Test_Option_Value_08ea7f_956d9f;
+   procedure Test_4_Option_Value_test_option_value_padding_data (Gnattest_T : in out Test) is
+      function Option_Value (Ttk_Widgt: Ttk_Widget; Name: String) return Padding_Data renames Wrap_Test_Option_Value_08ea7f_956d9f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -562,25 +517,25 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_In_State_46b68b_db2848
-     (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type) return Boolean is
+   function Wrap_Test_In_State_46b68b_db2848 (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type)  return Boolean
+   is
    begin
       begin
-         pragma Assert(Ttk_Widgt /= Null_Widget);
+         pragma Assert
+           (Ttk_Widgt /= Null_Widget);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-ttkwidget.ads:0):Test_Ttk_Widget_In_State test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tk-ttkwidget.ads:0):Test_Ttk_Widget_In_State test requirement violated");
       end;
       declare
-         Test_In_State_46b68b_db2848_Result: constant Boolean :=
-           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.In_State
-             (Ttk_Widgt, State_Ttk);
+         Test_In_State_46b68b_db2848_Result : constant Boolean := GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.In_State (Ttk_Widgt, State_Ttk);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -594,16 +549,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_1_In_State_test_ttk_widget_in_state(Gnattest_T: in out Test);
-   procedure Test_In_State_46b68b_db2848(Gnattest_T: in out Test) renames
-     Test_1_In_State_test_ttk_widget_in_state;
+   procedure Test_1_In_State_test_ttk_widget_in_state (Gnattest_T : in out Test);
+   procedure Test_In_State_46b68b_db2848 (Gnattest_T : in out Test) renames Test_1_In_State_test_ttk_widget_in_state;
 --  id:2.2/46b68bc42404b705/In_State/1/0/test_ttk_widget_in_state/
-   procedure Test_1_In_State_test_ttk_widget_in_state
-     (Gnattest_T: in out Test) is
-      function In_State
-        (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type)
-         return Boolean renames
-        Wrap_Test_In_State_46b68b_db2848;
+   procedure Test_1_In_State_test_ttk_widget_in_state (Gnattest_T : in out Test) is
+      function In_State (Ttk_Widgt: Ttk_Widget; State_Ttk: Ttk_State_Type) return Boolean renames Wrap_Test_In_State_46b68b_db2848;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -627,9 +577,8 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_In_State_318f72_d83e8c
-     (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type;
-      Tcl_Script: Tcl_String) is
+   procedure Wrap_Test_In_State_318f72_d83e8c (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type; Tcl_Script: Tcl_String) 
+   is
    begin
       begin
          pragma Assert
@@ -641,10 +590,10 @@ package body Tk.TtkWidget.Test_Data.Tests is
               (False,
                "req_sloc(tk-ttkwidget.ads:0):Test_Ttk_Widget_In_State2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.In_State
-        (Ttk_Widgt, State_Type, Tcl_Script);
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.In_State (Ttk_Widgt, State_Type, Tcl_Script);
       begin
-         pragma Assert(True);
+         pragma Assert
+           (True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -656,17 +605,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_2_In_State_test_ttk_widget_in_state2
-     (Gnattest_T: in out Test);
-   procedure Test_In_State_318f72_d83e8c(Gnattest_T: in out Test) renames
-     Test_2_In_State_test_ttk_widget_in_state2;
+   procedure Test_2_In_State_test_ttk_widget_in_state2 (Gnattest_T : in out Test);
+   procedure Test_In_State_318f72_d83e8c (Gnattest_T : in out Test) renames Test_2_In_State_test_ttk_widget_in_state2;
 --  id:2.2/318f72fbc8aff9f0/In_State/0/0/test_ttk_widget_in_state2/
-   procedure Test_2_In_State_test_ttk_widget_in_state2
-     (Gnattest_T: in out Test) is
-      procedure In_State
-        (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type;
-         Tcl_Script: Tcl_String) renames
-        Wrap_Test_In_State_318f72_d83e8c;
+   procedure Test_2_In_State_test_ttk_widget_in_state2 (Gnattest_T : in out Test) is
+   procedure In_State (Ttk_Widgt: Ttk_Widget; State_Type: Ttk_State_Type; Tcl_Script: Tcl_String) renames Wrap_Test_In_State_318f72_d83e8c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -692,12 +635,12 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_State_291199_15a1a7
-     (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type;
-      Disable: Boolean := False) is
+   procedure Wrap_Test_State_291199_15a1a7 (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type; Disable: Boolean := False) 
+   is
    begin
       begin
-         pragma Assert(Ttk_Widgt /= Null_Widget);
+         pragma Assert
+           (Ttk_Widgt /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -705,10 +648,10 @@ package body Tk.TtkWidget.Test_Data.Tests is
               (False,
                "req_sloc(tk-ttkwidget.ads:0):Test_Ttk_Widget_State test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.State
-        (Ttk_Widgt, Widget_State, Disable);
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.State (Ttk_Widgt, Widget_State, Disable);
       begin
-         pragma Assert(True);
+         pragma Assert
+           (True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -720,15 +663,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_1_State_test_ttk_widget_state(Gnattest_T: in out Test);
-   procedure Test_State_291199_15a1a7(Gnattest_T: in out Test) renames
-     Test_1_State_test_ttk_widget_state;
+   procedure Test_1_State_test_ttk_widget_state (Gnattest_T : in out Test);
+   procedure Test_State_291199_15a1a7 (Gnattest_T : in out Test) renames Test_1_State_test_ttk_widget_state;
 --  id:2.2/29119983a05a4465/State/1/0/test_ttk_widget_state/
-   procedure Test_1_State_test_ttk_widget_state(Gnattest_T: in out Test) is
-      procedure State
-        (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type;
-         Disable: Boolean := False) renames
-        Wrap_Test_State_291199_15a1a7;
+   procedure Test_1_State_test_ttk_widget_state (Gnattest_T : in out Test) is
+   procedure State (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type; Disable: Boolean := False) renames Wrap_Test_State_291199_15a1a7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -752,24 +691,25 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_State_8d49e9_5a6282
-     (Ttk_Widgt: Ttk_Widget) return Ttk_State_Array is
+   function Wrap_Test_State_8d49e9_5a6282 (Ttk_Widgt: Ttk_Widget)  return Ttk_State_Array
+   is
    begin
       begin
-         pragma Assert(Ttk_Widgt /= Null_Widget);
+         pragma Assert
+           (Ttk_Widgt /= Null_Widget);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-ttkwidget.ads:0):Test_Ttk_Widget_State2 test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tk-ttkwidget.ads:0):Test_Ttk_Widget_State2 test requirement violated");
       end;
       declare
-         Test_State_8d49e9_5a6282_Result: constant Ttk_State_Array :=
-           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.State(Ttk_Widgt);
+         Test_State_8d49e9_5a6282_Result : constant Ttk_State_Array := GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.State (Ttk_Widgt);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -783,13 +723,11 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_2_State_test_ttk_widget_state2(Gnattest_T: in out Test);
-   procedure Test_State_8d49e9_5a6282(Gnattest_T: in out Test) renames
-     Test_2_State_test_ttk_widget_state2;
+   procedure Test_2_State_test_ttk_widget_state2 (Gnattest_T : in out Test);
+   procedure Test_State_8d49e9_5a6282 (Gnattest_T : in out Test) renames Test_2_State_test_ttk_widget_state2;
 --  id:2.2/8d49e9dc4c0e1a81/State/0/0/test_ttk_widget_state2/
-   procedure Test_2_State_test_ttk_widget_state2(Gnattest_T: in out Test) is
-      function State(Ttk_Widgt: Ttk_Widget) return Ttk_State_Array renames
-        Wrap_Test_State_8d49e9_5a6282;
+   procedure Test_2_State_test_ttk_widget_state2 (Gnattest_T : in out Test) is
+      function State (Ttk_Widgt: Ttk_Widget) return Ttk_State_Array renames Wrap_Test_State_8d49e9_5a6282;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
