@@ -300,7 +300,7 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Color_Map_Windows;
 
-   procedure Command(Window: Tk_Widget; Wm_Command: Tcl_String) is
+   procedure Set_Command(Window: Tk_Widget; Wm_Command: Tcl_String) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -309,7 +309,7 @@ package body Tk.Wm is
            " " &
            To_String(Source => Wm_Command),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Command;
+   end Set_Command;
 
    procedure Deiconify(Window: Tk_Widget) is
    begin
@@ -318,7 +318,7 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Deiconify;
 
-   function Focus_Model(Window: Tk_Widget) return Focus_Model_Types is
+   function Get_Focus_Model(Window: Tk_Widget) return Focus_Model_Types is
    begin
       if Tcl_Eval
           (Tcl_Script => "wm focusmodel " & Tk_Path_Name(Widgt => Window),
@@ -327,9 +327,9 @@ package body Tk.Wm is
          return PASSIVE;
       end if;
       return ACTIVE;
-   end Focus_Model;
+   end Get_Focus_Model;
 
-   procedure Focus_Model(Window: Tk_Widget; Model: Focus_Model_Types) is
+   procedure Set_Focus_Model(Window: Tk_Widget; Model: Focus_Model_Types) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -338,7 +338,7 @@ package body Tk.Wm is
            " " &
            To_Lower(Item => Focus_Model_Types'Image(Model)),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Focus_Model;
+   end Set_Focus_Model;
 
    procedure Forget(Window: Tk_Widget) is
    begin
@@ -347,7 +347,7 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Forget;
 
-   function Frame(Window: Tk_Widget) return Tk_Window is
+   function Get_Frame(Window: Tk_Widget) return Tk_Window is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm frame " & Tk_Path_Name(Widgt => Window),
@@ -360,9 +360,9 @@ package body Tk.Wm is
                   (Integer'Value("16#" & Result(3 .. Result'Last) & "#")));
       end if;
       return Null_Window;
-   end Frame;
+   end Get_Frame;
 
-   function Geometry(Window: Tk_Widget) return Window_Geometry is
+   function Get_Geometry(Window: Tk_Widget) return Window_Geometry is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm geometry " & Tk_Path_Name(Widgt => Window),
@@ -386,9 +386,9 @@ package body Tk.Wm is
          --## rule on ASSIGNMENTS
          Win_Geometry.Y := Natural'Value(Result(Start_Index .. Result'Last));
       end return;
-   end Geometry;
+   end Get_Geometry;
 
-   procedure Geometry
+   procedure Set_Geometry
      (Window: Tk_Widget;
       Width, Height, X, Y: Extended_Natural := -1) is
       use Ada.Strings;
@@ -432,7 +432,7 @@ package body Tk.Wm is
            " " &
            To_String(Source => Win_Geometry),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Geometry;
+   end Set_Geometry;
 
    function Grid(Window: Tk_Widget) return Window_Grid_Geometry is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);

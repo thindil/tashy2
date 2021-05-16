@@ -619,7 +619,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Color_Map_Windows2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Command_(function)
+      -- ****f* Wm/Wm.Get_Command
       -- FUNCTION
       -- Get the value of the Tk_Widget property WM_COMMAND
       -- PARAMETERS
@@ -630,11 +630,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the property for the Tk main window
-      -- Wm_Command: constant Tcl_String := Command(Get_Main_Window);
+      -- Wm_Command: constant Tcl_String := Get_Command(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Command_(procedure)
+      -- Wm.Set_Command
       -- SOURCE
-   function Command
+   function Get_Command
      (Window: Tk_Widget) return Tcl_String is
      (To_Tcl_String
         (Source =>
@@ -645,7 +645,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Command", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Command
+      -- ****f* Wm/Wm.Set_Command
       -- FUNCTION
       -- Set the value of the Tk_Widget property WM_COMMAND
       -- PARAMETERS
@@ -655,11 +655,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the property for the Tk main window
-      -- Command(Get_Main_Window, To_Tcl_String("puts hello"));
+      -- Set_Command(Get_Main_Window, To_Tcl_String("puts hello"));
       -- SEE ALSO
-      -- Wm.Command_(function)
+      -- Wm.Set_Command
       -- SOURCE
-   procedure Command(Window: Tk_Widget; Wm_Command: Tcl_String) with
+   procedure Set_Command(Window: Tk_Widget; Wm_Command: Tcl_String) with
       Pre => Window /= Null_Widget and Length(Source => Wm_Command) > 0,
       Test_Case => (Name => "Test_Wm_Command2", Mode => Nominal);
       -- ****
@@ -683,7 +683,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Deiconify", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Focus_Model_(function)
+      -- ****f* Wm/Wm.Get_Focus_Model
       -- FUNCTION
       -- Get the focus model for the selected Tk_Widget
       -- PARAMETERS
@@ -694,16 +694,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the focus model for the Tk main window
-      -- Focus: constant Focus_Model_Types := Focus_Model(Get_Main_Window);
+      -- Focus: constant Focus_Model_Types := Get_Focus_Model(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Focus_Model_(procedure)
+      -- Wm.Set_Focus_Model
       -- SOURCE
-   function Focus_Model(Window: Tk_Widget) return Focus_Model_Types with
+   function Get_Focus_Model(Window: Tk_Widget) return Focus_Model_Types with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Focus_Model", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Focus_Model_(procedure)
+      -- ****f* Wm/Wm.Set_Focus_Model
       -- FUNCTION
       -- Set the focus model for the selected Tk_Widget
       -- PARAMETERS
@@ -713,11 +713,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the focus model of the Tk main window to ACTIVE
-      -- Focus_Model(Get_Main_Window, ACTIVE);
+      -- Set_Focus_Model(Get_Main_Window, ACTIVE);
       -- SEE ALSO
-      -- Wm.Focus_Model_(function)
+      -- Wm.Get_Focus_Model
       -- SOURCE
-   procedure Focus_Model(Window: Tk_Widget; Model: Focus_Model_Types) with
+   procedure Set_Focus_Model(Window: Tk_Widget; Model: Focus_Model_Types) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Focus_Model2", Mode => Nominal);
       -- ****
@@ -739,7 +739,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Forget", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Frame
+      -- ****f* Wm/Wm.Get_Frame
       -- FUNCTION
       -- Get the parent frame for the selected Tk_Widget
       -- PARAMETERS
@@ -752,14 +752,14 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the parent frame for Tk main window
-      -- Parent_Frame: constant Tk_Window := Frame(Get_Main_Window);
+      -- Parent_Frame: constant Tk_Window := Get_Frame(Get_Main_Window);
       -- SOURCE
-   function Frame(Window: Tk_Widget) return Tk_Window with
+   function Get_Frame(Window: Tk_Widget) return Tk_Window with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Frame", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Geometry_(function)
+      -- ****f* Wm/Wm.Get_Geometry
       -- FUNCTION
       -- Get the current geometry of the selected Tk_Widget
       -- PARAMETERS
@@ -772,14 +772,14 @@ package Tk.Wm is
       -- -- Get the geometry of the Tk main window
       -- Widget_Geometry: constant Window_Geometry := Geometry(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Geometry_(procedure)
+      -- Wm.Set_Geometry
       -- SOURCE
-   function Geometry(Window: Tk_Widget) return Window_Geometry with
+   function Get_Geometry(Window: Tk_Widget) return Window_Geometry with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Geometry", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Geometry_(procedure)
+      -- ****f* Wm/Wm.Set_Geometry
       -- FUNCTION
       -- Set the new geometry for the selected Tk_Widget
       -- PARAMETERS
@@ -796,9 +796,9 @@ package Tk.Wm is
       -- -- Set the main Tk window geometry to 800x600 and at top left corner of the screen
       -- Geometry(Get_Main_Window, 800, 600, 0, 0);
       -- SEE ALSO
-      -- Wm.Geometry_(function)
+      -- Wm.Set_Geometry
       -- SOURCE
-   procedure Geometry
+   procedure Set_Geometry
      (Window: Tk_Widget;
       Width, Height, X, Y: Extended_Natural := -1) with
       Pre => Window /= Null_Widget,
