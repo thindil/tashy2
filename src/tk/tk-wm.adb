@@ -434,7 +434,7 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Geometry;
 
-   function Grid(Window: Tk_Widget) return Window_Grid_Geometry is
+   function Get_Grid(Window: Tk_Widget) return Window_Grid_Geometry is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
@@ -457,9 +457,9 @@ package body Tk.Wm is
          Win_Grid.Height_Inc :=
            Natural'Value(To_Ada_String(Source => Result(4)));
       end return;
-   end Grid;
+   end Get_Grid;
 
-   procedure Grid
+   procedure Set_Grid
      (Window: Tk_Widget;
       Base_Width, Base_Height, Width_Inc, Height_Inc: Positive) is
    begin
@@ -472,9 +472,9 @@ package body Tk.Wm is
            Positive'Image(Width_Inc) &
            Positive'Image(Height_Inc),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Grid;
+   end Set_Grid;
 
-   procedure Group(Window: Tk_Widget; Path_Name: Tcl_String) is
+   procedure Set_Group(Window: Tk_Widget; Path_Name: Tcl_String) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -483,9 +483,9 @@ package body Tk.Wm is
            " " &
            To_Ada_String(Source => Path_Name),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Group;
+   end Set_Group;
 
-   procedure Icon_Bitmap(Window: Tk_Widget; Bitmap: Tcl_String) is
+   procedure Set_Icon_Bitmap(Window: Tk_Widget; Bitmap: Tcl_String) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -494,7 +494,7 @@ package body Tk.Wm is
            " " &
            To_Ada_String(Source => Bitmap),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Icon_Bitmap;
+   end Set_Icon_Bitmap;
 
    procedure Iconify(Window: Tk_Widget) is
    begin

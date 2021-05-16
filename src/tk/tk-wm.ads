@@ -805,7 +805,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Geometry2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Grid_(function)
+      -- ****f* Wm/Wm.Get_Grid
       -- FUNCTION
       -- Get the current setting of the selected Tk_Widget as gridded window
       -- PARAMTERS
@@ -816,16 +816,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the setting for the Tk main window
-      -- Grid_Setting: constant Window_Grid_Geometry := Grid(Get_Main_Window);
+      -- Grid_Setting: constant Window_Grid_Geometry := Get_Grid(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Grid_(procedure)
+      -- Wm.Set_Grid
       -- SOURCE
-   function Grid(Window: Tk_Widget) return Window_Grid_Geometry with
+   function Get_Grid(Window: Tk_Widget) return Window_Grid_Geometry with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Grid", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Grid_(procedure)
+      -- ****f* Wm/Wm.Set_Grid
       -- FUNCTION
       -- Set the selected Tk_Widget as a gridded window or change it gridded
       -- setting
@@ -841,18 +841,18 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the Tk main window as gridded window with base values 10, 10 and amount of pixels to 5, 5
-      -- Grid(Get_Main_Window, 10, 10, 5, 5);
+      -- Set_Grid(Get_Main_Window, 10, 10, 5, 5);
       -- SEE ALSO
-      -- Wm.Grid_(function)
+      -- Wm.Set_Grid
       -- SOURCE
-   procedure Grid
+   procedure Set_Grid
      (Window: Tk_Widget;
       Base_Width, Base_Height, Width_Inc, Height_Inc: Positive) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Grid2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Group_(function)
+      -- ****f* Wm/Wm.Get_Group
       -- FUNCTION
       -- Get the path name of the leader window in the group of windows to
       -- which the selected Tk_Widget belongs
@@ -866,11 +866,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the name of the leader window for Tk main window
-      -- Leader_Path: constant String := Group(Get_Main_Window);
+      -- Leader_Path: constant String := Get_Group(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Group_(procedure)
+      -- Wm.Set_Group
       -- SOURCE
-   function Group
+   function Get_Group
      (Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm group " & Tk_Path_Name(Widgt => Window),
@@ -879,7 +879,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Group", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Group_(procedure)
+      -- ****f* Wm/Wm.Set_Group
       -- FUNCTION
       -- Set the path name of the leader window in the group of windows to
       -- which the selected Tk_Widget belongs
@@ -890,16 +890,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the name of the leader window for Tk main window to ".mydialog"
-      -- Group(Get_Main_Window, To_Tcl_String(".mydialog"));
+      -- Set_Group(Get_Main_Window, To_Tcl_String(".mydialog"));
       -- SEE ALSO
-      -- Wm.Group_(function)
+      -- Wm.Get_Group
       -- SOURCE
-   procedure Group(Window: Tk_Widget; Path_Name: Tcl_String) with
+   procedure Set_Group(Window: Tk_Widget; Path_Name: Tcl_String) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Group2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Icon_Bitmap_(function)
+      -- ****f* Wm/Wm.Get_Icon_Bitmap
       -- FUNCTION
       -- Get the name of the bitmap which is used as an icon for the selected
       -- Tk_Widget
@@ -911,11 +911,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the name of a bitmap which is set as the icon for Tk main window
-      -- Bitmap_Name: constant String := Icon_Bitmap(Get_Main_Window);
+      -- Bitmap_Name: constant String := Get_Icon_Bitmap(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Icon_Bitmap_(procedure)
+      -- Wm.Set_Icon_Bitmap
       -- SOURCE
-   function Icon_Bitmap
+   function Get_Icon_Bitmap
      (Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm iconbitmap " & Tk_Path_Name(Widgt => Window),
@@ -924,7 +924,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Icon_Bitmap", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Icon_Bitmap_(procedure)
+      -- ****f* Wm/Wm.Set_Icon_Bitmap
       -- FUNCTION
       -- Set the name of the bitmap which is used as an icon for the selected
       -- Tk_Widget
@@ -937,9 +937,9 @@ package Tk.Wm is
       -- -- Set the icon for Tk main window from Tk bitmap warning
       -- Icon_Bitmap(Get_Main_Window, To_Tcl_String("warning"));
       -- SEE ALSO
-      -- Wm.Icon_Bitmap_(function)
+      -- Wm.Get_Icon_Bitmap
       -- SOURCE
-   procedure Icon_Bitmap(Window: Tk_Widget; Bitmap: Tcl_String) with
+   procedure Set_Icon_Bitmap(Window: Tk_Widget; Bitmap: Tcl_String) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Bitmap2", Mode => Nominal);
       -- ****
