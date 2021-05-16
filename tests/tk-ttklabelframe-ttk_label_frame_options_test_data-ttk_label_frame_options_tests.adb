@@ -19,8 +19,7 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 
 --  begin read only
 --  end read only
-package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
-  .Ttk_Label_Frame_Options_Tests is
+package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data.Ttk_Label_Frame_Options_Tests is
 
 --  begin read only
 --  id:2.2/01/
@@ -32,11 +31,12 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_6eaeb1
-     (Frame_Widget: Ttk_Label_Frame; Options: Ttk_Label_Frame_Options) is
+   procedure Wrap_Test_Configure_0076be_6eaeb1 (Frame_Widget: Ttk_Label_Frame; Options: Ttk_Label_Frame_Options) 
+   is
    begin
       begin
-         pragma Assert(Frame_Widget /= Null_Widget);
+         pragma Assert
+           (Frame_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -44,10 +44,10 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
               (False,
                "req_sloc(tk-ttklabelframe.ads:0):Test_Configure_TtkLabelFrame test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Configure
-        (Frame_Widget, Options);
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Configure (Frame_Widget, Options);
       begin
-         pragma Assert(True);
+         pragma Assert
+           (True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -59,18 +59,11 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Test_Configure_test_configure_ttklabelframe
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   procedure Test_Configure_0076be_6eaeb1
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options) renames
-     Test_Configure_test_configure_ttklabelframe;
+   procedure Test_Configure_test_configure_ttklabelframe (Gnattest_T : in out Test_Ttk_Label_Frame_Options);
+   procedure Test_Configure_0076be_6eaeb1 (Gnattest_T : in out Test_Ttk_Label_Frame_Options) renames Test_Configure_test_configure_ttklabelframe;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_ttklabelframe/
-   procedure Test_Configure_test_configure_ttklabelframe
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options) is
-      procedure Configure
-        (Frame_Widget: Ttk_Label_Frame;
-         Options: Ttk_Label_Frame_Options) renames
-        Wrap_Test_Configure_0076be_6eaeb1;
+   procedure Test_Configure_test_configure_ttklabelframe (Gnattest_T : in out Test_Ttk_Label_Frame_Options) is
+   procedure Configure (Frame_Widget: Ttk_Label_Frame; Options: Ttk_Label_Frame_Options) renames Wrap_Test_Configure_0076be_6eaeb1;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -98,28 +91,26 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Create_32e405_815235
-     (Path_Name: String; Options: Ttk_Label_Frame_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Ttk_Label_Frame is
+   function Wrap_Test_Create_32e405_815235 (Path_Name: String; Options: Ttk_Label_Frame_Options; Interpreter: Tcl_Interpreter :=
+        Get_Interpreter)  return Ttk_Label_Frame
+   is
    begin
       begin
          pragma Assert
            (Path_Name'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-ttklabelframe.ads:0):Test_Create_TtkLabelFrame1 test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tk-ttklabelframe.ads:0):Test_Create_TtkLabelFrame1 test requirement violated");
       end;
       declare
-         Test_Create_32e405_815235_Result: constant Ttk_Label_Frame :=
-           GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Create
-             (Path_Name, Options, Interpreter);
+         Test_Create_32e405_815235_Result : constant Ttk_Label_Frame := GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Create (Path_Name, Options, Interpreter);
       begin
          begin
-            pragma Assert(Test_Create_32e405_815235_Result /= Null_Widget);
+            pragma Assert
+              (Test_Create_32e405_815235_Result /= Null_Widget);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -133,19 +124,12 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Test_1_Create_test_create_ttklabelframe1
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   procedure Test_Create_32e405_815235
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options) renames
-     Test_1_Create_test_create_ttklabelframe1;
+   procedure Test_1_Create_test_create_ttklabelframe1 (Gnattest_T : in out Test_Ttk_Label_Frame_Options);
+   procedure Test_Create_32e405_815235 (Gnattest_T : in out Test_Ttk_Label_Frame_Options) renames Test_1_Create_test_create_ttklabelframe1;
 --  id:2.2/32e405543423d7b8/Create/1/0/test_create_ttklabelframe1/
-   procedure Test_1_Create_test_create_ttklabelframe1
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options) is
-      function Create
-        (Path_Name: String; Options: Ttk_Label_Frame_Options;
-         Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Ttk_Label_Frame renames
-        Wrap_Test_Create_32e405_815235;
+   procedure Test_1_Create_test_create_ttklabelframe1 (Gnattest_T : in out Test_Ttk_Label_Frame_Options) is
+      function Create (Path_Name: String; Options: Ttk_Label_Frame_Options; Interpreter: Tcl_Interpreter :=
+        Get_Interpreter) return Ttk_Label_Frame renames Wrap_Test_Create_32e405_815235;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -168,10 +152,8 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Create_ebbdc1_897460
-     (Frame_Widget: out Ttk_Label_Frame; Path_Name: String;
-      Options: Ttk_Label_Frame_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   procedure Wrap_Test_Create_ebbdc1_897460 (Frame_Widget: out Ttk_Label_Frame; Path_Name: String; Options: Ttk_Label_Frame_Options; Interpreter: Tcl_Interpreter := Get_Interpreter) 
+   is
    begin
       begin
          pragma Assert
@@ -183,10 +165,10 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
               (False,
                "req_sloc(tk-ttklabelframe.ads:0):Test_Create_TtkLabelFrame2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Create
-        (Frame_Widget, Path_Name, Options, Interpreter);
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Create (Frame_Widget, Path_Name, Options, Interpreter);
       begin
-         pragma Assert(Frame_Widget /= Null_Widget);
+         pragma Assert
+           (Frame_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -198,19 +180,11 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Test_2_Create_test_create_ttklabelframe2
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   procedure Test_Create_ebbdc1_897460
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options) renames
-     Test_2_Create_test_create_ttklabelframe2;
+   procedure Test_2_Create_test_create_ttklabelframe2 (Gnattest_T : in out Test_Ttk_Label_Frame_Options);
+   procedure Test_Create_ebbdc1_897460 (Gnattest_T : in out Test_Ttk_Label_Frame_Options) renames Test_2_Create_test_create_ttklabelframe2;
 --  id:2.2/ebbdc1934f0fa33d/Create/0/0/test_create_ttklabelframe2/
-   procedure Test_2_Create_test_create_ttklabelframe2
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options) is
-      procedure Create
-        (Frame_Widget: out Ttk_Label_Frame; Path_Name: String;
-         Options: Ttk_Label_Frame_Options;
-         Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Create_ebbdc1_897460;
+   procedure Test_2_Create_test_create_ttklabelframe2 (Gnattest_T : in out Test_Ttk_Label_Frame_Options) is
+   procedure Create (Frame_Widget: out Ttk_Label_Frame; Path_Name: String; Options: Ttk_Label_Frame_Options; Interpreter: Tcl_Interpreter := Get_Interpreter) renames Wrap_Test_Create_ebbdc1_897460;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -233,25 +207,25 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Options_ded36e_8eedcd
-     (Frame_Widget: Ttk_Label_Frame) return Ttk_Label_Frame_Options is
+   function Wrap_Test_Get_Options_ded36e_8eedcd (Frame_Widget: Ttk_Label_Frame)  return Ttk_Label_Frame_Options
+   is
    begin
       begin
-         pragma Assert(Frame_Widget /= Null_Widget);
+         pragma Assert
+           (Frame_Widget /= Null_Widget);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-ttklabelframe.ads:0):Test_Get_Options_TtkLabelFrame test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tk-ttklabelframe.ads:0):Test_Get_Options_TtkLabelFrame test requirement violated");
       end;
       declare
-         Test_Get_Options_ded36e_8eedcd_Result: constant Ttk_Label_Frame_Options :=
-           GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Get_Options
-             (Frame_Widget);
+         Test_Get_Options_ded36e_8eedcd_Result : constant Ttk_Label_Frame_Options := GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Get_Options (Frame_Widget);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -265,17 +239,11 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Test_Get_Options_test_get_options_ttklabelframe
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   procedure Test_Get_Options_ded36e_8eedcd
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options) renames
-     Test_Get_Options_test_get_options_ttklabelframe;
+   procedure Test_Get_Options_test_get_options_ttklabelframe (Gnattest_T : in out Test_Ttk_Label_Frame_Options);
+   procedure Test_Get_Options_ded36e_8eedcd (Gnattest_T : in out Test_Ttk_Label_Frame_Options) renames Test_Get_Options_test_get_options_ttklabelframe;
 --  id:2.2/ded36e34d54c20f9/Get_Options/1/0/test_get_options_ttklabelframe/
-   procedure Test_Get_Options_test_get_options_ttklabelframe
-     (Gnattest_T: in out Test_Ttk_Label_Frame_Options) is
-      function Get_Options
-        (Frame_Widget: Ttk_Label_Frame) return Ttk_Label_Frame_Options renames
-        Wrap_Test_Get_Options_ded36e_8eedcd;
+   procedure Test_Get_Options_test_get_options_ttklabelframe (Gnattest_T : in out Test_Ttk_Label_Frame_Options) is
+      function Get_Options (Frame_Widget: Ttk_Label_Frame) return Ttk_Label_Frame_Options renames Wrap_Test_Get_Options_ded36e_8eedcd;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -310,5 +278,4 @@ begin
    null;
 --  begin read only
 --  end read only
-end Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
-  .Ttk_Label_Frame_Options_Tests;
+end Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data.Ttk_Label_Frame_Options_Tests;

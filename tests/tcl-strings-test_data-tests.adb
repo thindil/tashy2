@@ -29,25 +29,25 @@ package body Tcl.Strings.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_To_Tcl_String_05e111_cc0b40
-     (Source: String; Evaluate: Boolean := False) return Tcl_String is
+   function Wrap_Test_To_Tcl_String_05e111_cc0b40 (Source: String; Evaluate: Boolean := False)  return Tcl_String
+   is
    begin
       begin
-         pragma Assert(True);
+         pragma Assert
+           (True);
          null;
       exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tcl-strings.ads:0):Test_To_Tcl_String test requirement violated");
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "req_sloc(tcl-strings.ads:0):Test_To_Tcl_String test requirement violated");
       end;
       declare
-         Test_To_Tcl_String_05e111_cc0b40_Result: constant Tcl_String :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Strings.To_Tcl_String
-             (Source, Evaluate);
+         Test_To_Tcl_String_05e111_cc0b40_Result : constant Tcl_String := GNATtest_Generated.GNATtest_Standard.Tcl.Strings.To_Tcl_String (Source, Evaluate);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -61,14 +61,11 @@ package body Tcl.Strings.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_To_Tcl_String_test_to_tcl_string(Gnattest_T: in out Test);
-   procedure Test_To_Tcl_String_05e111_cc0b40(Gnattest_T: in out Test) renames
-     Test_To_Tcl_String_test_to_tcl_string;
+   procedure Test_To_Tcl_String_test_to_tcl_string (Gnattest_T : in out Test);
+   procedure Test_To_Tcl_String_05e111_cc0b40 (Gnattest_T : in out Test) renames Test_To_Tcl_String_test_to_tcl_string;
 --  id:2.2/05e11147f5a156d7/To_Tcl_String/1/0/test_to_tcl_string/
-   procedure Test_To_Tcl_String_test_to_tcl_string(Gnattest_T: in out Test) is
-      function To_Tcl_String
-        (Source: String; Evaluate: Boolean := False) return Tcl_String renames
-        Wrap_Test_To_Tcl_String_05e111_cc0b40;
+   procedure Test_To_Tcl_String_test_to_tcl_string (Gnattest_T : in out Test) is
+      function To_Tcl_String (Source: String; Evaluate: Boolean := False) return Tcl_String renames Wrap_Test_To_Tcl_String_05e111_cc0b40;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -87,13 +84,11 @@ package body Tcl.Strings.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_To_Ada_String_9fab6f_7961da
-     (Source: Tcl_String) return String is
+   function Wrap_Test_To_Ada_String_9fab6f_7961da (Source: Tcl_String)  return String
+   is
    begin
       declare
-         Test_To_Ada_String_9fab6f_7961da_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Strings.To_Ada_String
-             (Source);
+         Test_To_Ada_String_9fab6f_7961da_Result : constant String := GNATtest_Generated.GNATtest_Standard.Tcl.Strings.To_Ada_String (Source);
       begin
          return Test_To_Ada_String_9fab6f_7961da_Result;
       end;
@@ -101,13 +96,11 @@ package body Tcl.Strings.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_To_Ada_String_test_to_ada_string(Gnattest_T: in out Test);
-   procedure Test_To_Ada_String_9fab6f_7961da(Gnattest_T: in out Test) renames
-     Test_To_Ada_String_test_to_ada_string;
+   procedure Test_To_Ada_String_test_to_ada_string (Gnattest_T : in out Test);
+   procedure Test_To_Ada_String_9fab6f_7961da (Gnattest_T : in out Test) renames Test_To_Ada_String_test_to_ada_string;
 --  id:2.2/9fab6f9320249ad5/To_Ada_String/1/0/test_to_ada_string/
-   procedure Test_To_Ada_String_test_to_ada_string(Gnattest_T: in out Test) is
-      function To_Ada_String(Source: Tcl_String) return String renames
-        Wrap_Test_To_Ada_String_9fab6f_7961da;
+   procedure Test_To_Ada_String_test_to_ada_string (Gnattest_T : in out Test) is
+      function To_Ada_String (Source: Tcl_String) return String renames Wrap_Test_To_Ada_String_9fab6f_7961da;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

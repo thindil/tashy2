@@ -31,11 +31,12 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_380f02
-     (Frame_Widget: Tk_Frame; Options: Frame_Options) is
+   procedure Wrap_Test_Configure_0076be_380f02 (Frame_Widget: Tk_Frame; Options: Frame_Options) 
+   is
    begin
       begin
-         pragma Assert(Frame_Widget /= Null_Widget);
+         pragma Assert
+           (Frame_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -43,10 +44,10 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
               (False,
                "req_sloc(tk-frame.ads:0):Test_Configure_Frame test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Frame.Configure
-        (Frame_Widget, Options);
+      GNATtest_Generated.GNATtest_Standard.Tk.Frame.Configure (Frame_Widget, Options);
       begin
-         pragma Assert(True);
+         pragma Assert
+           (True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -58,17 +59,11 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Configure_test_configure_frame
-     (Gnattest_T: in out Test_Frame_Options);
-   procedure Test_Configure_0076be_380f02
-     (Gnattest_T: in out Test_Frame_Options) renames
-     Test_Configure_test_configure_frame;
+   procedure Test_Configure_test_configure_frame (Gnattest_T : in out Test_Frame_Options);
+   procedure Test_Configure_0076be_380f02 (Gnattest_T : in out Test_Frame_Options) renames Test_Configure_test_configure_frame;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_frame/
-   procedure Test_Configure_test_configure_frame
-     (Gnattest_T: in out Test_Frame_Options) is
-      procedure Configure
-        (Frame_Widget: Tk_Frame; Options: Frame_Options) renames
-        Wrap_Test_Configure_0076be_380f02;
+   procedure Test_Configure_test_configure_frame (Gnattest_T : in out Test_Frame_Options) is
+   procedure Configure (Frame_Widget: Tk_Frame; Options: Frame_Options) renames Wrap_Test_Configure_0076be_380f02;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
