@@ -45,50 +45,50 @@ package Tk.Wm.Test_Data.Tests is
    procedure Test_Set_Color_Map_Windows_af7285_93136d (Gnattest_T : in out Test);
    --  tk-wm.ads:615:4:Set_Color_Map_Windows:Test_Wm_Color_Map_Windows2
 
-   procedure Test_Command_769e81_cb0619 (Gnattest_T : in out Test);
-   --  tk-wm.ads:637:4:Command:Test_Wm_Command
+   procedure Test_Get_Command_93826d_cb0619 (Gnattest_T : in out Test);
+   --  tk-wm.ads:637:4:Get_Command:Test_Wm_Command
 
-   procedure Test_Command_7808c4_7c33cf (Gnattest_T : in out Test);
-   --  tk-wm.ads:662:4:Command:Test_Wm_Command2
+   procedure Test_Set_Command_49e617_7c33cf (Gnattest_T : in out Test);
+   --  tk-wm.ads:662:4:Set_Command:Test_Wm_Command2
 
    procedure Test_Deiconify_46ab19_2f30b1 (Gnattest_T : in out Test);
    --  tk-wm.ads:681:4:Deiconify:Test_Wm_Deiconify
 
-   procedure Test_Focus_Model_e88243_857661 (Gnattest_T : in out Test);
-   --  tk-wm.ads:701:4:Focus_Model:Test_Wm_Focus_Model
+   procedure Test_Get_Focus_Model_526220_857661 (Gnattest_T : in out Test);
+   --  tk-wm.ads:701:4:Get_Focus_Model:Test_Wm_Focus_Model
 
-   procedure Test_Focus_Model_93cac7_9f50c8 (Gnattest_T : in out Test);
-   --  tk-wm.ads:720:4:Focus_Model:Test_Wm_Focus_Model2
+   procedure Test_Set_Focus_Model_71dc8a_9f50c8 (Gnattest_T : in out Test);
+   --  tk-wm.ads:720:4:Set_Focus_Model:Test_Wm_Focus_Model2
 
    procedure Test_Forget_7f8bc2_846bd1 (Gnattest_T : in out Test);
    --  tk-wm.ads:737:4:Forget:Test_Wm_Forget
 
-   procedure Test_Frame_5d04b9_b86ec4 (Gnattest_T : in out Test);
-   --  tk-wm.ads:757:4:Frame:Test_Wm_Frame
+   procedure Test_Get_Frame_7e4b43_b86ec4 (Gnattest_T : in out Test);
+   --  tk-wm.ads:757:4:Get_Frame:Test_Wm_Frame
 
-   procedure Test_Geometry_ba948b_4f4f37 (Gnattest_T : in out Test);
-   --  tk-wm.ads:777:4:Geometry:Test_Wm_Geometry
+   procedure Test_Get_Geometry_bb718b_4f4f37 (Gnattest_T : in out Test);
+   --  tk-wm.ads:777:4:Get_Geometry:Test_Wm_Geometry
 
-   procedure Test_Geometry_d2a7fd_9bd66a (Gnattest_T : in out Test);
-   --  tk-wm.ads:801:4:Geometry:Test_Wm_Geometry2
+   procedure Test_Set_Geometry_218b77_9bd66a (Gnattest_T : in out Test);
+   --  tk-wm.ads:801:4:Set_Geometry:Test_Wm_Geometry2
 
-   procedure Test_Grid_200f57_fc763d (Gnattest_T : in out Test);
-   --  tk-wm.ads:823:4:Grid:Test_Wm_Grid
+   procedure Test_Get_Grid_30f13e_fc763d (Gnattest_T : in out Test);
+   --  tk-wm.ads:823:4:Get_Grid:Test_Wm_Grid
 
-   procedure Test_Grid_2fb8dc_1fe5bc (Gnattest_T : in out Test);
-   --  tk-wm.ads:848:4:Grid:Test_Wm_Grid2
+   procedure Test_Set_Grid_9a47fa_1fe5bc (Gnattest_T : in out Test);
+   --  tk-wm.ads:848:4:Set_Grid:Test_Wm_Grid2
 
-   procedure Test_Group_928167_42ff38 (Gnattest_T : in out Test);
-   --  tk-wm.ads:873:4:Group:Test_Wm_Group
+   procedure Test_Get_Group_f9ea32_42ff38 (Gnattest_T : in out Test);
+   --  tk-wm.ads:873:4:Get_Group:Test_Wm_Group
 
-   procedure Test_Group_fe3a0f_95a2e7 (Gnattest_T : in out Test);
-   --  tk-wm.ads:897:4:Group:Test_Wm_Group2
+   procedure Test_Set_Group_67e692_95a2e7 (Gnattest_T : in out Test);
+   --  tk-wm.ads:897:4:Set_Group:Test_Wm_Group2
 
-   procedure Test_Icon_Bitmap_51d509_127eea (Gnattest_T : in out Test);
-   --  tk-wm.ads:918:4:Icon_Bitmap:Test_Wm_Icon_Bitmap
+   procedure Test_Get_Icon_Bitmap_6135da_127eea (Gnattest_T : in out Test);
+   --  tk-wm.ads:918:4:Get_Icon_Bitmap:Test_Wm_Icon_Bitmap
 
-   procedure Test_Icon_Bitmap_93e489_31ebac (Gnattest_T : in out Test);
-   --  tk-wm.ads:942:4:Icon_Bitmap:Test_Wm_Icon_Bitmap2
+   procedure Test_Set_Icon_Bitmap_9571ee_31ebac (Gnattest_T : in out Test);
+   --  tk-wm.ads:942:4:Set_Icon_Bitmap:Test_Wm_Icon_Bitmap2
 
    procedure Test_Iconify_b7aad2_844804 (Gnattest_T : in out Test);
    --  tk-wm.ads:960:4:Iconify:Test_Wm_Iconify
