@@ -32,12 +32,11 @@ package body Tk.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Tk_Init_dae4dd_f1b9f1 (Interpreter: Tcl_Interpreter := Get_Interpreter) 
-   is
+   procedure Wrap_Test_Tk_Init_dae4dd_f1b9f1
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert
-           (Interpreter /= Null_Interpreter);
+         pragma Assert(Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -45,10 +44,9 @@ package body Tk.Test_Data.Tests is
               (False,
                "req_sloc(tk.ads:0):Test_Tk_Init test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Tk_Init (Interpreter);
+      GNATtest_Generated.GNATtest_Standard.Tk.Tk_Init(Interpreter);
       begin
-         pragma Assert
-           (True);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -60,11 +58,14 @@ package body Tk.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Tk_Init_test_tk_init (Gnattest_T : in out Test);
-   procedure Test_Tk_Init_dae4dd_f1b9f1 (Gnattest_T : in out Test) renames Test_Tk_Init_test_tk_init;
+   procedure Test_Tk_Init_test_tk_init(Gnattest_T: in out Test);
+   procedure Test_Tk_Init_dae4dd_f1b9f1(Gnattest_T: in out Test) renames
+     Test_Tk_Init_test_tk_init;
 --  id:2.2/dae4ddda1671ac5f/Tk_Init/1/0/test_tk_init/
-   procedure Test_Tk_Init_test_tk_init (Gnattest_T : in out Test) is
-   procedure Tk_Init (Interpreter: Tcl_Interpreter := Get_Interpreter) renames Wrap_Test_Tk_Init_dae4dd_f1b9f1;
+   procedure Test_Tk_Init_test_tk_init(Gnattest_T: in out Test) is
+      procedure Tk_Init
+        (Interpreter: Tcl_Interpreter := Get_Interpreter) renames
+        Wrap_Test_Tk_Init_dae4dd_f1b9f1;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
