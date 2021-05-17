@@ -1629,7 +1629,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Icon_Mask_001121_818a6a (Window: Tk_Widget)  return String
+   function Wrap_Test_Get_Icon_Mask_dd14ea_818a6a (Window: Tk_Widget)  return String
    is
    begin
       begin
@@ -1643,7 +1643,7 @@ package body Tk.Wm.Test_Data.Tests is
                   "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Mask test requirement violated");
       end;
       declare
-         Test_Icon_Mask_001121_818a6a_Result : constant String := GNATtest_Generated.GNATtest_Standard.Tk.Wm.Icon_Mask (Window);
+         Test_Get_Icon_Mask_dd14ea_818a6a_Result : constant String := GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Icon_Mask (Window);
       begin
          begin
             pragma Assert
@@ -1655,20 +1655,20 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Mask test commitment violated");
          end;
-         return Test_Icon_Mask_001121_818a6a_Result;
+         return Test_Get_Icon_Mask_dd14ea_818a6a_Result;
       end;
-   end Wrap_Test_Icon_Mask_001121_818a6a;
+   end Wrap_Test_Get_Icon_Mask_dd14ea_818a6a;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Icon_Mask_test_wm_icon_mask (Gnattest_T : in out Test);
-   procedure Test_Icon_Mask_001121_818a6a (Gnattest_T : in out Test) renames Test_1_Icon_Mask_test_wm_icon_mask;
---  id:2.2/001121641610cf65/Icon_Mask/1/0/test_wm_icon_mask/
-   procedure Test_1_Icon_Mask_test_wm_icon_mask (Gnattest_T : in out Test) is
-      function Icon_Mask (Window: Tk_Widget) return String renames Wrap_Test_Icon_Mask_001121_818a6a;
+   procedure Test_Get_Icon_Mask_test_wm_icon_mask (Gnattest_T : in out Test);
+   procedure Test_Get_Icon_Mask_dd14ea_818a6a (Gnattest_T : in out Test) renames Test_Get_Icon_Mask_test_wm_icon_mask;
+--  id:2.2/dd14ea6a5be023bd/Get_Icon_Mask/1/0/test_wm_icon_mask/
+   procedure Test_Get_Icon_Mask_test_wm_icon_mask (Gnattest_T : in out Test) is
+      function Get_Icon_Mask (Window: Tk_Widget) return String renames Wrap_Test_Get_Icon_Mask_dd14ea_818a6a;
 --  end read only
 
-      pragma Unreferenced(Gnattest_T);
+      pragma Unreferenced (Gnattest_T);
 
    begin
 
@@ -1677,15 +1677,15 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Icon_Mask(Get_Main_Window)'Length = 0,
+        (Get_Icon_Mask(Get_Main_Window)'Length = 0,
          "Failed to get icon mask for the Tk main window.");
 
 --  begin read only
-   end Test_1_Icon_Mask_test_wm_icon_mask;
+   end Test_Get_Icon_Mask_test_wm_icon_mask;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Icon_Mask_66e29a_b2153c (Window: Tk_Widget; Bitmap: Tcl_String) 
+   procedure Wrap_Test_Set_Icon_Mask_7f471f_b2153c (Window: Tk_Widget; Bitmap: Tcl_String) 
    is
    begin
       begin
@@ -1698,7 +1698,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Mask2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Icon_Mask (Window, Bitmap);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Icon_Mask (Window, Bitmap);
       begin
          pragma Assert
            (True);
@@ -1709,18 +1709,18 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Mask2 test commitment violated");
       end;
-   end Wrap_Test_Icon_Mask_66e29a_b2153c;
+   end Wrap_Test_Set_Icon_Mask_7f471f_b2153c;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Icon_Mask_test_wm_icon_mask2 (Gnattest_T : in out Test);
-   procedure Test_Icon_Mask_66e29a_b2153c (Gnattest_T : in out Test) renames Test_2_Icon_Mask_test_wm_icon_mask2;
---  id:2.2/66e29abd9f996cc6/Icon_Mask/0/0/test_wm_icon_mask2/
-   procedure Test_2_Icon_Mask_test_wm_icon_mask2 (Gnattest_T : in out Test) is
-   procedure Icon_Mask (Window: Tk_Widget; Bitmap: Tcl_String) renames Wrap_Test_Icon_Mask_66e29a_b2153c;
+   procedure Test_Set_Icon_Mask_test_wm_icon_mask2 (Gnattest_T : in out Test);
+   procedure Test_Set_Icon_Mask_7f471f_b2153c (Gnattest_T : in out Test) renames Test_Set_Icon_Mask_test_wm_icon_mask2;
+--  id:2.2/7f471fc64954c1a2/Set_Icon_Mask/1/0/test_wm_icon_mask2/
+   procedure Test_Set_Icon_Mask_test_wm_icon_mask2 (Gnattest_T : in out Test) is
+   procedure Set_Icon_Mask (Window: Tk_Widget; Bitmap: Tcl_String) renames Wrap_Test_Set_Icon_Mask_7f471f_b2153c;
 --  end read only
 
-      pragma Unreferenced(Gnattest_T);
+      pragma Unreferenced (Gnattest_T);
 
    begin
 
@@ -1728,17 +1728,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Icon_Mask(Get_Main_Window, To_Tcl_String("error"));
+      Set_Icon_Mask(Get_Main_Window, To_Tcl_String("error"));
       Assert
-        (Icon_Mask(Get_Main_Window) = "error",
+        (Get_Icon_Mask(Get_Main_Window) = "error",
          "Failed to set icon mask for the Tk main window.");
 
 --  begin read only
-   end Test_2_Icon_Mask_test_wm_icon_mask2;
+   end Test_Set_Icon_Mask_test_wm_icon_mask2;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Icon_Name_4b1072_55536b (Window: Tk_Widget)  return String
+   function Wrap_Test_Get_Icon_Name_ab4de4_55536b (Window: Tk_Widget)  return String
    is
    begin
       begin
@@ -1752,7 +1752,7 @@ package body Tk.Wm.Test_Data.Tests is
                   "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Name test requirement violated");
       end;
       declare
-         Test_Icon_Name_4b1072_55536b_Result : constant String := GNATtest_Generated.GNATtest_Standard.Tk.Wm.Icon_Name (Window);
+         Test_Get_Icon_Name_ab4de4_55536b_Result : constant String := GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Icon_Name (Window);
       begin
          begin
             pragma Assert
@@ -1764,20 +1764,20 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Name test commitment violated");
          end;
-         return Test_Icon_Name_4b1072_55536b_Result;
+         return Test_Get_Icon_Name_ab4de4_55536b_Result;
       end;
-   end Wrap_Test_Icon_Name_4b1072_55536b;
+   end Wrap_Test_Get_Icon_Name_ab4de4_55536b;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Icon_Name_test_wm_icon_name (Gnattest_T : in out Test);
-   procedure Test_Icon_Name_4b1072_55536b (Gnattest_T : in out Test) renames Test_1_Icon_Name_test_wm_icon_name;
---  id:2.2/4b10726b4bbc5562/Icon_Name/1/0/test_wm_icon_name/
-   procedure Test_1_Icon_Name_test_wm_icon_name (Gnattest_T : in out Test) is
-      function Icon_Name (Window: Tk_Widget) return String renames Wrap_Test_Icon_Name_4b1072_55536b;
+   procedure Test_Get_Icon_Name_test_wm_icon_name (Gnattest_T : in out Test);
+   procedure Test_Get_Icon_Name_ab4de4_55536b (Gnattest_T : in out Test) renames Test_Get_Icon_Name_test_wm_icon_name;
+--  id:2.2/ab4de4e943b76c5a/Get_Icon_Name/1/0/test_wm_icon_name/
+   procedure Test_Get_Icon_Name_test_wm_icon_name (Gnattest_T : in out Test) is
+      function Get_Icon_Name (Window: Tk_Widget) return String renames Wrap_Test_Get_Icon_Name_ab4de4_55536b;
 --  end read only
 
-      pragma Unreferenced(Gnattest_T);
+      pragma Unreferenced (Gnattest_T);
 
    begin
 
@@ -1786,15 +1786,15 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Icon_Name(Get_Main_Window)'Length = 0,
+        (Get_Icon_Name(Get_Main_Window)'Length = 0,
          "Failed to get icon name for the Tk main window.");
 
 --  begin read only
-   end Test_1_Icon_Name_test_wm_icon_name;
+   end Test_Get_Icon_Name_test_wm_icon_name;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Icon_Name_5bfbf7_3f7273 (Window: Tk_Widget; New_Name: Tcl_String) 
+   procedure Wrap_Test_Set_Icon_Name_8f26b1_3f7273 (Window: Tk_Widget; New_Name: Tcl_String) 
    is
    begin
       begin
@@ -1807,7 +1807,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Name2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Icon_Name (Window, New_Name);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Icon_Name (Window, New_Name);
       begin
          pragma Assert
            (True);
@@ -1818,18 +1818,18 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Name2 test commitment violated");
       end;
-   end Wrap_Test_Icon_Name_5bfbf7_3f7273;
+   end Wrap_Test_Set_Icon_Name_8f26b1_3f7273;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Icon_Name_test_wm_icon_name2 (Gnattest_T : in out Test);
-   procedure Test_Icon_Name_5bfbf7_3f7273 (Gnattest_T : in out Test) renames Test_2_Icon_Name_test_wm_icon_name2;
---  id:2.2/5bfbf7fbde925267/Icon_Name/0/0/test_wm_icon_name2/
-   procedure Test_2_Icon_Name_test_wm_icon_name2 (Gnattest_T : in out Test) is
-   procedure Icon_Name (Window: Tk_Widget; New_Name: Tcl_String) renames Wrap_Test_Icon_Name_5bfbf7_3f7273;
+   procedure Test_Set_Icon_Name_test_wm_icon_name2 (Gnattest_T : in out Test);
+   procedure Test_Set_Icon_Name_8f26b1_3f7273 (Gnattest_T : in out Test) renames Test_Set_Icon_Name_test_wm_icon_name2;
+--  id:2.2/8f26b164b74a03b6/Set_Icon_Name/1/0/test_wm_icon_name2/
+   procedure Test_Set_Icon_Name_test_wm_icon_name2 (Gnattest_T : in out Test) is
+   procedure Set_Icon_Name (Window: Tk_Widget; New_Name: Tcl_String) renames Wrap_Test_Set_Icon_Name_8f26b1_3f7273;
 --  end read only
 
-      pragma Unreferenced(Gnattest_T);
+      pragma Unreferenced (Gnattest_T);
 
    begin
 
@@ -1837,17 +1837,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Icon_Name(Get_Main_Window, To_Tcl_String("test"));
+      Set_Icon_Name(Get_Main_Window, To_Tcl_String("test"));
       Assert
-        (Icon_Name(Get_Main_Window) = "test",
+        (Get_Icon_Name(Get_Main_Window) = "test",
          "Failed to set icon name for the Tk main window.");
 
 --  begin read only
-   end Test_2_Icon_Name_test_wm_icon_name2;
+   end Test_Set_Icon_Name_test_wm_icon_name2;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Icon_Photo_69d087_a0feb6 (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) 
+   procedure Wrap_Test_Set_Icon_Photo_27ff53_a0feb6 (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) 
    is
    begin
       begin
@@ -1860,7 +1860,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Photo test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Icon_Photo (Window, Images, Default);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Icon_Photo (Window, Images, Default);
       begin
          pragma Assert
            (True);
@@ -1871,18 +1871,18 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Photo test commitment violated");
       end;
-   end Wrap_Test_Icon_Photo_69d087_a0feb6;
+   end Wrap_Test_Set_Icon_Photo_27ff53_a0feb6;
 --  end read only
 
 --  begin read only
-   procedure Test_Icon_Photo_test_wm_icon_photo (Gnattest_T : in out Test);
-   procedure Test_Icon_Photo_69d087_a0feb6 (Gnattest_T : in out Test) renames Test_Icon_Photo_test_wm_icon_photo;
---  id:2.2/69d0876f3964fa43/Icon_Photo/1/0/test_wm_icon_photo/
-   procedure Test_Icon_Photo_test_wm_icon_photo (Gnattest_T : in out Test) is
-   procedure Icon_Photo (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) renames Wrap_Test_Icon_Photo_69d087_a0feb6;
+   procedure Test_Set_Icon_Photo_test_wm_icon_photo (Gnattest_T : in out Test);
+   procedure Test_Set_Icon_Photo_27ff53_a0feb6 (Gnattest_T : in out Test) renames Test_Set_Icon_Photo_test_wm_icon_photo;
+--  id:2.2/27ff53b0b4b9f9b6/Set_Icon_Photo/1/0/test_wm_icon_photo/
+   procedure Test_Set_Icon_Photo_test_wm_icon_photo (Gnattest_T : in out Test) is
+   procedure Set_Icon_Photo (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) renames Wrap_Test_Set_Icon_Photo_27ff53_a0feb6;
 --  end read only
 
-      pragma Unreferenced(Gnattest_T);
+      pragma Unreferenced (Gnattest_T);
 
    begin
 
@@ -1890,15 +1890,15 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Icon_Photo(Get_Main_Window, Array_List'(1 => To_Tcl_String("image14")));
+      Set_Icon_Photo(Get_Main_Window, Array_List'(1 => To_Tcl_String("image14")));
       Assert(True, "This test can only crash.");
 
 --  begin read only
-   end Test_Icon_Photo_test_wm_icon_photo;
+   end Test_Set_Icon_Photo_test_wm_icon_photo;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Icon_Position_1b8212_0e4e31 (Window: Tk_Widget)  return Window_Position
+   function Wrap_Test_Get_Icon_Position_e7d39c_0e4e31 (Window: Tk_Widget)  return Window_Position
    is
    begin
       begin
@@ -1912,7 +1912,7 @@ package body Tk.Wm.Test_Data.Tests is
                   "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Position test requirement violated");
       end;
       declare
-         Test_Icon_Position_1b8212_0e4e31_Result : constant Window_Position := GNATtest_Generated.GNATtest_Standard.Tk.Wm.Icon_Position (Window);
+         Test_Get_Icon_Position_e7d39c_0e4e31_Result : constant Window_Position := GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Icon_Position (Window);
       begin
          begin
             pragma Assert
@@ -1924,20 +1924,20 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Position test commitment violated");
          end;
-         return Test_Icon_Position_1b8212_0e4e31_Result;
+         return Test_Get_Icon_Position_e7d39c_0e4e31_Result;
       end;
-   end Wrap_Test_Icon_Position_1b8212_0e4e31;
+   end Wrap_Test_Get_Icon_Position_e7d39c_0e4e31;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Icon_Position_test_wm_icon_position (Gnattest_T : in out Test);
-   procedure Test_Icon_Position_1b8212_0e4e31 (Gnattest_T : in out Test) renames Test_1_Icon_Position_test_wm_icon_position;
---  id:2.2/1b8212c5114573a8/Icon_Position/1/0/test_wm_icon_position/
-   procedure Test_1_Icon_Position_test_wm_icon_position (Gnattest_T : in out Test) is
-      function Icon_Position (Window: Tk_Widget) return Window_Position renames Wrap_Test_Icon_Position_1b8212_0e4e31;
+   procedure Test_Get_Icon_Position_test_wm_icon_position (Gnattest_T : in out Test);
+   procedure Test_Get_Icon_Position_e7d39c_0e4e31 (Gnattest_T : in out Test) renames Test_Get_Icon_Position_test_wm_icon_position;
+--  id:2.2/e7d39c6ca523fd87/Get_Icon_Position/1/0/test_wm_icon_position/
+   procedure Test_Get_Icon_Position_test_wm_icon_position (Gnattest_T : in out Test) is
+      function Get_Icon_Position (Window: Tk_Widget) return Window_Position renames Wrap_Test_Get_Icon_Position_e7d39c_0e4e31;
 --  end read only
 
-      pragma Unreferenced(Gnattest_T);
+      pragma Unreferenced (Gnattest_T);
 
    begin
 
@@ -1945,17 +1945,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Icon_Position(Get_Main_Window, 10, 11);
+      Set_Icon_Position(Get_Main_Window, 10, 11);
       Assert
-        (Icon_Position(Get_Main_Window).X = 10,
+        (Get_Icon_Position(Get_Main_Window).X = 10,
          "Failed to get icon position for main window.");
 
 --  begin read only
-   end Test_1_Icon_Position_test_wm_icon_position;
+   end Test_Get_Icon_Position_test_wm_icon_position;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Icon_Position_965e91_ebaaaa (Window: Tk_Widget; X, Y: Extended_Natural) 
+   procedure Wrap_Test_Set_Icon_Position_801b76_ebaaaa (Window: Tk_Widget; X, Y: Extended_Natural) 
    is
    begin
       begin
@@ -1968,7 +1968,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Position2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Icon_Position (Window, X, Y);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Icon_Position (Window, X, Y);
       begin
          pragma Assert
            (True);
@@ -1979,18 +1979,18 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Position2 test commitment violated");
       end;
-   end Wrap_Test_Icon_Position_965e91_ebaaaa;
+   end Wrap_Test_Set_Icon_Position_801b76_ebaaaa;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Icon_Position_test_wm_icon_position2 (Gnattest_T : in out Test);
-   procedure Test_Icon_Position_965e91_ebaaaa (Gnattest_T : in out Test) renames Test_2_Icon_Position_test_wm_icon_position2;
---  id:2.2/965e91a0816b60dc/Icon_Position/0/0/test_wm_icon_position2/
-   procedure Test_2_Icon_Position_test_wm_icon_position2 (Gnattest_T : in out Test) is
-   procedure Icon_Position (Window: Tk_Widget; X, Y: Extended_Natural) renames Wrap_Test_Icon_Position_965e91_ebaaaa;
+   procedure Test_Set_Icon_Position_test_wm_icon_position2 (Gnattest_T : in out Test);
+   procedure Test_Set_Icon_Position_801b76_ebaaaa (Gnattest_T : in out Test) renames Test_Set_Icon_Position_test_wm_icon_position2;
+--  id:2.2/801b76afc5d765d3/Set_Icon_Position/1/0/test_wm_icon_position2/
+   procedure Test_Set_Icon_Position_test_wm_icon_position2 (Gnattest_T : in out Test) is
+   procedure Set_Icon_Position (Window: Tk_Widget; X, Y: Extended_Natural) renames Wrap_Test_Set_Icon_Position_801b76_ebaaaa;
 --  end read only
 
-      pragma Unreferenced(Gnattest_T);
+      pragma Unreferenced (Gnattest_T);
 
    begin
 
@@ -1998,13 +1998,13 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Icon_Position(Get_Main_Window, 12, 13);
+      Set_Icon_Position(Get_Main_Window, 12, 13);
       Assert
-        (Icon_Position(Get_Main_Window).X = 12,
+        (Get_Icon_Position(Get_Main_Window).X = 12,
          "Failed to set icon position for main window.");
 
 --  begin read only
-   end Test_2_Icon_Position_test_wm_icon_position2;
+   end Test_Set_Icon_Position_test_wm_icon_position2;
 --  end read only
 
 --  begin read only
