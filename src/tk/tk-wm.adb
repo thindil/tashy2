@@ -503,7 +503,7 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Iconify;
 
-   procedure Icon_Mask(Window: Tk_Widget; Bitmap: Tcl_String) is
+   procedure Set_Icon_Mask(Window: Tk_Widget; Bitmap: Tcl_String) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -512,9 +512,9 @@ package body Tk.Wm is
            " " &
            To_Ada_String(Source => Bitmap),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Icon_Mask;
+   end Set_Icon_Mask;
 
-   procedure Icon_Name(Window: Tk_Widget; New_Name: Tcl_String) is
+   procedure Set_Icon_Name(Window: Tk_Widget; New_Name: Tcl_String) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -523,9 +523,9 @@ package body Tk.Wm is
            " " &
            To_Ada_String(Source => New_Name),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Icon_Name;
+   end Set_Icon_Name;
 
-   procedure Icon_Photo
+   procedure Set_Icon_Photo
      (Window: Tk_Widget;
       Images: Array_List;
       Default: Boolean := False) is
@@ -538,9 +538,9 @@ package body Tk.Wm is
            (if Default then "-default" else "") &
            Merge_List(List => Images),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Icon_Photo;
+   end Set_Icon_Photo;
 
-   function Icon_Position(Window: Tk_Widget) return Window_Position is
+   function Get_Icon_Position(Window: Tk_Widget) return Window_Position is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
@@ -555,9 +555,9 @@ package body Tk.Wm is
          Icon_Pos.X := Natural'Value(To_Ada_String(Source => Result(1)));
          Icon_Pos.Y := Natural'Value(To_Ada_String(Source => Result(2)));
       end return;
-   end Icon_Position;
+   end Get_Icon_Position;
 
-   procedure Icon_Position(Window: Tk_Widget; X, Y: Extended_Natural) is
+   procedure Set_Icon_Position(Window: Tk_Widget; X, Y: Extended_Natural) is
    begin
       if (X = -1 and Y > -1) or (X > -1 and Y = -1) then
          raise Tcl_Exception with "You have to specify both coordinates";
@@ -576,7 +576,7 @@ package body Tk.Wm is
               Extended_Natural'Image(Y),
             Interpreter => Tk_Interp(Widgt => Window));
       end if;
-   end Icon_Position;
+   end Set_Icon_Position;
 
    function Icon_Window(Window: Tk_Widget) return Tk_Toplevel is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
