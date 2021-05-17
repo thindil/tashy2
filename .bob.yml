@@ -83,6 +83,11 @@ version: 3.0
       - gnatpp -P demos/demos.gpr
    description: Pretty print Tashy2 source code
 - command:
+   name: prettytests
+   execute:
+      - gnatpp -P tests/prettytests.gpr
+   description: Pretty print unit tests source code
+- command:
    name: demos
    execute:
       - cd demos
