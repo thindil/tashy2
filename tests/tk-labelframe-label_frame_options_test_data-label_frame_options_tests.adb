@@ -19,7 +19,8 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 
 --  begin read only
 --  end read only
-package body Tk.Labelframe.Label_Frame_Options_Test_Data.Label_Frame_Options_Tests is
+package body Tk.Labelframe.Label_Frame_Options_Test_Data
+  .Label_Frame_Options_Tests is
 
 --  begin read only
 --  id:2.2/01/
@@ -31,12 +32,11 @@ package body Tk.Labelframe.Label_Frame_Options_Test_Data.Label_Frame_Options_Tes
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_84934b (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) 
-   is
+   procedure Wrap_Test_Configure_0076be_84934b
+     (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) is
    begin
       begin
-         pragma Assert
-           (Frame_Widget /= Null_Widget);
+         pragma Assert(Frame_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -44,10 +44,10 @@ package body Tk.Labelframe.Label_Frame_Options_Test_Data.Label_Frame_Options_Tes
               (False,
                "req_sloc(tk-labelframe.ads:0):Test_Configure_Label_Frame test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Labelframe.Configure (Frame_Widget, Options);
+      GNATtest_Generated.GNATtest_Standard.Tk.Labelframe.Configure
+        (Frame_Widget, Options);
       begin
-         pragma Assert
-           (True);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -59,11 +59,17 @@ package body Tk.Labelframe.Label_Frame_Options_Test_Data.Label_Frame_Options_Tes
 --  end read only
 
 --  begin read only
-   procedure Test_Configure_test_configure_label_frame (Gnattest_T : in out Test_Label_Frame_Options);
-   procedure Test_Configure_0076be_84934b (Gnattest_T : in out Test_Label_Frame_Options) renames Test_Configure_test_configure_label_frame;
+   procedure Test_Configure_test_configure_label_frame
+     (Gnattest_T: in out Test_Label_Frame_Options);
+   procedure Test_Configure_0076be_84934b
+     (Gnattest_T: in out Test_Label_Frame_Options) renames
+     Test_Configure_test_configure_label_frame;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_label_frame/
-   procedure Test_Configure_test_configure_label_frame (Gnattest_T : in out Test_Label_Frame_Options) is
-   procedure Configure (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) renames Wrap_Test_Configure_0076be_84934b;
+   procedure Test_Configure_test_configure_label_frame
+     (Gnattest_T: in out Test_Label_Frame_Options) is
+      procedure Configure
+        (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) renames
+        Wrap_Test_Configure_0076be_84934b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

@@ -31,12 +31,11 @@ package body Tk.TopLevel.Toplevel_Options_Test_Data.Toplevel_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_afe77d (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) 
-   is
+   procedure Wrap_Test_Configure_0076be_afe77d
+     (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) is
    begin
       begin
-         pragma Assert
-           (Toplevel_Widget /= Null_Widget);
+         pragma Assert(Toplevel_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -44,10 +43,10 @@ package body Tk.TopLevel.Toplevel_Options_Test_Data.Toplevel_Options_Tests is
               (False,
                "req_sloc(tk-toplevel.ads:0):Test_Configure_TopLevel test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TopLevel.Configure (Toplevel_Widget, Options);
+      GNATtest_Generated.GNATtest_Standard.Tk.TopLevel.Configure
+        (Toplevel_Widget, Options);
       begin
-         pragma Assert
-           (True);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -59,11 +58,17 @@ package body Tk.TopLevel.Toplevel_Options_Test_Data.Toplevel_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Configure_test_configure_toplevel (Gnattest_T : in out Test_Toplevel_Options);
-   procedure Test_Configure_0076be_afe77d (Gnattest_T : in out Test_Toplevel_Options) renames Test_Configure_test_configure_toplevel;
+   procedure Test_Configure_test_configure_toplevel
+     (Gnattest_T: in out Test_Toplevel_Options);
+   procedure Test_Configure_0076be_afe77d
+     (Gnattest_T: in out Test_Toplevel_Options) renames
+     Test_Configure_test_configure_toplevel;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_toplevel/
-   procedure Test_Configure_test_configure_toplevel (Gnattest_T : in out Test_Toplevel_Options) is
-   procedure Configure (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) renames Wrap_Test_Configure_0076be_afe77d;
+   procedure Test_Configure_test_configure_toplevel
+     (Gnattest_T: in out Test_Toplevel_Options) is
+      procedure Configure
+        (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) renames
+        Wrap_Test_Configure_0076be_afe77d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

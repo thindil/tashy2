@@ -6,25 +6,26 @@ with Gnattest_Generated;
 
 package Tcl.Test_Data.Tests is
 
-   type Test is new GNATtest_Generated.GNATtest_Standard.Tcl.Test_Data.Test
-   with null record;
+   type Test is new GNATtest_Generated.GNATtest_Standard.Tcl.Test_Data
+     .Test with
+   null record;
 
-   procedure Test_Tcl_Eval_6f41cd_5b9cd5 (Gnattest_T : in out Test);
+   procedure Test_Tcl_Eval_6f41cd_5b9cd5(Gnattest_T: in out Test);
    --  tcl.ads:138:4:Tcl_Eval:Test_Tcl_Eval
 
-   procedure Test_Tcl_Eval_907c70_916b02 (Gnattest_T : in out Test);
+   procedure Test_Tcl_Eval_907c70_916b02(Gnattest_T: in out Test);
    --  tcl.ads:163:4:Tcl_Eval:Test_Tcl_Eval2
 
-   procedure Test_Tcl_Eval_8c4419_19bef1 (Gnattest_T : in out Test);
+   procedure Test_Tcl_Eval_8c4419_19bef1(Gnattest_T: in out Test);
    --  tcl.ads:188:4:Tcl_Eval:Test_Tcl_Eval3
 
-   procedure Test_Tcl_Get_Result_9a7ac3_b83d43 (Gnattest_T : in out Test);
+   procedure Test_Tcl_Get_Result_9a7ac3_b83d43(Gnattest_T: in out Test);
    --  tcl.ads:308:4:Tcl_Get_Result:Test_Tcl_GetResult
 
-   procedure Test_Tcl_Set_Result_2e8975_cb8f85 (Gnattest_T : in out Test);
+   procedure Test_Tcl_Set_Result_2e8975_cb8f85(Gnattest_T: in out Test);
    --  tcl.ads:375:4:Tcl_Set_Result:Test_Tcl_SetResult
 
-   procedure Test_Tcl_Update_7113e2_953c64 (Gnattest_T : in out Test);
+   procedure Test_Tcl_Update_7113e2_953c64(Gnattest_T: in out Test);
    --  tcl.ads:401:4:Tcl_Update:Test_Tcl_Update
 
 end Tcl.Test_Data.Tests;

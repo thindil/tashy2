@@ -6,16 +6,17 @@ with Gnattest_Generated;
 
 package Tcl.Lists.Test_Data.Tests is
 
-   type Test is new GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Test_Data.Test
-   with null record;
+   type Test is new GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Test_Data
+     .Test with
+   null record;
 
-   procedure Test_Split_List_908c8a_b5e33c (Gnattest_T : in out Test);
+   procedure Test_Split_List_908c8a_b5e33c(Gnattest_T: in out Test);
    --  tcl-lists.ads:60:4:Split_List:Test_Split_List
 
-   procedure Test_Split_List_Variable_b25096_53b238 (Gnattest_T : in out Test);
+   procedure Test_Split_List_Variable_b25096_53b238(Gnattest_T: in out Test);
    --  tcl-lists.ads:83:4:Split_List_Variable:Test_Split_List_Variable
 
-   procedure Test_Merge_List_46a169_8803ae (Gnattest_T : in out Test);
+   procedure Test_Merge_List_46a169_8803ae(Gnattest_T: in out Test);
    --  tcl-lists.ads:110:4:Merge_List:Test_Merge_List
 
 end Tcl.Lists.Test_Data.Tests;

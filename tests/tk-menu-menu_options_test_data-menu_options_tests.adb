@@ -31,25 +31,27 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Create_32e405_f4d256 (Path_Name: String; Options: Menu_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)  return Tk_Menu
-   is
+   function Wrap_Test_Create_32e405_f4d256
+     (Path_Name: String; Options: Menu_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu is
    begin
       begin
          pragma Assert
            (Path_Name'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
-            when System.Assertions.Assert_Failure =>
-               AUnit.Assertions.Assert
-                 (False,
-                  "req_sloc(tk-menu.ads:0):Test_Create_Menu1 test requirement violated");
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-menu.ads:0):Test_Create_Menu1 test requirement violated");
       end;
       declare
-         Test_Create_32e405_f4d256_Result : constant Tk_Menu := GNATtest_Generated.GNATtest_Standard.Tk.Menu.Create (Path_Name, Options, Interpreter);
+         Test_Create_32e405_f4d256_Result: constant Tk_Menu :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Menu.Create
+             (Path_Name, Options, Interpreter);
       begin
          begin
-            pragma Assert
-              (Test_Create_32e405_f4d256_Result /= Null_Widget);
+            pragma Assert(Test_Create_32e405_f4d256_Result /= Null_Widget);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -63,11 +65,19 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_1_Create_test_create_menu1 (Gnattest_T : in out Test_Menu_Options);
-   procedure Test_Create_32e405_f4d256 (Gnattest_T : in out Test_Menu_Options) renames Test_1_Create_test_create_menu1;
+   procedure Test_1_Create_test_create_menu1
+     (Gnattest_T: in out Test_Menu_Options);
+   procedure Test_Create_32e405_f4d256
+     (Gnattest_T: in out Test_Menu_Options) renames
+     Test_1_Create_test_create_menu1;
 --  id:2.2/32e405543423d7b8/Create/1/0/test_create_menu1/
-   procedure Test_1_Create_test_create_menu1 (Gnattest_T : in out Test_Menu_Options) is
-      function Create (Path_Name: String; Options: Menu_Options; Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu renames Wrap_Test_Create_32e405_f4d256;
+   procedure Test_1_Create_test_create_menu1
+     (Gnattest_T: in out Test_Menu_Options) is
+      function Create
+        (Path_Name: String; Options: Menu_Options;
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Tk_Menu renames
+        Wrap_Test_Create_32e405_f4d256;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -88,8 +98,9 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Create_ebbdc1_b5d069 (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options; Interpreter: Tcl_Interpreter := Get_Interpreter) 
-   is
+   procedure Wrap_Test_Create_ebbdc1_b5d069
+     (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
          pragma Assert
@@ -101,10 +112,10 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
               (False,
                "req_sloc(tk-menu.ads:0):Test_Create_Menu2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Create (Menu_Widget, Path_Name, Options, Interpreter);
+      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Create
+        (Menu_Widget, Path_Name, Options, Interpreter);
       begin
-         pragma Assert
-           (Menu_Widget /= Null_Widget);
+         pragma Assert(Menu_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -116,11 +127,18 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_2_Create_test_create_menu2 (Gnattest_T : in out Test_Menu_Options);
-   procedure Test_Create_ebbdc1_b5d069 (Gnattest_T : in out Test_Menu_Options) renames Test_2_Create_test_create_menu2;
+   procedure Test_2_Create_test_create_menu2
+     (Gnattest_T: in out Test_Menu_Options);
+   procedure Test_Create_ebbdc1_b5d069
+     (Gnattest_T: in out Test_Menu_Options) renames
+     Test_2_Create_test_create_menu2;
 --  id:2.2/ebbdc1934f0fa33d/Create/0/0/test_create_menu2/
-   procedure Test_2_Create_test_create_menu2 (Gnattest_T : in out Test_Menu_Options) is
-   procedure Create (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options; Interpreter: Tcl_Interpreter := Get_Interpreter) renames Wrap_Test_Create_ebbdc1_b5d069;
+   procedure Test_2_Create_test_create_menu2
+     (Gnattest_T: in out Test_Menu_Options) is
+      procedure Create
+        (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) renames
+        Wrap_Test_Create_ebbdc1_b5d069;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -141,25 +159,25 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Options_ded36e_ab6612 (Menu_Widget: Tk_Menu)  return Menu_Options
-   is
+   function Wrap_Test_Get_Options_ded36e_ab6612
+     (Menu_Widget: Tk_Menu) return Menu_Options is
    begin
       begin
-         pragma Assert
-           (Menu_Widget /= Null_Widget);
+         pragma Assert(Menu_Widget /= Null_Widget);
          null;
       exception
-            when System.Assertions.Assert_Failure =>
-               AUnit.Assertions.Assert
-                 (False,
-                  "req_sloc(tk-menu.ads:0):Test_Get_Options_Menu test requirement violated");
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-menu.ads:0):Test_Get_Options_Menu test requirement violated");
       end;
       declare
-         Test_Get_Options_ded36e_ab6612_Result : constant Menu_Options := GNATtest_Generated.GNATtest_Standard.Tk.Menu.Get_Options (Menu_Widget);
+         Test_Get_Options_ded36e_ab6612_Result: constant Menu_Options :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Menu.Get_Options
+             (Menu_Widget);
       begin
          begin
-            pragma Assert
-              (True);
+            pragma Assert(True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -173,11 +191,16 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Get_Options_test_get_options_menu (Gnattest_T : in out Test_Menu_Options);
-   procedure Test_Get_Options_ded36e_ab6612 (Gnattest_T : in out Test_Menu_Options) renames Test_Get_Options_test_get_options_menu;
+   procedure Test_Get_Options_test_get_options_menu
+     (Gnattest_T: in out Test_Menu_Options);
+   procedure Test_Get_Options_ded36e_ab6612
+     (Gnattest_T: in out Test_Menu_Options) renames
+     Test_Get_Options_test_get_options_menu;
 --  id:2.2/ded36e34d54c20f9/Get_Options/1/0/test_get_options_menu/
-   procedure Test_Get_Options_test_get_options_menu (Gnattest_T : in out Test_Menu_Options) is
-      function Get_Options (Menu_Widget: Tk_Menu) return Menu_Options renames Wrap_Test_Get_Options_ded36e_ab6612;
+   procedure Test_Get_Options_test_get_options_menu
+     (Gnattest_T: in out Test_Menu_Options) is
+      function Get_Options(Menu_Widget: Tk_Menu) return Menu_Options renames
+        Wrap_Test_Get_Options_ded36e_ab6612;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -200,12 +223,11 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_5a8eaf (Menu_Widget: Tk_Menu; Options: Menu_Options) 
-   is
+   procedure Wrap_Test_Configure_0076be_5a8eaf
+     (Menu_Widget: Tk_Menu; Options: Menu_Options) is
    begin
       begin
-         pragma Assert
-           (Menu_Widget /= Null_Widget);
+         pragma Assert(Menu_Widget /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -213,10 +235,10 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
               (False,
                "req_sloc(tk-menu.ads:0):Test_Configure_Menu test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Configure (Menu_Widget, Options);
+      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Configure
+        (Menu_Widget, Options);
       begin
-         pragma Assert
-           (True);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -228,11 +250,16 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Configure_test_configure_menu (Gnattest_T : in out Test_Menu_Options);
-   procedure Test_Configure_0076be_5a8eaf (Gnattest_T : in out Test_Menu_Options) renames Test_Configure_test_configure_menu;
+   procedure Test_Configure_test_configure_menu
+     (Gnattest_T: in out Test_Menu_Options);
+   procedure Test_Configure_0076be_5a8eaf
+     (Gnattest_T: in out Test_Menu_Options) renames
+     Test_Configure_test_configure_menu;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_menu/
-   procedure Test_Configure_test_configure_menu (Gnattest_T : in out Test_Menu_Options) is
-   procedure Configure (Menu_Widget: Tk_Menu; Options: Menu_Options) renames Wrap_Test_Configure_0076be_5a8eaf;
+   procedure Test_Configure_test_configure_menu
+     (Gnattest_T: in out Test_Menu_Options) is
+      procedure Configure(Menu_Widget: Tk_Menu; Options: Menu_Options) renames
+        Wrap_Test_Configure_0076be_5a8eaf;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
