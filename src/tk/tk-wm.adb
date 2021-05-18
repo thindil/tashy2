@@ -578,7 +578,7 @@ package body Tk.Wm is
       end if;
    end Set_Icon_Position;
 
-   function Icon_Window(Window: Tk_Widget) return Tk_Toplevel is
+   function Get_Icon_Window(Window: Tk_Widget) return Tk_Toplevel is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Path_Name: constant String :=
         Tcl_Eval
@@ -594,9 +594,9 @@ package body Tk.Wm is
                (Tcl_Script => "wm iconwindow " & Tk_Path_Name(Widgt => Window),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
-   end Icon_Window;
+   end Get_Icon_Window;
 
-   procedure Icon_Window(Window, New_Icon_Window: Tk_Toplevel) is
+   procedure Set_Icon_Window(Window, New_Icon_Window: Tk_Toplevel) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -605,7 +605,7 @@ package body Tk.Wm is
            " " &
            Tk_Path_Name(Widgt => New_Icon_Window),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Icon_Window;
+   end Set_Icon_Window;
 
    procedure Manage(Window: Tk_Widget) is
    begin
@@ -614,7 +614,7 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Manage;
 
-   function Max_Size(Window: Tk_Widget) return Window_Size is
+   function Get_Max_Size(Window: Tk_Widget) return Window_Size is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
@@ -628,9 +628,9 @@ package body Tk.Wm is
          Current_Size.Width := Natural'Value(To_String(Source => Result(1)));
          Current_Size.Height := Natural'Value(To_String(Source => Result(2)));
       end return;
-   end Max_Size;
+   end Get_Max_Size;
 
-   procedure Max_Size(Window: Tk_Widget; Width, Height: Positive) is
+   procedure Set_Max_Size(Window: Tk_Widget; Width, Height: Positive) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -639,9 +639,9 @@ package body Tk.Wm is
            Positive'Image(Width) &
            Positive'Image(Height),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Max_Size;
+   end Set_Max_Size;
 
-   function Min_Size(Window: Tk_Widget) return Window_Size is
+   function Get_Min_Size(Window: Tk_Widget) return Window_Size is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
@@ -655,9 +655,9 @@ package body Tk.Wm is
          Current_Size.Width := Natural'Value(To_String(Source => Result(1)));
          Current_Size.Height := Natural'Value(To_String(Source => Result(2)));
       end return;
-   end Min_Size;
+   end Get_Min_Size;
 
-   procedure Min_Size(Window: Tk_Widget; Width, Height: Positive) is
+   procedure Set_Min_Size(Window: Tk_Widget; Width, Height: Positive) is
    begin
       Tcl_Eval
         (Tcl_Script =>
@@ -666,7 +666,7 @@ package body Tk.Wm is
            Positive'Image(Width) &
            Positive'Image(Height),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Min_Size;
+   end Set_Min_Size;
 
    function Override_Redirect(Window: Tk_Widget) return Boolean is
    begin
