@@ -58,8 +58,8 @@ package Tcl.Lists is
    -- Lists.Split_List_Variable
    -- SOURCE
    function Split_List
-     (List: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
+     (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Array_List with
       Pre => List'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Split_List", Mode => Nominal);
       -- ****
@@ -81,13 +81,12 @@ package Tcl.Lists is
       -- List.Split_List
       -- SOURCE
    function Split_List_Variable
-     (Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
+     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Array_List is
      (Split_List
         (List =>
            Tcl.Variables.Tcl_Get_Var
-             (Var_Name => Name,
-              Interpreter => Interpreter),
+             (Var_Name => Name, Interpreter => Interpreter),
          Interpreter => Interpreter)) with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Split_List_Variable", Mode => Nominal);

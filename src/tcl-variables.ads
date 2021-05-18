@@ -28,20 +28,13 @@ package Tcl.Variables is
    -- 8.6.0 - Added
    -- SOURCE
    type Variables_Flags is
-     (NONE,
-      TCL_GLOBAL_ONLY,
-      TCL_NAMESPACE_ONLY,
-      TCL_APPEND_VALUE,
-      TCL_LIST_ELEMENT,
-      TCL_LEAVE_ERR_MSG);
+     (NONE, TCL_GLOBAL_ONLY, TCL_NAMESPACE_ONLY, TCL_APPEND_VALUE,
+      TCL_LIST_ELEMENT, TCL_LEAVE_ERR_MSG);
 
    for Variables_Flags use
-     (NONE => 16#0000#,
-      TCL_GLOBAL_ONLY => 16#0001#,
-      TCL_NAMESPACE_ONLY => 16#0002#,
-      TCL_APPEND_VALUE => 16#0004#,
-      TCL_LIST_ELEMENT => 16#0008#,
-      TCL_LEAVE_ERR_MSG => 16#0200#);
+     (NONE => 16#0000#, TCL_GLOBAL_ONLY => 16#0001#,
+      TCL_NAMESPACE_ONLY => 16#0002#, TCL_APPEND_VALUE => 16#0004#,
+      TCL_LIST_ELEMENT => 16#0008#, TCL_LEAVE_ERR_MSG => 16#0200#);
    -- ****
 
    -- ****d* Variables/Variables.Default_Flag
@@ -122,8 +115,7 @@ package Tcl.Variables is
      (Array_Name, Index_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) with
-      Pre => Array_Name'Length > 0 and
-      Index_Name'Length > 0 and
+      Pre => Array_Name'Length > 0 and Index_Name'Length > 0 and
       New_Value'Length > 0,
       Test_Case => (Name => "Test_Tcl_SetVar2", Mode => Nominal);
       -- ****
@@ -148,8 +140,7 @@ package Tcl.Variables is
       -- Value: constant String := Tcl_Get_Var("myvar");
       -- SOURCE
    function Tcl_Get_Var
-     (Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return String with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_GetVar", Mode => Nominal);
@@ -180,8 +171,7 @@ package Tcl.Variables is
    generic
       type Result_Type is (<>);
    function Generic_Scalar_Tcl_Get_Var
-     (Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return Result_Type;
       -- ****
 
@@ -210,8 +200,7 @@ package Tcl.Variables is
    generic
       type Result_Type is digits <>;
    function Generic_Float_Tcl_Get_Var
-     (Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return Result_Type;
       -- ****
 
@@ -240,8 +229,7 @@ package Tcl.Variables is
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return String with
-      Pre => Var_Name'Length > 0 and
-      Index_Name'Length > 0 and
+      Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_GetVar2", Mode => Nominal);
       -- ****
@@ -328,8 +316,7 @@ package Tcl.Variables is
       -- Tcl_Unset_Var("myvar");
       -- SOURCE
    procedure Tcl_Unset_Var
-     (Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) with
       Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_UnsetVar", Mode => Nominal);
@@ -358,8 +345,7 @@ package Tcl.Variables is
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) with
-      Pre => Var_Name'Length > 0 and
-      Index_Name'Length > 0 and
+      Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_UnsetVar2", Mode => Nominal);
       -- ****

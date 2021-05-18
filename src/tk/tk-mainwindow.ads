@@ -37,8 +37,7 @@ package Tk.MainWindow is
    -- My_Main_Window: constant Tk_Toplevel := Get_Main_Window;
    -- SOURCE
    function Get_Main_Window
-     (Interpreter: Tcl_Interpreter :=
-        Get_Interpreter)
+     (Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk.TopLevel.Tk_Toplevel with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Main_Window", Mode => Nominal);

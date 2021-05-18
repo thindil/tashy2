@@ -19,13 +19,11 @@ with Tcl.Commands;
 package body Tcl.Lists is
 
    function Split_List
-     (List: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
+     (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Array_List is
       use Tcl.Commands;
       function Tcl_Split_List
-        (Interp: Tcl_Interpreter;
-         Tcl_List: chars_ptr;
-         Argc_Ptr: out int;
+        (Interp: Tcl_Interpreter; Tcl_List: chars_ptr; Argc_Ptr: out int;
          Argv_Ptr: out Argv_Pointer.Pointer) return Tcl_Results with
          Import => True,
          Convention => C,
@@ -34,10 +32,8 @@ package body Tcl.Lists is
       Values: Argv_Pointer.Pointer;
    begin
       if Tcl_Split_List
-          (Interp => Interpreter,
-           Tcl_List => New_String(Str => List),
-           Argc_Ptr => int(Amount),
-           Argv_Ptr => Values) =
+          (Interp => Interpreter, Tcl_List => New_String(Str => List),
+           Argc_Ptr => int(Amount), Argv_Ptr => Values) =
         TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result(Interpreter => Interpreter);
       end if;
@@ -45,9 +41,8 @@ package body Tcl.Lists is
          return Empty_Array_List;
       end if;
       return
-        Ada_Array: Array_List(1 .. Amount) := (others => Null_Tcl_String)
-      do
-         Convert_List_To_Array_Loop:
+        Ada_Array: Array_List(1 .. Amount) := (others => Null_Tcl_String) do
+         Convert_List_To_Array_Loop :
          for I in Ada_Array'Range loop
             Ada_Array(I) :=
               To_Unbounded_String
@@ -59,14 +54,13 @@ package body Tcl.Lists is
 
    function Merge_List(List: Array_List) return String is
       function Tcl_Merge
-        (Argc: int;
-         Argv: chars_ptr_array) return chars_ptr with
+        (Argc: int; Argv: chars_ptr_array) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Tcl_Merge";
       New_List: chars_ptr_array(1 .. List'Length);
    begin
-      Convert_Ada_String_To_C_Loop:
+      Convert_Ada_String_To_C_Loop :
       for I in List'Range loop
          New_List(size_t(I)) :=
            New_String(Str => To_Ada_String(Source => List(I)));

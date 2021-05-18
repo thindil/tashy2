@@ -33,139 +33,106 @@ package body Tk.Button is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
-        (Name => "activeforeground",
-         Value => Options.Active_Foreground,
+        (Name => "activeforeground", Value => Options.Active_Foreground,
          Options_String => Options_String);
       Option_Image
-        (Name => "activebackground",
-         Value => Options.Active_Background,
+        (Name => "activebackground", Value => Options.Active_Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "anchor",
-         Value => Options.Anchor,
+        (Name => "anchor", Value => Options.Anchor,
          Options_String => Options_String);
       Option_Image
-        (Name => "background",
-         Value => Options.Background,
+        (Name => "background", Value => Options.Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "bitmap",
-         Value => Options.Bitmap,
+        (Name => "bitmap", Value => Options.Bitmap,
          Options_String => Options_String);
       Option_Image
-        (Name => "borderwidth",
-         Value => Options.Border_Width,
+        (Name => "borderwidth", Value => Options.Border_Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "command",
-         Value => Options.Command,
+        (Name => "command", Value => Options.Command,
          Options_String => Options_String);
       Option_Image
-        (Name => "compound",
-         Value => Options.Compound,
+        (Name => "compound", Value => Options.Compound,
          Options_String => Options_String);
       Option_Image
-        (Name => "cursor",
-         Value => Options.Cursor,
+        (Name => "cursor", Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
-        (Name => "default",
-         Value => Options.Default,
+        (Name => "default", Value => Options.Default,
          Options_String => Options_String);
       Option_Image
-        (Name => "disabledforeground",
-         Value => Options.Disabled_Foreground,
+        (Name => "disabledforeground", Value => Options.Disabled_Foreground,
          Options_String => Options_String);
       Option_Image
-        (Name => "font",
-         Value => Options.Font,
+        (Name => "font", Value => Options.Font,
          Options_String => Options_String);
       Option_Image
-        (Name => "foreground",
-         Value => Options.Foreground,
+        (Name => "foreground", Value => Options.Foreground,
          Options_String => Options_String);
       Option_Image
-        (Name => "height",
-         Value => Options.Height,
+        (Name => "height", Value => Options.Height,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightbackground",
-         Value => Options.Highlight_Background,
+        (Name => "highlightbackground", Value => Options.Highlight_Background,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlightcolot",
-         Value => Options.Highlight_Color,
+        (Name => "highlightcolot", Value => Options.Highlight_Color,
          Options_String => Options_String);
       Option_Image
-        (Name => "highlighthickness",
-         Value => Options.Highlight_Thickness,
+        (Name => "highlighthickness", Value => Options.Highlight_Thickness,
          Options_String => Options_String);
       Option_Image
-        (Name => "image",
-         Value => Options.Image,
+        (Name => "image", Value => Options.Image,
          Options_String => Options_String);
       Option_Image
-        (Name => "justify",
-         Value => Options.Justify,
+        (Name => "justify", Value => Options.Justify,
          Options_String => Options_String);
       Option_Image
-        (Name => "overrelief",
-         Value => Options.Over_Relief,
+        (Name => "overrelief", Value => Options.Over_Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "padx",
-         Value => Options.Pad_X,
+        (Name => "padx", Value => Options.Pad_X,
          Options_String => Options_String);
       Option_Image
-        (Name => "pady",
-         Value => Options.Pad_Y,
+        (Name => "pady", Value => Options.Pad_Y,
          Options_String => Options_String);
       Option_Image
-        (Name => "relief",
-         Value => Options.Relief,
+        (Name => "relief", Value => Options.Relief,
          Options_String => Options_String);
       Option_Image
-        (Name => "repeatdelay",
-         Value => Options.Repeat_Delay,
+        (Name => "repeatdelay", Value => Options.Repeat_Delay,
          Options_String => Options_String);
       Option_Image
-        (Name => "repeatiterval",
-         Value => Options.Repeat_Interval,
+        (Name => "repeatiterval", Value => Options.Repeat_Interval,
          Options_String => Options_String);
       Option_Image
-        (Name => "takefocus",
-         Value => Options.Take_Focus,
+        (Name => "takefocus", Value => Options.Take_Focus,
          Options_String => Options_String);
       Option_Image
-        (Name => "state",
-         Value => Options.State,
+        (Name => "state", Value => Options.State,
          Options_String => Options_String);
       Option_Image
-        (Name => "text",
-         Value => Options.Text,
+        (Name => "text", Value => Options.Text,
          Options_String => Options_String);
       Option_Image
-        (Name => "textvariable",
-         Value => Options.Text_Variable,
+        (Name => "textvariable", Value => Options.Text_Variable,
          Options_String => Options_String);
       Option_Image
-        (Name => "underline",
-         Value => Options.Underline,
+        (Name => "underline", Value => Options.Underline,
          Options_String => Options_String);
       Option_Image
-        (Name => "width",
-         Value => Options.Width,
+        (Name => "width", Value => Options.Width,
          Options_String => Options_String);
       Option_Image
-        (Name => "wraplength",
-         Value => Options.Wrap_Length,
+        (Name => "wraplength", Value => Options.Wrap_Length,
          Options_String => Options_String);
       return To_String(Source => Options_String);
    end Options_To_String;
 
    function Create
-     (Path_Name: String;
-      Options: Button_Options;
+     (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button is
    begin
       Tcl_Eval
@@ -176,15 +143,12 @@ package body Tk.Button is
    end Create;
 
    procedure Create
-     (Button_Widget: out Tk_Button;
-      Path_Name: String;
-      Options: Button_Options;
+     (Button_Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Button_Widget :=
         Create
-          (Path_Name => Path_Name,
-           Options => Options,
+          (Path_Name => Path_Name, Options => Options,
            Interpreter => Interpreter);
    end Create;
 
@@ -257,8 +221,7 @@ package body Tk.Button is
    procedure Configure(Button_Widget: Tk_Button; Options: Button_Options) is
    begin
       Execute_Widget_Command
-        (Widgt => Button_Widget,
-         Command_Name => "configure",
+        (Widgt => Button_Widget, Command_Name => "configure",
          Options => Options_To_String(Options => Options));
    end Configure;
 

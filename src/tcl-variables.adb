@@ -34,7 +34,7 @@ package body Tcl.Variables is
       Default_Unsigned_Integer: constant Unsigned_Integer := 0;
       Flag: Unsigned_Integer := Default_Unsigned_Integer;
    begin
-      Set_Flags_Loop:
+      Set_Flags_Loop :
       for Value of Flags loop
          Flag := Flag or Variables_Flags'Enum_Rep(Value);
       end loop Set_Flags_Loop;
@@ -46,8 +46,7 @@ package body Tcl.Variables is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
       function Tcl_Set_Var_C
-        (Interp: Tcl_Interpreter;
-         Var_Name_C, New_Value_C: chars_ptr;
+        (Interp: Tcl_Interpreter; Var_Name_C, New_Value_C: chars_ptr;
          Flags_C: int) return chars_ptr with
          Import => True,
          Convention => C,
@@ -71,8 +70,7 @@ package body Tcl.Variables is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
       function Tcl_Set_Var2_C
-        (Interp: Tcl_Interpreter;
-         Name1, Name2, New_Value_C: chars_ptr;
+        (Interp: Tcl_Interpreter; Name1, Name2, New_Value_C: chars_ptr;
          Flags_C: int) return chars_ptr with
          Import => True,
          Convention => C,
@@ -81,38 +79,30 @@ package body Tcl.Variables is
         Value
           (Item =>
              Tcl_Set_Var2_C
-               (Interp => Interpreter,
-                Name1 => New_String(Str => Array_Name),
+               (Interp => Interpreter, Name1 => New_String(Str => Array_Name),
                 Name2 => New_String(Str => Index_Name),
                 New_Value_C => New_String(Str => New_Value),
                 Flags_C => Create_Flag(Flags => Flags)));
    begin
       if Result'Length = 0 then
          raise Tcl_Exception
-           with "Can't set element " &
-           Index_Name &
-           " to " &
-           New_Value &
-           " in array " &
-           Array_Name;
+           with "Can't set element " & Index_Name & " to " & New_Value &
+           " in array " & Array_Name;
       end if;
    end Tcl_Set_Var2;
 
    function Tcl_Get_Var
-     (Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return String is
       function Tcl_Get_Var_C
-        (Interp: Tcl_Interpreter;
-         Var_Name_C: chars_ptr;
-         Flags_C: int) return chars_ptr with
+        (Interp: Tcl_Interpreter; Var_Name_C: chars_ptr; Flags_C: int)
+         return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetVar";
       Result: constant chars_ptr :=
         Tcl_Get_Var_C
-          (Interp => Interpreter,
-           Var_Name_C => New_String(Str => Var_Name),
+          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
            Flags_C => Create_Flag(Flags => Flags));
    begin
       if Result = Null_Ptr then
@@ -123,34 +113,32 @@ package body Tcl.Variables is
    end Tcl_Get_Var;
 
    function Generic_Scalar_Tcl_Get_Var
-     (Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return Result_Type is
    begin
       if Interpreter = Null_Interpreter then
          raise Tcl_Exception
            with "Can't get variable value on non existing Tcl interpreter";
       end if;
-      return Result_Type'Value
+      return
+        Result_Type'Value
           (Tcl_Get_Var
-             (Var_Name => Var_Name,
-              Interpreter => Interpreter,
+             (Var_Name => Var_Name, Interpreter => Interpreter,
               Flags => Flags));
    end Generic_Scalar_Tcl_Get_Var;
 
    function Generic_Float_Tcl_Get_Var
-     (Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return Result_Type is
    begin
       if Interpreter = Null_Interpreter then
          raise Tcl_Exception
            with "Can't get variable value on non existing Tcl interpreter";
       end if;
-      return Result_Type'Value
+      return
+        Result_Type'Value
           (Tcl_Get_Var
-             (Var_Name => Var_Name,
-              Interpreter => Interpreter,
+             (Var_Name => Var_Name, Interpreter => Interpreter,
               Flags => Flags));
    end Generic_Float_Tcl_Get_Var;
 
@@ -159,26 +147,21 @@ package body Tcl.Variables is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return String is
       function Tcl_Get_Var2_C
-        (Interp: Tcl_Interpreter;
-         Var_Name_C, Index_Name_C: chars_ptr;
+        (Interp: Tcl_Interpreter; Var_Name_C, Index_Name_C: chars_ptr;
          Flags_C: int) return chars_ptr with
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetVar2";
       Result: constant chars_ptr :=
         Tcl_Get_Var2_C
-          (Interp => Interpreter,
-           Var_Name_C => New_String(Str => Var_Name),
+          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
            Index_Name_C => New_String(Str => Index_Name),
            Flags_C => Create_Flag(Flags => Flags));
    begin
       if Result = Null_Ptr then
          raise Tcl_Exception
-           with "Can't get value of the element '" &
-           Index_Name &
-           "' of Tcl array '" &
-           Var_Name &
-           "'";
+           with "Can't get value of the element '" & Index_Name &
+           "' of Tcl array '" & Var_Name & "'";
       end if;
       return Value(Item => Result);
    end Tcl_Get_Var2;
@@ -192,12 +175,11 @@ package body Tcl.Variables is
          raise Tcl_Exception
            with "Can't get variable value on non existing Tcl interpreter";
       end if;
-      return Result_Type'Value
+      return
+        Result_Type'Value
           (Tcl_Get_Var2
-             (Var_Name => Var_Name,
-              Index_Name => Index_Name,
-              Interpreter => Interpreter,
-              Flags => Flags));
+             (Var_Name => Var_Name, Index_Name => Index_Name,
+              Interpreter => Interpreter, Flags => Flags));
    end Generic_Scalar_Tcl_Get_Var2;
 
    function Generic_Float_Tcl_Get_Var2
@@ -209,29 +191,25 @@ package body Tcl.Variables is
          raise Tcl_Exception
            with "Can't get variable value on non existing Tcl interpreter";
       end if;
-      return Result_Type'Value
+      return
+        Result_Type'Value
           (Tcl_Get_Var2
-             (Var_Name => Var_Name,
-              Index_Name => Index_Name,
-              Interpreter => Interpreter,
-              Flags => Flags));
+             (Var_Name => Var_Name, Index_Name => Index_Name,
+              Interpreter => Interpreter, Flags => Flags));
    end Generic_Float_Tcl_Get_Var2;
 
    procedure Tcl_Unset_Var
-     (Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
       function Tcl_Unset_Var_C
-        (Interp: Tcl_Interpreter;
-         Var_Name_C: chars_ptr;
-         Flags_C: int) return int with
+        (Interp: Tcl_Interpreter; Var_Name_C: chars_ptr; Flags_C: int)
+         return int with
          Import => True,
          Convention => C,
          External_Name => "Tcl_UnsetVar";
    begin
       if Tcl_Unset_Var_C
-          (Interp => Interpreter,
-           Var_Name_C => New_String(Str => Var_Name),
+          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
            Flags_C => Create_Flag(Flags => Flags)) =
         int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
          raise Tcl_Exception with "Can't unset " & Var_Name;
@@ -243,16 +221,14 @@ package body Tcl.Variables is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
       function Tcl_Unset_Var2_C
-        (Interp: Tcl_Interpreter;
-         Var_Name_C, Index_Name_C: chars_ptr;
+        (Interp: Tcl_Interpreter; Var_Name_C, Index_Name_C: chars_ptr;
          Flags_C: int) return int with
          Import => True,
          Convention => C,
          External_Name => "Tcl_UnsetVar2";
    begin
       if Tcl_Unset_Var2_C
-          (Interp => Interpreter,
-           Var_Name_C => New_String(Str => Var_Name),
+          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
            Index_Name_C => New_String(Str => Index_Name),
            Flags_C => Create_Flag(Flags => Flags)) =
         int(Tcl_Results'Enum_Rep(TCL_ERROR)) then

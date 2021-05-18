@@ -36,9 +36,7 @@ package Tcl.Commands is
    -- 8.6.0 - Added
    -- SOURCE
    package Argv_Pointer is new Interfaces.C.Pointers
-     (Index => size_t,
-      Element => chars_ptr,
-      Element_Array => chars_ptr_array,
+     (Index => size_t, Element => chars_ptr, Element_Array => chars_ptr_array,
       Default_Terminator => Null_Ptr);
    -- ****
 
@@ -58,10 +56,8 @@ package Tcl.Commands is
    -- 8.6.0 - Added
    -- SOURCE
    type Tcl_Cmd_Proc is access function
-     (Client_Data: System.Address;
-      Interpreter: Tcl_Interpreter;
-      Argc: Positive;
-      Argv: Argv_Pointer.Pointer) return Tcl_Results with
+     (Client_Data: System.Address; Interpreter: Tcl_Interpreter;
+      Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results with
       Convention => C;
       -- ****
 
@@ -134,11 +130,9 @@ package Tcl.Commands is
    -- My_Command: constant Tcl_Command := Tcl_Create_Command("MyProc", My_Command'Access);
    -- SOURCE
    function Tcl_Create_Command
-     (Command_Name: String;
-      Proc: Tcl_Cmd_Proc;
+     (Command_Name: String; Proc: Tcl_Cmd_Proc;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Delete_Proc: Tcl_Cmd_Delete_Proc :=
-        Null_Tcl_Cmd_Delete_Proc)
+      Delete_Proc: Tcl_Cmd_Delete_Proc := Null_Tcl_Cmd_Delete_Proc)
       return Tcl_Command with
       Pre => Command_Name'Length > 0 and Proc /= Null_Tcl_Cmd_Proc,
       Test_Case => (Name => "Test_Tcl_CreateCommand", Mode => Nominal);
@@ -164,8 +158,7 @@ package Tcl.Commands is
       -- Proc_Name: constant String := Get_Argument(My_Arguments, 0);
       -- SOURCE
    function Get_Argument
-     (Arguments_Pointer: Argv_Pointer.Pointer;
-      Index: Natural) return String;
+     (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String;
      -- ****
      --## rule on REDUCEABLE_SCOPE
 
