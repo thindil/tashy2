@@ -2099,7 +2099,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Icon_Window_5eafd1_44e6ae
+   function Wrap_Test_Get_Icon_Window_1f202f_44e6ae
      (Window: Tk_Widget) return Tk_Toplevel is
    begin
       begin
@@ -2112,8 +2112,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Window test requirement violated");
       end;
       declare
-         Test_Icon_Window_5eafd1_44e6ae_Result: constant Tk_Toplevel :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Icon_Window(Window);
+         Test_Get_Icon_Window_1f202f_44e6ae_Result: constant Tk_Toplevel :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Icon_Window(Window);
       begin
          begin
             pragma Assert(True);
@@ -2124,19 +2124,21 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Window test commitment violated");
          end;
-         return Test_Icon_Window_5eafd1_44e6ae_Result;
+         return Test_Get_Icon_Window_1f202f_44e6ae_Result;
       end;
-   end Wrap_Test_Icon_Window_5eafd1_44e6ae;
+   end Wrap_Test_Get_Icon_Window_1f202f_44e6ae;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Icon_Window_test_wm_icon_window(Gnattest_T: in out Test);
-   procedure Test_Icon_Window_5eafd1_44e6ae(Gnattest_T: in out Test) renames
-     Test_1_Icon_Window_test_wm_icon_window;
---  id:2.2/5eafd152a3c4130a/Icon_Window/1/0/test_wm_icon_window/
-   procedure Test_1_Icon_Window_test_wm_icon_window(Gnattest_T: in out Test) is
-      function Icon_Window(Window: Tk_Widget) return Tk_Toplevel renames
-        Wrap_Test_Icon_Window_5eafd1_44e6ae;
+   procedure Test_Get_Icon_Window_test_wm_icon_window(Gnattest_T: in out Test);
+   procedure Test_Get_Icon_Window_1f202f_44e6ae
+     (Gnattest_T: in out Test) renames
+     Test_Get_Icon_Window_test_wm_icon_window;
+--  id:2.2/1f202f58e4967440/Get_Icon_Window/1/0/test_wm_icon_window/
+   procedure Test_Get_Icon_Window_test_wm_icon_window
+     (Gnattest_T: in out Test) is
+      function Get_Icon_Window(Window: Tk_Widget) return Tk_Toplevel renames
+        Wrap_Test_Get_Icon_Window_1f202f_44e6ae;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2149,18 +2151,18 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       IconWindow := Create(".test", Default_Toplevel_Create_Options);
-      Icon_Window(Get_Main_Window, IconWindow);
+      Set_Icon_Window(Get_Main_Window, IconWindow);
       Assert
-        (Icon_Window(Get_Main_Window) = IconWindow,
+        (Get_Icon_Window(Get_Main_Window) = IconWindow,
          "Failed to get icon window for main window");
       Destroy(IconWindow);
 
 --  begin read only
-   end Test_1_Icon_Window_test_wm_icon_window;
+   end Test_Get_Icon_Window_test_wm_icon_window;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Icon_Window_8ccb84_e657dc
+   procedure Wrap_Test_Set_Icon_Window_d6a591_e657dc
      (Window, New_Icon_Window: Tk_Toplevel) is
    begin
       begin
@@ -2173,7 +2175,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Window2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Icon_Window
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Icon_Window
         (Window, New_Icon_Window);
       begin
          pragma Assert(True);
@@ -2184,18 +2186,20 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Window2 test commitment violated");
       end;
-   end Wrap_Test_Icon_Window_8ccb84_e657dc;
+   end Wrap_Test_Set_Icon_Window_d6a591_e657dc;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Icon_Window_test_wm_icon_window2(Gnattest_T: in out Test);
-   procedure Test_Icon_Window_8ccb84_e657dc(Gnattest_T: in out Test) renames
-     Test_2_Icon_Window_test_wm_icon_window2;
---  id:2.2/8ccb84d30893c538/Icon_Window/0/0/test_wm_icon_window2/
-   procedure Test_2_Icon_Window_test_wm_icon_window2
+   procedure Test_Set_Icon_Window_test_wm_icon_window2
+     (Gnattest_T: in out Test);
+   procedure Test_Set_Icon_Window_d6a591_e657dc
+     (Gnattest_T: in out Test) renames
+     Test_Set_Icon_Window_test_wm_icon_window2;
+--  id:2.2/d6a591e102f55162/Set_Icon_Window/1/0/test_wm_icon_window2/
+   procedure Test_Set_Icon_Window_test_wm_icon_window2
      (Gnattest_T: in out Test) is
-      procedure Icon_Window(Window, New_Icon_Window: Tk_Toplevel) renames
-        Wrap_Test_Icon_Window_8ccb84_e657dc;
+      procedure Set_Icon_Window(Window, New_Icon_Window: Tk_Toplevel) renames
+        Wrap_Test_Set_Icon_Window_d6a591_e657dc;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2208,14 +2212,14 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       IconWindow := Create(".test", Default_Toplevel_Create_Options);
-      Icon_Window(Get_Main_Window, IconWindow);
+      Set_Icon_Window(Get_Main_Window, IconWindow);
       Assert
-        (Icon_Window(Get_Main_Window) = IconWindow,
+        (Get_Icon_Window(Get_Main_Window) = IconWindow,
          "Failed to set icon window for main window");
       Destroy(IconWindow);
 
 --  begin read only
-   end Test_2_Icon_Window_test_wm_icon_window2;
+   end Test_Set_Icon_Window_test_wm_icon_window2;
 --  end read only
 
 --  begin read only
@@ -2272,7 +2276,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Max_Size_35a7bd_4463a7
+   function Wrap_Test_Get_Max_Size_4ccc81_4463a7
      (Window: Tk_Widget) return Window_Size is
    begin
       begin
@@ -2285,8 +2289,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Max_Size test requirement violated");
       end;
       declare
-         Test_Max_Size_35a7bd_4463a7_Result: constant Window_Size :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Max_Size(Window);
+         Test_Get_Max_Size_4ccc81_4463a7_Result: constant Window_Size :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Max_Size(Window);
       begin
          begin
             pragma Assert(True);
@@ -2297,19 +2301,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Max_Size test commitment violated");
          end;
-         return Test_Max_Size_35a7bd_4463a7_Result;
+         return Test_Get_Max_Size_4ccc81_4463a7_Result;
       end;
-   end Wrap_Test_Max_Size_35a7bd_4463a7;
+   end Wrap_Test_Get_Max_Size_4ccc81_4463a7;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Max_Size_test_wm_max_size(Gnattest_T: in out Test);
-   procedure Test_Max_Size_35a7bd_4463a7(Gnattest_T: in out Test) renames
-     Test_1_Max_Size_test_wm_max_size;
---  id:2.2/35a7bd60af3a2f9b/Max_Size/1/0/test_wm_max_size/
-   procedure Test_1_Max_Size_test_wm_max_size(Gnattest_T: in out Test) is
-      function Max_Size(Window: Tk_Widget) return Window_Size renames
-        Wrap_Test_Max_Size_35a7bd_4463a7;
+   procedure Test_Get_Max_Size_test_wm_max_size(Gnattest_T: in out Test);
+   procedure Test_Get_Max_Size_4ccc81_4463a7(Gnattest_T: in out Test) renames
+     Test_Get_Max_Size_test_wm_max_size;
+--  id:2.2/4ccc81310f1923d2/Get_Max_Size/1/0/test_wm_max_size/
+   procedure Test_Get_Max_Size_test_wm_max_size(Gnattest_T: in out Test) is
+      function Get_Max_Size(Window: Tk_Widget) return Window_Size renames
+        Wrap_Test_Get_Max_Size_4ccc81_4463a7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2320,17 +2324,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Max_Size(Get_Main_Window, 100, 100);
+      Set_Max_Size(Get_Main_Window, 100, 100);
       Assert
-        (Max_Size(Get_Main_Window).Width = 100,
+        (Get_Max_Size(Get_Main_Window).Width = 100,
          "Failed to get max size of Tk main window.");
 
 --  begin read only
-   end Test_1_Max_Size_test_wm_max_size;
+   end Test_Get_Max_Size_test_wm_max_size;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Max_Size_cc0b42_efa6b3
+   procedure Wrap_Test_Set_Max_Size_dec96a_efa6b3
      (Window: Tk_Widget; Width, Height: Positive) is
    begin
       begin
@@ -2342,7 +2346,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Max_Size2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Max_Size
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Max_Size
         (Window, Width, Height);
       begin
          pragma Assert(True);
@@ -2353,17 +2357,18 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Max_Size2 test commitment violated");
       end;
-   end Wrap_Test_Max_Size_cc0b42_efa6b3;
+   end Wrap_Test_Set_Max_Size_dec96a_efa6b3;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Max_Size_test_wm_max_size2(Gnattest_T: in out Test);
-   procedure Test_Max_Size_cc0b42_efa6b3(Gnattest_T: in out Test) renames
-     Test_2_Max_Size_test_wm_max_size2;
---  id:2.2/cc0b4264bb7f0310/Max_Size/0/0/test_wm_max_size2/
-   procedure Test_2_Max_Size_test_wm_max_size2(Gnattest_T: in out Test) is
-      procedure Max_Size(Window: Tk_Widget; Width, Height: Positive) renames
-        Wrap_Test_Max_Size_cc0b42_efa6b3;
+   procedure Test_Set_Max_Size_test_wm_max_size2(Gnattest_T: in out Test);
+   procedure Test_Set_Max_Size_dec96a_efa6b3(Gnattest_T: in out Test) renames
+     Test_Set_Max_Size_test_wm_max_size2;
+--  id:2.2/dec96a628d5a8eaa/Set_Max_Size/1/0/test_wm_max_size2/
+   procedure Test_Set_Max_Size_test_wm_max_size2(Gnattest_T: in out Test) is
+      procedure Set_Max_Size
+        (Window: Tk_Widget; Width, Height: Positive) renames
+        Wrap_Test_Set_Max_Size_dec96a_efa6b3;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2374,17 +2379,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Max_Size(Get_Main_Window, 200, 201);
+      Set_Max_Size(Get_Main_Window, 200, 201);
       Assert
-        (Max_Size(Get_Main_Window).Height = 201,
+        (Get_Max_Size(Get_Main_Window).Height = 201,
          "Failed to set max size of Tk main window.");
 
 --  begin read only
-   end Test_2_Max_Size_test_wm_max_size2;
+   end Test_Set_Max_Size_test_wm_max_size2;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Min_Size_9ffcbc_7d5aa0
+   function Wrap_Test_Get_Min_Size_2ac171_7d5aa0
      (Window: Tk_Widget) return Window_Size is
    begin
       begin
@@ -2397,8 +2402,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Min_Size test requirement violated");
       end;
       declare
-         Test_Min_Size_9ffcbc_7d5aa0_Result: constant Window_Size :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Min_Size(Window);
+         Test_Get_Min_Size_2ac171_7d5aa0_Result: constant Window_Size :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Min_Size(Window);
       begin
          begin
             pragma Assert(True);
@@ -2409,19 +2414,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Min_Size test commitment violated");
          end;
-         return Test_Min_Size_9ffcbc_7d5aa0_Result;
+         return Test_Get_Min_Size_2ac171_7d5aa0_Result;
       end;
-   end Wrap_Test_Min_Size_9ffcbc_7d5aa0;
+   end Wrap_Test_Get_Min_Size_2ac171_7d5aa0;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Min_Size_test_wm_min_size(Gnattest_T: in out Test);
-   procedure Test_Min_Size_9ffcbc_7d5aa0(Gnattest_T: in out Test) renames
-     Test_1_Min_Size_test_wm_min_size;
---  id:2.2/9ffcbc4a91fe793e/Min_Size/1/0/test_wm_min_size/
-   procedure Test_1_Min_Size_test_wm_min_size(Gnattest_T: in out Test) is
-      function Min_Size(Window: Tk_Widget) return Window_Size renames
-        Wrap_Test_Min_Size_9ffcbc_7d5aa0;
+   procedure Test_Get_Min_Size_test_wm_min_size(Gnattest_T: in out Test);
+   procedure Test_Get_Min_Size_2ac171_7d5aa0(Gnattest_T: in out Test) renames
+     Test_Get_Min_Size_test_wm_min_size;
+--  id:2.2/2ac1715c082b9fe2/Get_Min_Size/1/0/test_wm_min_size/
+   procedure Test_Get_Min_Size_test_wm_min_size(Gnattest_T: in out Test) is
+      function Get_Min_Size(Window: Tk_Widget) return Window_Size renames
+        Wrap_Test_Get_Min_Size_2ac171_7d5aa0;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2432,17 +2437,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Min_Size(Get_Main_Window, 100, 100);
+      Set_Min_Size(Get_Main_Window, 100, 100);
       Assert
-        (Min_Size(Get_Main_Window).Width = 100,
+        (Get_Min_Size(Get_Main_Window).Width = 100,
          "Failed to get min size of Tk main window.");
 
 --  begin read only
-   end Test_1_Min_Size_test_wm_min_size;
+   end Test_Get_Min_Size_test_wm_min_size;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Min_Size_d01a4f_86115b
+   procedure Wrap_Test_Set_Min_Size_8a0b01_86115b
      (Window: Tk_Widget; Width, Height: Positive) is
    begin
       begin
@@ -2454,7 +2459,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Min_Size2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Min_Size
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Min_Size
         (Window, Width, Height);
       begin
          pragma Assert(True);
@@ -2465,17 +2470,18 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Min_Size2 test commitment violated");
       end;
-   end Wrap_Test_Min_Size_d01a4f_86115b;
+   end Wrap_Test_Set_Min_Size_8a0b01_86115b;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Min_Size_test_wm_min_size2(Gnattest_T: in out Test);
-   procedure Test_Min_Size_d01a4f_86115b(Gnattest_T: in out Test) renames
-     Test_2_Min_Size_test_wm_min_size2;
---  id:2.2/d01a4f9f082c83b8/Min_Size/0/0/test_wm_min_size2/
-   procedure Test_2_Min_Size_test_wm_min_size2(Gnattest_T: in out Test) is
-      procedure Min_Size(Window: Tk_Widget; Width, Height: Positive) renames
-        Wrap_Test_Min_Size_d01a4f_86115b;
+   procedure Test_Set_Min_Size_test_wm_min_size2(Gnattest_T: in out Test);
+   procedure Test_Set_Min_Size_8a0b01_86115b(Gnattest_T: in out Test) renames
+     Test_Set_Min_Size_test_wm_min_size2;
+--  id:2.2/8a0b010a76d86cf7/Set_Min_Size/1/0/test_wm_min_size2/
+   procedure Test_Set_Min_Size_test_wm_min_size2(Gnattest_T: in out Test) is
+      procedure Set_Min_Size
+        (Window: Tk_Widget; Width, Height: Positive) renames
+        Wrap_Test_Set_Min_Size_8a0b01_86115b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2486,13 +2492,13 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Min_Size(Get_Main_Window, 200, 201);
+      Set_Min_Size(Get_Main_Window, 200, 201);
       Assert
-        (Min_Size(Get_Main_Window).Height = 201,
+        (Get_Min_Size(Get_Main_Window).Height = 201,
          "Failed to set min size of Tk main window.");
 
 --  begin read only
-   end Test_2_Min_Size_test_wm_min_size2;
+   end Test_Set_Min_Size_test_wm_min_size2;
 --  end read only
 
 --  begin read only
