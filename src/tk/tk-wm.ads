@@ -51,7 +51,7 @@ package Tk.Wm is
    -- 8.6.0 - Added
    -- SOURCE
    type Alpha_Type is digits 2 range -1.0 .. 1.0 with
-        Default_Value => 1.0;
+      Default_Value => 1.0;
       -- ****
 
       -- ****d* Wm/Wm.Default_Alpha
@@ -70,22 +70,9 @@ package Tk.Wm is
    -- 8.6.0 - Added
    -- SOURCE
    type Window_Types is
-     (DESKTOP,
-      DOCK,
-      TOOLBAR,
-      MENU,
-      UTILITY,
-      SPLASH,
-      DIALOG,
-      DROPDOWN_MENU,
-      POPUP_MENU,
-      TOOLTIP,
-      NOTIFICATION,
-      COMBO,
-      DND,
-      NORMAL,
-      NONE) with
-        Default_Value => NONE;
+     (DESKTOP, DOCK, TOOLBAR, MENU, UTILITY, SPLASH, DIALOG, DROPDOWN_MENU,
+      POPUP_MENU, TOOLTIP, NOTIFICATION, COMBO, DND, NORMAL, NONE) with
+      Default_Value => NONE;
       -- ****
 
       -- ****d* Wm/Wm.Default_Window_Type
@@ -122,8 +109,7 @@ package Tk.Wm is
    -- 8.6.0 - Added
    -- SOURCE
    type Window_Attributes_Data
-     (Wm_Type: Window_Manager_Types := Default_Window_Manager)
-   is record
+     (Wm_Type: Window_Manager_Types := Default_Window_Manager) is record
       Alpha: Alpha_Type;
       Full_Screen: Extended_Boolean;
       Topmost: Extended_Boolean;
@@ -470,8 +456,7 @@ package Tk.Wm is
       -- wm attributes Window Atributes_Data
       -- SOURCE
    procedure Set_Attributes
-     (Window: Tk_Widget;
-      Attributes_Data: Window_Attributes_Data) with
+     (Window: Tk_Widget; Attributes_Data: Window_Attributes_Data) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Set_Attributes", Mode => Nominal);
       -- ****
@@ -494,9 +479,7 @@ package Tk.Wm is
       -- COMMANDS
       -- wm attributes Window Name
       -- SOURCE
-   function Get_Attribute
-     (Window: Tk_Widget;
-      Name: String) return Tcl_String is
+   function Get_Attribute(Window: Tk_Widget; Name: String) return Tcl_String is
      (To_Tcl_String
         (Source =>
            Tcl_Eval
@@ -506,13 +489,10 @@ package Tk.Wm is
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute", Mode => Nominal);
    function Get_Attribute
-     (Window: Tk_Widget;
-      Name: String) return Extended_Boolean with
+     (Window: Tk_Widget; Name: String) return Extended_Boolean with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute2", Mode => Nominal);
-   function Get_Attribute
-     (Window: Tk_Widget;
-      Name: String) return Alpha_Type is
+   function Get_Attribute(Window: Tk_Widget; Name: String) return Alpha_Type is
      (Alpha_Type'Value
         (Tcl_Eval
            (Tcl_Script =>
@@ -521,8 +501,7 @@ package Tk.Wm is
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Get_Attribute3", Mode => Nominal);
    function Get_Attribute
-     (Window: Tk_Widget;
-      Name: String) return Window_Types is
+     (Window: Tk_Widget; Name: String) return Window_Types is
      (Window_Types'Value
         (Tcl_Eval
            (Tcl_Script =>
@@ -547,8 +526,7 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Set_Client
       -- SOURCE
-   function Get_Client
-     (Window: Tk_Widget) return String is
+   function Get_Client(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm client " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
@@ -613,8 +591,7 @@ package Tk.Wm is
       -- Get_Color_Map_Windows
       -- SOURCE
    procedure Set_Color_Map_Windows
-     (Window: Tk_Widget;
-      Widgets: Widgets_Array) with
+     (Window: Tk_Widget; Widgets: Widgets_Array) with
       Pre => Window /= Null_Widget and Widgets /= Empty_Widgets_Array,
       Test_Case => (Name => "Test_Wm_Color_Map_Windows2", Mode => Nominal);
       -- ****
@@ -634,8 +611,7 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Set_Command
       -- SOURCE
-   function Get_Command
-     (Window: Tk_Widget) return Tcl_String is
+   function Get_Command(Window: Tk_Widget) return Tcl_String is
      (To_Tcl_String
         (Source =>
            Tcl_Eval
@@ -799,8 +775,7 @@ package Tk.Wm is
       -- Wm.Set_Geometry
       -- SOURCE
    procedure Set_Geometry
-     (Window: Tk_Widget;
-      Width, Height, X, Y: Extended_Natural := -1) with
+     (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Geometry2", Mode => Nominal);
       -- ****
@@ -870,8 +845,7 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Set_Group
       -- SOURCE
-   function Get_Group
-     (Window: Tk_Widget) return String is
+   function Get_Group(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm group " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
@@ -915,8 +889,7 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Set_Icon_Bitmap
       -- SOURCE
-   function Get_Icon_Bitmap
-     (Window: Tk_Widget) return String is
+   function Get_Icon_Bitmap(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm iconbitmap " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
@@ -978,8 +951,7 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Set_Icon_Mask
       -- SOURCE
-   function Get_Icon_Mask
-     (Window: Tk_Widget) return String is
+   function Get_Icon_Mask(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm iconmask " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
@@ -1022,8 +994,7 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Set_Icon_Name
       -- SOURCE
-   function Get_Icon_Name
-     (Window: Tk_Widget) return String is
+   function Get_Icon_Name(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm iconname " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
@@ -1065,9 +1036,7 @@ package Tk.Wm is
       -- Set_Icon_Photo(Get_Main_Window, (To_Tcl_String("myicon"), To_Tcl_String("mybigicon")));
       -- SOURCE
    procedure Set_Icon_Photo
-     (Window: Tk_Widget;
-      Images: Array_List;
-      Default: Boolean := False) with
+     (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) with
       Pre => Window /= Null_Widget and Images'Length > 0,
       Test_Case => (Name => "Test_Wm_Icon_Photo", Mode => Nominal);
       -- ****
@@ -1112,7 +1081,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Icon_Position2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Icon_Window_(function)
+      -- ****f* Wm/Wm.Get_Icon_Window
       -- FUNCTION
       -- Get the Tk_Toplevel which is set as the current icon window for the
       -- selected Tk_Widget
@@ -1125,16 +1094,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the icon window for the Tk main window
-      -- Icon: constant Tk_Toplevel := Icon_Window(Get_Main_Window);
+      -- Icon: constant Tk_Toplevel := Get_Icon_Window(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Icon_Window_(procedure)
+      -- Wm.Set_Icon_Window
       -- SOURCE
-   function Icon_Window(Window: Tk_Widget) return Tk_Toplevel with
+   function Get_Icon_Window(Window: Tk_Widget) return Tk_Toplevel with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Window", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Icon_Window_(procedure)
+      -- ****f* Wm/Wm.Set_Icon_Window
       -- FUNCTION
       -- Set the Tk_Toplevel as the current icon window for the selected
       -- Tk_Widget
@@ -1145,11 +1114,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set My_Icon_Window as the icon window for the Tk main window
-      -- Icon_Window(Get_Main_Window, My_Icon_Window);
+      -- Set_Icon_Window(Get_Main_Window, My_Icon_Window);
       -- SEE ALSO
-      -- Wm.Icon_Window_(function)
+      -- Wm.Get_Icon_Window
       -- SOURCE
-   procedure Icon_Window(Window, New_Icon_Window: Tk_Toplevel) with
+   procedure Set_Icon_Window(Window, New_Icon_Window: Tk_Toplevel) with
       Pre => Window /= Null_Widget and New_Icon_Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Window2", Mode => Nominal);
       -- ****
@@ -1170,7 +1139,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Manage", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Max_Size_(function)
+      -- ****f* Wm/Wm.Get_Max_Size
       -- FUNCTION
       -- Get the maximum allowed size for the selected Tk_Widget. For gridded
       -- windows it will be in grid unit, for others in pixels
@@ -1183,16 +1152,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the maximum allowed size of Tk main window
-      -- Allowed_Size: constant Window_Size := Max_Size(Get_Main_Window);
+      -- Allowed_Size: constant Window_Size := Get_Max_Size(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Max_Size_(procedure)
+      -- Wm.Set_Max_Size
       -- SOURCE
-   function Max_Size(Window: Tk_Widget) return Window_Size with
+   function Get_Max_Size(Window: Tk_Widget) return Window_Size with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Max_Size", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Max_Size_(procedure)
+      -- ****f* Wm/Wm.Set_Max_Size
       -- FUNCTION
       -- Set the maximum allowed size for the selected Tk_Widget. For gridded
       -- windows it will be in grid unit, for others in pixels
@@ -1204,16 +1173,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the maximum allowed size of Tk main window to 100, 120
-      -- Max_Size(Get_Main_Window, 100, 120);
+      -- Set_Max_Size(Get_Main_Window, 100, 120);
       -- SEE ALSO
-      -- Wm.Max_Size_(function)
+      -- Wm.Get_Max_Size
       -- SOURCE
-   procedure Max_Size(Window: Tk_Widget; Width, Height: Positive) with
+   procedure Set_Max_Size(Window: Tk_Widget; Width, Height: Positive) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Max_Size2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Min_Size_(function)
+      -- ****f* Wm/Wm.Get_Min_Size
       -- FUNCTION
       -- Get the minumum allowed size for the selected Tk_Widget. For gridded
       -- windows it will be in grid unit, for others in pixels
@@ -1226,16 +1195,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the minimum allowed size of Tk main window
-      -- Minimum_Size: constant Window_Size := Min_Size(Get_Main_Window);
+      -- Minimum_Size: constant Window_Size := Get_Min_Size(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Min_Size_(procedure)
+      -- Wm.Set_Min_Size
       -- SOURCE
-   function Min_Size(Window: Tk_Widget) return Window_Size with
+   function Get_Min_Size(Window: Tk_Widget) return Window_Size with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Min_Size", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Min_Size_(procedure)
+      -- ****f* Wm/Wm.Set_Min_Size
       -- FUNCTION
       -- Set the minimum allowed size for the selected Tk_Widget. For gridded
       -- windows it will be in grid unit, for others in pixels
@@ -1247,11 +1216,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the minimum allowed size of Tk main window to 200, 240
-      -- Min_Size(Get_Main_Window, 200, 240);
+      -- Set_Min_Size(Get_Main_Window, 200, 240);
       -- SEE ALSO
-      -- Wm.Min_Size_(function)
+      -- Wm.Get_Min_Size
       -- SOURCE
-   procedure Min_Size(Window: Tk_Widget; Width, Height: Positive) with
+   procedure Set_Min_Size(Window: Tk_Widget; Width, Height: Positive) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Min_Size2", Mode => Nominal);
       -- ****
@@ -1405,11 +1374,8 @@ package Tk.Wm is
       -- Wm.Protocol_(function_all), Wm.Protocol_(function_selected)
       -- SOURCE
    procedure Protocol
-     (Window: Tk_Widget;
-      Name: String;
-      New_Command: Tcl_String) with
-      Pre => Window /= Null_Widget and
-      Name'Length > 0 and
+     (Window: Tk_Widget; Name: String; New_Command: Tcl_String) with
+      Pre => Window /= Null_Widget and Name'Length > 0 and
       Length(Source => New_Command) > 0,
       Test_Case => (Name => "Test_Wm_Protocol3", Mode => Nominal);
       -- ****
@@ -1548,8 +1514,8 @@ package Tk.Wm is
       -- Wm.Stack_Order_(selected)
       -- SOURCE
    function Stack_Order
-     (Window, Second_Window: Tk_Widget;
-      Above: Boolean := True) return Boolean with
+     (Window, Second_Window: Tk_Widget; Above: Boolean := True)
+      return Boolean with
       Pre => Window /= Null_Widget and Second_Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Stack_Order2", Mode => Nominal);
       -- ****
@@ -1590,8 +1556,7 @@ package Tk.Wm is
       -- Wm.State_(function)
       -- SOURCE
    procedure State
-     (Window: Tk_Widget;
-      New_State: Window_States := Default_Window_State) with
+     (Window: Tk_Widget; New_State: Window_States := Default_Window_State) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_State2", Mode => Nominal);
       -- ****
