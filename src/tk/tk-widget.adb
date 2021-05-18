@@ -78,7 +78,7 @@ package body Tk.Widget is
       function Tk_Name_To_Window
         (Interp: Tcl_Interpreter; Path_Name_C: chars_ptr; Tk_Win: Tk_Widget)
          return Tk_Widget with
-         Import => TRUE,
+         Import => True,
          Convention => C,
          External_Name => "Tk_NameToWindow";
    begin
@@ -90,7 +90,7 @@ package body Tk.Widget is
 
    function Tk_Path_Name(Widgt: Tk_Widget) return String is
       function Get_Path_Name(Tk_Win: Tk_Widget) return chars_ptr with
-         Import => TRUE,
+         Import => True,
          Convention => C,
          External_Name => "Get_PathName";
    begin
@@ -441,7 +441,7 @@ package body Tk.Widget is
 
    procedure Destroy(Widgt: in out Tk_Widget) is
       procedure Tk_Destroy_Window(Tk_Win: Tk_Widget) with
-         Import => TRUE,
+         Import => True,
          Convention => C,
          External_Name => "Tk_DestroyWindow";
    begin
