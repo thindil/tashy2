@@ -84,8 +84,7 @@ package Tk.Labelframe is
    -- Widget configure Options
    -- SOURCE
    overriding procedure Configure
-     (Frame_Widget: Tk_Label_Frame;
-      Options: Label_Frame_Options) with
+     (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) with
       Pre => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_Label_Frame", Mode => Nominal);
       -- ****
@@ -142,10 +141,8 @@ package Tk.Labelframe is
    -- frame Path_Name Options
    -- SOURCE
    function Create
-     (Path_Name: String;
-      Options: Label_Frame_Create_Options;
-      Interpreter: Tcl_Interpreter :=
-        Get_Interpreter)
+     (Path_Name: String; Options: Label_Frame_Create_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Label_Frame with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
@@ -178,8 +175,7 @@ package Tk.Labelframe is
       -- frame Path_Name Options
       -- SOURCE
    procedure Create
-     (Frame_Widget: out Tk_Label_Frame;
-      Path_Name: String;
+     (Frame_Widget: out Tk_Label_Frame; Path_Name: String;
       Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,

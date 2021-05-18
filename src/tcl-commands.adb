@@ -15,29 +15,23 @@
 package body Tcl.Commands is
 
    function Tcl_Create_Command
-     (Command_Name: String;
-      Proc: Tcl_Cmd_Proc;
+     (Command_Name: String; Proc: Tcl_Cmd_Proc;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Delete_Proc: Tcl_Cmd_Delete_Proc :=
-        Null_Tcl_Cmd_Delete_Proc)
+      Delete_Proc: Tcl_Cmd_Delete_Proc := Null_Tcl_Cmd_Delete_Proc)
       return Tcl_Command is
 
       function Tcl_Create_Command_C
-        (Interp: Tcl_Interpreter;
-         Cmd_Name: chars_ptr;
-         Ada_Proc: Tcl_Cmd_Proc;
-         Client_Data: System.Address;
-         Delete_Proc_Ada: Tcl_Cmd_Delete_Proc) return Tcl_Command with
+        (Interp: Tcl_Interpreter; Cmd_Name: chars_ptr; Ada_Proc: Tcl_Cmd_Proc;
+         Client_Data: System.Address; Delete_Proc_Ada: Tcl_Cmd_Delete_Proc)
+         return Tcl_Command with
          Import => True,
          Convention => C,
          External_Name => "Tcl_CreateCommand";
 
       Result: constant Tcl_Command :=
         Tcl_Create_Command_C
-          (Interp => Interpreter,
-           Cmd_Name => New_String(Str => Command_Name),
-           Ada_Proc => Proc,
-           Client_Data => Null_Address,
+          (Interp => Interpreter, Cmd_Name => New_String(Str => Command_Name),
+           Ada_Proc => Proc, Client_Data => Null_Address,
            Delete_Proc_Ada => Delete_Proc);
    begin
       if Result = Null_Tcl_Command then
@@ -47,10 +41,10 @@ package body Tcl.Commands is
    end Tcl_Create_Command;
 
    function Get_Argument
-     (Arguments_Pointer: Argv_Pointer.Pointer;
-      Index: Natural) return String is
+     (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String is
    begin
-      return Value
+      return
+        Value
           (Item =>
              Argv_Pointer.Value(Ref => Arguments_Pointer)(size_t(Index)));
    end Get_Argument;
