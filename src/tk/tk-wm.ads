@@ -1225,7 +1225,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Min_Size2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Override_Redirect_(function)
+      -- ****f* Wm/Wm.Override_Redirect
       -- FUNCTION
       -- Get the value of flag overrideredirect for the selected Tk_Widget.
       -- PARAMETERS
@@ -1236,16 +1236,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the flag value for the Tk main window
-      -- Is_Ignored: constant Boolean := Override_Redirect(Get_Main_Window);
+      -- Is_Ignored: constant Boolean := Get_Override_Redirect(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Override_Redirect_(procedure)
+      -- Wm.Set_Override_Redirect
       -- SOURCE
-   function Override_Redirect(Window: Tk_Widget) return Boolean with
+   function Get_Override_Redirect(Window: Tk_Widget) return Boolean with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Override_Redirect", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Override_Redirect_(procedure)
+      -- ****f* Wm/Wm.Set_Override_Redirect
       -- FUNCTION
       -- Set the value of flag overrideredirect for the selected Tk_Widget.
       -- PARAMETERS
@@ -1254,16 +1254,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the flag value for the Tk main window to be ignored
-      -- Override_Redirect(Get_Main_Window, True);
+      -- Set_Override_Redirect(Get_Main_Window, True);
       -- SEE ALSO
-      -- Wm.Override_Redirect_(function)
+      -- Wm.Get_Override_Redirect
       -- SOURCE
-   procedure Override_Redirect(Window: Tk_Widget; Override: Boolean) with
+   procedure Set_Override_Redirect(Window: Tk_Widget; Override: Boolean) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Override_Redirect", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Position_From_(function)
+      -- ****f* Wm/Wm.Get_Position_From
       -- FUNCTION
       -- Get the information who requested the current position for the
       -- selected Tk_Widget
@@ -1276,16 +1276,17 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the requester for the position of Tk main window
-      -- Requester: constant Position_From_Value := Position_From(Get_Main_Window);
+      -- Requester: constant Position_From_Value := Get_Position_From(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Position_From_(procedure)
+      -- Wm.Set_Position_From
       -- SOURCE
-   function Position_From(Window: Tk_Widget) return Position_From_Value with
+   function Get_Position_From
+     (Window: Tk_Widget) return Position_From_Value with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Position_From", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Position_From_(procedure)
+      -- ****f* Wm/Wm.Set_Position_From
       -- FUNCTION
       -- Get the information who requested the current position for the
       -- selected Tk_Widget
@@ -1297,18 +1298,18 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the requester for the position of Tk main window to requested by the user
-      -- Position_From(Get_Main_Window, USER);
+      -- Set_Position_From(Get_Main_Window, USER);
       -- SEE ALSO
-      -- Wm.Position_From_(function)
+      -- Wm.Get_Position_From
       -- SOURCE
-   procedure Position_From
+   procedure Set_Position_From
      (Window: Tk_Widget;
       Who: Position_From_Value := Default_Position_From) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Position_From2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Protocol_(function_all)
+      -- ****f* Wm/Wm.Get_Protocols
       -- FUNCTION
       -- Get the list of all specified window manager protocols for the
       -- selected Tk_Widget
@@ -1322,16 +1323,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the protocols for the Tk main window
-      -- Protocols: constant Array_List := Protocol(Get_Main_Window);
+      -- Protocols: constant Array_List := Get_Protocols(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Protocol_(function_selected), Wm.Protocol_(procedure)
+      -- Wm.Get_Protocol, Wm.Set_Protocol
       -- SOURCE
-   function Protocol(Window: Tk_Widget) return Array_List with
+   function Get_Protocols(Window: Tk_Widget) return Array_List with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Protocol", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Protocol_(function_selected)
+      -- ****f* Wm/Wm.Get_Protocol
       -- FUNCTION
       -- Get the value of the specified window manager protocol for the
       -- selected Tk_Widget
@@ -1346,16 +1347,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the value of WM_DELETE_WINDOW for the Tk main window
-      -- Value: constant String := Protocol(Get_Main_Window, "WM_DELETE_WINDOW");
+      -- Value: constant String := Get_Protocol(Get_Main_Window, "WM_DELETE_WINDOW");
       -- SEE ALSO
-      -- Wm.Protocol_(function_all), Wm.Protocol_(procedure)
+      -- Wm.Get_Protocols, Wm.Set_Protocol
       -- SOURCE
-   function Protocol(Window: Tk_Widget; Name: String) return String with
+   function Get_Protocol(Window: Tk_Widget; Name: String) return String with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Protocol2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Protocol_(procedure)
+      -- ****f* Wm/Wm.Set_Protocol
       -- FUNCTION
       -- Set the value of the specified window manager protocol for the
       -- selected Tk_Widget
@@ -1369,11 +1370,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the value of WM_DELETE_WINDOW to Tcl command exit for the Tk main window
-      -- Protocol(Get_Main_Window, "WM_DELETE_WINDOW", To_Tcl_String("exit"));
+      -- Set_Protocol(Get_Main_Window, "WM_DELETE_WINDOW", To_Tcl_String("exit"));
       -- SEE ALSO
-      -- Wm.Protocol_(function_all), Wm.Protocol_(function_selected)
+      -- Wm.Get_Protocols, Wm.Get_Protocol
       -- SOURCE
-   procedure Protocol
+   procedure Set_Protocol
      (Window: Tk_Widget; Name: String; New_Command: Tcl_String) with
       Pre => Window /= Null_Widget and Name'Length > 0 and
       Length(Source => New_Command) > 0,

@@ -610,25 +610,25 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Min_Size;
 
-   function Override_Redirect(Window: Tk_Widget) return Boolean is
+   function Get_Override_Redirect(Window: Tk_Widget) return Boolean is
    begin
       return
         Tcl_Eval
           (Tcl_Script =>
              "wm overrideredirect " & Tk_Path_Name(Widgt => Window),
            Interpreter => Tk_Interp(Widgt => Window));
-   end Override_Redirect;
+   end Get_Override_Redirect;
 
-   procedure Override_Redirect(Window: Tk_Widget; Override: Boolean) is
+   procedure Set_Override_Redirect(Window: Tk_Widget; Override: Boolean) is
    begin
       Tcl_Eval
         (Tcl_Script =>
            "wm overrideredirect " & Tk_Path_Name(Widgt => Window) & " " &
            (if Override then "1" else "0"),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Override_Redirect;
+   end Set_Override_Redirect;
 
-   function Position_From(Window: Tk_Widget) return Position_From_Value is
+   function Get_Position_From(Window: Tk_Widget) return Position_From_Value is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm positionfrom " & Tk_Path_Name(Widgt => Window),
@@ -638,9 +638,9 @@ package body Tk.Wm is
          return Default_Position_From;
       end if;
       return Position_From_Value'Value(Result);
-   end Position_From;
+   end Get_Position_From;
 
-   procedure Position_From
+   procedure Set_Position_From
      (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
    begin
       Tcl_Eval
@@ -648,9 +648,9 @@ package body Tk.Wm is
            "wm positionfrom " & Tk_Path_Name(Widgt => Window) & " " &
            To_Lower(Item => Position_From_Value'Image(Who)),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Position_From;
+   end Set_Position_From;
 
-   function Protocol(Window: Tk_Widget) return Array_List is
+   function Get_Protocols(Window: Tk_Widget) return Array_List is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
    begin
       return
@@ -660,18 +660,18 @@ package body Tk.Wm is
                (Tcl_Script => "wm protocol " & Tk_Path_Name(Widgt => Window),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
-   end Protocol;
+   end Get_Protocols;
 
-   function Protocol(Window: Tk_Widget; Name: String) return String is
+   function Get_Protocol(Window: Tk_Widget; Name: String) return String is
    begin
       return
         Tcl_Eval
           (Tcl_Script =>
              "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name,
            Interpreter => Tk_Interp(Widgt => Window));
-   end Protocol;
+   end Get_Protocol;
 
-   procedure Protocol
+   procedure Set_Protocol
      (Window: Tk_Widget; Name: String; New_Command: Tcl_String) is
    begin
       Tcl_Eval
@@ -679,7 +679,7 @@ package body Tk.Wm is
            "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name & " " &
            To_String(Source => New_Command),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Protocol;
+   end Set_Protocol;
 
    function Resizable(Window: Tk_Widget) return Resizable_Data is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
