@@ -2962,8 +2962,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Get_Resizable(Get_Main_Window).Height,
+         "Failed to get resizable info for Tk main window.");
 
 --  begin read only
    end Test_Get_Resizable_test_wm_resizable;
@@ -3011,8 +3016,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Set_Resizable(Get_Main_Window, True, False);
+      Assert
+        (not Get_Resizable(Get_Main_Window).Height,
+         "Failed to set resizable info for Tk main window.");
 
 --  begin read only
    end Test_Set_Resizable_test_wm_resizable2;
@@ -3064,8 +3075,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Get_Size_From(Get_Main_Window) = Default_Position_From,
+         "Failed to get default size from for Tk main window.");
 
 --  begin read only
    end Test_Get_Size_From_test_wm_size_from;
@@ -3113,8 +3129,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Set_Size_From(Get_Main_Window, USER);
+      Assert
+        (Get_Size_From(Get_Main_Window) = USER,
+         "Failed to set size from for Tk main window.");
 
 --  begin read only
    end Test_Set_Size_From_test_wm_size_from2;
@@ -3167,8 +3189,17 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      declare
+         Result: constant Widgets_Array := Get_Stack_Order(Get_Main_Window);
+      begin
+         Assert
+           (Result(1) = Get_Main_Window,
+            "Failed to get stack order for Tk main window");
+      end;
 
 --  begin read only
    end Test_Get_Stack_Order_test_wm_stack_order;
@@ -3226,8 +3257,13 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (not Get_Stack_Order_Above(Get_Main_Window, Get_Main_Window),
+         "Failed to get if Tk main window is above self.");
 
 --  begin read only
    end Test_Get_Stack_Order_Above_test_wm_stack_order2;
@@ -3618,200 +3654,6 @@ package body Tk.Wm.Test_Data.Tests is
 
 --  begin read only
    end Test_Withdraw_test_wm_withdraw;
---  end read only
-
---  begin read only
-   --  procedure Test_Protocol_test_wm_protocol3 (Gnattest_T : in out Test_);
-   --  procedure Test_Protocol_08ce2d_test_wm_protocol3 (Gnattest_T : in out Test_) renames Test_Protocol_test_wm_protocol3;
---  id:2.2/08ce2daafbc89885/Protocol/0/1/test_wm_protocol3/
-   --  procedure Test_Protocol_test_wm_protocol3 (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        if Value("DISPLAY", "")'Length = 0 then
---           Assert(True, "No display, can't test");
---           return;
---        end if;
---        Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
---        Assert
---          (Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
---           "Failed to set command associated to WM_TAKE_FOCUS for Tk main window");
---
---  begin read only
-   --  end Test_Protocol_test_wm_protocol3;
---  end read only
-
---  begin read only
-   --  procedure Test_Override_Redirect_test_wm_override_redirect (Gnattest_T : in out Test_);
-   --  procedure Test_Override_Redirect_1b76bc_test_wm_override_redirect (Gnattest_T : in out Test_) renames Test_Override_Redirect_test_wm_override_redirect;
---  id:2.2/1b76bc0410270544/Override_Redirect/0/1/test_wm_override_redirect/
-   --  procedure Test_Override_Redirect_test_wm_override_redirect (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        if Value("DISPLAY", "")'Length = 0 then
---           Assert(True, "No display, can't test");
---           return;
---        end if;
---        Override_Redirect(Get_Main_Window, True);
---        Assert
---          (Override_Redirect(Get_Main_Window),
---           "Failed to set override redirect value for Tk main window.");
---        Override_Redirect(Get_Main_Window, False);
---
---  begin read only
-   --  end Test_Override_Redirect_test_wm_override_redirect;
---  end read only
-
-
---  begin read only
-   --  procedure Test_Stack_Order_test_wm_stack_order (Gnattest_T : in out Test_);
-   --  procedure Test_Stack_Order_2d6e08_test_wm_stack_order (Gnattest_T : in out Test_) renames Test_Stack_Order_test_wm_stack_order;
---  id:2.2/2d6e08911932b44e/Stack_Order/1/1/test_wm_stack_order/
-   --  procedure Test_Stack_Order_test_wm_stack_order (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        if Value("DISPLAY", "")'Length = 0 then
---           Assert(True, "No display, can't test");
---           return;
---        end if;
---        declare
---           Result: constant Widgets_Array := Stack_Order(Get_Main_Window);
---        begin
---           Assert
---             (Result(1) = Get_Main_Window,
---              "Failed to get stack order for Tk main window");
---        end;
---
---  begin read only
-   --  end Test_Stack_Order_test_wm_stack_order;
---  end read only
-
---  begin read only
-   --  procedure Test_Size_From_test_wm_size_from (Gnattest_T : in out Test_);
-   --  procedure Test_Size_From_35c19a_test_wm_size_from (Gnattest_T : in out Test_) renames Test_Size_From_test_wm_size_from;
---  id:2.2/35c19a68a2456fd8/Size_From/1/1/test_wm_size_from/
-   --  procedure Test_Size_From_test_wm_size_from (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        if Value("DISPLAY", "")'Length = 0 then
---           Assert(True, "No display, can't test");
---           return;
---        end if;
---        Assert
---          (Size_From(Get_Main_Window) = Default_Position_From,
---           "Failed to get default size from for Tk main window.");
---
---  begin read only
-   --  end Test_Size_From_test_wm_size_from;
---  end read only
-
---  begin read only
-   --  procedure Test_Stack_Order_test_wm_stack_order2 (Gnattest_T : in out Test_);
-   --  procedure Test_Stack_Order_4063e5_test_wm_stack_order2 (Gnattest_T : in out Test_) renames Test_Stack_Order_test_wm_stack_order2;
---  id:2.2/4063e54489ef174f/Stack_Order/0/1/test_wm_stack_order2/
-   --  procedure Test_Stack_Order_test_wm_stack_order2 (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        if Value("DISPLAY", "")'Length = 0 then
---           Assert(True, "No display, can't test");
---           return;
---        end if;
---        Assert
---          (not Stack_Order(Get_Main_Window, Get_Main_Window),
---           "Failed to get if Tk main window is above self.");
---
---  begin read only
-   --  end Test_Stack_Order_test_wm_stack_order2;
---  end read only
-
---  begin read only
-   --  procedure Test_Resizable_test_wm_resizable (Gnattest_T : in out Test_);
-   --  procedure Test_Resizable_4a4f98_test_wm_resizable (Gnattest_T : in out Test_) renames Test_Resizable_test_wm_resizable;
---  id:2.2/4a4f98c7c6bf5c44/Resizable/1/1/test_wm_resizable/
-   --  procedure Test_Resizable_test_wm_resizable (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        if Value("DISPLAY", "")'Length = 0 then
---           Assert(True, "No display, can't test");
---           return;
---        end if;
---        Assert
---          (Resizable(Get_Main_Window).Height,
---           "Failed to get resizable info for Tk main window.");
---
---  begin read only
-   --  end Test_Resizable_test_wm_resizable;
---  end read only
-
---  begin read only
-   --  procedure Test_Resizable_test_wm_resizable2 (Gnattest_T : in out Test_);
-   --  procedure Test_Resizable_70137c_test_wm_resizable2 (Gnattest_T : in out Test_) renames Test_Resizable_test_wm_resizable2;
---  id:2.2/70137c9fb8c71010/Resizable/0/1/test_wm_resizable2/
-   --  procedure Test_Resizable_test_wm_resizable2 (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        if Value("DISPLAY", "")'Length = 0 then
---           Assert(True, "No display, can't test");
---           return;
---        end if;
---        Resizable(Get_Main_Window, True, False);
---        Assert
---          (not Resizable(Get_Main_Window).Height,
---           "Failed to set resizable info for Tk main window.");
---
---  begin read only
-   --  end Test_Resizable_test_wm_resizable2;
---  end read only
-
---  begin read only
-   --  procedure Test_Size_From_test_wm_size_from2 (Gnattest_T : in out Test_);
-   --  procedure Test_Size_From_8b7927_test_wm_size_from2 (Gnattest_T : in out Test_) renames Test_Size_From_test_wm_size_from2;
---  id:2.2/8b7927e33fde514a/Size_From/0/1/test_wm_size_from2/
-   --  procedure Test_Size_From_test_wm_size_from2 (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        if Value("DISPLAY", "")'Length = 0 then
---           Assert(True, "No display, can't test");
---           return;
---        end if;
---        Size_From(Get_Main_Window, USER);
---        Assert
---          (Size_From(Get_Main_Window) = USER,
---           "Failed to get default size from for Tk main window.");
---
---  begin read only
-   --  end Test_Size_From_test_wm_size_from2;
 --  end read only
 
 --  begin read only
