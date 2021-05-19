@@ -663,7 +663,7 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Protocol;
 
-   function Resizable(Window: Tk_Widget) return Resizable_Data is
+   function Get_Resizable(Window: Tk_Widget) return Resizable_Data is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
@@ -677,18 +677,18 @@ package body Tk.Wm is
          Resizable_Result.Width := (if Result(1) = "0" then False else True);
          Resizable_Result.Height := (if Result(2) = "0" then False else True);
       end return;
-   end Resizable;
+   end Get_Resizable;
 
-   procedure Resizable(Window: Tk_Widget; Width, Height: Boolean) is
+   procedure Set_Resizable(Window: Tk_Widget; Width, Height: Boolean) is
    begin
       Tcl_Eval
         (Tcl_Script =>
            "wm resizable " & Tk_Path_Name(Widgt => Window) & " " &
            (if Width then "1" else "0") & " " & (if Height then "1" else "0"),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Resizable;
+   end Set_Resizable;
 
-   function Size_From(Window: Tk_Widget) return Position_From_Value is
+   function Get_Size_From(Window: Tk_Widget) return Position_From_Value is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm sizefrom " & Tk_Path_Name(Widgt => Window),
@@ -698,9 +698,9 @@ package body Tk.Wm is
          return Default_Position_From;
       end if;
       return Position_From_Value'Value(Result);
-   end Size_From;
+   end Get_Size_From;
 
-   procedure Size_From
+   procedure Set_Size_From
      (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
    begin
       Tcl_Eval
@@ -708,9 +708,9 @@ package body Tk.Wm is
            "wm sizefrom " & Tk_Path_Name(Widgt => Window) & " " &
            To_Lower(Item => Position_From_Value'Image(Who)),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Size_From;
+   end Set_Size_From;
 
-   function Stack_Order(Window: Tk_Widget) return Widgets_Array is
+   function Get_Stack_Order(Window: Tk_Widget) return Widgets_Array is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
@@ -730,7 +730,7 @@ package body Tk.Wm is
                  Interpreter => Interpreter);
          end loop Set_Widgets_Array_Loop;
       end return;
-   end Stack_Order;
+   end Get_Stack_Order;
 
    procedure State
      (Window: Tk_Widget; New_State: Window_States := Default_Window_State) is

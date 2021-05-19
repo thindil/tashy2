@@ -1388,7 +1388,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Protocol3", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Resizable_(function)
+      -- ****f* Wm/Wm.Get_Resizable
       -- FUNCTION
       -- Get the information if the selected Tk_Widget can be resized by the
       -- user
@@ -1402,16 +1402,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the resizable ability for the Tk main window
-      -- Is_Resizable: constant Resizable_Data := Resizable(Get_Main_Window);
+      -- Is_Resizable: constant Resizable_Data := Get_Resizable(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Resizable_(procedure)
+      -- Wm.Set_Resizable
       -- SOURCE
-   function Resizable(Window: Tk_Widget) return Resizable_Data with
+   function Get_Resizable(Window: Tk_Widget) return Resizable_Data with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Resizable", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Resizable_(procedure)
+      -- ****f* Wm/Wm.Set_Resizable
       -- FUNCTION
       -- Set the information if the selected Tk_Widget can be resized by the
       -- user
@@ -1423,15 +1423,15 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Block the resizable ability for the Tk main window
-      -- Resizable(Get_Main_Window, False, False);
+      -- Set_Resizable(Get_Main_Window, False, False);
       -- SEE ALSO
-      -- Wm.Resizable_(function)
-   procedure Resizable(Window: Tk_Widget; Width, Height: Boolean) with
+      -- Wm.Get_Resizable
+   procedure Set_Resizable(Window: Tk_Widget; Width, Height: Boolean) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Resizable2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Size_From_(function)
+      -- ****f* Wm/Wm.Get_Size_From
       -- FUNCTION
       -- Get the information who requested the current size for the selected
       -- Tk_Widget
@@ -1444,16 +1444,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the requester for the size of Tk main window
-      -- Requester: constant Position_From_Value := Size_From(Get_Main_Window);
+      -- Requester: constant Position_From_Value := Get_Size_From(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Size_From_(procedure)
+      -- Wm.Set_Size_From
       -- SOURCE
-   function Size_From(Window: Tk_Widget) return Position_From_Value with
+   function Get_Size_From(Window: Tk_Widget) return Position_From_Value with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Size_From", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Size_From_(procedure)
+      -- ****f* Wm/Wm.Set_Size_From
       -- FUNCTION
       -- Get the information who requested the current size for the selected
       -- Tk_Widget
@@ -1467,16 +1467,16 @@ package Tk.Wm is
       -- -- Set the requester for the size of Tk main window to requested by the user
       -- Size_From(Get_Main_Window, USER);
       -- SEE ALSO
-      -- Wm.Size_From_(function)
+      -- Wm.Get_Size_From
       -- SOURCE
-   procedure Size_From
+   procedure Set_Size_From
      (Window: Tk_Widget;
       Who: Position_From_Value := Default_Position_From) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Size_From2", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Stack_Order_(selected)
+      -- ****f* Wm/Wm.Get_Stack_Order
       -- FUNCTION
       -- Get the stacking order from the lowest to highest of children of the
       -- selected Tk_Widget
@@ -1489,16 +1489,16 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the stacking order of Tk main window
-      -- Stacking_Order: constant Widgets_Array := Stack_Order(Get_Main_Window);
+      -- Stacking_Order: constant Widgets_Array := Get_Stack_Order(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Stack_Order_(above)
+      -- Wm.Get_Stack_Order_Above
       -- SOURCE
-   function Stack_Order(Window: Tk_Widget) return Widgets_Array with
+   function Get_Stack_Order(Window: Tk_Widget) return Widgets_Array with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Stack_Order", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Stack_Order_(above)
+      -- ****f* Wm/Wm.Get_Stack_Order_Above
       -- FUNCTION
       -- Check if the selected Tk_Widget is above or below the other Tk_Widget
       -- in stacking order
@@ -1517,11 +1517,11 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Check if Tk main window is above My_Dialog in stacking order
-      -- Is_Above: constant Boolean := Stack_Order(Get_Main_Window, My_Dialog);
+      -- Is_Above: constant Boolean := Get_Stack_Order_Above(Get_Main_Window, My_Dialog);
       -- SEE ALSO
-      -- Wm.Stack_Order_(selected)
+      -- Wm.Get_Stack_Order
       -- SOURCE
-   function Stack_Order
+   function Get_Stack_Order_Above
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
       return Boolean is
      (Tcl_Eval
