@@ -2502,7 +2502,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Override_Redirect_44db73_fdca84
+   function Wrap_Test_Get_Override_Redirect_fe8514_fdca84
      (Window: Tk_Widget) return Boolean is
    begin
       begin
@@ -2515,8 +2515,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Override_Redirect test requirement violated");
       end;
       declare
-         Test_Override_Redirect_44db73_fdca84_Result: constant Boolean :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Override_Redirect
+         Test_Get_Override_Redirect_fe8514_fdca84_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Override_Redirect
              (Window);
       begin
          begin
@@ -2528,22 +2528,22 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Override_Redirect test commitment violated");
          end;
-         return Test_Override_Redirect_44db73_fdca84_Result;
+         return Test_Get_Override_Redirect_fe8514_fdca84_Result;
       end;
-   end Wrap_Test_Override_Redirect_44db73_fdca84;
+   end Wrap_Test_Get_Override_Redirect_fe8514_fdca84;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Override_Redirect_test_wm_override_redirect
+   procedure Test_Get_Override_Redirect_test_wm_override_redirect
      (Gnattest_T: in out Test);
-   procedure Test_Override_Redirect_44db73_fdca84
+   procedure Test_Get_Override_Redirect_fe8514_fdca84
      (Gnattest_T: in out Test) renames
-     Test_1_Override_Redirect_test_wm_override_redirect;
---  id:2.2/44db73585214744e/Override_Redirect/1/0/test_wm_override_redirect/
-   procedure Test_1_Override_Redirect_test_wm_override_redirect
+     Test_Get_Override_Redirect_test_wm_override_redirect;
+--  id:2.2/fe851461524dd6a3/Get_Override_Redirect/1/0/test_wm_override_redirect/
+   procedure Test_Get_Override_Redirect_test_wm_override_redirect
      (Gnattest_T: in out Test) is
-      function Override_Redirect(Window: Tk_Widget) return Boolean renames
-        Wrap_Test_Override_Redirect_44db73_fdca84;
+      function Get_Override_Redirect(Window: Tk_Widget) return Boolean renames
+        Wrap_Test_Get_Override_Redirect_fe8514_fdca84;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2555,15 +2555,15 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (not Override_Redirect(Get_Main_Window),
+        (not Get_Override_Redirect(Get_Main_Window),
          "Failed to get override redirect value for Tk main window.");
 
 --  begin read only
-   end Test_1_Override_Redirect_test_wm_override_redirect;
+   end Test_Get_Override_Redirect_test_wm_override_redirect;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Override_Redirect_1b76bc_fdca84
+   procedure Wrap_Test_Set_Override_Redirect_92338d_fdca84
      (Window: Tk_Widget; Override: Boolean) is
    begin
       begin
@@ -2575,7 +2575,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Override_Redirect test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Override_Redirect
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Override_Redirect
         (Window, Override);
       begin
          pragma Assert(True);
@@ -2586,20 +2586,21 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Override_Redirect test commitment violated");
       end;
-   end Wrap_Test_Override_Redirect_1b76bc_fdca84;
+   end Wrap_Test_Set_Override_Redirect_92338d_fdca84;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Override_Redirect_test_wm_override_redirect
+   procedure Test_Set_Override_Redirect_test_wm_override_redirect
      (Gnattest_T: in out Test);
-   procedure Test_Override_Redirect_1b76bc_fdca84
+   procedure Test_Set_Override_Redirect_92338d_fdca84
      (Gnattest_T: in out Test) renames
-     Test_2_Override_Redirect_test_wm_override_redirect;
---  id:2.2/1b76bc0410270544/Override_Redirect/0/0/test_wm_override_redirect/
-   procedure Test_2_Override_Redirect_test_wm_override_redirect
+     Test_Set_Override_Redirect_test_wm_override_redirect;
+--  id:2.2/92338d1db609051c/Set_Override_Redirect/1/0/test_wm_override_redirect/
+   procedure Test_Set_Override_Redirect_test_wm_override_redirect
      (Gnattest_T: in out Test) is
-      procedure Override_Redirect(Window: Tk_Widget; Override: Boolean) renames
-        Wrap_Test_Override_Redirect_1b76bc_fdca84;
+      procedure Set_Override_Redirect
+        (Window: Tk_Widget; Override: Boolean) renames
+        Wrap_Test_Set_Override_Redirect_92338d_fdca84;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2610,18 +2611,18 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Override_Redirect(Get_Main_Window, True);
+      Set_Override_Redirect(Get_Main_Window, True);
       Assert
-        (Override_Redirect(Get_Main_Window),
+        (Get_Override_Redirect(Get_Main_Window),
          "Failed to set override redirect value for Tk main window.");
-      Override_Redirect(Get_Main_Window, False);
+      Set_Override_Redirect(Get_Main_Window, False);
 
 --  begin read only
-   end Test_2_Override_Redirect_test_wm_override_redirect;
+   end Test_Set_Override_Redirect_test_wm_override_redirect;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Position_From_20b302_48bfdf
+   function Wrap_Test_Get_Position_From_369d0f_48bfdf
      (Window: Tk_Widget) return Position_From_Value is
    begin
       begin
@@ -2634,8 +2635,9 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Position_From test requirement violated");
       end;
       declare
-         Test_Position_From_20b302_48bfdf_Result: constant Position_From_Value :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Position_From(Window);
+         Test_Get_Position_From_369d0f_48bfdf_Result: constant Position_From_Value :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Position_From
+             (Window);
       begin
          begin
             pragma Assert(True);
@@ -2646,22 +2648,23 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Position_From test commitment violated");
          end;
-         return Test_Position_From_20b302_48bfdf_Result;
+         return Test_Get_Position_From_369d0f_48bfdf_Result;
       end;
-   end Wrap_Test_Position_From_20b302_48bfdf;
+   end Wrap_Test_Get_Position_From_369d0f_48bfdf;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Position_From_test_wm_position_from
+   procedure Test_Get_Position_From_test_wm_position_from
      (Gnattest_T: in out Test);
-   procedure Test_Position_From_20b302_48bfdf(Gnattest_T: in out Test) renames
-     Test_1_Position_From_test_wm_position_from;
---  id:2.2/20b3027f5a7ae356/Position_From/1/0/test_wm_position_from/
-   procedure Test_1_Position_From_test_wm_position_from
+   procedure Test_Get_Position_From_369d0f_48bfdf
+     (Gnattest_T: in out Test) renames
+     Test_Get_Position_From_test_wm_position_from;
+--  id:2.2/369d0f535527955f/Get_Position_From/1/0/test_wm_position_from/
+   procedure Test_Get_Position_From_test_wm_position_from
      (Gnattest_T: in out Test) is
-      function Position_From
+      function Get_Position_From
         (Window: Tk_Widget) return Position_From_Value renames
-        Wrap_Test_Position_From_20b302_48bfdf;
+        Wrap_Test_Get_Position_From_369d0f_48bfdf;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2672,17 +2675,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Position_From(Get_Main_Window, Default_Position_From);
+      Set_Position_From(Get_Main_Window, Default_Position_From);
       Assert
-        (Position_From(Get_Main_Window) = Default_Position_From,
+        (Get_Position_From(Get_Main_Window) = Default_Position_From,
          "Failed to get position from for Tk main window.");
 
 --  begin read only
-   end Test_1_Position_From_test_wm_position_from;
+   end Test_Get_Position_From_test_wm_position_from;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Position_From_aaffd4_a97a4c
+   procedure Wrap_Test_Set_Position_From_8a863a_a97a4c
      (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
    begin
       begin
@@ -2694,7 +2697,8 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Position_From2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Position_From(Window, Who);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Position_From
+        (Window, Who);
       begin
          pragma Assert(True);
          null;
@@ -2704,21 +2708,22 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Position_From2 test commitment violated");
       end;
-   end Wrap_Test_Position_From_aaffd4_a97a4c;
+   end Wrap_Test_Set_Position_From_8a863a_a97a4c;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Position_From_test_wm_position_from2
+   procedure Test_Set_Position_From_test_wm_position_from2
      (Gnattest_T: in out Test);
-   procedure Test_Position_From_aaffd4_a97a4c(Gnattest_T: in out Test) renames
-     Test_2_Position_From_test_wm_position_from2;
---  id:2.2/aaffd4e2abc359ed/Position_From/0/0/test_wm_position_from2/
-   procedure Test_2_Position_From_test_wm_position_from2
+   procedure Test_Set_Position_From_8a863a_a97a4c
+     (Gnattest_T: in out Test) renames
+     Test_Set_Position_From_test_wm_position_from2;
+--  id:2.2/8a863adc8576a354/Set_Position_From/1/0/test_wm_position_from2/
+   procedure Test_Set_Position_From_test_wm_position_from2
      (Gnattest_T: in out Test) is
-      procedure Position_From
+      procedure Set_Position_From
         (Window: Tk_Widget;
          Who: Position_From_Value := Default_Position_From) renames
-        Wrap_Test_Position_From_aaffd4_a97a4c;
+        Wrap_Test_Set_Position_From_8a863a_a97a4c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2729,17 +2734,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Position_From(Get_Main_Window, USER);
+      Set_Position_From(Get_Main_Window, USER);
       Assert
-        (Position_From(Get_Main_Window) = USER,
+        (Get_Position_From(Get_Main_Window) = USER,
          "Failed to set position from for Tk main window.");
 
 --  begin read only
-   end Test_2_Position_From_test_wm_position_from2;
+   end Test_Set_Position_From_test_wm_position_from2;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Protocol_548901_4c2c40
+   function Wrap_Test_Get_Protocols_dcaf07_4c2c40
      (Window: Tk_Widget) return Array_List is
    begin
       begin
@@ -2752,8 +2757,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Protocol test requirement violated");
       end;
       declare
-         Test_Protocol_548901_4c2c40_Result: constant Array_List :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Protocol(Window);
+         Test_Get_Protocols_dcaf07_4c2c40_Result: constant Array_List :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Protocols(Window);
       begin
          begin
             pragma Assert(True);
@@ -2764,19 +2769,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Protocol test commitment violated");
          end;
-         return Test_Protocol_548901_4c2c40_Result;
+         return Test_Get_Protocols_dcaf07_4c2c40_Result;
       end;
-   end Wrap_Test_Protocol_548901_4c2c40;
+   end Wrap_Test_Get_Protocols_dcaf07_4c2c40;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Protocol_test_wm_protocol(Gnattest_T: in out Test);
-   procedure Test_Protocol_548901_4c2c40(Gnattest_T: in out Test) renames
-     Test_1_Protocol_test_wm_protocol;
---  id:2.2/5489011eb5b824ea/Protocol/1/0/test_wm_protocol/
-   procedure Test_1_Protocol_test_wm_protocol(Gnattest_T: in out Test) is
-      function Protocol(Window: Tk_Widget) return Array_List renames
-        Wrap_Test_Protocol_548901_4c2c40;
+   procedure Test_Get_Protocols_test_wm_protocol(Gnattest_T: in out Test);
+   procedure Test_Get_Protocols_dcaf07_4c2c40(Gnattest_T: in out Test) renames
+     Test_Get_Protocols_test_wm_protocol;
+--  id:2.2/dcaf07f8ddcfb1df/Get_Protocols/1/0/test_wm_protocol/
+   procedure Test_Get_Protocols_test_wm_protocol(Gnattest_T: in out Test) is
+      function Get_Protocols(Window: Tk_Widget) return Array_List renames
+        Wrap_Test_Get_Protocols_dcaf07_4c2c40;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2788,15 +2793,15 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Protocol(Get_Main_Window)'Length = 0,
+        (Get_Protocols(Get_Main_Window)'Length = 0,
          "Failed to get default protocols for Tk main window.");
 
 --  begin read only
-   end Test_1_Protocol_test_wm_protocol;
+   end Test_Get_Protocols_test_wm_protocol;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Protocol_f31455_f4acbb
+   function Wrap_Test_Get_Protocol_aa44e2_f4acbb
      (Window: Tk_Widget; Name: String) return String is
    begin
       begin
@@ -2809,8 +2814,9 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Protocol2 test requirement violated");
       end;
       declare
-         Test_Protocol_f31455_f4acbb_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Protocol(Window, Name);
+         Test_Get_Protocol_aa44e2_f4acbb_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Protocol
+             (Window, Name);
       begin
          begin
             pragma Assert(True);
@@ -2821,19 +2827,20 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Protocol2 test commitment violated");
          end;
-         return Test_Protocol_f31455_f4acbb_Result;
+         return Test_Get_Protocol_aa44e2_f4acbb_Result;
       end;
-   end Wrap_Test_Protocol_f31455_f4acbb;
+   end Wrap_Test_Get_Protocol_aa44e2_f4acbb;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Protocol_test_wm_protocol2(Gnattest_T: in out Test);
-   procedure Test_Protocol_f31455_f4acbb(Gnattest_T: in out Test) renames
-     Test_2_Protocol_test_wm_protocol2;
---  id:2.2/f3145558fa44b9b4/Protocol/0/0/test_wm_protocol2/
-   procedure Test_2_Protocol_test_wm_protocol2(Gnattest_T: in out Test) is
-      function Protocol(Window: Tk_Widget; Name: String) return String renames
-        Wrap_Test_Protocol_f31455_f4acbb;
+   procedure Test_Get_Protocol_test_wm_protocol2(Gnattest_T: in out Test);
+   procedure Test_Get_Protocol_aa44e2_f4acbb(Gnattest_T: in out Test) renames
+     Test_Get_Protocol_test_wm_protocol2;
+--  id:2.2/aa44e237072653b7/Get_Protocol/1/0/test_wm_protocol2/
+   procedure Test_Get_Protocol_test_wm_protocol2(Gnattest_T: in out Test) is
+      function Get_Protocol
+        (Window: Tk_Widget; Name: String) return String renames
+        Wrap_Test_Get_Protocol_aa44e2_f4acbb;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2844,17 +2851,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
+      Set_Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
       Assert
-        (Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
+        (Get_Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
          "Failed to get command associated to WM_TAKE_FOCUS for Tk main window");
 
 --  begin read only
-   end Test_2_Protocol_test_wm_protocol2;
+   end Test_Get_Protocol_test_wm_protocol2;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Protocol_08ce2d_4c09c4
+   procedure Wrap_Test_Set_Protocol_cd4a1b_4c09c4
      (Window: Tk_Widget; Name: String; New_Command: Tcl_String) is
    begin
       begin
@@ -2868,7 +2875,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Protocol3 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Protocol
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Protocol
         (Window, Name, New_Command);
       begin
          pragma Assert(True);
@@ -2879,18 +2886,18 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Protocol3 test commitment violated");
       end;
-   end Wrap_Test_Protocol_08ce2d_4c09c4;
+   end Wrap_Test_Set_Protocol_cd4a1b_4c09c4;
 --  end read only
 
 --  begin read only
-   procedure Test_3_Protocol_test_wm_protocol3(Gnattest_T: in out Test);
-   procedure Test_Protocol_08ce2d_4c09c4(Gnattest_T: in out Test) renames
-     Test_3_Protocol_test_wm_protocol3;
---  id:2.2/08ce2daafbc89885/Protocol/0/0/test_wm_protocol3/
-   procedure Test_3_Protocol_test_wm_protocol3(Gnattest_T: in out Test) is
-      procedure Protocol
+   procedure Test_Set_Protocol_test_wm_protocol3(Gnattest_T: in out Test);
+   procedure Test_Set_Protocol_cd4a1b_4c09c4(Gnattest_T: in out Test) renames
+     Test_Set_Protocol_test_wm_protocol3;
+--  id:2.2/cd4a1b305c2e84fe/Set_Protocol/1/0/test_wm_protocol3/
+   procedure Test_Set_Protocol_test_wm_protocol3(Gnattest_T: in out Test) is
+      procedure Set_Protocol
         (Window: Tk_Widget; Name: String; New_Command: Tcl_String) renames
-        Wrap_Test_Protocol_08ce2d_4c09c4;
+        Wrap_Test_Set_Protocol_cd4a1b_4c09c4;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2901,17 +2908,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
+      Set_Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
       Assert
-        (Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
+        (Get_Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
          "Failed to set command associated to WM_TAKE_FOCUS for Tk main window");
 
 --  begin read only
-   end Test_3_Protocol_test_wm_protocol3;
+   end Test_Set_Protocol_test_wm_protocol3;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Resizable_4a4f98_2b8386
+   function Wrap_Test_Get_Resizable_0f6614_2b8386
      (Window: Tk_Widget) return Resizable_Data is
    begin
       begin
@@ -2924,8 +2931,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Resizable test requirement violated");
       end;
       declare
-         Test_Resizable_4a4f98_2b8386_Result: constant Resizable_Data :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Resizable(Window);
+         Test_Get_Resizable_0f6614_2b8386_Result: constant Resizable_Data :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Resizable(Window);
       begin
          begin
             pragma Assert(True);
@@ -2936,39 +2943,34 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Resizable test commitment violated");
          end;
-         return Test_Resizable_4a4f98_2b8386_Result;
+         return Test_Get_Resizable_0f6614_2b8386_Result;
       end;
-   end Wrap_Test_Resizable_4a4f98_2b8386;
+   end Wrap_Test_Get_Resizable_0f6614_2b8386;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Resizable_test_wm_resizable(Gnattest_T: in out Test);
-   procedure Test_Resizable_4a4f98_2b8386(Gnattest_T: in out Test) renames
-     Test_1_Resizable_test_wm_resizable;
---  id:2.2/4a4f98c7c6bf5c44/Resizable/1/0/test_wm_resizable/
-   procedure Test_1_Resizable_test_wm_resizable(Gnattest_T: in out Test) is
-      function Resizable(Window: Tk_Widget) return Resizable_Data renames
-        Wrap_Test_Resizable_4a4f98_2b8386;
+   procedure Test_Get_Resizable_test_wm_resizable(Gnattest_T: in out Test);
+   procedure Test_Get_Resizable_0f6614_2b8386(Gnattest_T: in out Test) renames
+     Test_Get_Resizable_test_wm_resizable;
+--  id:2.2/0f6614d7481d4f1a/Get_Resizable/1/0/test_wm_resizable/
+   procedure Test_Get_Resizable_test_wm_resizable(Gnattest_T: in out Test) is
+      function Get_Resizable(Window: Tk_Widget) return Resizable_Data renames
+        Wrap_Test_Get_Resizable_0f6614_2b8386;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      Assert
-        (Resizable(Get_Main_Window).Height,
-         "Failed to get resizable info for Tk main window.");
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_1_Resizable_test_wm_resizable;
+   end Test_Get_Resizable_test_wm_resizable;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Resizable_70137c_b49918
+   procedure Wrap_Test_Set_Resizable_0b9f82_b49918
      (Window: Tk_Widget; Width, Height: Boolean) is
    begin
       begin
@@ -2980,7 +2982,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Resizable2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Resizable
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Resizable
         (Window, Width, Height);
       begin
          pragma Assert(True);
@@ -2991,38 +2993,33 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Resizable2 test commitment violated");
       end;
-   end Wrap_Test_Resizable_70137c_b49918;
+   end Wrap_Test_Set_Resizable_0b9f82_b49918;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Resizable_test_wm_resizable2(Gnattest_T: in out Test);
-   procedure Test_Resizable_70137c_b49918(Gnattest_T: in out Test) renames
-     Test_2_Resizable_test_wm_resizable2;
---  id:2.2/70137c9fb8c71010/Resizable/0/0/test_wm_resizable2/
-   procedure Test_2_Resizable_test_wm_resizable2(Gnattest_T: in out Test) is
-      procedure Resizable(Window: Tk_Widget; Width, Height: Boolean) renames
-        Wrap_Test_Resizable_70137c_b49918;
+   procedure Test_Set_Resizable_test_wm_resizable2(Gnattest_T: in out Test);
+   procedure Test_Set_Resizable_0b9f82_b49918(Gnattest_T: in out Test) renames
+     Test_Set_Resizable_test_wm_resizable2;
+--  id:2.2/0b9f82b23218f6a2/Set_Resizable/1/0/test_wm_resizable2/
+   procedure Test_Set_Resizable_test_wm_resizable2(Gnattest_T: in out Test) is
+      procedure Set_Resizable
+        (Window: Tk_Widget; Width, Height: Boolean) renames
+        Wrap_Test_Set_Resizable_0b9f82_b49918;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      Resizable(Get_Main_Window, True, False);
-      Assert
-        (not Resizable(Get_Main_Window).Height,
-         "Failed to set resizable info for Tk main window.");
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_2_Resizable_test_wm_resizable2;
+   end Test_Set_Resizable_test_wm_resizable2;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Size_From_35c19a_7bb223
+   function Wrap_Test_Get_Size_From_5c14ae_7bb223
      (Window: Tk_Widget) return Position_From_Value is
    begin
       begin
@@ -3035,8 +3032,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Size_From test requirement violated");
       end;
       declare
-         Test_Size_From_35c19a_7bb223_Result: constant Position_From_Value :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Size_From(Window);
+         Test_Get_Size_From_5c14ae_7bb223_Result: constant Position_From_Value :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Size_From(Window);
       begin
          begin
             pragma Assert(True);
@@ -3047,39 +3044,35 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Size_From test commitment violated");
          end;
-         return Test_Size_From_35c19a_7bb223_Result;
+         return Test_Get_Size_From_5c14ae_7bb223_Result;
       end;
-   end Wrap_Test_Size_From_35c19a_7bb223;
+   end Wrap_Test_Get_Size_From_5c14ae_7bb223;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Size_From_test_wm_size_from(Gnattest_T: in out Test);
-   procedure Test_Size_From_35c19a_7bb223(Gnattest_T: in out Test) renames
-     Test_1_Size_From_test_wm_size_from;
---  id:2.2/35c19a68a2456fd8/Size_From/1/0/test_wm_size_from/
-   procedure Test_1_Size_From_test_wm_size_from(Gnattest_T: in out Test) is
-      function Size_From(Window: Tk_Widget) return Position_From_Value renames
-        Wrap_Test_Size_From_35c19a_7bb223;
+   procedure Test_Get_Size_From_test_wm_size_from(Gnattest_T: in out Test);
+   procedure Test_Get_Size_From_5c14ae_7bb223(Gnattest_T: in out Test) renames
+     Test_Get_Size_From_test_wm_size_from;
+--  id:2.2/5c14ae6a29ff5d1c/Get_Size_From/1/0/test_wm_size_from/
+   procedure Test_Get_Size_From_test_wm_size_from(Gnattest_T: in out Test) is
+      function Get_Size_From
+        (Window: Tk_Widget) return Position_From_Value renames
+        Wrap_Test_Get_Size_From_5c14ae_7bb223;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      Assert
-        (Size_From(Get_Main_Window) = Default_Position_From,
-         "Failed to get default size from for Tk main window.");
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_1_Size_From_test_wm_size_from;
+   end Test_Get_Size_From_test_wm_size_from;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Size_From_8b7927_bc3e6a
+   procedure Wrap_Test_Set_Size_From_e4e6f1_bc3e6a
      (Window: Tk_Widget; Who: Position_From_Value := Default_Position_From) is
    begin
       begin
@@ -3091,7 +3084,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Size_From2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Size_From(Window, Who);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Size_From(Window, Who);
       begin
          pragma Assert(True);
          null;
@@ -3101,40 +3094,34 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Size_From2 test commitment violated");
       end;
-   end Wrap_Test_Size_From_8b7927_bc3e6a;
+   end Wrap_Test_Set_Size_From_e4e6f1_bc3e6a;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Size_From_test_wm_size_from2(Gnattest_T: in out Test);
-   procedure Test_Size_From_8b7927_bc3e6a(Gnattest_T: in out Test) renames
-     Test_2_Size_From_test_wm_size_from2;
---  id:2.2/8b7927e33fde514a/Size_From/0/0/test_wm_size_from2/
-   procedure Test_2_Size_From_test_wm_size_from2(Gnattest_T: in out Test) is
-      procedure Size_From
+   procedure Test_Set_Size_From_test_wm_size_from2(Gnattest_T: in out Test);
+   procedure Test_Set_Size_From_e4e6f1_bc3e6a(Gnattest_T: in out Test) renames
+     Test_Set_Size_From_test_wm_size_from2;
+--  id:2.2/e4e6f1d86c8db346/Set_Size_From/1/0/test_wm_size_from2/
+   procedure Test_Set_Size_From_test_wm_size_from2(Gnattest_T: in out Test) is
+      procedure Set_Size_From
         (Window: Tk_Widget;
          Who: Position_From_Value := Default_Position_From) renames
-        Wrap_Test_Size_From_8b7927_bc3e6a;
+        Wrap_Test_Set_Size_From_e4e6f1_bc3e6a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      Size_From(Get_Main_Window, USER);
-      Assert
-        (Size_From(Get_Main_Window) = USER,
-         "Failed to get default size from for Tk main window.");
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_2_Size_From_test_wm_size_from2;
+   end Test_Set_Size_From_test_wm_size_from2;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Stack_Order_2d6e08_ada760
+   function Wrap_Test_Get_Stack_Order_ad8dde_ada760
      (Window: Tk_Widget) return Widgets_Array is
    begin
       begin
@@ -3147,8 +3134,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Stack_Order test requirement violated");
       end;
       declare
-         Test_Stack_Order_2d6e08_ada760_Result: constant Widgets_Array :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Stack_Order(Window);
+         Test_Get_Stack_Order_ad8dde_ada760_Result: constant Widgets_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Stack_Order(Window);
       begin
          begin
             pragma Assert(True);
@@ -3159,43 +3146,36 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Stack_Order test commitment violated");
          end;
-         return Test_Stack_Order_2d6e08_ada760_Result;
+         return Test_Get_Stack_Order_ad8dde_ada760_Result;
       end;
-   end Wrap_Test_Stack_Order_2d6e08_ada760;
+   end Wrap_Test_Get_Stack_Order_ad8dde_ada760;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Stack_Order_test_wm_stack_order(Gnattest_T: in out Test);
-   procedure Test_Stack_Order_2d6e08_ada760(Gnattest_T: in out Test) renames
-     Test_1_Stack_Order_test_wm_stack_order;
---  id:2.2/2d6e08911932b44e/Stack_Order/1/0/test_wm_stack_order/
-   procedure Test_1_Stack_Order_test_wm_stack_order(Gnattest_T: in out Test) is
-      function Stack_Order(Window: Tk_Widget) return Widgets_Array renames
-        Wrap_Test_Stack_Order_2d6e08_ada760;
+   procedure Test_Get_Stack_Order_test_wm_stack_order(Gnattest_T: in out Test);
+   procedure Test_Get_Stack_Order_ad8dde_ada760
+     (Gnattest_T: in out Test) renames
+     Test_Get_Stack_Order_test_wm_stack_order;
+--  id:2.2/ad8ddeaa750eef97/Get_Stack_Order/1/0/test_wm_stack_order/
+   procedure Test_Get_Stack_Order_test_wm_stack_order
+     (Gnattest_T: in out Test) is
+      function Get_Stack_Order(Window: Tk_Widget) return Widgets_Array renames
+        Wrap_Test_Get_Stack_Order_ad8dde_ada760;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      declare
-         Result: constant Widgets_Array := Stack_Order(Get_Main_Window);
-      begin
-         Assert
-           (Result(1) = Get_Main_Window,
-            "Failed to get stack order for Tk main window");
-      end;
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_1_Stack_Order_test_wm_stack_order;
+   end Test_Get_Stack_Order_test_wm_stack_order;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Stack_Order_4063e5_065f0c
+   function Wrap_Test_Get_Stack_Order_Above_db54cc_065f0c
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
       return Boolean is
    begin
@@ -3209,8 +3189,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Stack_Order2 test requirement violated");
       end;
       declare
-         Test_Stack_Order_4063e5_065f0c_Result: constant Boolean :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Stack_Order
+         Test_Get_Stack_Order_Above_db54cc_065f0c_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Stack_Order_Above
              (Window, Second_Window, Above);
       begin
          begin
@@ -3222,38 +3202,35 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Stack_Order2 test commitment violated");
          end;
-         return Test_Stack_Order_4063e5_065f0c_Result;
+         return Test_Get_Stack_Order_Above_db54cc_065f0c_Result;
       end;
-   end Wrap_Test_Stack_Order_4063e5_065f0c;
+   end Wrap_Test_Get_Stack_Order_Above_db54cc_065f0c;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Stack_Order_test_wm_stack_order2(Gnattest_T: in out Test);
-   procedure Test_Stack_Order_4063e5_065f0c(Gnattest_T: in out Test) renames
-     Test_2_Stack_Order_test_wm_stack_order2;
---  id:2.2/4063e54489ef174f/Stack_Order/0/0/test_wm_stack_order2/
-   procedure Test_2_Stack_Order_test_wm_stack_order2
+   procedure Test_Get_Stack_Order_Above_test_wm_stack_order2
+     (Gnattest_T: in out Test);
+   procedure Test_Get_Stack_Order_Above_db54cc_065f0c
+     (Gnattest_T: in out Test) renames
+     Test_Get_Stack_Order_Above_test_wm_stack_order2;
+--  id:2.2/db54cc362296bc0a/Get_Stack_Order_Above/1/0/test_wm_stack_order2/
+   procedure Test_Get_Stack_Order_Above_test_wm_stack_order2
      (Gnattest_T: in out Test) is
-      function Stack_Order
+      function Get_Stack_Order_Above
         (Window, Second_Window: Tk_Widget; Above: Boolean := True)
          return Boolean renames
-        Wrap_Test_Stack_Order_4063e5_065f0c;
+        Wrap_Test_Get_Stack_Order_Above_db54cc_065f0c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      Assert
-        (not Stack_Order(Get_Main_Window, Get_Main_Window),
-         "Failed to get if Tk main window is above self.");
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_2_Stack_Order_test_wm_stack_order2;
+   end Test_Get_Stack_Order_Above_test_wm_stack_order2;
 --  end read only
 
 --  begin read only
@@ -3641,6 +3618,200 @@ package body Tk.Wm.Test_Data.Tests is
 
 --  begin read only
    end Test_Withdraw_test_wm_withdraw;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Protocol_test_wm_protocol3 (Gnattest_T : in out Test_);
+   --  procedure Test_Protocol_08ce2d_test_wm_protocol3 (Gnattest_T : in out Test_) renames Test_Protocol_test_wm_protocol3;
+--  id:2.2/08ce2daafbc89885/Protocol/0/1/test_wm_protocol3/
+   --  procedure Test_Protocol_test_wm_protocol3 (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
+--        Assert
+--          (Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
+--           "Failed to set command associated to WM_TAKE_FOCUS for Tk main window");
+--
+--  begin read only
+   --  end Test_Protocol_test_wm_protocol3;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Override_Redirect_test_wm_override_redirect (Gnattest_T : in out Test_);
+   --  procedure Test_Override_Redirect_1b76bc_test_wm_override_redirect (Gnattest_T : in out Test_) renames Test_Override_Redirect_test_wm_override_redirect;
+--  id:2.2/1b76bc0410270544/Override_Redirect/0/1/test_wm_override_redirect/
+   --  procedure Test_Override_Redirect_test_wm_override_redirect (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Override_Redirect(Get_Main_Window, True);
+--        Assert
+--          (Override_Redirect(Get_Main_Window),
+--           "Failed to set override redirect value for Tk main window.");
+--        Override_Redirect(Get_Main_Window, False);
+--
+--  begin read only
+   --  end Test_Override_Redirect_test_wm_override_redirect;
+--  end read only
+
+
+--  begin read only
+   --  procedure Test_Stack_Order_test_wm_stack_order (Gnattest_T : in out Test_);
+   --  procedure Test_Stack_Order_2d6e08_test_wm_stack_order (Gnattest_T : in out Test_) renames Test_Stack_Order_test_wm_stack_order;
+--  id:2.2/2d6e08911932b44e/Stack_Order/1/1/test_wm_stack_order/
+   --  procedure Test_Stack_Order_test_wm_stack_order (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        declare
+--           Result: constant Widgets_Array := Stack_Order(Get_Main_Window);
+--        begin
+--           Assert
+--             (Result(1) = Get_Main_Window,
+--              "Failed to get stack order for Tk main window");
+--        end;
+--
+--  begin read only
+   --  end Test_Stack_Order_test_wm_stack_order;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Size_From_test_wm_size_from (Gnattest_T : in out Test_);
+   --  procedure Test_Size_From_35c19a_test_wm_size_from (Gnattest_T : in out Test_) renames Test_Size_From_test_wm_size_from;
+--  id:2.2/35c19a68a2456fd8/Size_From/1/1/test_wm_size_from/
+   --  procedure Test_Size_From_test_wm_size_from (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Assert
+--          (Size_From(Get_Main_Window) = Default_Position_From,
+--           "Failed to get default size from for Tk main window.");
+--
+--  begin read only
+   --  end Test_Size_From_test_wm_size_from;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Stack_Order_test_wm_stack_order2 (Gnattest_T : in out Test_);
+   --  procedure Test_Stack_Order_4063e5_test_wm_stack_order2 (Gnattest_T : in out Test_) renames Test_Stack_Order_test_wm_stack_order2;
+--  id:2.2/4063e54489ef174f/Stack_Order/0/1/test_wm_stack_order2/
+   --  procedure Test_Stack_Order_test_wm_stack_order2 (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Assert
+--          (not Stack_Order(Get_Main_Window, Get_Main_Window),
+--           "Failed to get if Tk main window is above self.");
+--
+--  begin read only
+   --  end Test_Stack_Order_test_wm_stack_order2;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Resizable_test_wm_resizable (Gnattest_T : in out Test_);
+   --  procedure Test_Resizable_4a4f98_test_wm_resizable (Gnattest_T : in out Test_) renames Test_Resizable_test_wm_resizable;
+--  id:2.2/4a4f98c7c6bf5c44/Resizable/1/1/test_wm_resizable/
+   --  procedure Test_Resizable_test_wm_resizable (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Assert
+--          (Resizable(Get_Main_Window).Height,
+--           "Failed to get resizable info for Tk main window.");
+--
+--  begin read only
+   --  end Test_Resizable_test_wm_resizable;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Resizable_test_wm_resizable2 (Gnattest_T : in out Test_);
+   --  procedure Test_Resizable_70137c_test_wm_resizable2 (Gnattest_T : in out Test_) renames Test_Resizable_test_wm_resizable2;
+--  id:2.2/70137c9fb8c71010/Resizable/0/1/test_wm_resizable2/
+   --  procedure Test_Resizable_test_wm_resizable2 (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Resizable(Get_Main_Window, True, False);
+--        Assert
+--          (not Resizable(Get_Main_Window).Height,
+--           "Failed to set resizable info for Tk main window.");
+--
+--  begin read only
+   --  end Test_Resizable_test_wm_resizable2;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Size_From_test_wm_size_from2 (Gnattest_T : in out Test_);
+   --  procedure Test_Size_From_8b7927_test_wm_size_from2 (Gnattest_T : in out Test_) renames Test_Size_From_test_wm_size_from2;
+--  id:2.2/8b7927e33fde514a/Size_From/0/1/test_wm_size_from2/
+   --  procedure Test_Size_From_test_wm_size_from2 (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Size_From(Get_Main_Window, USER);
+--        Assert
+--          (Size_From(Get_Main_Window) = USER,
+--           "Failed to get default size from for Tk main window.");
+--
+--  begin read only
+   --  end Test_Size_From_test_wm_size_from2;
 --  end read only
 
 --  begin read only
