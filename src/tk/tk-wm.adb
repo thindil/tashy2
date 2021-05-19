@@ -610,15 +610,6 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Min_Size;
 
-   function Get_Override_Redirect(Window: Tk_Widget) return Boolean is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script =>
-             "wm overrideredirect " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Get_Override_Redirect;
-
    procedure Set_Override_Redirect(Window: Tk_Widget; Override: Boolean) is
    begin
       Tcl_Eval
@@ -661,15 +652,6 @@ package body Tk.Wm is
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    end Get_Protocols;
-
-   function Get_Protocol(Window: Tk_Widget; Name: String) return String is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script =>
-             "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name,
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Get_Protocol;
 
    procedure Set_Protocol
      (Window: Tk_Widget; Name: String; New_Command: Tcl_String) is
@@ -750,28 +732,6 @@ package body Tk.Wm is
       end return;
    end Stack_Order;
 
-   function Stack_Order
-     (Window, Second_Window: Tk_Widget; Above: Boolean := True)
-      return Boolean is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script =>
-             "wm stackorder " & Tk_Path_Name(Widgt => Window) & " " &
-             (if Above then "isabove" else "isbelow") & " " &
-             Tk_Path_Name(Widgt => Second_Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Stack_Order;
-
-   function State(Window: Tk_Widget) return Window_States is
-   begin
-      return
-        Window_States'Value
-          (Tcl_Eval
-             (Tcl_Script => "wm state " & Tk_Path_Name(Widgt => Window),
-              Interpreter => Tk_Interp(Widgt => Window)));
-   end State;
-
    procedure State
      (Window: Tk_Widget; New_State: Window_States := Default_Window_State) is
    begin
@@ -781,16 +741,6 @@ package body Tk.Wm is
            To_Lower(Item => Window_States'Image(New_State)),
          Interpreter => Tk_Interp(Widgt => Window));
    end State;
-
-   function Title(Window: Tk_Widget) return Tcl_String is
-   begin
-      return
-        To_Tcl_String
-          (Source =>
-             Tcl_Eval
-               (Tcl_Script => "wm title " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Tk_Interp(Widgt => Window)));
-   end Title;
 
    procedure Title(Window: Tk_Widget; New_Title: Tcl_String) is
    begin

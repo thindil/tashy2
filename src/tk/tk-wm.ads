@@ -1240,7 +1240,10 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Set_Override_Redirect
       -- SOURCE
-   function Get_Override_Redirect(Window: Tk_Widget) return Boolean with
+   function Get_Override_Redirect(Window: Tk_Widget) return Boolean is
+     (Tcl_Eval
+        (Tcl_Script => "wm overrideredirect " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Override_Redirect", Mode => Nominal);
       -- ****
@@ -1351,7 +1354,11 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Get_Protocols, Wm.Set_Protocol
       -- SOURCE
-   function Get_Protocol(Window: Tk_Widget; Name: String) return String with
+   function Get_Protocol(Window: Tk_Widget; Name: String) return String is
+     (Tcl_Eval
+        (Tcl_Script =>
+           "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name,
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Wm_Protocol2", Mode => Nominal);
       -- ****
@@ -1516,7 +1523,13 @@ package Tk.Wm is
       -- SOURCE
    function Stack_Order
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
-      return Boolean with
+      return Boolean is
+     (Tcl_Eval
+        (Tcl_Script =>
+           "wm stackorder " & Tk_Path_Name(Widgt => Window) & " " &
+           (if Above then "isabove" else "isbelow") & " " &
+           Tk_Path_Name(Widgt => Second_Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget and Second_Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Stack_Order2", Mode => Nominal);
       -- ****
@@ -1536,7 +1549,11 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.State_(procedure)
       -- SOURCE
-   function State(Window: Tk_Widget) return Window_States with
+   function State(Window: Tk_Widget) return Window_States is
+     (Window_States'Value
+        (Tcl_Eval
+           (Tcl_Script => "wm state " & Tk_Path_Name(Widgt => Window),
+            Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_State", Mode => Nominal);
       -- ****
@@ -1577,7 +1594,12 @@ package Tk.Wm is
       -- SEE ALSO
       -- Wm.Title_(procedure)
       -- SOURCE
-   function Title(Window: Tk_Widget) return Tcl_String with
+   function Title(Window: Tk_Widget) return Tcl_String is
+     (To_Tcl_String
+        (Source =>
+           Tcl_Eval
+             (Tcl_Script => "wm title " & Tk_Path_Name(Widgt => Window),
+              Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Title", Mode => Nominal);
       -- ****
