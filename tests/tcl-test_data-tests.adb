@@ -345,8 +345,8 @@ package body Tcl.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Tcl_Update;
+      Assert(True, "This test can only crash.");
 
 --  begin read only
    end Test_Tcl_Update_test_tcl_update;
