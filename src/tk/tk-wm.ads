@@ -28,6 +28,10 @@ package Tk.Wm is
    -- ****t* Wm/Wm.Window_Manager_Types
    -- FUNCTION
    -- Type of current window manager
+   -- OPTIONS
+   -- X_11    - Used on the most Unix systems like Linux, BSD, etc
+   -- WINDOWS - Microsoft Windows
+   -- MACOSX  - Apple MacOSX
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -65,7 +69,32 @@ package Tk.Wm is
 
    -- ****t* Wm/Wm.Window_Types
    -- FUNCTION
-   -- Available types of widget
+   -- Available types of widget. Used only on X11 and may be not supported by
+   -- all windows managers there
+   -- OPTIONS
+   -- DESKTOP       - Desktop window
+   -- DOCK          - Dock/panel window
+   -- TOOLBAR       - Toolbar window that should acting on behalf of another
+   --                 window (transient to it)
+   -- MENU          - Torn-off menu that should acting on behalf of another
+   --                 window (transient to it)
+   -- UTILITY       - Utility window (example: palette, toolbox) that should
+   --                 acting on behalf of another window (transient to it)
+   -- SPLASH        - Splash screen, displayed during application start up
+   -- DIALOG        - Dialog window that should acting on behalf of another
+   --                 window (transient to it)
+   -- DROPDOWN_MENU - Menu summoned from a menu bar, which should be also
+   --                 override-redirected
+   -- POPUP_MENU    - Popup menu, which should be also override-redirected
+   -- TOOLTIP       - Tooltip window, which should be also override-redirected
+   -- NOTIFICATION  - Notification window, provides information about some
+   --                 events, which should be also override-redirected
+   -- COMBO         - Drop-down list of a combobox widget which should be also
+   --                 override-redirected
+   -- DND           - Widget represents something being dragged, which should
+   --                 be also override-redirected
+   -- NORMAL        - Widget without special intepretation
+   -- NONE          - Used mostly to reset the current type of the widget
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
