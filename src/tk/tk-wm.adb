@@ -732,7 +732,7 @@ package body Tk.Wm is
       end return;
    end Get_Stack_Order;
 
-   procedure State
+   procedure Set_State
      (Window: Tk_Widget; New_State: Window_States := Default_Window_State) is
    begin
       Tcl_Eval
@@ -740,18 +740,18 @@ package body Tk.Wm is
            "wm state " & Tk_Path_Name(Widgt => Window) & " " &
            To_Lower(Item => Window_States'Image(New_State)),
          Interpreter => Tk_Interp(Widgt => Window));
-   end State;
+   end Set_State;
 
-   procedure Title(Window: Tk_Widget; New_Title: Tcl_String) is
+   procedure Set_Title(Window: Tk_Widget; New_Title: Tcl_String) is
    begin
       Tcl_Eval
         (Tcl_Script =>
            "wm title " & Tk_Path_Name(Widgt => Window) & " " &
            To_String(Source => New_Title),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Title;
+   end Set_Title;
 
-   function Transient(Window: Tk_Widget) return Tk_Widget is
+   function Get_Transient(Window: Tk_Widget) return Tk_Widget is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
    begin
       return
@@ -761,16 +761,16 @@ package body Tk.Wm is
                (Tcl_Script => "wm transient " & Tk_Path_Name(Widgt => Window),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
-   end Transient;
+   end Get_Transient;
 
-   procedure Transient(Window, Master: Tk_Widget) is
+   procedure Set_Transient(Window, Master: Tk_Widget) is
    begin
       Tcl_Eval
         (Tcl_Script =>
            "wm transient " & Tk_Path_Name(Widgt => Window) & " " &
            Tk_Path_Name(Widgt => Master),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Transient;
+   end Set_Transient;
 
    procedure Withdraw(Window: Tk_Widget) is
    begin
