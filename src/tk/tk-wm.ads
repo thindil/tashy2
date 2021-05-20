@@ -31,7 +31,7 @@ package Tk.Wm is
    -- OPTIONS
    -- X_11    - Used on the most Unix systems like Linux, BSD, etc
    -- WINDOWS - Microsoft Windows
-   -- MACOSX  - Apple MacOSX
+   -- MACOSX  - Apple Mac OS X
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -172,6 +172,11 @@ package Tk.Wm is
    -- FUNCTION
    -- Types of Tk widget focus models. Active means that widget will take
    -- focus even from the other applications.
+   -- OPTIONS
+   -- ACTIVE  - The widget will claim the input focus for self and its
+   --           descendants even if other applications have it.
+   -- PASSIVE - The widget will not claim the input focus from other
+   --           applications.
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -333,6 +338,9 @@ package Tk.Wm is
    -- ****t* Wm/Wm.Position_From_Value
    -- FUNCTION
    -- Type used to set source of position and size.
+   -- OPTIONS
+   -- USER    - Position or size was requested by the user
+   -- PROGRAM - Position or size was requested by the program
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -376,6 +384,13 @@ package Tk.Wm is
    -- FUNCTION
    -- Types of the Tk widget states. ZOOMED is avaliable only on Window and
    -- Mac OS X
+   -- OPTIONS
+   -- NORMAL    - Standard state of the widget
+   -- ICONIC    - The widget was iconified
+   -- WITHDRAWN - The widget was withdrawed
+   -- ICON      - The widget is used as icon for another widget. Cannot be set
+   -- ZOOMED    - Availble only on Windows and Mac OS X. The widget was
+   --             maximized
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -554,6 +569,8 @@ package Tk.Wm is
       -- Client_Machine: constant String := Get_Client(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Client
+      -- COMMANDS
+      -- wm client Window
       -- SOURCE
    function Get_Client(Window: Tk_Widget) return String is
      (Tcl_Eval
@@ -576,6 +593,8 @@ package Tk.Wm is
       -- Set_Client(Get_Main_Window, To_Tcl_String("Localhost"));
       -- SEE ALSO
       -- Wm.Get_Client
+      -- COMMANDS
+      -- wm client Window Name
       -- SOURCE
    procedure Set_Client(Window: Tk_Widget; Name: Tcl_String) with
       Pre => Window /= Null_Widget and Length(Source => Name) > 0,
@@ -598,6 +617,8 @@ package Tk.Wm is
       -- Different_Colors: constant Array_List := Get_Color_Map_Windows(Get_Main_Window);
       -- SEE ALSO
       -- Set_Color_Map_Windows
+      -- COMMANDS
+      -- wm colormapwindows Window
       -- SOURCE
    function Get_Color_Map_Windows(Window: Tk_Widget) return Array_List with
       Pre => Window /= Null_Widget,
@@ -618,6 +639,8 @@ package Tk.Wm is
       -- Set_Color_Map_Windows(Get_Main_Window, (MyLabel, My_Button));
       -- SEE ALSO
       -- Get_Color_Map_Windows
+      -- COMMANDS
+      -- wm colormapwindows Window Widgets
       -- SOURCE
    procedure Set_Color_Map_Windows
      (Window: Tk_Widget; Widgets: Widgets_Array) with
@@ -639,6 +662,8 @@ package Tk.Wm is
       -- Wm_Command: constant Tcl_String := Get_Command(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Command
+      -- COMMANDS
+      -- wm command Window
       -- SOURCE
    function Get_Command(Window: Tk_Widget) return Tcl_String is
      (To_Tcl_String
@@ -663,6 +688,8 @@ package Tk.Wm is
       -- Set_Command(Get_Main_Window, To_Tcl_String("puts hello"));
       -- SEE ALSO
       -- Wm.Set_Command
+      -- COMMANDS
+      -- wm command Window Wm_Command
       -- SOURCE
    procedure Set_Command(Window: Tk_Widget; Wm_Command: Tcl_String) with
       Pre => Window /= Null_Widget and Length(Source => Wm_Command) > 0,
