@@ -175,23 +175,23 @@ package Tk.Wm.Test_Data.Tests is
    procedure Test_Get_Stack_Order_Above_db54cc_065f0c(Gnattest_T: in out Test);
    --  tk-wm.ads:1524:4:Get_Stack_Order_Above:Test_Wm_Stack_Order2
 
-   procedure Test_State_193cfa_369ab4(Gnattest_T: in out Test);
-   --  tk-wm.ads:1552:4:State:Test_Wm_State
+   procedure Test_Get_State_d36f93_369ab4(Gnattest_T: in out Test);
+   --  tk-wm.ads:1552:4:Get_State:Test_Wm_State
 
-   procedure Test_State_c8a3e9_b6b816(Gnattest_T: in out Test);
-   --  tk-wm.ads:1576:4:State:Test_Wm_State2
+   procedure Test_Set_State_5b3aeb_b6b816(Gnattest_T: in out Test);
+   --  tk-wm.ads:1576:4:Set_State:Test_Wm_State2
 
-   procedure Test_Title_01b6e1_70d180(Gnattest_T: in out Test);
-   --  tk-wm.ads:1597:4:Title:Test_Wm_Title
+   procedure Test_Get_Title_0b831c_70d180(Gnattest_T: in out Test);
+   --  tk-wm.ads:1597:4:Get_Title:Test_Wm_Title
 
-   procedure Test_Title_1f8dd2_35ca12(Gnattest_T: in out Test);
-   --  tk-wm.ads:1621:4:Title:Test_Wm_Title2
+   procedure Test_Set_Title_733354_35ca12(Gnattest_T: in out Test);
+   --  tk-wm.ads:1621:4:Set_Title:Test_Wm_Title2
 
-   procedure Test_Transient_600247_b820a7(Gnattest_T: in out Test);
-   --  tk-wm.ads:1642:4:Transient:Test_Wm_Transient
+   procedure Test_Get_Transient_911661_b820a7(Gnattest_T: in out Test);
+   --  tk-wm.ads:1642:4:Get_Transient:Test_Wm_Transient
 
-   procedure Test_Transient_6697c9_9ec765(Gnattest_T: in out Test);
-   --  tk-wm.ads:1661:4:Transient:Test_Wm_Transient2
+   procedure Test_Set_Transient_522d97_9ec765(Gnattest_T: in out Test);
+   --  tk-wm.ads:1661:4:Set_Transient:Test_Wm_Transient2
 
    procedure Test_Withdraw_9bd119_51d547(Gnattest_T: in out Test);
    --  tk-wm.ads:1677:4:Withdraw:Test_Wm_Withdraw

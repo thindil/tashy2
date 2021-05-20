@@ -2851,7 +2851,8 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Set_Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
+      Set_Protocol
+        (Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
       Assert
         (Get_Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
          "Failed to get command associated to WM_TAKE_FOCUS for Tk main window");
@@ -2908,7 +2909,8 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Set_Protocol(Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
+      Set_Protocol
+        (Get_Main_Window, "WM_TAKE_FOCUS", To_Tcl_String("puts hello"));
       Assert
         (Get_Protocol(Get_Main_Window, "WM_TAKE_FOCUS") = "puts hello",
          "Failed to set command associated to WM_TAKE_FOCUS for Tk main window");
@@ -3270,7 +3272,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_State_193cfa_369ab4
+   function Wrap_Test_Get_State_d36f93_369ab4
      (Window: Tk_Widget) return Window_States is
    begin
       begin
@@ -3283,8 +3285,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_State test requirement violated");
       end;
       declare
-         Test_State_193cfa_369ab4_Result: constant Window_States :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.State(Window);
+         Test_Get_State_d36f93_369ab4_Result: constant Window_States :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_State(Window);
       begin
          begin
             pragma Assert(True);
@@ -3295,19 +3297,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_State test commitment violated");
          end;
-         return Test_State_193cfa_369ab4_Result;
+         return Test_Get_State_d36f93_369ab4_Result;
       end;
-   end Wrap_Test_State_193cfa_369ab4;
+   end Wrap_Test_Get_State_d36f93_369ab4;
 --  end read only
 
 --  begin read only
-   procedure Test_1_State_test_wm_state(Gnattest_T: in out Test);
-   procedure Test_State_193cfa_369ab4(Gnattest_T: in out Test) renames
-     Test_1_State_test_wm_state;
---  id:2.2/193cfa43938a1bc2/State/1/0/test_wm_state/
-   procedure Test_1_State_test_wm_state(Gnattest_T: in out Test) is
-      function State(Window: Tk_Widget) return Window_States renames
-        Wrap_Test_State_193cfa_369ab4;
+   procedure Test_Get_State_test_wm_state(Gnattest_T: in out Test);
+   procedure Test_Get_State_d36f93_369ab4(Gnattest_T: in out Test) renames
+     Test_Get_State_test_wm_state;
+--  id:2.2/d36f937bace90b51/Get_State/1/0/test_wm_state/
+   procedure Test_Get_State_test_wm_state(Gnattest_T: in out Test) is
+      function Get_State(Window: Tk_Widget) return Window_States renames
+        Wrap_Test_Get_State_d36f93_369ab4;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3319,15 +3321,15 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (State(Get_Main_Window) = Default_Window_State,
+        (Get_State(Get_Main_Window) = Default_Window_State,
          "Failed to get default Tk main window state.");
 
 --  begin read only
-   end Test_1_State_test_wm_state;
+   end Test_Get_State_test_wm_state;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_State_c8a3e9_b6b816
+   procedure Wrap_Test_Set_State_5b3aeb_b6b816
      (Window: Tk_Widget; New_State: Window_States := Default_Window_State) is
    begin
       begin
@@ -3339,7 +3341,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_State2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.State(Window, New_State);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_State(Window, New_State);
       begin
          pragma Assert(True);
          null;
@@ -3349,19 +3351,19 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_State2 test commitment violated");
       end;
-   end Wrap_Test_State_c8a3e9_b6b816;
+   end Wrap_Test_Set_State_5b3aeb_b6b816;
 --  end read only
 
 --  begin read only
-   procedure Test_2_State_test_wm_state2(Gnattest_T: in out Test);
-   procedure Test_State_c8a3e9_b6b816(Gnattest_T: in out Test) renames
-     Test_2_State_test_wm_state2;
---  id:2.2/c8a3e96d75cb85a1/State/0/0/test_wm_state2/
-   procedure Test_2_State_test_wm_state2(Gnattest_T: in out Test) is
-      procedure State
+   procedure Test_Set_State_test_wm_state2(Gnattest_T: in out Test);
+   procedure Test_Set_State_5b3aeb_b6b816(Gnattest_T: in out Test) renames
+     Test_Set_State_test_wm_state2;
+--  id:2.2/5b3aeb37ae679bd8/Set_State/1/0/test_wm_state2/
+   procedure Test_Set_State_test_wm_state2(Gnattest_T: in out Test) is
+      procedure Set_State
         (Window: Tk_Widget;
          New_State: Window_States := Default_Window_State) renames
-        Wrap_Test_State_c8a3e9_b6b816;
+        Wrap_Test_Set_State_5b3aeb_b6b816;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3372,17 +3374,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      State(Get_Main_Window, WITHDRAWN);
+      Set_State(Get_Main_Window, WITHDRAWN);
       Assert
-        (State(Get_Main_Window) = WITHDRAWN,
+        (Get_State(Get_Main_Window) = WITHDRAWN,
          "Failed to set Tk main window state.");
 
 --  begin read only
-   end Test_2_State_test_wm_state2;
+   end Test_Set_State_test_wm_state2;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Title_01b6e1_70d180
+   function Wrap_Test_Get_Title_0b831c_70d180
      (Window: Tk_Widget) return Tcl_String is
    begin
       begin
@@ -3395,8 +3397,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Title test requirement violated");
       end;
       declare
-         Test_Title_01b6e1_70d180_Result: constant Tcl_String :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Title(Window);
+         Test_Get_Title_0b831c_70d180_Result: constant Tcl_String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Title(Window);
       begin
          begin
             pragma Assert(True);
@@ -3407,19 +3409,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Title test commitment violated");
          end;
-         return Test_Title_01b6e1_70d180_Result;
+         return Test_Get_Title_0b831c_70d180_Result;
       end;
-   end Wrap_Test_Title_01b6e1_70d180;
+   end Wrap_Test_Get_Title_0b831c_70d180;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Title_test_wm_title(Gnattest_T: in out Test);
-   procedure Test_Title_01b6e1_70d180(Gnattest_T: in out Test) renames
-     Test_1_Title_test_wm_title;
---  id:2.2/01b6e1957b3c0914/Title/1/0/test_wm_title/
-   procedure Test_1_Title_test_wm_title(Gnattest_T: in out Test) is
-      function Title(Window: Tk_Widget) return Tcl_String renames
-        Wrap_Test_Title_01b6e1_70d180;
+   procedure Test_Get_Title_test_wm_title(Gnattest_T: in out Test);
+   procedure Test_Get_Title_0b831c_70d180(Gnattest_T: in out Test) renames
+     Test_Get_Title_test_wm_title;
+--  id:2.2/0b831c9f4899cce4/Get_Title/1/0/test_wm_title/
+   procedure Test_Get_Title_test_wm_title(Gnattest_T: in out Test) is
+      function Get_Title(Window: Tk_Widget) return Tcl_String renames
+        Wrap_Test_Get_Title_0b831c_70d180;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3430,17 +3432,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Title(Get_Main_Window, To_Tcl_String("new title"));
+      Set_Title(Get_Main_Window, To_Tcl_String("new title"));
       Assert
-        (Title(Get_Main_Window) = To_Tcl_String("new title"),
+        (Get_Title(Get_Main_Window) = To_Tcl_String("new title"),
          "Failed to get title for Tk main window.");
 
 --  begin read only
-   end Test_1_Title_test_wm_title;
+   end Test_Get_Title_test_wm_title;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Title_1f8dd2_35ca12
+   procedure Wrap_Test_Set_Title_733354_35ca12
      (Window: Tk_Widget; New_Title: Tcl_String) is
    begin
       begin
@@ -3452,7 +3454,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Title2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Title(Window, New_Title);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Title(Window, New_Title);
       begin
          pragma Assert(True);
          null;
@@ -3462,17 +3464,17 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Title2 test commitment violated");
       end;
-   end Wrap_Test_Title_1f8dd2_35ca12;
+   end Wrap_Test_Set_Title_733354_35ca12;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Title_test_wm_title2(Gnattest_T: in out Test);
-   procedure Test_Title_1f8dd2_35ca12(Gnattest_T: in out Test) renames
-     Test_2_Title_test_wm_title2;
---  id:2.2/1f8dd244664971f3/Title/0/0/test_wm_title2/
-   procedure Test_2_Title_test_wm_title2(Gnattest_T: in out Test) is
-      procedure Title(Window: Tk_Widget; New_Title: Tcl_String) renames
-        Wrap_Test_Title_1f8dd2_35ca12;
+   procedure Test_Set_Title_test_wm_title2(Gnattest_T: in out Test);
+   procedure Test_Set_Title_733354_35ca12(Gnattest_T: in out Test) renames
+     Test_Set_Title_test_wm_title2;
+--  id:2.2/73335427dad936b0/Set_Title/1/0/test_wm_title2/
+   procedure Test_Set_Title_test_wm_title2(Gnattest_T: in out Test) is
+      procedure Set_Title(Window: Tk_Widget; New_Title: Tcl_String) renames
+        Wrap_Test_Set_Title_733354_35ca12;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3483,17 +3485,17 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Title(Get_Main_Window, To_Tcl_String("My Title"));
+      Set_Title(Get_Main_Window, To_Tcl_String("My Title"));
       Assert
-        (Title(Get_Main_Window) = To_Tcl_String("My Title"),
+        (Get_Title(Get_Main_Window) = To_Tcl_String("My Title"),
          "Failed to set title for Tk main window.");
 
 --  begin read only
-   end Test_2_Title_test_wm_title2;
+   end Test_Set_Title_test_wm_title2;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Transient_600247_b820a7
+   function Wrap_Test_Get_Transient_911661_b820a7
      (Window: Tk_Widget) return Tk_Widget is
    begin
       begin
@@ -3506,8 +3508,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Transient test requirement violated");
       end;
       declare
-         Test_Transient_600247_b820a7_Result: constant Tk_Widget :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Transient(Window);
+         Test_Get_Transient_911661_b820a7_Result: constant Tk_Widget :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Transient(Window);
       begin
          begin
             pragma Assert(True);
@@ -3518,19 +3520,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Transient test commitment violated");
          end;
-         return Test_Transient_600247_b820a7_Result;
+         return Test_Get_Transient_911661_b820a7_Result;
       end;
-   end Wrap_Test_Transient_600247_b820a7;
+   end Wrap_Test_Get_Transient_911661_b820a7;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Transient_test_wm_transient(Gnattest_T: in out Test);
-   procedure Test_Transient_600247_b820a7(Gnattest_T: in out Test) renames
-     Test_1_Transient_test_wm_transient;
---  id:2.2/600247ae2a247faa/Transient/1/0/test_wm_transient/
-   procedure Test_1_Transient_test_wm_transient(Gnattest_T: in out Test) is
-      function Transient(Window: Tk_Widget) return Tk_Widget renames
-        Wrap_Test_Transient_600247_b820a7;
+   procedure Test_Get_Transient_test_wm_transient(Gnattest_T: in out Test);
+   procedure Test_Get_Transient_911661_b820a7(Gnattest_T: in out Test) renames
+     Test_Get_Transient_test_wm_transient;
+--  id:2.2/91166127510dbebb/Get_Transient/1/0/test_wm_transient/
+   procedure Test_Get_Transient_test_wm_transient(Gnattest_T: in out Test) is
+      function Get_Transient(Window: Tk_Widget) return Tk_Widget renames
+        Wrap_Test_Get_Transient_911661_b820a7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3542,15 +3544,16 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Transient(Get_Main_Window) = Null_Widget,
+        (Get_Transient(Get_Main_Window) = Null_Widget,
          "Failed to get default transient widget for Tk window.");
 
 --  begin read only
-   end Test_1_Transient_test_wm_transient;
+   end Test_Get_Transient_test_wm_transient;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Transient_6697c9_9ec765(Window, Master: Tk_Widget) is
+   procedure Wrap_Test_Set_Transient_522d97_9ec765
+     (Window, Master: Tk_Widget) is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -3561,7 +3564,7 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "req_sloc(tk-wm.ads:0):Test_Wm_Transient2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Transient(Window, Master);
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Transient(Window, Master);
       begin
          pragma Assert(True);
          null;
@@ -3571,17 +3574,17 @@ package body Tk.Wm.Test_Data.Tests is
               (False,
                "ens_sloc(tk-wm.ads:0:):Test_Wm_Transient2 test commitment violated");
       end;
-   end Wrap_Test_Transient_6697c9_9ec765;
+   end Wrap_Test_Set_Transient_522d97_9ec765;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Transient_test_wm_transient2(Gnattest_T: in out Test);
-   procedure Test_Transient_6697c9_9ec765(Gnattest_T: in out Test) renames
-     Test_2_Transient_test_wm_transient2;
---  id:2.2/6697c9aec91a8b4e/Transient/0/0/test_wm_transient2/
-   procedure Test_2_Transient_test_wm_transient2(Gnattest_T: in out Test) is
-      procedure Transient(Window, Master: Tk_Widget) renames
-        Wrap_Test_Transient_6697c9_9ec765;
+   procedure Test_Set_Transient_test_wm_transient2(Gnattest_T: in out Test);
+   procedure Test_Set_Transient_522d97_9ec765(Gnattest_T: in out Test) renames
+     Test_Set_Transient_test_wm_transient2;
+--  id:2.2/522d97fb19c4d4cb/Set_Transient/1/0/test_wm_transient2/
+   procedure Test_Set_Transient_test_wm_transient2(Gnattest_T: in out Test) is
+      procedure Set_Transient(Window, Master: Tk_Widget) renames
+        Wrap_Test_Set_Transient_522d97_9ec765;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3594,14 +3597,14 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Dialog := Create(".myframe", Default_Toplevel_Create_Options);
-      Transient(Dialog, Get_Main_Window);
+      Set_Transient(Dialog, Get_Main_Window);
       Assert
-        (Transient(Dialog) = Get_Main_Window,
+        (Get_Transient(Dialog) = Get_Main_Window,
          "Failed to set transient window for Tk widget.");
       Destroy(Dialog);
 
 --  begin read only
-   end Test_2_Transient_test_wm_transient2;
+   end Test_Set_Transient_test_wm_transient2;
 --  end read only
 
 --  begin read only
@@ -3649,7 +3652,7 @@ package body Tk.Wm.Test_Data.Tests is
       end if;
       Withdraw(Get_Main_Window);
       Assert
-        (State(Get_Main_Window) = WITHDRAWN,
+        (Get_State(Get_Main_Window) = WITHDRAWN,
          "Failed to withdraw Tk main window.");
 
 --  begin read only
