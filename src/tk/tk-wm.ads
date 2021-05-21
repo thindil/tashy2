@@ -1398,6 +1398,8 @@ package Tk.Wm is
       -- Requester: constant Position_From_Value := Get_Position_From(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Position_From
+      -- COMMANDS
+      -- wm positionfrom Window
       -- SOURCE
    function Get_Position_From
      (Window: Tk_Widget) return Position_From_Value with
@@ -1420,6 +1422,8 @@ package Tk.Wm is
       -- Set_Position_From(Get_Main_Window, USER);
       -- SEE ALSO
       -- Wm.Get_Position_From
+      -- COMMANDS
+      -- wm positionfrom Window Who
       -- SOURCE
    procedure Set_Position_From
      (Window: Tk_Widget;
@@ -1445,6 +1449,8 @@ package Tk.Wm is
       -- Protocols: constant Array_List := Get_Protocols(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Get_Protocol, Wm.Set_Protocol
+      -- COMMANDS
+      -- wm protocol Window
       -- SOURCE
    function Get_Protocols(Window: Tk_Widget) return Array_List with
       Pre => Window /= Null_Widget,
@@ -1469,6 +1475,8 @@ package Tk.Wm is
       -- Value: constant String := Get_Protocol(Get_Main_Window, "WM_DELETE_WINDOW");
       -- SEE ALSO
       -- Wm.Get_Protocols, Wm.Set_Protocol
+      -- COMMANDS
+      -- wm protocol Window Name
       -- SOURCE
    function Get_Protocol(Window: Tk_Widget; Name: String) return String is
      (Tcl_Eval
@@ -1496,6 +1504,8 @@ package Tk.Wm is
       -- Set_Protocol(Get_Main_Window, "WM_DELETE_WINDOW", To_Tcl_String("exit"));
       -- SEE ALSO
       -- Wm.Get_Protocols, Wm.Get_Protocol
+      -- COMMANDS
+      -- wm protocol Window Name New_Command
       -- SOURCE
    procedure Set_Protocol
      (Window: Tk_Widget; Name: String; New_Command: Tcl_String) with
@@ -1521,6 +1531,8 @@ package Tk.Wm is
       -- Is_Resizable: constant Resizable_Data := Get_Resizable(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Resizable
+      -- COMMANDS
+      -- wm resizable Window
       -- SOURCE
    function Get_Resizable(Window: Tk_Widget) return Resizable_Data with
       Pre => Window /= Null_Widget,
@@ -1542,6 +1554,9 @@ package Tk.Wm is
       -- Set_Resizable(Get_Main_Window, False, False);
       -- SEE ALSO
       -- Wm.Get_Resizable
+      -- COMMANDS
+      -- wm resizable Window Width Height
+      -- SOURCE
    procedure Set_Resizable(Window: Tk_Widget; Width, Height: Boolean) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Resizable2", Mode => Nominal);
@@ -1563,6 +1578,8 @@ package Tk.Wm is
       -- Requester: constant Position_From_Value := Get_Size_From(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Size_From
+      -- COMMANDS
+      -- wm sizefrom Window
       -- SOURCE
    function Get_Size_From(Window: Tk_Widget) return Position_From_Value with
       Pre => Window /= Null_Widget,
@@ -1584,6 +1601,8 @@ package Tk.Wm is
       -- Size_From(Get_Main_Window, USER);
       -- SEE ALSO
       -- Wm.Get_Size_From
+      -- COMMANDS
+      -- wm sizefrom Window Who
       -- SOURCE
    procedure Set_Size_From
      (Window: Tk_Widget;
@@ -1608,6 +1627,8 @@ package Tk.Wm is
       -- Stacking_Order: constant Widgets_Array := Get_Stack_Order(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Get_Stack_Order_Above
+      -- COMMANDS
+      -- wm stackorder Window
       -- SOURCE
    function Get_Stack_Order(Window: Tk_Widget) return Widgets_Array with
       Pre => Window /= Null_Widget,
