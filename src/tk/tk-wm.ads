@@ -1657,6 +1657,9 @@ package Tk.Wm is
       -- Is_Above: constant Boolean := Get_Stack_Order_Above(Get_Main_Window, My_Dialog);
       -- SEE ALSO
       -- Wm.Get_Stack_Order
+      -- COMMANDS
+      -- wm stackorder Window isabove Second_Window (when Above is True)
+      -- wm stackorder Window isbelow Second_Window (when Above is False)
       -- SOURCE
    function Get_Stack_Order_Above
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
@@ -1685,6 +1688,8 @@ package Tk.Wm is
       -- Current_State: constant Window_States := Get_State(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_State
+      -- COMMANDS
+      -- wm state Window
       -- SOURCE
    function Get_State(Window: Tk_Widget) return Window_States is
      (Window_States'Value
@@ -1709,6 +1714,8 @@ package Tk.Wm is
       -- Set_State(Get_Main_Window, WITHDRAWN);
       -- SEE ALSO
       -- Wm.Get_State
+      -- COMMANDS
+      -- wm state Window New_State
       -- SOURCE
    procedure Set_State
      (Window: Tk_Widget; New_State: Window_States := Default_Window_State) with
@@ -1730,6 +1737,8 @@ package Tk.Wm is
       -- Window_Title: constant Tcl_String := Get_Title(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Title
+      -- COMMANDS
+      -- wm title Window
       -- SOURCE
    function Get_Title(Window: Tk_Widget) return Tcl_String is
      (To_Tcl_String
@@ -1754,6 +1763,8 @@ package Tk.Wm is
       -- Set_Title(Get_Main_Window, To_Tcl_String("My window"));
       -- SEE ALSO
       -- Wm.Get_Title
+      -- COMMANDS
+      -- wm title Window New_Title
       -- SOURCE
    procedure Set_Title(Window: Tk_Widget; New_Title: Tcl_String) with
       Pre => Window /= Null_Widget,
@@ -1775,6 +1786,8 @@ package Tk.Wm is
       -- Master: constant Tk_Widget := Get_Transient(My_Menu);
       -- SEE ALSO
       -- Wm.Set_Transient
+      -- COMMANDS
+      -- wm transient Window
       -- SOURCE
    function Get_Transient(Window: Tk_Widget) return Tk_Widget with
       Pre => Window /= Null_Widget,
@@ -1794,6 +1807,8 @@ package Tk.Wm is
       -- Set_Transient(My_Menu, Get_Main_Window);
       -- SEE ALSO
       -- Wm.Get_Transient
+      -- COMMANDS
+      -- wm transient Window Master
       -- SOURCE
    procedure Set_Transient(Window, Master: Tk_Widget) with
       Pre => Window /= Null_Widget,
@@ -1810,6 +1825,8 @@ package Tk.Wm is
       -- EXAMPLE
       -- -- Withdraw the Tk main window
       -- Withdraw(Get_Main_Window);
+      -- COMMANDS
+      -- wm withdraw Window
       -- SOURCE
    procedure Withdraw(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
