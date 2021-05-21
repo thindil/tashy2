@@ -1171,6 +1171,8 @@ package Tk.Wm is
       -- Icon_Position(Get_Main_Window, 20, 20);
       -- SEE ALSO
       -- Wm.Get_Icon_Position
+      -- COMMANDS
+      -- wm iconposition Window X Y
       -- SOURCE
    procedure Set_Icon_Position(Window: Tk_Widget; X, Y: Extended_Natural) with
       Pre => Window /= Null_Widget,
@@ -1193,6 +1195,8 @@ package Tk.Wm is
       -- Icon: constant Tk_Toplevel := Get_Icon_Window(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Icon_Window
+      -- COMMANDS
+      -- wm iconwindow Window
       -- SOURCE
    function Get_Icon_Window(Window: Tk_Widget) return Tk_Toplevel with
       Pre => Window /= Null_Widget,
@@ -1213,6 +1217,8 @@ package Tk.Wm is
       -- Set_Icon_Window(Get_Main_Window, My_Icon_Window);
       -- SEE ALSO
       -- Wm.Get_Icon_Window
+      -- COMMANDS
+      -- wm iconwindow Window New_Icon_Window
       -- SOURCE
    procedure Set_Icon_Window(Window, New_Icon_Window: Tk_Toplevel) with
       Pre => Window /= Null_Widget and New_Icon_Window /= Null_Widget,
@@ -1229,6 +1235,8 @@ package Tk.Wm is
       -- EXAMPLE
       -- -- Set My_Dialog Tk_Frame as stand alone window
       -- Manage(My_Dialog);
+      -- COMMANDS
+      -- wm manage Window
       -- SOURCE
    procedure Manage(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
@@ -1251,6 +1259,8 @@ package Tk.Wm is
       -- Allowed_Size: constant Window_Size := Get_Max_Size(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Max_Size
+      -- COMMANDS
+      -- wm maxsize Window
       -- SOURCE
    function Get_Max_Size(Window: Tk_Widget) return Window_Size with
       Pre => Window /= Null_Widget,
@@ -1272,6 +1282,8 @@ package Tk.Wm is
       -- Set_Max_Size(Get_Main_Window, 100, 120);
       -- SEE ALSO
       -- Wm.Get_Max_Size
+      -- COMMANDS
+      -- wm maxsize Window Width Height
       -- SOURCE
    procedure Set_Max_Size(Window: Tk_Widget; Width, Height: Positive) with
       Pre => Window /= Null_Widget,
@@ -1294,6 +1306,8 @@ package Tk.Wm is
       -- Minimum_Size: constant Window_Size := Get_Min_Size(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Min_Size
+      -- COMMANDS
+      -- wm minsize Window
       -- SOURCE
    function Get_Min_Size(Window: Tk_Widget) return Window_Size with
       Pre => Window /= Null_Widget,
@@ -1315,6 +1329,8 @@ package Tk.Wm is
       -- Set_Min_Size(Get_Main_Window, 200, 240);
       -- SEE ALSO
       -- Wm.Get_Min_Size
+      -- COMMANDS
+      -- wm minsize Window Width Height
       -- SOURCE
    procedure Set_Min_Size(Window: Tk_Widget; Width, Height: Positive) with
       Pre => Window /= Null_Widget,
@@ -1335,6 +1351,8 @@ package Tk.Wm is
       -- Is_Ignored: constant Boolean := Get_Override_Redirect(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Override_Redirect
+      -- COMMANDS
+      -- wm overrideredirect Window
       -- SOURCE
    function Get_Override_Redirect(Window: Tk_Widget) return Boolean is
      (Tcl_Eval
@@ -1356,6 +1374,8 @@ package Tk.Wm is
       -- Set_Override_Redirect(Get_Main_Window, True);
       -- SEE ALSO
       -- Wm.Get_Override_Redirect
+      -- COMMANDS
+      -- wm overrideredirect Window Override
       -- SOURCE
    procedure Set_Override_Redirect(Window: Tk_Widget; Override: Boolean) with
       Pre => Window /= Null_Widget,
