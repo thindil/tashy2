@@ -709,6 +709,8 @@ package Tk.Wm is
       -- Deiconify(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Iconify
+      -- COMMANDS
+      -- wm deiconify Window
       -- SOURCE
    procedure Deiconify(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
@@ -729,6 +731,8 @@ package Tk.Wm is
       -- Focus: constant Focus_Model_Types := Get_Focus_Model(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Focus_Model
+      -- COMMANDS
+      -- wm focusmodel Window
       -- SOURCE
    function Get_Focus_Model(Window: Tk_Widget) return Focus_Model_Types with
       Pre => Window /= Null_Widget,
@@ -748,6 +752,8 @@ package Tk.Wm is
       -- Set_Focus_Model(Get_Main_Window, ACTIVE);
       -- SEE ALSO
       -- Wm.Get_Focus_Model
+      -- COMMANDS
+      -- wm focusmodel Window Model
       -- SOURCE
    procedure Set_Focus_Model(Window: Tk_Widget; Model: Focus_Model_Types) with
       Pre => Window /= Null_Widget,
@@ -765,6 +771,8 @@ package Tk.Wm is
       -- EXAMPLE
       -- -- Unmap the main Tk window
       -- Forget(Get_Main_Window);
+      -- COMMANDS
+      -- wm forget Window
       -- SOURCE
    procedure Forget(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
@@ -785,6 +793,8 @@ package Tk.Wm is
       -- EXAMPLE
       -- -- Get the parent frame for Tk main window
       -- Parent_Frame: constant Tk_Window := Get_Frame(Get_Main_Window);
+      -- COMMANDS
+      -- wm frame Window
       -- SOURCE
    function Get_Frame(Window: Tk_Widget) return Tk_Window with
       Pre => Window /= Null_Widget,
@@ -805,6 +815,8 @@ package Tk.Wm is
       -- Widget_Geometry: constant Window_Geometry := Geometry(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Geometry
+      -- COMMANDS
+      -- wm geometry Window
       -- SOURCE
    function Get_Geometry(Window: Tk_Widget) return Window_Geometry with
       Pre => Window /= Null_Widget,
@@ -829,6 +841,8 @@ package Tk.Wm is
       -- Geometry(Get_Main_Window, 800, 600, 0, 0);
       -- SEE ALSO
       -- Wm.Set_Geometry
+      -- COMMANDS
+      -- wm geometry Window ?=WidthxHeight??+X+Y?
       -- SOURCE
    procedure Set_Geometry
      (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) with
@@ -850,6 +864,8 @@ package Tk.Wm is
       -- Grid_Setting: constant Window_Grid_Geometry := Get_Grid(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Grid
+      -- COMMANDS
+      -- wm grid Window
       -- SOURCE
    function Get_Grid(Window: Tk_Widget) return Window_Grid_Geometry with
       Pre => Window /= Null_Widget,
@@ -875,6 +891,8 @@ package Tk.Wm is
       -- Set_Grid(Get_Main_Window, 10, 10, 5, 5);
       -- SEE ALSO
       -- Wm.Set_Grid
+      -- COMMANDS
+      -- wm grid Window Base_Width Base_Height Width_Inc Height_Inc
       -- SOURCE
    procedure Set_Grid
      (Window: Tk_Widget;
@@ -900,6 +918,8 @@ package Tk.Wm is
       -- Leader_Path: constant String := Get_Group(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Group
+      -- COMMANDS
+      -- wm group Window
       -- SOURCE
    function Get_Group(Window: Tk_Widget) return String is
      (Tcl_Eval
