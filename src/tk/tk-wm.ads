@@ -943,6 +943,8 @@ package Tk.Wm is
       -- Set_Group(Get_Main_Window, To_Tcl_String(".mydialog"));
       -- SEE ALSO
       -- Wm.Get_Group
+      -- COMMANDS
+      -- wm group Window Path_Name
       -- SOURCE
    procedure Set_Group(Window: Tk_Widget; Path_Name: Tcl_String) with
       Pre => Window /= Null_Widget,
@@ -964,6 +966,8 @@ package Tk.Wm is
       -- Bitmap_Name: constant String := Get_Icon_Bitmap(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Icon_Bitmap
+      -- COMMANDS
+      -- wm iconbitmap Window
       -- SOURCE
    function Get_Icon_Bitmap(Window: Tk_Widget) return String is
      (Tcl_Eval
@@ -987,6 +991,8 @@ package Tk.Wm is
       -- Icon_Bitmap(Get_Main_Window, To_Tcl_String("warning"));
       -- SEE ALSO
       -- Wm.Get_Icon_Bitmap
+      -- COMMANDS
+      -- wm iconbitmap Window Bitmap
       -- SOURCE
    procedure Set_Icon_Bitmap(Window: Tk_Widget; Bitmap: Tcl_String) with
       Pre => Window /= Null_Widget,
@@ -1005,6 +1011,8 @@ package Tk.Wm is
       -- Iconify(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Deiconify
+      -- COMMANDS
+      -- wm iconify Window
       -- SOURCE
    procedure Iconify(Window: Tk_Widget) with
       Pre => Window /= Null_Widget,
@@ -1026,6 +1034,8 @@ package Tk.Wm is
       -- Mask_Name: constant String := Get_Icon_Mask(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Icon_Mask
+      -- COMMANDS
+      -- wm iconmask Window
       -- SOURCE
    function Get_Icon_Mask(Window: Tk_Widget) return String is
      (Tcl_Eval
@@ -1048,6 +1058,8 @@ package Tk.Wm is
       -- Set_Icon_Mask(Get_Main_Window, To_Tcl_String("warning"));
       -- SEE ALSO
       -- Wm.Get_Icon_Mask
+      -- COMMANDS
+      -- wm iconmask Window Bitmap
       -- SOURCE
    procedure Set_Icon_Mask(Window: Tk_Widget; Bitmap: Tcl_String) with
       Pre => Window /= Null_Widget,
@@ -1069,6 +1081,8 @@ package Tk.Wm is
       -- Name_Of_Icon: constant String := Get_Icon_Name(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Icon_Name
+      -- COMMANDS
+      -- wm iconname Window
       -- SOURCE
    function Get_Icon_Name(Window: Tk_Widget) return String is
      (Tcl_Eval
@@ -1091,6 +1105,8 @@ package Tk.Wm is
       -- Set_Icon_Name(Get_Main_Window, To_Tcl_String("myicon"));
       -- SEE ALSO
       -- Wm.Get_Icon_Name
+      -- COMMANDS
+      -- wm iconname Window New_Name
       -- SOURCE
    procedure Set_Icon_Name(Window: Tk_Widget; New_Name: Tcl_String) with
       Pre => Window /= Null_Widget,
@@ -1110,6 +1126,8 @@ package Tk.Wm is
       -- EXAMPLE
       -- -- Set titlebar icons for the Tk main window to myicon and mybigicon
       -- Set_Icon_Photo(Get_Main_Window, (To_Tcl_String("myicon"), To_Tcl_String("mybigicon")));
+      -- COMMANDS
+      -- wm iconphoto Window ?-default? Images
       -- SOURCE
    procedure Set_Icon_Photo
      (Window: Tk_Widget; Images: Array_List; Default: Boolean := False) with
@@ -1131,6 +1149,8 @@ package Tk.Wm is
       -- Position: constant Window_Position := Get_Icon_Position(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Icon_Position
+      -- COMMANDS
+      -- wm iconposition Window
       -- SOURCE
    function Get_Icon_Position(Window: Tk_Widget) return Window_Position with
       Pre => Window /= Null_Widget,
