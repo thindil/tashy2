@@ -30,13 +30,3 @@ jobs:
 
     - name: Build and run the tests
       run: scripts/tests.tcl
-
-    - name: Run AdaControl
-      run: scripts/check.tcl
-
-    - name: Upload the log
-      uses: actions/upload-artifact@v2
-      if: failure()
-      with:
-         name: adacontrol.log
-         path: adacontrol.log
