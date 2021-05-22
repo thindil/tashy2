@@ -1,0 +1,30 @@
+name: AdaControl checks
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  tests:
+
+    runs-on: ubuntu-latest
+
+    container: ghcr.io/thindil/adabuild:9
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run AdaControl
+      run: |
+         mkdir obj
+         scripts/check.tcl
+
+    - name: Upload the log
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+         name: adacontrol.log
+         path: adacontrol.log
+
