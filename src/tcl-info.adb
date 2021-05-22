@@ -14,7 +14,7 @@
 
 package body Tcl.Info is
 
-   function Commands_Count
+   function Get_Commands_Count
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
       function Integer_Eval is new Generic_Scalar_Tcl_Eval
         (Result_Type => Integer);
@@ -22,6 +22,6 @@ package body Tcl.Info is
       return
         Integer_Eval
           (Tcl_Script => "info cmdcount", Interpreter => Interpreter);
-   end Commands_Count;
+   end Get_Commands_Count;
 
 end Tcl.Info;

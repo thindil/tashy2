@@ -21,7 +21,7 @@ with Tcl.Lists; use Tcl.Lists;
 package Tcl.Info is
 
    --## rule off REDUCEABLE_SCOPE
-   -- ****f* Info/Info.Arguments
+   -- ****f* Info/Info.Get_Arguments
    -- FUNCTION
    -- Get the list of available arguments names for the selected Tcl procedure
    -- PARAMETERS
@@ -35,9 +35,9 @@ package Tcl.Info is
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Get the names of arguments or Tcl procedure myproc on default interpreter
-   -- Arguments_Names: constant Array_List := Arguments("myproc");
+   -- Arguments_Names: constant Array_List := Get_Arguments("myproc");
    -- SOURCE
-   function Arguments
+   function Get_Arguments
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
      (Split_List
@@ -50,7 +50,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Arguments", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Procedure_Body
+      -- ****f* Info/Info.Get_Procedure_Body
       -- FUNCTION
       -- Get the body of the selected Tcl procedure
       -- PARAMETERS
@@ -63,9 +63,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the body of Tcl procedure myproc2 on default interpreter
-      -- Proc_Body: constant String := Procedure_Body("myproc2");
+      -- Proc_Body: constant String := Get_Procedure_Body("myproc2");
       -- SOURCE
-   function Procedure_Body
+   function Get_Procedure_Body
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
      (Tcl_Eval
@@ -75,7 +75,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Procedure_Body", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Commands_Count
+      -- ****f* Info/Info.Get_Commands_Count
       -- FUNCTION
       -- Get the number of invoked commands on the selected Tcl interpreter
       -- PARAMETERS
@@ -88,14 +88,14 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the amount of invoked command on the default Tcl interpreter
-      -- Amount: constant Natural := Commands_Count;
+      -- Amount: constant Natural := Get_Commands_Count;
       -- SOURCE
-   function Commands_Count
+   function Get_Commands_Count
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Commands_Count", Mode => Nominal);
 
-      -- ****f* Info/Info.Commands
+      -- ****f* Info/Info.Get_Commands
       -- FUNCTION
       -- Get the list of names of Tcl commands which match the pattern
       -- PARAMETERS
@@ -111,9 +111,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available commands in default Tcl interpreter
-      -- Commands_Names: constant Array_List := Commands;
+      -- Commands_Names: constant Array_List := Get_Commands;
       -- SOURCE
-   function Commands
+   function Get_Commands
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
      (Split_List
