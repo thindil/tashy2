@@ -33,7 +33,7 @@ package body Tcl.Info.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Arguments_deca52_2155d3
+   function Wrap_Test_Get_Arguments_58c9c6_2155d3
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
@@ -48,8 +48,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Arguments test requirement violated");
       end;
       declare
-         Test_Arguments_deca52_2155d3_Result: constant Array_List :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Arguments
+         Test_Get_Arguments_58c9c6_2155d3_Result: constant Array_List :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Arguments
              (Proc_Name, Interpreter);
       begin
          begin
@@ -61,21 +61,21 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Arguments test commitment violated");
          end;
-         return Test_Arguments_deca52_2155d3_Result;
+         return Test_Get_Arguments_58c9c6_2155d3_Result;
       end;
-   end Wrap_Test_Arguments_deca52_2155d3;
+   end Wrap_Test_Get_Arguments_58c9c6_2155d3;
 --  end read only
 
 --  begin read only
-   procedure Test_Arguments_test_info_arguments(Gnattest_T: in out Test);
-   procedure Test_Arguments_deca52_2155d3(Gnattest_T: in out Test) renames
-     Test_Arguments_test_info_arguments;
---  id:2.2/deca529d5ef23548/Arguments/1/0/test_info_arguments/
-   procedure Test_Arguments_test_info_arguments(Gnattest_T: in out Test) is
-      function Arguments
+   procedure Test_Get_Arguments_test_info_arguments(Gnattest_T: in out Test);
+   procedure Test_Get_Arguments_58c9c6_2155d3(Gnattest_T: in out Test) renames
+     Test_Get_Arguments_test_info_arguments;
+--  id:2.2/58c9c62146c0356d/Get_Arguments/1/0/test_info_arguments/
+   procedure Test_Get_Arguments_test_info_arguments(Gnattest_T: in out Test) is
+      function Get_Arguments
         (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Array_List renames
-        Wrap_Test_Arguments_deca52_2155d3;
+        Wrap_Test_Get_Arguments_58c9c6_2155d3;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -84,7 +84,7 @@ package body Tcl.Info.Test_Data.Tests is
 
       Tcl_Eval("proc myproc {arg1 {arg2 2}} {return 0}");
       declare
-         Result: Array_List := Arguments("myproc");
+         Result: Array_List := Get_Arguments("myproc");
       begin
          Assert
            (Result'Length = 2 and Result(1) = To_Tcl_String("arg1"),
@@ -92,11 +92,11 @@ package body Tcl.Info.Test_Data.Tests is
       end;
 
 --  begin read only
-   end Test_Arguments_test_info_arguments;
+   end Test_Get_Arguments_test_info_arguments;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Procedure_Body_bc2330_b86b33
+   function Wrap_Test_Get_Procedure_Body_4ab4c1_b86b33
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
    begin
@@ -111,8 +111,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Procedure_Body test requirement violated");
       end;
       declare
-         Test_Procedure_Body_bc2330_b86b33_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Procedure_Body
+         Test_Get_Procedure_Body_4ab4c1_b86b33_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Procedure_Body
              (Proc_Name, Interpreter);
       begin
          begin
@@ -124,23 +124,24 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Procedure_Body test commitment violated");
          end;
-         return Test_Procedure_Body_bc2330_b86b33_Result;
+         return Test_Get_Procedure_Body_4ab4c1_b86b33_Result;
       end;
-   end Wrap_Test_Procedure_Body_bc2330_b86b33;
+   end Wrap_Test_Get_Procedure_Body_4ab4c1_b86b33;
 --  end read only
 
 --  begin read only
-   procedure Test_Procedure_Body_test_info_procedure_body
+   procedure Test_Get_Procedure_Body_test_info_procedure_body
      (Gnattest_T: in out Test);
-   procedure Test_Procedure_Body_bc2330_b86b33(Gnattest_T: in out Test) renames
-     Test_Procedure_Body_test_info_procedure_body;
---  id:2.2/bc2330b4c01267e2/Procedure_Body/1/0/test_info_procedure_body/
-   procedure Test_Procedure_Body_test_info_procedure_body
+   procedure Test_Get_Procedure_Body_4ab4c1_b86b33
+     (Gnattest_T: in out Test) renames
+     Test_Get_Procedure_Body_test_info_procedure_body;
+--  id:2.2/4ab4c1197abe1ad1/Get_Procedure_Body/1/0/test_info_procedure_body/
+   procedure Test_Get_Procedure_Body_test_info_procedure_body
      (Gnattest_T: in out Test) is
-      function Procedure_Body
+      function Get_Procedure_Body
         (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
          return String renames
-        Wrap_Test_Procedure_Body_bc2330_b86b33;
+        Wrap_Test_Get_Procedure_Body_4ab4c1_b86b33;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -148,15 +149,15 @@ package body Tcl.Info.Test_Data.Tests is
    begin
 
       Assert
-        (Procedure_Body("myproc") = "return 0",
+        (Get_Procedure_Body("myproc") = "return 0",
          "Failed to get the body of Tcl procedure.");
 
 --  begin read only
-   end Test_Procedure_Body_test_info_procedure_body;
+   end Test_Get_Procedure_Body_test_info_procedure_body;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Commands_Count_39e46a_cae496
+   function Wrap_Test_Get_Commands_Count_9e53d6_cae496
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
    begin
       begin
@@ -169,8 +170,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Commands_Count test requirement violated");
       end;
       declare
-         Test_Commands_Count_39e46a_cae496_Result: constant Natural :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Commands_Count
+         Test_Get_Commands_Count_9e53d6_cae496_Result: constant Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Commands_Count
              (Interpreter);
       begin
          begin
@@ -182,23 +183,24 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Commands_Count test commitment violated");
          end;
-         return Test_Commands_Count_39e46a_cae496_Result;
+         return Test_Get_Commands_Count_9e53d6_cae496_Result;
       end;
-   end Wrap_Test_Commands_Count_39e46a_cae496;
+   end Wrap_Test_Get_Commands_Count_9e53d6_cae496;
 --  end read only
 
 --  begin read only
-   procedure Test_Commands_Count_test_info_commands_count
+   procedure Test_Get_Commands_Count_test_info_commands_count
      (Gnattest_T: in out Test);
-   procedure Test_Commands_Count_39e46a_cae496(Gnattest_T: in out Test) renames
-     Test_Commands_Count_test_info_commands_count;
---  id:2.2/39e46a558838a3ef/Commands_Count/1/0/test_info_commands_count/
-   procedure Test_Commands_Count_test_info_commands_count
+   procedure Test_Get_Commands_Count_9e53d6_cae496
+     (Gnattest_T: in out Test) renames
+     Test_Get_Commands_Count_test_info_commands_count;
+--  id:2.2/9e53d671a67c9d1c/Get_Commands_Count/1/0/test_info_commands_count/
+   procedure Test_Get_Commands_Count_test_info_commands_count
      (Gnattest_T: in out Test) is
-      function Commands_Count
+      function Get_Commands_Count
         (Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Natural renames
-        Wrap_Test_Commands_Count_39e46a_cae496;
+        Wrap_Test_Get_Commands_Count_9e53d6_cae496;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -208,15 +210,15 @@ package body Tcl.Info.Test_Data.Tests is
 
       Tcl_Eval("info cmdcount");
       Assert
-        (Commands_Count = Get_Result,
+        (Get_Commands_Count = Get_Result,
          "Failed to get amount of available Tcl commands.");
 
 --  begin read only
-   end Test_Commands_Count_test_info_commands_count;
+   end Test_Get_Commands_Count_test_info_commands_count;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Commands_3c9a65_675616
+   function Wrap_Test_Get_Commands_f2ad9c_675616
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
@@ -230,8 +232,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Command test requirement violated");
       end;
       declare
-         Test_Commands_3c9a65_675616_Result: constant Array_List :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Commands
+         Test_Get_Commands_f2ad9c_675616_Result: constant Array_List :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Commands
              (Pattern, Interpreter);
       begin
          begin
@@ -243,39 +245,36 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Command test commitment violated");
          end;
-         return Test_Commands_3c9a65_675616_Result;
+         return Test_Get_Commands_f2ad9c_675616_Result;
       end;
-   end Wrap_Test_Commands_3c9a65_675616;
+   end Wrap_Test_Get_Commands_f2ad9c_675616;
 --  end read only
 
 --  begin read only
-   procedure Test_Commands_test_info_command(Gnattest_T: in out Test);
-   procedure Test_Commands_3c9a65_675616(Gnattest_T: in out Test) renames
-     Test_Commands_test_info_command;
---  id:2.2/3c9a65207fbc153e/Commands/1/0/test_info_command/
-   procedure Test_Commands_test_info_command(Gnattest_T: in out Test) is
-      function Commands
+   procedure Test_Get_Commands_test_info_command(Gnattest_T: in out Test);
+   procedure Test_Get_Commands_f2ad9c_675616(Gnattest_T: in out Test) renames
+     Test_Get_Commands_test_info_command;
+--  id:2.2/f2ad9ce2c55ff78f/Get_Commands/1/0/test_info_command/
+   procedure Test_Get_Commands_test_info_command(Gnattest_T: in out Test) is
+      function Get_Commands
         (Pattern: String := "";
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Array_List renames
-        Wrap_Test_Commands_3c9a65_675616;
+        Wrap_Test_Get_Commands_f2ad9c_675616;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Commands_Array: Array_List := Get_Commands("put*");
 
    begin
 
-      declare
-         Commands_Array: Array_List := Commands("put*");
-      begin
-         Assert
-           (Commands_Array'Length = 1 and
-            Commands_Array(1) = To_Unbounded_String("puts"),
-            "Failed to get names of available Tcl commands.");
-      end;
+      Assert
+        (Commands_Array'Length = 1 and
+         Commands_Array(1) = To_Unbounded_String("puts"),
+         "Failed to get names of available Tcl commands.");
 
 --  begin read only
-   end Test_Commands_test_info_command;
+   end Test_Get_Commands_test_info_command;
 --  end read only
 
 --  begin read only

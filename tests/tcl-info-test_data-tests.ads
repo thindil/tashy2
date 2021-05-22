@@ -10,17 +10,17 @@ package Tcl.Info.Test_Data.Tests is
      .Test with
    null record;
 
-   procedure Test_Arguments_deca52_2155d3(Gnattest_T: in out Test);
-   --  tcl-info.ads:40:4:Arguments:Test_Info_Arguments
+   procedure Test_Get_Arguments_58c9c6_2155d3(Gnattest_T: in out Test);
+   --  tcl-info.ads:40:4:Get_Arguments:Test_Info_Arguments
 
-   procedure Test_Procedure_Body_bc2330_b86b33(Gnattest_T: in out Test);
-   --  tcl-info.ads:68:4:Procedure_Body:Test_Info_Procedure_Body
+   procedure Test_Get_Procedure_Body_4ab4c1_b86b33(Gnattest_T: in out Test);
+   --  tcl-info.ads:68:4:Get_Procedure_Body:Test_Info_Procedure_Body
 
-   procedure Test_Commands_Count_39e46a_cae496(Gnattest_T: in out Test);
-   --  tcl-info.ads:93:4:Commands_Count:Test_Info_Commands_Count
+   procedure Test_Get_Commands_Count_9e53d6_cae496(Gnattest_T: in out Test);
+   --  tcl-info.ads:93:4:Get_Commands_Count:Test_Info_Commands_Count
 
-   procedure Test_Commands_3c9a65_675616(Gnattest_T: in out Test);
-   --  tcl-info.ads:116:4:Commands:Test_Info_Command
+   procedure Test_Get_Commands_f2ad9c_675616(Gnattest_T: in out Test);
+   --  tcl-info.ads:116:4:Get_Commands:Test_Info_Command
 
    procedure Test_Complete_539361_79b807(Gnattest_T: in out Test);
    --  tcl-info.ads:145:4:Complete:Test_Info_Complete
