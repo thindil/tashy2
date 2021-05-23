@@ -25,29 +25,29 @@ package Tcl.Info.Test_Data.Tests is
    procedure Test_Complete_539361_79b807(Gnattest_T: in out Test);
    --  tcl-info.ads:145:4:Complete:Test_Info_Complete
 
-   procedure Test_Coroutine_e20165_613b2a(Gnattest_T: in out Test);
-   --  tcl-info.ads:170:4:Coroutine:Test_Info_Coroutine
+   procedure Test_Get_Coroutine_df9ca4_613b2a(Gnattest_T: in out Test);
+   --  tcl-info.ads:170:4:Get_Coroutine:Test_Info_Coroutine
 
-   procedure Test_Default_c49ada_db99d7(Gnattest_T: in out Test);
-   --  tcl-info.ads:201:4:Default:Test_Info_Default
+   procedure Test_Get_Default_2d3d83_db99d7(Gnattest_T: in out Test);
+   --  tcl-info.ads:201:4:Get_Default:Test_Info_Default
 
-   procedure Test_Error_Stack_5db13b_123ed2(Gnattest_T: in out Test);
-   --  tcl-info.ads:227:4:Error_Stack:Test_Info_ErrorStack
+   procedure Test_Get_Error_Stack_c33442_123ed2(Gnattest_T: in out Test);
+   --  tcl-info.ads:227:4:Get_Error_Stack:Test_Info_ErrorStack
 
    procedure Test_Exists_e0ba6a_a2ca41(Gnattest_T: in out Test);
    --  tcl-info.ads:250:4:Exists:Test_Info_Exists
 
-   procedure Test_Functions_b2b7c8_10dc33(Gnattest_T: in out Test);
-   --  tcl-info.ads:279:4:Functions:Test_Info_Functions
+   procedure Test_Get_Functions_5a1dbc_10dc33(Gnattest_T: in out Test);
+   --  tcl-info.ads:279:4:Get_Functions:Test_Info_Functions
 
-   procedure Test_Globals_7b4587_c19ad0(Gnattest_T: in out Test);
-   --  tcl-info.ads:311:4:Globals:Test_Info_Globals
+   procedure Test_Get_Globals_1284d9_c19ad0(Gnattest_T: in out Test);
+   --  tcl-info.ads:311:4:Get_Globals:Test_Info_Globals
 
-   procedure Test_Host_Name_f9deb0_b2a918(Gnattest_T: in out Test);
-   --  tcl-info.ads:339:4:Host_Name:Test_Info_HostName
+   procedure Test_Get_Host_Name_0a278d_b2a918(Gnattest_T: in out Test);
+   --  tcl-info.ads:339:4:Get_Host_Name:Test_Info_HostName
 
-   procedure Test_Library_77b287_8b9a20(Gnattest_T: in out Test);
-   --  tcl-info.ads:361:4:Library:Test_Info_Library
+   procedure Test_Get_Library_36938c_8b9a20(Gnattest_T: in out Test);
+   --  tcl-info.ads:361:4:Get_Library:Test_Info_Library
 
    procedure Test_Locals_1f3300_f4c43e(Gnattest_T: in out Test);
    --  tcl-info.ads:387:4:Locals:Test_Info_Locals
