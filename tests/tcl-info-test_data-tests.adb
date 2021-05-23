@@ -335,7 +335,7 @@ package body Tcl.Info.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Coroutine_e20165_613b2a
+   function Wrap_Test_Get_Coroutine_df9ca4_613b2a
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       begin
@@ -348,8 +348,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Coroutine test requirement violated");
       end;
       declare
-         Test_Coroutine_e20165_613b2a_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Coroutine
+         Test_Get_Coroutine_df9ca4_613b2a_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Coroutine
              (Interpreter);
       begin
          begin
@@ -361,34 +361,35 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Coroutine test commitment violated");
          end;
-         return Test_Coroutine_e20165_613b2a_Result;
+         return Test_Get_Coroutine_df9ca4_613b2a_Result;
       end;
-   end Wrap_Test_Coroutine_e20165_613b2a;
+   end Wrap_Test_Get_Coroutine_df9ca4_613b2a;
 --  end read only
 
 --  begin read only
-   procedure Test_Coroutine_test_info_coroutine(Gnattest_T: in out Test);
-   procedure Test_Coroutine_e20165_613b2a(Gnattest_T: in out Test) renames
-     Test_Coroutine_test_info_coroutine;
---  id:2.2/e20165c7c1a804b5/Coroutine/1/0/test_info_coroutine/
-   procedure Test_Coroutine_test_info_coroutine(Gnattest_T: in out Test) is
-      function Coroutine
+   procedure Test_Get_Coroutine_test_info_coroutine(Gnattest_T: in out Test);
+   procedure Test_Get_Coroutine_df9ca4_613b2a(Gnattest_T: in out Test) renames
+     Test_Get_Coroutine_test_info_coroutine;
+--  id:2.2/df9ca4d1f658a1c9/Get_Coroutine/1/0/test_info_coroutine/
+   procedure Test_Get_Coroutine_test_info_coroutine(Gnattest_T: in out Test) is
+      function Get_Coroutine
         (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
-        Wrap_Test_Coroutine_e20165_613b2a;
+        Wrap_Test_Get_Coroutine_df9ca4_613b2a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      Assert(Coroutine = "", "Failed to get the name of current coroutine.");
+      Assert
+        (Get_Coroutine = "", "Failed to get the name of current coroutine.");
 
 --  begin read only
-   end Test_Coroutine_test_info_coroutine;
+   end Test_Get_Coroutine_test_info_coroutine;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Default_c49ada_db99d7
+   function Wrap_Test_Get_Default_2d3d83_db99d7
      (Proc_Name, Argument, Var_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
    begin
@@ -404,8 +405,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Default test requirement violated");
       end;
       declare
-         Test_Default_c49ada_db99d7_Result: constant Boolean :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Default
+         Test_Get_Default_2d3d83_db99d7_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Default
              (Proc_Name, Argument, Var_Name, Interpreter);
       begin
          begin
@@ -417,22 +418,22 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Default test commitment violated");
          end;
-         return Test_Default_c49ada_db99d7_Result;
+         return Test_Get_Default_2d3d83_db99d7_Result;
       end;
-   end Wrap_Test_Default_c49ada_db99d7;
+   end Wrap_Test_Get_Default_2d3d83_db99d7;
 --  end read only
 
 --  begin read only
-   procedure Test_Default_test_info_default(Gnattest_T: in out Test);
-   procedure Test_Default_c49ada_db99d7(Gnattest_T: in out Test) renames
-     Test_Default_test_info_default;
---  id:2.2/c49adaf20f823d22/Default/1/0/test_info_default/
-   procedure Test_Default_test_info_default(Gnattest_T: in out Test) is
-      function Default
+   procedure Test_Get_Default_test_info_default(Gnattest_T: in out Test);
+   procedure Test_Get_Default_2d3d83_db99d7(Gnattest_T: in out Test) renames
+     Test_Get_Default_test_info_default;
+--  id:2.2/2d3d83648d914271/Get_Default/1/0/test_info_default/
+   procedure Test_Get_Default_test_info_default(Gnattest_T: in out Test) is
+      function Get_Default
         (Proc_Name, Argument, Var_Name: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Boolean renames
-        Wrap_Test_Default_c49ada_db99d7;
+        Wrap_Test_Get_Default_2d3d83_db99d7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -440,9 +441,9 @@ package body Tcl.Info.Test_Data.Tests is
    begin
 
       Assert
-        (not Default("myproc", "arg1", "myvalue"),
+        (not Get_Default("myproc", "arg1", "myvalue"),
          "Failed to get info about no default value in Tcl procedure.");
-      if Default("myproc", "arg2", "myvalue") then
+      if Get_Default("myproc", "arg2", "myvalue") then
          Assert
            (Tcl_Get_Var("myvalue") = "2",
             "Failed to get default value for Tcl procedure.");
@@ -452,11 +453,11 @@ package body Tcl.Info.Test_Data.Tests is
       end if;
 
 --  begin read only
-   end Test_Default_test_info_default;
+   end Test_Get_Default_test_info_default;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Error_Stack_5db13b_123ed2
+   function Wrap_Test_Get_Error_Stack_c33442_123ed2
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       begin
@@ -469,8 +470,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_ErrorStack test requirement violated");
       end;
       declare
-         Test_Error_Stack_5db13b_123ed2_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Error_Stack
+         Test_Get_Error_Stack_c33442_123ed2_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Error_Stack
              (Interpreter);
       begin
          begin
@@ -482,30 +483,33 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_ErrorStack test commitment violated");
          end;
-         return Test_Error_Stack_5db13b_123ed2_Result;
+         return Test_Get_Error_Stack_c33442_123ed2_Result;
       end;
-   end Wrap_Test_Error_Stack_5db13b_123ed2;
+   end Wrap_Test_Get_Error_Stack_c33442_123ed2;
 --  end read only
 
 --  begin read only
-   procedure Test_Error_Stack_test_info_errorstack(Gnattest_T: in out Test);
-   procedure Test_Error_Stack_5db13b_123ed2(Gnattest_T: in out Test) renames
-     Test_Error_Stack_test_info_errorstack;
---  id:2.2/5db13bf08d56461a/Error_Stack/1/0/test_info_errorstack/
-   procedure Test_Error_Stack_test_info_errorstack(Gnattest_T: in out Test) is
-      function Error_Stack
+   procedure Test_Get_Error_Stack_test_info_errorstack
+     (Gnattest_T: in out Test);
+   procedure Test_Get_Error_Stack_c33442_123ed2
+     (Gnattest_T: in out Test) renames
+     Test_Get_Error_Stack_test_info_errorstack;
+--  id:2.2/c33442c4db0e9986/Get_Error_Stack/1/0/test_info_errorstack/
+   procedure Test_Get_Error_Stack_test_info_errorstack
+     (Gnattest_T: in out Test) is
+      function Get_Error_Stack
         (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
-        Wrap_Test_Error_Stack_5db13b_123ed2;
+        Wrap_Test_Get_Error_Stack_c33442_123ed2;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      Assert(Error_Stack'Length = 0, "Failed to get error stack info.");
+      Assert(Get_Error_Stack'Length = 0, "Failed to get error stack info.");
 
 --  begin read only
-   end Test_Error_Stack_test_info_errorstack;
+   end Test_Get_Error_Stack_test_info_errorstack;
 --  end read only
 
 --  begin read only
@@ -569,7 +573,7 @@ package body Tcl.Info.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Functions_b2b7c8_10dc33
+   function Wrap_Test_Get_Functions_5a1dbc_10dc33
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
@@ -583,8 +587,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Functions test requirement violated");
       end;
       declare
-         Test_Functions_b2b7c8_10dc33_Result: constant Array_List :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Functions
+         Test_Get_Functions_5a1dbc_10dc33_Result: constant Array_List :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Functions
              (Pattern, Interpreter);
       begin
          begin
@@ -596,43 +600,40 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Functions test commitment violated");
          end;
-         return Test_Functions_b2b7c8_10dc33_Result;
+         return Test_Get_Functions_5a1dbc_10dc33_Result;
       end;
-   end Wrap_Test_Functions_b2b7c8_10dc33;
+   end Wrap_Test_Get_Functions_5a1dbc_10dc33;
 --  end read only
 
 --  begin read only
-   procedure Test_Functions_test_info_functions(Gnattest_T: in out Test);
-   procedure Test_Functions_b2b7c8_10dc33(Gnattest_T: in out Test) renames
-     Test_Functions_test_info_functions;
---  id:2.2/b2b7c8fd7cc3ed6a/Functions/1/0/test_info_functions/
-   procedure Test_Functions_test_info_functions(Gnattest_T: in out Test) is
-      function Functions
+   procedure Test_Get_Functions_test_info_functions(Gnattest_T: in out Test);
+   procedure Test_Get_Functions_5a1dbc_10dc33(Gnattest_T: in out Test) renames
+     Test_Get_Functions_test_info_functions;
+--  id:2.2/5a1dbc0c2cd65b4e/Get_Functions/1/0/test_info_functions/
+   procedure Test_Get_Functions_test_info_functions(Gnattest_T: in out Test) is
+      function Get_Functions
         (Pattern: String := "";
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Array_List renames
-        Wrap_Test_Functions_b2b7c8_10dc33;
+        Wrap_Test_Get_Functions_5a1dbc_10dc33;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Functions_Array: Array_List := Get_Functions("log1*");
 
    begin
 
-      declare
-         Functions_Array: Array_List := Functions("log1*");
-      begin
-         Assert
-           (Functions_Array'Length = 1 and
-            Functions_Array(1) = To_Unbounded_String("log10"),
-            "Failed to get names of available Tcl math functions.");
-      end;
+      Assert
+        (Functions_Array'Length = 1 and
+         Functions_Array(1) = To_Unbounded_String("log10"),
+         "Failed to get names of available Tcl math functions.");
 
 --  begin read only
-   end Test_Functions_test_info_functions;
+   end Test_Get_Functions_test_info_functions;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Globals_7b4587_c19ad0
+   function Wrap_Test_Get_Globals_1284d9_c19ad0
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
@@ -646,8 +647,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Globals test requirement violated");
       end;
       declare
-         Test_Globals_7b4587_c19ad0_Result: constant Array_List :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Globals
+         Test_Get_Globals_1284d9_c19ad0_Result: constant Array_List :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Globals
              (Pattern, Interpreter);
       begin
          begin
@@ -659,43 +660,40 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Globals test commitment violated");
          end;
-         return Test_Globals_7b4587_c19ad0_Result;
+         return Test_Get_Globals_1284d9_c19ad0_Result;
       end;
-   end Wrap_Test_Globals_7b4587_c19ad0;
+   end Wrap_Test_Get_Globals_1284d9_c19ad0;
 --  end read only
 
 --  begin read only
-   procedure Test_Globals_test_info_globals(Gnattest_T: in out Test);
-   procedure Test_Globals_7b4587_c19ad0(Gnattest_T: in out Test) renames
-     Test_Globals_test_info_globals;
---  id:2.2/7b45873838f825e5/Globals/1/0/test_info_globals/
-   procedure Test_Globals_test_info_globals(Gnattest_T: in out Test) is
-      function Globals
+   procedure Test_Get_Globals_test_info_globals(Gnattest_T: in out Test);
+   procedure Test_Get_Globals_1284d9_c19ad0(Gnattest_T: in out Test) renames
+     Test_Get_Globals_test_info_globals;
+--  id:2.2/1284d97e337e3f8a/Get_Globals/1/0/test_info_globals/
+   procedure Test_Get_Globals_test_info_globals(Gnattest_T: in out Test) is
+      function Get_Globals
         (Pattern: String := "";
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Array_List renames
-        Wrap_Test_Globals_7b4587_c19ad0;
+        Wrap_Test_Get_Globals_1284d9_c19ad0;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Globals_Array: Array_List := Get_Globals("en*");
 
    begin
 
-      declare
-         Globals_Array: Array_List := Globals("en*");
-      begin
-         Assert
-           (Globals_Array'Length = 1 and
-            Globals_Array(1) = To_Unbounded_String("env"),
-            "Failed to get names of available Tcl global variables.");
-      end;
+      Assert
+        (Globals_Array'Length = 1 and
+         Globals_Array(1) = To_Unbounded_String("env"),
+         "Failed to get names of available Tcl global variables.");
 
 --  begin read only
-   end Test_Globals_test_info_globals;
+   end Test_Get_Globals_test_info_globals;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Host_Name_f9deb0_b2a918
+   function Wrap_Test_Get_Host_Name_0a278d_b2a918
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       begin
@@ -708,8 +706,8 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_HostName test requirement violated");
       end;
       declare
-         Test_Host_Name_f9deb0_b2a918_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Host_Name
+         Test_Get_Host_Name_0a278d_b2a918_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Host_Name
              (Interpreter);
       begin
          begin
@@ -721,20 +719,20 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_HostName test commitment violated");
          end;
-         return Test_Host_Name_f9deb0_b2a918_Result;
+         return Test_Get_Host_Name_0a278d_b2a918_Result;
       end;
-   end Wrap_Test_Host_Name_f9deb0_b2a918;
+   end Wrap_Test_Get_Host_Name_0a278d_b2a918;
 --  end read only
 
 --  begin read only
-   procedure Test_Host_Name_test_info_hostname(Gnattest_T: in out Test);
-   procedure Test_Host_Name_f9deb0_b2a918(Gnattest_T: in out Test) renames
-     Test_Host_Name_test_info_hostname;
---  id:2.2/f9deb06458f43f92/Host_Name/1/0/test_info_hostname/
-   procedure Test_Host_Name_test_info_hostname(Gnattest_T: in out Test) is
-      function Host_Name
+   procedure Test_Get_Host_Name_test_info_hostname(Gnattest_T: in out Test);
+   procedure Test_Get_Host_Name_0a278d_b2a918(Gnattest_T: in out Test) renames
+     Test_Get_Host_Name_test_info_hostname;
+--  id:2.2/0a278d606913e740/Get_Host_Name/1/0/test_info_hostname/
+   procedure Test_Get_Host_Name_test_info_hostname(Gnattest_T: in out Test) is
+      function Get_Host_Name
         (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
-        Wrap_Test_Host_Name_f9deb0_b2a918;
+        Wrap_Test_Get_Host_Name_0a278d_b2a918;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -742,14 +740,15 @@ package body Tcl.Info.Test_Data.Tests is
    begin
 
       Tcl_Eval("set host [info hostname]");
-      Assert(Host_Name = Tcl_Get_Var("host"), "Failed to get the host name.");
+      Assert
+        (Get_Host_Name = Tcl_Get_Var("host"), "Failed to get the host name.");
 
 --  begin read only
-   end Test_Host_Name_test_info_hostname;
+   end Test_Get_Host_Name_test_info_hostname;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Library_77b287_8b9a20
+   function Wrap_Test_Get_Library_36938c_8b9a20
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       begin
@@ -762,8 +761,9 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Library test requirement violated");
       end;
       declare
-         Test_Library_77b287_8b9a20_Result: constant String :=
-           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Library(Interpreter);
+         Test_Get_Library_36938c_8b9a20_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Library
+             (Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -774,20 +774,20 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Library test commitment violated");
          end;
-         return Test_Library_77b287_8b9a20_Result;
+         return Test_Get_Library_36938c_8b9a20_Result;
       end;
-   end Wrap_Test_Library_77b287_8b9a20;
+   end Wrap_Test_Get_Library_36938c_8b9a20;
 --  end read only
 
 --  begin read only
-   procedure Test_Library_test_info_library(Gnattest_T: in out Test);
-   procedure Test_Library_77b287_8b9a20(Gnattest_T: in out Test) renames
-     Test_Library_test_info_library;
---  id:2.2/77b28756b6b9de08/Library/1/0/test_info_library/
-   procedure Test_Library_test_info_library(Gnattest_T: in out Test) is
-      function Library
+   procedure Test_Get_Library_test_info_library(Gnattest_T: in out Test);
+   procedure Test_Get_Library_36938c_8b9a20(Gnattest_T: in out Test) renames
+     Test_Get_Library_test_info_library;
+--  id:2.2/36938c1064dbfd83/Get_Library/1/0/test_info_library/
+   procedure Test_Get_Library_test_info_library(Gnattest_T: in out Test) is
+      function Get_Library
         (Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
-        Wrap_Test_Library_77b287_8b9a20;
+        Wrap_Test_Get_Library_36938c_8b9a20;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -796,11 +796,11 @@ package body Tcl.Info.Test_Data.Tests is
 
       Tcl_Eval("set library [info library]");
       Assert
-        (Library = Tcl_Get_Var("library"),
+        (Get_Library = Tcl_Get_Var("library"),
          "Failed to get the path to Tcl library.");
 
 --  begin read only
-   end Test_Library_test_info_library;
+   end Test_Get_Library_test_info_library;
 --  end read only
 
 --  begin read only
