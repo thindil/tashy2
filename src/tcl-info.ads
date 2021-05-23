@@ -365,7 +365,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Library", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Locals
+      -- ****f* Info/Info.Get_Locals
       -- FUNCTION
       -- Get the list of names of Tcl local variables which match the pattern
       -- PARAMETERS
@@ -382,9 +382,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available local variables in default Tcl interpreter
-      -- Local_Variables_Names: constant Array_List := Locals;
+      -- Local_Variables_Names: constant Array_List := Get_Locals;
       -- SOURCE
-   function Locals
+   function Get_Locals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
      (Split_List
@@ -397,7 +397,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Locals", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Name_Of_Executable
+      -- ****f* Info/Info.Get_Name_Of_Executable
       -- FUNCTION
       -- Get the full path to the binary file from which the application was
       -- invoked
@@ -408,9 +408,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the name of executable on default interpreter
-      -- Full_Path: constant String := Name_Of_Executable;
+      -- Full_Path: constant String := Get_Name_Of_Executable;
       -- SOURCE
-   function Name_Of_Executable
+   function Get_Name_Of_Executable
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
         (Tcl_Script => "info nameofexecutable",
@@ -419,7 +419,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Name_Of_Executable", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Patch_Level
+      -- ****f* Info/Info.Get_Patch_Level
       -- FUNCTION
       -- Get the exact version of Tcl library. It is a value of global variable
       -- $tcl_pathLevel
@@ -432,9 +432,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the library version on default Tcl interpreter
-      -- Version: constant String := Patch_Level;
+      -- Version: constant String := Get_Patch_Level;
       -- SOURCE
-   function Patch_Level
+   function Get_Patch_Level
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
         (Tcl_Script => "info patchlevel", Interpreter => Interpreter)) with
@@ -442,7 +442,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Patch_Level", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Procs
+      -- ****f* Info/Info.Get_Procedures
       -- FUNCTION
       -- Get the list of names of Tcl procedures in current namespace which
       -- match the pattern
@@ -460,9 +460,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available procedures in default Tcl interpreter
-      -- Procedures_Names: constant Array_List := Procs;
+      -- Procedures_Names: constant Array_List := Get_Procedures;
       -- SOURCE
-   function Procs
+   function Get_Procedures
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
      (Split_List
@@ -475,7 +475,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Procs", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Script
+      -- ****f* Info/Info.Get_Script
       -- FUNCTION
       -- Get the name of currently evaluated Tcl script
       -- PARAMETERS
@@ -490,9 +490,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the name of the currently evaluated Tcl script on default Tcl interpreter
-      -- File_Name: constant String := Script;
+      -- File_Name: constant String := Get_Script;
       -- SOURCE
-   function Script
+   function Get_Script
      (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
      (Tcl_Eval
@@ -502,7 +502,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Script", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Tcl_Version
+      -- ****f* Info/Info.Get_Tcl_Version
       -- FUNCTION
       -- Get the major and minor version of Tcl library. It is a value of
       -- global variable $tcl_version
@@ -515,9 +515,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the library version on default Tcl interpreter
-      -- Version: constant String := Tcl_Version;
+      -- Version: constant String := Get_Tcl_Version;
       -- SOURCE
-   function Tcl_Version
+   function Get_Tcl_Version
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
         (Tcl_Script => "info tclversion", Interpreter => Interpreter)) with
@@ -525,7 +525,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Tcl_Version", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Vars
+      -- ****f* Info/Info.Get_Variables
       -- FUNCTION
       -- Get the list of names of global and local Tcl variables which match
       -- the pattern
@@ -542,9 +542,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available variables in default Tcl interpreter
-      -- Variables_Names: constant Array_List := Vars;
+      -- Variables_Names: constant Array_List := Get_Variables;
       -- SOURCE
-   function Vars
+   function Get_Variables
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
      (Split_List
