@@ -152,7 +152,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Complete", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Coroutine
+      -- ****f* Info/Info.Get_Coroutine
       -- FUNCTION
       -- Get the name of currently executed coroutine
       -- PARAMETERS
@@ -165,9 +165,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the name of the currently executed coroutine on My_Interpreter interpreter
-      -- Coroutine_Name: constant String := Coroutine(My_Interpreter);
+      -- Coroutine_Name: constant String := Get_Coroutine(My_Interpreter);
       -- SOURCE
-   function Coroutine
+   function Get_Coroutine
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
         (Tcl_Script => "info coroutine", Interpreter => Interpreter)) with
@@ -175,7 +175,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Coroutine", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Default
+      -- ****f* Info/Info.Get_Default
       -- FUNCTION
       -- Get the default value for the selected argument in the selected Tcl
       -- procedure
@@ -196,9 +196,9 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the default value of argument myarg in procedure myproc on the default
       -- -- interpreter and put it in Tcl variable myvar
-      -- Has_Default: constant Boolean := Default("myproc", "myarg", "myvar");
+      -- Has_Default: constant Boolean := Get_Default("myproc", "myarg", "myvar");
       -- SOURCE
-   function Default
+   function Get_Default
      (Proc_Name, Argument, Var_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
      (Tcl_Eval
@@ -210,7 +210,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Default", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Error_Stack
+      -- ****f* Info/Info.Get_Error_Stack
       -- FUNCTION
       -- Get the call stack of the last error on the selected Tcl interpreter
       -- PARAMETERS
@@ -222,9 +222,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the error call stack on the default interpreter
-      -- Error_Stack: constant String := ErrorStack;
+      -- Error_Stack: constant String := Get_Error_Stack;
       -- SOURCE
-   function Error_Stack
+   function Get_Error_Stack
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
         (Tcl_Script => "info errorstack", Interpreter => Interpreter)) with
@@ -257,7 +257,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Exists", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Functions
+      -- ****f* Info/Info.Get_Functions
       -- FUNCTION
       -- Get the list of names of Tcl math functions which match the pattern
       -- PARAMETERS
@@ -274,9 +274,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available math functions in default Tcl interpreter
-      -- Functions_Names: constant Array_List := Functions;
+      -- Functions_Names: constant Array_List := Get_Functions;
       -- SOURCE
-   function Functions
+   function Get_Functions
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
      (Split_List
@@ -289,7 +289,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Functions", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Globals
+      -- ****f* Info/Info.Get_Globals
       -- FUNCTION
       -- Get the list of names of Tcl global variables which match the pattern
       -- PARAMETERS
@@ -306,9 +306,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the names of all available global variables in default Tcl interpreter
-      -- Global_Variables_Names: constant Array_List := Globals;
+      -- Global_Variables_Names: constant Array_List := Get_Globals;
       -- SOURCE
-   function Globals
+   function Get_Globals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
      (Split_List
@@ -321,7 +321,7 @@ package Tcl.Info is
       Test_Case => (Name => "Test_Info_Globals", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Host_Name
+      -- ****f* Info/Info.Get_Host_Name
       -- FUNCTION
       -- Get the name of the computer on which the function is executed.
       -- PARAMETERS
@@ -334,16 +334,16 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the name of computer on default Tcl interpreter
-      -- Host_Name: constant String := HostName;
+      -- Host_Name: constant String := Get_Host_Name;
       -- SOURCE
-   function Host_Name
+   function Get_Host_Name
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval(Tcl_Script => "info hostname", Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_HostName", Mode => Nominal);
       -- ****
 
-      -- ****f* Info/Info.Library
+      -- ****f* Info/Info.Get_Library
       -- FUNCTION
       -- Get the library directory where the standard Tcl scripts are stored.
       -- It is a value of global variable $tcl_library
@@ -356,9 +356,9 @@ package Tcl.Info is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the library directory on default Tcl interpreter
-      -- Library_Path: constant String := Library;
+      -- Library_Path: constant String := Get_Library;
       -- SOURCE
-   function Library
+   function Get_Library
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval(Tcl_Script => "info library", Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter,
