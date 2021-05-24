@@ -16,6 +16,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Set up the library
+      run: scripts/setup.tcl auto
+
     - name: Run AdaControl
       run: |
          mkdir obj
