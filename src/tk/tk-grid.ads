@@ -173,7 +173,7 @@ package Tk.Grid is
       Test_Case => (Name => "Test_Add2", Mode => Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Anchor_(procedure)
+      -- ****f* Grid/Grid.Set_Anchor
       -- FUNCTION
       -- Set how to place the grid withing the master when no row or column
       -- has any weight.
@@ -185,18 +185,18 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set anchor of grid in My_Frame widget to west
-      -- Anchor(My_Frame, W);
+      -- Set_Anchor(My_Frame, W);
       -- SEE ALSO
-      -- Grid.Anchor_(function)
+      -- Grid.Get_Anchor
       -- COMMANDS
       -- grid anchor master new_direction
       -- SOURCE
-   procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) with
+   procedure Set_Anchor(Master: Tk_Widget; New_Direction: Directions_Type) with
       Pre => Master /= Null_Widget and New_Direction /= NONE,
       Test_Case => (Name => "Test_Anchor1", Mode => Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Anchor_(function)
+      -- ****f* Grid/Grid.Get_Anchor
       -- FUNCTION
       -- Get the current anchor value for the selected grid geometry manager
       -- PARAMETERS
@@ -207,13 +207,13 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get anchor of grid in My_Frame widget to west
-      -- Anchor(My_Frame);
+      -- Current_Anchor: constant Directions_Type := Get_Anchor(My_Frame);
       -- SEE ALSO
-      -- Grid.Anchor_(procedure)
+      -- Grid.Set_Anchor
       -- COMMANDS
       -- grid anchor master
       -- SOURCE
-   function Anchor(Master: Tk_Widget) return Directions_Type is
+   function Get_Anchor(Master: Tk_Widget) return Directions_Type is
      (Directions_Type'Value
         (Tcl_Eval
            (Tcl_Script => "grid anchor " & Tk_Path_Name(Widgt => Master),
@@ -222,7 +222,7 @@ package Tk.Grid is
       Test_Case => (Name => "Test_Anchor2", Mode => Nominal);
       -- ****
 
-      -- ****f* Tk.Grid/BBox
+      -- ****f* Tk.Grid/Get_Bounding_Box
       -- FUNCTION
       -- Get the bounding box of the selected grid
       -- PARAMETERS
@@ -250,11 +250,11 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the bounding box of grid in My_Frame widget
-      -- Bounding_Box: constant BBox_Data := BBox(My_Frame);
+      -- Bounding_Box: constant BBox_Data := Get_Bounding_Box(My_Frame);
       -- COMMANDS
       -- grid bbox master ?column row? ?column2 row2?
       -- SOURCE
-   function Bounding_Box
+   function Get_Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return Bbox_Data with
       Pre => Master /= Null_Widget,
@@ -277,7 +277,7 @@ package Tk.Grid is
       -- COMMANDS
       -- grid columnconfigure master child_name options
       -- SEE ALSO
-      -- Grid.Column_Configure_(child), Grid.Column_Configure_(column_number)
+      -- Grid.Column_Configure_(widget), Grid.Column_Configure_(column_number)
       -- SOURCE
    procedure Column_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
@@ -286,7 +286,7 @@ package Tk.Grid is
       Test_Case => (Name => "Test_Column_Configure1", Mode => Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Column_Configure_(child)
+      -- ****f* Grid/Grid.Column_Configure_(widget)
       -- FUNCTION
       -- Configure the selected column in the selected grid
       -- PARAMETERS
@@ -327,7 +327,7 @@ package Tk.Grid is
       -- COMMANDS
       -- grid columnconfigure master column options
       -- SEE ALSO
-      -- Grid.Column_Configure_(child_name), Grid.Column_Configure_(child)
+      -- Grid.Column_Configure_(child_name), Grid.Column_Configure_(widget)
       -- SOURCE
    procedure Column_Configure
      (Master: Tk_Widget; Column: Natural; Options: Column_Options) with
@@ -444,7 +444,7 @@ package Tk.Grid is
       Test_Case => (Name => "Test_Forget2", Mode => Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Info
+      -- ****f* Grid/Grid.Get_Info
       -- FUNCTION
       -- Get the grid configuration options for the selected widget
       -- PARAMETERS
@@ -456,16 +456,16 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the grid options for the My_Label widget
-      -- Options: constant String := Info(My_Label);
+      -- Options: constant String := Get_Info(My_Label);
       -- COMMANDS
       -- grid info widget
       -- SOURCE
-   function Info(Child: Tk_Widget) return Grid_Options with
+   function Get_Info(Child: Tk_Widget) return Grid_Options with
       Pre => Child /= Null_Widget,
       Test_Case => (Name => "Test_Info", Mode => Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Location
+      -- ****f* Grid/Grid.Get_Location
       -- FUNCTION
       -- Get the column and row at the selected location in the selected
       -- window
@@ -480,11 +480,11 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the column at point (10, 10) in My_Frame window grid
-      -- Location: constant Location_Position := Location(My_Frame, (10.0, PIXEL), (10.0, PIXEL));
+      -- Location: constant Location_Position := Get_Location(My_Frame, (10.0, PIXEL), (10.0, PIXEL));
       -- COMMANDS
       -- grid location master x y
       -- SOURCE
-   function Location
+   function Get_Location
      (Master: Tk_Widget; X, Y: Pixel_Data) return Location_Position with
       Pre => Master /= Null_Widget and X.Value > -1.0 and Y.Value > -1.0,
       Test_Case => (Name => "Test_Location", Mode => Nominal);
