@@ -490,7 +490,7 @@ package Tk.Grid is
       Test_Case => (Name => "Test_Location", Mode => Nominal);
       -- ****
 
-      -- ****f* Tk.Grid/Propagate_(procedure)
+      -- ****f* Grid/Grid.Set_Propagate
       -- FUNCTION
       -- Set the propagation state for the selected grid in Master widget
       -- PARAMETERS
@@ -500,18 +500,18 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Disable propagation in My_Frame window grid
-      -- Propagate(My_Frame, False);
+      -- Set_Propagate(My_Frame, False);
       -- SEE ALSO
-      -- Propagate_(function)
+      -- Grid.Get_Propagate
       -- COMMANDS
       -- grid propagate master boolean
       -- SOURCE
-   procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) with
+   procedure Set_Propagate(Master: Tk_Widget; Enable: Boolean := True) with
       Pre => Master /= Null_Widget,
       Test_Case => (Name => "Test_Propagate1", Mode => Nominal);
       -- ****
 
-      -- ****f* Tk.Grid/Propagate_(function)
+      -- ****f* Grid/Grid.Get_Propagate
       -- FUNCTION
       -- Get the propagation state for the selected grid in Master widget
       -- PARAMETERS
@@ -523,13 +523,13 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the propagation state for My_Frame window grid
-      -- Is_Enabled: constant Boolean := Propagate(My_Frame);
+      -- Is_Enabled: constant Boolean := Get_Propagate(My_Frame);
       -- SEE ALSO
-      -- Propagate_(procedure)
+      -- Grid.Set_Propagate
       -- COMMANDS
       -- grid propagate master
       -- SOURCE
-   function Propagate(Master: Tk_Widget) return Boolean is
+   function Get_Propagate(Master: Tk_Widget) return Boolean is
      (Tcl_Eval
         (Tcl_Script => "grid propagate " & Tk_Path_Name(Widgt => Master),
          Interpreter => Tk_Interp(Widgt => Master))) with
@@ -553,7 +553,7 @@ package Tk.Grid is
       -- COMMANDS
       -- grid rowconfigure master child_name options
       -- SEE ALSO
-      -- Grid.Row_Configure_(child), Grid.Row_Configure_(row_number)
+      -- Grid.Row_Configure_(widget), Grid.Row_Configure_(row_number)
       -- SOURCE
    procedure Row_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) with
@@ -562,7 +562,7 @@ package Tk.Grid is
       Test_Case => (Name => "Test_Row_Configure1", Mode => Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Row_Configure_(child)
+      -- ****f* Grid/Grid.Row_Configure_(widget)
       -- FUNCTION
       -- Configure the selected row in the selected grid
       -- PARAMETERS
@@ -603,7 +603,7 @@ package Tk.Grid is
       -- COMMANDS
       -- grid rowconfigure master row options
       -- SEE ALSO
-      -- Grid.Row_Configure_(child_name), Grid.Row_Configure_(child)
+      -- Grid.Row_Configure_(child_name), Grid.Row_Configure_(widget)
       -- SOURCE
    procedure Row_Configure
      (Master: Tk_Widget; Row: Natural; Options: Column_Options) with
@@ -682,7 +682,7 @@ package Tk.Grid is
       Test_Case => (Name => "Test_Remove2", Mode => Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Size
+      -- ****f* Grid/Grid.Get_Size
       -- FUNCTION
       -- Get the size in columns then rows of the selected grid
       -- PARAMETERS
@@ -694,16 +694,16 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the size of the grid in My_Frame widget
-      -- Grid_Size: constant Location_Position := Size(My_Frame);
+      -- Grid_Size: constant Location_Position := Get_Size(My_Frame);
       -- COMMANDS
       -- grid size master
       -- SOURCE
-   function Size(Master: Tk_Widget) return Location_Position with
+   function Get_Size(Master: Tk_Widget) return Location_Position with
       Pre => Master /= Null_Widget,
       Test_Case => (Name => "Test_Size", Mode => Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Slaves
+      -- ****f* Grid/Grid.Get_Slaves
       -- FUNCTION
       -- Get the widgets which are in Master grid
       -- PARAMETERS
@@ -718,11 +718,11 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get all widgets from the grid in My_Frame widget
-      -- Widgets: constant Widgets_Array := Slaves(My_Frame);
+      -- Widgets: constant Widgets_Array := Get_Slaves(My_Frame);
       -- COMMANDS
       -- grid slaves master ?-row row? ?-column column?
       -- SOURCE
-   function Slaves
+   function Get_Slaves
      (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
       return Widgets_Array with
       Pre => Master /= Null_Widget,

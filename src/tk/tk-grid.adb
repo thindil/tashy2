@@ -486,14 +486,14 @@ package body Tk.Grid is
            Extended_Natural'Value(To_Ada_String(Source => Result_List(2))));
    end Get_Location;
 
-   procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) is
+   procedure Set_Propagate(Master: Tk_Widget; Enable: Boolean := True) is
    begin
       Tcl_Eval
         (Tcl_Script =>
            "grid propagate " & Tk_Path_Name(Widgt => Master) & " " &
            To_Lower(Item => Boolean'Image(Enable)),
          Interpreter => Tk_Interp(Widgt => Master));
-   end Propagate;
+   end Set_Propagate;
 
    procedure Row_Configure
      (Master: Tk_Widget; Child_Name: Tcl_String; Options: Column_Options) is
@@ -566,7 +566,7 @@ package body Tk.Grid is
          Interpreter => Tk_Interp(Widgt => Widgets(1)));
    end Remove;
 
-   function Size(Master: Tk_Widget) return Location_Position is
+   function Get_Size(Master: Tk_Widget) return Location_Position is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
       Result_List: constant Array_List :=
         Split_List
@@ -581,9 +581,9 @@ package body Tk.Grid is
            Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
          Row =>
            Extended_Natural'Value(To_Ada_String(Source => Result_List(2))));
-   end Size;
+   end Get_Size;
 
-   function Slaves
+   function Get_Slaves
      (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
       return Widgets_Array is
       Options: Unbounded_String := Null_Unbounded_String;
@@ -623,6 +623,6 @@ package body Tk.Grid is
             end loop Fill_Result_Array_Loop;
          end return;
       end Return_Block;
-   end Slaves;
+   end Get_Slaves;
 
 end Tk.Grid;
