@@ -16,14 +16,14 @@ package Tk.Grid.Test_Data.Tests is
    procedure Test_Add_6de79c_257591(Gnattest_T: in out Test);
    --  tk-grid.ads:169:4:Add:Test_Add2
 
-   procedure Test_Anchor_f6115f_f07f8d(Gnattest_T: in out Test);
-   --  tk-grid.ads:194:4:Anchor:Test_Anchor1
+   procedure Test_Set_Anchor_94c9fb_f07f8d(Gnattest_T: in out Test);
+   --  tk-grid.ads:194:4:Set_Anchor:Test_Anchor1
 
-   procedure Test_Anchor_ba152c_19ef1e(Gnattest_T: in out Test);
-   --  tk-grid.ads:216:4:Anchor:Test_Anchor2
+   procedure Test_Get_Anchor_3fef99_19ef1e(Gnattest_T: in out Test);
+   --  tk-grid.ads:216:4:Get_Anchor:Test_Anchor2
 
-   procedure Test_Bounding_Box_a54e2e_896807(Gnattest_T: in out Test);
-   --  tk-grid.ads:257:4:Bounding_Box:Test_BBox
+   procedure Test_Get_Bounding_Box_9cd1bf_896807(Gnattest_T: in out Test);
+   --  tk-grid.ads:257:4:Get_Bounding_Box:Test_BBox
 
    procedure Test_Column_Configure_b41aca_dcc0a7(Gnattest_T: in out Test);
    --  tk-grid.ads:282:4:Column_Configure:Test_Column_Configure1
@@ -49,11 +49,11 @@ package Tk.Grid.Test_Data.Tests is
    procedure Test_Forget_41161d_27199d(Gnattest_T: in out Test);
    --  tk-grid.ads:442:4:Forget:Test_Forget2
 
-   procedure Test_Info_5c8f4b_ba34a0(Gnattest_T: in out Test);
-   --  tk-grid.ads:463:4:Info:Test_Info
+   procedure Test_Get_Info_8760e4_ba34a0(Gnattest_T: in out Test);
+   --  tk-grid.ads:463:4:Get_Info:Test_Info
 
-   procedure Test_Location_f4bfd3_74cec4(Gnattest_T: in out Test);
-   --  tk-grid.ads:487:4:Location:Test_Location
+   procedure Test_Get_Location_3c34d1_74cec4(Gnattest_T: in out Test);
+   --  tk-grid.ads:487:4:Get_Location:Test_Location
 
    procedure Test_Propagate_eff519_e08f8c(Gnattest_T: in out Test);
    --  tk-grid.ads:509:4:Propagate:Test_Propagate1

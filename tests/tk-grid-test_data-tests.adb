@@ -148,7 +148,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Anchor_f6115f_f07f8d
+   procedure Wrap_Test_Set_Anchor_94c9fb_f07f8d
      (Master: Tk_Widget; New_Direction: Directions_Type) is
    begin
       begin
@@ -160,7 +160,7 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "req_sloc(tk-grid.ads:0):Test_Anchor1 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Grid.Anchor
+      GNATtest_Generated.GNATtest_Standard.Tk.Grid.Set_Anchor
         (Master, New_Direction);
       begin
          pragma Assert(True);
@@ -171,18 +171,18 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Anchor1 test commitment violated");
       end;
-   end Wrap_Test_Anchor_f6115f_f07f8d;
+   end Wrap_Test_Set_Anchor_94c9fb_f07f8d;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Anchor_test_anchor1(Gnattest_T: in out Test);
-   procedure Test_Anchor_f6115f_f07f8d(Gnattest_T: in out Test) renames
-     Test_1_Anchor_test_anchor1;
---  id:2.2/f6115f4660f7c654/Anchor/1/0/test_anchor1/
-   procedure Test_1_Anchor_test_anchor1(Gnattest_T: in out Test) is
-      procedure Anchor
+   procedure Test_Set_Anchor_test_anchor1(Gnattest_T: in out Test);
+   procedure Test_Set_Anchor_94c9fb_f07f8d(Gnattest_T: in out Test) renames
+     Test_Set_Anchor_test_anchor1;
+--  id:2.2/94c9fbd74d3a50b6/Set_Anchor/1/0/test_anchor1/
+   procedure Test_Set_Anchor_test_anchor1(Gnattest_T: in out Test) is
+      procedure Set_Anchor
         (Master: Tk_Widget; New_Direction: Directions_Type) renames
-        Wrap_Test_Anchor_f6115f_f07f8d;
+        Wrap_Test_Set_Anchor_94c9fb_f07f8d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -193,16 +193,17 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Anchor(Get_Main_Window, CENTER);
+      Set_Anchor(Get_Main_Window, CENTER);
       Assert
-        (Anchor(Get_Main_Window) = CENTER, "Failed to set anchor for grid.");
+        (Get_Anchor(Get_Main_Window) = CENTER,
+         "Failed to set anchor for grid.");
 
 --  begin read only
-   end Test_1_Anchor_test_anchor1;
+   end Test_Set_Anchor_test_anchor1;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Anchor_ba152c_19ef1e
+   function Wrap_Test_Get_Anchor_3fef99_19ef1e
      (Master: Tk_Widget) return Directions_Type is
    begin
       begin
@@ -215,8 +216,8 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Anchor2 test requirement violated");
       end;
       declare
-         Test_Anchor_ba152c_19ef1e_Result: constant Directions_Type :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Anchor(Master);
+         Test_Get_Anchor_3fef99_19ef1e_Result: constant Directions_Type :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Anchor(Master);
       begin
          begin
             pragma Assert(True);
@@ -227,19 +228,19 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Anchor2 test commitment violated");
          end;
-         return Test_Anchor_ba152c_19ef1e_Result;
+         return Test_Get_Anchor_3fef99_19ef1e_Result;
       end;
-   end Wrap_Test_Anchor_ba152c_19ef1e;
+   end Wrap_Test_Get_Anchor_3fef99_19ef1e;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Anchor_test_anchor2(Gnattest_T: in out Test);
-   procedure Test_Anchor_ba152c_19ef1e(Gnattest_T: in out Test) renames
-     Test_2_Anchor_test_anchor2;
---  id:2.2/ba152c408ddd1c97/Anchor/0/0/test_anchor2/
-   procedure Test_2_Anchor_test_anchor2(Gnattest_T: in out Test) is
-      function Anchor(Master: Tk_Widget) return Directions_Type renames
-        Wrap_Test_Anchor_ba152c_19ef1e;
+   procedure Test_Get_Anchor_test_anchor2(Gnattest_T: in out Test);
+   procedure Test_Get_Anchor_3fef99_19ef1e(Gnattest_T: in out Test) renames
+     Test_Get_Anchor_test_anchor2;
+--  id:2.2/3fef99fba2d1c85d/Get_Anchor/1/0/test_anchor2/
+   procedure Test_Get_Anchor_test_anchor2(Gnattest_T: in out Test) is
+      function Get_Anchor(Master: Tk_Widget) return Directions_Type renames
+        Wrap_Test_Get_Anchor_3fef99_19ef1e;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -251,14 +252,15 @@ package body Tk.Grid.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Anchor(Get_Main_Window) = CENTER, "Failed to get anchor for grid.");
+        (Get_Anchor(Get_Main_Window) = CENTER,
+         "Failed to get anchor for grid.");
 
 --  begin read only
-   end Test_2_Anchor_test_anchor2;
+   end Test_Get_Anchor_test_anchor2;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Bounding_Box_a54e2e_896807
+   function Wrap_Test_Get_Bounding_Box_9cd1bf_896807
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return Bbox_Data is
    begin
@@ -272,8 +274,8 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_BBox test requirement violated");
       end;
       declare
-         Test_Bounding_Box_a54e2e_896807_Result: constant Bbox_Data :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Bounding_Box
+         Test_Get_Bounding_Box_9cd1bf_896807_Result: constant Bbox_Data :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Bounding_Box
              (Master, Column, Row, Column2, Row2);
       begin
          begin
@@ -285,21 +287,22 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_BBox test commitment violated");
          end;
-         return Test_Bounding_Box_a54e2e_896807_Result;
+         return Test_Get_Bounding_Box_9cd1bf_896807_Result;
       end;
-   end Wrap_Test_Bounding_Box_a54e2e_896807;
+   end Wrap_Test_Get_Bounding_Box_9cd1bf_896807;
 --  end read only
 
 --  begin read only
-   procedure Test_Bounding_Box_test_bbox(Gnattest_T: in out Test);
-   procedure Test_Bounding_Box_a54e2e_896807(Gnattest_T: in out Test) renames
-     Test_Bounding_Box_test_bbox;
---  id:2.2/a54e2e6b55dbabd5/Bounding_Box/1/0/test_bbox/
-   procedure Test_Bounding_Box_test_bbox(Gnattest_T: in out Test) is
-      function Bounding_Box
+   procedure Test_Get_Bounding_Box_test_bbox(Gnattest_T: in out Test);
+   procedure Test_Get_Bounding_Box_9cd1bf_896807
+     (Gnattest_T: in out Test) renames
+     Test_Get_Bounding_Box_test_bbox;
+--  id:2.2/9cd1bf3522e0164e/Get_Bounding_Box/1/0/test_bbox/
+   procedure Test_Get_Bounding_Box_test_bbox(Gnattest_T: in out Test) is
+      function Get_Bounding_Box
         (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
          return Bbox_Data renames
-        Wrap_Test_Bounding_Box_a54e2e_896807;
+        Wrap_Test_Get_Bounding_Box_9cd1bf_896807;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -311,11 +314,11 @@ package body Tk.Grid.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Bounding_Box(Get_Main_Window) = (0, 0, 0, 0),
+        (Get_Bounding_Box(Get_Main_Window) = (0, 0, 0, 0),
          "Failed to get bounding box of the widget.");
 
 --  begin read only
-   end Test_Bounding_Box_test_bbox;
+   end Test_Get_Bounding_Box_test_bbox;
 --  end read only
 
 --  begin read only
@@ -630,7 +633,7 @@ package body Tk.Grid.Test_Data.Tests is
       Create(Button, ".mybutton", Button_Options'(others => <>));
       Add(Button);
       Configure(Button, Grid_Options'(Row => 1, others => <>));
-      Options := Info(Button);
+      Options := Get_Info(Button);
       Assert(Options.Row = 1, "Failed to configure widget in grid.");
       Destroy(Button);
 
@@ -690,7 +693,7 @@ package body Tk.Grid.Test_Data.Tests is
       Create(Button2, ".mybutton2", Button_Options'(others => <>));
       Add((Button1, Button2));
       Configure((Button1, Button2), Grid_Options'(Row => 1, others => <>));
-      Options := Info(Button1);
+      Options := Get_Info(Button1);
       Assert(Options.Row = 1, "Failed to configure widgets in grid.");
       Destroy(Button1);
       Destroy(Button2);
@@ -815,7 +818,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Info_5c8f4b_ba34a0
+   function Wrap_Test_Get_Info_8760e4_ba34a0
      (Child: Tk_Widget) return Grid_Options is
    begin
       begin
@@ -828,8 +831,8 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Info test requirement violated");
       end;
       declare
-         Test_Info_5c8f4b_ba34a0_Result: constant Grid_Options :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Info(Child);
+         Test_Get_Info_8760e4_ba34a0_Result: constant Grid_Options :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Info(Child);
       begin
          begin
             pragma Assert(True);
@@ -840,19 +843,19 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Info test commitment violated");
          end;
-         return Test_Info_5c8f4b_ba34a0_Result;
+         return Test_Get_Info_8760e4_ba34a0_Result;
       end;
-   end Wrap_Test_Info_5c8f4b_ba34a0;
+   end Wrap_Test_Get_Info_8760e4_ba34a0;
 --  end read only
 
 --  begin read only
-   procedure Test_Info_test_info(Gnattest_T: in out Test);
-   procedure Test_Info_5c8f4b_ba34a0(Gnattest_T: in out Test) renames
-     Test_Info_test_info;
---  id:2.2/5c8f4bc2598409c3/Info/1/0/test_info/
-   procedure Test_Info_test_info(Gnattest_T: in out Test) is
-      function Info(Child: Tk_Widget) return Grid_Options renames
-        Wrap_Test_Info_5c8f4b_ba34a0;
+   procedure Test_Get_Info_test_info(Gnattest_T: in out Test);
+   procedure Test_Get_Info_8760e4_ba34a0(Gnattest_T: in out Test) renames
+     Test_Get_Info_test_info;
+--  id:2.2/8760e435e0a1baad/Get_Info/1/0/test_info/
+   procedure Test_Get_Info_test_info(Gnattest_T: in out Test) is
+      function Get_Info(Child: Tk_Widget) return Grid_Options renames
+        Wrap_Test_Get_Info_8760e4_ba34a0;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -867,16 +870,16 @@ package body Tk.Grid.Test_Data.Tests is
       end if;
       Create(Button, ".mybutton", Button_Options'(others => <>));
       Add(Button, Grid_Options'(Row => 1, others => <>));
-      Options := Info(Button);
+      Options := Get_Info(Button);
       Assert(Options.Row = 1, "Failed to get widget grid options in grid.");
       Destroy(Button);
 
 --  begin read only
-   end Test_Info_test_info;
+   end Test_Get_Info_test_info;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Location_f4bfd3_74cec4
+   function Wrap_Test_Get_Location_3c34d1_74cec4
      (Master: Tk_Widget; X, Y: Pixel_Data) return Location_Position is
    begin
       begin
@@ -890,8 +893,9 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Location test requirement violated");
       end;
       declare
-         Test_Location_f4bfd3_74cec4_Result: constant Location_Position :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Location(Master, X, Y);
+         Test_Get_Location_3c34d1_74cec4_Result: constant Location_Position :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Location
+             (Master, X, Y);
       begin
          begin
             pragma Assert(True);
@@ -902,20 +906,20 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Location test commitment violated");
          end;
-         return Test_Location_f4bfd3_74cec4_Result;
+         return Test_Get_Location_3c34d1_74cec4_Result;
       end;
-   end Wrap_Test_Location_f4bfd3_74cec4;
+   end Wrap_Test_Get_Location_3c34d1_74cec4;
 --  end read only
 
 --  begin read only
-   procedure Test_Location_test_location(Gnattest_T: in out Test);
-   procedure Test_Location_f4bfd3_74cec4(Gnattest_T: in out Test) renames
-     Test_Location_test_location;
---  id:2.2/f4bfd362db3aad8e/Location/1/0/test_location/
-   procedure Test_Location_test_location(Gnattest_T: in out Test) is
-      function Location
+   procedure Test_Get_Location_test_location(Gnattest_T: in out Test);
+   procedure Test_Get_Location_3c34d1_74cec4(Gnattest_T: in out Test) renames
+     Test_Get_Location_test_location;
+--  id:2.2/3c34d18d58761388/Get_Location/1/0/test_location/
+   procedure Test_Get_Location_test_location(Gnattest_T: in out Test) is
+      function Get_Location
         (Master: Tk_Widget; X, Y: Pixel_Data) return Location_Position renames
-        Wrap_Test_Location_f4bfd3_74cec4;
+        Wrap_Test_Get_Location_3c34d1_74cec4;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -927,12 +931,12 @@ package body Tk.Grid.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Location(Get_Main_Window, (0.0, PIXEL), (0.0, PIXEL)) =
+        (Get_Location(Get_Main_Window, (0.0, PIXEL), (0.0, PIXEL)) =
          (Column => 0, Row => 0),
          "Failed to get location in grid.");
 
 --  begin read only
-   end Test_Location_test_location;
+   end Test_Get_Location_test_location;
 --  end read only
 
 --  begin read only
