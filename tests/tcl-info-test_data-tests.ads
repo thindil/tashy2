@@ -49,26 +49,27 @@ package Tcl.Info.Test_Data.Tests is
    procedure Test_Get_Library_36938c_8b9a20(Gnattest_T: in out Test);
    --  tcl-info.ads:361:4:Get_Library:Test_Info_Library
 
-   procedure Test_Locals_1f3300_f4c43e(Gnattest_T: in out Test);
-   --  tcl-info.ads:387:4:Locals:Test_Info_Locals
+   procedure Test_Get_Locals_09a275_f4c43e(Gnattest_T: in out Test);
+   --  tcl-info.ads:387:4:Get_Locals:Test_Info_Locals
 
-   procedure Test_Name_Of_Executable_64477f_24ff4c(Gnattest_T: in out Test);
-   --  tcl-info.ads:413:4:Name_Of_Executable:Test_Info_Name_Of_Executable
+   procedure Test_Get_Name_Of_Executable_1cc16d_24ff4c
+     (Gnattest_T: in out Test);
+   --  tcl-info.ads:413:4:Get_Name_Of_Executable:Test_Info_Name_Of_Executable
 
-   procedure Test_Patch_Level_b52e42_325136(Gnattest_T: in out Test);
-   --  tcl-info.ads:437:4:Patch_Level:Test_Info_Patch_Level
+   procedure Test_Get_Patch_Level_0baa9d_325136(Gnattest_T: in out Test);
+   --  tcl-info.ads:437:4:Get_Patch_Level:Test_Info_Patch_Level
 
-   procedure Test_Procs_bcf850_884500(Gnattest_T: in out Test);
-   --  tcl-info.ads:465:4:Procs:Test_Info_Procs
+   procedure Test_Get_Procedures_848b43_884500(Gnattest_T: in out Test);
+   --  tcl-info.ads:465:4:Get_Procedures:Test_Info_Procs
 
-   procedure Test_Script_b67457_ddce00(Gnattest_T: in out Test);
-   --  tcl-info.ads:495:4:Script:Test_Info_Script
+   procedure Test_Get_Script_86aa75_ddce00(Gnattest_T: in out Test);
+   --  tcl-info.ads:495:4:Get_Script:Test_Info_Script
 
-   procedure Test_Tcl_Version_f8490f_6661d4(Gnattest_T: in out Test);
-   --  tcl-info.ads:520:4:Tcl_Version:Test_Info_Tcl_Version
+   procedure Test_Get_Tcl_Version_d04078_6661d4(Gnattest_T: in out Test);
+   --  tcl-info.ads:520:4:Get_Tcl_Version:Test_Info_Tcl_Version
 
-   procedure Test_Vars_747e3d_9d2a56(Gnattest_T: in out Test);
-   --  tcl-info.ads:547:4:Vars:Test_Info_Vars
+   procedure Test_Get_Variables_fedbab_9d2a56(Gnattest_T: in out Test);
+   --  tcl-info.ads:547:4:Get_Variables:Test_Info_Vars
 
 end Tcl.Info.Test_Data.Tests;
 --  end read only
