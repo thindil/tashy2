@@ -87,16 +87,16 @@ package body Tk.Grid is
          Interpreter => Tk_Interp(Widgt => Widgets(1)));
    end Add;
 
-   procedure Anchor(Master: Tk_Widget; New_Direction: Directions_Type) is
+   procedure Set_Anchor(Master: Tk_Widget; New_Direction: Directions_Type) is
    begin
       Tcl_Eval
         (Tcl_Script =>
            "grid anchor " & Tk_Path_Name(Widgt => Master) & " " &
            To_Lower(Item => Directions_Type'Image(New_Direction)),
          Interpreter => Tk_Interp(Widgt => Master));
-   end Anchor;
+   end Set_Anchor;
 
-   function Bounding_Box
+   function Get_Bounding_Box
      (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
       return Bbox_Data is
       Options: Unbounded_String := Null_Unbounded_String;
@@ -153,7 +153,7 @@ package body Tk.Grid is
          Coords.Height :=
            Natural'Value(To_Ada_String(Source => Result_List(4)));
       end return;
-   end Bounding_Box;
+   end Get_Bounding_Box;
 
    -- ****if* Grid/Grid.Column_Options_To_String
    -- FUNCTION
@@ -368,7 +368,7 @@ package body Tk.Grid is
          Interpreter => Tk_Interp(Widgt => Widgets(1)));
    end Forget;
 
-   function Info(Child: Tk_Widget) return Grid_Options is
+   function Get_Info(Child: Tk_Widget) return Grid_Options is
       Options_Names: constant array(1 .. 10) of Unbounded_String :=
         (1 => To_Unbounded_String(Source => "-in"),
          2 => To_Unbounded_String(Source => "-column"),
@@ -461,9 +461,9 @@ package body Tk.Grid is
          end loop Set_Options_Loop;
       end Parse_Result_Block;
       return Options;
-   end Info;
+   end Get_Info;
 
-   function Location
+   function Get_Location
      (Master: Tk_Widget; X, Y: Pixel_Data) return Location_Position is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
       Result_List: constant Array_List :=
@@ -484,7 +484,7 @@ package body Tk.Grid is
            Extended_Natural'Value(To_Ada_String(Source => Result_List(1))),
          Row =>
            Extended_Natural'Value(To_Ada_String(Source => Result_List(2))));
-   end Location;
+   end Get_Location;
 
    procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) is
    begin
