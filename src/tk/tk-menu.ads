@@ -35,6 +35,12 @@ package Tk.Menu is
    -- ****t* Menu/Menu.Menu_Types
    -- FUNCTION
    -- The types of menu
+   -- OPTIONS
+   -- NONE    - If used in setting the menu type, then the menu type will be
+   --           set to default type
+   -- MEMUBAR - The menu will be set as the main application menu bar
+   -- TEAROFF - The menu will be show as separated window
+   -- NORMAL  - The menu will be show as the standard menu
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -98,6 +104,12 @@ package Tk.Menu is
    -- ****t* Menu/Menu.Menu_Item_Types
    -- FUNCTION
    -- Available types of menu items (entries)
+   -- OPTIONS
+   -- CASCADE     - The item is a submenu with own entries
+   -- CHECKBUTTON - The item is a checkbutton
+   -- COMMAND     - The standard menu item
+   -- RADIOBUTTON - The item is a radiobutton
+   -- SEPARATOR   - The item is a separator line, no command associated with it
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -215,14 +227,20 @@ package Tk.Menu is
    -- SOURCE
    Default_Menu_Item_Options: constant Menu_Item_Options :=
      Menu_Item_Options'(others => <>);
-   -- ****
+     -- ****
 
-   -- ****t* Menu/Menu.Menu_Item_Indexes
-   -- FUNCTION
-   -- Available types of menu entries indexes
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
+     -- ****t* Menu/Menu.Menu_Item_Indexes
+     -- FUNCTION
+     -- Available types of menu entries indexes
+     -- OPTIONS
+     -- ACTIVE   - The currently active menu entry. If no active entry, then
+     --            the same as NONE
+     -- MENU_END - The last entry in the menu
+     -- LAST     - The last entry in the menu (same as MENU_END)
+     -- NONE     - The none entry. Used mostly in resetting active state
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SOURCE
    type Menu_Item_Indexes is (ACTIVE, MENU_END, LAST, NONE);
    -- ****
 
