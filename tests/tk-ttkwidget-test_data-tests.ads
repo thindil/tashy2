@@ -40,11 +40,11 @@ package Tk.TtkWidget.Test_Data.Tests is
    procedure Test_In_State_318f72_d83e8c(Gnattest_T: in out Test);
    --  tk-ttkwidget.ads:328:4:In_State:Test_Ttk_Widget_In_State2
 
-   procedure Test_State_291199_15a1a7(Gnattest_T: in out Test);
-   --  tk-ttkwidget.ads:353:4:State:Test_Ttk_Widget_State
+   procedure Test_Set_State_86b648_15a1a7(Gnattest_T: in out Test);
+   --  tk-ttkwidget.ads:353:4:Set_State:Test_Ttk_Widget_State
 
-   procedure Test_State_8d49e9_5a6282(Gnattest_T: in out Test);
-   --  tk-ttkwidget.ads:377:4:State:Test_Ttk_Widget_State2
+   procedure Test_Get_States_734267_5a6282(Gnattest_T: in out Test);
+   --  tk-ttkwidget.ads:377:4:Get_States:Test_Ttk_Widget_State2
 
 end Tk.TtkWidget.Test_Data.Tests;
 --  end read only

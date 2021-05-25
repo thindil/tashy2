@@ -680,7 +680,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
       end if;
       Tcl_Eval("ttk::button .test");
       Widget := Get_Widget(".test");
-      State(Widget, DISABLED);
+      Set_State(Widget, DISABLED);
       In_State(Widget, DISABLED, To_Tcl_String("set myvar true"));
       Assert
         (Tcl_Get_Var("myvar") = "true",
@@ -692,7 +692,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_State_291199_15a1a7
+   procedure Wrap_Test_Set_State_86b648_15a1a7
      (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type;
       Disable: Boolean := False) is
    begin
@@ -705,7 +705,7 @@ package body Tk.TtkWidget.Test_Data.Tests is
               (False,
                "req_sloc(tk-ttkwidget.ads:0):Test_Ttk_Widget_State test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.State
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Set_State
         (Ttk_Widgt, Widget_State, Disable);
       begin
          pragma Assert(True);
@@ -716,19 +716,19 @@ package body Tk.TtkWidget.Test_Data.Tests is
               (False,
                "ens_sloc(tk-ttkwidget.ads:0:):Test_Ttk_Widget_State test commitment violated");
       end;
-   end Wrap_Test_State_291199_15a1a7;
+   end Wrap_Test_Set_State_86b648_15a1a7;
 --  end read only
 
 --  begin read only
-   procedure Test_1_State_test_ttk_widget_state(Gnattest_T: in out Test);
-   procedure Test_State_291199_15a1a7(Gnattest_T: in out Test) renames
-     Test_1_State_test_ttk_widget_state;
---  id:2.2/29119983a05a4465/State/1/0/test_ttk_widget_state/
-   procedure Test_1_State_test_ttk_widget_state(Gnattest_T: in out Test) is
-      procedure State
+   procedure Test_Set_State_test_ttk_widget_state(Gnattest_T: in out Test);
+   procedure Test_Set_State_86b648_15a1a7(Gnattest_T: in out Test) renames
+     Test_Set_State_test_ttk_widget_state;
+--  id:2.2/86b648be4948fc17/Set_State/1/0/test_ttk_widget_state/
+   procedure Test_Set_State_test_ttk_widget_state(Gnattest_T: in out Test) is
+      procedure Set_State
         (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type;
          Disable: Boolean := False) renames
-        Wrap_Test_State_291199_15a1a7;
+        Wrap_Test_Set_State_86b648_15a1a7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -742,17 +742,17 @@ package body Tk.TtkWidget.Test_Data.Tests is
       end if;
       Tcl_Eval("ttk::button .test");
       Widget := Get_Widget(".test");
-      State(Widget, DISABLED);
+      Set_State(Widget, DISABLED);
       Assert
         (In_State(Widget, DISABLED), "Failed to set state of the Ttk widget.");
       Destroy(Widget);
 
 --  begin read only
-   end Test_1_State_test_ttk_widget_state;
+   end Test_Set_State_test_ttk_widget_state;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_State_8d49e9_5a6282
+   function Wrap_Test_Get_States_734267_5a6282
      (Ttk_Widgt: Ttk_Widget) return Ttk_State_Array is
    begin
       begin
@@ -765,8 +765,9 @@ package body Tk.TtkWidget.Test_Data.Tests is
                "req_sloc(tk-ttkwidget.ads:0):Test_Ttk_Widget_State2 test requirement violated");
       end;
       declare
-         Test_State_8d49e9_5a6282_Result: constant Ttk_State_Array :=
-           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.State(Ttk_Widgt);
+         Test_Get_States_734267_5a6282_Result: constant Ttk_State_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TtkWidget.Get_States
+             (Ttk_Widgt);
       begin
          begin
             pragma Assert(True);
@@ -777,19 +778,19 @@ package body Tk.TtkWidget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-ttkwidget.ads:0:):Test_Ttk_Widget_State2 test commitment violated");
          end;
-         return Test_State_8d49e9_5a6282_Result;
+         return Test_Get_States_734267_5a6282_Result;
       end;
-   end Wrap_Test_State_8d49e9_5a6282;
+   end Wrap_Test_Get_States_734267_5a6282;
 --  end read only
 
 --  begin read only
-   procedure Test_2_State_test_ttk_widget_state2(Gnattest_T: in out Test);
-   procedure Test_State_8d49e9_5a6282(Gnattest_T: in out Test) renames
-     Test_2_State_test_ttk_widget_state2;
---  id:2.2/8d49e9dc4c0e1a81/State/0/0/test_ttk_widget_state2/
-   procedure Test_2_State_test_ttk_widget_state2(Gnattest_T: in out Test) is
-      function State(Ttk_Widgt: Ttk_Widget) return Ttk_State_Array renames
-        Wrap_Test_State_8d49e9_5a6282;
+   procedure Test_Get_States_test_ttk_widget_state2(Gnattest_T: in out Test);
+   procedure Test_Get_States_734267_5a6282(Gnattest_T: in out Test) renames
+     Test_Get_States_test_ttk_widget_state2;
+--  id:2.2/7342673321774030/Get_States/1/0/test_ttk_widget_state2/
+   procedure Test_Get_States_test_ttk_widget_state2(Gnattest_T: in out Test) is
+      function Get_States(Ttk_Widgt: Ttk_Widget) return Ttk_State_Array renames
+        Wrap_Test_Get_States_734267_5a6282;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -803,17 +804,17 @@ package body Tk.TtkWidget.Test_Data.Tests is
       end if;
       Tcl_Eval("ttk::button .test");
       Widget := Get_Widget(".test");
-      State(Widget, DISABLED);
-      State(Widget, READONLY);
+      Set_State(Widget, DISABLED);
+      Set_State(Widget, READONLY);
       declare
-         States: constant Ttk_State_Array := State(Widget);
+         States: constant Ttk_State_Array := Get_States(Widget);
       begin
          Assert(States'Length = 2, "Failed to get states of the Ttk widget.");
       end;
       Destroy(Widget);
 
 --  begin read only
-   end Test_2_State_test_ttk_widget_state2;
+   end Test_Get_States_test_ttk_widget_state2;
 --  end read only
 
 --  begin read only
