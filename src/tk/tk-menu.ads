@@ -743,9 +743,7 @@ package Tk.Menu is
       -- COMMANDS
       -- Menu_Widget post X Y
       -- SEE ALSO
-      -- Menu.Post_(procedure)
-      -- SEE ALSO
-      -- Menu.Unpost
+      -- Menu.Post_(procedure), Menu.Unpost
       -- SOURCE
    function Post(Menu_Widget: Tk_Menu; X, Y: Natural) return String with
       Pre => Menu_Widget /= Null_Widget,
@@ -798,6 +796,8 @@ package Tk.Menu is
       -- EXAMPLE
       -- -- Get the type of menu entry with label Quit in My_Menu menu
       -- Item_Type: constant Menu_Item_Types := Get_Item_Type(My_Menu, To_Tcl_String("Quit"));
+      -- COMMANDS
+      -- Menu_Widget type Menu_Index
       -- SOURCE
    function Get_Item_Type
      (Menu_Widget: Tk_Menu; Menu_Index: Tcl_String) return Menu_Item_Types with
@@ -825,6 +825,8 @@ package Tk.Menu is
       -- EXAMPLE
       -- -- Hide menu My_Menu
       -- Unpost(My_Menu);
+      -- COMMANDS
+      -- Menu_Widget unpost
       -- SEE ALSO
       -- Menu.Post
       -- SOURCE
@@ -850,6 +852,8 @@ package Tk.Menu is
       -- EXAMPLE
       -- -- Get the X coordinate for the first menu entry in My_Menu
       -- X: constant Natural := X_Position(My_Menu, 0);
+      -- COMMANDS
+      -- Menu_Widget xposition Menu_Index
       -- SEE ALSO
       -- Menu.Y_Position
       -- SOURCE
@@ -885,6 +889,8 @@ package Tk.Menu is
       -- EXAMPLE
       -- -- Get the Y coordinate for the first menu entry in My_Menu
       -- Y: constant Natural := Y_Position(My_Menu, 0);
+      -- COMMANDS
+      -- Menu_Widget yposition Menu_Index
       -- SEE ALSO
       -- Menu.X_Position
       -- SOURCE
