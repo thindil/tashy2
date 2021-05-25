@@ -266,7 +266,7 @@ package body Tk.TtkWidget is
            To_String(Source => Tcl_Script));
    end In_State;
 
-   procedure State
+   procedure Set_State
      (Ttk_Widgt: Ttk_Widget; Widget_State: Ttk_State_Type;
       Disable: Boolean := False) is
    begin
@@ -280,9 +280,9 @@ package body Tk.TtkWidget is
            (Widgt => Ttk_Widgt, Command_Name => "state",
             Options => To_Lower(Item => Ttk_State_Type'Image(Widget_State)));
       end if;
-   end State;
+   end Set_State;
 
-   function State(Ttk_Widgt: Ttk_Widget) return Ttk_State_Array is
+   function Get_States(Ttk_Widgt: Ttk_Widget) return Ttk_State_Array is
       Result_List: constant Array_List :=
         Split_List
           (List =>
@@ -299,6 +299,6 @@ package body Tk.TtkWidget is
               Ttk_State_Type'Value(To_Ada_String(Source => Result_List(I)));
          end loop Fill_Return_Value_Loop;
       end return;
-   end State;
+   end Get_States;
 
 end Tk.TtkWidget;
