@@ -81,7 +81,8 @@ package body Tk.Grid.Test_Data.Tests is
       end if;
       Create(Button, ".mybutton", Button_Options'(others => <>));
       Add(Button);
-      Assert(Size(Get_Main_Window) = (1, 1), "Failed to add widget to grid.");
+      Assert
+        (Get_Size(Get_Main_Window) = (1, 1), "Failed to add widget to grid.");
       Destroy(Button);
 
 --  begin read only
@@ -139,7 +140,8 @@ package body Tk.Grid.Test_Data.Tests is
       Create(Button1, ".mybutton", Button_Options'(others => <>));
       Create(Button2, ".mybutton2", Button_Options'(others => <>));
       Add((Button1, Button2));
-      Assert(Size(Get_Main_Window) = (2, 1), "Failed to add widgets to grid.");
+      Assert
+        (Get_Size(Get_Main_Window) = (2, 1), "Failed to add widgets to grid.");
       Destroy(Button1);
       Destroy(Button2);
 
@@ -750,7 +752,7 @@ package body Tk.Grid.Test_Data.Tests is
       Add(Button);
       Forget(Button);
       Assert
-        (Slaves(Get_Main_Window)'Length = 0,
+        (Get_Slaves(Get_Main_Window)'Length = 0,
          "Failed to forget widget in grid.");
       Destroy(Button);
 
@@ -808,7 +810,7 @@ package body Tk.Grid.Test_Data.Tests is
       Add((Button1, Button2));
       Forget((Button1, Button2));
       Assert
-        (Slaves(Get_Main_Window)'Length = 0,
+        (Get_Slaves(Get_Main_Window)'Length = 0,
          "Failed to forget widgets in grid.");
       Destroy(Button1);
       Destroy(Button2);
@@ -940,7 +942,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Propagate_eff519_e08f8c
+   procedure Wrap_Test_Set_Propagate_38a3d0_e08f8c
      (Master: Tk_Widget; Enable: Boolean := True) is
    begin
       begin
@@ -952,7 +954,8 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "req_sloc(tk-grid.ads:0):Test_Propagate1 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Grid.Propagate(Master, Enable);
+      GNATtest_Generated.GNATtest_Standard.Tk.Grid.Set_Propagate
+        (Master, Enable);
       begin
          pragma Assert(True);
          null;
@@ -962,17 +965,18 @@ package body Tk.Grid.Test_Data.Tests is
               (False,
                "ens_sloc(tk-grid.ads:0:):Test_Propagate1 test commitment violated");
       end;
-   end Wrap_Test_Propagate_eff519_e08f8c;
+   end Wrap_Test_Set_Propagate_38a3d0_e08f8c;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Propagate_test_propagate1(Gnattest_T: in out Test);
-   procedure Test_Propagate_eff519_e08f8c(Gnattest_T: in out Test) renames
-     Test_1_Propagate_test_propagate1;
---  id:2.2/eff5196af307b2c0/Propagate/1/0/test_propagate1/
-   procedure Test_1_Propagate_test_propagate1(Gnattest_T: in out Test) is
-      procedure Propagate(Master: Tk_Widget; Enable: Boolean := True) renames
-        Wrap_Test_Propagate_eff519_e08f8c;
+   procedure Test_Set_Propagate_test_propagate1(Gnattest_T: in out Test);
+   procedure Test_Set_Propagate_38a3d0_e08f8c(Gnattest_T: in out Test) renames
+     Test_Set_Propagate_test_propagate1;
+--  id:2.2/38a3d0651f3359fd/Set_Propagate/1/0/test_propagate1/
+   procedure Test_Set_Propagate_test_propagate1(Gnattest_T: in out Test) is
+      procedure Set_Propagate
+        (Master: Tk_Widget; Enable: Boolean := True) renames
+        Wrap_Test_Set_Propagate_38a3d0_e08f8c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -983,17 +987,17 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Propagate(Get_Main_Window, False);
+      Set_Propagate(Get_Main_Window, False);
       Assert
-        (not Propagate(Get_Main_Window),
+        (not Get_Propagate(Get_Main_Window),
          "Failed to set propagation for grid.");
 
 --  begin read only
-   end Test_1_Propagate_test_propagate1;
+   end Test_Set_Propagate_test_propagate1;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Propagate_306472_142129
+   function Wrap_Test_Get_Propagate_74e8b1_142129
      (Master: Tk_Widget) return Boolean is
    begin
       begin
@@ -1006,8 +1010,8 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Propagate2 test requirement violated");
       end;
       declare
-         Test_Propagate_306472_142129_Result: constant Boolean :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Propagate(Master);
+         Test_Get_Propagate_74e8b1_142129_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Propagate(Master);
       begin
          begin
             pragma Assert(True);
@@ -1018,19 +1022,19 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Propagate2 test commitment violated");
          end;
-         return Test_Propagate_306472_142129_Result;
+         return Test_Get_Propagate_74e8b1_142129_Result;
       end;
-   end Wrap_Test_Propagate_306472_142129;
+   end Wrap_Test_Get_Propagate_74e8b1_142129;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Propagate_test_propagate2(Gnattest_T: in out Test);
-   procedure Test_Propagate_306472_142129(Gnattest_T: in out Test) renames
-     Test_2_Propagate_test_propagate2;
---  id:2.2/3064720494e58f43/Propagate/0/0/test_propagate2/
-   procedure Test_2_Propagate_test_propagate2(Gnattest_T: in out Test) is
-      function Propagate(Master: Tk_Widget) return Boolean renames
-        Wrap_Test_Propagate_306472_142129;
+   procedure Test_Get_Propagate_test_propagate2(Gnattest_T: in out Test);
+   procedure Test_Get_Propagate_74e8b1_142129(Gnattest_T: in out Test) renames
+     Test_Get_Propagate_test_propagate2;
+--  id:2.2/74e8b1a5f9bf1066/Get_Propagate/1/0/test_propagate2/
+   procedure Test_Get_Propagate_test_propagate2(Gnattest_T: in out Test) is
+      function Get_Propagate(Master: Tk_Widget) return Boolean renames
+        Wrap_Test_Get_Propagate_74e8b1_142129;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1041,12 +1045,13 @@ package body Tk.Grid.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Propagate(Get_Main_Window);
+      Set_Propagate(Get_Main_Window);
       Assert
-        (Propagate(Get_Main_Window), "Failed to set propagation for grid.");
+        (Get_Propagate(Get_Main_Window),
+         "Failed to get propagation for grid.");
 
 --  begin read only
-   end Test_2_Propagate_test_propagate2;
+   end Test_Get_Propagate_test_propagate2;
 --  end read only
 
 --  begin read only
@@ -1353,7 +1358,7 @@ package body Tk.Grid.Test_Data.Tests is
       Add(Button);
       Remove(Button);
       Assert
-        (Slaves(Get_Main_Window)'Length = 0,
+        (Get_Slaves(Get_Main_Window)'Length = 0,
          "Failed to remove widget in grid.");
       Destroy(Button);
 
@@ -1411,7 +1416,7 @@ package body Tk.Grid.Test_Data.Tests is
       Add((Button1, Button2));
       Remove((Button1, Button2));
       Assert
-        (Slaves(Get_Main_Window)'Length = 0,
+        (Get_Slaves(Get_Main_Window)'Length = 0,
          "Failed to remove widgets in grid.");
       Destroy(Button1);
       Destroy(Button2);
@@ -1421,7 +1426,7 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Size_2a2937_a60758
+   function Wrap_Test_Get_Size_fbc383_a60758
      (Master: Tk_Widget) return Location_Position is
    begin
       begin
@@ -1434,8 +1439,8 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Size test requirement violated");
       end;
       declare
-         Test_Size_2a2937_a60758_Result: constant Location_Position :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Size(Master);
+         Test_Get_Size_fbc383_a60758_Result: constant Location_Position :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Size(Master);
       begin
          begin
             pragma Assert(True);
@@ -1446,19 +1451,19 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Size test commitment violated");
          end;
-         return Test_Size_2a2937_a60758_Result;
+         return Test_Get_Size_fbc383_a60758_Result;
       end;
-   end Wrap_Test_Size_2a2937_a60758;
+   end Wrap_Test_Get_Size_fbc383_a60758;
 --  end read only
 
 --  begin read only
-   procedure Test_Size_test_size(Gnattest_T: in out Test);
-   procedure Test_Size_2a2937_a60758(Gnattest_T: in out Test) renames
-     Test_Size_test_size;
---  id:2.2/2a2937e646446840/Size/1/0/test_size/
-   procedure Test_Size_test_size(Gnattest_T: in out Test) is
-      function Size(Master: Tk_Widget) return Location_Position renames
-        Wrap_Test_Size_2a2937_a60758;
+   procedure Test_Get_Size_test_size(Gnattest_T: in out Test);
+   procedure Test_Get_Size_fbc383_a60758(Gnattest_T: in out Test) renames
+     Test_Get_Size_test_size;
+--  id:2.2/fbc383da17d84224/Get_Size/1/0/test_size/
+   procedure Test_Get_Size_test_size(Gnattest_T: in out Test) is
+      function Get_Size(Master: Tk_Widget) return Location_Position renames
+        Wrap_Test_Get_Size_fbc383_a60758;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1475,17 +1480,17 @@ package body Tk.Grid.Test_Data.Tests is
       Create(Button2, ".mybutton2", Button_Options'(others => <>));
       Add((Button1, Button2));
       Assert
-        (Size(Get_Main_Window) = (Column => 2, Row => 1),
+        (Get_Size(Get_Main_Window) = (Column => 2, Row => 1),
          "Failed to get grid size.");
       Destroy(Button1);
       Destroy(Button2);
 
 --  begin read only
-   end Test_Size_test_size;
+   end Test_Get_Size_test_size;
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Slaves_3ea16d_8c1fbf
+   function Wrap_Test_Get_Slaves_6dfdb7_8c1fbf
      (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
       return Widgets_Array is
    begin
@@ -1499,8 +1504,8 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Slaves test requirement violated");
       end;
       declare
-         Test_Slaves_3ea16d_8c1fbf_Result: constant Widgets_Array :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Slaves
+         Test_Get_Slaves_6dfdb7_8c1fbf_Result: constant Widgets_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Slaves
              (Master, Row, Column);
       begin
          begin
@@ -1512,21 +1517,21 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Slaves test commitment violated");
          end;
-         return Test_Slaves_3ea16d_8c1fbf_Result;
+         return Test_Get_Slaves_6dfdb7_8c1fbf_Result;
       end;
-   end Wrap_Test_Slaves_3ea16d_8c1fbf;
+   end Wrap_Test_Get_Slaves_6dfdb7_8c1fbf;
 --  end read only
 
 --  begin read only
-   procedure Test_Slaves_test_slaves(Gnattest_T: in out Test);
-   procedure Test_Slaves_3ea16d_8c1fbf(Gnattest_T: in out Test) renames
-     Test_Slaves_test_slaves;
---  id:2.2/3ea16d2234b5d0f2/Slaves/1/0/test_slaves/
-   procedure Test_Slaves_test_slaves(Gnattest_T: in out Test) is
-      function Slaves
+   procedure Test_Get_Slaves_test_slaves(Gnattest_T: in out Test);
+   procedure Test_Get_Slaves_6dfdb7_8c1fbf(Gnattest_T: in out Test) renames
+     Test_Get_Slaves_test_slaves;
+--  id:2.2/6dfdb7246215d3af/Get_Slaves/1/0/test_slaves/
+   procedure Test_Get_Slaves_test_slaves(Gnattest_T: in out Test) is
+      function Get_Slaves
         (Master: Tk_Widget; Row, Column: Extended_Natural := -1)
          return Widgets_Array renames
-        Wrap_Test_Slaves_3ea16d_8c1fbf;
+        Wrap_Test_Get_Slaves_6dfdb7_8c1fbf;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1543,13 +1548,13 @@ package body Tk.Grid.Test_Data.Tests is
       Create(Button2, ".mybutton2", Button_Options'(others => <>));
       Add((Button1, Button2));
       Assert
-        (Slaves(Get_Main_Window)'Length = 2,
+        (Get_Slaves(Get_Main_Window)'Length = 2,
          "Failed to get list of slaves in grid.");
       Destroy(Button1);
       Destroy(Button2);
 
 --  begin read only
-   end Test_Slaves_test_slaves;
+   end Test_Get_Slaves_test_slaves;
 --  end read only
 
 --  begin read only
