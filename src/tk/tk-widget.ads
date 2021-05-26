@@ -198,6 +198,11 @@ package Tk.Widget is
    -- ****t* Widget/Widget.Justify_Type
    -- FUNCTION
    -- Type used to set text justify option of various widgets
+   -- OPTIONS
+   -- NONE   - Used mostly in setting the default value for widgets
+   -- LEFT   - Justify text to the left
+   -- CENTER - Center text
+   -- RIGHT  - Justify text to the right
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -237,6 +242,12 @@ package Tk.Widget is
    -- ****t* Widget/Widget.State_Type
    -- FUNCTION
    -- Type used to set the state of the selected widget
+   -- OPTIONS
+   -- NORMAL   - The widget is in normal, default state
+   -- ACTIVE   - The mouse is above the widget
+   -- DISABLED - The widget is disabled, insensitive, no keyboard or mouse
+   --            events
+   -- NONE     - Used mostly in setting the default state for the widget
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -389,6 +400,19 @@ package Tk.Widget is
    -- ****t* Widget/Widget.Anchor_Directions
    -- FUNCTION
    -- Possible directions for text in label of some widgets (mostly Label_Frame)
+   -- NONE   - Used mostly when setting default anchor for widgets
+   -- NW     - Set anchor to north west
+   -- N      - Set anchor to north
+   -- NE     - Set anchor to north east
+   -- EN     - Set anchor to north east
+   -- E      - Set anchor to east
+   -- ES     - Set anchor to south east
+   -- SE     - Set anchor to south east
+   -- S      - Set anchor to south
+   -- SW     - Set anchor to south west
+   -- WS     - Set anchor to south west
+   -- W      - Set anchor to west
+   -- WN     - Set anchor to north west
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
