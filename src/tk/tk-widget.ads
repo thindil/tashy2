@@ -45,6 +45,14 @@ package Tk.Widget is
    -- ****t* Widget/Widget.Relief_Type
    -- FUNCTION
    -- Type of Tk widget 3D effect
+   -- OPTIONS
+   -- NONE   - Empty value, used mostly in setting default value for widgets
+   -- RAISED - Widget visually will be raised
+   -- SUNKEN - Widget visually will be lowered
+   -- FLAT   - Widget visually will be flat (no border)
+   -- RIDGE  - Widget visually will be ridget
+   -- SOLID  - The widget's border will be solid at this same level like widget
+   -- GROOVE - Widget visually will be grooved
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -64,6 +72,12 @@ package Tk.Widget is
    -- ****t* Widget/Widget.Pixel_Unit
    -- FUNCTION
    -- Type of possible screen distance units
+   -- OPTIONS
+   -- PIXEL - Units are in pixels, default value
+   -- C     - Units are in centimeters
+   -- I     - Units are in inches
+   -- M     - Units are in milimeters
+   -- P     - Units are in printer's points
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -83,6 +97,17 @@ package Tk.Widget is
    -- ****t* Widget/Widget.Directions_Type
    -- FUNCTION
    -- Type of possible directions for various widgets configuration options
+   -- OPTIONS
+   -- NONE   - Used mostly when setting default direction for widgets
+   -- N      - North
+   -- NE     - North east
+   -- E      - East
+   -- SE     - South east
+   -- S      - South
+   -- SW     - South west
+   -- W      - West
+   -- NW     - North west
+   -- CENTER - Centered
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -118,13 +143,21 @@ package Tk.Widget is
    Default_Positive_Float: constant Positive_Float := -1.0;
    -- ****
 
-      -- ****t* Widget/Widget.Place_Type
-      -- FUNCTION
-      -- Type of possible place directions for various widgets configuration
-      -- options
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- SOURCE
+   -- ****t* Widget/Widget.Place_Type
+   -- FUNCTION
+   -- Type of possible place directions for various widgets configuration
+   -- options
+   -- OPTIONS
+   -- EMPTY  - Default value, used to set default setting for widgets
+   -- NONE   - Depends on configuration option of widgets
+   -- BOTTOM - Set value to bottom of widget
+   -- TOP    - Set value to top of widget
+   -- LEFT   - Set value to left side of widget
+   -- RIGHT  - Set value to right side of widget
+   -- CENTER - Set value to centered in widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Place_Type is (EMPTY, NONE, BOTTOM, TOP, LEFT, RIGHT, CENTER) with
       Default_Value => EMPTY;
       -- ****
@@ -142,6 +175,10 @@ package Tk.Widget is
    -- FUNCTION
    -- Type used for set boolean values of various widgets configuration
    -- options
+   -- OPTIONS
+   -- FALSE - Equivalent of Ada False
+   -- TRUE  - Equivalent of Ada True
+   -- NONE  - Used mostly in setting default value for configuration option
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
