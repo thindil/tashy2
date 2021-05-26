@@ -55,6 +55,18 @@ package Tk.TtkWidget is
    -- ****t* TtkWidget/TtkWidget.Ttk_State_Type
    -- FUNCTION
    -- Type used to set the current state of the selected Ttk widget
+   -- OPTIONS
+   -- ACTIVE     - Mouse cursor is above the widget, aka hover state
+   -- DISABLED   - The widget is disabled aka inactive state
+   -- FOCUS      - The widget has keyboard focus
+   -- PRESSED    - The widget is being pressed
+   -- SELECTED   - The widget (checkbuttons or radiobuttons) is on, selected
+   -- BACKGROUND - The widget is in background state (Windows and Mac only)
+   -- READONLY   - The widget can't be modified by the user
+   -- ALTERNATE  - The widget specific alternate display format. For example,
+   --              checkbuttons with mixed or tristate state
+   -- INVALID    - The widget value is invalid (mostly entries and scales)
+   -- HOVER      - Mouse cursor is above the widget, similar to ACTIVE state
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -87,6 +99,17 @@ package Tk.TtkWidget is
    -- FUNCTION
    -- Type of possible place directions for text and image on the Ttk
    -- widgets
+   -- OPTIONS
+   -- EMPTY  - Used only during setting the widget configuration. Use the
+   --          default setting for the selected widget
+   -- NONE   - The default, display image if present, otherwise text
+   -- BOTTOM - Display image below text
+   -- TOP    - Display image above text
+   -- LEFT   - Display image on the right from text
+   -- RIGHT  - Display image on the left from text
+   -- CENTER - Display text on top of image
+   -- TEXT   - Display text only
+   -- IMAGE  - Display image only
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -108,6 +131,10 @@ package Tk.TtkWidget is
    -- FUNCTION
    -- Type used to set disabled bit of the Ttk widgets for compatybility
    -- with old Tk widgets
+   -- OPTIONS
+   -- NORMAL   - The widget is not disabled
+   -- DISABLED - The widget is disabled
+   -- NONE     - Used only in configuring the widget, to set default state
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
