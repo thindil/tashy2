@@ -36,6 +36,8 @@ package Tcl.Info is
    -- EXAMPLE
    -- -- Get the names of arguments or Tcl procedure myproc on default interpreter
    -- Arguments_Names: constant Array_List := Get_Arguments("myproc");
+   -- COMMANDS
+   -- info args Proc_Name
    -- SOURCE
    function Get_Arguments
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -64,6 +66,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the body of Tcl procedure myproc2 on default interpreter
       -- Proc_Body: constant String := Get_Procedure_Body("myproc2");
+      -- COMMANDS
+      -- info body Proc_Name
       -- SOURCE
    function Get_Procedure_Body
      (Proc_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -89,6 +93,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the amount of invoked command on the default Tcl interpreter
       -- Amount: constant Natural := Get_Commands_Count;
+      -- COMMANDS
+      -- info cmdcount
       -- SOURCE
    function Get_Commands_Count
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural with
@@ -112,6 +118,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the names of all available commands in default Tcl interpreter
       -- Commands_Names: constant Array_List := Get_Commands;
+      -- COMMANDS
+      -- info commands ?Pattern?
       -- SOURCE
    function Get_Commands
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -141,6 +149,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Check if command mycommand is complete on default interpreter
       -- Is_Complete: constant Boolean := Complete("mycommand");
+      -- COMMANDS
+      -- info complete Command
       -- SOURCE
    function Complete
      (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -166,6 +176,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the name of the currently executed coroutine on My_Interpreter interpreter
       -- Coroutine_Name: constant String := Get_Coroutine(My_Interpreter);
+      -- COMMANDS
+      -- info coroutine
       -- SOURCE
    function Get_Coroutine
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
@@ -197,6 +209,7 @@ package Tcl.Info is
       -- -- Get the default value of argument myarg in procedure myproc on the default
       -- -- interpreter and put it in Tcl variable myvar
       -- Has_Default: constant Boolean := Get_Default("myproc", "myarg", "myvar");
+      -- info default Proc_Name Argument Var_Name
       -- SOURCE
    function Get_Default
      (Proc_Name, Argument, Var_Name: String;
@@ -223,6 +236,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the error call stack on the default interpreter
       -- Error_Stack: constant String := Get_Error_Stack;
+      -- COMMANDS
+      -- info errorstack Interpreter
       -- SOURCE
    function Get_Error_Stack
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
@@ -246,6 +261,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Check if the Tcl variable $myvar exists in the default Tcl interpreter
       -- Var_Exists: constant Boolean := Exists("myvar");
+      -- COMMANDS
+      -- info exists Var_Name
       -- SOURCE
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -275,6 +292,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the names of all available math functions in default Tcl interpreter
       -- Functions_Names: constant Array_List := Get_Functions;
+      -- COMMANDS
+      -- info functions ?Pattern?
       -- SOURCE
    function Get_Functions
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -307,6 +326,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the names of all available global variables in default Tcl interpreter
       -- Global_Variables_Names: constant Array_List := Get_Globals;
+      -- COMMANDS
+      -- info globals ?Pattern?
       -- SOURCE
    function Get_Globals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -335,6 +356,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the name of computer on default Tcl interpreter
       -- Host_Name: constant String := Get_Host_Name;
+      -- COMMANDS
+      -- info hostname
       -- SOURCE
    function Get_Host_Name
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
@@ -357,6 +380,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the library directory on default Tcl interpreter
       -- Library_Path: constant String := Get_Library;
+      -- COMMANDS
+      -- info library
       -- SOURCE
    function Get_Library
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
@@ -383,6 +408,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the names of all available local variables in default Tcl interpreter
       -- Local_Variables_Names: constant Array_List := Get_Locals;
+      -- COMMANDS
+      -- info locals ?Pattern?
       -- SOURCE
    function Get_Locals
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -409,6 +436,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the name of executable on default interpreter
       -- Full_Path: constant String := Get_Name_Of_Executable;
+      -- COMMANDS
+      -- info nameofexecutable
       -- SOURCE
    function Get_Name_Of_Executable
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
@@ -433,6 +462,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the library version on default Tcl interpreter
       -- Version: constant String := Get_Patch_Level;
+      -- COMMANDS
+      -- info patchlevel
       -- SOURCE
    function Get_Patch_Level
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
@@ -461,6 +492,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the names of all available procedures in default Tcl interpreter
       -- Procedures_Names: constant Array_List := Get_Procedures;
+      -- COMMANDS
+      -- info procs ?Pattern?
       -- SOURCE
    function Get_Procedures
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -491,6 +524,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the name of the currently evaluated Tcl script on default Tcl interpreter
       -- File_Name: constant String := Get_Script;
+      -- COMMANDS
+      -- info script ?File_Name?
       -- SOURCE
    function Get_Script
      (File_Name: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -516,6 +551,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the library version on default Tcl interpreter
       -- Version: constant String := Get_Tcl_Version;
+      -- COMMANDS
+      -- info tclversion
       -- SOURCE
    function Get_Tcl_Version
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
@@ -543,6 +580,8 @@ package Tcl.Info is
       -- EXAMPLE
       -- -- Get the names of all available variables in default Tcl interpreter
       -- Variables_Names: constant Array_List := Get_Variables;
+      -- COMMANDS
+      -- info vars ?Pattern?
       -- SOURCE
    function Get_Variables
      (Pattern: String := ""; Interpreter: Tcl_Interpreter := Get_Interpreter)
