@@ -24,6 +24,17 @@ package Tcl.Variables is
    -- ****t* Variables/Variables.Variables_Flags
    -- FUNCTION
    -- Available flags for manipulation of Tcl variables
+   -- OPTIONS
+   -- NONE               - No flags sets
+   -- TCL_GLOBAL_ONLY    - Look only for global Tcl variables
+   -- TCL_NAMESPACE_ONLY - Look only for Tcl variables in current Tcl namespace
+   -- TCL_APPEND_VALUE   - Append a new value to the current Tcl variable value
+   --                      instead of replacing it
+   -- TCL_LIST_ELEMENT   - The new value is a list element. Before adding it is
+   --                      converted to the proper Tcl list value (added space
+   --                      if needed, etc)
+   -- TCL_LEAVE_ERR_MSG  - If error is returned, leave error message so it can
+   --                      be retrieved with proper subprograms
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
