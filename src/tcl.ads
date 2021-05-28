@@ -403,4 +403,21 @@ package Tcl is
       Test_Case => (Name => "Test_Tcl_Update", Mode => Nominal);
       -- ****
 
+      -- ****f* Tcl/Tcl.Set_Debug
+      -- FUNCTION
+      -- Enable or disable debug mode. If enabled, all Tcl commands with be
+      -- printed to the console before execution
+      -- PARAMETERS
+      -- Enabled - If True, enable debug mode, otherwise disable it. Can be
+      --           empty. Default value is True.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Enable debug mode
+      -- Set_Debug;
+      -- SOURCE
+   procedure Set_Debug(Enabled: Boolean := True) with
+      Test_Case => (Name => "Test_Debug", Mode => Robustness);
+   -- ****
+
 end Tcl;
