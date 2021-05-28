@@ -24,7 +24,7 @@ package Tk.TtkFrame is
    --## rule off REDUCEABLE_SCOPE
    -- ****t* TtkFrame/TtkFrame.Tk_Frame
    -- FUNCTION
-   -- The Tk identifier of the frame
+   -- The Tk identifier of the ttk::frame
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -38,12 +38,12 @@ package Tk.TtkFrame is
    -- OPTIONS
    -- Border_Width - The width of the ttk::frame's border
    -- Height       - Height of the ttk::frame.
-   -- Padding      - Amount of extra space to allocate for the frame. If some
+   -- Padding      - Amount of extra space to allocate for the ttk::frame. If some
    --                elemets are empty then, bottom defaults to top, right defaults
    --                to left, and top defaults to left. Order of the elements:
    --                left, top, right, bottom
-   -- Relief       - 3-D effect desired for the frame
-   -- Width        - Width of the frame
+   -- Relief       - 3-D effect desired for the ttk::frame
+   -- Width        - Width of the ttk::frame
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -61,14 +61,14 @@ package Tk.TtkFrame is
    -- Set the selected options for the selected ttk::frame
    -- PARAMETERS
    -- Frame_Widget - Ttk_Frame which options will be set
-   -- Options      - The record with new values for the frame options
+   -- Options      - The record with new values for the ttk::frame options
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
-   -- -- Set background to black for frame My_Frame
+   -- -- Set background to black for ttk::frame My_Frame
    -- Configure(My_Frame, (Background => To_Tcl_String("black"), others => <>));
    -- SEE ALSO
-   -- Frame.Get_Options
+   -- TtkFrame.Get_Options
    -- COMMANDS
    -- Widget configure Options
    -- SOURCE
@@ -84,7 +84,7 @@ package Tk.TtkFrame is
    -- PARAMETERS
    -- Path_Name   - Tk pathname for the newly created ttk::frame
    -- Options     - Options for the newly created ttk::frame
-   -- Interpreter - Tcl interpreter on which the frame will be created. Can
+   -- Interpreter - Tcl interpreter on which the ttk::frame will be created. Can
    --               be empty. Default value is the default Tcl interpreter
    -- RESULT
    -- The Tk identifier of the newly created ttk::frame widget
@@ -97,7 +97,7 @@ package Tk.TtkFrame is
    -- SEE ALSO
    -- TtkFrame.Create_(procedure)
    -- COMMANDS
-   -- frame Path_Name Options
+   -- ttk::frame Path_Name Options
    -- SOURCE
    function Create
      (Path_Name: String; Options: Ttk_Frame_Options;
@@ -114,23 +114,23 @@ package Tk.TtkFrame is
       -- Frame_Widget    - Ttk_Frame identifier which will be returned
       -- Path_Name       - Tk pathname for the newly created ttk::frame
       -- Options         - Options for the newly created ttk::frame
-      -- Interpreter     - Tcl interpreter on which the toplelve will be created. Can
+      -- Interpreter     - Tcl interpreter on which the ttk::frame will be created. Can
       --                   be empty. Default value is the default Tcl interpreter
       -- OUTPUT
-      -- The Widget parameter as Tk identifier of the newly created frame widget
+      -- The Widget parameter as Tk identifier of the newly created ttk::frame widget
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
-      -- -- Create the frame with pathname .myframe
+      -- -- Create the ttk::frame with pathname .myframe
       -- declare
-      --    My_Frame: Tk_Frame;
+      --    My_Frame: Ttk_Frame;
       -- begin
-      --    Create(My_Frame, ".myframe", Default_Frame_Create_Options);
+      --    Create(My_Frame, ".myframe", Default_Ttk_Frame_Create_Options);
       -- end;
       -- SEE ALSO
-      -- Frame.Create_(function)
+      -- TtkFrame.Create_(function)
       -- COMMANDS
-      -- frame Path_Name Options
+      -- ttk::frame Path_Name Options
       -- SOURCE
    procedure Create
      (Frame_Widget: out Ttk_Frame; Path_Name: String;
