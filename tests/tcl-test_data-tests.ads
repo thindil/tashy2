@@ -28,5 +28,8 @@ package Tcl.Test_Data.Tests is
    procedure Test_Tcl_Update_7113e2_953c64(Gnattest_T: in out Test);
    --  tcl.ads:399:4:Tcl_Update:Test_Tcl_Update
 
+   procedure Test_Set_Debug_4bc828_f8ec5d(Gnattest_T: in out Test);
+   --  tcl.ads:419:4:Set_Debug:Test_Debug
+
 end Tcl.Test_Data.Tests;
 --  end read only

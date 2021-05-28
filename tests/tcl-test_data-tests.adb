@@ -353,6 +353,35 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Set_Debug_4bc828_f8ec5d(Enabled: Boolean := True) is
+   begin
+      GNATtest_Generated.GNATtest_Standard.Tcl.Set_Debug(Enabled);
+   end Wrap_Test_Set_Debug_4bc828_f8ec5d;
+--  end read only
+
+--  begin read only
+   procedure Test_Set_Debug_test_debug(Gnattest_T: in out Test);
+   procedure Test_Set_Debug_4bc828_f8ec5d(Gnattest_T: in out Test) renames
+     Test_Set_Debug_test_debug;
+--  id:2.2/4bc828d46edc90c2/Set_Debug/1/0/test_debug/
+   procedure Test_Set_Debug_test_debug(Gnattest_T: in out Test) is
+      procedure Set_Debug(Enabled: Boolean := True) renames
+        Wrap_Test_Set_Debug_4bc828_f8ec5d;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Set_Debug;
+      Set_Debug(False);
+      Assert(True, "This test can only crash");
+
+--  begin read only
+   end Test_Set_Debug_test_debug;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
