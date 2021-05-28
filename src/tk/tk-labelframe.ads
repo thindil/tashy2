@@ -25,38 +25,40 @@ package Tk.Labelframe is
    --## rule off REDUCEABLE_SCOPE
    -- ****t* Labelframe/Labelframe.Tk_Label_Frame
    -- FUNCTION
-   -- The Tk identifier of the frame
+   -- The Tk identifier of the labelframe
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    subtype Tk_Label_Frame is Tk_Widget;
    -- ****
 
-   -- ****s* Labelframe/Labelframe.Frame_Options
+   -- ****s* Labelframe/Labelframe.Label_Frame_Options
    -- FUNCTION
    -- Data structure for all available options for the Tk labelframe which can
    -- be changed after creation of a widget
    -- OPTIONS
-   -- Background           - Normal Background color of the frame
-   -- Border_Width         - The width of the frame's border
-   -- Height               - Height of the frame.
+   -- Background           - Normal Background color of the labelframe
+   -- Border_Width         - The width of the labelframe's border
+   -- Height               - Height of the labelframe.
    -- Highlight_Background - Highlight traversal region background color for
-   --                        the frame
+   --                        the labelframe
    -- Highlight_Color      - Highlight traversal rectangle color for the
-   --                        frame
+   --                        labelframe
    -- Highlight_Thickness  - The width of highlight traversal rectangle for the
-   --                        frame
-   -- Label_Anchor         - The direction where to place the lable of Tk
+   --                        labelframe
+   -- Label_Anchor         - The direction where to place the label of Tk
    --                        labelframe. Works only when Text option isn't empty
    -- Label_Widget         - Tk_Widget used as a label for Tk labelframe.
    -- Menu                 - Menu widget which will be used as menubar in the
-   --                        frame
-   -- Pad_X                - Extra space requested for the frame in X-direction
-   -- Pad_Y                - Extra space requested for the frame in Y-direction
-   -- Relief               - 3-D effect desired for the frame
+   --                        labelframe
+   -- Pad_X                - Extra space requested for the labelframe in
+   --                        X-direction
+   -- Pad_Y                - Extra space requested for the labelframe in
+   --                        Y-direction
+   -- Relief               - 3-D effect desired for the labelframe
    -- Text                 - The text which will be displayed in label of Tk
    --                        labelframe
-   -- Width                - Width of the frame
+   -- Width                - Width of the labelframe
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -76,10 +78,10 @@ package Tk.Labelframe is
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
-   -- -- Set background to black for frame My_Frame
+   -- -- Set background to black for labelframe My_Frame
    -- Configure(My_Frame, (Background => To_Tcl_String("black"), others => <>));
    -- SEE ALSO
-   -- Frame.Get_Options
+   -- Labelframe.Get_Options
    -- COMMANDS
    -- Widget configure Options
    -- SOURCE
@@ -121,24 +123,24 @@ package Tk.Labelframe is
 
    -- ****f* Labelframe/Labelframe.Create_(function)
    -- FUNCTION
-   -- Create a new Tk frame widget with the selected pathname and options
+   -- Create a new Tk labelframe widget with the selected pathname and options
    -- PARAMETERS
-   -- Path_Name   - Tk pathname for the newly created frame
-   -- Options     - Options for the newly created frame
-   -- Interpreter - Tcl interpreter on which the frame will be created. Can
+   -- Path_Name   - Tk pathname for the newly created labelframe
+   -- Options     - Options for the newly created labelframe
+   -- Interpreter - Tcl interpreter on which the labelframe will be created. Can
    --               be empty. Default value is the default Tcl interpreter
    -- RESULT
-   -- The Tk identifier of the newly created frame widget
+   -- The Tk identifier of the newly created labelframe widget
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
-   -- -- Create the frame with pathname .myframe and black background
+   -- -- Create the labelframe with pathname .myframe and black background
    -- My_Frame: constant Tk_Label_Frame := Create(".myframe", (Background => To_Tcl_String("black"),
    --                                                    others => <>));
    -- SEE ALSO
-   -- Frame.Create_(procedure)
+   -- Labelframe.Create_(procedure)
    -- COMMANDS
-   -- frame Path_Name Options
+   -- labelframe Path_Name Options
    -- SOURCE
    function Create
      (Path_Name: String; Options: Label_Frame_Create_Options;
@@ -151,28 +153,28 @@ package Tk.Labelframe is
 
       -- ****f* Labelframe/Labelframe.Create_(procedure)
       -- FUNCTION
-      -- Create a new Tk frame widget with the selected pathname and options
+      -- Create a new Tk labelframe widget with the selected pathname and options
       -- PARAMETERS
       -- Frame_Widget - Tk_Label_Frame identifier which will be returned
-      -- Path_Name    - Tk pathname for the newly created frame
-      -- Options      - Options for the newly created frame
-      -- Interpreter  - Tcl interpreter on which the toplelve will be created. Can
+      -- Path_Name    - Tk pathname for the newly created labelframe
+      -- Options      - Options for the newly created labelframe
+      -- Interpreter  - Tcl interpreter on which the labelframe will be created. Can
       --                be empty. Default value is the default Tcl interpreter
       -- OUTPUT
-      -- The Widget parameter as Tk identifier of the newly created frame widget
+      -- The Widget parameter as Tk identifier of the newly created labelframe widget
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
-      -- -- Create the frame with pathname .myframe
+      -- -- Create the labelframe with pathname .myframe
       -- declare
       --    My_Frame: Tk_Label_Frame;
       -- begin
       --    Create(My_Frame, ".myframe", Default_Frame_Create_Options);
       -- end;
       -- SEE ALSO
-      -- Frame.Create_(function)
+      -- Labelframe.Create_(function)
       -- COMMANDS
-      -- frame Path_Name Options
+      -- labelframe Path_Name Options
       -- SOURCE
    procedure Create
      (Frame_Widget: out Tk_Label_Frame; Path_Name: String;
@@ -185,17 +187,17 @@ package Tk.Labelframe is
 
    -- ****f* Labelframe/Labelframe.Get_Options
    -- FUNCTION
-   -- Get all values of Tk options of the selected frame
+   -- Get all values of Tk options of the selected labelframe
    -- PARAMETERS
    -- Frame_Widget - Tk_Label_Frame which options' values will be taken
    -- RESULT
-   -- Frame_Create_Options record with values of the selected frame
+   -- Frame_Create_Options record with values of the selected labelframe
    -- options
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
-   -- -- Get all values of option of frame with pathname .myframe
-   -- My_Frame_Options: constant Frame_Create_Options := Get_Options(Get_Widget(".myframe"));
+   -- -- Get all values of option of labelframe with pathname .myframe
+   -- My_Labe_Frame_Options: constant Label_Frame_Create_Options := Get_Options(Get_Widget(".myframe"));
    -- COMMANDS
    -- Widget configure
    -- SOURCE
@@ -207,7 +209,7 @@ package Tk.Labelframe is
 
       -- ****d* Labelframe/Labelframe.Default_Label_Frame_Create_Options
       -- FUNCTION
-      -- Default options used during creating Frame widget
+      -- Default options used during creating lableframe widget
       -- HISTORY
       -- 8.6.0 - Added
       -- SOURCE
