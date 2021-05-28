@@ -25,7 +25,7 @@ package Tk.TtkLabelFrame is
    --## rule off REDUCEABLE_SCOPE
    -- ****t* TtkLabelFrame/TtkLabelFrame.Tk_Frame
    -- FUNCTION
-   -- The Tk identifier of the frame
+   -- The Tk identifier of the ttk::labelframe
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -42,14 +42,14 @@ package Tk.TtkLabelFrame is
    -- Label_Anchor - The direction where to place the lable of Tk
    --                ttk::labelframe. Works only when Text option isn't empty
    -- Label_Widget - Tk_Widget used as a label for Tk ttk::labelframe.
-   -- Padding      - Amount of extra space to allocate for the frame. If some
+   -- Padding      - Amount of extra space to allocate for the ttk::labelframe. If some
    --                elemets are empty then, bottom defaults to top, right defaults
    --                to left, and top defaults to left. Order of the elements:
    --                left, top, right, bottom
-   -- Relief       - 3-D effect desired for the frame
+   -- Relief       - 3-D effect desired for the ttk::labelframe
    -- Text         - The text which will be displayed in label of Tk
    --                ttk::labelframe
-   -- Width        - Width of the frame
+   -- Width        - Width of the ttk::labelframe
    -- Underline    - The index of the character in the ttk::labelframe text
    --                which will be underlined. The index starts from 0
    -- HISTORY
@@ -73,11 +73,11 @@ package Tk.TtkLabelFrame is
    -- Set the selected options for the selected ttk::labelframe
    -- PARAMETERS
    -- Frame_Widget - Ttk_Label_Frame which options will be set
-   -- Options      - The record with new values for the frame options
+   -- Options      - The record with new values for the ttk::labelframe options
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
-   -- -- Set background to black for frame My_Frame
+   -- -- Set background to black for ttk::labelframe My_Frame
    -- Configure(My_Frame, (Background => To_Tcl_String("black"), others => <>));
    -- SEE ALSO
    -- Frame.Get_Options
@@ -96,7 +96,7 @@ package Tk.TtkLabelFrame is
    -- PARAMETERS
    -- Path_Name   - Tk pathname for the newly created ttk::labelframe
    -- Options     - Options for the newly created ttk::labelframe
-   -- Interpreter - Tcl interpreter on which the frame will be created. Can
+   -- Interpreter - Tcl interpreter on which the ttk::labelframe will be created. Can
    --               be empty. Default value is the default Tcl interpreter
    -- RESULT
    -- The Tk identifier of the newly created ttk::labelframe widget
@@ -109,7 +109,7 @@ package Tk.TtkLabelFrame is
    -- SEE ALSO
    -- TtkLabelFrame.Create_(procedure)
    -- COMMANDS
-   -- frame Path_Name Options
+   -- ttk::labelframe Path_Name Options
    -- SOURCE
    function Create
      (Path_Name: String; Options: Ttk_Label_Frame_Options;
@@ -122,28 +122,28 @@ package Tk.TtkLabelFrame is
 
       -- ****f* TtkLabelFrame/TtkLabelFrame.Create_(procedure)
       -- FUNCTION
-      -- Create a new Tk ttk:frame widget with the selected pathname and options
+      -- Create a new Tk ttk::frame widget with the selected pathname and options
       -- PARAMETERS
       -- Frame_Widget    - Ttk_Label_Frame identifier which will be returned
       -- Path_Name       - Tk pathname for the newly created ttk::labelframe
       -- Options         - Options for the newly created ttk::labelframe
-      -- Interpreter     - Tcl interpreter on which the toplelve will be created. Can
+      -- Interpreter     - Tcl interpreter on which the ttk::labelframe will be created. Can
       --                   be empty. Default value is the default Tcl interpreter
       -- OUTPUT
-      -- The Widget parameter as Tk identifier of the newly created frame widget
+      -- The Widget parameter as Tk identifier of the newly created ttk::labelframe widget
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
-      -- -- Create the frame with pathname .myframe
+      -- -- Create the ttk::labelframe with pathname .myframe
       -- declare
-      --    My_Frame: Tk_Frame;
+      --    My_Frame: Ttk_Label_Frame;
       -- begin
-      --    Create(My_Frame, ".myframe", Default_Frame_Create_Options);
+      --    Create(My_Frame, ".myframe", Default_Ttk_Label_Frame_Create_Options);
       -- end;
       -- SEE ALSO
-      -- Frame.Create_(function)
+      -- Ttk_Label_Frame.Create_(function)
       -- COMMANDS
-      -- frame Path_Name Options
+      -- ttk::labelframe Path_Name Options
       -- SOURCE
    procedure Create
      (Frame_Widget: out Ttk_Label_Frame; Path_Name: String;
