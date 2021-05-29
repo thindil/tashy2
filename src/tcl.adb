@@ -29,16 +29,6 @@ package body Tcl is
    -- ****
    --## rule on GLOBAL_REFERENCES
 
-   -- ****iv* Tcl/Tcl.Debug_Mode
-   -- FUNCTION
-   -- If true, print all Tcl commands to the console. By default it is
-   -- disabled
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   Debug_Mode: Boolean := False;
-   -- ****
-
    procedure Set_Interpreter(Interpreter: Tcl_Interpreter) is
    begin
       Default_Interpreter := Interpreter;
@@ -202,10 +192,5 @@ package body Tcl is
            "update" & (if Idle_Tasks_Only then " idletasks" else ""),
          Interpreter => Interpreter);
    end Tcl_Update;
-
-   procedure Set_Debug(Enabled: Boolean := True) is
-   begin
-      Debug_Mode := Enabled;
-   end Set_Debug;
 
 end Tcl;
