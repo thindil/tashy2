@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Lists; use Tcl.Lists;
+with Tcl.Strings; use Tcl.Strings;
 
 -- ****d* Tk/Image
 -- FUNCTION
@@ -30,6 +31,26 @@ package Tk.Image is
    -- SOURCE
    subtype Tk_Image is String;
    -- ****
+
+   --## rule off TYPE_INITIAL_VALUES
+   -- ****s* Tk.Image/Image_Options
+   -- FUNCTION
+   -- Abstract record to store images options available for all types of images
+   -- OPTIONS
+   -- Data - The content of the image as a string. The format of the string
+   --        must be one of those for which there is an image file format
+   --        handler that will accept string data. If both the Data and
+   --        File options are specified, the File option takes precedence.
+   -- File - The name of the file which will be loaded as an image.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Image_Options is abstract tagged record
+      Data: Tcl_String;
+      File: Tcl_String;
+   end record;
+   -- ****
+   --## rule on TYPE_INITIAL_VALUES
 
    -- ****f* Image/Image.Delete_(single_image)
    -- FUNCTION
