@@ -51,13 +51,6 @@ package Tcl is
      Tcl_Interpreter(System.Null_Address);
      -- ****
 
-     -- ****v* Tcl/Tcl.Debug_Mode
-     -- FUNCTION
-     -- If True, show all executed Tcl commands
-     -- SOURCE
-   Debug_Mode: Boolean := False;
-   -- ****
-
    --------------------------------
    -- Initialization of Tcl binding
    --------------------------------
