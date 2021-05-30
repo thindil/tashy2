@@ -12,7 +12,6 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Text_IO;
 with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 
@@ -84,9 +83,6 @@ package body Tcl is
           (Interp => Interpreter, Script => New_String(Str => Tcl_Script)) =
         TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result;
-      end if;
-      if Debug_Mode then
-         Ada.Text_IO.Put_Line(Tcl_Script);
       end if;
    end Tcl_Eval;
 
