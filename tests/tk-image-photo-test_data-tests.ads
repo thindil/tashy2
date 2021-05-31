@@ -12,7 +12,7 @@ package Tk.Image.Photo.Test_Data.Tests is
    null record;
 
    procedure Test_Blank_2c1442_876b9b(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:61:4:Blank:Test_Blank_Photo
+   --  tk-image-photo.ads:68:4:Blank:Test_Blank_Photo
 
 end Tk.Image.Photo.Test_Data.Tests;
 --  end read only
