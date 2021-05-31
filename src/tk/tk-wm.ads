@@ -252,30 +252,6 @@ package Tk.Wm is
      Window_Grid_Geometry'(others => 0);
      -- ****
 
-     -- ****s* Wm/Wm.Window_Position
-     -- FUNCTION
-     -- Data structure used to set position of Tk widget icon
-     -- X - The X coordinate of the icon
-     -- Y - The Y coordinate of the icon
-     -- HISTORY
-     -- 8.6.0 - Added
-     -- SOURCE
-   type Window_Position is record
-      X: Natural;
-      Y: Natural;
-   end record;
-   -- ****
-
-   -- ****d* Wm/Wm.Empty_Window_Position
-   -- FUNCTION
-   -- Empty values for position of Tk widget icon
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   Empty_Window_Position: constant Window_Position :=
-     Window_Position'(others => 0);
-     -- ****
-
      -- ****s* Wm/Wm.Aspect_Data
      -- FUNCTION
      -- Data structure used to set the Tk widget aspects ratios
@@ -1141,18 +1117,18 @@ package Tk.Wm is
       -- PARAMETERS
       -- Window - Tk_Widget which icon's position will be get
       -- RESULT
-      -- Window_Position record with the current position of the Window's icon
+      -- Point_Position record with the current position of the Window's icon
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the position of the Tk main window icon
-      -- Position: constant Window_Position := Get_Icon_Position(Get_Main_Window);
+      -- Position: constant Point_Position := Get_Icon_Position(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Icon_Position
       -- COMMANDS
       -- wm iconposition Window
       -- SOURCE
-   function Get_Icon_Position(Window: Tk_Widget) return Window_Position with
+   function Get_Icon_Position(Window: Tk_Widget) return Point_Position with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Icon_Position", Mode => Nominal);
       -- ****

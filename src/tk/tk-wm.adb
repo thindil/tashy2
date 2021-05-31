@@ -489,7 +489,7 @@ package body Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Icon_Photo;
 
-   function Get_Icon_Position(Window: Tk_Widget) return Window_Position is
+   function Get_Icon_Position(Window: Tk_Widget) return Point_Position is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
         Split_List
@@ -500,7 +500,7 @@ package body Tk.Wm is
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin
-      return Icon_Pos: Window_Position := Empty_Window_Position do
+      return Icon_Pos: Point_Position := Empty_Point_Position do
          Icon_Pos.X := Natural'Value(To_Ada_String(Source => Result(1)));
          Icon_Pos.Y := Natural'Value(To_Ada_String(Source => Result(2)));
       end return;
