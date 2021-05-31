@@ -43,7 +43,8 @@ package body Tk.Image.Photo is
 
    procedure Copy
      (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
-      Shrink: Boolean := False) is
+      Shrink: Boolean := False;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       null;
    end Copy;
