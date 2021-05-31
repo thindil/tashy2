@@ -430,6 +430,30 @@ package Tk.Widget is
    Default_Anchor_Direction: constant Anchor_Directions := NW;
    -- ****
 
+     -- ****s* Widget/Widget.Point_Position
+     -- FUNCTION
+     -- Data structure used to set position of point on the screen
+     -- X - The X coordinate of the point
+     -- Y - The Y coordinate of the point
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SOURCE
+   type Point_Position is record
+      X: Natural;
+      Y: Natural;
+   end record;
+   -- ****
+
+   -- ****d* Widget/Widget.Empty_Point_Position
+   -- FUNCTION
+   -- Empty values for position of point
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   Empty_Point_Position: constant Point_Position :=
+     Point_Position'(others => 0);
+     -- ****
+
    -----------------------------------------------
    -- Various functions to convert types to String
    -----------------------------------------------
