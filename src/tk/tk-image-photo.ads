@@ -35,6 +35,13 @@ package Tk.Image.Photo is
       end case;
    end record;
 
+   type Dimensions_Type is record
+      Start_X: Natural;
+      Start_Y: Natural;
+      End_X: Extended_Natural;
+      End_Y: Extended_Natural;
+   end record;
+
    -- ****f* Photo/Photo.Create
    -- FUNCTION
    -- Create a new Tk image of photo type with the selected name and options
@@ -74,5 +81,7 @@ package Tk.Image.Photo is
       return Photo_Options with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Get_Options_Photo", Mode => Nominal);
+
+   procedure Copy(Destination_Image, Source_Image: String; From, To: Dimensions_Type; Shrink: Boolean := False);
 
 end Tk.Image.Photo;
