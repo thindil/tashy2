@@ -1978,8 +1978,8 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Icon_Position_e7d39c_0e4e31
-     (Window: Tk_Widget) return Window_Position is
+   function Wrap_Test_Get_Icon_Position_e3f767_0e4e31
+     (Window: Tk_Widget) return Point_Position is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -1991,7 +1991,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Position test requirement violated");
       end;
       declare
-         Test_Get_Icon_Position_e7d39c_0e4e31_Result: constant Window_Position :=
+         Test_Get_Icon_Position_e3f767_0e4e31_Result: constant Point_Position :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Icon_Position
              (Window);
       begin
@@ -2004,23 +2004,23 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Position test commitment violated");
          end;
-         return Test_Get_Icon_Position_e7d39c_0e4e31_Result;
+         return Test_Get_Icon_Position_e3f767_0e4e31_Result;
       end;
-   end Wrap_Test_Get_Icon_Position_e7d39c_0e4e31;
+   end Wrap_Test_Get_Icon_Position_e3f767_0e4e31;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Icon_Position_test_wm_icon_position
      (Gnattest_T: in out Test);
-   procedure Test_Get_Icon_Position_e7d39c_0e4e31
+   procedure Test_Get_Icon_Position_e3f767_0e4e31
      (Gnattest_T: in out Test) renames
      Test_Get_Icon_Position_test_wm_icon_position;
---  id:2.2/e7d39c6ca523fd87/Get_Icon_Position/1/0/test_wm_icon_position/
+--  id:2.2/e3f7673ec4f0d977/Get_Icon_Position/1/0/test_wm_icon_position/
    procedure Test_Get_Icon_Position_test_wm_icon_position
      (Gnattest_T: in out Test) is
       function Get_Icon_Position
-        (Window: Tk_Widget) return Window_Position renames
-        Wrap_Test_Get_Icon_Position_e7d39c_0e4e31;
+        (Window: Tk_Widget) return Point_Position renames
+        Wrap_Test_Get_Icon_Position_e3f767_0e4e31;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
