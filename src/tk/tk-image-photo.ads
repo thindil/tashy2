@@ -62,26 +62,32 @@ package Tk.Image.Photo is
      (Name: String; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => (Name => "Test_Create_Photo", Mode => Nominal);
+      Test_Case => (Name => "Tests_Create_Photo", Mode => Nominal);
    -- ****
 
    procedure Blank
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => (Name => "Test_Blank_Photo", Mode => Nominal);
+      Test_Case => (Name => "Tests_Blank_Photo", Mode => Nominal);
 
    procedure Configure
      (Name: String; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => (Name => "Test_Configure_Photo", Mode => Nominal);
+      Test_Case => (Name => "Tests_Configure_Photo", Mode => Nominal);
 
    function Get_Options
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Test_Case => (Name => "Test_Get_Options_Photo", Mode => Nominal);
+      Test_Case => (Name => "Tests_Get_Options_Photo", Mode => Nominal);
 
-   procedure Copy(Destination_Image, Source_Image: String; From, To: Dimensions_Type; Shrink: Boolean := False);
+   procedure Copy
+     (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
+      Shrink: Boolean := False;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Destination_Image'Length > 0 and Source_Image'Length > 0 and
+      Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Copy_Photo", Mode => Nominal);
 
 end Tk.Image.Photo;
