@@ -29,7 +29,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Blank_2c1442_876b9b
+   procedure Wrap_Test_Blank_2c1442_1f34c5
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -39,7 +39,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-image-photo.ads:0):Test_Blank_Photo test requirement violated");
+               "req_sloc(tk-image-photo.ads:0):Tests_Blank_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Blank
         (Name, Interpreter);
@@ -50,20 +50,20 @@ package body Tk.Image.Photo.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "ens_sloc(tk-image-photo.ads:0:):Test_Blank_Photo test commitment violated");
+               "ens_sloc(tk-image-photo.ads:0:):Tests_Blank_Photo test commitment violated");
       end;
-   end Wrap_Test_Blank_2c1442_876b9b;
+   end Wrap_Test_Blank_2c1442_1f34c5;
 --  end read only
 
 --  begin read only
-   procedure Test_Blank_test_blank_photo(Gnattest_T: in out Test);
-   procedure Test_Blank_2c1442_876b9b(Gnattest_T: in out Test) renames
-     Test_Blank_test_blank_photo;
---  id:2.2/2c1442a8bb75046e/Blank/1/0/test_blank_photo/
-   procedure Test_Blank_test_blank_photo(Gnattest_T: in out Test) is
+   procedure Test_Blank_tests_blank_photo(Gnattest_T: in out Test);
+   procedure Test_Blank_2c1442_1f34c5(Gnattest_T: in out Test) renames
+     Test_Blank_tests_blank_photo;
+--  id:2.2/2c1442a8bb75046e/Blank/1/0/tests_blank_photo/
+   procedure Test_Blank_tests_blank_photo(Gnattest_T: in out Test) is
       procedure Blank
         (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Blank_2c1442_876b9b;
+        Wrap_Test_Blank_2c1442_1f34c5;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -74,7 +74,62 @@ package body Tk.Image.Photo.Test_Data.Tests is
         (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_Blank_test_blank_photo;
+   end Test_Blank_tests_blank_photo;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Copy_c44a35_21de2d
+     (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
+      Shrink: Boolean := False;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   begin
+      begin
+         pragma Assert
+           (Destination_Image'Length > 0 and Source_Image'Length > 0 and
+            Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-image-photo.ads:0):Tests_Copy_Photo test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Copy
+        (Destination_Image, Source_Image, From, To, Shrink, Interpreter);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-image-photo.ads:0:):Tests_Copy_Photo test commitment violated");
+      end;
+   end Wrap_Test_Copy_c44a35_21de2d;
+--  end read only
+
+--  begin read only
+   procedure Test_Copy_tests_copy_photo(Gnattest_T: in out Test);
+   procedure Test_Copy_c44a35_21de2d(Gnattest_T: in out Test) renames
+     Test_Copy_tests_copy_photo;
+--  id:2.2/c44a35c4494b4fe9/Copy/1/0/tests_copy_photo/
+   procedure Test_Copy_tests_copy_photo(Gnattest_T: in out Test) is
+      procedure Copy
+        (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
+         Shrink: Boolean := False;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) renames
+        Wrap_Test_Copy_c44a35_21de2d;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Copy_tests_copy_photo;
 --  end read only
 
 --  begin read only

@@ -5,9 +5,7 @@
 
 package body Tk.Image.Photo.Photo_Options_Test_Data is
 
-   Local_Photo_Options: aliased GNATtest_Generated.GNATtest_Standard.Tk.Image
-     .Photo
-     .Photo_Options;
+   --  Local_Photo_Options : aliased GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Photo_Options;
    procedure Set_Up(Gnattest_T: in out Test_Photo_Options) is
    begin
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Image_Options_Test_Data
@@ -17,7 +15,8 @@ package body Tk.Image.Photo.Photo_Options_Test_Data is
            .Image_Options_Tests
            .Test_Image_Options
            (Gnattest_T));
-      Gnattest_T.Fixture := Local_Photo_Options'Access;
+      null;
+      --  Gnattest_T.Fixture := Local_Photo_Options'Access;
    end Set_Up;
 
    procedure Tear_Down(Gnattest_T: in out Test_Photo_Options) is
