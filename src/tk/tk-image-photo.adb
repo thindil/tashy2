@@ -17,12 +17,14 @@ package body Tk.Image.Photo is
    procedure Create
      (Name: String; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Name, Options, Interpreter);
    begin
       null;
    end Create;
 
    procedure Blank
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Name, Interpreter);
    begin
       null;
    end Blank;
@@ -30,6 +32,7 @@ package body Tk.Image.Photo is
    procedure Configure
      (Name: String; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Name, Options, Interpreter);
    begin
       null;
    end Configure;
@@ -37,6 +40,7 @@ package body Tk.Image.Photo is
    function Get_Options
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options is
+      pragma Unreferenced(Name, Interpreter);
    begin
       return Photo_Options'(Photo_Format => PNG, others => <>);
    end Get_Options;
@@ -45,6 +49,8 @@ package body Tk.Image.Photo is
      (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
       Shrink: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced
+        (Destination_Image, Source_Image, From, To, Shrink, Interpreter);
    begin
       null;
    end Copy;
@@ -54,6 +60,8 @@ package body Tk.Image.Photo is
       Format: Photo_Formats := OTHER; From: Dimensions_Type := (others => <>);
       Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
+      pragma Unreferenced
+        (Name, Background, Format, From, Grayscale, Interpreter);
    begin
       return Null_Tcl_String;
    end Get_Data;
