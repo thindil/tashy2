@@ -49,4 +49,13 @@ package body Tk.Image.Photo is
       null;
    end Copy;
 
+   function Get_Data
+     (Name: String; Background: Tcl_String := Null_Tcl_String;
+      Format: Photo_Formats := OTHER; From: Dimensions_Type := (others => <>);
+      Grayscale: Boolean := False;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
+   begin
+      return Null_Tcl_String;
+   end Get_Data;
+
 end Tk.Image.Photo;

@@ -90,4 +90,12 @@ package Tk.Image.Photo is
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Copy_Photo", Mode => Nominal);
 
+   function Get_Data
+     (Name: String; Background: Tcl_String := Null_Tcl_String;
+      Format: Photo_Formats := OTHER; From: Dimensions_Type := (others => <>);
+      Grayscale: Boolean := False;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String with
+      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Get_Data_Photo", Mode => Nominal);
+
 end Tk.Image.Photo;
