@@ -11,8 +11,11 @@ package Tk.Image.Photo.Test_Data.Tests is
      .Test with
    null record;
 
-   procedure Test_Blank_2c1442_876b9b(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:68:4:Blank:Test_Blank_Photo
+   procedure Test_Blank_2c1442_1f34c5(Gnattest_T: in out Test);
+   --  tk-image-photo.ads:68:4:Blank:Tests_Blank_Photo
+
+   procedure Test_Copy_c44a35_21de2d(Gnattest_T: in out Test);
+   --  tk-image-photo.ads:85:4:Copy:Tests_Copy_Photo
 
 end Tk.Image.Photo.Test_Data.Tests;
 --  end read only
