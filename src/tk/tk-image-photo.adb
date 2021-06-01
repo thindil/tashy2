@@ -66,4 +66,32 @@ package body Tk.Image.Photo is
       return Null_Tcl_String;
    end Get_Data;
 
+   function Get_Color
+     (Name: String; X, Y: Natural;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type is
+      pragma Unreferenced(Name, X, Y, Interpreter);
+   begin
+      return (255, 255, 255);
+   end Get_Color;
+
+   procedure Put_Data
+     (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
+      To: Dimensions_Type := (0, 0, -1, -1);
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Name, Data, Format, To, Interpreter);
+   begin
+      null;
+   end Put_Data;
+
+   procedure Read
+     (Name: String; FileName: Tcl_String; Format: Photo_Formats := OTHER;
+      From: Dimensions_Type := (0, 0, -1, -1); Shrink: Boolean := False;
+      To: Point_Position := (0, 0);
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced
+        (Name, FileName, Format, From, Shrink, To, Interpreter);
+   begin
+      null;
+   end Read;
+
 end Tk.Image.Photo;

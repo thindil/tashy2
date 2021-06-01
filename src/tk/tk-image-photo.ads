@@ -42,6 +42,14 @@ package Tk.Image.Photo is
       End_Y: Extended_Natural;
    end record;
 
+   subtype Color_Range is Natural range 0 .. 255;
+
+   type Color_Type is record
+      Red: Color_Range;
+      Green: Color_Range;
+      Blue: Color_Range;
+   end record;
+
    -- ****f* Photo/Photo.Create
    -- FUNCTION
    -- Create a new Tk image of photo type with the selected name and options
@@ -97,5 +105,28 @@ package Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Data_Photo", Mode => Nominal);
+
+   function Get_Color
+     (Name: String; X, Y: Natural;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type with
+      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Get_Color_Photo", Mode => Nominal);
+
+   procedure Put_Data
+     (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
+      To: Dimensions_Type := (0, 0, -1, -1);
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Name'Length > 0 and Length(Data) > 0 and
+      Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Put_Data_Photo", Mode => Nominal);
+
+   procedure Read
+     (Name: String; FileName: Tcl_String; Format: Photo_Formats := OTHER;
+      From: Dimensions_Type := (0, 0, -1, -1); Shrink: Boolean := False;
+      To: Point_Position := (0, 0);
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Name'Length > 0 and Length(FileName) > 0 and
+      Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Read_Photo", Mode => Nominal);
 
 end Tk.Image.Photo;
