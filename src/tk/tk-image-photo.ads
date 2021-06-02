@@ -76,6 +76,12 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Create_Photo", Mode => Nominal);
    -- ****
 
+   function Create
+     (Options: Photo_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Create2_Photo", Mode => Nominal);
+
    procedure Blank
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,

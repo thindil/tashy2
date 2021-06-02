@@ -14,12 +14,41 @@
 
 package body Tk.Image.Photo is
 
+   -- ****if* Photo/Photo.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Button_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Photo_Options) return String is
+      -- ****
+      pragma Unreferenced(Options);
+   begin
+      return "";
+   end Options_To_String;
+
    procedure Create
      (Name: String; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Name, Options, Interpreter);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "image create photo " & Name & Options_To_String(Options),
+         Interpreter => Interpreter);
+   end Create;
+
+   function Create
+     (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "image create photo" & Options_To_String(Options),
+           Interpreter => Interpreter);
    end Create;
 
    procedure Blank
