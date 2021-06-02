@@ -57,13 +57,13 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Create_tests_create_photo
+   procedure Test_1_Create_tests_create_photo
      (Gnattest_T: in out Test_Photo_Options);
    procedure Test_Create_22037c_815ba6
      (Gnattest_T: in out Test_Photo_Options) renames
-     Test_Create_tests_create_photo;
+     Test_1_Create_tests_create_photo;
 --  id:2.2/22037c1fbc7ae682/Create/1/0/tests_create_photo/
-   procedure Test_Create_tests_create_photo
+   procedure Test_1_Create_tests_create_photo
      (Gnattest_T: in out Test_Photo_Options) is
       procedure Create
         (Name: String; Options: Photo_Options;
@@ -79,7 +79,66 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
         (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_Create_tests_create_photo;
+   end Test_1_Create_tests_create_photo;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Create_fa334a_af82af
+     (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String is
+   begin
+      begin
+         pragma Assert(Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-image-photo.ads:0):Tests_Create2_Photo test requirement violated");
+      end;
+      declare
+         Test_Create_fa334a_af82af_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Create
+             (Options, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-image-photo.ads:0:):Tests_Create2_Photo test commitment violated");
+         end;
+         return Test_Create_fa334a_af82af_Result;
+      end;
+   end Wrap_Test_Create_fa334a_af82af;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Create_tests_create2_photo
+     (Gnattest_T: in out Test_Photo_Options);
+   procedure Test_Create_fa334a_af82af
+     (Gnattest_T: in out Test_Photo_Options) renames
+     Test_2_Create_tests_create2_photo;
+--  id:2.2/fa334a87cdcf0776/Create/0/0/tests_create2_photo/
+   procedure Test_2_Create_tests_create2_photo
+     (Gnattest_T: in out Test_Photo_Options) is
+      function Create
+        (Options: Photo_Options;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_Create_fa334a_af82af;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Create_tests_create2_photo;
 --  end read only
 
 --  begin read only

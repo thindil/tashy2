@@ -251,14 +251,14 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Put_Data_f479a7_30a8e8
+   procedure Wrap_Test_Put_Data_f479a7_591b40
      (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
-      To: Dimensions_Type := (0, 0, -1, -1);
+      To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
          pragma Assert
-           (Name'Length > 0 and Length(Data) > 0 and
+           (Name'Length > 0 and Length(Source => Data) > 0 and
             Interpreter /= Null_Interpreter);
          null;
       exception
@@ -278,20 +278,20 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Put_Data_Photo test commitment violated");
       end;
-   end Wrap_Test_Put_Data_f479a7_30a8e8;
+   end Wrap_Test_Put_Data_f479a7_591b40;
 --  end read only
 
 --  begin read only
    procedure Test_Put_Data_tests_put_data_photo(Gnattest_T: in out Test);
-   procedure Test_Put_Data_f479a7_30a8e8(Gnattest_T: in out Test) renames
+   procedure Test_Put_Data_f479a7_591b40(Gnattest_T: in out Test) renames
      Test_Put_Data_tests_put_data_photo;
 --  id:2.2/f479a7f9a5564620/Put_Data/1/0/tests_put_data_photo/
    procedure Test_Put_Data_tests_put_data_photo(Gnattest_T: in out Test) is
       procedure Put_Data
         (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
-         To: Dimensions_Type := (0, 0, -1, -1);
+         To: Dimensions_Type := Empty_Dimension;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Put_Data_f479a7_30a8e8;
+        Wrap_Test_Put_Data_f479a7_591b40;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -306,15 +306,15 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Read_a3304e_49c9ca
-     (Name: String; FileName: Tcl_String; Format: Photo_Formats := OTHER;
-      From: Dimensions_Type := (0, 0, -1, -1); Shrink: Boolean := False;
-      To: Point_Position := (0, 0);
+   procedure Wrap_Test_Read_a3304e_001176
+     (Name: String; File_Name: Tcl_String; Format: Photo_Formats := OTHER;
+      From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
+      To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
          pragma Assert
-           (Name'Length > 0 and Length(FileName) > 0 and
+           (Name'Length > 0 and Length(Source => File_Name) > 0 and
             Interpreter /= Null_Interpreter);
          null;
       exception
@@ -324,7 +324,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Read_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Read
-        (Name, FileName, Format, From, Shrink, To, Interpreter);
+        (Name, File_Name, Format, From, Shrink, To, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -334,21 +334,21 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Read_Photo test commitment violated");
       end;
-   end Wrap_Test_Read_a3304e_49c9ca;
+   end Wrap_Test_Read_a3304e_001176;
 --  end read only
 
 --  begin read only
    procedure Test_Read_tests_read_photo(Gnattest_T: in out Test);
-   procedure Test_Read_a3304e_49c9ca(Gnattest_T: in out Test) renames
+   procedure Test_Read_a3304e_001176(Gnattest_T: in out Test) renames
      Test_Read_tests_read_photo;
 --  id:2.2/a3304e8f06584694/Read/1/0/tests_read_photo/
    procedure Test_Read_tests_read_photo(Gnattest_T: in out Test) is
       procedure Read
-        (Name: String; FileName: Tcl_String; Format: Photo_Formats := OTHER;
-         From: Dimensions_Type := (0, 0, -1, -1); Shrink: Boolean := False;
-         To: Point_Position := (0, 0);
+        (Name: String; File_Name: Tcl_String; Format: Photo_Formats := OTHER;
+         From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
+         To: Point_Position := Empty_Point_Position;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Read_a3304e_49c9ca;
+        Wrap_Test_Read_a3304e_001176;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -526,16 +526,16 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Write_a35865_00a71d
-     (Name: String; FileName: Tcl_String;
+   procedure Wrap_Test_Write_a35865_29be66
+     (Name: String; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := OTHER; From: Dimensions_Type := (0, 0, -1, -1);
+      Format: Photo_Formats := OTHER; From: Dimensions_Type := Empty_Dimension;
       Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
          pragma Assert
-           (Name'Length > 0 and Length(FileName) > 0 and
+           (Name'Length > 0 and Length(Source => File_Name) > 0 and
             Interpreter /= Null_Interpreter);
          null;
       exception
@@ -545,7 +545,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Write_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Write
-        (Name, FileName, Background, Format, From, Grayscale, Interpreter);
+        (Name, File_Name, Background, Format, From, Grayscale, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -555,22 +555,22 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Write_Photo test commitment violated");
       end;
-   end Wrap_Test_Write_a35865_00a71d;
+   end Wrap_Test_Write_a35865_29be66;
 --  end read only
 
 --  begin read only
    procedure Test_Write_tests_write_photo(Gnattest_T: in out Test);
-   procedure Test_Write_a35865_00a71d(Gnattest_T: in out Test) renames
+   procedure Test_Write_a35865_29be66(Gnattest_T: in out Test) renames
      Test_Write_tests_write_photo;
 --  id:2.2/a358654d5a8d2632/Write/1/0/tests_write_photo/
    procedure Test_Write_tests_write_photo(Gnattest_T: in out Test) is
       procedure Write
-        (Name: String; FileName: Tcl_String;
+        (Name: String; File_Name: Tcl_String;
          Background: Tcl_String := Null_Tcl_String;
          Format: Photo_Formats := OTHER;
-         From: Dimensions_Type := (0, 0, -1, -1); Grayscale: Boolean := False;
+         From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Write_a35865_00a71d;
+        Wrap_Test_Write_a35865_29be66;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
