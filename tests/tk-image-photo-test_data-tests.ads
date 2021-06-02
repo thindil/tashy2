@@ -32,5 +32,14 @@ package Tk.Image.Photo.Test_Data.Tests is
    procedure Test_Redither_68a59f_5db920(Gnattest_T: in out Test);
    --  tk-image-photo.ads:132:4:Redither:Tests_Redither_Photo
 
+   procedure Test_Get_Transparency_745b2d_f8f0ad(Gnattest_T: in out Test);
+   --  tk-image-photo.ads:137:4:Get_Transparency:Tests_Get_Transparency_Photo
+
+   procedure Test_Set_Transparency_76d5d1_e54c1a(Gnattest_T: in out Test);
+   --  tk-image-photo.ads:143:4:Set_Transparency:Tests_Set_Transparency_Photo
+
+   procedure Test_Write_a35865_00a71d(Gnattest_T: in out Test);
+   --  tk-image-photo.ads:149:4:Write:Tests_Write_Photo
+
 end Tk.Image.Photo.Test_Data.Tests;
 --  end read only
