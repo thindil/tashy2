@@ -42,6 +42,9 @@ package Tk.Image.Photo is
       End_Y: Extended_Natural;
    end record;
 
+   Empty_Dimension: constant Dimensions_Type :=
+     (Start_X => 0, Start_Y => 0, End_X => -1, End_Y => -1);
+
    subtype Color_Range is Natural range 0 .. 255;
 
    type Color_Type is record
@@ -114,18 +117,18 @@ package Tk.Image.Photo is
 
    procedure Put_Data
      (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
-      To: Dimensions_Type := (0, 0, -1, -1);
+      To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Length(Data) > 0 and
+      Pre => Name'Length > 0 and Length(Source => Data) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Put_Data_Photo", Mode => Nominal);
 
    procedure Read
-     (Name: String; FileName: Tcl_String; Format: Photo_Formats := OTHER;
-      From: Dimensions_Type := (0, 0, -1, -1); Shrink: Boolean := False;
-      To: Point_Position := (0, 0);
+     (Name: String; File_Name: Tcl_String; Format: Photo_Formats := OTHER;
+      From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
+      To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Length(FileName) > 0 and
+      Pre => Name'Length > 0 and Length(Source => File_Name) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Read_Photo", Mode => Nominal);
 
@@ -147,12 +150,12 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Set_Transparency_Photo", Mode => Nominal);
 
    procedure Write
-     (Name: String; FileName: Tcl_String;
+     (Name: String; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := OTHER; From: Dimensions_Type := (0, 0, -1, -1);
+      Format: Photo_Formats := OTHER; From: Dimensions_Type := Empty_Dimension;
       Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Length(FileName) > 0 and
+      Pre => Name'Length > 0 and Length(Source => File_Name) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Write_Photo", Mode => Nominal);
 
