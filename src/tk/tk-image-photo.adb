@@ -76,7 +76,7 @@ package body Tk.Image.Photo is
 
    procedure Put_Data
      (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
-      To: Dimensions_Type := (0, 0, -1, -1);
+      To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced(Name, Data, Format, To, Interpreter);
    begin
@@ -84,12 +84,12 @@ package body Tk.Image.Photo is
    end Put_Data;
 
    procedure Read
-     (Name: String; FileName: Tcl_String; Format: Photo_Formats := OTHER;
-      From: Dimensions_Type := (0, 0, -1, -1); Shrink: Boolean := False;
-      To: Point_Position := (0, 0);
+     (Name: String; File_Name: Tcl_String; Format: Photo_Formats := OTHER;
+      From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
+      To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced
-        (Name, FileName, Format, From, Shrink, To, Interpreter);
+        (Name, File_Name, Format, From, Shrink, To, Interpreter);
    begin
       null;
    end Read;
@@ -118,13 +118,13 @@ package body Tk.Image.Photo is
    end Set_Transparency;
 
    procedure Write
-     (Name: String; FileName: Tcl_String;
+     (Name: String; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := OTHER; From: Dimensions_Type := (0, 0, -1, -1);
+      Format: Photo_Formats := OTHER; From: Dimensions_Type := Empty_Dimension;
       Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced
-        (Name, FileName, Background, Format, Grayscale, Interpreter);
+        (Name, File_Name, Background, Format, Grayscale, Interpreter);
    begin
       null;
    end Write;
