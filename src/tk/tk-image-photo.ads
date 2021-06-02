@@ -129,4 +129,31 @@ package Tk.Image.Photo is
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Read_Photo", Mode => Nominal);
 
+   procedure Redither
+     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Redither_Photo", Mode => Nominal);
+
+   function Get_Transparency
+     (Name: String; X, Y: Natural;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean with
+      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Get_Transparency_Photo", Mode => Nominal);
+
+   procedure Set_Transparency
+     (Name: String; X, Y: Natural; Transparent: Boolean;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Set_Transparency_Photo", Mode => Nominal);
+
+   procedure Write
+     (Name: String; FileName: Tcl_String;
+      Background: Tcl_String := Null_Tcl_String;
+      Format: Photo_Formats := OTHER; From: Dimensions_Type := (0, 0, -1, -1);
+      Grayscale: Boolean := False;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Name'Length > 0 and Length(FileName) > 0 and
+      Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Write_Photo", Mode => Nominal);
+
 end Tk.Image.Photo;

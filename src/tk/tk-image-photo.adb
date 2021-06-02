@@ -94,4 +94,39 @@ package body Tk.Image.Photo is
       null;
    end Read;
 
+   procedure Redither
+     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Name, Interpreter);
+   begin
+      null;
+   end Redither;
+
+   function Get_Transparency
+     (Name: String; X, Y: Natural;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
+      pragma Unreferenced(Name, X, Y, Interpreter);
+   begin
+      return True;
+   end Get_Transparency;
+
+   procedure Set_Transparency
+     (Name: String; X, Y: Natural; Transparent: Boolean;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Name, X, Y, Transparent, Interpreter);
+   begin
+      null;
+   end Set_Transparency;
+
+   procedure Write
+     (Name: String; FileName: Tcl_String;
+      Background: Tcl_String := Null_Tcl_String;
+      Format: Photo_Formats := OTHER; From: Dimensions_Type := (0, 0, -1, -1);
+      Grayscale: Boolean := False;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced
+        (Name, FileName, Background, Format, Grayscale, Interpreter);
+   begin
+      null;
+   end Write;
+
 end Tk.Image.Photo;
