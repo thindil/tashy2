@@ -75,8 +75,8 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Create("myphoto", (Photo_Format => PNG, others => <>));
+      Assert(Image_Type("myphoto") = "photo", "Can't create an image.");
 
 --  begin read only
    end Test_1_Create_tests_create_photo;
