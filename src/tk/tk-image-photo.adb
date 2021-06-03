@@ -122,8 +122,8 @@ package body Tk.Image.Photo is
 
    function Get_Data
      (Name: String; Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := OTHER; From: Dimensions_Type := (others => <>);
-      Grayscale: Boolean := False;
+      Format: Photo_Formats := Default_Photo_Format;
+      From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
       pragma Unreferenced
         (Name, Background, Format, From, Grayscale, Interpreter);
@@ -140,7 +140,8 @@ package body Tk.Image.Photo is
    end Get_Color;
 
    procedure Put_Data
-     (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
+     (Name: String; Data: Tcl_String;
+      Format: Photo_Formats := Default_Photo_Format;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced(Name, Data, Format, To, Interpreter);
@@ -149,7 +150,8 @@ package body Tk.Image.Photo is
    end Put_Data;
 
    procedure Read
-     (Name: String; File_Name: Tcl_String; Format: Photo_Formats := OTHER;
+     (Name: String; File_Name: Tcl_String;
+      Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
@@ -185,8 +187,8 @@ package body Tk.Image.Photo is
    procedure Write
      (Name: String; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := OTHER; From: Dimensions_Type := Empty_Dimension;
-      Grayscale: Boolean := False;
+      Format: Photo_Formats := Default_Photo_Format;
+      From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced
         (Name, File_Name, Background, Format, Grayscale, Interpreter);

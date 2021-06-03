@@ -16,7 +16,10 @@ with Tk.Widget; use Tk.Widget;
 
 package Tk.Image.Photo is
 
+   --## rule off REDUCEABLE_SCOPE
    type Photo_Formats is (PNG, GIF, OTHER);
+
+   Default_Photo_Format: constant Photo_Formats := OTHER;
 
    type Photo_Options(Photo_Format: Photo_Formats) is new Image_Options with
    record
@@ -53,6 +56,8 @@ package Tk.Image.Photo is
       Blue: Color_Range;
    end record;
 
+   Black_Color: constant Color_Type := (Red => 0, Green => 0, Blue => 0);
+
    -- ****f* Photo/Photo.Create
    -- FUNCTION
    -- Create a new Tk image of photo type with the selected name and options
@@ -77,8 +82,8 @@ package Tk.Image.Photo is
    -- ****
 
    function Create
-     (Options: Photo_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+     (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return String with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create2_Photo", Mode => Nominal);
 
@@ -99,6 +104,9 @@ package Tk.Image.Photo is
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Options_Photo", Mode => Nominal);
 
+   Default_Photo_Options: constant Photo_Options :=
+     (Photo_Format => Default_Photo_Format, others => <>);
+
    procedure Copy
      (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
       Shrink: Boolean := False;
@@ -109,8 +117,8 @@ package Tk.Image.Photo is
 
    function Get_Data
      (Name: String; Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := OTHER; From: Dimensions_Type := (others => <>);
-      Grayscale: Boolean := False;
+      Format: Photo_Formats := Default_Photo_Format;
+      From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Data_Photo", Mode => Nominal);
@@ -122,7 +130,8 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Get_Color_Photo", Mode => Nominal);
 
    procedure Put_Data
-     (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
+     (Name: String; Data: Tcl_String;
+      Format: Photo_Formats := Default_Photo_Format;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Name'Length > 0 and Length(Source => Data) > 0 and
@@ -130,7 +139,8 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Put_Data_Photo", Mode => Nominal);
 
    procedure Read
-     (Name: String; File_Name: Tcl_String; Format: Photo_Formats := OTHER;
+     (Name: String; File_Name: Tcl_String;
+      Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
@@ -158,11 +168,13 @@ package Tk.Image.Photo is
    procedure Write
      (Name: String; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := OTHER; From: Dimensions_Type := Empty_Dimension;
-      Grayscale: Boolean := False;
+      Format: Photo_Formats := Default_Photo_Format;
+      From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Name'Length > 0 and Length(Source => File_Name) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Write_Photo", Mode => Nominal);
+
+   --## rule on REDUCEABLE_SCOPE
 
 end Tk.Image.Photo;
