@@ -22,9 +22,9 @@ package Tk.Image.Photo is
    record
       Format: Tcl_String;
       Gamma: Positive_Float;
-      Height: Natural;
+      Height: Natural := 0;
       Palette: Tcl_String;
-      Width: Natural;
+      Width: Natural := 0;
       case Photo_Format is
          when PNG =>
             Alpha: Positive_Float range -1.0 .. 1.0;
