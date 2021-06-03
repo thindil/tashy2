@@ -135,8 +135,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  begin read only
    function Wrap_Test_Get_Data_9275f9_ea4492
      (Name: String; Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := OTHER; From: Dimensions_Type := (others => <>);
-      Grayscale: Boolean := False;
+      Format: Photo_Formats := Default_Photo_Format;
+      From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
    begin
       begin
@@ -175,8 +175,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
    procedure Test_Get_Data_tests_get_data_photo(Gnattest_T: in out Test) is
       function Get_Data
         (Name: String; Background: Tcl_String := Null_Tcl_String;
-         Format: Photo_Formats := OTHER;
-         From: Dimensions_Type := (others => <>); Grayscale: Boolean := False;
+         Format: Photo_Formats := Default_Photo_Format;
+         From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tcl_String renames
         Wrap_Test_Get_Data_9275f9_ea4492;
@@ -252,7 +252,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Put_Data_f479a7_591b40
-     (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
+     (Name: String; Data: Tcl_String;
+      Format: Photo_Formats := Default_Photo_Format;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -288,7 +289,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  id:2.2/f479a7f9a5564620/Put_Data/1/0/tests_put_data_photo/
    procedure Test_Put_Data_tests_put_data_photo(Gnattest_T: in out Test) is
       procedure Put_Data
-        (Name: String; Data: Tcl_String; Format: Photo_Formats := OTHER;
+        (Name: String; Data: Tcl_String;
+         Format: Photo_Formats := Default_Photo_Format;
          To: Dimensions_Type := Empty_Dimension;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Put_Data_f479a7_591b40;
@@ -307,7 +309,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Read_a3304e_001176
-     (Name: String; File_Name: Tcl_String; Format: Photo_Formats := OTHER;
+     (Name: String; File_Name: Tcl_String;
+      Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
@@ -344,7 +347,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  id:2.2/a3304e8f06584694/Read/1/0/tests_read_photo/
    procedure Test_Read_tests_read_photo(Gnattest_T: in out Test) is
       procedure Read
-        (Name: String; File_Name: Tcl_String; Format: Photo_Formats := OTHER;
+        (Name: String; File_Name: Tcl_String;
+         Format: Photo_Formats := Default_Photo_Format;
          From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
          To: Point_Position := Empty_Point_Position;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
@@ -529,8 +533,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
    procedure Wrap_Test_Write_a35865_29be66
      (Name: String; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := OTHER; From: Dimensions_Type := Empty_Dimension;
-      Grayscale: Boolean := False;
+      Format: Photo_Formats := Default_Photo_Format;
+      From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -567,7 +571,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
       procedure Write
         (Name: String; File_Name: Tcl_String;
          Background: Tcl_String := Null_Tcl_String;
-         Format: Photo_Formats := OTHER;
+         Format: Photo_Formats := Default_Photo_Format;
          From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Write_a35865_29be66;
