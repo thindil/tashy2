@@ -39,11 +39,9 @@ package body Tk.Image.Photo is
       Option_Image
         (Name => "file", Value => Options.File,
          Options_String => Options_String);
-      if Options.Gamma >= 0.0 then
-         Append
-           (Source => Options_String,
-            New_Item => " -gamma" & Positive_Float'Image(Options.Gamma));
-      end if;
+      Option_Image
+        (Name => "gamma", Value => Options.Gamma,
+         Options_String => Options_String);
       Option_Image
         (Name => "height", Value => Options.Height,
          Options_String => Options_String);
@@ -58,11 +56,9 @@ package body Tk.Image.Photo is
            (Name => "index", Value => Options.Index,
             Options_String => Options_String);
       elsif Options.Photo_Format = PNG then
-         if Options.Gamma >= 0.0 then
-            Append
-              (Source => Options_String,
-               New_Item => " -alpha" & Positive_Float'Image(Options.Alpha));
-         end if;
+         Option_Image
+           (Name => "alpha", Value => Options.Alpha,
+            Options_String => Options_String);
       end if;
       return To_String(Source => Options_String);
    end Options_To_String;
