@@ -302,7 +302,7 @@ package body Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Positive_Float;
       Options_String: in out Unbounded_String) is
-      Value_String: String(1 .. 255);
+      Value_String: String(1 .. 255) := (others => ' ');
    begin
       if Value >= 0.0 then
          Put
