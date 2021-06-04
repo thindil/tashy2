@@ -13,7 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
-with Ada.Float_Text_IO;
+with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 with Ada.Integer_Text_IO;
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Maps;
@@ -55,8 +55,6 @@ package body Tk.Widget is
    end Pixel_Data_Value;
 
    function Pixel_Data_Image(Value: Pixel_Data) return String is
-      use Ada.Float_Text_IO;
-
       Value_String: String(1 .. 255);
    begin
       Put
@@ -298,6 +296,22 @@ package body Tk.Widget is
             New_Item =>
               " -" & Name & " " &
               To_Lower(Item => Anchor_Directions'Image(Value)));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Positive_Float;
+      Options_String: in out Unbounded_String) is
+      Value_String: String(1 .. 255);
+   begin
+      if Value >= 0.0 then
+         Put
+           (To => Value_String, Item => Float(Value),
+            Aft => Positive_Float'Digits, Exp => 0);
+         Append
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " " & Trim(Source => Value_String, Side => Both));
       end if;
    end Option_Image;
 

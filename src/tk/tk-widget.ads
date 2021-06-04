@@ -136,7 +136,7 @@ package Tk.Widget is
 
       -- ****d* Widget/Widget.Default_Positive_Float
       -- FUNCTION
-      -- Default value for Positiive_Float
+      -- Default value for Positive_Float
       -- HISTORY
       -- 8.6.0 - Added
       -- SOURCE
@@ -691,6 +691,12 @@ package Tk.Widget is
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Anchor_Directions",
+       Mode => Nominal);
+   procedure Option_Image
+     (Name: String; Value: Positive_Float;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0,
+      Test_Case => (Name => "Test_Option_Image_Positive_Float",
        Mode => Nominal);
       -- ****
 
