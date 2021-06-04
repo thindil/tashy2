@@ -1173,6 +1173,62 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Option_Image_2254d6_97b6c7
+     (Name: String; Value: Positive_Float;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Image_Positive_Float test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Positive_Float test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_2254d6_97b6c7;
+--  end read only
+
+--  begin read only
+   procedure Test_14_Option_Image_test_option_image_positive_float
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_2254d6_97b6c7(Gnattest_T: in out Test) renames
+     Test_14_Option_Image_test_option_image_positive_float;
+--  id:2.2/2254d657bca7a12e/Option_Image/0/0/test_option_image_positive_float/
+   procedure Test_14_Option_Image_test_option_image_positive_float
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Positive_Float;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_2254d6_97b6c7;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
+
+   begin
+
+      Option_Image("myoption", Positive_Float(10.0), Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption 10.00",
+         "Failed to get image for Positive_Float option");
+
+--  begin read only
+   end Test_14_Option_Image_test_option_image_positive_float;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Option_Image_e5f273_81a16f
      (Name: String; Value: Integer; Options_String: in out Unbounded_String;
       Base: Positive := 10) is
@@ -1201,12 +1257,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_14_Option_Image_test_option_image_integer
+   procedure Test_15_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_e5f273_81a16f(Gnattest_T: in out Test) renames
-     Test_14_Option_Image_test_option_image_integer;
+     Test_15_Option_Image_test_option_image_integer;
 --  id:2.2/e5f273869df45ad5/Option_Image/0/0/test_option_image_integer/
-   procedure Test_14_Option_Image_test_option_image_integer
+   procedure Test_15_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Integer; Options_String: in out Unbounded_String;
@@ -1225,7 +1281,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Integer option");
 
 --  begin read only
-   end Test_14_Option_Image_test_option_image_integer;
+   end Test_15_Option_Image_test_option_image_integer;
 --  end read only
 
 --  begin read only
