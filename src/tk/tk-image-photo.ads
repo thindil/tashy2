@@ -109,7 +109,7 @@ package Tk.Image.Photo is
      (Photo_Format => Default_Photo_Format, others => <>);
 
    procedure Copy
-     (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
+     (Destination_Image, Source_Image: Tk_Image; From, To: Dimensions_Type;
       Shrink: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Destination_Image'Length > 0 and Source_Image'Length > 0 and
@@ -117,35 +117,35 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Copy_Photo", Mode => Nominal);
 
    function Get_Data
-     (Name: String; Background: Tcl_String := Null_Tcl_String;
+     (Photo_Image: Tk_Image; Background: Tcl_String := Null_Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Data_Photo", Mode => Nominal);
 
    function Get_Color
-     (Name: String; X, Y: Natural;
+     (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Color_Photo", Mode => Nominal);
 
    procedure Put_Data
-     (Name: String; Data: Tcl_String;
+     (Photo_Image: Tk_Image; Data: Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Length(Source => Data) > 0 and
+      Pre => Photo_Image'Length > 0 and Length(Source => Data) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Put_Data_Photo", Mode => Nominal);
 
    procedure Read
-     (Name: String; File_Name: Tcl_String;
+     (Photo_Image: Tk_Image; File_Name: Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Length(Source => File_Name) > 0 and
+      Pre => Photo_Image'Length > 0 and Length(Source => File_Name) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Read_Photo", Mode => Nominal);
 

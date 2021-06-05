@@ -115,7 +115,7 @@ package body Tk.Image.Photo is
    end Get_Options;
 
    procedure Copy
-     (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
+     (Destination_Image, Source_Image: Tk_Image; From, To: Dimensions_Type;
       Shrink: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced
@@ -125,42 +125,42 @@ package body Tk.Image.Photo is
    end Copy;
 
    function Get_Data
-     (Name: String; Background: Tcl_String := Null_Tcl_String;
+     (Photo_Image: Tk_Image; Background: Tcl_String := Null_Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
       pragma Unreferenced
-        (Name, Background, Format, From, Grayscale, Interpreter);
+        (Photo_Image, Background, Format, From, Grayscale, Interpreter);
    begin
       return Null_Tcl_String;
    end Get_Data;
 
    function Get_Color
-     (Name: String; X, Y: Natural;
+     (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type is
-      pragma Unreferenced(Name, X, Y, Interpreter);
+      pragma Unreferenced(Photo_Image, X, Y, Interpreter);
    begin
       return (Red => 255, Green => 255, Blue => 255);
    end Get_Color;
 
    procedure Put_Data
-     (Name: String; Data: Tcl_String;
+     (Photo_Image: Tk_Image; Data: Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Name, Data, Format, To, Interpreter);
+      pragma Unreferenced(Photo_Image, Data, Format, To, Interpreter);
    begin
       null;
    end Put_Data;
 
    procedure Read
-     (Name: String; File_Name: Tcl_String;
+     (Photo_Image: Tk_Image; File_Name: Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced
-        (Name, File_Name, Format, From, Shrink, To, Interpreter);
+        (Photo_Image, File_Name, Format, From, Shrink, To, Interpreter);
    begin
       null;
    end Read;
