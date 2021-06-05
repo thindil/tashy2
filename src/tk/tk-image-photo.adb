@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Ada.Strings.Unbounded;
 
 package body Tk.Image.Photo is
 
@@ -28,6 +28,8 @@ package body Tk.Image.Photo is
    -- SOURCE
    function Options_To_String(Options: Photo_Options) return String is
       -- ****
+      use Ada.Strings.Unbounded;
+
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
@@ -51,15 +53,18 @@ package body Tk.Image.Photo is
       Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
-      if Options.Photo_Format = GIF then
-         Option_Image
-           (Name => "index", Value => Options.Index,
-            Options_String => Options_String);
-      elsif Options.Photo_Format = PNG then
-         Option_Image
-           (Name => "alpha", Value => Options.Alpha,
-            Options_String => Options_String);
-      end if;
+      case Options.Photo_Format is
+         when GIF =>
+            Option_Image
+              (Name => "index", Value => Options.Index,
+               Options_String => Options_String);
+         when PNG =>
+            Option_Image
+              (Name => "alpha", Value => Options.Alpha,
+               Options_String => Options_String);
+         when OTHER =>
+            null;
+      end case;
       return To_String(Source => Options_String);
    end Options_To_String;
 
@@ -69,7 +74,8 @@ package body Tk.Image.Photo is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "image create photo " & Name & Options_To_String(Options),
+           "image create photo " & Name &
+           Options_To_String(Options => Options),
          Interpreter => Interpreter);
    end Create;
 
@@ -79,7 +85,8 @@ package body Tk.Image.Photo is
    begin
       return
         Tcl_Eval
-          (Tcl_Script => "image create photo" & Options_To_String(Options),
+          (Tcl_Script =>
+             "image create photo" & Options_To_String(Options => Options),
            Interpreter => Interpreter);
    end Create;
 
@@ -132,7 +139,7 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type is
       pragma Unreferenced(Name, X, Y, Interpreter);
    begin
-      return (255, 255, 255);
+      return (Red => 255, Green =>  255, Blue => 255);
    end Get_Color;
 
    procedure Put_Data
