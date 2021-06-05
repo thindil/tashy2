@@ -150,29 +150,30 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Read_Photo", Mode => Nominal);
 
    procedure Redither
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+     (Photo_Image: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Redither_Photo", Mode => Nominal);
 
    function Get_Transparency
-     (Name: String; X, Y: Natural;
+     (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Transparency_Photo", Mode => Nominal);
 
    procedure Set_Transparency
-     (Name: String; X, Y: Natural; Transparent: Boolean;
+     (Photo_Image: Tk_Image; X, Y: Natural; Transparent: Boolean;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Set_Transparency_Photo", Mode => Nominal);
 
    procedure Write
-     (Name: String; File_Name: Tcl_String;
+     (Photo_Image: Tk_Image; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Length(Source => File_Name) > 0 and
+      Pre => Photo_Image'Length > 0 and Length(Source => File_Name) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Write_Photo", Mode => Nominal);
 
