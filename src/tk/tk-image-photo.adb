@@ -69,12 +69,12 @@ package body Tk.Image.Photo is
    end Options_To_String;
 
    procedure Create
-     (Name: String; Options: Photo_Options;
+     (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "image create photo " & Name &
+           "image create photo " & Photo_Image &
            Options_To_String(Options => Options),
          Interpreter => Interpreter);
    end Create;
@@ -91,24 +91,25 @@ package body Tk.Image.Photo is
    end Create;
 
    procedure Blank
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Name, Interpreter);
+     (Photo_Image: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Photo_Image, Interpreter);
    begin
       null;
    end Blank;
 
    procedure Configure
-     (Name: String; Options: Photo_Options;
+     (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Name, Options, Interpreter);
+      pragma Unreferenced(Photo_Image, Options, Interpreter);
    begin
       null;
    end Configure;
 
    function Get_Options
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options is
-      pragma Unreferenced(Name, Interpreter);
+      pragma Unreferenced(Photo_Image, Interpreter);
    begin
       return Photo_Options'(Photo_Format => PNG, others => <>);
    end Get_Options;
@@ -139,7 +140,7 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type is
       pragma Unreferenced(Name, X, Y, Interpreter);
    begin
-      return (Red => 255, Green =>  255, Blue => 255);
+      return (Red => 255, Green => 255, Blue => 255);
    end Get_Color;
 
    procedure Put_Data

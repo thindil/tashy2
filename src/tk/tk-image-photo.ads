@@ -75,9 +75,9 @@ package Tk.Image.Photo is
    -- image create photo Name Options
    -- SOURCE
    procedure Create
-     (Name: String; Options: Photo_Options;
+     (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create_Photo", Mode => Nominal);
    -- ****
 
@@ -88,20 +88,21 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Create2_Photo", Mode => Nominal);
 
    procedure Blank
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+     (Photo_Image: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Blank_Photo", Mode => Nominal);
 
    procedure Configure
-     (Name: String; Options: Photo_Options;
+     (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Configure_Photo", Mode => Nominal);
 
    function Get_Options
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Options_Photo", Mode => Nominal);
 
    Default_Photo_Options: constant Photo_Options :=
