@@ -29,11 +29,13 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Blank_2c1442_1f34c5
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   procedure Wrap_Test_Blank_2c1442_30601f
+     (Photo_Image: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert(Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Photo_Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -42,7 +44,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Blank_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Blank
-        (Name, Interpreter);
+        (Photo_Image, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -52,18 +54,19 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Blank_Photo test commitment violated");
       end;
-   end Wrap_Test_Blank_2c1442_1f34c5;
+   end Wrap_Test_Blank_2c1442_30601f;
 --  end read only
 
 --  begin read only
    procedure Test_Blank_tests_blank_photo(Gnattest_T: in out Test);
-   procedure Test_Blank_2c1442_1f34c5(Gnattest_T: in out Test) renames
+   procedure Test_Blank_2c1442_30601f(Gnattest_T: in out Test) renames
      Test_Blank_tests_blank_photo;
 --  id:2.2/2c1442a8bb75046e/Blank/1/0/tests_blank_photo/
    procedure Test_Blank_tests_blank_photo(Gnattest_T: in out Test) is
       procedure Blank
-        (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Blank_2c1442_1f34c5;
+        (Photo_Image: Tk_Image;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) renames
+        Wrap_Test_Blank_2c1442_30601f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -79,7 +82,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Copy_c44a35_21de2d
-     (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
+     (Destination_Image, Source_Image: Tk_Image; From, To: Dimensions_Type;
       Shrink: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -115,7 +118,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  id:2.2/c44a35c4494b4fe9/Copy/1/0/tests_copy_photo/
    procedure Test_Copy_tests_copy_photo(Gnattest_T: in out Test) is
       procedure Copy
-        (Destination_Image, Source_Image: String; From, To: Dimensions_Type;
+        (Destination_Image, Source_Image: Tk_Image; From, To: Dimensions_Type;
          Shrink: Boolean := False;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Copy_c44a35_21de2d;
@@ -133,14 +136,15 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Data_9275f9_ea4492
-     (Name: String; Background: Tcl_String := Null_Tcl_String;
+   function Wrap_Test_Get_Data_9275f9_8ba84f
+     (Photo_Image: Tk_Image; Background: Tcl_String := Null_Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
    begin
       begin
-         pragma Assert(Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Photo_Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -149,9 +153,9 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Get_Data_Photo test requirement violated");
       end;
       declare
-         Test_Get_Data_9275f9_ea4492_Result: constant Tcl_String :=
+         Test_Get_Data_9275f9_8ba84f_Result: constant Tcl_String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Get_Data
-             (Name, Background, Format, From, Grayscale, Interpreter);
+             (Photo_Image, Background, Format, From, Grayscale, Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -162,24 +166,24 @@ package body Tk.Image.Photo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image-photo.ads:0:):Tests_Get_Data_Photo test commitment violated");
          end;
-         return Test_Get_Data_9275f9_ea4492_Result;
+         return Test_Get_Data_9275f9_8ba84f_Result;
       end;
-   end Wrap_Test_Get_Data_9275f9_ea4492;
+   end Wrap_Test_Get_Data_9275f9_8ba84f;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Data_tests_get_data_photo(Gnattest_T: in out Test);
-   procedure Test_Get_Data_9275f9_ea4492(Gnattest_T: in out Test) renames
+   procedure Test_Get_Data_9275f9_8ba84f(Gnattest_T: in out Test) renames
      Test_Get_Data_tests_get_data_photo;
 --  id:2.2/9275f9c540cf0d84/Get_Data/1/0/tests_get_data_photo/
    procedure Test_Get_Data_tests_get_data_photo(Gnattest_T: in out Test) is
       function Get_Data
-        (Name: String; Background: Tcl_String := Null_Tcl_String;
+        (Photo_Image: Tk_Image; Background: Tcl_String := Null_Tcl_String;
          Format: Photo_Formats := Default_Photo_Format;
          From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tcl_String renames
-        Wrap_Test_Get_Data_9275f9_ea4492;
+        Wrap_Test_Get_Data_9275f9_8ba84f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -194,12 +198,13 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Color_6fd571_e50560
-     (Name: String; X, Y: Natural;
+   function Wrap_Test_Get_Color_6fd571_5f6b3a
+     (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type is
    begin
       begin
-         pragma Assert(Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Photo_Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -208,9 +213,9 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Get_Color_Photo test requirement violated");
       end;
       declare
-         Test_Get_Color_6fd571_e50560_Result: constant Color_Type :=
+         Test_Get_Color_6fd571_5f6b3a_Result: constant Color_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Get_Color
-             (Name, X, Y, Interpreter);
+             (Photo_Image, X, Y, Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -221,22 +226,22 @@ package body Tk.Image.Photo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image-photo.ads:0:):Tests_Get_Color_Photo test commitment violated");
          end;
-         return Test_Get_Color_6fd571_e50560_Result;
+         return Test_Get_Color_6fd571_5f6b3a_Result;
       end;
-   end Wrap_Test_Get_Color_6fd571_e50560;
+   end Wrap_Test_Get_Color_6fd571_5f6b3a;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Color_tests_get_color_photo(Gnattest_T: in out Test);
-   procedure Test_Get_Color_6fd571_e50560(Gnattest_T: in out Test) renames
+   procedure Test_Get_Color_6fd571_5f6b3a(Gnattest_T: in out Test) renames
      Test_Get_Color_tests_get_color_photo;
 --  id:2.2/6fd5718a9ddd1eec/Get_Color/1/0/tests_get_color_photo/
    procedure Test_Get_Color_tests_get_color_photo(Gnattest_T: in out Test) is
       function Get_Color
-        (Name: String; X, Y: Natural;
+        (Photo_Image: Tk_Image; X, Y: Natural;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Color_Type renames
-        Wrap_Test_Get_Color_6fd571_e50560;
+        Wrap_Test_Get_Color_6fd571_5f6b3a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -251,15 +256,15 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Put_Data_f479a7_591b40
-     (Name: String; Data: Tcl_String;
+   procedure Wrap_Test_Put_Data_f479a7_ee5695
+     (Photo_Image: Tk_Image; Data: Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
          pragma Assert
-           (Name'Length > 0 and Length(Source => Data) > 0 and
+           (Photo_Image'Length > 0 and Length(Source => Data) > 0 and
             Interpreter /= Null_Interpreter);
          null;
       exception
@@ -269,7 +274,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Put_Data_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Put_Data
-        (Name, Data, Format, To, Interpreter);
+        (Photo_Image, Data, Format, To, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -279,21 +284,21 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Put_Data_Photo test commitment violated");
       end;
-   end Wrap_Test_Put_Data_f479a7_591b40;
+   end Wrap_Test_Put_Data_f479a7_ee5695;
 --  end read only
 
 --  begin read only
    procedure Test_Put_Data_tests_put_data_photo(Gnattest_T: in out Test);
-   procedure Test_Put_Data_f479a7_591b40(Gnattest_T: in out Test) renames
+   procedure Test_Put_Data_f479a7_ee5695(Gnattest_T: in out Test) renames
      Test_Put_Data_tests_put_data_photo;
 --  id:2.2/f479a7f9a5564620/Put_Data/1/0/tests_put_data_photo/
    procedure Test_Put_Data_tests_put_data_photo(Gnattest_T: in out Test) is
       procedure Put_Data
-        (Name: String; Data: Tcl_String;
+        (Photo_Image: Tk_Image; Data: Tcl_String;
          Format: Photo_Formats := Default_Photo_Format;
          To: Dimensions_Type := Empty_Dimension;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Put_Data_f479a7_591b40;
+        Wrap_Test_Put_Data_f479a7_ee5695;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -308,8 +313,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Read_a3304e_001176
-     (Name: String; File_Name: Tcl_String;
+   procedure Wrap_Test_Read_a3304e_24b510
+     (Photo_Image: Tk_Image; File_Name: Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
@@ -317,7 +322,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
    begin
       begin
          pragma Assert
-           (Name'Length > 0 and Length(Source => File_Name) > 0 and
+           (Photo_Image'Length > 0 and Length(Source => File_Name) > 0 and
             Interpreter /= Null_Interpreter);
          null;
       exception
@@ -327,7 +332,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Read_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Read
-        (Name, File_Name, Format, From, Shrink, To, Interpreter);
+        (Photo_Image, File_Name, Format, From, Shrink, To, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -337,22 +342,22 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Read_Photo test commitment violated");
       end;
-   end Wrap_Test_Read_a3304e_001176;
+   end Wrap_Test_Read_a3304e_24b510;
 --  end read only
 
 --  begin read only
    procedure Test_Read_tests_read_photo(Gnattest_T: in out Test);
-   procedure Test_Read_a3304e_001176(Gnattest_T: in out Test) renames
+   procedure Test_Read_a3304e_24b510(Gnattest_T: in out Test) renames
      Test_Read_tests_read_photo;
 --  id:2.2/a3304e8f06584694/Read/1/0/tests_read_photo/
    procedure Test_Read_tests_read_photo(Gnattest_T: in out Test) is
       procedure Read
-        (Name: String; File_Name: Tcl_String;
+        (Photo_Image: Tk_Image; File_Name: Tcl_String;
          Format: Photo_Formats := Default_Photo_Format;
          From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
          To: Point_Position := Empty_Point_Position;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Read_a3304e_001176;
+        Wrap_Test_Read_a3304e_24b510;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -367,11 +372,13 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Redither_68a59f_5db920
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   procedure Wrap_Test_Redither_68a59f_4f3041
+     (Photo_Image: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert(Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Photo_Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -380,7 +387,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Redither_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Redither
-        (Name, Interpreter);
+        (Photo_Image, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -390,18 +397,19 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Redither_Photo test commitment violated");
       end;
-   end Wrap_Test_Redither_68a59f_5db920;
+   end Wrap_Test_Redither_68a59f_4f3041;
 --  end read only
 
 --  begin read only
    procedure Test_Redither_tests_redither_photo(Gnattest_T: in out Test);
-   procedure Test_Redither_68a59f_5db920(Gnattest_T: in out Test) renames
+   procedure Test_Redither_68a59f_4f3041(Gnattest_T: in out Test) renames
      Test_Redither_tests_redither_photo;
 --  id:2.2/68a59f049d29ab44/Redither/1/0/tests_redither_photo/
    procedure Test_Redither_tests_redither_photo(Gnattest_T: in out Test) is
       procedure Redither
-        (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Redither_68a59f_5db920;
+        (Photo_Image: Tk_Image;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) renames
+        Wrap_Test_Redither_68a59f_4f3041;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -416,12 +424,13 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Transparency_745b2d_f8f0ad
-     (Name: String; X, Y: Natural;
+   function Wrap_Test_Get_Transparency_745b2d_ffe137
+     (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
    begin
       begin
-         pragma Assert(Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Photo_Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -430,9 +439,9 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Get_Transparency_Photo test requirement violated");
       end;
       declare
-         Test_Get_Transparency_745b2d_f8f0ad_Result: constant Boolean :=
+         Test_Get_Transparency_745b2d_ffe137_Result: constant Boolean :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Get_Transparency
-             (Name, X, Y, Interpreter);
+             (Photo_Image, X, Y, Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -443,25 +452,25 @@ package body Tk.Image.Photo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image-photo.ads:0:):Tests_Get_Transparency_Photo test commitment violated");
          end;
-         return Test_Get_Transparency_745b2d_f8f0ad_Result;
+         return Test_Get_Transparency_745b2d_ffe137_Result;
       end;
-   end Wrap_Test_Get_Transparency_745b2d_f8f0ad;
+   end Wrap_Test_Get_Transparency_745b2d_ffe137;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Transparency_tests_get_transparency_photo
      (Gnattest_T: in out Test);
-   procedure Test_Get_Transparency_745b2d_f8f0ad
+   procedure Test_Get_Transparency_745b2d_ffe137
      (Gnattest_T: in out Test) renames
      Test_Get_Transparency_tests_get_transparency_photo;
 --  id:2.2/745b2d34043e9621/Get_Transparency/1/0/tests_get_transparency_photo/
    procedure Test_Get_Transparency_tests_get_transparency_photo
      (Gnattest_T: in out Test) is
       function Get_Transparency
-        (Name: String; X, Y: Natural;
+        (Photo_Image: Tk_Image; X, Y: Natural;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Boolean renames
-        Wrap_Test_Get_Transparency_745b2d_f8f0ad;
+        Wrap_Test_Get_Transparency_745b2d_ffe137;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -476,12 +485,13 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Set_Transparency_76d5d1_e54c1a
-     (Name: String; X, Y: Natural; Transparent: Boolean;
+   procedure Wrap_Test_Set_Transparency_76d5d1_e76ade
+     (Photo_Image: Tk_Image; X, Y: Natural; Transparent: Boolean;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert(Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Photo_Image'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -490,7 +500,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Set_Transparency_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Set_Transparency
-        (Name, X, Y, Transparent, Interpreter);
+        (Photo_Image, X, Y, Transparent, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -500,22 +510,22 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Set_Transparency_Photo test commitment violated");
       end;
-   end Wrap_Test_Set_Transparency_76d5d1_e54c1a;
+   end Wrap_Test_Set_Transparency_76d5d1_e76ade;
 --  end read only
 
 --  begin read only
    procedure Test_Set_Transparency_tests_set_transparency_photo
      (Gnattest_T: in out Test);
-   procedure Test_Set_Transparency_76d5d1_e54c1a
+   procedure Test_Set_Transparency_76d5d1_e76ade
      (Gnattest_T: in out Test) renames
      Test_Set_Transparency_tests_set_transparency_photo;
 --  id:2.2/76d5d19d86527133/Set_Transparency/1/0/tests_set_transparency_photo/
    procedure Test_Set_Transparency_tests_set_transparency_photo
      (Gnattest_T: in out Test) is
       procedure Set_Transparency
-        (Name: String; X, Y: Natural; Transparent: Boolean;
+        (Photo_Image: Tk_Image; X, Y: Natural; Transparent: Boolean;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Set_Transparency_76d5d1_e54c1a;
+        Wrap_Test_Set_Transparency_76d5d1_e76ade;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -530,8 +540,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Write_a35865_29be66
-     (Name: String; File_Name: Tcl_String;
+   procedure Wrap_Test_Write_a35865_96f97b
+     (Photo_Image: Tk_Image; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
@@ -539,7 +549,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
    begin
       begin
          pragma Assert
-           (Name'Length > 0 and Length(Source => File_Name) > 0 and
+           (Photo_Image'Length > 0 and Length(Source => File_Name) > 0 and
             Interpreter /= Null_Interpreter);
          null;
       exception
@@ -549,7 +559,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Write_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Write
-        (Name, File_Name, Background, Format, From, Grayscale, Interpreter);
+        (Photo_Image, File_Name, Background, Format, From, Grayscale,
+         Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -559,22 +570,22 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Write_Photo test commitment violated");
       end;
-   end Wrap_Test_Write_a35865_29be66;
+   end Wrap_Test_Write_a35865_96f97b;
 --  end read only
 
 --  begin read only
    procedure Test_Write_tests_write_photo(Gnattest_T: in out Test);
-   procedure Test_Write_a35865_29be66(Gnattest_T: in out Test) renames
+   procedure Test_Write_a35865_96f97b(Gnattest_T: in out Test) renames
      Test_Write_tests_write_photo;
 --  id:2.2/a358654d5a8d2632/Write/1/0/tests_write_photo/
    procedure Test_Write_tests_write_photo(Gnattest_T: in out Test) is
       procedure Write
-        (Name: String; File_Name: Tcl_String;
+        (Photo_Image: Tk_Image; File_Name: Tcl_String;
          Background: Tcl_String := Null_Tcl_String;
          Format: Photo_Formats := Default_Photo_Format;
          From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Write_a35865_29be66;
+        Wrap_Test_Write_a35865_96f97b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
