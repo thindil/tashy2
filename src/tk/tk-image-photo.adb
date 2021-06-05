@@ -166,36 +166,37 @@ package body Tk.Image.Photo is
    end Read;
 
    procedure Redither
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Name, Interpreter);
+     (Photo_Image: Tk_Image;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      pragma Unreferenced(Photo_Image, Interpreter);
    begin
       null;
    end Redither;
 
    function Get_Transparency
-     (Name: String; X, Y: Natural;
+     (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
-      pragma Unreferenced(Name, X, Y, Interpreter);
+      pragma Unreferenced(Photo_Image, X, Y, Interpreter);
    begin
       return True;
    end Get_Transparency;
 
    procedure Set_Transparency
-     (Name: String; X, Y: Natural; Transparent: Boolean;
+     (Photo_Image: Tk_Image; X, Y: Natural; Transparent: Boolean;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Name, X, Y, Transparent, Interpreter);
+      pragma Unreferenced(Photo_Image, X, Y, Transparent, Interpreter);
    begin
       null;
    end Set_Transparency;
 
    procedure Write
-     (Name: String; File_Name: Tcl_String;
+     (Photo_Image: Tk_Image; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
       Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced
-        (Name, File_Name, Background, Format, Grayscale, Interpreter);
+        (Photo_Image, File_Name, Background, Format, Grayscale, Interpreter);
    begin
       null;
    end Write;
