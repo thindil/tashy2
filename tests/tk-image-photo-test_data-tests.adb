@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+
 --  begin read only
 --  end read only
 package body Tk.Image.Photo.Test_Data.Tests is
@@ -73,8 +75,12 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Blank("myphoto");
+      Assert(True, "This test can only crash.");
 
 --  begin read only
    end Test_Blank_tests_blank_photo;
