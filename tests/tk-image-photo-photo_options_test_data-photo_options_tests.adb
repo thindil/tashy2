@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+
 --  begin read only
 --  end read only
 package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
@@ -76,8 +78,14 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Create("myphoto", (Photo_Format => PNG, others => <>));
-      Assert(Image_Type("myphoto") = "photo", "Can't create an image.");
+      Assert
+        (Image_Type("myphoto") = "photo",
+         "Failed to create a photo image with selected name.");
 
 --  begin read only
    end Test_1_Create_tests_create_photo;
@@ -135,8 +143,18 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      declare
+         Photo_Image: constant Tk_Image :=
+           Create((Photo_Format => PNG, others => <>));
+      begin
+         Assert
+           (Photo_Image'Length > 0,
+            "Failed to create photo image with random name.");
+      end;
 
 --  begin read only
    end Test_2_Create_tests_create2_photo;
