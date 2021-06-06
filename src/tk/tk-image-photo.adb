@@ -93,9 +93,9 @@ package body Tk.Image.Photo is
    procedure Blank
      (Photo_Image: Tk_Image;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Photo_Image, Interpreter);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script => Photo_Image & " blank", Interpreter => Interpreter);
    end Blank;
 
    procedure Configure
