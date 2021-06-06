@@ -101,17 +101,34 @@ package body Tk.Image.Photo is
    procedure Configure
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Photo_Image, Options, Interpreter);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           Photo_Image & " configure " & Options_To_String(Options => Options),
+         Interpreter => Interpreter);
    end Configure;
 
    function Get_Options
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options is
-      pragma Unreferenced(Photo_Image, Interpreter);
+      function Get_Option(Name: String) return String is
+      begin
+         return
+           Tcl_Eval
+             (Tcl_Script => Photo_Image & " configure -" & Name,
+              Interpreter => Interpreter);
+      end Get_Option;
+      Format: constant String := Get_Option("format");
    begin
-      return Photo_Options'(Photo_Format => PNG, others => <>);
+      return
+        Options: Photo_Options :=
+          (Photo_Format =>
+             (if Format = "gif" then GIF elsif Format = "png" then PNG
+              else OTHER),
+           others => <>)
+      do
+         Options.Format := To_Tcl_String(Format);
+      end return;
    end Get_Options;
 
    procedure Copy
