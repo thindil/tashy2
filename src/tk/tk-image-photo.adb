@@ -112,11 +112,15 @@ package body Tk.Image.Photo is
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options is
       function Get_Option(Name: String) return String is
-      begin
-         return
-           Tcl_Eval
-             (Tcl_Script => Photo_Image & " configure -" & Name,
+         Result_List: constant Array_List :=
+           Split_List
+             (List =>
+                Tcl_Eval
+                  (Tcl_Script => Photo_Image & " configure -" & Name,
+                   Interpreter => Interpreter),
               Interpreter => Interpreter);
+      begin
+         return To_Ada_String(Result_List(Result_List'Last));
       end Get_Option;
       Format: constant String := Get_Option("format");
    begin
