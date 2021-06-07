@@ -108,28 +108,31 @@ package body Tk.Image.Photo is
          Interpreter => Interpreter);
    end Configure;
 
+   function Get_Option
+     (Photo_Image: Tk_Image; Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => Photo_Image & " configure -" & Name,
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
+   begin
+      return To_Ada_String(Result_List(Result_List'Last));
+   end Get_Option;
+
    function Get_Options
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options is
-      function Get_Option(Name: String) return String is
-         Result_List: constant Array_List :=
-           Split_List
-             (List =>
-                Tcl_Eval
-                  (Tcl_Script => Photo_Image & " configure -" & Name,
-                   Interpreter => Interpreter),
-              Interpreter => Interpreter);
-      begin
-         return To_Ada_String(Result_List(Result_List'Last));
-      end Get_Option;
-      Format: constant String := Get_Option("format");
+      Format: constant String :=
+        Get_Option(Photo_Image, "format", Interpreter);
    begin
       return
         Options: Photo_Options :=
-          (Photo_Format =>
-             (if Format = "gif" then GIF elsif Format = "png" then PNG
-              else OTHER),
-           others => <>)
+          (if Format = "gif" then (Photo_Format => GIF, others => <>)
+           elsif Format = "png" then (Photo_Format => PNG, others => <>)
+           else (Photo_Format => OTHER, others => <>))
       do
          Options.Format := To_Tcl_String(Format);
       end return;

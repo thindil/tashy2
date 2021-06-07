@@ -99,6 +99,13 @@ package Tk.Image.Photo is
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Configure_Photo", Mode => Nominal);
 
+   function Get_Option
+     (Photo_Image: Tk_Image; Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Pre => Photo_Image'Length > 0 and Name'Length > 0 and
+      Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Tests_Get_Option_Photo", Mode => Nominal);
+
    function Get_Options
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options with
