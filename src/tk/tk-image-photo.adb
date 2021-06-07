@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded;
 
 package body Tk.Image.Photo is
@@ -71,22 +72,36 @@ package body Tk.Image.Photo is
    procedure Create
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      New_Options: Photo_Options := Options;
    begin
+      if New_Options.Format = Null_Tcl_String and
+        New_Options.Photo_Format in PNG | GIF then
+         New_Options.Format :=
+           To_Tcl_String
+             (To_Lower(Photo_Formats'Image(New_Options.Photo_Format)));
+      end if;
       Tcl_Eval
         (Tcl_Script =>
            "image create photo " & Photo_Image &
-           Options_To_String(Options => Options),
+           Options_To_String(Options => New_Options),
          Interpreter => Interpreter);
    end Create;
 
    function Create
      (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
+      New_Options: Photo_Options := Options;
    begin
+      if New_Options.Format = Null_Tcl_String and
+        New_Options.Photo_Format in PNG | GIF then
+         New_Options.Format :=
+           To_Tcl_String
+             (To_Lower(Photo_Formats'Image(New_Options.Photo_Format)));
+      end if;
       return
         Tcl_Eval
           (Tcl_Script =>
-             "image create photo" & Options_To_String(Options => Options),
+             "image create photo" & Options_To_String(Options => New_Options),
            Interpreter => Interpreter);
    end Create;
 
