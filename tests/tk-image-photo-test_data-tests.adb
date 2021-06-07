@@ -196,7 +196,9 @@ package body Tk.Image.Photo.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Assert(Get_Option("myphoto", "format") = "png", "Failed to get option of the selected image");
+      Assert
+        (Get_Option("myphoto", "format") = "png",
+         "Failed to get option of the selected image");
 
 --  begin read only
    end Test_Copy_tests_copy_photo;
