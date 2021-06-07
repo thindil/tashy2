@@ -87,6 +87,64 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Get_Option_e3d52c_8f9fe9
+     (Photo_Image: Tk_Image; Name: String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      begin
+         pragma Assert
+           (Photo_Image'Length > 0 and Name'Length > 0 and
+            Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-image-photo.ads:0):Tests_Get_Option_Photo test requirement violated");
+      end;
+      declare
+         Test_Get_Option_e3d52c_8f9fe9_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Get_Option
+             (Photo_Image, Name, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-image-photo.ads:0:):Tests_Get_Option_Photo test commitment violated");
+         end;
+         return Test_Get_Option_e3d52c_8f9fe9_Result;
+      end;
+   end Wrap_Test_Get_Option_e3d52c_8f9fe9;
+--  end read only
+
+--  begin read only
+   procedure Test_Get_Option_tests_get_option_photo(Gnattest_T: in out Test);
+   procedure Test_Get_Option_e3d52c_8f9fe9(Gnattest_T: in out Test) renames
+     Test_Get_Option_tests_get_option_photo;
+--  id:2.2/e3d52c2e49e4f170/Get_Option/1/0/tests_get_option_photo/
+   procedure Test_Get_Option_tests_get_option_photo(Gnattest_T: in out Test) is
+      function Get_Option
+        (Photo_Image: Tk_Image; Name: String;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_Get_Option_e3d52c_8f9fe9;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Get_Option_tests_get_option_photo;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Copy_c44a35_21de2d
      (Destination_Image, Source_Image: Tk_Image; From, To: Dimensions_Type;
       Shrink: Boolean := False;
@@ -134,8 +192,11 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert(Get_Option("myphoto", "format") = "png", "Failed to get option of the selected image");
 
 --  begin read only
    end Test_Copy_tests_copy_photo;

@@ -24,7 +24,7 @@ package Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
 
    procedure Test_Get_Options_5c7a9c_6cc0f7
      (Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:102:4:Get_Options:Tests_Get_Options_Photo
+   --  tk-image-photo.ads:109:4:Get_Options:Tests_Get_Options_Photo
 
 end Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests;
 --  end read only
