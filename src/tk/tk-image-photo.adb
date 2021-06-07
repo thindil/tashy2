@@ -150,6 +150,25 @@ package body Tk.Image.Photo is
            else (Photo_Format => OTHER, others => <>))
       do
          Options.Format := To_Tcl_String(Format);
+         Options.Gamma :=
+           Positive_Float'Value(Get_Option(Photo_Image, "gamma", Interpreter));
+         Options.Height :=
+           Natural'Value(Get_Option(Photo_Image, "height", Interpreter));
+         Options.Palette :=
+           To_Tcl_String(Get_Option(Photo_Image, "palette", Interpreter));
+         Options.Width :=
+           Natural'Value(Get_Option(Photo_Image, "width", Interpreter));
+         case Options.Photo_Format is
+            when PNG =>
+               Options.Alpha :=
+                 Positive_Float'Value
+                   (Get_Option(Photo_Image, "alpha", Interpreter));
+            when GIF =>
+               Options.Index :=
+                 Natural'Value(Get_Option(Photo_Image, "index", Interpreter));
+            when OTHER =>
+               null;
+         end case;
       end return;
    end Get_Options;
 
