@@ -315,6 +315,19 @@ package body Tk.Widget is
       end if;
    end Option_Image;
 
+   procedure Option_Image
+     (Name: String; Value: Point_Position;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value /= Empty_Point_Position then
+         Append
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & Extended_Natural'Image(Value.X) &
+              Extended_Natural'Image(Value.Y));
+      end if;
+   end Option_Image;
+
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tcl_String is
    begin
       return

@@ -439,8 +439,8 @@ package Tk.Widget is
      -- 8.6.0 - Added
      -- SOURCE
    type Point_Position is record
-      X: Natural;
-      Y: Natural;
+      X: Extended_Natural;
+      Y: Extended_Natural;
    end record;
    -- ****
 
@@ -451,7 +451,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    Empty_Point_Position: constant Point_Position :=
-     Point_Position'(others => 0);
+     Point_Position'(others => -1);
      -- ****
 
    -----------------------------------------------
@@ -697,6 +697,12 @@ package Tk.Widget is
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Positive_Float",
+       Mode => Nominal);
+   procedure Option_Image
+     (Name: String; Value: Point_Position;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0,
+      Test_Case => (Name => "Test_Option_Image_Point_Position",
        Mode => Nominal);
       -- ****
 
