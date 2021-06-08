@@ -12,7 +12,6 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded;
 
 package body Tk.Image.Photo is
@@ -54,54 +53,28 @@ package body Tk.Image.Photo is
       Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
-      case Options.Photo_Format is
-         when GIF =>
-            Option_Image
-              (Name => "index", Value => Options.Index,
-               Options_String => Options_String);
-         when PNG =>
-            Option_Image
-              (Name => "alpha", Value => Options.Alpha,
-               Options_String => Options_String);
-         when OTHER =>
-            null;
-      end case;
       return To_String(Source => Options_String);
    end Options_To_String;
 
    procedure Create
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      New_Options: Photo_Options := Options;
    begin
-      if New_Options.Format = Null_Tcl_String and
-        New_Options.Photo_Format in PNG | GIF then
-         New_Options.Format :=
-           To_Tcl_String
-             (To_Lower(Photo_Formats'Image(New_Options.Photo_Format)));
-      end if;
       Tcl_Eval
         (Tcl_Script =>
            "image create photo " & Photo_Image &
-           Options_To_String(Options => New_Options),
+           Options_To_String(Options => Options),
          Interpreter => Interpreter);
    end Create;
 
    function Create
      (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String is
-      New_Options: Photo_Options := Options;
    begin
-      if New_Options.Format = Null_Tcl_String and
-        New_Options.Photo_Format in PNG | GIF then
-         New_Options.Format :=
-           To_Tcl_String
-             (To_Lower(Photo_Formats'Image(New_Options.Photo_Format)));
-      end if;
       return
         Tcl_Eval
           (Tcl_Script =>
-             "image create photo" & Options_To_String(Options => New_Options),
+             "image create photo" & Options_To_String(Options => Options),
            Interpreter => Interpreter);
    end Create;
 
@@ -143,12 +116,7 @@ package body Tk.Image.Photo is
       Format: constant String :=
         Get_Option(Photo_Image, "format", Interpreter);
    begin
-      return
-        Options: Photo_Options :=
-          (if Format = "gif" then (Photo_Format => GIF, others => <>)
-           elsif Format = "png" then (Photo_Format => PNG, others => <>)
-           else (Photo_Format => OTHER, others => <>))
-      do
+      return Options: Photo_Options := Default_Photo_Options do
          Options.Format := To_Tcl_String(Format);
          Options.Gamma :=
            Positive_Float'Value(Get_Option(Photo_Image, "gamma", Interpreter));
@@ -158,17 +126,6 @@ package body Tk.Image.Photo is
            To_Tcl_String(Get_Option(Photo_Image, "palette", Interpreter));
          Options.Width :=
            Natural'Value(Get_Option(Photo_Image, "width", Interpreter));
-         case Options.Photo_Format is
-            when PNG =>
-               Options.Alpha :=
-                 Positive_Float'Value
-                   (Get_Option(Photo_Image, "alpha", Interpreter));
-            when GIF =>
-               Options.Index :=
-                 Natural'Value(Get_Option(Photo_Image, "index", Interpreter));
-            when OTHER =>
-               null;
-         end case;
       end return;
    end Get_Options;
 
@@ -184,11 +141,10 @@ package body Tk.Image.Photo is
 
    function Get_Data
      (Photo_Image: Tk_Image; Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
       pragma Unreferenced
-        (Photo_Image, Background, Format, From, Grayscale, Interpreter);
+        (Photo_Image, Background, From, Grayscale, Interpreter);
    begin
       return Null_Tcl_String;
    end Get_Data;
@@ -203,22 +159,20 @@ package body Tk.Image.Photo is
 
    procedure Put_Data
      (Photo_Image: Tk_Image; Data: Tcl_String;
-      Format: Photo_Formats := Default_Photo_Format;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Photo_Image, Data, Format, To, Interpreter);
+      pragma Unreferenced(Photo_Image, Data, To, Interpreter);
    begin
       null;
    end Put_Data;
 
    procedure Read
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
-      Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced
-        (Photo_Image, File_Name, Format, From, Shrink, To, Interpreter);
+        (Photo_Image, File_Name, From, Shrink, To, Interpreter);
    begin
       null;
    end Read;
@@ -250,11 +204,10 @@ package body Tk.Image.Photo is
    procedure Write
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
       Background: Tcl_String := Null_Tcl_String;
-      Format: Photo_Formats := Default_Photo_Format;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       pragma Unreferenced
-        (Photo_Image, File_Name, Background, Format, Grayscale, Interpreter);
+        (Photo_Image, File_Name, Background, Grayscale, Interpreter);
    begin
       null;
    end Write;
