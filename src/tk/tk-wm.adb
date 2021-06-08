@@ -501,8 +501,10 @@ package body Tk.Wm is
            Interpreter => Interpreter);
    begin
       return Icon_Pos: Point_Position := Empty_Point_Position do
-         Icon_Pos.X := Natural'Value(To_Ada_String(Source => Result(1)));
-         Icon_Pos.Y := Natural'Value(To_Ada_String(Source => Result(2)));
+         Icon_Pos.X :=
+           Extended_Natural'Value(To_Ada_String(Source => Result(1)));
+         Icon_Pos.Y :=
+           Extended_Natural'Value(To_Ada_String(Source => Result(2)));
       end return;
    end Get_Icon_Position;
 
