@@ -145,9 +145,11 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Copy_c44a35_21de2d
-     (Destination_Image, Source_Image: Tk_Image; From, To: Dimensions_Type;
-      Shrink: Boolean := False;
+   procedure Wrap_Test_Copy_0a35cf_21de2d
+     (Destination_Image, Source_Image: Tk_Image;
+      From, To: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
+      Zoom, Sub_Sample: Point_Position := Empty_Point_Position;
+      Compositing_Rule: Compositing_Types := Default_Compositing;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -162,7 +164,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Copy_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Copy
-        (Destination_Image, Source_Image, From, To, Shrink, Interpreter);
+        (Destination_Image, Source_Image, From, To, Shrink, Zoom, Sub_Sample,
+         Compositing_Rule, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -172,20 +175,23 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Copy_Photo test commitment violated");
       end;
-   end Wrap_Test_Copy_c44a35_21de2d;
+   end Wrap_Test_Copy_0a35cf_21de2d;
 --  end read only
 
 --  begin read only
    procedure Test_Copy_tests_copy_photo(Gnattest_T: in out Test);
-   procedure Test_Copy_c44a35_21de2d(Gnattest_T: in out Test) renames
+   procedure Test_Copy_0a35cf_21de2d(Gnattest_T: in out Test) renames
      Test_Copy_tests_copy_photo;
---  id:2.2/c44a35c4494b4fe9/Copy/1/0/tests_copy_photo/
+--  id:2.2/0a35cf23b6e9723d/Copy/1/0/tests_copy_photo/
    procedure Test_Copy_tests_copy_photo(Gnattest_T: in out Test) is
       procedure Copy
-        (Destination_Image, Source_Image: Tk_Image; From, To: Dimensions_Type;
+        (Destination_Image, Source_Image: Tk_Image;
+         From, To: Dimensions_Type := Empty_Dimension;
          Shrink: Boolean := False;
+         Zoom, Sub_Sample: Point_Position := Empty_Point_Position;
+         Compositing_Rule: Compositing_Types := Default_Compositing;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Copy_c44a35_21de2d;
+        Wrap_Test_Copy_0a35cf_21de2d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

@@ -82,7 +82,7 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create("myphoto", (Photo_Format => PNG, others => <>));
+      Create("myphoto", (Format => To_Tcl_String("png"), others => <>));
       Assert
         (Image_Type("myphoto") = "photo",
          "Failed to create a photo image with selected name.");
@@ -149,7 +149,7 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
       end if;
       declare
          Photo_Image: constant Tk_Image :=
-           Create((Photo_Format => PNG, others => <>));
+           Create((Format => To_Tcl_String("png"), others => <>));
       begin
          Assert
            (Photo_Image'Length > 0,
@@ -214,17 +214,13 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
       end if;
       Configure
         ("myphoto",
-         Photo_Options'
-           (Photo_Format => PNG, Format => To_Tcl_String("gif"),
-            others => <>));
+         Photo_Options'(Format => To_Tcl_String("gif"), others => <>));
       Assert
         (Get_Option("myphoto", "format") = "gif",
          "Failed to set options for photo image.");
       Configure
         ("myphoto",
-         Photo_Options'
-           (Photo_Format => PNG, Format => To_Tcl_String("png"),
-            others => <>));
+         Photo_Options'(Format => To_Tcl_String("png"), others => <>));
 
 --  begin read only
    end Test_Configure_tests_configure_photo;
