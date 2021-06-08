@@ -46,6 +46,10 @@ package Tk.Image.Photo is
 
    Black_Color: constant Color_Type := (Red => 0, Green => 0, Blue => 0);
 
+   type Compositing_Types is (OVERLAY, SET);
+
+   Default_Compositing: constant Compositing_Types := OVERLAY;
+
    -- ****f* Photo/Photo.Create
    -- FUNCTION
    -- Create a new Tk image of photo type with the selected name and options
@@ -104,8 +108,10 @@ package Tk.Image.Photo is
      Photo_Options'(others => <>);
 
    procedure Copy
-     (Destination_Image, Source_Image: Tk_Image; From, To: Dimensions_Type;
-      Shrink: Boolean := False;
+     (Destination_Image, Source_Image: Tk_Image;
+      From, To: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
+      Zoom, Sub_Sample: Point_Position := Empty_Point_Position;
+      Compositing_Rule: Compositing_Types := Default_Compositing;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Destination_Image'Length > 0 and Source_Image'Length > 0 and
       Interpreter /= Null_Interpreter,
