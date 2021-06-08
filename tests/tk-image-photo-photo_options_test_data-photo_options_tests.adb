@@ -284,8 +284,13 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Get_Options("myphoto").Format = "png",
+         "Failed to get options for photo image.");
 
 --  begin read only
    end Test_Get_Options_tests_get_options_photo;
