@@ -149,7 +149,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
      (Destination_Image, Source_Image: Tk_Image;
       From, To: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       Zoom, Sub_Sample: Point_Position := Empty_Point_Position;
-      Compositing_Rule: Compositing_Types := Default_Compositing;
+      Compositing_Rule: Compositing_Types := NONE;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -189,7 +189,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
          From, To: Dimensions_Type := Empty_Dimension;
          Shrink: Boolean := False;
          Zoom, Sub_Sample: Point_Position := Empty_Point_Position;
-         Compositing_Rule: Compositing_Types := Default_Compositing;
+         Compositing_Rule: Compositing_Types := NONE;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Copy_0a35cf_21de2d;
 --  end read only
