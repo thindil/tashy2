@@ -166,7 +166,7 @@ package body Tk.Image.Photo is
       end if;
       Tcl_Eval
         (Tcl_Script =>
-           Destination_Image & " " & Source_Image & To_String(Options),
+           Destination_Image & " copy " & Source_Image & To_String(Options),
          Interpreter => Interpreter);
    end Copy;
 
