@@ -1229,6 +1229,62 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Option_Image_e3c074_1ae135
+     (Name: String; Value: Point_Position;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Image_Point_Position test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Point_Position test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_e3c074_1ae135;
+--  end read only
+
+--  begin read only
+   procedure Test_15_Option_Image_test_option_image_point_position
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_e3c074_1ae135(Gnattest_T: in out Test) renames
+     Test_15_Option_Image_test_option_image_point_position;
+--  id:2.2/e3c0749de0cd7904/Option_Image/0/0/test_option_image_point_position/
+   procedure Test_15_Option_Image_test_option_image_point_position
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Point_Position;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_e3c074_1ae135;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
+
+   begin
+
+      Option_Image("myoption", Point_Position'(5, 10), Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption 5 10",
+         "Failed to get image for Point_Position option");
+
+--  begin read only
+   end Test_15_Option_Image_test_option_image_point_position;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Option_Image_e5f273_81a16f
      (Name: String; Value: Integer; Options_String: in out Unbounded_String;
       Base: Positive := 10) is
@@ -1257,12 +1313,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_15_Option_Image_test_option_image_integer
+   procedure Test_16_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_e5f273_81a16f(Gnattest_T: in out Test) renames
-     Test_15_Option_Image_test_option_image_integer;
+     Test_16_Option_Image_test_option_image_integer;
 --  id:2.2/e5f273869df45ad5/Option_Image/0/0/test_option_image_integer/
-   procedure Test_15_Option_Image_test_option_image_integer
+   procedure Test_16_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Integer; Options_String: in out Unbounded_String;
@@ -1281,7 +1337,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Integer option");
 
 --  begin read only
-   end Test_15_Option_Image_test_option_image_integer;
+   end Test_16_Option_Image_test_option_image_integer;
 --  end read only
 
 --  begin read only

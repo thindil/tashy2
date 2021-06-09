@@ -70,58 +70,61 @@ package Tk.Widget.Test_Data.Tests is
    procedure Test_Option_Image_2254d6_97b6c7(Gnattest_T: in out Test);
    --  tk-widget.ads:695:4:Option_Image:Test_Option_Image_Positive_Float
 
+   procedure Test_Option_Image_e3c074_1ae135(Gnattest_T: in out Test);
+   --  tk-widget.ads:701:4:Option_Image:Test_Option_Image_Point_Position
+
    procedure Test_Option_Image_e5f273_81a16f(Gnattest_T: in out Test);
-   --  tk-widget.ads:729:4:Option_Image:Test_Option_Image_Integer
+   --  tk-widget.ads:735:4:Option_Image:Test_Option_Image_Integer
 
    procedure Test_Option_Value_7653ac_8290b8(Gnattest_T: in out Test);
-   --  tk-widget.ads:752:4:Option_Value:Test_Option_Value_Tcl_String
+   --  tk-widget.ads:758:4:Option_Value:Test_Option_Value_Tcl_String
 
    procedure Test_Option_Value_233bf0_aec4d0(Gnattest_T: in out Test);
-   --  tk-widget.ads:755:4:Option_Value:Test_Option_Value_Direction_Type
+   --  tk-widget.ads:761:4:Option_Value:Test_Option_Value_Direction_Type
 
    procedure Test_Option_Value_5928a5_91f6f6(Gnattest_T: in out Test);
-   --  tk-widget.ads:760:4:Option_Value:Test_Option_Value_Pixel_Data
+   --  tk-widget.ads:766:4:Option_Value:Test_Option_Value_Pixel_Data
 
    procedure Test_Option_Value_28b181_505a65(Gnattest_T: in out Test);
-   --  tk-widget.ads:763:4:Option_Value:Test_Option_Value_Place_Type
+   --  tk-widget.ads:769:4:Option_Value:Test_Option_Value_Place_Type
 
    procedure Test_Option_Value_f5b002_a22b94(Gnattest_T: in out Test);
-   --  tk-widget.ads:766:4:Option_Value:Test_Option_Value_State_Type
+   --  tk-widget.ads:772:4:Option_Value:Test_Option_Value_State_Type
 
    procedure Test_Option_Value_0d429d_011a37(Gnattest_T: in out Test);
-   --  tk-widget.ads:769:4:Option_Value:Test_Option_Value_Justify_Type
+   --  tk-widget.ads:775:4:Option_Value:Test_Option_Value_Justify_Type
 
    procedure Test_Option_Value_433a71_606e95(Gnattest_T: in out Test);
-   --  tk-widget.ads:773:4:Option_Value:Test_Option_Value_Relief_Type
+   --  tk-widget.ads:779:4:Option_Value:Test_Option_Value_Relief_Type
 
    procedure Test_Option_Value_c23604_f3a6bc(Gnattest_T: in out Test);
-   --  tk-widget.ads:777:4:Option_Value:Test_Option_Value_Extended_Natural
+   --  tk-widget.ads:783:4:Option_Value:Test_Option_Value_Extended_Natural
 
    procedure Test_Option_Value_4261cf_d0c79a(Gnattest_T: in out Test);
-   --  tk-widget.ads:782:4:Option_Value:Test_Option_Value_Extended_Boolean
+   --  tk-widget.ads:788:4:Option_Value:Test_Option_Value_Extended_Boolean
 
    procedure Test_Option_Value_6c79cd_4a4c5a(Gnattest_T: in out Test);
-   --  tk-widget.ads:787:4:Option_Value:Test_Option_Value_Tk_Widget
+   --  tk-widget.ads:793:4:Option_Value:Test_Option_Value_Tk_Widget
 
    procedure Test_Option_Value_eba58c_c374e8(Gnattest_T: in out Test);
-   --  tk-widget.ads:790:4:Option_Value:Test_Option_Value_Tk_Window
+   --  tk-widget.ads:796:4:Option_Value:Test_Option_Value_Tk_Window
 
    procedure Test_Option_Value_f2311c_69e413(Gnattest_T: in out Test);
-   --  tk-widget.ads:793:4:Option_Value:Test_Option_Value_Integer
+   --  tk-widget.ads:799:4:Option_Value:Test_Option_Value_Integer
 
    procedure Test_Option_Value_54a47c_6cc903(Gnattest_T: in out Test);
-   --  tk-widget.ads:796:4:Option_Value:Test_Option_Value_Anchor_Directions
+   --  tk-widget.ads:802:4:Option_Value:Test_Option_Value_Anchor_Directions
 
    procedure Test_Destroy_568000_523e35(Gnattest_T: in out Test);
-   --  tk-widget.ads:821:4:Destroy:Test_Destroy
+   --  tk-widget.ads:827:4:Destroy:Test_Destroy
 
    procedure Test_Execute_Widget_Command_7643c6_2f4d36
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:847:4:Execute_Widget_Command:Test_Execute_Widget_Command
+   --  tk-widget.ads:853:4:Execute_Widget_Command:Test_Execute_Widget_Command
 
    procedure Test_Execute_Widget_Command_fc11cd_9808c7
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:872:4:Execute_Widget_Command:Test_Execute_Widget_Command2
+   --  tk-widget.ads:878:4:Execute_Widget_Command:Test_Execute_Widget_Command2
 
 end Tk.Widget.Test_Data.Tests;
 --  end read only
