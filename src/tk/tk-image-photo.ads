@@ -46,7 +46,7 @@ package Tk.Image.Photo is
 
    Black_Color: constant Color_Type := (Red => 0, Green => 0, Blue => 0);
 
-   type Compositing_Types is (OVERLAY, SET);
+   type Compositing_Types is (NONE, OVERLAY, SET);
 
    Default_Compositing: constant Compositing_Types := OVERLAY;
 
@@ -111,7 +111,7 @@ package Tk.Image.Photo is
      (Destination_Image, Source_Image: Tk_Image;
       From, To: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       Zoom, Sub_Sample: Point_Position := Empty_Point_Position;
-      Compositing_Rule: Compositing_Types := Default_Compositing;
+      Compositing_Rule: Compositing_Types := NONE;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Destination_Image'Length > 0 and Source_Image'Length > 0 and
       Interpreter /= Null_Interpreter,

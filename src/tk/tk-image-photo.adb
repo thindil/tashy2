@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Image.Photo is
@@ -131,39 +132,42 @@ package body Tk.Image.Photo is
      (Destination_Image, Source_Image: Tk_Image;
       From, To: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       Zoom, Sub_Sample: Point_Position := Empty_Point_Position;
-      Compositing_Rule: Compositing_Types := Default_Compositing;
+      Compositing_Rule: Compositing_Types := NONE;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced
-        (Destination_Image, Source_Image, Zoom, Sub_Sample, Compositing_Rule,
-         Interpreter);
       Options: Unbounded_String := Null_Unbounded_String;
+      procedure Dimension_To_String(Name: String; Value: Dimensions_Type) is
+      begin
+         if Value /= Empty_Dimension then
+            Append
+              (Options,
+               " -" & Name & Natural'Image(Value.Start_X) &
+               Natural'Image(From.Start_Y));
+            if Value.End_X > -1 then
+               Append
+                 (Options,
+                  Extended_Natural'Image(Value.End_X) &
+                  Extended_Natural'Image(Value.End_Y));
+            end if;
+         end if;
+      end Dimension_To_String;
    begin
-      if From /= Empty_Dimension then
-         Options :=
-           To_Unbounded_String
-             (" -from" & Natural'Image(From.Start_X) &
-              Natural'Image(From.Start_Y));
-         if From.End_X > -1 then
-            Append
-              (Options,
-               Extended_Natural'Image(From.End_X) &
-               Extended_Natural'Image(From.End_Y));
-         end if;
-      end if;
-      if To /= Empty_Dimension then
-         Options :=
-           To_Unbounded_String
-             (" -to" & Natural'Image(To.Start_X) & Natural'Image(To.Start_Y));
-         if To.End_X > -1 then
-            Append
-              (Options,
-               Extended_Natural'Image(To.End_X) &
-               Extended_Natural'Image(To.End_Y));
-         end if;
-      end if;
+      Dimension_To_String("from", From);
+      Dimension_To_String("to", To);
       if Shrink then
          Append(Options, " -shrink");
       end if;
+      Option_Image("zoom", Zoom, Options);
+      Option_Image("subsample", Sub_Sample, Options);
+      if Compositing_Rule /= NONE then
+         Append
+           (Options,
+            " -compositingrule " &
+            To_Lower(Compositing_Types'Image(Compositing_Rule)));
+      end if;
+      Tcl_Eval
+        (Tcl_Script =>
+           Destination_Image & " " & Source_Image & To_String(Options),
+         Interpreter => Interpreter);
    end Copy;
 
    function Get_Data
