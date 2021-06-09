@@ -137,8 +137,13 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Get_Option("myphoto", "format") = "png",
+         "Failed to get option of the selected image");
 
 --  begin read only
    end Test_Get_Option_tests_get_option_photo;
@@ -202,9 +207,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Assert
-        (Get_Option("myphoto", "format") = "png",
-         "Failed to get option of the selected image");
+      Create("myphoto2", Default_Photo_Options);
+      Copy("myphoto2", "myphoto");
+      Assert(True, "This test can only crash.");
+      Delete("myphoto2");
 
 --  begin read only
    end Test_Copy_tests_copy_photo;
