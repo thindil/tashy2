@@ -131,7 +131,8 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Get_Color_Photo", Mode => Nominal);
 
    procedure Put_Data
-     (Photo_Image: Tk_Image; Data, Format: Tcl_String;
+     (Photo_Image: Tk_Image; Data: Tcl_String;
+      Format: Tcl_String := Null_Tcl_String;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Photo_Image'Length > 0 and Length(Source => Data) > 0 and
