@@ -20,13 +20,13 @@ package Tk.Image.Photo.Test_Data.Tests is
    procedure Test_Copy_0a35cf_21de2d(Gnattest_T: in out Test);
    --  tk-image-photo.ads:110:4:Copy:Tests_Copy_Photo
 
-   procedure Test_Get_Data_0223c5_8ba84f(Gnattest_T: in out Test);
+   procedure Test_Get_Data_433b25_8ba84f(Gnattest_T: in out Test);
    --  tk-image-photo.ads:120:4:Get_Data:Tests_Get_Data_Photo
 
    procedure Test_Get_Color_6fd571_5f6b3a(Gnattest_T: in out Test);
    --  tk-image-photo.ads:127:4:Get_Color:Tests_Get_Color_Photo
 
-   procedure Test_Put_Data_1f94ae_ee5695(Gnattest_T: in out Test);
+   procedure Test_Put_Data_5e0e09_ee5695(Gnattest_T: in out Test);
    --  tk-image-photo.ads:133:4:Put_Data:Tests_Put_Data_Photo
 
    procedure Test_Read_9efbd6_24b510(Gnattest_T: in out Test);

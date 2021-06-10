@@ -217,8 +217,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Data_0223c5_8ba84f
-     (Photo_Image: Tk_Image; Background: Tcl_String := Null_Tcl_String;
+   function Wrap_Test_Get_Data_433b25_8ba84f
+     (Photo_Image: Tk_Image; Background, Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
    begin
@@ -233,9 +233,9 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Get_Data_Photo test requirement violated");
       end;
       declare
-         Test_Get_Data_0223c5_8ba84f_Result: constant Tcl_String :=
+         Test_Get_Data_433b25_8ba84f_Result: constant Tcl_String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Get_Data
-             (Photo_Image, Background, From, Grayscale, Interpreter);
+             (Photo_Image, Background, Format, From, Grayscale, Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -246,31 +246,33 @@ package body Tk.Image.Photo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image-photo.ads:0:):Tests_Get_Data_Photo test commitment violated");
          end;
-         return Test_Get_Data_0223c5_8ba84f_Result;
+         return Test_Get_Data_433b25_8ba84f_Result;
       end;
-   end Wrap_Test_Get_Data_0223c5_8ba84f;
+   end Wrap_Test_Get_Data_433b25_8ba84f;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Data_tests_get_data_photo(Gnattest_T: in out Test);
-   procedure Test_Get_Data_0223c5_8ba84f(Gnattest_T: in out Test) renames
+   procedure Test_Get_Data_433b25_8ba84f(Gnattest_T: in out Test) renames
      Test_Get_Data_tests_get_data_photo;
---  id:2.2/0223c57fe5acff29/Get_Data/1/0/tests_get_data_photo/
+--  id:2.2/433b2501eca6e1fa/Get_Data/1/0/tests_get_data_photo/
    procedure Test_Get_Data_tests_get_data_photo(Gnattest_T: in out Test) is
       function Get_Data
-        (Photo_Image: Tk_Image; Background: Tcl_String := Null_Tcl_String;
+        (Photo_Image: Tk_Image;
+         Background, Format: Tcl_String := Null_Tcl_String;
          From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tcl_String renames
-        Wrap_Test_Get_Data_0223c5_8ba84f;
+        Wrap_Test_Get_Data_433b25_8ba84f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (Get_Data("myphoto") = Null_Tcl_String,
+         "Failed to get data from empty photo image.");
 
 --  begin read only
    end Test_Get_Data_tests_get_data_photo;
@@ -335,8 +337,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Put_Data_1f94ae_ee5695
-     (Photo_Image: Tk_Image; Data: Tcl_String;
+   procedure Wrap_Test_Put_Data_5e0e09_ee5695
+     (Photo_Image: Tk_Image; Data, Format: Tcl_String;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -352,7 +354,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Put_Data_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Put_Data
-        (Photo_Image, Data, To, Interpreter);
+        (Photo_Image, Data, Format, To, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -362,20 +364,20 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Put_Data_Photo test commitment violated");
       end;
-   end Wrap_Test_Put_Data_1f94ae_ee5695;
+   end Wrap_Test_Put_Data_5e0e09_ee5695;
 --  end read only
 
 --  begin read only
    procedure Test_Put_Data_tests_put_data_photo(Gnattest_T: in out Test);
-   procedure Test_Put_Data_1f94ae_ee5695(Gnattest_T: in out Test) renames
+   procedure Test_Put_Data_5e0e09_ee5695(Gnattest_T: in out Test) renames
      Test_Put_Data_tests_put_data_photo;
---  id:2.2/1f94aeeffbf7f23f/Put_Data/1/0/tests_put_data_photo/
+--  id:2.2/5e0e0983fb40d50a/Put_Data/1/0/tests_put_data_photo/
    procedure Test_Put_Data_tests_put_data_photo(Gnattest_T: in out Test) is
       procedure Put_Data
-        (Photo_Image: Tk_Image; Data: Tcl_String;
+        (Photo_Image: Tk_Image; Data, Format: Tcl_String;
          To: Dimensions_Type := Empty_Dimension;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Put_Data_1f94ae_ee5695;
+        Wrap_Test_Put_Data_5e0e09_ee5695;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
