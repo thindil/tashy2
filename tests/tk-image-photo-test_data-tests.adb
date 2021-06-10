@@ -329,16 +329,18 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (Get_Color("myphoto", 1, 1) = (0, 0, 0),
+         "Failed to get color for photo image pixel.");
 
 --  begin read only
    end Test_Get_Color_tests_get_color_photo;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Put_Data_5e0e09_ee5695
-     (Photo_Image: Tk_Image; Data, Format: Tcl_String;
+   procedure Wrap_Test_Put_Data_cd9739_ee5695
+     (Photo_Image: Tk_Image; Data: Tcl_String;
+      Format: Tcl_String := Null_Tcl_String;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -364,28 +366,33 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Put_Data_Photo test commitment violated");
       end;
-   end Wrap_Test_Put_Data_5e0e09_ee5695;
+   end Wrap_Test_Put_Data_cd9739_ee5695;
 --  end read only
 
 --  begin read only
    procedure Test_Put_Data_tests_put_data_photo(Gnattest_T: in out Test);
-   procedure Test_Put_Data_5e0e09_ee5695(Gnattest_T: in out Test) renames
+   procedure Test_Put_Data_cd9739_ee5695(Gnattest_T: in out Test) renames
      Test_Put_Data_tests_put_data_photo;
---  id:2.2/5e0e0983fb40d50a/Put_Data/1/0/tests_put_data_photo/
+--  id:2.2/cd9739d25bdd8fd7/Put_Data/1/0/tests_put_data_photo/
    procedure Test_Put_Data_tests_put_data_photo(Gnattest_T: in out Test) is
       procedure Put_Data
-        (Photo_Image: Tk_Image; Data, Format: Tcl_String;
+        (Photo_Image: Tk_Image; Data: Tcl_String;
+         Format: Tcl_String := Null_Tcl_String;
          To: Dimensions_Type := Empty_Dimension;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Put_Data_5e0e09_ee5695;
+        Wrap_Test_Put_Data_cd9739_ee5695;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Put_Data
+        (Photo_Image => "myphoto", Data => To_Tcl_String("red"),
+         To => (1, 1, 2, 2));
+      Assert
+        (Get_Color("myphoto", 1, 1) = (255, 0, 0),
+         "Failed to set color for selected pixels in photo image.");
 
 --  begin read only
    end Test_Put_Data_tests_put_data_photo;
