@@ -16,6 +16,7 @@ with System.Assertions;
 --  end read only
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
+with GNAT.Directory_Operations; use GNAT.Directory_Operations;
 
 --  begin read only
 --  end read only
@@ -82,10 +83,14 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create("myphoto", (Format => To_Tcl_String("png"), others => <>));
+      Create
+        ("myphoto",
+         (Format => To_Tcl_String("png"),
+          File => To_Tcl_String(".." & Dir_Separator & "test.png"),
+          others => <>));
       Assert
         (Image_Type("myphoto") = "photo",
-         "Failed to create a photo image with selected name.");
+         "Failed to create a photo image with selected name from file.");
 
 --  begin read only
    end Test_1_Create_tests_create_photo;
@@ -154,6 +159,7 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
          Assert
            (Photo_Image'Length > 0,
             "Failed to create photo image with random name.");
+         Delete(Photo_Image);
       end;
 
 --  begin read only
@@ -212,15 +218,11 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Configure
-        ("myphoto",
-         Photo_Options'(Format => To_Tcl_String("gif"), others => <>));
+      Configure("myphoto", Photo_Options'(Height => 12, others => <>));
       Assert
-        (Get_Option("myphoto", "format") = "gif",
+        (Get_Option("myphoto", "height") = "12",
          "Failed to set options for photo image.");
-      Configure
-        ("myphoto",
-         Photo_Options'(Format => To_Tcl_String("png"), others => <>));
+      Configure("myphoto", Photo_Options'(Height => 11, others => <>));
 
 --  begin read only
    end Test_Configure_tests_configure_photo;
