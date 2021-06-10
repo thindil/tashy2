@@ -271,8 +271,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
    begin
 
       Assert
-        (Get_Data("myphoto") = Null_Tcl_String,
-         "Failed to get data from empty photo image.");
+        (Get_Data("myphoto") /= Null_Tcl_String,
+         "Failed to get data from photo image.");
 
 --  begin read only
    end Test_Get_Data_tests_get_data_photo;
