@@ -128,6 +128,24 @@ package body Tk.Image.Photo is
       end return;
    end Get_Options;
 
+   procedure Dimension_To_String
+     (Name: String; Value: Dimensions_Type;
+      Options: in out Unbounded_String) is
+   begin
+      if Value /= Empty_Dimension then
+         Append
+           (Options,
+            " -" & Name & Natural'Image(Value.Start_X) &
+            Natural'Image(Value.Start_Y));
+         if Value.End_X > -1 then
+            Append
+              (Options,
+               Extended_Natural'Image(Value.End_X) &
+               Extended_Natural'Image(Value.End_Y));
+         end if;
+      end if;
+   end Dimension_To_String;
+
    procedure Copy
      (Destination_Image, Source_Image: Tk_Image;
       From, To: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
@@ -135,24 +153,9 @@ package body Tk.Image.Photo is
       Compositing_Rule: Compositing_Types := NONE;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
-      procedure Dimension_To_String(Name: String; Value: Dimensions_Type) is
-      begin
-         if Value /= Empty_Dimension then
-            Append
-              (Options,
-               " -" & Name & Natural'Image(Value.Start_X) &
-               Natural'Image(From.Start_Y));
-            if Value.End_X > -1 then
-               Append
-                 (Options,
-                  Extended_Natural'Image(Value.End_X) &
-                  Extended_Natural'Image(Value.End_Y));
-            end if;
-         end if;
-      end Dimension_To_String;
    begin
-      Dimension_To_String("from", From);
-      Dimension_To_String("to", To);
+      Dimension_To_String("from", From, Options);
+      Dimension_To_String("to", To, Options);
       if Shrink then
          Append(Options, " -shrink");
       end if;
@@ -171,29 +174,60 @@ package body Tk.Image.Photo is
    end Copy;
 
    function Get_Data
-     (Photo_Image: Tk_Image; Background: Tcl_String := Null_Tcl_String;
+     (Photo_Image: Tk_Image; Background, Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
-      pragma Unreferenced
-        (Photo_Image, Background, From, Grayscale, Interpreter);
+      Options: Unbounded_String := Null_Unbounded_String;
    begin
-      return Null_Tcl_String;
+      if Background /= Null_Tcl_String then
+         Append(Options, " -background " & To_String(Background));
+      end if;
+      if Format /= Null_Tcl_String then
+         Append(Options, " -format " & To_String(Format));
+      end if;
+      Dimension_To_String("from", From, Options);
+      if Grayscale then
+         Append(Options, " -grayscale");
+      end if;
+      return
+        To_Tcl_String
+          (Tcl_Eval
+             (Tcl_Script => Photo_Image & " data" & To_String(Options),
+              Interpreter => Interpreter));
    end Get_Data;
 
    function Get_Color
      (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type is
-      pragma Unreferenced(Photo_Image, X, Y, Interpreter);
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  Photo_Image & " get" & Natural'Image(X) & Natural'Image(Y),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
-      return (Red => 255, Green => 255, Blue => 255);
+      return
+        (Red => Color_Range'Value(To_Ada_String(Result_List(1))),
+         Green => Color_Range'Value(To_Ada_String(Result_List(2))),
+         Blue => Color_Range'Value(To_Ada_String(Result_List(3))));
    end Get_Color;
 
    procedure Put_Data
-     (Photo_Image: Tk_Image; Data: Tcl_String;
+     (Photo_Image: Tk_Image; Data, Format: Tcl_String;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Photo_Image, Data, To, Interpreter);
+      Options: Unbounded_String := Null_Unbounded_String;
    begin
+      if Format /= Null_Tcl_String then
+         Append(Options, " -format " & To_String(Format));
+      end if;
+      Dimension_To_String("to", To, Options);
+      Tcl_Eval
+        (Tcl_Script =>
+           Photo_Image & " put " & To_String(Data) & " " & To_String(Options),
+         Interpreter => Interpreter);
       null;
    end Put_Data;
 

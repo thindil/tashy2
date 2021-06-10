@@ -118,7 +118,7 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Copy_Photo", Mode => Nominal);
 
    function Get_Data
-     (Photo_Image: Tk_Image; Background: Tcl_String := Null_Tcl_String;
+     (Photo_Image: Tk_Image; Background, Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
@@ -131,7 +131,7 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Get_Color_Photo", Mode => Nominal);
 
    procedure Put_Data
-     (Photo_Image: Tk_Image; Data: Tcl_String;
+     (Photo_Image: Tk_Image; Data, Format: Tcl_String;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Photo_Image'Length > 0 and Length(Source => Data) > 0 and
