@@ -257,25 +257,32 @@ package body Tk.Image.Photo is
    procedure Redither
      (Photo_Image: Tk_Image;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Photo_Image, Interpreter);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script => Photo_Image & " redither", Interpreter => Interpreter);
    end Redither;
 
    function Get_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
-      pragma Unreferenced(Photo_Image, X, Y, Interpreter);
    begin
-      return True;
+      return
+        Tcl_Eval
+          (Tcl_Script =>
+             Photo_Image & " transparency get" & Natural'Image(X) &
+             Natural'Image(Y),
+           Interpreter => Interpreter);
    end Get_Transparency;
 
    procedure Set_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural; Transparent: Boolean;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced(Photo_Image, X, Y, Transparent, Interpreter);
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           Photo_Image & " transparency set" & Natural'Image(X) &
+           Natural'Image(Y) & " " & (if Transparent then "1" else "0"),
+         Interpreter => Interpreter);
    end Set_Transparency;
 
    procedure Write
