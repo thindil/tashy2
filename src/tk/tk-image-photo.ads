@@ -169,7 +169,7 @@ package Tk.Image.Photo is
 
    procedure Write
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
-      Background: Tcl_String := Null_Tcl_String;
+      Background, Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Photo_Image'Length > 0 and Length(Source => File_Name) > 0 and
