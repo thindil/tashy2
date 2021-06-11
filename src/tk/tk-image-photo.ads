@@ -141,6 +141,7 @@ package Tk.Image.Photo is
 
    procedure Read
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
+      Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with

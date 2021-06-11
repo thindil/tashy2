@@ -229,18 +229,29 @@ package body Tk.Image.Photo is
         (Tcl_Script =>
            Photo_Image & " put " & To_String(Data) & " " & To_String(Options),
          Interpreter => Interpreter);
-      null;
    end Put_Data;
 
    procedure Read
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
+      Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced
-        (Photo_Image, File_Name, From, Shrink, To, Interpreter);
+      Options: Unbounded_String := Null_Unbounded_String;
    begin
-      null;
+      if Format /= Null_Tcl_String then
+         Append(Options, " -format " & To_String(Format));
+      end if;
+      Dimension_To_String("From", From, Options);
+      if Shrink then
+         Append(Options, " -shrink");
+      end if;
+      Option_Image("to", To, Options);
+      Tcl_Eval
+        (Tcl_Script =>
+           Photo_Image & " read " & To_String(File_Name) & " " &
+           To_String(Options),
+         Interpreter => Interpreter);
    end Read;
 
    procedure Redither
