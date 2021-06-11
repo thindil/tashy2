@@ -287,13 +287,21 @@ package body Tk.Image.Photo is
 
    procedure Write
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
-      Background: Tcl_String := Null_Tcl_String;
+      Background, Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      pragma Unreferenced
-        (Photo_Image, File_Name, Background, Grayscale, Interpreter);
+      Options: Unbounded_String := Null_Unbounded_String;
    begin
-      null;
+      Option_Image("background", Background, Options);
+      Option_Image("format", Format, Options);
+      Dimension_To_String("from", From, Options);
+      if Grayscale then
+         Append(Options, " -grayscale");
+      end if;
+      Tcl_Eval
+        (Tcl_Script =>
+           Photo_Image & " write " & To_String(File_Name) & To_String(Options),
+         Interpreter => Interpreter);
    end Write;
 
 end Tk.Image.Photo;
