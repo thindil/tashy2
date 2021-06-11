@@ -503,8 +503,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Redither("myphoto");
+      Assert(True, "This test can only crash");
 
 --  begin read only
    end Test_Redither_tests_redither_photo;
@@ -564,8 +564,9 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (Get_Transparency("myphoto", 0, 0),
+         "Failed to get transparency for pixel in photo image.");
 
 --  begin read only
    end Test_Get_Transparency_tests_get_transparency_photo;
@@ -619,8 +620,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Set_Transparency("myphoto", 0, 0, False);
+      Assert
+        (not Get_Transparency("myphoto", 0, 0),
+         "Failed to set transparency for pixel in photo image.");
 
 --  begin read only
    end Test_Set_Transparency_tests_set_transparency_photo;
