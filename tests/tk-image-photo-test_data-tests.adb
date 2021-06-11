@@ -16,6 +16,7 @@ with System.Assertions;
 --  end read only
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
+with GNAT.Directory_Operations; use GNAT.Directory_Operations;
 
 --  begin read only
 --  end read only
@@ -399,8 +400,9 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Read_9efbd6_24b510
+   procedure Wrap_Test_Read_95a1fe_24b510
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
+      Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
@@ -417,7 +419,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Read_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Read
-        (Photo_Image, File_Name, From, Shrink, To, Interpreter);
+        (Photo_Image, File_Name, Format, From, Shrink, To, Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -427,29 +429,30 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Read_Photo test commitment violated");
       end;
-   end Wrap_Test_Read_9efbd6_24b510;
+   end Wrap_Test_Read_95a1fe_24b510;
 --  end read only
 
 --  begin read only
    procedure Test_Read_tests_read_photo(Gnattest_T: in out Test);
-   procedure Test_Read_9efbd6_24b510(Gnattest_T: in out Test) renames
+   procedure Test_Read_95a1fe_24b510(Gnattest_T: in out Test) renames
      Test_Read_tests_read_photo;
---  id:2.2/9efbd6a9b2a4bc8c/Read/1/0/tests_read_photo/
+--  id:2.2/95a1fec265c675e5/Read/1/0/tests_read_photo/
    procedure Test_Read_tests_read_photo(Gnattest_T: in out Test) is
       procedure Read
         (Photo_Image: Tk_Image; File_Name: Tcl_String;
+         Format: Tcl_String := Null_Tcl_String;
          From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
          To: Point_Position := Empty_Point_Position;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Read_9efbd6_24b510;
+        Wrap_Test_Read_95a1fe_24b510;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Read("myphoto", To_Tcl_String(".." & Dir_Separator & "test.png"));
+      Assert(True, "This test can only crash");
 
 --  begin read only
    end Test_Read_tests_read_photo;
