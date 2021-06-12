@@ -630,9 +630,9 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Write_f4e43e_96f97b
+   procedure Wrap_Test_Write_a9d740_96f97b
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
-      Background: Tcl_String := Null_Tcl_String;
+      Background, Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -648,7 +648,8 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Write_Photo test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Write
-        (Photo_Image, File_Name, Background, From, Grayscale, Interpreter);
+        (Photo_Image, File_Name, Background, Format, From, Grayscale,
+         Interpreter);
       begin
          pragma Assert(True);
          null;
@@ -658,21 +659,21 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Write_Photo test commitment violated");
       end;
-   end Wrap_Test_Write_f4e43e_96f97b;
+   end Wrap_Test_Write_a9d740_96f97b;
 --  end read only
 
 --  begin read only
    procedure Test_Write_tests_write_photo(Gnattest_T: in out Test);
-   procedure Test_Write_f4e43e_96f97b(Gnattest_T: in out Test) renames
+   procedure Test_Write_a9d740_96f97b(Gnattest_T: in out Test) renames
      Test_Write_tests_write_photo;
---  id:2.2/f4e43e1d022739b8/Write/1/0/tests_write_photo/
+--  id:2.2/a9d74045db4a2ae3/Write/1/0/tests_write_photo/
    procedure Test_Write_tests_write_photo(Gnattest_T: in out Test) is
       procedure Write
         (Photo_Image: Tk_Image; File_Name: Tcl_String;
-         Background: Tcl_String := Null_Tcl_String;
+         Background, Format: Tcl_String := Null_Tcl_String;
          From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Write_f4e43e_96f97b;
+        Wrap_Test_Write_a9d740_96f97b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
