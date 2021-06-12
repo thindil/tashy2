@@ -156,9 +156,7 @@ package body Tk.Image.Photo is
    begin
       Dimension_To_String("from", From, Options);
       Dimension_To_String("to", To, Options);
-      if Shrink then
-         Append(Options, " -shrink");
-      end if;
+      Option_Image("shrink", Shrink, Options);
       Option_Image("zoom", Zoom, Options);
       Option_Image("subsample", Sub_Sample, Options);
       if Compositing_Rule /= NONE then
@@ -182,9 +180,7 @@ package body Tk.Image.Photo is
       Option_Image("background", Background, Options);
       Option_Image("format", Format, Options);
       Dimension_To_String("from", From, Options);
-      if Grayscale then
-         Append(Options, " -grayscale");
-      end if;
+      Option_Image("grayscale", Grayscale, Options);
       return
         To_Tcl_String
           (Tcl_Eval
@@ -235,9 +231,7 @@ package body Tk.Image.Photo is
    begin
       Option_Image("format", Format, Options);
       Dimension_To_String("From", From, Options);
-      if Shrink then
-         Append(Options, " -shrink");
-      end if;
+      Option_Image("shrink", Shrink, Options);
       Option_Image("to", To, Options);
       Tcl_Eval
         (Tcl_Script =>
@@ -287,9 +281,7 @@ package body Tk.Image.Photo is
       Option_Image("background", Background, Options);
       Option_Image("format", Format, Options);
       Dimension_To_String("from", From, Options);
-      if Grayscale then
-         Append(Options, " -grayscale");
-      end if;
+      Option_Image("grayscale", Grayscale, Options);
       Tcl_Eval
         (Tcl_Script =>
            Photo_Image & " write " & To_String(File_Name) & To_String(Options),
