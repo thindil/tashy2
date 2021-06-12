@@ -15,6 +15,7 @@ with System.Assertions;
 --
 --  end read only
 
+with Ada.Directories;
 with Ada.Environment_Variables; use Ada.Environment_Variables;
 with GNAT.Directory_Operations; use GNAT.Directory_Operations;
 
@@ -680,8 +681,11 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Write("myphoto", To_Tcl_String(".." & Dir_Separator & "myphoto.png"));
+      Assert
+        (Ada.Directories.Exists(".." & Dir_Separator & "myphoto.png"),
+         "Failed to write the selected photo image to file.");
+      Ada.Directories.Delete_File(".." & Dir_Separator & "myphoto.png");
 
 --  begin read only
    end Test_Write_tests_write_photo;
