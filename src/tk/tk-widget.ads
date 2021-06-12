@@ -704,6 +704,11 @@ package Tk.Widget is
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Point_Position",
        Mode => Nominal);
+   procedure Option_Image
+     (Name: String; Value: Boolean;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0,
+      Test_Case => (Name => "Test_Option_Image_Boolean", Mode => Nominal);
       -- ****
 
       -- ****f* Widget/Widget.Option_Image_(Integer)
