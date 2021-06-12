@@ -1041,7 +1041,7 @@ package body Tk.Widget.Test_Data.Tests is
 
    begin
 
-      Option_Image("myoption", TRUE, Options_String);
+      Option_Image("myoption", Extended_Boolean'(TRUE), Options_String);
       Assert
         (To_String(Options_String) = " -myoption 1",
          "Failed to get image for Extended_Boolean option");
@@ -1285,6 +1285,61 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Option_Image_7332d0_b72ca9
+     (Name: String; Value: Boolean; Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Image_Boolean test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Boolean test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_7332d0_b72ca9;
+--  end read only
+
+--  begin read only
+   procedure Test_16_Option_Image_test_option_image_boolean
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_7332d0_b72ca9(Gnattest_T: in out Test) renames
+     Test_16_Option_Image_test_option_image_boolean;
+--  id:2.2/7332d0be2739d19f/Option_Image/0/0/test_option_image_boolean/
+   procedure Test_16_Option_Image_test_option_image_boolean
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Boolean;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_7332d0_b72ca9;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
+
+   begin
+
+      Option_Image("myoption", Boolean'(True), Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption",
+         "Failed to get image for Boolean option");
+
+--  begin read only
+   end Test_16_Option_Image_test_option_image_boolean;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Option_Image_e5f273_81a16f
      (Name: String; Value: Integer; Options_String: in out Unbounded_String;
       Base: Positive := 10) is
@@ -1313,12 +1368,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_16_Option_Image_test_option_image_integer
+   procedure Test_17_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_e5f273_81a16f(Gnattest_T: in out Test) renames
-     Test_16_Option_Image_test_option_image_integer;
+     Test_17_Option_Image_test_option_image_integer;
 --  id:2.2/e5f273869df45ad5/Option_Image/0/0/test_option_image_integer/
-   procedure Test_16_Option_Image_test_option_image_integer
+   procedure Test_17_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Integer; Options_String: in out Unbounded_String;
@@ -1337,7 +1392,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Integer option");
 
 --  begin read only
-   end Test_16_Option_Image_test_option_image_integer;
+   end Test_17_Option_Image_test_option_image_integer;
 --  end read only
 
 --  begin read only
