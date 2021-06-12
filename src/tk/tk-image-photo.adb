@@ -179,12 +179,8 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
-      if Background /= Null_Tcl_String then
-         Append(Options, " -background " & To_String(Background));
-      end if;
-      if Format /= Null_Tcl_String then
-         Append(Options, " -format " & To_String(Format));
-      end if;
+      Option_Image("background", Background, Options);
+      Option_Image("format", Format, Options);
       Dimension_To_String("from", From, Options);
       if Grayscale then
          Append(Options, " -grayscale");
@@ -221,9 +217,7 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
-      if Format /= Null_Tcl_String then
-         Append(Options, " -format " & To_String(Format));
-      end if;
+      Option_Image("format", Format, Options);
       Dimension_To_String("to", To, Options);
       Tcl_Eval
         (Tcl_Script =>
@@ -239,9 +233,7 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
-      if Format /= Null_Tcl_String then
-         Append(Options, " -format " & To_String(Format));
-      end if;
+      Option_Image("format", Format, Options);
       Dimension_To_String("From", From, Options);
       if Shrink then
          Append(Options, " -shrink");
