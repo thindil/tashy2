@@ -272,6 +272,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Assert
         (Get_Data("myphoto") /= Null_Tcl_String,
          "Failed to get data from photo image.");
@@ -331,6 +335,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Assert
         (Get_Color("myphoto", 1, 1) = (0, 0, 0),
          "Failed to get color for photo image pixel.");
@@ -389,6 +397,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Put_Data
         (Photo_Image => "myphoto", Data => To_Tcl_String("red"),
          To => (1, 1, 2, 2));
@@ -452,6 +464,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Read("myphoto", To_Tcl_String(".." & Dir_Separator & "test.png"));
       Assert(True, "This test can only crash");
 
@@ -504,6 +520,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Redither("myphoto");
       Assert(True, "This test can only crash");
 
@@ -565,6 +585,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Assert
         (Get_Transparency("myphoto", 0, 0),
          "Failed to get transparency for pixel in photo image.");
@@ -621,6 +645,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Set_Transparency("myphoto", 0, 0, False);
       Assert
         (not Get_Transparency("myphoto", 0, 0),
@@ -681,6 +709,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Write("myphoto", To_Tcl_String(".." & Dir_Separator & "myphoto.png"));
       Assert
         (Ada.Directories.Exists(".." & Dir_Separator & "myphoto.png"),
