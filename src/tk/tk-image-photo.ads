@@ -14,10 +14,30 @@
 
 with Tk.Widget; use Tk.Widget;
 
+-- ****h* Image/Photo
+-- FUNCTION
+-- Provide bindings for manipulate Tk images type photo
+-- SOURCE
 package Tk.Image.Photo is
 
    --## rule off REDUCEABLE_SCOPE
-
+   -- ****s* Photo/Photo.Photo_Options
+   -- FUNCTION
+   -- Data structure for all available options for image photo
+   -- OPTIONS
+   -- TODO: add file and data
+   -- Format  - The format of the image. By default Tk support only png and gif
+   --           but extensions can add more formats
+   -- Gamma   - The gamma correction for the image. Values below 1 make image
+   --           darker, when values above 1 make image lighter
+   -- Height  - The height of the image in pixels. 0 mean natural height of the
+   --           image
+   -- Palette - Palette used to display the image. TODO: replace by 3 element array
+   -- Width   - The width of the image in pixels. O mean natural width of the
+   --           image
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Photo_Options is new Image_Options with record
       Format: Tcl_String;
       Gamma: Positive_Float;
@@ -25,6 +45,7 @@ package Tk.Image.Photo is
       Palette: Tcl_String;
       Width: Natural := 0;
    end record;
+   -- ****
 
    type Dimensions_Type is record
       Start_X: Natural;
