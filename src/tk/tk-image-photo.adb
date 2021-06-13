@@ -114,6 +114,18 @@ package body Tk.Image.Photo is
       return Photo_Options is
    begin
       return Options: Photo_Options := Default_Photo_Options do
+         Options.Data :=
+           To_Tcl_String
+             (Source =>
+                Get_Option
+                  (Photo_Image => Photo_Image, Name => "data",
+                   Interpreter => Interpreter));
+         Options.File :=
+           To_Tcl_String
+             (Source =>
+                Get_Option
+                  (Photo_Image => Photo_Image, Name => "file",
+                   Interpreter => Interpreter));
          Options.Format :=
            To_Tcl_String
              (Source =>
