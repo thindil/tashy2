@@ -25,7 +25,11 @@ package Tk.Image.Photo is
    -- FUNCTION
    -- Data structure for all available options for image photo
    -- OPTIONS
-   -- TODO: add file and data
+   -- Data    - The content of the image as a string. The format of the string
+   --           must be one of those for which there is an image file format
+   --           handler that will accept string data. If both the Data and
+   --           File options are specified, the File option takes precedence.
+   -- File    - The name of the file which will be loaded as an image.
    -- Format  - The format of the image. By default Tk support only png and gif
    --           but extensions can add more formats
    -- Gamma   - The gamma correction for the image. Values below 1 make image
