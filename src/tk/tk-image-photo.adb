@@ -106,25 +106,40 @@ package body Tk.Image.Photo is
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin
-      return To_Ada_String(Result_List(Result_List'Last));
+      return To_Ada_String(Source => Result_List(Result_List'Last));
    end Get_Option;
 
    function Get_Options
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options is
-      Format: constant String :=
-        Get_Option(Photo_Image, "format", Interpreter);
    begin
       return Options: Photo_Options := Default_Photo_Options do
-         Options.Format := To_Tcl_String(Format);
+         Options.Format :=
+           To_Tcl_String
+             (Source =>
+                Get_Option
+                  (Photo_Image => Photo_Image, Name => "format",
+                   Interpreter => Interpreter));
          Options.Gamma :=
-           Positive_Float'Value(Get_Option(Photo_Image, "gamma", Interpreter));
+           Positive_Float'Value
+             (Get_Option
+                (Photo_Image => Photo_Image, Name => "gamma",
+                 Interpreter => Interpreter));
          Options.Height :=
-           Natural'Value(Get_Option(Photo_Image, "height", Interpreter));
+           Natural'Value
+             (Get_Option
+                (Photo_Image => Photo_Image, Name => "height",
+                 Interpreter => Interpreter));
          Options.Palette :=
-           To_Tcl_String(Get_Option(Photo_Image, "palette", Interpreter));
+           To_Tcl_String
+             (Get_Option
+                (Photo_Image => Photo_Image, Name => "palette",
+                 Interpreter => Interpreter));
          Options.Width :=
-           Natural'Value(Get_Option(Photo_Image, "width", Interpreter));
+           Natural'Value
+             (Get_Option
+                (Photo_Image => Photo_Image, Name => "width",
+                 Interpreter => Interpreter));
       end return;
    end Get_Options;
 
@@ -134,14 +149,16 @@ package body Tk.Image.Photo is
    begin
       if Value /= Empty_Dimension then
          Append
-           (Options,
-            " -" & Name & Natural'Image(Value.Start_X) &
-            Natural'Image(Value.Start_Y));
+           (Source => Options,
+            New_Item =>
+              " -" & Name & Natural'Image(Value.Start_X) &
+              Natural'Image(Value.Start_Y));
          if Value.End_X > -1 then
             Append
-              (Options,
-               Extended_Natural'Image(Value.End_X) &
-               Extended_Natural'Image(Value.End_Y));
+              (Source => Options,
+               New_Item =>
+                 Extended_Natural'Image(Value.End_X) &
+                 Extended_Natural'Image(Value.End_Y));
          end if;
       end if;
    end Dimension_To_String;
