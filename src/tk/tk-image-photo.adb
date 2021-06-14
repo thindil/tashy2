@@ -144,9 +144,10 @@ package body Tk.Image.Photo is
                  Interpreter => Interpreter));
          Options.Palette :=
            To_Tcl_String
-             (Get_Option
-                (Photo_Image => Photo_Image, Name => "palette",
-                 Interpreter => Interpreter));
+             (Source =>
+                Get_Option
+                  (Photo_Image => Photo_Image, Name => "palette",
+                   Interpreter => Interpreter));
          Options.Width :=
            Natural'Value
              (Get_Option
@@ -183,20 +184,24 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
-      Dimension_To_String("from", From, Options);
-      Dimension_To_String("to", To, Options);
-      Option_Image("shrink", Shrink, Options);
-      Option_Image("zoom", Zoom, Options);
-      Option_Image("subsample", Sub_Sample, Options);
+      Dimension_To_String(Name => "from", Value => From, Options => Options);
+      Dimension_To_String(Name => "to", Value => To, Options => Options);
+      Option_Image
+        (Name => "shrink", Value => Shrink, Options_String => Options);
+      Option_Image(Name => "zoom", Value => Zoom, Options_String => Options);
+      Option_Image
+        (Name => "subsample", Value => Sub_Sample, Options_String => Options);
       if Compositing_Rule /= NONE then
          Append
-           (Options,
-            " -compositingrule " &
-            To_Lower(Compositing_Types'Image(Compositing_Rule)));
+           (Source => Options,
+            New_Item =>
+              " -compositingrule " &
+              To_Lower(Item => Compositing_Types'Image(Compositing_Rule)));
       end if;
       Tcl_Eval
         (Tcl_Script =>
-           Destination_Image & " copy " & Source_Image & To_String(Options),
+           Destination_Image & " copy " & Source_Image &
+           To_String(Source => Options),
          Interpreter => Interpreter);
    end Copy;
 
