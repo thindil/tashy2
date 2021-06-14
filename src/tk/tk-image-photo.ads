@@ -21,15 +21,20 @@ with Tk.Widget; use Tk.Widget;
 package Tk.Image.Photo is
 
    --## rule off REDUCEABLE_SCOPE
-   subtype Color_Range is Integer range -1 .. 255;
+   subtype Shades_Range is Integer range -1 .. Integer'Last;
 
-   type Color_Type is record
-      Red: Color_Range;
-      Green: Color_Range;
-      Blue: Color_Range;
+   type Shades_Type(Grayscale: Boolean := False) is record
+      case Grayscale is
+         when True =>
+            Gray: Shades_Range;
+         when False =>
+            Red: Shades_Range;
+            Green: Shades_Range;
+            Blue: Shades_Range;
+      end case;
    end record;
 
-   Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
+   Empty_Shades: constant Shades_Type := (Grayscale => True, Gray => -1);
 
    -- ****s* Photo/Photo.Photo_Options
    -- FUNCTION
@@ -56,7 +61,7 @@ package Tk.Image.Photo is
       Format: Tcl_String;
       Gamma: Positive_Float;
       Height: Natural := 0;
-      Palette: Color_Type;
+      Palette: Shades_Type;
       Width: Natural := 0;
    end record;
    -- ****
@@ -74,6 +79,16 @@ package Tk.Image.Photo is
    type Compositing_Types is (NONE, OVERLAY, SET);
 
    Default_Compositing: constant Compositing_Types := OVERLAY;
+
+   subtype Color_Range is Integer range -1 .. 255;
+
+   type Color_Type is record
+      Red: Color_Range;
+      Green: Color_Range;
+      Blue: Color_Range;
+   end record;
+
+   Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
 
    -- ****f* Photo/Photo.Create
    -- FUNCTION
