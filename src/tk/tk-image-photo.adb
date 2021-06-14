@@ -48,15 +48,17 @@ package body Tk.Image.Photo is
       Option_Image
         (Name => "height", Value => Options.Height,
          Options_String => Options_String);
-      if Options.Palette /= Empty_Color then
-         Append
-           (Source => Options_String,
-            New_Item => " -palette" & Color_Range'Image(Options.Palette.Red));
-         if Options.Palette.Green > -1 then
+      if Options.Palette /= Empty_Shades then
+         if Options.Palette.Grayscale then
             Append
               (Source => Options_String,
                New_Item =>
-                 "/" &
+                 " -palette" & Shades_Range'Image(Options.Palette.Gray));
+         else
+            Append
+              (Source => Options_String,
+               New_Item =>
+                 " -palette" & Shades_Range'Image(Options.Palette.Red) & "/" &
                  Trim
                    (Source => Color_Range'Image(Options.Palette.Green),
                     Side => Left) &
@@ -172,15 +174,21 @@ package body Tk.Image.Photo is
          if Slash_Index = 0 then
             Options.Palette.Red := Color_Range'Value(Result);
          else
+            Tcl_Eval("puts {" & Result & "}");
             Options.Palette.Red :=
               Color_Range'Value(Result(Result'First .. Slash_Index - 1));
             Options.Palette.Green :=
               Color_Range'Value
                 (Result
-                   (Slash_Index + 1 .. Index(Result, "/", Slash_Index + 1)));
+                   (Slash_Index + 1 ..
+                        Index(Result, "/", Slash_Index + 1) - 1));
             Options.Palette.Blue :=
               Color_Range'Value
-                (Result(Index(Result, "/", Backward) .. Result'Last));
+                (Result(Index(Result, "/", Backward) + 1 .. Result'Last));
+            Tcl_Eval("puts {" & Color_Range'Image(Options.Palette.Red) & "}");
+            Tcl_Eval
+              ("puts {" & Color_Range'Image(Options.Palette.Green) & "}");
+            Tcl_Eval("puts {" & Color_Range'Image(Options.Palette.Blue) & "}");
          end if;
       end return;
    end Get_Options;
