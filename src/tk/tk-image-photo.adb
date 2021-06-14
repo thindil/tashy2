@@ -174,21 +174,28 @@ package body Tk.Image.Photo is
          if Slash_Index = 0 then
             Options.Palette.Red := Color_Range'Value(Result);
          else
-            Tcl_Eval("puts {" & Result & "}");
-            Options.Palette.Red :=
-              Color_Range'Value(Result(Result'First .. Slash_Index - 1));
-            Options.Palette.Green :=
-              Color_Range'Value
-                (Result
-                   (Slash_Index + 1 ..
-                        Index(Result, "/", Slash_Index + 1) - 1));
-            Options.Palette.Blue :=
-              Color_Range'Value
-                (Result(Index(Result, "/", Backward) + 1 .. Result'Last));
-            Tcl_Eval("puts {" & Color_Range'Image(Options.Palette.Red) & "}");
-            Tcl_Eval
-              ("puts {" & Color_Range'Image(Options.Palette.Green) & "}");
-            Tcl_Eval("puts {" & Color_Range'Image(Options.Palette.Blue) & "}");
+            declare
+               Result_Palette: Shades_Type
+                 ((if Slash_Index = 0 then True else False));
+            begin
+               if Slash_Index = 0 then
+                  Result_Palette.Gray := Shades_Range'Value(Result);
+               else
+                  Result_Palette.Red :=
+                    Shades_Range'Value
+                      (Result(Result'First .. Slash_Index - 1));
+                  Result_Palette.Green :=
+                    Shades_Range'Value
+                      (Result
+                         (Slash_Index + 1 ..
+                              Index(Result, "/", Slash_Index + 1) - 1));
+                  Result_Palette.Blue :=
+                    Shades_Range'Value
+                      (Result
+                         (Index(Result, "/", Backward) + 1 .. Result'Last));
+               end if;
+               Options.Palette := Result_Palette;
+            end;
          end if;
       end return;
    end Get_Options;
