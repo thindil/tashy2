@@ -21,6 +21,16 @@ with Tk.Widget; use Tk.Widget;
 package Tk.Image.Photo is
 
    --## rule off REDUCEABLE_SCOPE
+   subtype Color_Range is Integer range -1 .. 255;
+
+   type Color_Type is record
+      Red: Color_Range;
+      Green: Color_Range;
+      Blue: Color_Range;
+   end record;
+
+   Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
+
    -- ****s* Photo/Photo.Photo_Options
    -- FUNCTION
    -- Data structure for all available options for image photo
@@ -36,7 +46,7 @@ package Tk.Image.Photo is
    --           darker, when values above 1 make image lighter
    -- Height  - The height of the image in pixels. 0 mean natural height of the
    --           image
-   -- Palette - Palette used to display the image. TODO: replace by 3 element array
+   -- Palette - Palette used to display the image.
    -- Width   - The width of the image in pixels. O mean natural width of the
    --           image
    -- HISTORY
@@ -46,7 +56,7 @@ package Tk.Image.Photo is
       Format: Tcl_String;
       Gamma: Positive_Float;
       Height: Natural := 0;
-      Palette: Tcl_String;
+      Palette: Color_Type;
       Width: Natural := 0;
    end record;
    -- ****
@@ -60,16 +70,6 @@ package Tk.Image.Photo is
 
    Empty_Dimension: constant Dimensions_Type :=
      (Start_X => 0, Start_Y => 0, End_X => -1, End_Y => -1);
-
-   subtype Color_Range is Natural range 0 .. 255;
-
-   type Color_Type is record
-      Red: Color_Range;
-      Green: Color_Range;
-      Blue: Color_Range;
-   end record;
-
-   Black_Color: constant Color_Type := (Red => 0, Green => 0, Blue => 0);
 
    type Compositing_Types is (NONE, OVERLAY, SET);
 

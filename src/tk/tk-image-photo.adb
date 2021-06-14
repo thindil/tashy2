@@ -13,6 +13,8 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings; use Ada.Strings;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Image.Photo is
@@ -46,9 +48,24 @@ package body Tk.Image.Photo is
       Option_Image
         (Name => "height", Value => Options.Height,
          Options_String => Options_String);
-      Option_Image
-        (Name => "palette", Value => Options.Palette,
-         Options_String => Options_String);
+      if Options.Palette /= Empty_Color then
+         Append
+           (Source => Options_String,
+            New_Item => " -palette" & Color_Range'Image(Options.Palette.Red));
+         if Options.Palette.Green > -1 then
+            Append
+              (Source => Options_String,
+               New_Item =>
+                 "/" &
+                 Trim
+                   (Source => Color_Range'Image(Options.Palette.Green),
+                    Side => Left) &
+                 "/" &
+                 Trim
+                   (Source => Color_Range'Image(Options.Palette.Blue),
+                    Side => Left));
+         end if;
+      end if;
       Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
@@ -112,6 +129,11 @@ package body Tk.Image.Photo is
    function Get_Options
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options is
+      Result: constant String :=
+        Get_Option
+          (Photo_Image => Photo_Image, Name => "palette",
+           Interpreter => Interpreter);
+      Slash_Index: constant Natural := Index(Result, "/");
    begin
       return Options: Photo_Options := Default_Photo_Options do
          Options.Data :=
@@ -142,17 +164,24 @@ package body Tk.Image.Photo is
              (Get_Option
                 (Photo_Image => Photo_Image, Name => "height",
                  Interpreter => Interpreter));
-         Options.Palette :=
-           To_Tcl_String
-             (Source =>
-                Get_Option
-                  (Photo_Image => Photo_Image, Name => "palette",
-                   Interpreter => Interpreter));
          Options.Width :=
            Natural'Value
              (Get_Option
                 (Photo_Image => Photo_Image, Name => "width",
                  Interpreter => Interpreter));
+         if Slash_Index = 0 then
+            Options.Palette.Red := Color_Range'Value(Result);
+         else
+            Options.Palette.Red :=
+              Color_Range'Value(Result(Result'First .. Slash_Index - 1));
+            Options.Palette.Green :=
+              Color_Range'Value
+                (Result
+                   (Slash_Index + 1 .. Index(Result, "/", Slash_Index + 1)));
+            Options.Palette.Blue :=
+              Color_Range'Value
+                (Result(Index(Result, "/", Backward) .. Result'Last));
+         end if;
       end return;
    end Get_Options;
 
