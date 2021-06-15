@@ -21,8 +21,29 @@ with Tk.Widget; use Tk.Widget;
 package Tk.Image.Photo is
 
    --## rule off REDUCEABLE_SCOPE
+   -- ****t* Photo/Photo.Shades_Range
+   -- FUNCTION
+   -- Type used to set the photo image palette values
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    subtype Shades_Range is Integer range -1 .. Integer'Last;
+   -- ****
 
+   -- ****s* Photo/Photo.Shades_Type
+   -- FUNCTION
+   -- Type used to set the photo image palette
+   -- OPTIONS
+   -- Grayscale - If True, the palette is in grayscale (only one value).
+   --             Default value is False (RGB palette)
+   -- Gray      - If palette is grayscale, it is a number of shades of gray to
+   --             use
+   -- Red       - If palette is color, it is a number of shades of red to use
+   -- Green     - If palette is color, it is a number of shades of green to use
+   -- Blue      - If palette is color, it is a number of shades of blue to use
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Shades_Type(Grayscale: Boolean := False) is record
       case Grayscale is
          when True =>
@@ -33,8 +54,16 @@ package Tk.Image.Photo is
             Blue: Shades_Range;
       end case;
    end record;
+   -- ****
 
+   -- ****d* Photo/Photo.Empty_Shades
+   -- FUNCTION
+   -- Empty value for the photo images shades (no shades)
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Empty_Shades: constant Shades_Type := (Grayscale => True, Gray => -1);
+   -- ****
 
    -- ****s* Photo/Photo.Photo_Options
    -- FUNCTION
