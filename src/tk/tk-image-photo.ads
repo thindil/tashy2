@@ -95,21 +95,68 @@ package Tk.Image.Photo is
    end record;
    -- ****
 
+   -- ****s* Photo/Photo.Dimensions_Type
+   -- FUNCTION
+   -- Data structure for setting various dimension related options for the image
+   -- photo
+   -- OPTIONS
+   -- Start_X - The X coordinate of starting point of dimension in pixels
+   -- Start_Y - The Y coordinate of starting point of dimension in pixels
+   -- End_X   - The X coordinate of end point of dimension in pixels
+   -- End_Y   - The Y coordinate of end point of dimension in pixels
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Dimensions_Type is record
       Start_X: Natural;
       Start_Y: Natural;
       End_X: Extended_Natural;
       End_Y: Extended_Natural;
    end record;
+   -- ****
 
+   -- ****d* Photo/Photo.Empty_Dimension
+   -- FUNCTION
+   -- Empty values for dimension size
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Empty_Dimension: constant Dimensions_Type :=
      (Start_X => 0, Start_Y => 0, End_X => -1, End_Y => -1);
+   -- ****
 
+   -- ****t* Photo/Photo.Compositing_Types
+   -- FUNCTION
+   -- Type of compositing rule used in the photo image used when copying one
+   -- image to another
+   -- OPTIONS
+   -- NONE    - Not set, used mostly to set default value for compositing
+   -- OVERLAY - When set, old content of the image is used as background
+   -- SET     - When set, delete old content of the image and replace by the
+   --           new content
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Compositing_Types is (NONE, OVERLAY, SET);
+   -- ****
 
+   -- ****d* Photo/Photo.Default_Compositing
+   -- FUNCTION
+   -- Default type of compositing used when copying one image to another
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Default_Compositing: constant Compositing_Types := OVERLAY;
+-- ****
 
+   -- ****t* Photo/Photo.Color_Range
+   -- FUNCTION
+   -- Type used to set the photo image colors values
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    subtype Color_Range is Integer range -1 .. 255;
+   -- ****
 
    type Color_Type is record
       Red: Color_Range;
