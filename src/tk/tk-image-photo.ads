@@ -158,15 +158,34 @@ package Tk.Image.Photo is
    subtype Color_Range is Integer range -1 .. 255;
    -- ****
 
+   -- ****s* Tk.Image.Photo/Color_Type
+   -- FUNCTION
+   -- Data structure for setting the photo image colors values
+   -- OPTIONS
+   -- Red   - The amount of red color in the image
+   -- Green - The amount of green color in the image
+   -- Blue  - The amount of blue color in the image
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Color_Type is record
       Red: Color_Range;
       Green: Color_Range;
       Blue: Color_Range;
    end record;
+   -- ****
 
+   -- ****d* Photo/Photo.Empty_Color
+   -- FUNCTION
+   -- Empty color, used mostly to set default values for colors in the photo
+   -- image
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
+   -- ****
 
-   -- ****f* Photo/Photo.Create
+   -- ****f* Photo/Photo.Create_(procedure)
    -- FUNCTION
    -- Create a new Tk image of photo type with the selected name and options
    -- PARAMETERS
@@ -179,6 +198,8 @@ package Tk.Image.Photo is
    -- EXAMPLE
    -- -- Create the image with name .myimage from file myimage.png
    -- Create(".myimage", Photo_Options'(Photo_Format => PNG, File => "myimage.png", others => <>));
+   -- SEE ALSO
+   -- Photo.Create_(function)
    -- COMMANDS
    -- image create photo Name Options
    -- SOURCE
@@ -187,13 +208,33 @@ package Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create_Photo", Mode => Nominal);
-   -- ****
+      -- ****
 
+      -- ****f* Photo/Photo.Create_(function)
+      -- FUNCTION
+      -- Create a new Tk image of photo type with random name and options
+      -- PARAMETERS
+      -- Options     - Options for the newly created image
+      -- Interpreter - Tcl interpreter on which the image will be created. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- RESULT
+      -- The Tk_Image with the name of the newly created image
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Create the image with random name from file myimage.png
+      -- My_Image: constant Tk_Image := Create(Photo_Options'(Photo_Format => PNG, File => "myimage.png", others => <>));
+      -- SEE ALSO
+      -- Photo.Create_(procedure)
+      -- COMMANDS
+      -- image create photo Options
+      -- SOURCE
    function Create
      (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create2_Photo", Mode => Nominal);
+      -- ****
 
    procedure Blank
      (Photo_Image: Tk_Image;
