@@ -135,7 +135,7 @@ package body Tk.Image.Photo is
         Get_Option
           (Photo_Image => Photo_Image, Name => "palette",
            Interpreter => Interpreter);
-      Slash_Index: constant Natural := Index(Result, "/");
+      Slash_Index: constant Natural := Index(Source => Result, Pattern => "/");
    begin
       return Options: Photo_Options := Default_Photo_Options do
          Options.Data :=
@@ -174,6 +174,7 @@ package body Tk.Image.Photo is
          if Slash_Index = 0 then
             Options.Palette.Red := Color_Range'Value(Result);
          else
+            Get_Palette_Block:
             declare
                Result_Palette: Shades_Type
                  ((if Slash_Index = 0 then True else False));
@@ -195,7 +196,7 @@ package body Tk.Image.Photo is
                          (Index(Result, "/", Backward) + 1 .. Result'Last));
                end if;
                Options.Palette := Result_Palette;
-            end;
+            end Get_Palette_Block;
          end if;
       end return;
    end Get_Options;
