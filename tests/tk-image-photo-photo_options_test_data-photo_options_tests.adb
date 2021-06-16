@@ -99,7 +99,7 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
 --  begin read only
    function Wrap_Test_Create_fa334a_af82af
      (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return String is
+      return Tk_Image is
    begin
       begin
          pragma Assert(Interpreter /= Null_Interpreter);
@@ -111,7 +111,7 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Create2_Photo test requirement violated");
       end;
       declare
-         Test_Create_fa334a_af82af_Result: constant String :=
+         Test_Create_fa334a_af82af_Result: constant Tk_Image :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Create
              (Options, Interpreter);
       begin
@@ -140,7 +140,8 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
      (Gnattest_T: in out Test_Photo_Options) is
       function Create
         (Options: Photo_Options;
-         Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Tk_Image renames
         Wrap_Test_Create_fa334a_af82af;
 --  end read only
 
