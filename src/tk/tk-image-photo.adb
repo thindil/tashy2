@@ -87,7 +87,7 @@ package body Tk.Image.Photo is
 
    function Create
      (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return String is
+      return Tk_Image is
    begin
       return
         Tcl_Eval
@@ -174,10 +174,11 @@ package body Tk.Image.Photo is
          if Slash_Index = 0 then
             Options.Palette.Red := Color_Range'Value(Result);
          else
-            Get_Palette_Block:
+            --## rule off IMPROPER_INITIALIZATION
+            Get_Palette_Block :
             declare
                Result_Palette: Shades_Type
-                 ((if Slash_Index = 0 then True else False));
+                 (if Slash_Index = 0 then True else False);
             begin
                if Slash_Index = 0 then
                   Result_Palette.Gray := Shades_Range'Value(Result);
@@ -189,14 +190,22 @@ package body Tk.Image.Photo is
                     Shades_Range'Value
                       (Result
                          (Slash_Index + 1 ..
-                              Index(Result, "/", Slash_Index + 1) - 1));
+                              Index
+                                (Source => Result, Pattern => "/",
+                                 From => Slash_Index + 1) -
+                              1));
                   Result_Palette.Blue :=
                     Shades_Range'Value
                       (Result
-                         (Index(Result, "/", Backward) + 1 .. Result'Last));
+                         (Index
+                              (Source => Result, Pattern => "/",
+                               Going => Backward) +
+                            1 ..
+                              Result'Last));
                end if;
                Options.Palette := Result_Palette;
             end Get_Palette_Block;
+            --## rule on IMPROPER_INITIALIZATION
          end if;
       end return;
    end Get_Options;
@@ -256,10 +265,13 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
-      Option_Image("background", Background, Options);
-      Option_Image("format", Format, Options);
-      Dimension_To_String("from", From, Options);
-      Option_Image("grayscale", Grayscale, Options);
+      Option_Image
+        (Name => "background", Value => Background, Options_String => Options);
+      Option_Image
+        (Name => "format", Value => Format, Options_String => Options);
+      Dimension_To_String(Name => "from", Value => From, Options => Options);
+      Option_Image
+        (Name => "grayscale", Value => Grayscale, Options_String => Options);
       return
         To_Tcl_String
           (Tcl_Eval
