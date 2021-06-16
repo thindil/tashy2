@@ -208,7 +208,7 @@ package Tk.Button is
       -- Set the selected options for the selected button
       -- PARAMETERS
       -- Button_Widget  - Tk_Button which options will be set
-      -- Options - The record with new values for the button options
+      -- Options        - The record with new values for the button options
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
