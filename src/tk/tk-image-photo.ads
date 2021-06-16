@@ -231,7 +231,7 @@ package Tk.Image.Photo is
       -- SOURCE
    function Create
      (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return String with
+      return Tk_Image with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create2_Photo", Mode => Nominal);
       -- ****
