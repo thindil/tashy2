@@ -236,24 +236,84 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Create2_Photo", Mode => Nominal);
       -- ****
 
+      -- ****f* Photo/Photo.Blank
+      -- FUNCTION
+      -- Blank the image so it don't have any data and will be displayed as
+      -- transparent
+      -- PARAMETERS
+      -- Photo_Image - The image which will be blanked
+      -- Interpreter - Tcl interpreter on which the image will be blanked. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Blank the image My_Image on the default Tcl interpreter
+      -- Blank(My_Image);
+      -- COMMANDS
+      -- Photo_Image blank
+      -- SOURCE
    procedure Blank
      (Photo_Image: Tk_Image;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Blank_Photo", Mode => Nominal);
+      -- ****
 
+      -- ****f* Photo/Photo.Configure
+      -- FUNCTION
+      -- Set the selected options for the selected photo image
+      -- PARAMETERS
+      -- Photo_Image - The photo image which will options will be changed
+      -- Options     - The record with image options to change
+      -- Interpreter - Tcl interpreter on which the image will be configured.
+      --               Can be empty. Default value is the default Tcl
+      --               interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set My_Image format to GIF on default Tcl interpreter
+      -- Configure(My_Image, Photo_Options'(Format => To_Tcl_String("gif"), others => <>));
+      -- COMMANDS
+      -- Photo_Image configure Options
+      -- SOURCE
    procedure Configure
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Configure_Photo", Mode => Nominal);
+      -- ****
 
+      -- ****f* Photo/Photo.Get_Option
+      -- FUNCTION
+      -- Get the value of the selected option of the selected photo image.
+      -- It is recommended to use Photo.Get_Options instead as it return
+      -- properly converted the selected option value.
+      -- PARAMETERS
+      -- Photo_Image - The photo image which option will be get
+      -- Name        - The name of the option to get
+      -- Interpreter - Tcl interpreter on which the image will be get.
+      --               Can be empty. Default value is the default Tcl
+      --               interpreter
+      -- RESULT
+      -- The Ada String with the value of the selected option for the selected
+      -- photo image
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the data of image My_Image on default Tcl interpreter
+      -- Data: constant String := Get_Option(My_Image, "data");
+      -- SEE ALSO
+      -- Photo.Get_Options
+      -- COMMANDS
+      -- Photo_Image cget Name
+      -- SOURCE
    function Get_Option
      (Photo_Image: Tk_Image; Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Pre => Photo_Image'Length > 0 and Name'Length > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Option_Photo", Mode => Nominal);
+      -- ****
 
    function Get_Options
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
