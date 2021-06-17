@@ -464,6 +464,27 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Get_Color_Photo", Mode => Nominal);
       -- ****
 
+      -- ****f* Photo/Photo.Put_Data
+      -- FUNCTION
+      -- Set the pixels in the selected photo image to the selected data
+      -- PARAMETERS
+      -- Photo_Image - The photo image which pixels will be set
+      -- Data        - The data to set for the pixels in the photo image
+      -- Format      - The image format which will be used to set the data.
+      --               Can be empty. Default value is empty.
+      -- To          - The image region in which pixels will be set. If not set,
+      --               then the whole image will be set. Default value is empty.
+      -- Interpreter - Tcl interpreter on which the image pixels data will be
+      --               set. Can be empty. Default value is the default Tcl
+      --               interpreter.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the whole image My_Image as red rectangle on the default Tcl interpreter
+      -- Put_Data(My_Image, To_Tcl_String("red"));
+      -- COMMANDS
+      -- Photo_Image put Data ?Format? ?To?
+      -- SOURCE
    procedure Put_Data
      (Photo_Image: Tk_Image; Data: Tcl_String;
       Format: Tcl_String := Null_Tcl_String;
@@ -472,7 +493,37 @@ package Tk.Image.Photo is
       Pre => Photo_Image'Length > 0 and Length(Source => Data) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Put_Data_Photo", Mode => Nominal);
+      -- ****
 
+      -- ****f* Photo/Photo.Read
+      -- FUNCTION
+      -- Read the image data from the selected file into the selected image
+      -- PARAMETERS
+      -- Photo_Image - The photo image in which the data will be loaded
+      -- File_Name   - The full path of the file which will be loaded into
+      --               image
+      -- Format      - The image format used to load the data. Can be empty.
+      --               Default value is empty.
+      -- From        - The region of the image from file which will be loaded
+      --               into photo image. If not set, then entire file data will
+      --               be loaded into the image
+      -- Shrink      - If True, photo image will be reduced if necessary to fit
+      --               the loaded image. Default value is False.
+      -- To          - Top left corner of region inside which the data will be
+      --               loaded. Can be empty. Default value is 0,0 (top left corner
+      --               of the image).
+      -- Interpreter - Tcl interpreter on which the image will be loaded. Can be
+      --               empty. Default value is the default Tcl interpreter.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Load the file myimage.png into image My_Image on the default Tcl interpreter
+      -- Read(My_Image, To_Tcl_String("myimage.png"));
+      -- SEE ALSO
+      -- Photo.Write
+      -- COMMANDS
+      -- Photo_Image read File_Name ?Format? ?From? ?Shrink? ?To?
+      -- SOURCE
    procedure Read
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
       Format: Tcl_String := Null_Tcl_String;
@@ -482,6 +533,7 @@ package Tk.Image.Photo is
       Pre => Photo_Image'Length > 0 and Length(Source => File_Name) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Read_Photo", Mode => Nominal);
+      -- ****
 
    procedure Redither
      (Photo_Image: Tk_Image;
