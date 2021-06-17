@@ -178,7 +178,7 @@ package body Tk.Image.Photo is
             Get_Palette_Block :
             declare
                Result_Palette: Shades_Type
-                 (if Slash_Index = 0 then True else False);
+                 (Grayscale => (if Slash_Index = 0 then True else False));
             begin
                if Slash_Index = 0 then
                   Result_Palette.Gray := Shades_Range'Value(Result);
@@ -274,9 +274,11 @@ package body Tk.Image.Photo is
         (Name => "grayscale", Value => Grayscale, Options_String => Options);
       return
         To_Tcl_String
-          (Tcl_Eval
-             (Tcl_Script => Photo_Image & " data" & To_String(Options),
-              Interpreter => Interpreter));
+          (Source =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  Photo_Image & " data" & To_String(Source => Options),
+                Interpreter => Interpreter));
    end Get_Data;
 
    function Get_Color
@@ -292,9 +294,9 @@ package body Tk.Image.Photo is
            Interpreter => Interpreter);
    begin
       return
-        (Red => Color_Range'Value(To_Ada_String(Result_List(1))),
-         Green => Color_Range'Value(To_Ada_String(Result_List(2))),
-         Blue => Color_Range'Value(To_Ada_String(Result_List(3))));
+        (Red => Color_Range'Value(To_Ada_String(Source => Result_List(1))),
+         Green => Color_Range'Value(To_Ada_String(Source => Result_List(2))),
+         Blue => Color_Range'Value(To_Ada_String(Source => Result_List(3))));
    end Get_Color;
 
    procedure Put_Data
@@ -304,11 +306,13 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
-      Option_Image("format", Format, Options);
-      Dimension_To_String("to", To, Options);
+      Option_Image
+        (Name => "format", Value => Format, Options_String => Options);
+      Dimension_To_String(Name => "to", Value => To, Options => Options);
       Tcl_Eval
         (Tcl_Script =>
-           Photo_Image & " put " & To_String(Data) & " " & To_String(Options),
+           Photo_Image & " put " & To_String(Source => Data) & " " &
+           To_String(Source => Options),
          Interpreter => Interpreter);
    end Put_Data;
 
@@ -320,8 +324,9 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
-      Option_Image("format", Format, Options);
-      Dimension_To_String("From", From, Options);
+      Option_Image
+        (Name => "format", Value => Format, Options_String => Options);
+      Dimension_To_String(Name => "from", Value => From, Options => Options);
       Option_Image("shrink", Shrink, Options);
       Option_Image("to", To, Options);
       Tcl_Eval
