@@ -398,18 +398,71 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Copy_Photo", Mode => Nominal);
       -- ****
 
+      -- ****f* Photo/Photo.Get_Data
+      -- FUNCTION
+      -- Get the data of the selected photo image
+      -- PARAMETERS
+      -- Photo_Image - The photo image which data will be get
+      -- Background  - If specified as color, the data will not contain any
+      --               transparency information. It will be replaced by
+      --               the selected color. Can be empty.
+      -- Format      - The format of photo image used to get data. Can be
+      --               empty.
+      -- From        - The image region from which the data will be get. Can
+      --               be empty.
+      -- Grayscale   - If True, all pixels data will not contain information
+      --               about colors. Default value is False.
+      -- Interpreter - Tcl interpreter on which the image data will be get.
+      --               Can be empty. Default value is the default Tcl
+      --               interpreter.
+      -- RESULT
+      -- The Tcl_String with the selected data of the selected photo image
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the whole data of the image My_Image on default Tcl interpreter
+      -- Image_Data: constant Tcl_String := Get_Data(My_Image);
+      -- SEE ALSO
+      -- Photo.Put_Data
+      -- COMMANDS
+      -- Photo_Image data ?Background? ?Format? ?From? ?Grayscale?
+      -- SOURCE
    function Get_Data
      (Photo_Image: Tk_Image; Background, Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Data_Photo", Mode => Nominal);
+      -- ****
 
+      -- ****f* Photo/Photo.Get_Color
+      -- FUNCTION
+      -- Get the color of the selected pixel in the selected photo image
+      -- PARAMETERS
+      -- Photo_Image - The photo image which the selected pixel color will be
+      --               get
+      -- X           - The X coordinate of the pixel
+      -- Y           - The Y coordinate of the pixel
+      -- Interpreter - Tcl interpreter on which the image data will be get.
+      --               Can be empty. Default value is the default Tcl
+      --               interpreter.
+      -- RESULT
+      -- The Color_Type record with information about the color of the selected
+      -- pixel in the selected photo image
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the color of pixel at (1, 1) in My_Image image on the default Tcl interpreter
+      -- Color: constant Color_Type := Get_Color(My_Image, 1, 1);
+      -- COMMANDS
+      -- Photo_Image get X Y
+      -- SOURCE
    function Get_Color
      (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Color_Photo", Mode => Nominal);
+      -- ****
 
    procedure Put_Data
      (Photo_Image: Tk_Image; Data: Tcl_String;
