@@ -291,7 +291,7 @@ package Tk.Image.Photo is
       -- PARAMETERS
       -- Photo_Image - The photo image which option will be get
       -- Name        - The name of the option to get
-      -- Interpreter - Tcl interpreter on which the image will be get.
+      -- Interpreter - Tcl interpreter on which the image option will be get.
       --               Can be empty. Default value is the default Tcl
       --               interpreter
       -- RESULT
@@ -315,15 +315,78 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Get_Option_Photo", Mode => Nominal);
       -- ****
 
+      -- ****f* Photo/Photo.Get_Options
+      -- FUNCTION
+      -- Get all options of the selected photo image
+      -- PARAMETERS
+      -- Photo_Image - The photo image which options will be get
+      -- Interpreter - Tcl interpreter on which the image options will be get.
+      --               Can be empty. Default value is the default Tcl
+      --               interpreter
+      -- RESULT
+      -- The record Photo_Options with all options of the selected photo image
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the options of image My_Image on default Tcl interpreter
+      -- Options: constant Photo_Options := Get_Options(My_Image);
+      -- SEE ALSO
+      -- Photo.Get_Option
+      -- COMMANDS
+      -- Photo_Image configure
+      -- SOURCE
    function Get_Options
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Options_Photo", Mode => Nominal);
+      -- ****
 
+      -- ****d* Photo/Photo.Default_Photo_Options
+      -- FUNCTION
+      -- Default values for the photo image
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
    Default_Photo_Options: constant Photo_Options :=
      Photo_Options'(others => <>);
+     -- ****
 
+     -- ****f* Photo/Photo.Copy
+     -- FUNCTION
+     -- Copy a region of one photo image to the region of the second photo
+     -- image
+     -- PARAMETERS
+     -- Destination_Image - The destination photo image to which the selected
+     --                     region will be copied
+     -- Source_Image      - The source image from which the selected region
+     --                     will be copied
+     -- From              - The region in Source_Image which will be copied.
+     --                     If is empty, then the whole Source_Image will be
+     --                     copied.
+     -- To                - The region in Destination_Image in which the source
+     --                     region will be copied. If empty, then the same as
+     --                     the source image region
+     -- Shrink            - If True, the size of destination image should be
+     --                     reduced
+     -- Zoom              - Specify that the source region should be magnified
+     --                     by X and Y values. If empty, don't zoom source image
+     -- Sub_Sample        - Reduce source region by X and Y values. If empty,
+     --                     don't resize source image.
+     -- Compositing_Rule  - Specify how transparent pixels should be combined
+     --                     the destination image.
+     -- Interpreter       - Tcl interpreter on which the image options will be
+     --                     copied. Can be empty. Default value is the default Tcl
+     --                     interpreter. Both images must be on this same
+     --                     interpreter.
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- EXAMPLE
+     -- -- Copy the whole My_Image to My_New_Image on the default Tcl intepreter
+     -- Copy(My_New_Image, My_Image);
+     -- COMMANDS
+     -- Destination_Image copy Source_Image ?From? ?To? ?Shrink? ?Zoom? ?Sub_Sample? ?Compositing_Rule?
+     -- SOURCE
    procedure Copy
      (Destination_Image, Source_Image: Tk_Image;
       From, To: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
@@ -333,6 +396,7 @@ package Tk.Image.Photo is
       Pre => Destination_Image'Length > 0 and Source_Image'Length > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Copy_Photo", Mode => Nominal);
+      -- ****
 
    function Get_Data
      (Photo_Image: Tk_Image; Background, Format: Tcl_String := Null_Tcl_String;
