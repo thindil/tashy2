@@ -535,17 +535,60 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Read_Photo", Mode => Nominal);
       -- ****
 
+      -- ****f* Photo/Photo.Redither
+      -- FUNCTION
+      -- Recalculate and redraw the selected dithered image
+      -- PARAMETERS
+      -- Photo_Image - The image which will be redithered
+      -- Interpreter - Tcl interpreter on which the image will be redithered.
+      --               Can be empty. Default value is the default Tcl
+      --               interpreter.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Redither image My_Image on the default Tcl interpreter
+      -- Redither(My_Image);
+      -- COMMANDS
+      -- Photo_Image redither
+      -- SOURCE
    procedure Redither
      (Photo_Image: Tk_Image;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Redither_Photo", Mode => Nominal);
+      -- ****
 
+      -- ****f* Photo/Photo.Get_Transparency
+      -- FUNCTION
+      -- Check if the selected pixel in the selected image is transparent or
+      -- not
+      -- PARAMETERS
+      -- Photo_Image - The photo image which tranparency data for the pixel
+      --               will be get
+      -- X           - The X coordinate of the pixel to get transparency
+      -- Y           - The Y coordinate of the pixel to get transparency
+      -- Interpreter - Tcl interpreter on which the image data will be get.
+      --               Can be empty. Default value is the default Tcl
+      --               interpreter.
+      -- RESULT
+      -- If the selected pixel in photo image is transparent, return True.
+      -- Otherwise return False.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the transparency status of pixel at (10, 12) in My_Image on the default Tcl interpreter
+      -- Is_Transparent: constant Boolean := Get_Transparency(My_Image, 10, 12);
+      -- SEE ALSO
+      -- Photo.Set_Transparency
+      -- COMMANDS
+      -- Photo_Image transparency get X Y
+      -- SOURCE
    function Get_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Transparency_Photo", Mode => Nominal);
+      -- ****
 
    procedure Set_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural; Transparent: Boolean;
