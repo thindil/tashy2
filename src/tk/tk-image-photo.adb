@@ -60,11 +60,11 @@ package body Tk.Image.Photo is
                New_Item =>
                  " -palette" & Shades_Range'Image(Options.Palette.Red) & "/" &
                  Trim
-                   (Source => Color_Range'Image(Options.Palette.Green),
+                   (Source => Shades_Range'Image(Options.Palette.Green),
                     Side => Left) &
                  "/" &
                  Trim
-                   (Source => Color_Range'Image(Options.Palette.Blue),
+                   (Source => Shades_Range'Image(Options.Palette.Blue),
                     Side => Left));
          end if;
       end if;
@@ -172,7 +172,7 @@ package body Tk.Image.Photo is
                 (Photo_Image => Photo_Image, Name => "width",
                  Interpreter => Interpreter));
          if Slash_Index = 0 then
-            Options.Palette.Red := Color_Range'Value(Result);
+            Options.Palette.Red := Shades_Range'Value(Result);
          else
             --## rule off IMPROPER_INITIALIZATION
             Get_Palette_Block :
