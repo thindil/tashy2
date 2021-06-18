@@ -590,12 +590,65 @@ package Tk.Image.Photo is
       Test_Case => (Name => "Tests_Get_Transparency_Photo", Mode => Nominal);
       -- ****
 
+      -- ****f* Photo/Photo.Set_Transparency
+      -- FUNCTION
+      -- Set the transparency status for the selected pixel in the selected
+      -- photo image
+      -- PARAMETERS
+      -- Photo_Image - The photo image in which the pixel transparency will be
+      --               set
+      -- X           - The X coordinate of the pixel to set
+      -- Y           - The Y coordinate of the pixel to set
+      -- Transparent - If True, the selected pixel will be transparent,
+      --               otherwise opaque.
+      -- Interpreter - Tcl interpreter on which the transparency will be set.
+      --               Can be empty. Default value is the default Tcl
+      --               interpreter.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set pixel at (13, 56) in My_Image on the default Tcl interpeter to transparent
+      -- Set_Transparency(My_Image, 13, 56, True);
+      -- SEE ALSO
+      -- Photo.Get_Transparency
+      -- COMMANDS
+      -- Photo_Image transparency set X Y Transparent
+      -- SOURCE
    procedure Set_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural; Transparent: Boolean;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Set_Transparency_Photo", Mode => Nominal);
+      -- ****
 
+      -- ****f* Photo/Photo.Write
+      -- FUNCTION
+      -- Write the selected photo image data to the selected file
+      -- PARAMETERS
+      -- Photo_Image - The photo image which data will be written
+      -- File_Name   - The absolute or relative path to the file where data
+      --               will be written
+      -- Background  - If specified, all transparent pixels color will be
+      --               replaced with this color. Can be empty. Default value
+      --               is empty.
+      -- Format      - The image format used to write the data. Can be empty.
+      --               Default value is empty. If not entered, it is guessed
+      --               from the File_Name extension
+      -- From        - The image region which will be written to file. Can be
+      --               empty. Default value is the whole image
+      -- Grayscale   - If True, the data will not contain color information.
+      --               All pixels will be transformed to grayscale.
+      -- Interpreter - Tcl interpreter from which the image will be written.
+      --               Can be empty. Default value is the default Tcl
+      --               interpreter.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Save the whole My_Image image on the default Tcl interpreter to file myimage.png
+      -- Write(My_Image, To_Tcl_String("myimage.png"));
+      -- SEE ALSO
+      -- COMMANDS
+      -- SOURCE
    procedure Write
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
       Background, Format: Tcl_String := Null_Tcl_String;
@@ -604,6 +657,7 @@ package Tk.Image.Photo is
       Pre => Photo_Image'Length > 0 and Length(Source => File_Name) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Write_Photo", Mode => Nominal);
+      -- ****
 
    --## rule on REDUCEABLE_SCOPE
 
