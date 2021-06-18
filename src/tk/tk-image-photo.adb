@@ -327,12 +327,13 @@ package body Tk.Image.Photo is
       Option_Image
         (Name => "format", Value => Format, Options_String => Options);
       Dimension_To_String(Name => "from", Value => From, Options => Options);
-      Option_Image("shrink", Shrink, Options);
-      Option_Image("to", To, Options);
+      Option_Image
+        (Name => "shrink", Value => Shrink, Options_String => Options);
+      Option_Image(Name => "to", Value => To, Options_String => Options);
       Tcl_Eval
         (Tcl_Script =>
-           Photo_Image & " read " & To_String(File_Name) & " " &
-           To_String(Options),
+           Photo_Image & " read " & To_String(Source => File_Name) & " " &
+           To_String(Source => Options),
          Interpreter => Interpreter);
    end Read;
 
@@ -374,13 +375,17 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
-      Option_Image("background", Background, Options);
-      Option_Image("format", Format, Options);
-      Dimension_To_String("from", From, Options);
-      Option_Image("grayscale", Grayscale, Options);
+      Option_Image
+        (Name => "background", Value => Background, Options_String => Options);
+      Option_Image
+        (Name => "format", Value => Format, Options_String => Options);
+      Dimension_To_String(Name => "from", Value => From, Options => Options);
+      Option_Image
+        (Name => "grayscale", Value => Grayscale, Options_String => Options);
       Tcl_Eval
         (Tcl_Script =>
-           Photo_Image & " write " & To_String(File_Name) & To_String(Options),
+           Photo_Image & " write " & To_String(Source => File_Name) &
+           To_String(Source => Options),
          Interpreter => Interpreter);
    end Write;
 
