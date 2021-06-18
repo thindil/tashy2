@@ -40,7 +40,8 @@ package Tcl.Variables is
    -- SOURCE
    type Variables_Flags is
      (NONE, TCL_GLOBAL_ONLY, TCL_NAMESPACE_ONLY, TCL_APPEND_VALUE,
-      TCL_LIST_ELEMENT, TCL_LEAVE_ERR_MSG);
+      TCL_LIST_ELEMENT, TCL_LEAVE_ERR_MSG) with
+      Default_Value => NONE;
 
    for Variables_Flags use
      (NONE => 16#0000#, TCL_GLOBAL_ONLY => 16#0001#,
@@ -63,7 +64,8 @@ package Tcl.Variables is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Flags_Array is array(Positive range <>) of Variables_Flags;
+   type Flags_Array is array(Positive range <>) of Variables_Flags with
+      Default_Component_Value => Default_Flag;
    -- ****
 
    -- ****d* Variables/Variables.Default_Flags_Array
