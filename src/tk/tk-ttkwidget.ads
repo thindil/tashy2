@@ -72,7 +72,8 @@ package Tk.TtkWidget is
    -- SOURCE
    type Ttk_State_Type is
      (ACTIVE, DISABLED, FOCUS, PRESSED, SELECTED, BACKGROUND, READONLY,
-      ALTERNATE, INVALID, HOVER);
+      ALTERNATE, INVALID, HOVER) with
+      Default_Value => ACTIVE;
    -- ****
 
    -- ****d* TtkWidget/TtkWidget.Default_Ttk_State
@@ -91,7 +92,8 @@ package Tk.TtkWidget is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Ttk_State_Array is array(Positive range <>) of Ttk_State_Type;
+   type Ttk_State_Array is array(Positive range <>) of Ttk_State_Type with
+      Default_Component_Value => Default_Ttk_State;
    -- ****
    --## rule on TYPE_INITIAL_VALUES
 
