@@ -27,7 +27,8 @@ package Tk.Image.Photo is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   subtype Shades_Range is Integer range -1 .. Integer'Last;
+   type Shades_Range is new Integer range -1 .. Integer'Last with
+      Default_Value => 0;
    -- ****
 
    -- ****s* Photo/Photo.Shades_Type
@@ -137,7 +138,8 @@ package Tk.Image.Photo is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Compositing_Types is (NONE, OVERLAY, SET);
+   type Compositing_Types is (NONE, OVERLAY, SET) with
+      Default_Value => NONE;
    -- ****
 
    -- ****d* Photo/Photo.Default_Compositing
@@ -155,7 +157,8 @@ package Tk.Image.Photo is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   subtype Color_Range is Integer range -1 .. 255;
+   type Color_Range is new Integer range -1 .. 255 with
+      Default_Value => 0;
    -- ****
 
    -- ****s* Tk.Image.Photo/Color_Type
