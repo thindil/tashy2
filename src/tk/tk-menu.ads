@@ -114,7 +114,8 @@ package Tk.Menu is
    -- 8.6.0 - Added
    -- SOURCE
    type Menu_Item_Types is
-     (CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR);
+     (CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR) with
+     Default_Value => COMMAND;
    -- ****
 
    -- ****d* Menu/Menu.Default_Menu_Item
@@ -241,7 +242,8 @@ package Tk.Menu is
      -- HISTORY
      -- 8.6.0 - Added
      -- SOURCE
-   type Menu_Item_Indexes is (ACTIVE, MENU_END, LAST, NONE);
+   type Menu_Item_Indexes is (ACTIVE, MENU_END, LAST, NONE) with
+      Default_Value => NONE;
    -- ****
 
    -- ****d* Menu/Menu.Empty_Menu_Item_Index
