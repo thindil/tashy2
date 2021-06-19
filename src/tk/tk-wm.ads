@@ -35,7 +35,8 @@ package Tk.Wm is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Window_Manager_Types is (X_11, WINDOWS, MACOSX);
+   type Window_Manager_Types is (X_11, WINDOWS, MACOSX) with
+      Default_Value => X_11;
    -- ****
 
    -- ****d* Wm/Wm.Default_Window_Manager
@@ -180,7 +181,8 @@ package Tk.Wm is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Focus_Model_Types is (ACTIVE, PASSIVE);
+   type Focus_Model_Types is (ACTIVE, PASSIVE) with
+      Default_Value => PASSIVE;
    -- ****
 
    -- ****d* Wm/Wm.Default_Focus_Model
@@ -320,7 +322,8 @@ package Tk.Wm is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Position_From_Value is (USER, PROGRAM);
+   type Position_From_Value is (USER, PROGRAM) with
+      Default_Value => PROGRAM;
    -- ****
 
    -- ****d* Wm/Wm.Default_Position_From
@@ -370,7 +373,8 @@ package Tk.Wm is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Window_States is (NORMAL, ICONIC, WITHDRAWN, ICON, ZOOMED);
+   type Window_States is (NORMAL, ICONIC, WITHDRAWN, ICON, ZOOMED) with
+      Default_Value => NORMAL;
    -- ****
 
    -- ****d* Wm/Wm.Default_Window_State
