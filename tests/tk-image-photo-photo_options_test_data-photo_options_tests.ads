@@ -13,18 +13,18 @@ package Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
    null record;
 
    procedure Test_Create_22037c_edee6e(Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:206:4:Create:Tests_Create_Photo
+   --  tk-image-photo.ads:224:4:Create:Tests_Create_Photo
 
    procedure Test_Create_fa334a_af82af(Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:232:4:Create:Tests_Create2_Photo
+   --  tk-image-photo.ads:250:4:Create:Tests_Create2_Photo
 
    procedure Test_Configure_6e2ac0_325e32
      (Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:279:4:Configure:Tests_Configure_Photo
+   --  tk-image-photo.ads:297:4:Configure:Tests_Configure_Photo
 
    procedure Test_Get_Options_5c7a9c_6cc0f7
      (Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:338:4:Get_Options:Tests_Get_Options_Photo
+   --  tk-image-photo.ads:356:4:Get_Options:Tests_Get_Options_Photo
 
 end Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests;
 --  end read only
