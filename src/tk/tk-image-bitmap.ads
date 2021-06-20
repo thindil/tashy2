@@ -19,12 +19,31 @@
 package Tk.Image.Bitmap is
 -- ****
 
+   -- ****s* Photo/Photo.Photo_Options
+   -- FUNCTION
+   -- Data structure for all available options for image photo
+   -- OPTIONS
+   -- Data       - The content of the image as a string. The format of the string
+   --              must be one of those for which there is an image file format
+   --              handler that will accept string data. If both the Data and
+   --              File options are specified, the File option takes precedence.
+   -- File       - The name of the file which will be loaded as an image.
+   -- Background - The color used for the background of the image. If set as
+   --              empty string, the background will be transparent
+   -- Foreground - The foreground color of the image
+   -- Mask_Data  - The bitmap data used as mask for the image. If both Mask_Data
+   --              and Mask_File are set, then Mask_Data option takes precedence.
+   -- Mask_File  - The file which content will be used as mask for the image
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Bitmap_Options is new Image_Options with record
       Background: Tcl_String;
       Foreground: Tcl_String;
       Mask_Data: Tcl_String;
       Mask_File: Tcl_String;
    end record;
+   -- ****
 
    -- ****f* Bitmap/Bitmap.Create_(procedure)
    -- FUNCTION
