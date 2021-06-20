@@ -12,20 +12,66 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Tk.Widget; use Tk.Widget;
+
 package body Tk.Image.Bitmap is
+
+   -- ****if* Bitmap/Bitmap.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Button_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Bitmap_Options) return String is
+      -- ****
+      Options_String: Unbounded_String := Null_Unbounded_String;
+   begin
+      Option_Image
+        (Name => "data", Value => Options.Data,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "file", Value => Options.File,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "background", Value => Options.Background,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "foreground", Value => Options.Foreground,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "maskdata", Value => Options.Mask_Data,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "maskfile", Value => Options.Mask_File,
+         Options_String => Options_String);
+      return To_String(Source => Options_String);
+   end Options_To_String;
 
    procedure Create
      (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           "image create bitmap " & Bitmap_Image &
+           Options_To_String(Options => Options),
+         Interpreter => Interpreter);
    end Create;
 
    function Create
      (Options: Bitmap_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Image is
    begin
-      return "";
+      return
+        Tcl_Eval
+          (Tcl_Script =>
+             "image create bitmap" & Options_To_String(Options => Options),
+           Interpreter => Interpreter);
    end Create;
 
    procedure Configure
