@@ -19,6 +19,7 @@ with Tk.Widget; use Tk.Widget;
 -- Provide bindings for manipulate Tk images type photo
 -- SOURCE
 package Tk.Image.Photo is
+-- ****
 
    --## rule off REDUCEABLE_SCOPE
    -- ****t* Photo/Photo.Shades_Range
@@ -29,6 +30,13 @@ package Tk.Image.Photo is
    -- SOURCE
    type Shades_Range is new Integer range -1 .. Integer'Last with
       Default_Value => 0;
+   -- ****
+
+      -- ****d* Photo/Photo.Default_Shade_Value
+      -- FUNCTION
+      -- Default value for number of shades for photo image
+      -- SOURCE
+   Default_Shade_Value: constant Shades_Range := 0;
    -- ****
 
    -- ****s* Photo/Photo.Shades_Type
@@ -161,7 +169,14 @@ package Tk.Image.Photo is
       Default_Value => 0;
    -- ****
 
-   -- ****s* Tk.Image.Photo/Color_Type
+      -- ****d* Photo/Photo.Default_Color_Value
+      -- FUNCTION
+      -- Default value for the amount of the selected color in photo image
+      -- SOURCE
+   Default_Color_Value: constant Color_Range := 0;
+   -- ****
+
+   -- ****s* Photo/Color_Type
    -- FUNCTION
    -- Data structure for setting the photo image colors values
    -- OPTIONS
