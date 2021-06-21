@@ -132,6 +132,21 @@ package body Tcl is
           (Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter));
    end Generic_Float_Tcl_Eval;
 
+   procedure Tcl_Eval_File
+     (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+      function Native_Tcl_EvalFile
+        (Interp: Tcl_Interpreter; File: chars_ptr) return Tcl_Results with
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_EvalFile";
+   begin
+      if Native_Tcl_EvalFile
+          (Interp => Interpreter, File => New_String(Str => File_Name)) =
+        TCL_ERROR then
+         raise Tcl_Exception with Tcl_Get_Result;
+      end if;
+   end Tcl_Eval_File;
+
    function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
       function Tcl_Get_String_Result
