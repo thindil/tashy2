@@ -15,6 +15,8 @@ with System.Assertions;
 --
 --  end read only
 
+with GNAT.Directory_Operations; use GNAT.Directory_Operations;
+
 --  begin read only
 --  end read only
 package body Tcl.Test_Data.Tests is
@@ -193,6 +195,57 @@ package body Tcl.Test_Data.Tests is
 
 --  begin read only
    end Test_3_Tcl_Eval_test_tcl_eval3;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Tcl_Eval_File_323881_9ae206
+     (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   begin
+      begin
+         pragma Assert
+           (File_Name'Length > 0 and Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl.ads:0):Test_Tcl_Eval_File test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Eval_File
+        (File_Name, Interpreter);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tcl.ads:0:):Test_Tcl_Eval_File test commitment violated");
+      end;
+   end Wrap_Test_Tcl_Eval_File_323881_9ae206;
+--  end read only
+
+--  begin read only
+   procedure Test_Tcl_Eval_File_test_tcl_eval_file(Gnattest_T: in out Test);
+   procedure Test_Tcl_Eval_File_323881_9ae206(Gnattest_T: in out Test) renames
+     Test_Tcl_Eval_File_test_tcl_eval_file;
+--  id:2.2/323881fbdd6f42fb/Tcl_Eval_File/1/0/test_tcl_eval_file/
+   procedure Test_Tcl_Eval_File_test_tcl_eval_file(Gnattest_T: in out Test) is
+      procedure Tcl_Eval_File
+        (File_Name: String;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) renames
+        Wrap_Test_Tcl_Eval_File_323881_9ae206;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Tcl_Eval_File(".." & Dir_Separator & "test.tcl");
+      Assert(True, "This test can only crash.");
+
+--  begin read only
+   end Test_Tcl_Eval_File_test_tcl_eval_file;
 --  end read only
 
 --  begin read only
