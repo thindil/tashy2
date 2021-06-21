@@ -243,6 +243,28 @@ package Tcl is
       return Result_Type;
       -- ****
 
+      -- ****f* Tcl/Tcl.Tcl_Eval_File
+      -- FUNCTION
+      -- Evaluate the selected file as Tcl script on the selected Tcl intepreter
+      -- PARAMETERS
+      -- File_Name   - The path (absolute or relative) to the file which will
+      --               be evaluated
+      -- Interpreter - Tcl interpreter on which the file will be evaluated.
+      --               By default it is current default Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Evaluate file myscript.tcl on the default Tcl interpreter
+      -- Tcl_Eval_File("myscript.tcl");
+      -- SEE ALSO
+      -- Tcl.Tcl_Eval_(procedure)
+      -- SOURCE
+   procedure Tcl_Eval_File
+     (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => File_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Test_Tcl_Eval_File", Mode => Nominal);
+      -- ****
+
    ---------------------------------------
    -- Manipulating the Tcl commands result
    ---------------------------------------
