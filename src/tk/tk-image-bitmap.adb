@@ -12,8 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
-with Tk.Widget; use Tk.Widget;
+with Ada.Strings.Unbounded;
+with Tk.Widget;
 
 package body Tk.Image.Bitmap is
 
@@ -29,6 +29,9 @@ package body Tk.Image.Bitmap is
    -- SOURCE
    function Options_To_String(Options: Bitmap_Options) return String is
       -- ****
+      use Ada.Strings.Unbounded;
+      use Tk.Widget;
+
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image

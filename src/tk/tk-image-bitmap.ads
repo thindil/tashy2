@@ -19,6 +19,7 @@
 package Tk.Image.Bitmap is
 -- ****
 
+   --## rule off REDUCEABLE_SCOPE
    -- ****s* Photo/Photo.Photo_Options
    -- FUNCTION
    -- Data structure for all available options for image photo
@@ -188,5 +189,6 @@ package Tk.Image.Bitmap is
    Default_Bitmap_Options: constant Bitmap_Options :=
      Bitmap_Options'(others => <>);
      -- ****
+     --## rule on REDUCEABLE_SCOPE
 
 end Tk.Image.Bitmap;
