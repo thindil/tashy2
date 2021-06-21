@@ -78,22 +78,69 @@ package body Tk.Image.Bitmap is
      (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      null;
+      Tcl_Eval
+        (Tcl_Script =>
+           Bitmap_Image & " configure " &
+           Options_To_String(Options => Options),
+         Interpreter => Interpreter);
    end Configure;
 
    function Get_Option
      (Bitmap_Image: Tk_Image; Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
-      pragma Unreferenced(Bitmap_Image, Name, Interpreter);
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => Bitmap_Image & " configure -" & Name,
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
-      return "";
+      return To_Ada_String(Source => Result_List(Result_List'Last));
    end Get_Option;
 
    function Get_Options
      (Bitmap_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Bitmap_Options is
    begin
-      return Default_Bitmap_Options;
+      return Options: Bitmap_Options := Default_Bitmap_Options do
+         Options.Data :=
+           To_Tcl_String
+             (Source =>
+                Get_Option
+                  (Bitmap_Image => Bitmap_Image, Name => "data",
+                   Interpreter => Interpreter));
+         Options.File :=
+           To_Tcl_String
+             (Source =>
+                Get_Option
+                  (Bitmap_Image => Bitmap_Image, Name => "file",
+                   Interpreter => Interpreter));
+         Options.Background :=
+           To_Tcl_String
+             (Source =>
+                Get_Option
+                  (Bitmap_Image => Bitmap_Image, Name => "background",
+                   Interpreter => Interpreter));
+         Options.Foreground :=
+           To_Tcl_String
+             (Source =>
+                Get_Option
+                  (Bitmap_Image => Bitmap_Image, Name => "foreground",
+                   Interpreter => Interpreter));
+         Options.Mask_Data :=
+           To_Tcl_String
+             (Source =>
+                Get_Option
+                  (Bitmap_Image => Bitmap_Image, Name => "maskdata",
+                   Interpreter => Interpreter));
+         Options.Mask_File :=
+           To_Tcl_String
+             (Source =>
+                Get_Option
+                  (Bitmap_Image => Bitmap_Image, Name => "maskfile",
+                   Interpreter => Interpreter));
+      end return;
    end Get_Options;
 
 end Tk.Image.Bitmap;
