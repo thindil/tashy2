@@ -134,13 +134,13 @@ package body Tcl is
 
    procedure Tcl_Eval_File
      (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      function Native_Tcl_EvalFile
+      function Native_Tcl_Eval_File
         (Interp: Tcl_Interpreter; File: chars_ptr) return Tcl_Results with
          Import => True,
          Convention => C,
          External_Name => "Tcl_EvalFile";
    begin
-      if Native_Tcl_EvalFile
+      if Native_Tcl_Eval_File
           (Interp => Interpreter, File => New_String(Str => File_Name)) =
         TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result;
