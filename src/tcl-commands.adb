@@ -41,7 +41,8 @@ package body Tcl.Commands is
    end Tcl_Create_Command;
 
    function Get_Argument
-     (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String is
+     (Arguments_Pointer: not null Argv_Pointer.Pointer; Index: Natural)
+      return String is
    begin
       return
         Value
