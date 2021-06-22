@@ -134,7 +134,8 @@ package Tcl.Commands is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Delete_Proc: Tcl_Cmd_Delete_Proc := Null_Tcl_Cmd_Delete_Proc)
       return Tcl_Command with
-      Pre => Command_Name'Length > 0 and Proc /= Null_Tcl_Cmd_Proc,
+      Pre => Command_Name'Length > 0 and Proc /= Null_Tcl_Cmd_Proc and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_CreateCommand", Mode => Nominal);
       -- ****
 
@@ -158,7 +159,8 @@ package Tcl.Commands is
       -- Proc_Name: constant String := Get_Argument(My_Arguments, 0);
       -- SOURCE
    function Get_Argument
-     (Arguments_Pointer: Argv_Pointer.Pointer; Index: Natural) return String;
+     (Arguments_Pointer: not null Argv_Pointer.Pointer; Index: Natural)
+      return String;
      -- ****
      --## rule on REDUCEABLE_SCOPE
 
