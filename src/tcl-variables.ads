@@ -100,7 +100,8 @@ package Tcl.Variables is
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) with
-      Pre => Var_Name'Length > 0 and New_Value'Length > 0,
+      Pre => Var_Name'Length > 0 and New_Value'Length > 0 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_SetVar", Mode => Nominal);
       -- ****
 
@@ -129,7 +130,7 @@ package Tcl.Variables is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) with
       Pre => Array_Name'Length > 0 and Index_Name'Length > 0 and
-      New_Value'Length > 0,
+      New_Value'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_SetVar2", Mode => Nominal);
       -- ****
 
