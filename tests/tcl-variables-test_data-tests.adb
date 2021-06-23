@@ -31,13 +31,15 @@ package body Tcl.Variables.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Tcl_Set_Var_524f28_572e53
+   procedure Wrap_Test_Tcl_Set_Var_524f28_838ae7
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
    begin
       begin
-         pragma Assert(Var_Name'Length > 0 and New_Value'Length > 0);
+         pragma Assert
+           (Var_Name'Length > 0 and New_Value'Length > 0 and
+            Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -56,12 +58,12 @@ package body Tcl.Variables.Test_Data.Tests is
               (False,
                "ens_sloc(tcl-variables.ads:0:):Test_Tcl_SetVar test commitment violated");
       end;
-   end Wrap_Test_Tcl_Set_Var_524f28_572e53;
+   end Wrap_Test_Tcl_Set_Var_524f28_838ae7;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_Set_Var_test_tcl_setvar(Gnattest_T: in out Test);
-   procedure Test_Tcl_Set_Var_524f28_572e53(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Set_Var_524f28_838ae7(Gnattest_T: in out Test) renames
      Test_Tcl_Set_Var_test_tcl_setvar;
 --  id:2.2/524f28d8df9078d6/Tcl_Set_Var/1/0/test_tcl_setvar/
    procedure Test_Tcl_Set_Var_test_tcl_setvar(Gnattest_T: in out Test) is
@@ -69,7 +71,7 @@ package body Tcl.Variables.Test_Data.Tests is
         (Var_Name, New_Value: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter;
          Flags: Flags_Array := Default_Flags_Array) renames
-        Wrap_Test_Tcl_Set_Var_524f28_572e53;
+        Wrap_Test_Tcl_Set_Var_524f28_838ae7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -85,7 +87,7 @@ package body Tcl.Variables.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Tcl_Set_Var2_256ebf_e29f6c
+   procedure Wrap_Test_Tcl_Set_Var2_256ebf_939c43
      (Array_Name, Index_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) is
@@ -93,7 +95,7 @@ package body Tcl.Variables.Test_Data.Tests is
       begin
          pragma Assert
            (Array_Name'Length > 0 and Index_Name'Length > 0 and
-            New_Value'Length > 0);
+            New_Value'Length > 0 and Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -112,12 +114,12 @@ package body Tcl.Variables.Test_Data.Tests is
               (False,
                "ens_sloc(tcl-variables.ads:0:):Test_Tcl_SetVar2 test commitment violated");
       end;
-   end Wrap_Test_Tcl_Set_Var2_256ebf_e29f6c;
+   end Wrap_Test_Tcl_Set_Var2_256ebf_939c43;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_Set_Var2_test_tcl_setvar2(Gnattest_T: in out Test);
-   procedure Test_Tcl_Set_Var2_256ebf_e29f6c(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Set_Var2_256ebf_939c43(Gnattest_T: in out Test) renames
      Test_Tcl_Set_Var2_test_tcl_setvar2;
 --  id:2.2/256ebf8f1093c92d/Tcl_Set_Var2/1/0/test_tcl_setvar2/
    procedure Test_Tcl_Set_Var2_test_tcl_setvar2(Gnattest_T: in out Test) is
@@ -125,7 +127,7 @@ package body Tcl.Variables.Test_Data.Tests is
         (Array_Name, Index_Name, New_Value: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter;
          Flags: Flags_Array := Default_Flags_Array) renames
-        Wrap_Test_Tcl_Set_Var2_256ebf_e29f6c;
+        Wrap_Test_Tcl_Set_Var2_256ebf_939c43;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
