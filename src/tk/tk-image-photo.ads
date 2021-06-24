@@ -117,8 +117,8 @@ package Tk.Image.Photo is
    -- 8.6.0 - Added
    -- SOURCE
    type Dimensions_Type is record
-      Start_X: Natural;
-      Start_Y: Natural;
+      Start_X: Natural := 0;
+      Start_Y: Natural := 0;
       End_X: Extended_Natural;
       End_Y: Extended_Natural;
    end record;
