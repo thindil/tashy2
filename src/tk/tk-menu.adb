@@ -154,7 +154,8 @@ package body Tk.Menu is
    -- FUNCTION
    -- Convert Ada structure to Tcl command
    -- PARAMETERS
-   -- Options - Ada Menu_Item_Options to convert
+   -- Options   - Ada Menu_Item_Options to convert
+   -- Item_Type - The type of menu item to add
    -- RESULT
    -- String with Tcl command options
    -- HISTORY
@@ -248,15 +249,14 @@ package body Tk.Menu is
       return To_String(Source => Options_String);
    end Item_Options_To_String;
 
-   procedure Add
-     (Menu_Widget: Tk_Menu; Item_Type: Menu_Item_Types;
-      Options: Menu_Item_Options) is
+   procedure Add(Menu_Widget: Tk_Menu; Options: Menu_Item_Options) is
    begin
       Execute_Widget_Command
         (Widgt => Menu_Widget, Command_Name => "add",
          Options =>
-           To_Lower(Item => Menu_Item_Types'Image(Item_Type)) & " " &
-           Item_Options_To_String(Options => Options, Item_Type => Item_Type));
+           To_Lower(Item => Menu_Item_Types'Image(Options.Item_Type)) & " " &
+           Item_Options_To_String
+             (Options => Options, Item_Type => Options.Item_Type));
    end Add;
 
    function Get_Options(Menu_Widget: Tk_Menu) return Menu_Options is
