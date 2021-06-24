@@ -83,7 +83,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 12"), others => <>));
       Activate(Menu, To_Tcl_String("1"));
@@ -145,7 +145,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 122"), others => <>));
       Activate(Menu, 1);
@@ -206,7 +206,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 123"), others => <>));
       Activate(Menu, LAST);
@@ -219,9 +219,8 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Add_ba4759_5ef6e5
-     (Menu_Widget: Tk_Menu; Item_Type: Menu_Item_Types;
-      Options: Menu_Item_Options) is
+   procedure Wrap_Test_Add_0c595c_5ef6e5
+     (Menu_Widget: Tk_Menu; Options: Menu_Item_Options) is
    begin
       begin
          pragma Assert(Menu_Widget /= Null_Widget);
@@ -232,8 +231,7 @@ package body Tk.Menu.Test_Data.Tests is
               (False,
                "req_sloc(tk-menu.ads:0):Test_Add_Menu test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Add
-        (Menu_Widget, Item_Type, Options);
+      GNATtest_Generated.GNATtest_Standard.Tk.Menu.Add(Menu_Widget, Options);
       begin
          pragma Assert(True);
          null;
@@ -243,19 +241,17 @@ package body Tk.Menu.Test_Data.Tests is
               (False,
                "ens_sloc(tk-menu.ads:0:):Test_Add_Menu test commitment violated");
       end;
-   end Wrap_Test_Add_ba4759_5ef6e5;
+   end Wrap_Test_Add_0c595c_5ef6e5;
 --  end read only
 
 --  begin read only
    procedure Test_Add_test_add_menu(Gnattest_T: in out Test);
-   procedure Test_Add_ba4759_5ef6e5(Gnattest_T: in out Test) renames
+   procedure Test_Add_0c595c_5ef6e5(Gnattest_T: in out Test) renames
      Test_Add_test_add_menu;
---  id:2.2/ba4759ab1f934e2d/Add/1/0/test_add_menu/
+--  id:2.2/0c595c8b99343a81/Add/1/0/test_add_menu/
    procedure Test_Add_test_add_menu(Gnattest_T: in out Test) is
-      procedure Add
-        (Menu_Widget: Tk_Menu; Item_Type: Menu_Item_Types;
-         Options: Menu_Item_Options) renames
-        Wrap_Test_Add_ba4759_5ef6e5;
+      procedure Add(Menu_Widget: Tk_Menu; Options: Menu_Item_Options) renames
+        Wrap_Test_Add_0c595c_5ef6e5;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -269,7 +265,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 14"), others => <>));
       Invoke(Menu, To_Tcl_String("1"));
@@ -337,7 +333,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 16"), others => <>));
       CloneMenu := Clone(Menu, ".mynewmenu");
@@ -401,7 +397,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Delete(Menu, To_Tcl_String("1"));
@@ -464,7 +460,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 182"), others => <>));
       Delete(Menu, 1);
@@ -527,7 +523,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 183"), others => <>));
       Delete(Menu, LAST);
@@ -599,7 +595,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Options := Entry_Get_Options(Menu, To_Tcl_String("1"));
@@ -672,7 +668,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 182"), others => <>));
       Options := Entry_Get_Options(Menu, 1);
@@ -745,7 +741,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 183"), others => <>));
       Options := Entry_Get_Options(Menu, LAST);
@@ -814,7 +810,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Options :=
@@ -886,7 +882,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 182"), others => <>));
       Options :=
@@ -958,7 +954,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 183"), others => <>));
       Options :=
@@ -1031,7 +1027,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Assert
@@ -1098,7 +1094,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Assert
@@ -1166,7 +1162,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Assert
@@ -1230,7 +1226,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Insert
@@ -1298,7 +1294,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Insert
@@ -1366,7 +1362,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Insert
@@ -1432,7 +1428,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Invoke(Menu, To_Tcl_String("1"));
@@ -1495,7 +1491,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 128"), others => <>));
       Invoke(Menu, 1);
@@ -1557,7 +1553,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 138"), others => <>));
       Invoke(Menu, 1);
@@ -1625,7 +1621,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
@@ -1693,7 +1689,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 220"), others => <>));
       Assert
@@ -1760,7 +1756,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 230"), others => <>));
       Assert
@@ -2124,7 +2120,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
@@ -2194,7 +2190,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
@@ -2264,7 +2260,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
@@ -2385,7 +2381,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
@@ -2454,7 +2450,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
@@ -2522,7 +2518,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
@@ -2589,7 +2585,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
@@ -2658,7 +2654,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
@@ -2726,7 +2722,7 @@ package body Tk.Menu.Test_Data.Tests is
       end if;
       Create(Menu, ".mymenu", Menu_Options'(Tear_Off => FALSE, others => <>));
       Add
-        (Menu, COMMAND,
+        (Menu,
          Menu_Item_Options'
            (Command => To_Tcl_String("set myvar 20"), others => <>));
       Assert
