@@ -6,6 +6,7 @@ with Tk.Grid; use Tk.Grid;
 with Tk.MainWindow; use Tk.MainWindow;
 with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
+with Tk.Widget; use Tk.Widget;
 with Tk.Wm; use Tk.Wm;
 
 procedure Calculator is
@@ -35,11 +36,19 @@ begin
    declare
       Main_Menu: constant Tk_Menu :=
         Create(Path_Name => ".mainmenu", Options => Default_Menu_Options);
+      File_Menu: constant Tk_Menu :=
+        Create
+          (Path_Name => Tk_Path_Name(Main_Menu) & ".file",
+           Options => Default_Menu_Options);
    begin
+      Add
+        (Menu_Widget => Main_Menu, Item_Type => CASCADE,
+         Options =>
+           (Item_Type => CASCADE, Menu => File_Menu,
+            Label => To_Tcl_String("File"), others => <>));
       Configure
         (Toplevel_Widget => Main_Window,
          Options => (Menu => Main_Menu, others => <>));
-      null;
    end;
 
    -- Create the button with text Quit which will be closing the application
