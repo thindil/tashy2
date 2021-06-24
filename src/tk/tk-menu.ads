@@ -115,7 +115,7 @@ package Tk.Menu is
    -- SOURCE
    type Menu_Item_Types is
      (CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR) with
-     Default_Value => COMMAND;
+      Default_Value => COMMAND;
    -- ****
 
    -- ****d* Menu/Menu.Default_Menu_Item
@@ -350,22 +350,19 @@ package Tk.Menu is
       -- Add a new menu entry to the selected menu
       -- PARAMETERS
       -- Menu_Widget - Tk_Menu widget in which the new entry will be added
-      -- Item_Type   - The type of menu entry to add
       -- Options     - The options for the newly added entry
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Add to menu My_Menu entry with label "Quit" and quit from the program on activate
-      -- Add(My_Menu, COMMAND, Menu_Item_Options'(Label => To_Tcl_String("Quit"), Command => To_Tcl_String("exit"),
-      --                                          others => <>));
+      -- Add(My_Menu, Menu_Item_Options'(Label => To_Tcl_String("Quit"), Command => To_Tcl_String("exit"),
+      --                                  others => <>));
       -- COMMANDS
       -- Menu_Widget add Item_Type Options
       -- SEE ALSO
       -- Menu.Insert
       -- SOURCE
-   procedure Add
-     (Menu_Widget: Tk_Menu; Item_Type: Menu_Item_Types;
-      Options: Menu_Item_Options) with
+   procedure Add(Menu_Widget: Tk_Menu; Options: Menu_Item_Options) with
       Pre => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Add_Menu", Mode => Nominal);
       -- ****
