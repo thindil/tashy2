@@ -42,7 +42,7 @@ begin
            Options => Default_Menu_Options);
    begin
       Add
-        (Menu_Widget => Main_Menu, Item_Type => CASCADE,
+        (Menu_Widget => Main_Menu,
          Options =>
            (Item_Type => CASCADE, Menu => File_Menu,
             Label => To_Tcl_String("File"), others => <>));
