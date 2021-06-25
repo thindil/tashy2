@@ -1,14 +1,17 @@
 with Tcl; use Tcl;
 with Tcl.Strings; use Tcl.Strings;
 with Tk; use Tk;
+with Tk.Grid; use Tk.Grid;
 with Tk.MainWindow; use Tk.MainWindow;
 with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
+with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
 with Tk.Wm; use Tk.Wm;
 
 procedure Calculator is
    Main_Window: Tk_Toplevel;
+   Display_Label: Ttk_Label;
 begin
    -- Initialize Tcl interpreter
    Tcl_Init(Interpreter => Create_Interpreter);
@@ -55,6 +58,17 @@ begin
         (Toplevel_Widget => Main_Window,
          Options => (Menu => Main_Menu, others => <>));
    end;
+
+   -- Set the calculator display label, to show operations and their results
+   Display_Label :=
+     Create
+       (Path_Name => ".display",
+        Options =>
+          Ttk_Label_Options'(Text => To_Tcl_String("0"), others => <>));
+   -- Add the display label to the program
+   Add
+     (Child => Display_Label,
+      Options => (Sticky => To_Tcl_String("we"), others => <>));
 
    -- Start the main Tk event loop
    Tk_Main_Loop;
