@@ -1,8 +1,6 @@
 with Tcl; use Tcl;
 with Tcl.Strings; use Tcl.Strings;
 with Tk; use Tk;
-with Tk.Button; use Tk.Button;
-with Tk.Grid; use Tk.Grid;
 with Tk.MainWindow; use Tk.MainWindow;
 with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
@@ -10,7 +8,6 @@ with Tk.Widget; use Tk.Widget;
 with Tk.Wm; use Tk.Wm;
 
 procedure Calculator is
-   Button: Tk_Button;
    Main_Window: Tk_Toplevel;
 begin
    -- Initialize Tcl interpreter
@@ -39,26 +36,25 @@ begin
       File_Menu: constant Tk_Menu :=
         Create
           (Path_Name => Tk_Path_Name(Main_Menu) & ".file",
-           Options => Default_Menu_Options);
+           Options => Menu_Options'(Tear_Off => FALSE, others => <>));
    begin
+      -- Add menu entry to quit from the program
+      Add
+        (Menu_Widget => File_Menu,
+         Options =>
+           (Item_Type => COMMAND, Label => To_Tcl_String("Quit"),
+            Command => To_Tcl_String("exit"), others => <>));
+      -- Add File menu to the main menu bar
       Add
         (Menu_Widget => Main_Menu,
          Options =>
            (Item_Type => CASCADE, Menu => File_Menu,
             Label => To_Tcl_String("File"), others => <>));
+      -- Add the main menu to the program
       Configure
         (Toplevel_Widget => Main_Window,
          Options => (Menu => Main_Menu, others => <>));
    end;
-
-   -- Create the button with text Quit which will be closing the application
-   Create
-     (Button, ".button",
-      Button_Options'
-        (Text => To_Tcl_String("Quit"), Command => To_Tcl_String("exit"),
-         others => <>));
-   -- Add the button to the main window
-   Add(Button);
 
    -- Start the main Tk event loop
    Tk_Main_Loop;
