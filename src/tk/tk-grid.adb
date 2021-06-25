@@ -72,7 +72,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid " & Tk_Path_Name(Widgt => Child) & " " &
+           "grid " & Tk_Path_Name(Widgt => Child) &
            Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widgt => Child));
    end Add;
@@ -82,7 +82,7 @@ package body Tk.Grid is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "grid " & Widgets_Array_Image(Widgets => Widgets) & " " &
+           "grid " & Widgets_Array_Image(Widgets => Widgets) &
            Options_To_String(Options => Options),
          Interpreter => Tk_Interp(Widgt => Widgets(1)));
    end Add;
