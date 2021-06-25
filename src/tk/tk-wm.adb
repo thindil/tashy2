@@ -485,7 +485,7 @@ package body Tk.Wm is
       Tcl_Eval
         (Tcl_Script =>
            "wm iconphoto " & Tk_Path_Name(Widgt => Window) & " " &
-           (if Default then "-default" else "") & Merge_List(List => Images),
+           (if Default then "-default " else "") & Merge_List(List => Images),
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Icon_Photo;
 
