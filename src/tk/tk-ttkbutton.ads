@@ -68,7 +68,7 @@ package Tk.TtkButton is
       Text: Tcl_String;
       Text_Variable: Tcl_String;
       Underline: Extended_Natural;
-      Width: Integer;
+      Width: Integer := 0;
    end record;
    -- ****
 
