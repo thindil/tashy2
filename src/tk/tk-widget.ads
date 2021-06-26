@@ -598,6 +598,7 @@ package Tk.Widget is
       Import => True,
       Convention => C,
       External_Name => "Get_Window_Id";
+      -- ****
 
       -- ****f* Widget/Widget.Option_Image
       -- FUNCTION
