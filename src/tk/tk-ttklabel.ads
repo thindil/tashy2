@@ -84,7 +84,7 @@ package Tk.TtkLabel is
       Text: Tcl_String;
       Text_Variable: Tcl_String;
       Underline: Extended_Natural;
-      Width: Integer;
+      Width: Integer := 0;
       Wrap_Length: Extended_Natural;
    end record;
    -- ****
