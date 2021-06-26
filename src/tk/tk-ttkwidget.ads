@@ -83,6 +83,7 @@ package Tk.TtkWidget is
    -- 8.6.0 - Added
    -- SOURCE
    Default_Ttk_State: constant Ttk_State_Type := ACTIVE;
+   -- ****
 
    --## rule off TYPE_INITIAL_VALUES
    -- ****t* TtkWidget/TtkWidget.Ttk_State_Array
