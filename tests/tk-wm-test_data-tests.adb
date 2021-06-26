@@ -1970,7 +1970,9 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Set_Icon_Photo
-        (Get_Main_Window, Array_List'(1 => To_Tcl_String("image14")));
+        (Get_Main_Window, Array_List'(1 => To_Tcl_String("image14")), True);
+      Set_Icon_Photo
+        (Get_Main_Window, Array_List'(1 => To_Tcl_String("image13")));
       Assert(True, "This test can only crash.");
 
 --  begin read only
