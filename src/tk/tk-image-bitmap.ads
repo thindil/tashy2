@@ -20,7 +20,7 @@ package Tk.Image.Bitmap is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
-   -- ****s* Photo/Photo.Photo_Options
+   -- ****s* Bitmap/Bitmap.Bitmap_Options
    -- FUNCTION
    -- Data structure for all available options for image photo
    -- OPTIONS
