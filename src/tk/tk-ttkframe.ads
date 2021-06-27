@@ -20,6 +20,7 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- Provides code for manipulate Tk widget ttk::frame
 -- SOURCE
 package Tk.TtkFrame is
+-- ****
 
    --## rule off REDUCEABLE_SCOPE
    -- ****t* TtkFrame/TtkFrame.Tk_Frame
