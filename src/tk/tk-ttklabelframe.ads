@@ -21,6 +21,7 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- Provides code for manipulate Tk widget ttk::labelframe
 -- SOURCE
 package Tk.TtkLabelFrame is
+-- ****
 
    --## rule off REDUCEABLE_SCOPE
    -- ****t* TtkLabelFrame/TtkLabelFrame.Tk_Frame
