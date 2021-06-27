@@ -20,6 +20,7 @@ with Tcl.Strings; use Tcl.Strings;
 -- Provides code for manipulate Tk widget frame
 -- SOURCE
 package Tk.Frame is
+-- ****
 
    --## rule off REDUCEABLE_SCOPE
    -- ****t* Frame/Frame.Tk_Frame
