@@ -19,6 +19,7 @@ with Tcl.Lists; use Tcl.Lists;
 -- Provide bindings for Tcl command info
 -- SOURCE
 package Tcl.Info is
+-- ****
 
    --## rule off REDUCEABLE_SCOPE
    -- ****f* Info/Info.Get_Arguments

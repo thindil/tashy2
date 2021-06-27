@@ -109,5 +109,6 @@ package Tcl.Lists is
    function Merge_List(List: Array_List) return String with
       Pre => List'Length > 0,
       Test_Case => (Name => "Test_Merge_List", Mode => Nominal);
+      -- ****
 
 end Tcl.Lists;
