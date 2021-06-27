@@ -21,6 +21,7 @@ with Tcl.Strings; use Tcl.Strings;
 -- Provides code for manipulate Tk widget labelframe
 -- SOURCE
 package Tk.Labelframe is
+-- ****
 
    --## rule off REDUCEABLE_SCOPE
    -- ****t* Labelframe/Labelframe.Tk_Label_Frame
