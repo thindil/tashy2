@@ -101,6 +101,7 @@ package Tcl.Info is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Commands_Count", Mode => Nominal);
+      -- ****
 
       -- ****f* Info/Info.Get_Commands
       -- FUNCTION
