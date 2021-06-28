@@ -244,7 +244,7 @@ package Tk.Wm is
    end record;
    -- ****
 
-   -- ****d* Tk.Wm/Empty_Window_Grid_Geometry
+   -- ****d* Wm/Wm.Empty_Window_Grid_Geometry
    -- FUNCTION
    -- Empty values for Tk widget grid geometry
    -- HISTORY
@@ -286,7 +286,7 @@ package Tk.Wm is
    Empty_Aspect_Data: constant Aspect_Data := (others => 0);
    -- ****
 
-   -- ****s* Tk.Wm/Window_Size
+   -- ****s* Wm/Wm.Window_Size
    -- FUNCTION
    -- Data structure used to manipulate maximum and minimum size of the Tk
    -- widget
@@ -359,7 +359,7 @@ package Tk.Wm is
    Default_Resizable_Data: constant Resizable_Data := (others => True);
    -- ****
 
-   -- ****t* Tk.Wm/Window_States
+   -- ****t* Wm/Wm.Window_States
    -- FUNCTION
    -- Types of the Tk widget states. ZOOMED is avaliable only on Window and
    -- Mac OS X
@@ -485,7 +485,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Set_Attributes", Mode => Nominal);
       -- ****
 
-      -- ****f* Tk.Wm/Get_Attribute
+      -- ****f* Wm/Wm.Get_Attribute
       -- FUNCTION
       -- Get the selected attribute as a selected type of the selected Tk_Widget.
       -- It is mostly used in Wm.Get_Attributes and Wm.Set_Attributes
@@ -1795,7 +1795,7 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Transient2", Mode => Nominal);
       -- ****
 
-      -- ****f* Tk.Wm/Withdraw
+      -- ****f* Wm/Wm.Withdraw
       -- FUNCTION
       -- Withdraw from the screen and unmap the selected Tk_Widget
       -- PARAMETERS
