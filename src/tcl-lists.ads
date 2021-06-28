@@ -93,7 +93,7 @@ package Tcl.Lists is
       -- ****
       --## rule on REDUCEABLE_SCOPE
 
-      -- ****f* Tcl.Lists/List.Merge_List
+      -- ****f* Lists/Lists.Merge_List
       -- FUNCTION
       -- Merge Ada array into Tcl list
       -- PARAMETERS
