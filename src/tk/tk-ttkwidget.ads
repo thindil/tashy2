@@ -217,7 +217,7 @@ package Tk.TtkWidget is
    end record;
    -- ****
 
-   -- ****d* Tk.TtkWidget/Empty_Padding_Data
+   -- ****d* TtkWidget/TtkWidget.Empty_Padding_Data
    -- FUNCTION
    -- Empty value for Padding_Data
    -- HISTORY
