@@ -222,7 +222,7 @@ package Tk.Grid is
       Test_Case => (Name => "Test_Anchor2", Mode => Nominal);
       -- ****
 
-      -- ****f* Tk.Grid/Get_Bounding_Box
+      -- ****f* Grid/Grid.Get_Bounding_Box
       -- FUNCTION
       -- Get the bounding box of the selected grid
       -- PARAMETERS
