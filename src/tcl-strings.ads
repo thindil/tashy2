@@ -32,7 +32,7 @@ package Tcl.Strings is
    type Tcl_String is new Unbounded_String;
    -- ****
 
-   -- ****d* Tcl.Strings/Null_Tcl_String
+   -- ****d* Strings/Strings.Null_Tcl_String
    -- FUNCTION
    -- Empty Tcl_String
    -- HISTORY

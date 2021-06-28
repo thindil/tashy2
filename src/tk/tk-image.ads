@@ -33,7 +33,7 @@ package Tk.Image is
    -- ****
 
    --## rule off TYPE_INITIAL_VALUES
-   -- ****s* Tk.Image/Image_Options
+   -- ****s* Image/Image.Image_Options
    -- FUNCTION
    -- Abstract record to store images options available for all types of images
    -- OPTIONS
