@@ -18,19 +18,19 @@ is
 
    procedure Test_Configure_0076be_6eaeb1
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   --  tk-ttklabelframe.ads:87:4:Configure:Test_Configure_TtkLabelFrame
+   --  tk-ttklabelframe.ads:88:4:Configure:Test_Configure_TtkLabelFrame
 
    procedure Test_Create_32e405_815235
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   --  tk-ttklabelframe.ads:114:4:Create:Test_Create_TtkLabelFrame1
+   --  tk-ttklabelframe.ads:115:4:Create:Test_Create_TtkLabelFrame1
 
    procedure Test_Create_ebbdc1_897460
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   --  tk-ttklabelframe.ads:148:4:Create:Test_Create_TtkLabelFrame2
+   --  tk-ttklabelframe.ads:149:4:Create:Test_Create_TtkLabelFrame2
 
    procedure Test_Get_Options_ded36e_8eedcd
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   --  tk-ttklabelframe.ads:173:4:Get_Options:Test_Get_Options_TtkLabelFrame
+   --  tk-ttklabelframe.ads:174:4:Get_Options:Test_Get_Options_TtkLabelFrame
 
 end Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
   .Ttk_Label_Frame_Options_Tests;
