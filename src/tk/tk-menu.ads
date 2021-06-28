@@ -435,7 +435,7 @@ package Tk.Menu is
       Test_Case => (Name => "Test_Configure_Menu", Mode => Nominal);
       -- ****
 
-      -- ****d* Tk.Menu/Default_Menu_Options
+      -- ****d* Menu/Menu.Default_Menu_Options
       -- FUNCTION
       -- Default Tk menu options values
       -- HISTORY
