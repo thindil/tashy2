@@ -392,11 +392,12 @@ package body Tk.Grid is
          use Ada.Strings.Fixed;
 
          Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
-         function Pad_Data_Value(Value: String) return Pad_Data is
+         function Pad_Data_Value(Value: String) return Horizontal_Pad_Data is
             Result_List: constant Array_List :=
               Split_List(List => Value, Interpreter => Interpreter);
          begin
-            return Result_Pad: Pad_Data := Default_Pad_Data do
+            return
+              Result_Pad: Horizontal_Pad_Data := Default_Horizontal_Pad_Data do
                Result_Pad.Left :=
                  Pixel_Data_Value
                    (Value => To_Ada_String(Source => Result_List(1)));

@@ -326,29 +326,29 @@ package Tk.Widget is
    Empty_Widgets_Array: constant Widgets_Array(1 .. 0) := (others => <>);
    -- ****
 
-   -- ****s* Widget/Widget.Pad_Data
+   -- ****s* Widget/Widget.Horizontal_Pad_Data
    -- FUNCTION
-   -- Data structure used to store infomation about padding
+   -- Data structure used to store infomation about horizontal padding
    -- OPTIONS
    -- Left  - Padding on the left of the widget
    -- Right - Padding on the right of the widget
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Pad_Data is record
+   type Horizontal_Pad_Data is record
       Left: Pixel_Data;
       Right: Pixel_Data;
    end record;
    -- ****
 
-   -- ****d* Widget/Widget.Empty_Pad_Data
+   -- ****d* Widget/Widget.Default_Horizontal_Pad_Data
    -- FUNCTION
    -- Default value for Pad_Data - no padding at all
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   Default_Pad_Data: constant Pad_Data :=
-     Pad_Data'(others => Empty_Pixel_Data);
+   Default_Horizontal_Pad_Data: constant Horizontal_Pad_Data :=
+     Horizontal_Pad_Data'(others => Empty_Pixel_Data);
      -- ****
 
      -- ****s* Widget/Widget.Bbox_Data
@@ -577,7 +577,7 @@ package Tk.Widget is
    function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter with
       Pre => Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Tk_Interp", Mode => Nominal),
-      Import => True,
+      Import => TRUE,
       Convention => C,
       External_Name => "Tk_Interp";
       -- ****
@@ -598,7 +598,7 @@ package Tk.Widget is
    function Tk_Window_Id(Widgt: Tk_Widget) return Tk_Window with
       Pre => Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Tk_Window_Id", Mode => Nominal),
-      Import => True,
+      Import => TRUE,
       Convention => C,
       External_Name => "Get_Window_Id";
       -- ****
@@ -670,7 +670,7 @@ package Tk.Widget is
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Justify_Type", Mode => Nominal);
    procedure Option_Image
-     (Name: String; Value: Pad_Data;
+     (Name: String; Value: Horizontal_Pad_Data;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Pad_Data", Mode => Nominal);
