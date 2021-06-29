@@ -39,7 +39,7 @@ package body Tk.Widget.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Widgets_Array_Image_8ee9dc_b1233a
+   function Wrap_Test_Widgets_Array_Image_8ee9dc_a68b37
      (Widgets: Widgets_Array) return String is
    begin
       begin
@@ -52,12 +52,13 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Widgets_Array_Image test requirement violated");
       end;
       declare
-         Test_Widgets_Array_Image_8ee9dc_b1233a_Result: constant String :=
+         Test_Widgets_Array_Image_8ee9dc_a68b37_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Widgets_Array_Image
              (Widgets);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (Test_Widgets_Array_Image_8ee9dc_a68b37_Result'Length > 0);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -65,15 +66,15 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Widgets_Array_Image test commitment violated");
          end;
-         return Test_Widgets_Array_Image_8ee9dc_b1233a_Result;
+         return Test_Widgets_Array_Image_8ee9dc_a68b37_Result;
       end;
-   end Wrap_Test_Widgets_Array_Image_8ee9dc_b1233a;
+   end Wrap_Test_Widgets_Array_Image_8ee9dc_a68b37;
 --  end read only
 
 --  begin read only
    procedure Test_Widgets_Array_Image_test_widgets_array_image
      (Gnattest_T: in out Test);
-   procedure Test_Widgets_Array_Image_8ee9dc_b1233a
+   procedure Test_Widgets_Array_Image_8ee9dc_a68b37
      (Gnattest_T: in out Test) renames
      Test_Widgets_Array_Image_test_widgets_array_image;
 --  id:2.2/8ee9dccd40bd054f/Widgets_Array_Image/1/0/test_widgets_array_image/
@@ -81,7 +82,7 @@ package body Tk.Widget.Test_Data.Tests is
      (Gnattest_T: in out Test) is
       function Widgets_Array_Image
         (Widgets: Widgets_Array) return String renames
-        Wrap_Test_Widgets_Array_Image_8ee9dc_b1233a;
+        Wrap_Test_Widgets_Array_Image_8ee9dc_a68b37;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -241,7 +242,7 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Tk_Path_Name_5c8bcc_85a34c
+   function Wrap_Test_Tk_Path_Name_5c8bcc_22ac87
      (Widgt: Tk_Widget) return String is
    begin
       begin
@@ -254,11 +255,11 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Tk_PathName test requirement violated");
       end;
       declare
-         Test_Tk_Path_Name_5c8bcc_85a34c_Result: constant String :=
+         Test_Tk_Path_Name_5c8bcc_22ac87_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Tk_Path_Name(Widgt);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert(Test_Tk_Path_Name_5c8bcc_22ac87_Result'Length > 0);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -266,19 +267,19 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Tk_PathName test commitment violated");
          end;
-         return Test_Tk_Path_Name_5c8bcc_85a34c_Result;
+         return Test_Tk_Path_Name_5c8bcc_22ac87_Result;
       end;
-   end Wrap_Test_Tk_Path_Name_5c8bcc_85a34c;
+   end Wrap_Test_Tk_Path_Name_5c8bcc_22ac87;
 --  end read only
 
 --  begin read only
    procedure Test_Tk_Path_Name_test_tk_pathname(Gnattest_T: in out Test);
-   procedure Test_Tk_Path_Name_5c8bcc_85a34c(Gnattest_T: in out Test) renames
+   procedure Test_Tk_Path_Name_5c8bcc_22ac87(Gnattest_T: in out Test) renames
      Test_Tk_Path_Name_test_tk_pathname;
 --  id:2.2/5c8bcc67c7e58aca/Tk_Path_Name/1/0/test_tk_pathname/
    procedure Test_Tk_Path_Name_test_tk_pathname(Gnattest_T: in out Test) is
       function Tk_Path_Name(Widgt: Tk_Widget) return String renames
-        Wrap_Test_Tk_Path_Name_5c8bcc_85a34c;
+        Wrap_Test_Tk_Path_Name_5c8bcc_22ac87;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2327,20 +2328,38 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Destroy_568000_523e35(Widgt: in out Tk_Widget) is
+   procedure Wrap_Test_Destroy_568000_03a39f(Widgt: in out Tk_Widget) is
    begin
+      begin
+         pragma Assert(Widgt /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Destroy test requirement violated");
+      end;
       GNATtest_Generated.GNATtest_Standard.Tk.Widget.Destroy(Widgt);
-   end Wrap_Test_Destroy_568000_523e35;
+      begin
+         pragma Assert(Widgt = Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-widget.ads:0:):Test_Destroy test commitment violated");
+      end;
+   end Wrap_Test_Destroy_568000_03a39f;
 --  end read only
 
 --  begin read only
    procedure Test_Destroy_test_destroy(Gnattest_T: in out Test);
-   procedure Test_Destroy_568000_523e35(Gnattest_T: in out Test) renames
+   procedure Test_Destroy_568000_03a39f(Gnattest_T: in out Test) renames
      Test_Destroy_test_destroy;
 --  id:2.2/568000e013c6ee78/Destroy/1/0/test_destroy/
    procedure Test_Destroy_test_destroy(Gnattest_T: in out Test) is
       procedure Destroy(Widgt: in out Tk_Widget) renames
-        Wrap_Test_Destroy_568000_523e35;
+        Wrap_Test_Destroy_568000_03a39f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
