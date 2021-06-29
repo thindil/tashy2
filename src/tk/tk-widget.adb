@@ -76,7 +76,7 @@ package body Tk.Widget is
       function Tk_Name_To_Window
         (Interp: Tcl_Interpreter; Path_Name_C: chars_ptr; Tk_Win: Tk_Widget)
          return Tk_Widget with
-         Import => TRUE,
+         Import => True,
          Convention => C,
          External_Name => "Tk_NameToWindow";
    begin
@@ -88,7 +88,7 @@ package body Tk.Widget is
 
    function Tk_Path_Name(Widgt: Tk_Widget) return String is
       function Get_Path_Name(Tk_Win: Tk_Widget) return chars_ptr with
-         Import => TRUE,
+         Import => True,
          Convention => C,
          External_Name => "Get_PathName";
    begin
@@ -202,6 +202,24 @@ package body Tk.Widget is
             Append
               (Source => Options_String,
                New_Item => " " & Pixel_Data_Image(Value => Value.Right));
+         end if;
+         Append(Source => Options_String, New_Item => "}");
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: String; Value: Vertical_Pad_Data;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value.Top.Value > -1.0 then
+         Append
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " {" & Pixel_Data_Image(Value => Value.Top));
+         if Value.Bottom.Value > -1.0 then
+            Append
+              (Source => Options_String,
+               New_Item => " " & Pixel_Data_Image(Value => Value.Bottom));
          end if;
          Append(Source => Options_String, New_Item => "}");
       end if;
@@ -476,7 +494,7 @@ package body Tk.Widget is
 
    procedure Destroy(Widgt: in out Tk_Widget) is
       procedure Tk_Destroy_Window(Tk_Win: Tk_Widget) with
-         Import => TRUE,
+         Import => True,
          Convention => C,
          External_Name => "Tk_DestroyWindow";
    begin
