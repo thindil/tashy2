@@ -70,12 +70,8 @@ begin
      (Child => Display_Label,
       Options =>
         (Sticky => To_Tcl_String("e"),
-         Pad_Y =>
-           (Left => (Value => 5.0, Value_Unit => PIXEL),
-            Right => (Value => 5.0, Value_Unit => PIXEL)),
-         Pad_X =>
-           (Left => (Value => 10.0, Value_Unit => PIXEL),
-            Right => (Value => 10.0, Value_Unit => PIXEL)),
+         Pad_Y => (Left => (Value => 5.0, Value_Unit => <>), Right => <>),
+         Pad_X => (Left => (Value => 10.0, Value_Unit => <>), Right => <>),
          others => <>));
    Column_Configure(Main_Window, Display_Label, (Weight => 1, others => <>));
 
