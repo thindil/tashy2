@@ -343,12 +343,37 @@ package Tk.Widget is
 
    -- ****d* Widget/Widget.Default_Horizontal_Pad_Data
    -- FUNCTION
-   -- Default value for Pad_Data - no padding at all
+   -- Default value for Horizontal_Pad_Data - no padding at all
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    Default_Horizontal_Pad_Data: constant Horizontal_Pad_Data :=
      Horizontal_Pad_Data'(others => Empty_Pixel_Data);
+     -- ****
+
+   -- ****s* Widget/Widget.Vertical_Pad_Data
+   -- FUNCTION
+   -- Data structure used to store infomation about vertical padding
+   -- OPTIONS
+   -- Top    - Padding on the top of the widget
+   -- Bottom - Padding on the bottom of the widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Vertical_Pad_Data is record
+      Top: Pixel_Data;
+      Bottom: Pixel_Data;
+   end record;
+   -- ****
+
+   -- ****d* Widget/Widget.Default_Vertical_Pad_Data
+   -- FUNCTION
+   -- Default value for Vertical_Pad_Data - no padding at all
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   Default_Vertical_Pad_Data: constant Vertical_Pad_Data :=
+     Vertical_Pad_Data'(others => Empty_Pixel_Data);
      -- ****
 
      -- ****s* Widget/Widget.Bbox_Data
@@ -577,7 +602,7 @@ package Tk.Widget is
    function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter with
       Pre => Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Tk_Interp", Mode => Nominal),
-      Import => TRUE,
+      Import => True,
       Convention => C,
       External_Name => "Tk_Interp";
       -- ****
@@ -598,7 +623,7 @@ package Tk.Widget is
    function Tk_Window_Id(Widgt: Tk_Widget) return Tk_Window with
       Pre => Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Tk_Window_Id", Mode => Nominal),
-      Import => TRUE,
+      Import => True,
       Convention => C,
       External_Name => "Get_Window_Id";
       -- ****
@@ -674,6 +699,12 @@ package Tk.Widget is
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Pad_Data", Mode => Nominal);
+   procedure Option_Image
+     (Name: String; Value: Vertical_Pad_Data;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0,
+      Test_Case => (Name => "Test_Option_Image_Vertical_Pad_Data",
+       Mode => Nominal);
    procedure Option_Image
      (Name: String; Value: Tk_Widget;
       Options_String: in out Unbounded_String) with
