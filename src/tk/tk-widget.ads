@@ -363,10 +363,10 @@ package Tk.Widget is
      -- 8.6.0 - Added
      -- SOURCE
    type Bbox_Data is record
-      Start_X: Natural;
-      Start_Y: Natural;
-      Width: Natural;
-      Height: Natural;
+      Start_X: Natural := 0;
+      Start_Y: Natural := 0;
+      Width: Natural := 0;
+      Height: Natural := 0;
    end record;
    -- ****
 
@@ -473,6 +473,7 @@ package Tk.Widget is
    -- SOURCE
    function Widgets_Array_Image(Widgets: Widgets_Array) return String with
       Pre => Widgets'Length > 0,
+      Post => Widgets_Array_Image'Result'Length > 0,
       Test_Case => (Name => "Test_Widgets_Array_Image", Mode => Nominal);
       -- ****
 
@@ -510,7 +511,8 @@ package Tk.Widget is
       -- -- Convert Pixel_Data 2.0 PIXEL to String
       -- PixelString: constant String := Pixel_Data_Image(Pixel_Data'(2.0, PIXEL));
       -- SOURCE
-   function Pixel_Data_Image(Value: Pixel_Data) return String;
+   function Pixel_Data_Image(Value: Pixel_Data) return String with
+      Post => Pixel_Data_Image'Result'Length > 0;
    -- ****
 
    ---------------------------------
@@ -555,6 +557,7 @@ package Tk.Widget is
       -- SOURCE
    function Tk_Path_Name(Widgt: Tk_Widget) return String with
       Pre => Widgt /= Null_Widget,
+      Post => Tk_Path_Name'Result'Length > 0,
       Test_Case => (Name => "Test_Tk_PathName", Mode => Nominal);
    -- ****
 
@@ -831,7 +834,9 @@ package Tk.Widget is
    -- destroy Widget
    -- SOURCE
    procedure Destroy(Widgt: in out Tk_Widget) with
-      Test_Case => (Name => "Test_Destroy", Mode => Robustness);
+      Pre => Widgt /= Null_Widget,
+      Post => Widgt = Null_Widget,
+      Test_Case => (Name => "Test_Destroy", Mode => Nominal);
    -- ****
 
    ----------------
