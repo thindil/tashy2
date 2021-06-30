@@ -874,8 +874,8 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Option_Image_26a8f7_f0d5d6
-     (Name: String; Value: Pad_Data;
+   procedure Wrap_Test_Option_Image_8ca0c0_f0d5d6
+     (Name: String; Value: Horizontal_Pad_Data;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -898,21 +898,21 @@ package body Tk.Widget.Test_Data.Tests is
               (False,
                "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Pad_Data test commitment violated");
       end;
-   end Wrap_Test_Option_Image_26a8f7_f0d5d6;
+   end Wrap_Test_Option_Image_8ca0c0_f0d5d6;
 --  end read only
 
 --  begin read only
    procedure Test_9_Option_Image_test_option_image_pad_data
      (Gnattest_T: in out Test);
-   procedure Test_Option_Image_26a8f7_f0d5d6(Gnattest_T: in out Test) renames
+   procedure Test_Option_Image_8ca0c0_f0d5d6(Gnattest_T: in out Test) renames
      Test_9_Option_Image_test_option_image_pad_data;
---  id:2.2/26a8f79d8b2d466a/Option_Image/0/0/test_option_image_pad_data/
+--  id:2.2/8ca0c0c7370eb476/Option_Image/0/0/test_option_image_pad_data/
    procedure Test_9_Option_Image_test_option_image_pad_data
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Pad_Data;
+        (Name: String; Value: Horizontal_Pad_Data;
          Options_String: in out Unbounded_String) renames
-        Wrap_Test_Option_Image_26a8f7_f0d5d6;
+        Wrap_Test_Option_Image_8ca0c0_f0d5d6;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -921,13 +921,72 @@ package body Tk.Widget.Test_Data.Tests is
    begin
 
       Option_Image
-        ("myoption", Pad_Data'((2.0, PIXEL), (5.0, PIXEL)), Options_String);
+        ("myoption", Horizontal_Pad_Data'((2.0, PIXEL), (5.0, PIXEL)),
+         Options_String);
       Assert
         (To_String(Options_String) = " -myoption {2.00 5.00}",
-         "Failed to get image for Pad_Array option");
+         "Failed to get image for Horizontal_Pad_Array option");
 
 --  begin read only
    end Test_9_Option_Image_test_option_image_pad_data;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Option_Image_e74cc8_5d77f2
+     (Name: String; Value: Vertical_Pad_Data;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Image_Vertical_Pad_Data test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Vertical_Pad_Data test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_e74cc8_5d77f2;
+--  end read only
+
+--  begin read only
+   procedure Test_10_Option_Image_test_option_image_vertical_pad_data
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_e74cc8_5d77f2(Gnattest_T: in out Test) renames
+     Test_10_Option_Image_test_option_image_vertical_pad_data;
+--  id:2.2/e74cc8ad175b0572/Option_Image/0/0/test_option_image_vertical_pad_data/
+   procedure Test_10_Option_Image_test_option_image_vertical_pad_data
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Vertical_Pad_Data;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_e74cc8_5d77f2;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
+
+   begin
+
+      Option_Image
+        ("myoption2", Vertical_Pad_Data'((20.0, PIXEL), (15.0, PIXEL)),
+         Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption2 {20.00 15.00}",
+         "Failed to get image for Vertical_Pad_Array option");
+
+--  begin read only
+   end Test_10_Option_Image_test_option_image_vertical_pad_data;
 --  end read only
 
 --  begin read only
@@ -959,12 +1018,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_10_Option_Image_test_option_image_tk_widget
+   procedure Test_11_Option_Image_test_option_image_tk_widget
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_22581b_a1b982(Gnattest_T: in out Test) renames
-     Test_10_Option_Image_test_option_image_tk_widget;
+     Test_11_Option_Image_test_option_image_tk_widget;
 --  id:2.2/22581b562d182ab3/Option_Image/0/0/test_option_image_tk_widget/
-   procedure Test_10_Option_Image_test_option_image_tk_widget
+   procedure Test_11_Option_Image_test_option_image_tk_widget
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Tk_Widget;
@@ -992,7 +1051,7 @@ package body Tk.Widget.Test_Data.Tests is
       Destroy(Button);
 
 --  begin read only
-   end Test_10_Option_Image_test_option_image_tk_widget;
+   end Test_11_Option_Image_test_option_image_tk_widget;
 --  end read only
 
 --  begin read only
@@ -1024,12 +1083,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_11_Option_Image_test_option_image_extended_boolean
+   procedure Test_12_Option_Image_test_option_image_extended_boolean
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_08d32e_f8251b(Gnattest_T: in out Test) renames
-     Test_11_Option_Image_test_option_image_extended_boolean;
+     Test_12_Option_Image_test_option_image_extended_boolean;
 --  id:2.2/08d32e5f47f51d1d/Option_Image/0/0/test_option_image_extended_boolean/
-   procedure Test_11_Option_Image_test_option_image_extended_boolean
+   procedure Test_12_Option_Image_test_option_image_extended_boolean
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Extended_Boolean;
@@ -1048,7 +1107,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Extended_Boolean option");
 
 --  begin read only
-   end Test_11_Option_Image_test_option_image_extended_boolean;
+   end Test_12_Option_Image_test_option_image_extended_boolean;
 --  end read only
 
 --  begin read only
@@ -1080,12 +1139,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_12_Option_Image_test_option_image_tk_window
+   procedure Test_13_Option_Image_test_option_image_tk_window
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_5269f4_fb7043(Gnattest_T: in out Test) renames
-     Test_12_Option_Image_test_option_image_tk_window;
+     Test_13_Option_Image_test_option_image_tk_window;
 --  id:2.2/5269f46f63b9ac48/Option_Image/0/0/test_option_image_tk_window/
-   procedure Test_12_Option_Image_test_option_image_tk_window
+   procedure Test_13_Option_Image_test_option_image_tk_window
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Tk_Window;
@@ -1114,7 +1173,7 @@ package body Tk.Widget.Test_Data.Tests is
       Destroy(Button);
 
 --  begin read only
-   end Test_12_Option_Image_test_option_image_tk_window;
+   end Test_13_Option_Image_test_option_image_tk_window;
 --  end read only
 
 --  begin read only
@@ -1146,12 +1205,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_13_Option_Image_test_option_image_anchor_directions
+   procedure Test_14_Option_Image_test_option_image_anchor_directions
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_183a44_55069e(Gnattest_T: in out Test) renames
-     Test_13_Option_Image_test_option_image_anchor_directions;
+     Test_14_Option_Image_test_option_image_anchor_directions;
 --  id:2.2/183a44bf51805f78/Option_Image/0/0/test_option_image_anchor_directions/
-   procedure Test_13_Option_Image_test_option_image_anchor_directions
+   procedure Test_14_Option_Image_test_option_image_anchor_directions
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Anchor_Directions;
@@ -1170,7 +1229,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Anchor_Directions option");
 
 --  begin read only
-   end Test_13_Option_Image_test_option_image_anchor_directions;
+   end Test_14_Option_Image_test_option_image_anchor_directions;
 --  end read only
 
 --  begin read only
@@ -1202,12 +1261,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_14_Option_Image_test_option_image_positive_float
+   procedure Test_15_Option_Image_test_option_image_positive_float
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_2254d6_97b6c7(Gnattest_T: in out Test) renames
-     Test_14_Option_Image_test_option_image_positive_float;
+     Test_15_Option_Image_test_option_image_positive_float;
 --  id:2.2/2254d657bca7a12e/Option_Image/0/0/test_option_image_positive_float/
-   procedure Test_14_Option_Image_test_option_image_positive_float
+   procedure Test_15_Option_Image_test_option_image_positive_float
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Positive_Float;
@@ -1226,7 +1285,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Positive_Float option");
 
 --  begin read only
-   end Test_14_Option_Image_test_option_image_positive_float;
+   end Test_15_Option_Image_test_option_image_positive_float;
 --  end read only
 
 --  begin read only
@@ -1258,12 +1317,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_15_Option_Image_test_option_image_point_position
+   procedure Test_16_Option_Image_test_option_image_point_position
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_e3c074_1ae135(Gnattest_T: in out Test) renames
-     Test_15_Option_Image_test_option_image_point_position;
+     Test_16_Option_Image_test_option_image_point_position;
 --  id:2.2/e3c0749de0cd7904/Option_Image/0/0/test_option_image_point_position/
-   procedure Test_15_Option_Image_test_option_image_point_position
+   procedure Test_16_Option_Image_test_option_image_point_position
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Point_Position;
@@ -1282,7 +1341,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Point_Position option");
 
 --  begin read only
-   end Test_15_Option_Image_test_option_image_point_position;
+   end Test_16_Option_Image_test_option_image_point_position;
 --  end read only
 
 --  begin read only
@@ -1313,12 +1372,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_16_Option_Image_test_option_image_boolean
+   procedure Test_17_Option_Image_test_option_image_boolean
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_7332d0_b72ca9(Gnattest_T: in out Test) renames
-     Test_16_Option_Image_test_option_image_boolean;
+     Test_17_Option_Image_test_option_image_boolean;
 --  id:2.2/7332d0be2739d19f/Option_Image/0/0/test_option_image_boolean/
-   procedure Test_16_Option_Image_test_option_image_boolean
+   procedure Test_17_Option_Image_test_option_image_boolean
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Boolean;
@@ -1337,7 +1396,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Boolean option");
 
 --  begin read only
-   end Test_16_Option_Image_test_option_image_boolean;
+   end Test_17_Option_Image_test_option_image_boolean;
 --  end read only
 
 --  begin read only
@@ -1369,12 +1428,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_17_Option_Image_test_option_image_integer
+   procedure Test_18_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_e5f273_81a16f(Gnattest_T: in out Test) renames
-     Test_17_Option_Image_test_option_image_integer;
+     Test_18_Option_Image_test_option_image_integer;
 --  id:2.2/e5f273869df45ad5/Option_Image/0/0/test_option_image_integer/
-   procedure Test_17_Option_Image_test_option_image_integer
+   procedure Test_18_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Integer; Options_String: in out Unbounded_String;
@@ -1393,7 +1452,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Integer option");
 
 --  begin read only
-   end Test_17_Option_Image_test_option_image_integer;
+   end Test_18_Option_Image_test_option_image_integer;
 --  end read only
 
 --  begin read only
