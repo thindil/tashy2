@@ -23,6 +23,36 @@ package Tk.Grid is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
+   -- ****t* Grid/Grid.Sticky_Type
+   -- FUNCTION
+   -- All possible values of position or stretch the widget in the grid
+   -- OPTIONS
+   -- NONE   - Not set, used to set the empty value for the widget's grid option
+   -- CENTER - Default value, don't modify the widget
+   -- HEIGHT - Resize the widget to the grid height
+   -- WIDTH  - Resize the widget to the grid width
+   -- WHOLE  - Resize the widget in all directions, to take the whole grid
+   -- N      - Position the widget at the top border of the grid
+   -- W      - Position the widget at the left border of the grid
+   -- E      - Position the widget at the right border of the grid
+   -- S      - Position the widget at the bottom border of the grid
+   -- NW     - Position the widget at the top left corner of the grid
+   -- NE     - Position the widget at the top right corner of the grid
+   -- SW     - Position the widget at the bottom left corner of the grid
+   -- SE     - Position the widget at the bottom right corner of the grid
+   -- SOURCE
+   type Sticky_Type is
+     (NONE, CENTER, HEIGHT, WIDTH, WHOLE, N, W, E, S, NW, NE, SW, SE) with
+      Default_Value => NONE;
+      -- ****
+
+      -- ****d* Tk.Grid/Default_Sticky_Value
+      -- FUNCTION
+      -- Default value for the position or stretch of the widget in the grid
+      -- SOURCE
+   Default_Sticky_Value: constant Sticky_Type := CENTER;
+   -- ****
+
    -- ****s* Grid/Grid.Grid_Options
    -- FUNCTION
    -- Data structure for all available grid slaves options
@@ -54,7 +84,7 @@ package Tk.Grid is
       Pad_Y: Vertical_Pad_Data := Default_Vertical_Pad_Data;
       Row: Extended_Natural;
       Row_Span: Extended_Natural;
-      Sticky: Tcl_String;
+      Sticky: Sticky_Type;
    end record;
    -- ****
 

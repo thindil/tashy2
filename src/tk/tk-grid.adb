@@ -61,9 +61,37 @@ package body Tk.Grid is
       Option_Image
         (Name => "rowspan", Value => Options.Row_Span,
          Options_String => Options_String);
-      Option_Image
-        (Name => "sticky", Value => Options.Sticky,
-         Options_String => Options_String);
+      if Options.Sticky /= NONE then
+         Append(Options_String, " -sticky ");
+         case Options.Sticky is
+            when CENTER =>
+               Append(Options_String, "{}");
+            when HEIGHT =>
+               Append(Options_String, "ns");
+            when WIDTH =>
+               Append(Options_String, "we");
+            when WHOLE =>
+               Append(Options_String, "nwes");
+            when N =>
+               Append(Options_String, "n");
+            when W =>
+               Append(Options_String, "w");
+            when E =>
+               Append(Options_String, "e");
+            when S =>
+               Append(Options_String, "s");
+            when NW =>
+               Append(Options_String, "nw");
+            when NE =>
+               Append(Options_String, "ne");
+            when SW =>
+               Append(Options_String, "sw");
+            when SE =>
+               Append(Options_String, "se");
+            when NONE =>
+               null;
+         end case;
+      end if;
       return To_String(Source => Options_String);
    end Options_To_String;
 
@@ -474,8 +502,31 @@ package body Tk.Grid is
                     Vertical_Pad_Data_Value
                       (Value => Result(Start_Index .. End_Index));
                when 10 =>
-                  Options.Sticky :=
-                    To_Tcl_String(Source => Result(Start_Index .. End_Index));
+                  if Result(Start_Index .. End_Index) = "n" then
+                     Options.Sticky := N;
+                  elsif Result(Start_Index .. End_Index) = "s" then
+                     Options.Sticky := S;
+                  elsif Result(Start_Index .. End_Index) = "w" then
+                     Options.Sticky := W;
+                  elsif Result(Start_Index .. End_Index) = "e" then
+                     Options.Sticky := E;
+                  elsif Result(Start_Index .. End_Index) = "{}" then
+                     Options.Sticky := CENTER;
+                  elsif Result(Start_Index .. End_Index) in "nw" | "wn" then
+                     Options.Sticky := NW;
+                  elsif Result(Start_Index .. End_Index) in "ne" | "en" then
+                     Options.Sticky := NE;
+                  elsif Result(Start_Index .. End_Index) in "sw" | "ws" then
+                     Options.Sticky := SW;
+                  elsif Result(Start_Index .. End_Index) in "se" | "es" then
+                     Options.Sticky := SE;
+                  elsif Result(Start_Index .. End_Index) in "ns" | "sn" then
+                     Options.Sticky := HEIGHT;
+                  elsif Result(Start_Index .. End_Index) in "we" | "ew" then
+                     Options.Sticky := WIDTH;
+                  else
+                     Options.Sticky := WHOLE;
+                  end if;
             end case;
          end loop Set_Options_Loop;
       end Parse_Result_Block;
