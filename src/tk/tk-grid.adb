@@ -392,7 +392,8 @@ package body Tk.Grid is
          use Ada.Strings.Fixed;
 
          Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
-         function Pad_Data_Value(Value: String) return Horizontal_Pad_Data is
+         function Horizontal_Pad_Data_Value
+           (Value: String) return Horizontal_Pad_Data is
             Result_List: constant Array_List :=
               Split_List(List => Value, Interpreter => Interpreter);
          begin
@@ -405,7 +406,22 @@ package body Tk.Grid is
                  Pixel_Data_Value
                    (Value => To_Ada_String(Source => Result_List(1)));
             end return;
-         end Pad_Data_Value;
+         end Horizontal_Pad_Data_Value;
+         function Vertical_Pad_Data_Value
+           (Value: String) return Vertical_Pad_Data is
+            Result_List: constant Array_List :=
+              Split_List(List => Value, Interpreter => Interpreter);
+         begin
+            return
+              Result_Pad: Vertical_Pad_Data := Default_Vertical_Pad_Data do
+               Result_Pad.Top :=
+                 Pixel_Data_Value
+                   (Value => To_Ada_String(Source => Result_List(1)));
+               Result_Pad.Bottom :=
+                 Pixel_Data_Value
+                   (Value => To_Ada_String(Source => Result_List(1)));
+            end return;
+         end Vertical_Pad_Data_Value;
       begin
          Set_Options_Loop :
          for I in Options_Names'Range loop
@@ -451,10 +467,12 @@ package body Tk.Grid is
                       (Value => Result(Start_Index .. End_Index));
                when 8 =>
                   Options.Pad_X :=
-                    Pad_Data_Value(Value => Result(Start_Index .. End_Index));
+                    Horizontal_Pad_Data_Value
+                      (Value => Result(Start_Index .. End_Index));
                when 9 =>
                   Options.Pad_Y :=
-                    Pad_Data_Value(Value => Result(Start_Index .. End_Index));
+                    Vertical_Pad_Data_Value
+                      (Value => Result(Start_Index .. End_Index));
                when 10 =>
                   Options.Sticky :=
                     To_Tcl_String(Source => Result(Start_Index .. End_Index));

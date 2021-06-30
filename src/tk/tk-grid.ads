@@ -41,7 +41,6 @@ package Tk.Grid is
    --                  from zero.
    -- Row_Span       - Amount of rows which the widget occupy
    -- Sticky         - Position (or stretch) the widget in the selected directions.
-   --                  Possible values are combinations of 'n', 's', 'w' and 'e'
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
@@ -52,7 +51,7 @@ package Tk.Grid is
       Internal_Pad_X: Pixel_Data;
       Internal_Pad_Y: Pixel_Data;
       Pad_X: Horizontal_Pad_Data := Default_Horizontal_Pad_Data;
-      Pad_Y: Horizontal_Pad_Data := Default_Horizontal_Pad_Data;
+      Pad_Y: Vertical_Pad_Data := Default_Vertical_Pad_Data;
       Row: Extended_Natural;
       Row_Span: Extended_Natural;
       Sticky: Tcl_String;
