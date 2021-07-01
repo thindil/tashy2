@@ -62,32 +62,32 @@ package body Tk.Grid is
         (Name => "rowspan", Value => Options.Row_Span,
          Options_String => Options_String);
       if Options.Sticky /= NONE then
-         Append(Options_String, " -sticky ");
+         Append(Source => Options_String, New_Item => " -sticky ");
          case Options.Sticky is
             when CENTER =>
-               Append(Options_String, "{}");
+               Append(Source => Options_String, New_Item => "{}");
             when HEIGHT =>
-               Append(Options_String, "ns");
+               Append(Source => Options_String, New_Item => "ns");
             when WIDTH =>
-               Append(Options_String, "we");
+               Append(Source => Options_String, New_Item => "we");
             when WHOLE =>
-               Append(Options_String, "nwes");
+               Append(Source => Options_String, New_Item => "nwes");
             when N =>
-               Append(Options_String, "n");
+               Append(Source => Options_String, New_Item => "n");
             when W =>
-               Append(Options_String, "w");
+               Append(Source => Options_String, New_Item => "w");
             when E =>
-               Append(Options_String, "e");
+               Append(Source => Options_String, New_Item => "e");
             when S =>
-               Append(Options_String, "s");
+               Append(Source => Options_String, New_Item => "s");
             when NW =>
-               Append(Options_String, "nw");
+               Append(Source => Options_String, New_Item => "nw");
             when NE =>
-               Append(Options_String, "ne");
+               Append(Source => Options_String, New_Item => "ne");
             when SW =>
-               Append(Options_String, "sw");
+               Append(Source => Options_String, New_Item => "sw");
             when SE =>
-               Append(Options_String, "se");
+               Append(Source => Options_String, New_Item => "se");
             when NONE =>
                null;
          end case;
