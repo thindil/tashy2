@@ -1,3 +1,5 @@
+with Ada.Strings; use Ada.Strings;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Tcl; use Tcl;
 with Tcl.Strings; use Tcl.Strings;
 with Tk; use Tk;
@@ -5,6 +7,7 @@ with Tk.Grid; use Tk.Grid;
 with Tk.MainWindow; use Tk.MainWindow;
 with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
+with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
 with Tk.Wm; use Tk.Wm;
@@ -29,7 +32,7 @@ begin
    -- Set the title for the main window
    Set_Title
      (Window => Main_Window,
-      New_Title => To_Tcl_String("Tashy2 demo - calculator"));
+      New_Title => To_Tcl_String(Source => "Tashy2 demo - calculator"));
 
    -- Set the program's simple menu File with one entry Quit to quit from the
    -- program
@@ -45,14 +48,14 @@ begin
       Add
         (Menu_Widget => File_Menu,
          Options =>
-           (Item_Type => COMMAND, Label => To_Tcl_String("Quit"),
-            Command => To_Tcl_String("exit"), others => <>));
+           (Item_Type => COMMAND, Label => To_Tcl_String(Source => "Quit"),
+            Command => To_Tcl_String(Source => "exit"), others => <>));
       -- Add File menu to the main menu bar
       Add
         (Menu_Widget => Main_Menu,
          Options =>
            (Item_Type => CASCADE, Menu => File_Menu,
-            Label => To_Tcl_String("File"), others => <>));
+            Label => To_Tcl_String(Source => "File"), others => <>));
       -- Add the main menu to the program
       Configure
         (Toplevel_Widget => Main_Window,
@@ -73,7 +76,34 @@ begin
          Pad_Y => (Top => (Value => 5.0, Value_Unit => <>), Bottom => <>),
          Pad_X => (Left => (Value => 10.0, Value_Unit => <>), Right => <>),
          others => <>));
+   -- Resize the display to the width of the main window
    Column_Configure(Main_Window, Display_Label, (Weight => 1, others => <>));
+   -- Add numbers buttons to the program
+   declare
+      Button: Ttk_Button;
+      Button_Text: String(1 .. 1);
+      Column: Extended_Natural := 2;
+      Row: Extended_Natural := 1;
+   begin
+      for I in reverse 1 .. 9 loop
+         Button_Text := Trim(Natural'Image(I), Left);
+         Button :=
+           Create
+             (Path_Name => "." & Button_Text,
+              Options =>
+                Ttk_Button_Options'
+                  (Text => To_Tcl_String(Source => Button_Text),
+                   others => <>));
+         Add
+           (Child => Button,
+            Options => (Column => Column, Row => Row, others => <>));
+         Column := Column - 1;
+         if Column = -1 then
+            Column := 2;
+            Row := Row + 1;
+         end if;
+      end loop;
+   end;
 
    -- Start the main Tk event loop
    Tk_Main_Loop;
