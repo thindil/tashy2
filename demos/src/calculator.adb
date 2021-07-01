@@ -69,7 +69,7 @@ begin
    Add
      (Child => Display_Label,
       Options =>
-        (Sticky => To_Tcl_String("e"),
+        (Sticky => E,
          Pad_Y => (Top => (Value => 5.0, Value_Unit => <>), Bottom => <>),
          Pad_X => (Left => (Value => 10.0, Value_Unit => <>), Right => <>),
          others => <>));
