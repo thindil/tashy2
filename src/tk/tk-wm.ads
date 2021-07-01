@@ -206,10 +206,10 @@ package Tk.Wm is
    -- 8.6.0 - Added
    -- SOURCE
    type Window_Geometry is record
-      Width: Natural;
-      Height: Natural;
-      X: Natural;
-      Y: Natural;
+      Width: Natural := 0;
+      Height: Natural := 0;
+      X: Natural := 0;
+      Y: Natural := 0;
    end record;
    -- ****
 
@@ -237,10 +237,10 @@ package Tk.Wm is
      -- 8.6.0 - Added
      -- SOURCE
    type Window_Grid_Geometry is record
-      Base_Width: Natural;
-      Base_Height: Natural;
-      Width_Inc: Natural;
-      Height_Inc: Natural;
+      Base_Width: Natural := 0;
+      Base_Height: Natural := 0;
+      Width_Inc: Natural := 0;
+      Height_Inc: Natural := 0;
    end record;
    -- ****
 
@@ -270,10 +270,10 @@ package Tk.Wm is
      -- 8.6.0 - Added
      -- SOURCE
    type Aspect_Data is record
-      Min_Numer: Natural;
-      Min_Denom: Natural;
-      Max_Numer: Natural;
-      Max_Denom: Natural;
+      Min_Numer: Natural := 0;
+      Min_Denom: Natural := 0;
+      Max_Numer: Natural := 0;
+      Max_Denom: Natural := 0;
    end record;
    -- ****
 
@@ -299,8 +299,8 @@ package Tk.Wm is
    -- 8.6.0 - Added
    -- SOURCE
    type Window_Size is record
-      Width: Natural;
-      Height: Natural;
+      Width: Natural := 0;
+      Height: Natural := 0;
    end record;
    -- ****
 
@@ -345,8 +345,8 @@ package Tk.Wm is
    -- 8.6.0 - Added
    -- SOURCE
    type Resizable_Data is record
-      Width: Boolean;
-      Height: Boolean;
+      Width: Boolean := True;
+      Height: Boolean := True;
    end record;
    -- ****
 
