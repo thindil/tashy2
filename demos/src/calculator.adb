@@ -8,6 +8,7 @@ with Tk.MainWindow; use Tk.MainWindow;
 with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
 with Tk.TtkButton; use Tk.TtkButton;
+with Tk.TtkFrame; use Tk.TtkFrame;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
 with Tk.Wm; use Tk.Wm;
@@ -78,18 +79,25 @@ begin
          others => <>));
    -- Resize the display to the width of the main window
    Column_Configure(Main_Window, Display_Label, (Weight => 1, others => <>));
+
    -- Add numbers buttons to the program
    declare
+      -- Create frame for the buttons
+      Numbers_Frame: constant Ttk_Frame :=
+        Create(Path_Name => ".numbers", Options => Default_Ttk_Frame_Options);
       Button: Ttk_Button;
       Button_Text: String(1 .. 1);
       Column: Extended_Natural := 2;
       Row: Extended_Natural := 1;
    begin
+      -- Create buttons for numbers from 1 to 9 and add them to their parents
+      -- frame
       for I in reverse 1 .. 9 loop
          Button_Text := Trim(Natural'Image(I), Left);
          Button :=
            Create
-             (Path_Name => "." & Button_Text,
+             (Path_Name =>
+                Tk_Path_Name(Widgt => Numbers_Frame) & "." & Button_Text,
               Options =>
                 Ttk_Button_Options'
                   (Text => To_Tcl_String(Source => Button_Text),
@@ -103,6 +111,19 @@ begin
             Row := Row + 1;
          end if;
       end loop;
+      -- Create button for number 0 and add it to the parent frame
+      Button :=
+        Create
+          (Path_Name => Tk_Path_Name(Widgt => Numbers_Frame) & ".0",
+           Options =>
+             Ttk_Button_Options'
+               (Text => To_Tcl_String(Source => "0"), others => <>));
+      Add
+        (Child => Button,
+         Options =>
+           (Row => Row, Sticky => WIDTH, Column_Span => 3, others => <>));
+      -- Add all buttons to the main window
+      Add(Child => Numbers_Frame);
    end;
 
    -- Start the main Tk event loop
