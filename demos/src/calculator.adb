@@ -110,8 +110,8 @@ begin
                      To_Tcl_String
                        (Source =>
                           "OnClick " & Tk_Path_Name(Widgt => Numbers_Frame) &
-                          "." & Button_Text) &
-                     " " & Tk_Path_Name(Widgt => Display_Label),
+                          "." & Button_Text & " " &
+                          Tk_Path_Name(Widgt => Display_Label)),
                    others => <>));
          Add
            (Child => Button,
