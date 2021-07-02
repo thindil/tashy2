@@ -1,7 +1,7 @@
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
+with Ada.Text_IO;
 with Tcl; use Tcl;
-with System; use System;
 with Tcl.Commands; use Tcl.Commands;
 with Tcl.Strings; use Tcl.Strings;
 with Tk; use Tk;
@@ -14,31 +14,11 @@ with Tk.TtkFrame; use Tk.TtkFrame;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
 with Tk.Wm; use Tk.Wm;
+with CalculatorCommands; use CalculatorCommands;
 
 procedure Calculator is
    Main_Window: Tk_Toplevel;
    Display_Label: Ttk_Label;
-
-   function On_Click
-     (Client_Data: System.Address; Interpreter: Tcl_Interpreter;
-      Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results with
-      Convention => C;
-
-   function On_Click
-     (Client_Data: System.Address; Interpreter: Tcl_Interpreter;
-      Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results is
-      pragma Unreferenced(Client_Data, Argc);
-      Button: constant Ttk_Button :=
-        Get_Widget(Get_Argument(Argv, 1), Interpreter);
-      Label_Options: constant Ttk_Label_Options := Get_Options(Display_Label);
-      Button_Options: constant Ttk_Button_Options := Get_Options(Button);
-   begin
-      Configure
-        (Label => Display_Label,
-         Options =>
-           (Text => Label_Options.Text & Button_Options.Text, others => <>));
-      return TCL_OK;
-   end On_Click;
 
 begin
    -- Initialize Tcl interpreter
@@ -130,7 +110,8 @@ begin
                      To_Tcl_String
                        (Source =>
                           "OnClick " & Tk_Path_Name(Widgt => Numbers_Frame) &
-                          "." & Button_Text),
+                          "." & Button_Text) &
+                     " " & Tk_Path_Name(Widgt => Display_Label),
                    others => <>));
          Add
            (Child => Button,
