@@ -60,7 +60,7 @@ package Tcl.Lists is
    function Split_List
      (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List with
-      Pre => List'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Split_List", Mode => Nominal);
       -- ****
 
