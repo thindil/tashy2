@@ -12,7 +12,7 @@ package body CalculatorCommands is
       Button: constant Ttk_Button :=
         Get_Widget(Get_Argument(Argv, 1), Interpreter);
       Display_Label: constant Ttk_Label := Get_Widget(Get_Argument(Argv, 2), Interpreter);
-      Label_Options: constant Ttk_Label_Options := Get_Options(Get_Widget(Get_Argument(Argv, 2), Interpreter));
+      Label_Options: constant Ttk_Label_Options := Get_Options(Label => Display_Label);
       Button_Options: constant Ttk_Button_Options := Get_Options(Button);
    begin
       Configure
