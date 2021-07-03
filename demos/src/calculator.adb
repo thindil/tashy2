@@ -87,8 +87,9 @@ begin
    -- Add numbers buttons to the program
    declare
       -- Create frame for the buttons
+      Frame_Name: constant String := ".numbers";
       Numbers_Frame: constant Ttk_Frame :=
-        Create(Path_Name => ".numbers", Options => Default_Ttk_Frame_Options);
+        Create(Path_Name => Frame_Name, Options => Default_Ttk_Frame_Options);
       Button: Ttk_Button;
       Button_Text: String(1 .. 1);
       Column: Extended_Natural := 2;
@@ -101,16 +102,14 @@ begin
          Button_Text := Trim(Source => Natural'Image(I), Side => Left);
          Button :=
            Create
-             (Path_Name =>
-                Tk_Path_Name(Widgt => Numbers_Frame) & "." & Button_Text,
+             (Path_Name => Frame_Name & "." & Button_Text,
               Options =>
                 Ttk_Button_Options'
                   (Text => To_Tcl_String(Source => Button_Text),
                    Command =>
                      To_Tcl_String
                        (Source =>
-                          "OnClick " & Tk_Path_Name(Widgt => Numbers_Frame) &
-                          "." & Button_Text & " " &
+                          "OnClick " & Frame_Name & "." & Button_Text & " " &
                           Tk_Path_Name(Widgt => Display_Label)),
                    others => <>));
          Add
