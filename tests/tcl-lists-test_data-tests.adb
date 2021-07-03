@@ -29,12 +29,12 @@ package body Tcl.Lists.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Split_List_908c8a_b5e33c
+   function Wrap_Test_Split_List_908c8a_2f822c
      (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Array_List is
    begin
       begin
-         pragma Assert(List'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert(Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -43,7 +43,7 @@ package body Tcl.Lists.Test_Data.Tests is
                "req_sloc(tcl-lists.ads:0):Test_Split_List test requirement violated");
       end;
       declare
-         Test_Split_List_908c8a_b5e33c_Result: constant Array_List :=
+         Test_Split_List_908c8a_2f822c_Result: constant Array_List :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Lists.Split_List
              (List, Interpreter);
       begin
@@ -56,21 +56,21 @@ package body Tcl.Lists.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-lists.ads:0:):Test_Split_List test commitment violated");
          end;
-         return Test_Split_List_908c8a_b5e33c_Result;
+         return Test_Split_List_908c8a_2f822c_Result;
       end;
-   end Wrap_Test_Split_List_908c8a_b5e33c;
+   end Wrap_Test_Split_List_908c8a_2f822c;
 --  end read only
 
 --  begin read only
    procedure Test_Split_List_test_split_list(Gnattest_T: in out Test);
-   procedure Test_Split_List_908c8a_b5e33c(Gnattest_T: in out Test) renames
+   procedure Test_Split_List_908c8a_2f822c(Gnattest_T: in out Test) renames
      Test_Split_List_test_split_list;
 --  id:2.2/908c8a0cca9c184f/Split_List/1/0/test_split_list/
    procedure Test_Split_List_test_split_list(Gnattest_T: in out Test) is
       function Split_List
         (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Array_List renames
-        Wrap_Test_Split_List_908c8a_b5e33c;
+        Wrap_Test_Split_List_908c8a_2f822c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -82,6 +82,14 @@ package body Tcl.Lists.Test_Data.Tests is
       begin
          Assert
            (My_List'Length = 5, "Failed to convert Tcl list to Ada array.");
+      end;
+
+      declare
+         My_List: constant Array_List := Split_List("");
+      begin
+         Assert
+           (My_List'Length = 0,
+            "Failed to convert empty Tcl list to Ada array.");
       end;
 
 --  begin read only

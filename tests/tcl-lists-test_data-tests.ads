@@ -10,7 +10,7 @@ package Tcl.Lists.Test_Data.Tests is
      .Test with
    null record;
 
-   procedure Test_Split_List_908c8a_b5e33c(Gnattest_T: in out Test);
+   procedure Test_Split_List_908c8a_2f822c(Gnattest_T: in out Test);
    --  tcl-lists.ads:60:4:Split_List:Test_Split_List
 
    procedure Test_Split_List_Variable_b25096_53b238(Gnattest_T: in out Test);
