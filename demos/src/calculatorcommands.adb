@@ -16,8 +16,22 @@ package body CalculatorCommands is
       Label_Options: Ttk_Label_Options := Get_Options(Label => Display_Label);
       Button_Options: constant Ttk_Button_Options := Get_Options(Button);
    begin
-      if Label_Options.Text = To_Tcl_String("0") then
+      if Label_Options.Text = To_Tcl_String(Source => "0") then
          Label_Options.Text := Null_Tcl_String;
+      end if;
+      if Button_Options.Text = To_Unbounded_String("=") then
+         Configure
+           (Label => Display_Label,
+            Options =>
+              (Text =>
+                 To_Tcl_String
+                   (Source =>
+                      Tcl_Eval
+                        (Tcl_Script =>
+                           "expr " &
+                           To_Ada_String(Source => Label_Options.Text))),
+               others => <>));
+         return TCL_OK;
       end if;
       Configure
         (Label => Display_Label,
