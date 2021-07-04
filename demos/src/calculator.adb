@@ -39,6 +39,13 @@ begin
      (Window => Main_Window,
       New_Title => To_Tcl_String(Source => "Tashy2 demo - calculator"));
 
+   -- Set the calculator display label, to show operations and their results
+   Display_Label :=
+     Create
+       (Path_Name => ".display",
+        Options =>
+          Ttk_Label_Options'(Text => To_Tcl_String("0"), others => <>));
+
    -- Set the program's simple menu File with one entry Quit to quit from the
    -- program
    declare
@@ -71,6 +78,9 @@ begin
         (Menu_Widget => Sub_Menu,
          Options =>
            (Item_Type => COMMAND, Label => To_Tcl_String(Source => "Clear"),
+            Command =>
+              To_Tcl_String
+                ("ClearDisplay " & Tk_Path_Name(Widgt => Display_Label)),
             others => <>));
       -- Add Edit menu to the main menu bar
       Add
@@ -84,12 +94,6 @@ begin
          Options => (Menu => Main_Menu, others => <>));
    end;
 
-   -- Set the calculator display label, to show operations and their results
-   Display_Label :=
-     Create
-       (Path_Name => ".display",
-        Options =>
-          Ttk_Label_Options'(Text => To_Tcl_String("0"), others => <>));
    -- Add the display label to the program
    Add
      (Child => Display_Label,
@@ -220,6 +224,11 @@ begin
 
    if Tcl_Create_Command("OnClick", On_Click'Access) = Null_Tcl_Command then
       Ada.Text_IO.Put_Line(Item => "Failed to add OnClick command");
+      return;
+   end if;
+   if Tcl_Create_Command("ClearDisplay", Clear_Display'Access) =
+     Null_Tcl_Command then
+      Ada.Text_IO.Put_Line(Item => "Failed to add ClearDisplay command");
       return;
    end if;
 
