@@ -44,14 +44,14 @@ begin
    declare
       Main_Menu: constant Tk_Menu :=
         Create(Path_Name => ".mainmenu", Options => Default_Menu_Options);
-      File_Menu: constant Tk_Menu :=
+      Sub_Menu: Tk_Menu :=
         Create
           (Path_Name => Tk_Path_Name(Main_Menu) & ".file",
            Options => Menu_Options'(Tear_Off => FALSE, others => <>));
    begin
       -- Add menu entry to quit from the program
       Add
-        (Menu_Widget => File_Menu,
+        (Menu_Widget => Sub_Menu,
          Options =>
            (Item_Type => COMMAND, Label => To_Tcl_String(Source => "Quit"),
             Command => To_Tcl_String(Source => "exit"), others => <>));
@@ -59,8 +59,25 @@ begin
       Add
         (Menu_Widget => Main_Menu,
          Options =>
-           (Item_Type => CASCADE, Menu => File_Menu,
+           (Item_Type => CASCADE, Menu => Sub_Menu,
             Label => To_Tcl_String(Source => "File"), others => <>));
+      -- Create a new submenu Edit
+      Sub_Menu :=
+        Create
+          (Path_Name => Tk_Path_Name(Main_Menu) & ".edit",
+           Options => Menu_Options'(Tear_Off => FALSE, others => <>));
+      -- Add menu entry to clear the display
+      Add
+        (Menu_Widget => Sub_Menu,
+         Options =>
+           (Item_Type => COMMAND, Label => To_Tcl_String(Source => "Clear"),
+            others => <>));
+      -- Add Edit menu to the main menu bar
+      Add
+        (Menu_Widget => Main_Menu,
+         Options =>
+           (Item_Type => CASCADE, Menu => Sub_Menu,
+            Label => To_Tcl_String(Source => "Edit"), others => <>));
       -- Add the main menu to the program
       Configure
         (Toplevel_Widget => Main_Window,
