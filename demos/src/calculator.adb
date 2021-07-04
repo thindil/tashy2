@@ -127,7 +127,13 @@ begin
           (Path_Name => Tk_Path_Name(Widgt => Numbers_Frame) & ".0",
            Options =>
              Ttk_Button_Options'
-               (Text => To_Tcl_String(Source => "0"), others => <>));
+               (Text => To_Tcl_String(Source => "0"),
+                Command =>
+                  To_Tcl_String
+                    (Source =>
+                       "OnClick " & Frame_Name & ".0" & " " &
+                       Tk_Path_Name(Widgt => Display_Label)),
+                others => <>));
       Add
         (Child => Button,
          Options =>
@@ -138,10 +144,11 @@ begin
 
    declare
       -- Create frame for the buttons
+      Frame_Name: constant String := ".operators";
       Operators_Frame: constant Ttk_Frame :=
-        Create
-          (Path_Name => ".operators", Options => Default_Ttk_Frame_Options);
+        Create(Path_Name => Frame_Name, Options => Default_Ttk_Frame_Options);
       Button: Ttk_Button;
+      Button_Name: String(1 .. 1);
       Column: Extended_Natural := 1;
       Row: Extended_Natural := 1;
       Operators: constant array(1 .. 4) of String(1 .. 1) :=
@@ -149,14 +156,18 @@ begin
    begin
       Add_Operators_Buttons_Loop :
       for I in Operators'Range loop
+         Button_Name := Trim(Source => Positive'Image(I), Side => Left);
          Button :=
            Create
-             (Path_Name =>
-                Tk_Path_Name(Widgt => Operators_Frame) & "." &
-                Trim(Source => Positive'Image(I), Side => Left),
+             (Path_Name => Frame_Name & "." & Button_Name,
               Options =>
                 Ttk_Button_Options'
                   (Text => To_Tcl_String(Source => Operators(I)),
+                   Command =>
+                     To_Tcl_String
+                       (Source =>
+                          "OnClick " & Frame_Name & "." & Button_Name & " " &
+                          Tk_Path_Name(Widgt => Display_Label)),
                    others => <>));
          Add
            (Child => Button,
@@ -173,7 +184,13 @@ begin
           (Path_Name => Tk_Path_Name(Widgt => Operators_Frame) & ".equal",
            Options =>
              Ttk_Button_Options'
-               (Text => To_Tcl_String(Source => "="), others => <>));
+               (Text => To_Tcl_String(Source => "="),
+                Command =>
+                  To_Tcl_String
+                    (Source =>
+                       "OnClick " & Frame_Name & ".equal" & " " &
+                       Tk_Path_Name(Widgt => Display_Label)),
+                others => <>));
       Add
         (Child => Button,
          Options =>
