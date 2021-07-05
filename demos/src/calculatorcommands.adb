@@ -1,10 +1,10 @@
+with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Maps; use Ada.Strings.Maps;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Tcl.Strings; use Tcl.Strings;
 with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
-with Ada.Text_IO;
 
 package body CalculatorCommands is
 
@@ -41,15 +41,40 @@ package body CalculatorCommands is
             StartIndex := SignIndex + 1;
          end if;
          while SignIndex > 0 or StartIndex < Expression'Last loop
-            Ada.Text_IO.Put_Line(Result'Img);
             SignIndex := Index(Expression, Operators_Set, StartIndex);
-            exit when SignIndex = 0;
+            if SignIndex = 0 then
+               SignIndex := Expression'Last + 1;
+            end if;
+            case Expression(StartIndex - 1) is
+               when '+' =>
+                  Result :=
+                    Result +
+                    Integer'Value(Expression(StartIndex .. SignIndex - 1));
+               when '-' =>
+                  Result :=
+                    Result -
+                    Integer'Value(Expression(StartIndex .. SignIndex - 1));
+               when '*' =>
+                  Result :=
+                    Result *
+                    Integer'Value(Expression(StartIndex .. SignIndex - 1));
+               when '/' =>
+                  Result :=
+                    Result /
+                    Integer'Value(Expression(StartIndex .. SignIndex - 1));
+               when others =>
+                  null;
+            end case;
             StartIndex := SignIndex + 1;
+            exit when StartIndex > Expression'Last;
          end loop;
          Configure
            (Label => Display_Label,
             Options =>
-              (Text => To_Tcl_String(Source => Integer'Image(Result)),
+              (Text =>
+                 To_Tcl_String
+                   (Source =>
+                      Trim(Source => Integer'Image(Result), Side => Both)),
                others => <>));
          return TCL_OK;
       end if;
