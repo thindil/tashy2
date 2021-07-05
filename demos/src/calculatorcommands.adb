@@ -1,8 +1,10 @@
 with Ada.Strings.Maps; use Ada.Strings.Maps;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Tcl.Strings; use Tcl.Strings;
 with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
+with Ada.Text_IO;
 
 package body CalculatorCommands is
 
@@ -22,21 +24,32 @@ package body CalculatorCommands is
       Button_Options: constant Ttk_Button_Options :=
         Get_Options(Button => Button);
       Operators_Set: constant Character_Set := To_Set(Sequence => "*+/-");
+      Result: Integer := 0;
+      StartIndex: Positive := 1;
+      SignIndex: Natural := 0;
+      Expression: constant String := To_Ada_String(Label_Options.Text);
    begin
       if Label_Options.Text = To_Tcl_String(Source => "0") then
          Label_Options.Text := Null_Tcl_String;
       end if;
       if Button_Options.Text = To_Unbounded_String(Source => "=") then
+         SignIndex := Index(Expression, Operators_Set, StartIndex);
+         if SignIndex = 0 then
+            Result := Integer'Value(Expression);
+         else
+            Result := Integer'Value(Expression(StartIndex .. SignIndex - 1));
+            StartIndex := SignIndex + 1;
+         end if;
+         while SignIndex > 0 or StartIndex < Expression'Last loop
+            Ada.Text_IO.Put_Line(Result'Img);
+            SignIndex := Index(Expression, Operators_Set, StartIndex);
+            exit when SignIndex = 0;
+            StartIndex := SignIndex + 1;
+         end loop;
          Configure
            (Label => Display_Label,
             Options =>
-              (Text =>
-                 To_Tcl_String
-                   (Source =>
-                      Tcl_Eval
-                        (Tcl_Script =>
-                           "expr " &
-                           To_Ada_String(Source => Label_Options.Text))),
+              (Text => To_Tcl_String(Source => Integer'Image(Result)),
                others => <>));
          return TCL_OK;
       end if;
