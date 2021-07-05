@@ -24,7 +24,7 @@ package body CalculatorCommands is
       Button_Options: constant Ttk_Button_Options :=
         Get_Options(Button => Button);
       Operators_Set: constant Character_Set := To_Set(Sequence => "*+/-");
-      Result: Integer := 0;
+      Result: Float := 0.0;
       StartIndex: Positive := 1;
       SignIndex: Natural := 0;
       Expression: constant String := To_Ada_String(Label_Options.Text);
@@ -35,9 +35,9 @@ package body CalculatorCommands is
       if Button_Options.Text = To_Unbounded_String(Source => "=") then
          SignIndex := Index(Expression, Operators_Set, StartIndex);
          if SignIndex = 0 then
-            Result := Integer'Value(Expression);
+            Result := Float'Value(Expression);
          else
-            Result := Integer'Value(Expression(StartIndex .. SignIndex - 1));
+            Result := Float'Value(Expression(StartIndex .. SignIndex - 1));
             StartIndex := SignIndex + 1;
          end if;
          while SignIndex > 0 or StartIndex < Expression'Last loop
@@ -49,19 +49,19 @@ package body CalculatorCommands is
                when '+' =>
                   Result :=
                     Result +
-                    Integer'Value(Expression(StartIndex .. SignIndex - 1));
+                    Float'Value(Expression(StartIndex .. SignIndex - 1));
                when '-' =>
                   Result :=
                     Result -
-                    Integer'Value(Expression(StartIndex .. SignIndex - 1));
+                    Float'Value(Expression(StartIndex .. SignIndex - 1));
                when '*' =>
                   Result :=
                     Result *
-                    Integer'Value(Expression(StartIndex .. SignIndex - 1));
+                    Float'Value(Expression(StartIndex .. SignIndex - 1));
                when '/' =>
                   Result :=
                     Result /
-                    Integer'Value(Expression(StartIndex .. SignIndex - 1));
+                    Float'Value(Expression(StartIndex .. SignIndex - 1));
                when others =>
                   null;
             end case;
@@ -74,7 +74,7 @@ package body CalculatorCommands is
               (Text =>
                  To_Tcl_String
                    (Source =>
-                      Trim(Source => Integer'Image(Result), Side => Both)),
+                      Trim(Source => Float'Image(Result), Side => Both)),
                others => <>));
          return TCL_OK;
       end if;
