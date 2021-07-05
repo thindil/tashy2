@@ -1,6 +1,7 @@
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Maps; use Ada.Strings.Maps;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
+with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 with Tcl.Strings; use Tcl.Strings;
 with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkLabel; use Tk.TtkLabel;
@@ -28,6 +29,7 @@ package body CalculatorCommands is
       StartIndex: Positive := 1;
       SignIndex: Natural := 0;
       Expression: constant String := To_Ada_String(Label_Options.Text);
+      Result_String: String(1 .. 30);
    begin
       if Label_Options.Text = To_Tcl_String(Source => "0") then
          Label_Options.Text := Null_Tcl_String;
@@ -68,14 +70,11 @@ package body CalculatorCommands is
             StartIndex := SignIndex + 1;
             exit when StartIndex > Expression'Last;
          end loop;
+         Put(To => Result_String, Item => Result, Aft => 10, Exp => 0);
          Configure
            (Label => Display_Label,
             Options =>
-              (Text =>
-                 To_Tcl_String
-                   (Source =>
-                      Trim(Source => Float'Image(Result), Side => Both)),
-               others => <>));
+              (Text => To_Tcl_String(Source => Result_String), others => <>));
          return TCL_OK;
       end if;
       Configure
