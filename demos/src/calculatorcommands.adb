@@ -70,7 +70,13 @@ package body CalculatorCommands is
             StartIndex := SignIndex + 1;
             exit when StartIndex > Expression'Last;
          end loop;
-         Put(To => Result_String, Item => Result, Aft => 10, Exp => 0);
+         Put(To => Result_String, Item => Result, Aft => 5, Exp => 0);
+         if Result_String(Result_String'Last - 5 .. Result_String'Last) =
+           ".00000" then
+            Result_String :=
+              "      " &
+              Result_String(Result_String'First .. Result_String'Last - 6);
+         end if;
          Configure
            (Label => Display_Label,
             Options =>
