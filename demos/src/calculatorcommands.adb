@@ -71,12 +71,9 @@ package body CalculatorCommands is
             exit when StartIndex > Expression'Last;
          end loop;
          Put(To => Result_String, Item => Result, Aft => 5, Exp => 0);
-         if Result_String(Result_String'Last - 5 .. Result_String'Last) =
-           ".00000" then
-            Result_String :=
-              "      " &
-              Result_String(Result_String'First .. Result_String'Last - 6);
-         end if;
+         Trim
+           (Source => Result_String, Left => Null_Set,
+            Right => To_Set(Sequence => ".0"));
          Configure
            (Label => Display_Label,
             Options =>
