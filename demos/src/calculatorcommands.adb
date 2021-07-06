@@ -77,7 +77,8 @@ package body CalculatorCommands is
          Configure
            (Label => Display_Label,
             Options =>
-              (Text => To_Tcl_String(Source => Result_String), others => <>));
+              (Text => To_Tcl_String(Source => Trim(Result_String, Both)),
+               others => <>));
          return TCL_OK;
       end if;
       Configure
