@@ -26,50 +26,57 @@ package body CalculatorCommands is
         Get_Options(Button => Button);
       Operators_Set: constant Character_Set := To_Set(Sequence => "*+/-");
       Result: Float := 0.0;
-      StartIndex: Positive := 1;
-      SignIndex: Natural := 0;
-      Expression: constant String := To_Ada_String(Label_Options.Text);
+      Start_Index: Positive := 1;
+      Sign_Index: Natural := 0;
+      Expression: constant String :=
+        To_Ada_String(Source => Label_Options.Text);
       Result_String: String(1 .. 30);
    begin
       if Label_Options.Text = To_Tcl_String(Source => "0") then
          Label_Options.Text := Null_Tcl_String;
       end if;
       if Button_Options.Text = To_Unbounded_String(Source => "=") then
-         SignIndex := Index(Expression, Operators_Set, StartIndex);
-         if SignIndex = 0 then
+         Sign_Index :=
+           Index
+             (Source => Expression, Set => Operators_Set, From => Start_Index);
+         if Sign_Index = 0 then
             Result := Float'Value(Expression);
          else
-            Result := Float'Value(Expression(StartIndex .. SignIndex - 1));
-            StartIndex := SignIndex + 1;
+            Result := Float'Value(Expression(Start_Index .. Sign_Index - 1));
+            Start_Index := Sign_Index + 1;
          end if;
-         while SignIndex > 0 or StartIndex < Expression'Last loop
-            SignIndex := Index(Expression, Operators_Set, StartIndex);
-            if SignIndex = 0 then
-               SignIndex := Expression'Last + 1;
+         Count_Result_Loop :
+         while Sign_Index > 0 or Start_Index < Expression'Last loop
+            Sign_Index :=
+              Index
+                (Source => Expression, Set => Operators_Set,
+                 From => Start_Index);
+            if Sign_Index = 0 then
+               Sign_Index := Expression'Last + 1;
             end if;
-            case Expression(StartIndex - 1) is
+            case Expression(Start_Index - 1) is
                when '+' =>
                   Result :=
                     Result +
-                    Float'Value(Expression(StartIndex .. SignIndex - 1));
+                    Float'Value(Expression(Start_Index .. Sign_Index - 1));
                when '-' =>
                   Result :=
                     Result -
-                    Float'Value(Expression(StartIndex .. SignIndex - 1));
+                    Float'Value(Expression(Start_Index .. Sign_Index - 1));
                when '*' =>
                   Result :=
                     Result *
-                    Float'Value(Expression(StartIndex .. SignIndex - 1));
+                    Float'Value(Expression(Start_Index .. Sign_Index - 1));
                when '/' =>
                   Result :=
                     Result /
-                    Float'Value(Expression(StartIndex .. SignIndex - 1));
+                    Float'Value(Expression(Start_Index .. Sign_Index - 1));
                when others =>
                   null;
             end case;
-            StartIndex := SignIndex + 1;
-            exit when StartIndex > Expression'Last;
-         end loop;
+            Start_Index := Sign_Index + 1;
+            exit Count_Result_Loop when Start_Index > Expression'Last;
+         end loop Count_Result_Loop;
          Put(To => Result_String, Item => Result, Aft => 5, Exp => 0);
          Trim
            (Source => Result_String, Left => Null_Set,
@@ -77,7 +84,9 @@ package body CalculatorCommands is
          Configure
            (Label => Display_Label,
             Options =>
-              (Text => To_Tcl_String(Source => Trim(Result_String, Both)),
+              (Text =>
+                 To_Tcl_String
+                   (Source => Trim(Source => Result_String, Side => Both)),
                others => <>));
          return TCL_OK;
       end if;
