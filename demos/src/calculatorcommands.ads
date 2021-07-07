@@ -28,10 +28,10 @@ package CalculatorCommands is
    -- Update display with the pressed button text or count its expression if
    -- button equal was pressed
    -- PARAMETERS
-   -- Client_Data - Optional data passed to the function. Unused
-   -- Interpreter - Tcl interpreter on which the command was invoked.
-   -- Argc        - The amount of arguments passed to the command. Unused
-   -- Argv        - The array of arguments passed to the command
+   -- Unused_Client_Data - Optional data passed to the function.
+   -- Interpreter        - Tcl interpreter on which the command was invoked.
+   -- Unused_Argc        - The amount of arguments passed to the command.
+   -- Argv               - The array of arguments passed to the command
    -- RESULT
    -- This function always return TCL_OK
    -- COMMANDS
@@ -40,8 +40,9 @@ package CalculatorCommands is
    -- is the Tk path name for the calculator display widget
    -- SOURCE
    function On_Click
-     (Client_Data: System.Address; Interpreter: Tcl_Interpreter;
-      Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results with
+     (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
+      Unused_Argc: Positive; Argv: Argv_Pointer.Pointer)
+      return Tcl_Results with
       Convention => C;
       -- ****
 
