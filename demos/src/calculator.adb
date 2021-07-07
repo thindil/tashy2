@@ -186,8 +186,8 @@ begin
       Button_Name: String(1 .. 1);
       Column: Extended_Natural := 1;
       Row: Extended_Natural := 1;
-      Operators: constant array(1 .. 4) of String(1 .. 1) :=
-        ("+", "-", "*", "/");
+      Operators: constant array(1 .. 6) of String(1 .. 1) :=
+        ("+", "-", "*", "/", "=", ".");
    begin
       Add_Operators_Buttons_Loop :
       for I in Operators'Range loop
@@ -213,23 +213,6 @@ begin
             Row := Row + 1;
          end if;
       end loop Add_Operators_Buttons_Loop;
-      -- Create button for equal operator and add it to the parent frame
-      Button :=
-        Create
-          (Path_Name => Tk_Path_Name(Widgt => Operators_Frame) & ".equal",
-           Options =>
-             Ttk_Button_Options'
-               (Text => To_Tcl_String(Source => "="),
-                Command =>
-                  To_Tcl_String
-                    (Source =>
-                       "OnClick " & Frame_Name & ".equal" & " " &
-                       Tk_Path_Name(Widgt => Display_Label)),
-                others => <>));
-      Add
-        (Child => Button,
-         Options =>
-           (Row => Row, Sticky => WIDTH, Column_Span => 2, others => <>));
       -- Add all operations buttons to the main window
       Add
         (Child => Operators_Frame,
