@@ -53,6 +53,15 @@ package body CalculatorCommands is
       -- If the user pressed equal button, count value of expression from
       -- the display
       if Button_Options.Text = To_Unbounded_String(Source => "=") then
+         -- Find the last occurence of mathematical operator
+         Sign_Index :=
+            Index
+               (Source => Expression, Set => Operators_Set, Going => Backward);
+            -- If mathematical operator is the last character, quit, probably the
+            -- user pressed the button by accident
+         if Sign_Index = Expression'Length then
+            return TCL_OK;
+         end if;
          -- Find the first occurence of mathematical operator
          Sign_Index :=
            Index
