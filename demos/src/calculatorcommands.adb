@@ -24,9 +24,8 @@ with Tk.Widget; use Tk.Widget;
 package body CalculatorCommands is
 
    function On_Click
-     (Client_Data: System.Address; Interpreter: Tcl_Interpreter;
-      Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results is
-      pragma Unreferenced(Client_Data, Argc);
+     (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
+      Unused_Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results is
       Button: constant Ttk_Button :=
         Get_Widget
           (Path_Name => Get_Argument(Arguments_Pointer => Argv, Index => 1),
@@ -52,7 +51,7 @@ package body CalculatorCommands is
       end if;
       -- If the user pressed equal button, count value of expression from
       -- the display
-      if Button_Options.Text = To_Unbounded_String(Source => "=") then
+      if Button_Options.Text = To_Tcl_String(Source => "=") then
          -- Find the last occurence of mathematical operator
          Sign_Index :=
             Index
