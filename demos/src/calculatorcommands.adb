@@ -49,13 +49,21 @@ package body CalculatorCommands is
       if Label_Options.Text = To_Tcl_String(Source => "0") then
          Label_Options.Text := Null_Tcl_String;
       end if;
+      -- Find the last occurence of mathematical operator
+      Sign_Index :=
+        Index(Source => Expression, Set => Operators_Set, Going => Backward);
+      if Button_Options.Text = To_Tcl_String(Source => ".") then
+         if Index(Source => Expression, Pattern => ".", Going => Backward) >
+           Sign_Index then
+            return TCL_OK;
+         end if;
+         if Label_Options.Text = Null_Tcl_String then
+            Label_Options.Text := To_Tcl_String(Source => "0");
+         end if;
+      end if;
       -- If the user pressed equal button, count value of expression from
       -- the display
       if Button_Options.Text = To_Tcl_String(Source => "=") then
-         -- Find the last occurence of mathematical operator
-         Sign_Index :=
-            Index
-               (Source => Expression, Set => Operators_Set, Going => Backward);
             -- If mathematical operator is the last character, quit, probably the
             -- user pressed the button by accident
          if Sign_Index = Expression'Length then
