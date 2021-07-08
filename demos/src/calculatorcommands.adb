@@ -45,7 +45,8 @@ package body CalculatorCommands is
         To_Ada_String(Source => Label_Options.Text);
       Result_String: String(1 .. 30);
    begin
-      -- Remove leading zero from the display text but only when number was pressed
+      -- Remove leading zero from the display text but only when number was
+      -- pressed
       if not Is_In
           (Element => To_Ada_String(Source => Button_Options.Text)(1),
            Set => Operators_Set)
