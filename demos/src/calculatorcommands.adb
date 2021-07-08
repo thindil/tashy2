@@ -38,6 +38,8 @@ package body CalculatorCommands is
       Button_Options: constant Ttk_Button_Options :=
         Get_Options(Button => Button);
       Operators_Set: constant Character_Set := To_Set(Sequence => "*+/-");
+      No_Minus_Operators_Set: constant Character_Set :=
+        To_Set(Sequence => "*+/");
       Result: Float := 0.0;
       Start_Index: Positive := 1;
       Sign_Index: Natural := 0;
@@ -49,7 +51,7 @@ package body CalculatorCommands is
       -- pressed
       if not Is_In
           (Element => To_Ada_String(Source => Button_Options.Text)(1),
-           Set => Operators_Set)
+           Set => No_Minus_Operators_Set)
         and then Label_Options.Text = To_Tcl_String(Source => "0") then
          Label_Options.Text := Null_Tcl_String;
       end if;
