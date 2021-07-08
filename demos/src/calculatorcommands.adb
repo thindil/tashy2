@@ -20,6 +20,7 @@ with Tcl.Strings; use Tcl.Strings;
 with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
+with Ada.Text_IO;
 
 package body CalculatorCommands is
 
@@ -70,39 +71,36 @@ package body CalculatorCommands is
       -- If the user pressed equal button, count value of expression from
       -- the display
       if Button_Options.Text = To_Tcl_String(Source => "=") then
-            -- If mathematical operator is the last character, quit, probably the
-            -- user pressed the button by accident
+         -- If mathematical operator is the last character, quit, probably the
+         -- user pressed the button by accident
          if Sign_Index = Expression'Length then
             return TCL_OK;
          end if;
-         -- Find the first occurence of mathematical operator
-         Sign_Index :=
-           Index
-             (Source => Expression, Set => Operators_Set, From => Start_Index);
-         -- No operator, just copy the whole number to the result
-         if Sign_Index = 0 then
-            Result := Float'Value(Expression);
-         -- Operator found, copy the number before it to the result
-         else
-            Result := Float'Value(Expression(Start_Index .. Sign_Index - 1));
-            Start_Index := Sign_Index + 1;
-         end if;
          -- Count the result of the expression entered by the user
          Count_Result_Loop :
-         while Sign_Index > 0 or Start_Index < Expression'Last loop
-            -- Find the next occurence of a mathematical operator
+         loop
+            -- Find the occurence of a mathematical operator
             Sign_Index :=
               Index
                 (Source => Expression, Set => Operators_Set,
                  From => Start_Index);
-              -- No operator found, set index to outside of expression's string
-              -- so the whole part of the expression will be copied to the
-              -- result as number
+            Ada.Text_IO.Put_Line(Sign_Index'Img);
+              -- No operator found, copy the whole text to result and quit
+              -- the loop
             if Sign_Index = 0 then
-               Sign_Index := Expression'Last + 1;
+               if Start_Index = 1 then
+                  Result := Float'Value(Expression);
+                  exit Count_Result_Loop;
+               end if;
+            end if;
+            Ada.Text_IO.Put_Line(Expression(Start_Index .. Sign_Index - 1));
+            -- The operator is a negative number sign, go to end of loop to
+            -- find another
+            if Sign_Index = 1 and then Expression(Sign_Index) = '-' then
+               goto End_Of_Count_Loop;
             end if;
             -- Count the expression, based on the found mathematica symbol
-            case Expression(Start_Index - 1) is
+            case Expression(Start_Index) is
                when '+' =>
                   Result :=
                     Result +
@@ -122,6 +120,7 @@ package body CalculatorCommands is
                when others =>
                   null;
             end case;
+            <<End_Of_Count_Loop>>
             -- Set the start looking index to the new value
             Start_Index := Sign_Index + 1;
             exit Count_Result_Loop when Start_Index > Expression'Last;
