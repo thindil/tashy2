@@ -45,8 +45,11 @@ package body CalculatorCommands is
         To_Ada_String(Source => Label_Options.Text);
       Result_String: String(1 .. 30);
    begin
-      -- Remove leading zero from the display text
-      if Label_Options.Text = To_Tcl_String(Source => "0") then
+      -- Remove leading zero from the display text but only when number was pressed
+      if not Is_In
+          (Element => To_Ada_String(Source => Button_Options.Text)(1),
+           Set => Operators_Set)
+        and then Label_Options.Text = To_Tcl_String(Source => "0") then
          Label_Options.Text := Null_Tcl_String;
       end if;
       -- Find the last occurence of mathematical operator
