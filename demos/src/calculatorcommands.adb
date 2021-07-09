@@ -84,7 +84,6 @@ package body CalculatorCommands is
               Index
                 (Source => Expression, Set => Operators_Set,
                  From => Start_Index);
-            Ada.Text_IO.Put_Line(Sign_Index'Img);
               -- No operator found, copy the whole text to result and quit
               -- the loop
             if Sign_Index = 0 then
@@ -92,15 +91,19 @@ package body CalculatorCommands is
                   Result := Float'Value(Expression);
                   exit Count_Result_Loop;
                end if;
+               Sign_Index := Expression'Last + 1;
             end if;
-            Ada.Text_IO.Put_Line(Expression(Start_Index .. Sign_Index - 1));
             -- The operator is a negative number sign, go to end of loop to
             -- find another
             if Sign_Index = 1 and then Expression(Sign_Index) = '-' then
                goto End_Of_Count_Loop;
             end if;
+            if Start_Index = 1 then
+               Result := Float'Value(Expression(Start_Index .. Sign_Index - 1));
+               goto End_Of_Count_Loop;
+            end if;
             -- Count the expression, based on the found mathematica symbol
-            case Expression(Start_Index) is
+            case Expression(Start_Index - 1) is
                when '+' =>
                   Result :=
                     Result +
@@ -121,6 +124,7 @@ package body CalculatorCommands is
                   null;
             end case;
             <<End_Of_Count_Loop>>
+            Ada.Text_IO.Put_Line(Result'Img);
             -- Set the start looking index to the new value
             Start_Index := Sign_Index + 1;
             exit Count_Result_Loop when Start_Index > Expression'Last;
