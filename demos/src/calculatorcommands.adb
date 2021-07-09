@@ -20,7 +20,6 @@ with Tcl.Strings; use Tcl.Strings;
 with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
-with Ada.Text_IO;
 
 package body CalculatorCommands is
 
@@ -47,6 +46,7 @@ package body CalculatorCommands is
       Expression: constant String :=
         To_Ada_String(Source => Label_Options.Text);
       Result_String: String(1 .. 30);
+      Is_Negative: Boolean := False;
    begin
       -- Remove leading zero from the display text but only when number was
       -- pressed
@@ -97,6 +97,7 @@ package body CalculatorCommands is
             -- find another
             if (Sign_Index = 1 and then Expression(Sign_Index) = '-') or
               Start_Index = Sign_Index then
+               Is_Negative := True;
                goto End_Of_Count_Loop;
             end if;
             if Start_Index = 1 then
@@ -104,7 +105,11 @@ package body CalculatorCommands is
                  Float'Value(Expression(Start_Index .. Sign_Index - 1));
                goto End_Of_Count_Loop;
             end if;
-            -- Count the expression, based on the found mathematica symbol
+            if Is_Negative and Start_Index > 2 then
+               Start_Index := Start_Index - 1;
+            end if;
+            Is_Negative := False;
+            -- Count the expression, based on the found mathematical symbol
             case Expression(Start_Index - 1) is
                when '+' =>
                   Result :=
@@ -126,7 +131,6 @@ package body CalculatorCommands is
                   null;
             end case;
             <<End_Of_Count_Loop>>
-            Ada.Text_IO.Put_Line(Result'Img);
             -- Set the start looking index to the new value
             Start_Index := Sign_Index + 1;
             exit Count_Result_Loop when Start_Index > Expression'Last;
