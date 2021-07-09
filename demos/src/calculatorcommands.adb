@@ -95,11 +95,13 @@ package body CalculatorCommands is
             end if;
             -- The operator is a negative number sign, go to end of loop to
             -- find another
-            if Sign_Index = 1 and then Expression(Sign_Index) = '-' then
+            if (Sign_Index = 1 and then Expression(Sign_Index) = '-') or
+              Start_Index = Sign_Index then
                goto End_Of_Count_Loop;
             end if;
             if Start_Index = 1 then
-               Result := Float'Value(Expression(Start_Index .. Sign_Index - 1));
+               Result :=
+                 Float'Value(Expression(Start_Index .. Sign_Index - 1));
                goto End_Of_Count_Loop;
             end if;
             -- Count the expression, based on the found mathematica symbol
