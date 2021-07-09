@@ -105,6 +105,7 @@ package body CalculatorCommands is
                  Float'Value(Expression(Start_Index .. Sign_Index - 1));
                goto End_Of_Count_Loop;
             end if;
+            -- Get the matematical operator if the number is negative
             if Is_Negative and Start_Index > 2 then
                Start_Index := Start_Index - 1;
             end if;
