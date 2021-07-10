@@ -14,10 +14,36 @@
 
 package body Tk.Winfo is
 
-   function Atom(Name: String; Widget: Tk_Widget := Null_Widget) return Positive is
-      pragma Unreferenced(Name, Widget);
+   function Atom
+     (Name: String; Window: Tk_Widget := Null_Widget) return Positive is
+      pragma Unreferenced(Name, Window);
    begin
       return 1;
    end Atom;
+
+   function Atom_Name
+     (Id: Positive; Window: Tk_Widget := Null_Widget) return String is
+      pragma Unreferenced(Id, Window);
+   begin
+      return "";
+   end Atom_Name;
+
+   function Cells(Window: Tk_Widget) return Natural is
+      pragma Unreferenced(Window);
+   begin
+      return 0;
+   end Cells;
+
+   function Children(Window: Tk_Widget) return Widgets_Array is
+      pragma Unreferenced(Window);
+   begin
+      return Empty_Widgets_Array;
+   end Children;
+
+   function Class(Window: Tk_Widget) return String is
+      pragma Unreferenced(Window);
+   begin
+      return "";
+   end Class;
 
 end Tk.Winfo;
