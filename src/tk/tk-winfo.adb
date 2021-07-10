@@ -98,9 +98,11 @@ package body Tk.Winfo is
    end Children;
 
    function Class(Window: Tk_Widget) return String is
-      pragma Unreferenced(Window);
    begin
-      return "";
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo class " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Class;
 
 end Tk.Winfo;
