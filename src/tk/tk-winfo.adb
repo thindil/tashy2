@@ -12,6 +12,9 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Lists; use Tcl.Lists;
+with Tcl.Strings; use Tcl.Strings;
+
 package body Tk.Winfo is
 
    -- ****if* Winfo/Winfo.Eval_Script
@@ -35,30 +38,63 @@ package body Tk.Winfo is
       if Window /= Null_Widget then
          return
            Eval_Script
-             ("winfo atom -displayof " & Tk_Path_Name(Widgt => Window) & " " &
-              Name,
+             (Tcl_Script =>
+                "winfo atom -displayof " & Tk_Path_Name(Widgt => Window) &
+                " " & Name,
               Interpreter => Tk_Interp(Widgt => Window));
       end if;
-      return Eval_Script("winfo atom " & Name, Interpreter => Interpreter);
+      return
+        Eval_Script
+          (Tcl_Script => "winfo atom " & Name, Interpreter => Interpreter);
    end Atom;
 
    function Atom_Name
-     (Id: Positive; Window: Tk_Widget := Null_Widget) return String is
-      pragma Unreferenced(Id, Window);
+     (Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Window: Tk_Widget := Null_Widget) return String is
    begin
-      return "";
+      if Window /= Null_Widget then
+         return
+           Tcl_Eval
+             (Tcl_Script =>
+                "winfo atomname -displayof " & Tk_Path_Name(Widgt => Window) &
+                Positive'Image(Id),
+              Interpreter => Tk_Interp(Widgt => Window));
+      end if;
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo atomname" & Positive'Image(Id),
+           Interpreter => Interpreter);
    end Atom_Name;
 
    function Cells(Window: Tk_Widget) return Natural is
-      pragma Unreferenced(Window);
    begin
-      return 0;
+      return
+        Eval_Script
+          (Tcl_Script => "winfo cells " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Cells;
 
    function Children(Window: Tk_Widget) return Widgets_Array is
-      pragma Unreferenced(Window);
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "winfo children " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Tk_Interp(Widgt => Window)),
+           Interpreter => Tk_Interp(Widgt => Window));
    begin
-      return Empty_Widgets_Array;
+      return
+        Widgets: Widgets_Array(1 .. Result_List'Last) :=
+          (others => Null_Widget) do
+         Fill_Result_Array_Loop :
+         for I in 1 .. Result_List'Last loop
+            Widgets(I) :=
+              Get_Widget
+                (Path_Name => To_Ada_String(Source => Result_List(I)),
+                 Interpreter => Tk_Interp(Widgt => Window));
+         end loop Fill_Result_Array_Loop;
+      end return;
    end Children;
 
    function Class(Window: Tk_Widget) return String is
