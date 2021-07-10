@@ -29,7 +29,8 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Atom", Mode => Nominal);
 
    function Atom_Name
-     (Id: Positive; Window: Tk_Widget := Null_Widget) return String with
+     (Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Window: Tk_Widget := Null_Widget) return String with
       Test_Case => (Name => "Test_Winfo_Atom_Name", Mode => Robustness);
 
    function Cells(Window: Tk_Widget) return Natural with
