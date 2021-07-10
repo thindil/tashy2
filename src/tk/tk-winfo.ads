@@ -22,8 +22,25 @@ with Tk.Widget; use Tk.Widget;
 package Tk.Winfo is
 -- ****
 
-   function Atom(Name: String; Widget: Tk_Widget := Null_Widget) return Positive with
+   function Atom
+     (Name: String; Window: Tk_Widget := Null_Widget) return Positive with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Winfo_Atom", Mode => Nominal);
+
+   function Atom_Name
+     (Id: Positive; Window: Tk_Widget := Null_Widget) return String with
+      Test_Case => (Name => "Test_Winfo_Atom_Name", Mode => Robustness);
+
+   function Cells(Window: Tk_Widget) return Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Cells", Mode => Nominal);
+
+   function Children(Window: Tk_Widget) return Widgets_Array with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Children", Mode => Nominal);
+
+   function Class(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Class", Mode => Nominal);
 
 end Tk.Winfo;
