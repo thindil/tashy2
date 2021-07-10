@@ -14,11 +14,32 @@
 
 package body Tk.Winfo is
 
+   -- ****if* Winfo/Winfo.Eval_Script
+   -- FUNCTION
+   -- Used to get Natural result from the selected Tcl command
+   -- PARAMETERS
+   -- Tcl_Script  - Tcl comamnd to evaluate
+   -- Interpreter - Tcl interpreter from which result will be get
+   -- RESULT
+   -- Natural value for the last Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Eval_Script is new Generic_Scalar_Tcl_Eval(Result_Type => Natural);
+   -- ****
+
    function Atom
-     (Name: String; Window: Tk_Widget := Null_Widget) return Positive is
-      pragma Unreferenced(Name, Window);
+     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Window: Tk_Widget := Null_Widget) return Positive is
    begin
-      return 1;
+      if Window /= Null_Widget then
+         return
+           Eval_Script
+             ("winfo atom -displayof " & Tk_Path_Name(Widgt => Window) & " " &
+              Name,
+              Interpreter => Tk_Interp(Widgt => Window));
+      end if;
+      return Eval_Script("winfo atom " & Name, Interpreter => Interpreter);
    end Atom;
 
    function Atom_Name

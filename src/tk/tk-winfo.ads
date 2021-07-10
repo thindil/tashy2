@@ -23,7 +23,8 @@ package Tk.Winfo is
 -- ****
 
    function Atom
-     (Name: String; Window: Tk_Widget := Null_Widget) return Positive with
+     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+      Window: Tk_Widget := Null_Widget) return Positive with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Winfo_Atom", Mode => Nominal);
 
