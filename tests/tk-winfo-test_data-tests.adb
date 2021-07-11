@@ -315,6 +315,66 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Color_Map_Full_032f44_b01906
+     (Window: Tk_Widget) return Boolean is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Color_Map_Full test requirement violated");
+      end;
+      declare
+         Test_Color_Map_Full_032f44_b01906_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Color_Map_Full
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Color_Map_Full test commitment violated");
+         end;
+         return Test_Color_Map_Full_032f44_b01906_Result;
+      end;
+   end Wrap_Test_Color_Map_Full_032f44_b01906;
+--  end read only
+
+--  begin read only
+   procedure Test_Color_Map_Full_test_winfo_color_map_full
+     (Gnattest_T: in out Test);
+   procedure Test_Color_Map_Full_032f44_b01906(Gnattest_T: in out Test) renames
+     Test_Color_Map_Full_test_winfo_color_map_full;
+--  id:2.2/032f44d0553a64e1/Color_Map_Full/1/0/test_winfo_color_map_full/
+   procedure Test_Color_Map_Full_test_winfo_color_map_full
+     (Gnattest_T: in out Test) is
+      function Color_Map_Full(Window: Tk_Widget) return Boolean renames
+        Wrap_Test_Color_Map_Full_032f44_b01906;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (not Color_Map_Full(Get_Main_Window),
+         "Failed to get the information about full color map for Tk main window.");
+
+--  begin read only
+   end Test_Color_Map_Full_test_winfo_color_map_full;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

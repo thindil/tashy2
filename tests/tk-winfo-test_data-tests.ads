@@ -25,5 +25,8 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Class_1df3af_fa80a1(Gnattest_T: in out Test);
    --  tk-winfo.ads:44:4:Class:Test_Winfo_Class
 
+   procedure Test_Color_Map_Full_032f44_b01906(Gnattest_T: in out Test);
+   --  tk-winfo.ads:48:4:Color_Map_Full:Test_Winfo_Color_Map_Full
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
