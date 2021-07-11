@@ -602,7 +602,7 @@ package Tk.Widget is
    function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter with
       Pre => Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Tk_Interp", Mode => Nominal),
-      Import => TRUE,
+      Import,
       Convention => C,
       External_Name => "Tk_Interp";
       -- ****
@@ -623,7 +623,7 @@ package Tk.Widget is
    function Tk_Window_Id(Widgt: Tk_Widget) return Tk_Window with
       Pre => Widgt /= Null_Widget,
       Test_Case => (Name => "Test_Tk_Window_Id", Mode => Nominal),
-      Import => TRUE,
+      Import,
       Convention => C,
       External_Name => "Get_Window_Id";
       -- ****
