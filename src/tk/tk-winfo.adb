@@ -105,4 +105,12 @@ package body Tk.Winfo is
            Interpreter => Tk_Interp(Widgt => Window));
    end Class;
 
+   function Color_Map_Full(Window: Tk_Widget) return Boolean is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo colormapfull " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Color_Map_Full;
+
 end Tk.Winfo;

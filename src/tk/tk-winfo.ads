@@ -45,4 +45,8 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Class", Mode => Nominal);
 
+   function Color_Map_Full(Window: Tk_Widget) return Boolean with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Color_Map_Full", Mode => Nominal);
+
 end Tk.Winfo;
