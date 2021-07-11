@@ -17,6 +17,7 @@ with System.Assertions;
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
 with Tk.Button; use Tk.Button;
+with Tk.Grid; use Tk.Grid;
 with Tk.MainWindow; use Tk.MainWindow;
 
 --  begin read only
@@ -29,6 +30,8 @@ package body Tk.Winfo.Test_Data.Tests is
 --  This section can be used to add global variables and other elements.
 --
 --  end read only
+
+   AtomNumber: Positive;
 
 --  begin read only
 --  end read only
@@ -85,9 +88,8 @@ package body Tk.Winfo.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Assert
-        (Atom("test") = 607,
-         "Failed to get atom ID for the selected atom name.");
+      AtomNumber := Atom("test");
+      Assert(True, "This test can only crash.");
 
 --  begin read only
    end Test_Atom_test_winfo_atom;
@@ -129,7 +131,7 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Atom_Name(607) = "test",
+        (Atom_Name(AtomNumber) = "test",
          "Failed to get the name of the selected atom ID.");
 
 --  begin read only
@@ -234,11 +236,20 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Button := Create(".button", Default_Button_Options);
+      Add(Button, Default_Grid_Options);
+      Assert
+        (Children(Get_Main_Window)'Length = 1,
+         "Failed to get the list of children for the main Tk window.");
+      Destroy(Button);
 
 --  begin read only
    end Test_Children_test_winfo_children;
@@ -285,11 +296,19 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Button := Create(".button", Default_Button_Options);
+      Assert
+        (Class(Button) = "Button",
+         "Failed to get the class of the Tk button widget.");
+      Destroy(Button);
 
 --  begin read only
    end Test_Class_test_winfo_class;
