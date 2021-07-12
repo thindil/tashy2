@@ -406,12 +406,132 @@ package body Tk.Winfo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Assert
         (Containing(0, 0) = Get_Main_Window,
          "Failed to get window at 0,0 coordinates.");
 
 --  begin read only
    end Test_Containing_test_winfo_containing;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Depth_7447d3_1900bc(Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Depth test requirement violated");
+      end;
+      declare
+         Test_Depth_7447d3_1900bc_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Depth(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Depth test commitment violated");
+         end;
+         return Test_Depth_7447d3_1900bc_Result;
+      end;
+   end Wrap_Test_Depth_7447d3_1900bc;
+--  end read only
+
+--  begin read only
+   procedure Test_Depth_test_winfo_depth(Gnattest_T: in out Test);
+   procedure Test_Depth_7447d3_1900bc(Gnattest_T: in out Test) renames
+     Test_Depth_test_winfo_depth;
+--  id:2.2/7447d3d0a69f4e2c/Depth/1/0/test_winfo_depth/
+   procedure Test_Depth_test_winfo_depth(Gnattest_T: in out Test) is
+      function Depth(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Depth_7447d3_1900bc;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Depth(Get_Main_Window) > 1,
+         "Failed to get color depth of the Tk main window.");
+
+--  begin read only
+   end Test_Depth_test_winfo_depth;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Exists_e0ba6a_c15285
+     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean is
+   begin
+      begin
+         pragma Assert(Name'Length > 0 and Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Exists test requirement violated");
+      end;
+      declare
+         Test_Exists_e0ba6a_c15285_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Exists
+             (Name, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Exists test commitment violated");
+         end;
+         return Test_Exists_e0ba6a_c15285_Result;
+      end;
+   end Wrap_Test_Exists_e0ba6a_c15285;
+--  end read only
+
+--  begin read only
+   procedure Test_Exists_test_winfo_exists(Gnattest_T: in out Test);
+   procedure Test_Exists_e0ba6a_c15285(Gnattest_T: in out Test) renames
+     Test_Exists_test_winfo_exists;
+--  id:2.2/e0ba6a6d9c808e1e/Exists/1/0/test_winfo_exists/
+   procedure Test_Exists_test_winfo_exists(Gnattest_T: in out Test) is
+      function Exists
+        (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Boolean renames
+        Wrap_Test_Exists_e0ba6a_c15285;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert(Winfo.Exists("."), "Failed to check if the main Tk window exists.");
+      Assert(not Winfo.Exists(".test"), "Failed to check non existing Tk window.");
+
+--  begin read only
+   end Test_Exists_test_winfo_exists;
 --  end read only
 
 --  begin read only
