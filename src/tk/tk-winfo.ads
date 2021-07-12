@@ -54,4 +54,14 @@ package Tk.Winfo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget with
       Test_Case => (Name => "Test_Winfo_Containing", Mode => Robustness);
 
+   function Depth(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Depth", Mode => Nominal);
+
+   function Exists
+     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Boolean with
+      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Test_Winfo_Exists", Mode => Nominal);
+
 end Tk.Winfo;
