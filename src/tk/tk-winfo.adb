@@ -113,4 +113,25 @@ package body Tk.Winfo is
            Interpreter => Tk_Interp(Widgt => Window));
    end Color_Map_Full;
 
+   function Containing
+     (Root_X, Root_Y: Natural; Window: Tk_Widget := Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget is
+   begin
+      return
+        Get_Widget
+          (Path_Name =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "winfo containing" &
+                  (if Window = Null_Widget then ""
+                   else " -displayof " & Tk_Path_Name(Widgt => Window) & "") &
+                  Natural'Image(Root_X) & Natural'Image(Root_Y),
+                Interpreter =>
+                  (if Window = Null_Widget then Interpreter
+                   else Tk_Interp(Widgt => Window))),
+           Interpreter =>
+             (if Window = Null_Widget then Interpreter
+              else Tk_Interp(Widgt => Window)));
+   end Containing;
+
 end Tk.Winfo;

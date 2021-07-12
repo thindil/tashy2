@@ -49,4 +49,9 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Color_Map_Full", Mode => Nominal);
 
+   function Containing
+     (Root_X, Root_Y: Natural; Window: Tk_Widget := Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget with
+      Test_Case => (Name => "Test_Winfo_Containing", Mode => Robustness);
+
 end Tk.Winfo;
