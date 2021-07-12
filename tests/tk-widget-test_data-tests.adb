@@ -236,6 +236,7 @@ package body Tk.Widget.Test_Data.Tests is
       Destroy(Button);
       Button := Get_Widget(".mybutton2");
       Destroy(Button);
+      Assert(Button = Null_Widget, "Failed to get non existing Tk widget.");
 
 --  begin read only
    end Test_Get_Widget_test_get_widget;
