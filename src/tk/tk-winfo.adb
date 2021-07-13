@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Tcl.Lists; use Tcl.Lists;
 with Tcl.Strings; use Tcl.Strings;
 
@@ -175,5 +176,31 @@ package body Tk.Winfo is
              "winfo fpixels " & Tk_Path_Name(Widgt => Window) & " " &
              Pixel_Data_Image(Value => Number));
    end Floating_Point_Pixels;
+
+   function Geometry(Window: Tk_Widget) return Window_Geometry is
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "winfo geometry " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+      Start_Index, End_Index: Positive := 1;
+   begin
+      return Win_Geometry: Window_Geometry := Empty_Window_Geometry do
+         End_Index := Index(Source => Result, Pattern => "x");
+         Win_Geometry.Width := Natural'Value(Result(1 .. End_Index - 1));
+         Start_Index := End_Index + 1;
+         --## rule off ASSIGNMENTS
+         End_Index :=
+           Index(Source => Result, Pattern => "+", From => Start_Index);
+         Win_Geometry.Height :=
+           Natural'Value(Result(Start_Index .. End_Index - 1));
+         Start_Index := End_Index + 1;
+         End_Index :=
+           Index(Source => Result, Pattern => "+", From => Start_Index);
+         Win_Geometry.X := Natural'Value(Result(Start_Index .. End_Index - 1));
+         Start_Index := End_Index + 1;
+         --## rule on ASSIGNMENTS
+         Win_Geometry.Y := Natural'Value(Result(Start_Index .. Result'Last));
+      end return;
+   end Geometry;
 
 end Tk.Winfo;

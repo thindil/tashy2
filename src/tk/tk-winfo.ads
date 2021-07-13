@@ -70,4 +70,9 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Floating_Point_Pixels",
        Mode => Nominal);
 
+   function Geometry(Window: Tk_Widget) return Window_Geometry with
+      Pre => Window /= Null_Widget,
+      Post => Geometry'Result /= Empty_Window_Geometry,
+      Test_Case => (Name => "Test_Winfo_Geometry", Mode => Nominal);
+
 end Tk.Winfo;
