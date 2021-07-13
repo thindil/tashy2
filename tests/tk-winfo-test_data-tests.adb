@@ -527,11 +527,77 @@ package body Tk.Winfo.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Assert(Winfo.Exists("."), "Failed to check if the main Tk window exists.");
-      Assert(not Winfo.Exists(".test"), "Failed to check non existing Tk window.");
+      Assert
+        (Winfo.Exists("."), "Failed to check if the main Tk window exists.");
+      Assert
+        (not Winfo.Exists(".test"), "Failed to check non existing Tk window.");
 
 --  begin read only
    end Test_Exists_test_winfo_exists;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Floating_Point_Pixels_e16a1c_9b10a0
+     (Window: Tk_Widget; Number: Pixel_Data) return Float is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget and Number /= Empty_Pixel_Data);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Floating_Point_Pixels test requirement violated");
+      end;
+      declare
+         Test_Floating_Point_Pixels_e16a1c_9b10a0_Result: constant Float :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Floating_Point_Pixels
+             (Window, Number);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Floating_Point_Pixels test commitment violated");
+         end;
+         return Test_Floating_Point_Pixels_e16a1c_9b10a0_Result;
+      end;
+   end Wrap_Test_Floating_Point_Pixels_e16a1c_9b10a0;
+--  end read only
+
+--  begin read only
+   procedure Test_Floating_Point_Pixels_test_winfo_floating_point_pixels
+     (Gnattest_T: in out Test);
+   procedure Test_Floating_Point_Pixels_e16a1c_9b10a0
+     (Gnattest_T: in out Test) renames
+     Test_Floating_Point_Pixels_test_winfo_floating_point_pixels;
+--  id:2.2/e16a1c25d7e19ad5/Floating_Point_Pixels/1/0/test_winfo_floating_point_pixels/
+   procedure Test_Floating_Point_Pixels_test_winfo_floating_point_pixels
+     (Gnattest_T: in out Test) is
+      function Floating_Point_Pixels
+        (Window: Tk_Widget; Number: Pixel_Data) return Float renames
+        Wrap_Test_Floating_Point_Pixels_e16a1c_9b10a0;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Floating_Point_Pixels
+           (Get_Main_Window, Pixel_Data'(Value => 2.0, Value_Unit => PIXEL)) =
+         2.0,
+         "Failed to get floating point distance in Tk main window.");
+
+--  begin read only
+   end Test_Floating_Point_Pixels_test_winfo_floating_point_pixels;
 --  end read only
 
 --  begin read only
