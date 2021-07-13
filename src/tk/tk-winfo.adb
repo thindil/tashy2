@@ -149,13 +149,13 @@ package body Tk.Winfo is
               else Tk_Interp(Widgt => Window)));
    end Containing;
 
-   function Depth(Window: Tk_Widget) return Positive is
+   function Colors_Depth(Window: Tk_Widget) return Positive is
    begin
       return
         Eval_Script
           (Tcl_Script => "winfo depth " & Tk_Path_Name(Widgt => Window),
            Interpreter => Tk_Interp(Widgt => Window));
-   end Depth;
+   end Colors_Depth;
 
    function Exists
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)

@@ -31,8 +31,8 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Containing_ed034e_1e0939(Gnattest_T: in out Test);
    --  tk-winfo.ads:52:4:Containing:Test_Winfo_Containing
 
-   procedure Test_Depth_7447d3_1900bc(Gnattest_T: in out Test);
-   --  tk-winfo.ads:57:4:Depth:Test_Winfo_Depth
+   procedure Test_Colors_Depth_27cc4a_1900bc(Gnattest_T: in out Test);
+   --  tk-winfo.ads:57:4:Colors_Depth:Test_Winfo_Depth
 
    procedure Test_Exists_e0ba6a_c15285(Gnattest_T: in out Test);
    --  tk-winfo.ads:61:4:Exists:Test_Winfo_Exists

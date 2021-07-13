@@ -54,7 +54,7 @@ package Tk.Winfo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget with
       Test_Case => (Name => "Test_Winfo_Containing", Mode => Robustness);
 
-   function Depth(Window: Tk_Widget) return Positive with
+   function Colors_Depth(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Depth", Mode => Nominal);
 

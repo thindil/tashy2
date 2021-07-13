@@ -419,7 +419,8 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Depth_7447d3_1900bc(Window: Tk_Widget) return Positive is
+   function Wrap_Test_Colors_Depth_27cc4a_1900bc
+     (Window: Tk_Widget) return Positive is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -431,8 +432,8 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Depth test requirement violated");
       end;
       declare
-         Test_Depth_7447d3_1900bc_Result: constant Positive :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Depth(Window);
+         Test_Colors_Depth_27cc4a_1900bc_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Colors_Depth(Window);
       begin
          begin
             pragma Assert(True);
@@ -443,19 +444,19 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Depth test commitment violated");
          end;
-         return Test_Depth_7447d3_1900bc_Result;
+         return Test_Colors_Depth_27cc4a_1900bc_Result;
       end;
-   end Wrap_Test_Depth_7447d3_1900bc;
+   end Wrap_Test_Colors_Depth_27cc4a_1900bc;
 --  end read only
 
 --  begin read only
-   procedure Test_Depth_test_winfo_depth(Gnattest_T: in out Test);
-   procedure Test_Depth_7447d3_1900bc(Gnattest_T: in out Test) renames
-     Test_Depth_test_winfo_depth;
---  id:2.2/7447d3d0a69f4e2c/Depth/1/0/test_winfo_depth/
-   procedure Test_Depth_test_winfo_depth(Gnattest_T: in out Test) is
-      function Depth(Window: Tk_Widget) return Positive renames
-        Wrap_Test_Depth_7447d3_1900bc;
+   procedure Test_Colors_Depth_test_winfo_depth(Gnattest_T: in out Test);
+   procedure Test_Colors_Depth_27cc4a_1900bc(Gnattest_T: in out Test) renames
+     Test_Colors_Depth_test_winfo_depth;
+--  id:2.2/27cc4a890815be4a/Colors_Depth/1/0/test_winfo_depth/
+   procedure Test_Colors_Depth_test_winfo_depth(Gnattest_T: in out Test) is
+      function Colors_Depth(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Colors_Depth_27cc4a_1900bc;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -467,11 +468,11 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Depth(Get_Main_Window) > 1,
+        (Colors_Depth(Get_Main_Window) > 1,
          "Failed to get color depth of the Tk main window.");
 
 --  begin read only
-   end Test_Depth_test_winfo_depth;
+   end Test_Colors_Depth_test_winfo_depth;
 --  end read only
 
 --  begin read only
