@@ -31,6 +31,21 @@ package body Tk.Winfo is
    function Eval_Script is new Generic_Scalar_Tcl_Eval(Result_Type => Natural);
    -- ****
 
+   -- ****if* Winfo/Winfo.Float_Eval_Script
+   -- FUNCTION
+   -- Used to get Float result from the selected Tcl command
+   -- PARAMETERS
+   -- Tcl_Script  - Tcl comamnd to evaluate
+   -- Interpreter - Tcl interpreter from which result will be get
+   -- RESULT
+   -- Float value for the last Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Float_Eval_Script is new Generic_Float_Tcl_Eval
+     (Result_Type => Float);
+   -- ****
+
    function Atom
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return Positive is
@@ -150,5 +165,15 @@ package body Tk.Winfo is
         Tcl_Eval
           (Tcl_Script => "winfo exists " & Name, Interpreter => Interpreter);
    end Exists;
+
+   function Floating_Point_Pixels
+     (Window: Tk_Widget; Number: Pixel_Data) return Float is
+   begin
+      return
+        Float_Eval_Script
+          (Tcl_Script =>
+             "winfo fpixels " & Tk_Path_Name(Widgt => Window) & " " &
+             Pixel_Data_Image(Value => Number));
+   end Floating_Point_Pixels;
 
 end Tk.Winfo;
