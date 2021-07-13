@@ -479,6 +479,35 @@ package Tk.Widget is
      Point_Position'(others => -1);
      -- ****
 
+   -- ****s* Widget/Widget.Window_Geometry
+   -- FUNCTION
+   -- Data structure used in setting the Tk widget geometry
+   -- PARAMETERS
+   -- Width  - The width in pixels of Tk widget
+   -- Height - The height in pixels of Tk widget
+   -- X      - The X coordinate on the screen of Tk widget
+   -- Y      - The Y coordinate on the screen of Tk widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Window_Geometry is record
+      Width: Natural := 0;
+      Height: Natural := 0;
+      X: Natural := 0;
+      Y: Natural := 0;
+   end record;
+   -- ****
+
+   -- ****d* Widget/Widget.Empty_Window_Geometry
+   -- FUNCTION
+   -- Empty values for Tk widget geometry
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   Empty_Window_Geometry: constant Window_Geometry :=
+     Window_Geometry'(others => 0);
+     -- ****
+
    -----------------------------------------------
    -- Various functions to convert types to String
    -----------------------------------------------
