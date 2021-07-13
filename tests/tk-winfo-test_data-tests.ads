@@ -37,5 +37,8 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Exists_e0ba6a_c15285(Gnattest_T: in out Test);
    --  tk-winfo.ads:61:4:Exists:Test_Winfo_Exists
 
+   procedure Test_Floating_Point_Pixels_e16a1c_9b10a0(Gnattest_T: in out Test);
+   --  tk-winfo.ads:67:4:Floating_Point_Pixels:Test_Winfo_Floating_Point_Pixels
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
