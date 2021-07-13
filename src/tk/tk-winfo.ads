@@ -64,4 +64,10 @@ package Tk.Winfo is
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Winfo_Exists", Mode => Nominal);
 
+   function Floating_Point_Pixels
+     (Window: Tk_Widget; Number: Pixel_Data) return Float with
+      Pre => Window /= Null_Widget and Number /= Empty_Pixel_Data,
+      Test_Case => (Name => "Test_Winfo_Floating_Point_Pixels",
+       Mode => Nominal);
+
 end Tk.Winfo;
