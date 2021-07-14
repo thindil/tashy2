@@ -661,6 +661,63 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Height_b50988_c88298
+     (Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Height test requirement violated");
+      end;
+      declare
+         Test_Height_b50988_c88298_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Height(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Height test commitment violated");
+         end;
+         return Test_Height_b50988_c88298_Result;
+      end;
+   end Wrap_Test_Height_b50988_c88298;
+--  end read only
+
+--  begin read only
+   procedure Test_Height_test_winfo_height(Gnattest_T: in out Test);
+   procedure Test_Height_b50988_c88298(Gnattest_T: in out Test) renames
+     Test_Height_test_winfo_height;
+--  id:2.2/b5098876224ade4f/Height/1/0/test_winfo_height/
+   procedure Test_Height_test_winfo_height(Gnattest_T: in out Test) is
+      function Height(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Height_b50988_c88298;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Height(Get_Main_Window) = Geometry(Get_Main_Window).Height,
+         "Failed to get height of the Tk main window");
+
+--  begin read only
+   end Test_Height_test_winfo_height;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

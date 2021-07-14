@@ -43,5 +43,8 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Geometry_74d873_9e4b51(Gnattest_T: in out Test);
    --  tk-winfo.ads:73:4:Geometry:Test_Winfo_Geometry
 
+   procedure Test_Height_b50988_c88298(Gnattest_T: in out Test);
+   --  tk-winfo.ads:78:4:Height:Test_Winfo_Height
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
