@@ -718,6 +718,59 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Id_e14e13_d4cbde(Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Id test requirement violated");
+      end;
+      declare
+         Test_Id_e14e13_d4cbde_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Id(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Id test commitment violated");
+         end;
+         return Test_Id_e14e13_d4cbde_Result;
+      end;
+   end Wrap_Test_Id_e14e13_d4cbde;
+--  end read only
+
+--  begin read only
+   procedure Test_Id_test_winfo_id(Gnattest_T: in out Test);
+   procedure Test_Id_e14e13_d4cbde(Gnattest_T: in out Test) renames
+     Test_Id_test_winfo_id;
+--  id:2.2/e14e13ca057db210/Id/1/0/test_winfo_id/
+   procedure Test_Id_test_winfo_id(Gnattest_T: in out Test) is
+      function Id(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Id_e14e13_d4cbde;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Id(Get_Main_Window) = 1 then
+         return;
+      end if;
+      Assert(True, "This test can only crash.");
+
+--  begin read only
+   end Test_Id_test_winfo_id;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
