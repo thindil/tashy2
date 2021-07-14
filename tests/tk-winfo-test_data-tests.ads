@@ -46,5 +46,8 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Height_b50988_c88298(Gnattest_T: in out Test);
    --  tk-winfo.ads:78:4:Height:Test_Winfo_Height
 
+   procedure Test_Id_e14e13_d4cbde(Gnattest_T: in out Test);
+   --  tk-winfo.ads:82:4:Id:Test_Winfo_Id
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
