@@ -75,4 +75,8 @@ package Tk.Winfo is
       Post => Geometry'Result /= Empty_Window_Geometry,
       Test_Case => (Name => "Test_Winfo_Geometry", Mode => Nominal);
 
+   function Height(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Height", Mode => Nominal);
+
 end Tk.Winfo;
