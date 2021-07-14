@@ -203,4 +203,12 @@ package body Tk.Winfo is
       end return;
    end Geometry;
 
+   function Height(Window: Tk_Widget) return Positive is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo height " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Height;
+
 end Tk.Winfo;
