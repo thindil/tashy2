@@ -19,6 +19,7 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 with Tk.Button; use Tk.Button;
 with Tk.Grid; use Tk.Grid;
 with Tk.MainWindow; use Tk.MainWindow;
+with Tk.Wm; use Tk.Wm;
 
 --  begin read only
 --  end read only
@@ -599,6 +600,64 @@ package body Tk.Winfo.Test_Data.Tests is
 
 --  begin read only
    end Test_Floating_Point_Pixels_test_winfo_floating_point_pixels;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Geometry_74d873_9e4b51
+     (Window: Tk_Widget) return Window_Geometry is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Geometry test requirement violated");
+      end;
+      declare
+         Test_Geometry_74d873_9e4b51_Result: constant Window_Geometry :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Geometry(Window);
+      begin
+         begin
+            pragma Assert
+              (Test_Geometry_74d873_9e4b51_Result /= Empty_Window_Geometry);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Geometry test commitment violated");
+         end;
+         return Test_Geometry_74d873_9e4b51_Result;
+      end;
+   end Wrap_Test_Geometry_74d873_9e4b51;
+--  end read only
+
+--  begin read only
+   procedure Test_Geometry_test_winfo_geometry(Gnattest_T: in out Test);
+   procedure Test_Geometry_74d873_9e4b51(Gnattest_T: in out Test) renames
+     Test_Geometry_test_winfo_geometry;
+--  id:2.2/74d873a7db43126c/Geometry/1/0/test_winfo_geometry/
+   procedure Test_Geometry_test_winfo_geometry(Gnattest_T: in out Test) is
+      function Geometry(Window: Tk_Widget) return Window_Geometry renames
+        Wrap_Test_Geometry_74d873_9e4b51;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Geometry(Get_Main_Window) = Get_Geometry(Get_Main_Window),
+         "Failed to get geometry of the Tk main window");
+
+--  begin read only
+   end Test_Geometry_test_winfo_geometry;
 --  end read only
 
 --  begin read only
