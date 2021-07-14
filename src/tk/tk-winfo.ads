@@ -79,4 +79,8 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Height", Mode => Nominal);
 
+   function Id(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Id", Mode => Nominal);
+
 end Tk.Winfo;
