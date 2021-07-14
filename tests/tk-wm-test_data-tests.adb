@@ -1198,7 +1198,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Geometry_bb718b_4f4f37
+   function Wrap_Test_Get_Geometry_ef6848_4f4f37
      (Window: Tk_Widget) return Window_Geometry is
    begin
       begin
@@ -1211,7 +1211,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Geometry test requirement violated");
       end;
       declare
-         Test_Get_Geometry_bb718b_4f4f37_Result: constant Window_Geometry :=
+         Test_Get_Geometry_ef6848_4f4f37_Result: constant Window_Geometry :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Geometry(Window);
       begin
          begin
@@ -1223,19 +1223,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Geometry test commitment violated");
          end;
-         return Test_Get_Geometry_bb718b_4f4f37_Result;
+         return Test_Get_Geometry_ef6848_4f4f37_Result;
       end;
-   end Wrap_Test_Get_Geometry_bb718b_4f4f37;
+   end Wrap_Test_Get_Geometry_ef6848_4f4f37;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Geometry_test_wm_geometry(Gnattest_T: in out Test);
-   procedure Test_Get_Geometry_bb718b_4f4f37(Gnattest_T: in out Test) renames
+   procedure Test_Get_Geometry_ef6848_4f4f37(Gnattest_T: in out Test) renames
      Test_Get_Geometry_test_wm_geometry;
---  id:2.2/bb718b8ac0480eb0/Get_Geometry/1/0/test_wm_geometry/
+--  id:2.2/ef68484d6359273c/Get_Geometry/1/0/test_wm_geometry/
    procedure Test_Get_Geometry_test_wm_geometry(Gnattest_T: in out Test) is
       function Get_Geometry(Window: Tk_Widget) return Window_Geometry renames
-        Wrap_Test_Get_Geometry_bb718b_4f4f37;
+        Wrap_Test_Get_Geometry_ef6848_4f4f37;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

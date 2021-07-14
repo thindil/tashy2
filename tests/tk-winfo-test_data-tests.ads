@@ -40,5 +40,8 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Floating_Point_Pixels_e16a1c_9b10a0(Gnattest_T: in out Test);
    --  tk-winfo.ads:67:4:Floating_Point_Pixels:Test_Winfo_Floating_Point_Pixels
 
+   procedure Test_Geometry_74d873_9e4b51(Gnattest_T: in out Test);
+   --  tk-winfo.ads:73:4:Geometry:Test_Winfo_Geometry
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
