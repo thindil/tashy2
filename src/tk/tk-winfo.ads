@@ -87,6 +87,6 @@ package Tk.Winfo is
    function Interpreters
      (Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
-      Test_Case => (Name => "Test_Winfo_Id", Mode => Robustness);
+      Test_Case => (Name => "Test_Winfo_Interpreters", Mode => Robustness);
 
 end Tk.Winfo;
