@@ -13,7 +13,6 @@
 -- limitations under the License.
 
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
-with Tcl.Lists; use Tcl.Lists;
 with Tcl.Strings; use Tcl.Strings;
 
 package body Tk.Winfo is
@@ -219,5 +218,25 @@ package body Tk.Winfo is
    begin
       return Positive'Value("16#" & Result(3 .. Result'Last) & "#");
    end Id;
+
+   function Interpreters
+     (Window: Tk_Widget := Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
+   begin
+      return
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "winfo interpreters " &
+                  (if Window = Null_Widget then ""
+                   else " -displayof " & Tk_Path_Name(Widgt => Window)),
+                Interpreter =>
+                  (if Window = Null_Widget then Interpreter
+                   else Tk_Interp(Widgt => Window))),
+           Interpreter =>
+             (if Window = Null_Widget then Interpreter
+              else Tk_Interp(Widgt => Window)));
+   end Interpreters;
 
 end Tk.Winfo;
