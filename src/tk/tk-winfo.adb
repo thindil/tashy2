@@ -228,7 +228,7 @@ package body Tk.Winfo is
           (List =>
              Tcl_Eval
                (Tcl_Script =>
-                  "winfo interpreters " &
+                  "winfo interps " &
                   (if Window = Null_Widget then ""
                    else " -displayof " & Tk_Path_Name(Widgt => Window)),
                 Interpreter =>
