@@ -49,8 +49,8 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Id_e14e13_d4cbde(Gnattest_T: in out Test);
    --  tk-winfo.ads:83:4:Id:Test_Winfo_Id
 
-   procedure Test_Interpreters_aa8c94_00a874(Gnattest_T: in out Test);
-   --  tk-winfo.ads:87:4:Interpreters:Test_Winfo_Id
+   procedure Test_Interpreters_aa8c94_a1d488(Gnattest_T: in out Test);
+   --  tk-winfo.ads:87:4:Interpreters:Test_Winfo_Interpreters
 
 end Tk.Winfo.Test_Data.Tests;
 --  end read only

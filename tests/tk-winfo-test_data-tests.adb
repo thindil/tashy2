@@ -775,43 +775,49 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Interpreters_aa8c94_00a874
+   function Wrap_Test_Interpreters_aa8c94_a1d488
      (Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
    begin
       declare
-         Test_Interpreters_aa8c94_00a874_Result: constant Array_List :=
+         Test_Interpreters_aa8c94_a1d488_Result: constant Array_List :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Interpreters
              (Window, Interpreter);
       begin
-         return Test_Interpreters_aa8c94_00a874_Result;
+         return Test_Interpreters_aa8c94_a1d488_Result;
       end;
-   end Wrap_Test_Interpreters_aa8c94_00a874;
+   end Wrap_Test_Interpreters_aa8c94_a1d488;
 --  end read only
 
 --  begin read only
-   procedure Test_Interpreters_test_winfo_id(Gnattest_T: in out Test);
-   procedure Test_Interpreters_aa8c94_00a874(Gnattest_T: in out Test) renames
-     Test_Interpreters_test_winfo_id;
---  id:2.2/aa8c947a16a9f4d3/Interpreters/1/0/test_winfo_id/
-   procedure Test_Interpreters_test_winfo_id(Gnattest_T: in out Test) is
+   procedure Test_Interpreters_test_winfo_interpreters
+     (Gnattest_T: in out Test);
+   procedure Test_Interpreters_aa8c94_a1d488(Gnattest_T: in out Test) renames
+     Test_Interpreters_test_winfo_interpreters;
+--  id:2.2/aa8c947a16a9f4d3/Interpreters/1/0/test_winfo_interpreters/
+   procedure Test_Interpreters_test_winfo_interpreters
+     (Gnattest_T: in out Test) is
       function Interpreters
         (Window: Tk_Widget := Null_Widget;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Array_List renames
-        Wrap_Test_Interpreters_aa8c94_00a874;
+        Wrap_Test_Interpreters_aa8c94_a1d488;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Assert
         (Interpreters(Get_Main_Window)'Length = 1,
          "Failed to get the list of Tcl interpreters for Tk main window.");
 
 --  begin read only
-   end Test_Interpreters_test_winfo_id;
+   end Test_Interpreters_test_winfo_interpreters;
 --  end read only
 
 --  begin read only
