@@ -761,6 +761,10 @@ package body Tk.Winfo.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       if Id(Get_Main_Window) = 1 then
          return;
       end if;
