@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tk.Widget; use Tk.Widget;
+with Tcl.Lists; use Tcl.Lists;
 
 -- ****h* Tk/Winfo
 -- FUNCTION
@@ -82,5 +83,10 @@ package Tk.Winfo is
    function Id(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Id", Mode => Nominal);
+
+   function Interpreters
+     (Window: Tk_Widget := Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
+      Test_Case => (Name => "Test_Winfo_Id", Mode => Robustness);
 
 end Tk.Winfo;
