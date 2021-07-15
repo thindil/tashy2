@@ -775,6 +775,46 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Interpreters_aa8c94_00a874
+     (Window: Tk_Widget := Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List is
+   begin
+      declare
+         Test_Interpreters_aa8c94_00a874_Result: constant Array_List :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Interpreters
+             (Window, Interpreter);
+      begin
+         return Test_Interpreters_aa8c94_00a874_Result;
+      end;
+   end Wrap_Test_Interpreters_aa8c94_00a874;
+--  end read only
+
+--  begin read only
+   procedure Test_Interpreters_test_winfo_id(Gnattest_T: in out Test);
+   procedure Test_Interpreters_aa8c94_00a874(Gnattest_T: in out Test) renames
+     Test_Interpreters_test_winfo_id;
+--  id:2.2/aa8c947a16a9f4d3/Interpreters/1/0/test_winfo_id/
+   procedure Test_Interpreters_test_winfo_id(Gnattest_T: in out Test) is
+      function Interpreters
+        (Window: Tk_Widget := Null_Widget;
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Array_List renames
+        Wrap_Test_Interpreters_aa8c94_00a874;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (Interpreters(Get_Main_Window)'Length = 1,
+         "Failed to get the list of Tcl interpreters for Tk main window.");
+
+--  begin read only
+   end Test_Interpreters_test_winfo_id;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
