@@ -1058,6 +1058,282 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Path_Name_c74192_a4034c
+     (Id: Positive; Window: Tk_Widget := Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      declare
+         Test_Path_Name_c74192_a4034c_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Path_Name
+             (Id, Window, Interpreter);
+      begin
+         return Test_Path_Name_c74192_a4034c_Result;
+      end;
+   end Wrap_Test_Path_Name_c74192_a4034c;
+--  end read only
+
+--  begin read only
+   procedure Test_Path_Name_test_winfo_path_name(Gnattest_T: in out Test);
+   procedure Test_Path_Name_c74192_a4034c(Gnattest_T: in out Test) renames
+     Test_Path_Name_test_winfo_path_name;
+--  id:2.2/c74192f527d879a1/Path_Name/1/0/test_winfo_path_name/
+   procedure Test_Path_Name_test_winfo_path_name(Gnattest_T: in out Test) is
+      function Path_Name
+        (Id: Positive; Window: Tk_Widget := Null_Widget;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
+        Wrap_Test_Path_Name_c74192_a4034c;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Path_Name(Id(Get_Main_Window)) = ".",
+         "Failed to get the Tk path name for the main Tk window.");
+
+--  begin read only
+   end Test_Path_Name_test_winfo_path_name;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Pixels_60cc8c_ac6879
+     (Window: Tk_Widget; Number: Pixel_Data) return Integer is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget and Number /= Empty_Pixel_Data);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Pixels test requirement violated");
+      end;
+      declare
+         Test_Pixels_60cc8c_ac6879_Result: constant Integer :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Pixels
+             (Window, Number);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Pixels test commitment violated");
+         end;
+         return Test_Pixels_60cc8c_ac6879_Result;
+      end;
+   end Wrap_Test_Pixels_60cc8c_ac6879;
+--  end read only
+
+--  begin read only
+   procedure Test_Pixels_test_winfo_pixels(Gnattest_T: in out Test);
+   procedure Test_Pixels_60cc8c_ac6879(Gnattest_T: in out Test) renames
+     Test_Pixels_test_winfo_pixels;
+--  id:2.2/60cc8cabde14d39b/Pixels/1/0/test_winfo_pixels/
+   procedure Test_Pixels_test_winfo_pixels(Gnattest_T: in out Test) is
+      function Pixels
+        (Window: Tk_Widget; Number: Pixel_Data) return Integer renames
+        Wrap_Test_Pixels_60cc8c_ac6879;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Pixels
+           (Get_Main_Window, Pixel_Data'(Value => 2.0, Value_Unit => PIXEL)) =
+         2,
+         "Failed to get point distance in Tk main window.");
+
+--  begin read only
+   end Test_Pixels_test_winfo_pixels;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Pointer_X_54c935_e5ce32
+     (Window: Tk_Widget) return Extended_Natural is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Pointer_X test requirement violated");
+      end;
+      declare
+         Test_Pointer_X_54c935_e5ce32_Result: constant Extended_Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Pointer_X(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Pointer_X test commitment violated");
+         end;
+         return Test_Pointer_X_54c935_e5ce32_Result;
+      end;
+   end Wrap_Test_Pointer_X_54c935_e5ce32;
+--  end read only
+
+--  begin read only
+   procedure Test_Pointer_X_test_winfo_pointer_x(Gnattest_T: in out Test);
+   procedure Test_Pointer_X_54c935_e5ce32(Gnattest_T: in out Test) renames
+     Test_Pointer_X_test_winfo_pointer_x;
+--  id:2.2/54c935ae232a418f/Pointer_X/1/0/test_winfo_pointer_x/
+   procedure Test_Pointer_X_test_winfo_pointer_x(Gnattest_T: in out Test) is
+      function Pointer_X(Window: Tk_Widget) return Extended_Natural renames
+        Wrap_Test_Pointer_X_54c935_e5ce32;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Pointer_X(Get_Main_Window) > -1,
+         "Failed to get X coordinate of the mouse pointer in Tk main window.");
+
+--  begin read only
+   end Test_Pointer_X_test_winfo_pointer_x;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Pointer_X_Y_e6a4c1_ad38ab
+     (Window: Tk_Widget) return Point_Position is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Pointer_X_Y test requirement violated");
+      end;
+      declare
+         Test_Pointer_X_Y_e6a4c1_ad38ab_Result: constant Point_Position :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Pointer_X_Y(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Pointer_X_Y test commitment violated");
+         end;
+         return Test_Pointer_X_Y_e6a4c1_ad38ab_Result;
+      end;
+   end Wrap_Test_Pointer_X_Y_e6a4c1_ad38ab;
+--  end read only
+
+--  begin read only
+   procedure Test_Pointer_X_Y_test_winfo_pointer_x_y(Gnattest_T: in out Test);
+   procedure Test_Pointer_X_Y_e6a4c1_ad38ab(Gnattest_T: in out Test) renames
+     Test_Pointer_X_Y_test_winfo_pointer_x_y;
+--  id:2.2/e6a4c1e42bd42bfe/Pointer_X_Y/1/0/test_winfo_pointer_x_y/
+   procedure Test_Pointer_X_Y_test_winfo_pointer_x_y
+     (Gnattest_T: in out Test) is
+      function Pointer_X_Y(Window: Tk_Widget) return Point_Position renames
+        Wrap_Test_Pointer_X_Y_e6a4c1_ad38ab;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Pointer_X_Y(Get_Main_Window) /= Empty_Point_Position,
+         "Failed to get X and Y coordinate of the mouse pointer in Tk main window.");
+
+--  begin read only
+   end Test_Pointer_X_Y_test_winfo_pointer_x_y;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Pointer_Y_37e90e_63e9b1
+     (Window: Tk_Widget) return Extended_Natural is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Pointer_Y test requirement violated");
+      end;
+      declare
+         Test_Pointer_Y_37e90e_63e9b1_Result: constant Extended_Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Pointer_Y(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Pointer_Y test commitment violated");
+         end;
+         return Test_Pointer_Y_37e90e_63e9b1_Result;
+      end;
+   end Wrap_Test_Pointer_Y_37e90e_63e9b1;
+--  end read only
+
+--  begin read only
+   procedure Test_Pointer_Y_test_winfo_pointer_y(Gnattest_T: in out Test);
+   procedure Test_Pointer_Y_37e90e_63e9b1(Gnattest_T: in out Test) renames
+     Test_Pointer_Y_test_winfo_pointer_y;
+--  id:2.2/37e90ea1e5cf346b/Pointer_Y/1/0/test_winfo_pointer_y/
+   procedure Test_Pointer_Y_test_winfo_pointer_y(Gnattest_T: in out Test) is
+      function Pointer_Y(Window: Tk_Widget) return Extended_Natural renames
+        Wrap_Test_Pointer_Y_37e90e_63e9b1;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Pointer_Y(Get_Main_Window) > -1,
+         "Failed to get Y coordinate of the mouse pointer in Tk main window.");
+
+--  begin read only
+   end Test_Pointer_Y_test_winfo_pointer_y;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
