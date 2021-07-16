@@ -813,7 +813,7 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Interpreters(Get_Main_Window)'Length = 1,
+        (Interpreters(Get_Main_Window)'Length > 0,
          "Failed to get the list of Tcl interpreters for Tk main window.");
 
 --  begin read only
