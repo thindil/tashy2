@@ -52,5 +52,17 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Interpreters_aa8c94_a1d488(Gnattest_T: in out Test);
    --  tk-winfo.ads:87:4:Interpreters:Test_Winfo_Interpreters
 
+   procedure Test_Is_Mapped_f5e47a_3d3a78(Gnattest_T: in out Test);
+   --  tk-winfo.ads:92:4:Is_Mapped:Test_Winfo_Is_Mapped
+
+   procedure Test_Manager_0c5ddb_cd7633(Gnattest_T: in out Test);
+   --  tk-winfo.ads:96:4:Manager:Test_Winfo_Manager
+
+   procedure Test_Name_0da7b9_ba0234(Gnattest_T: in out Test);
+   --  tk-winfo.ads:101:4:Name:Test_Winfo_Name
+
+   procedure Test_Parent_252286_2c8b1b(Gnattest_T: in out Test);
+   --  tk-winfo.ads:106:4:Parent:Test_Winfo_Parent
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only

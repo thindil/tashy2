@@ -821,6 +821,243 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Is_Mapped_f5e47a_3d3a78
+     (Window: Tk_Widget) return Boolean is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Is_Mapped test requirement violated");
+      end;
+      declare
+         Test_Is_Mapped_f5e47a_3d3a78_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Is_Mapped(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Is_Mapped test commitment violated");
+         end;
+         return Test_Is_Mapped_f5e47a_3d3a78_Result;
+      end;
+   end Wrap_Test_Is_Mapped_f5e47a_3d3a78;
+--  end read only
+
+--  begin read only
+   procedure Test_Is_Mapped_test_winfo_is_mapped(Gnattest_T: in out Test);
+   procedure Test_Is_Mapped_f5e47a_3d3a78(Gnattest_T: in out Test) renames
+     Test_Is_Mapped_test_winfo_is_mapped;
+--  id:2.2/f5e47af293734994/Is_Mapped/1/0/test_winfo_is_mapped/
+   procedure Test_Is_Mapped_test_winfo_is_mapped(Gnattest_T: in out Test) is
+      function Is_Mapped(Window: Tk_Widget) return Boolean renames
+        Wrap_Test_Is_Mapped_f5e47a_3d3a78;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Is_Mapped(Get_Main_Window),
+         "Failed to check if Tk main window is mapped.");
+
+--  begin read only
+   end Test_Is_Mapped_test_winfo_is_mapped;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Manager_0c5ddb_cd7633(Window: Tk_Widget) return String is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Manager test requirement violated");
+      end;
+      declare
+         Test_Manager_0c5ddb_cd7633_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Manager(Window);
+      begin
+         begin
+            pragma Assert(Test_Manager_0c5ddb_cd7633_Result'Length > 0);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Manager test commitment violated");
+         end;
+         return Test_Manager_0c5ddb_cd7633_Result;
+      end;
+   end Wrap_Test_Manager_0c5ddb_cd7633;
+--  end read only
+
+--  begin read only
+   procedure Test_Manager_test_winfo_manager(Gnattest_T: in out Test);
+   procedure Test_Manager_0c5ddb_cd7633(Gnattest_T: in out Test) renames
+     Test_Manager_test_winfo_manager;
+--  id:2.2/0c5ddbd2bf164c45/Manager/1/0/test_winfo_manager/
+   procedure Test_Manager_test_winfo_manager(Gnattest_T: in out Test) is
+      function Manager(Window: Tk_Widget) return String renames
+        Wrap_Test_Manager_0c5ddb_cd7633;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Button := Create(".button", Default_Button_Options);
+      Add(Button, Default_Grid_Options);
+      Assert
+        (Manager(Button) = "grid",
+         "Failed to get the name of the manager for button widget.");
+      Destroy(Button);
+
+--  begin read only
+   end Test_Manager_test_winfo_manager;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Name_0da7b9_ba0234(Window: Tk_Widget) return String is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Name test requirement violated");
+      end;
+      declare
+         Test_Name_0da7b9_ba0234_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Name(Window);
+      begin
+         begin
+            pragma Assert(Test_Name_0da7b9_ba0234_Result'Length > 0);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Name test commitment violated");
+         end;
+         return Test_Name_0da7b9_ba0234_Result;
+      end;
+   end Wrap_Test_Name_0da7b9_ba0234;
+--  end read only
+
+--  begin read only
+   procedure Test_Name_test_winfo_name(Gnattest_T: in out Test);
+   procedure Test_Name_0da7b9_ba0234(Gnattest_T: in out Test) renames
+     Test_Name_test_winfo_name;
+--  id:2.2/0da7b9364fa43677/Name/1/0/test_winfo_name/
+   procedure Test_Name_test_winfo_name(Gnattest_T: in out Test) is
+      function Name(Window: Tk_Widget) return String renames
+        Wrap_Test_Name_0da7b9_ba0234;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Button := Create(".button", Default_Button_Options);
+      Add(Button, Default_Grid_Options);
+      Assert
+        (Name(Button) = "button",
+         "Failed to get the name of the button widget.");
+      Destroy(Button);
+
+--  begin read only
+   end Test_Name_test_winfo_name;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Parent_252286_2c8b1b(Window: Tk_Widget) return String is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Parent test requirement violated");
+      end;
+      declare
+         Test_Parent_252286_2c8b1b_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Parent(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Parent test commitment violated");
+         end;
+         return Test_Parent_252286_2c8b1b_Result;
+      end;
+   end Wrap_Test_Parent_252286_2c8b1b;
+--  end read only
+
+--  begin read only
+   procedure Test_Parent_test_winfo_parent(Gnattest_T: in out Test);
+   procedure Test_Parent_252286_2c8b1b(Gnattest_T: in out Test) renames
+     Test_Parent_test_winfo_parent;
+--  id:2.2/252286145870bfec/Parent/1/0/test_winfo_parent/
+   procedure Test_Parent_test_winfo_parent(Gnattest_T: in out Test) is
+      function Parent(Window: Tk_Widget) return String renames
+        Wrap_Test_Parent_252286_2c8b1b;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Button := Create(".button", Default_Button_Options);
+      Add(Button, Default_Grid_Options);
+      Assert
+        (Parent(Button) = ".",
+         "Failed to get the path name of the parent widget for the button widget");
+      Destroy(Button);
+
+--  begin read only
+   end Test_Parent_test_winfo_parent;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
