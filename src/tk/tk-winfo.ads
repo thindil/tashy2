@@ -89,4 +89,22 @@ package Tk.Winfo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
       Test_Case => (Name => "Test_Winfo_Interpreters", Mode => Robustness);
 
+   function Is_Mapped(Window: Tk_Widget) return Boolean with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Is_Mapped", Mode => Nominal);
+
+   function Manager(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Post => Manager'Result'Length > 0,
+      Test_Case => (Name => "Test_Winfo_Manager", Mode => Nominal);
+
+   function Name(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Post => Name'Result'Length > 0,
+      Test_Case => (Name => "Test_Winfo_Name", Mode => Nominal);
+
+   function Parent(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Parent", Mode => Nominal);
+
 end Tk.Winfo;

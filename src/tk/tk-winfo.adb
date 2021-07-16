@@ -239,4 +239,36 @@ package body Tk.Winfo is
               else Tk_Interp(Widgt => Window)));
    end Interpreters;
 
+   function Is_Mapped(Window: Tk_Widget) return Boolean is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo ismapped " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Is_Mapped;
+
+   function Manager(Window: Tk_Widget) return String is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo manager " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Manager;
+
+   function Name(Window: Tk_Widget) return String is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo name " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Name;
+
+   function Parent(Window: Tk_Widget) return String is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo parent " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Parent;
+
 end Tk.Winfo;
