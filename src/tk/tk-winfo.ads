@@ -1,16 +1,16 @@
 -- Copyright (c) 2021 Bartek thindil Jasicki <thindil@laeran.pl>
 --
--- Licensed under the Apache License, Version 2.0 (the "License");
--- you may not use this file except in compliance with the License.
--- You may obtain a copy of the License at
+-- Licensed under the Apache License, Version 2.0 (the "License"); you may not
+-- use this file except in compliance with the License. You may obtain a copy
+-- of the License at
 --
 --     http://www.apache.org/licenses/LICENSE-2.0
 --
 -- Unless required by applicable law or agreed to in writing, software
--- distributed under the License is distributed on an "AS IS" BASIS,
--- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
--- See the License for the specific language governing permissions and
--- limitations under the License.
+-- distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+-- WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+-- License for the specific language governing permissions and limitations
+-- under the License.
 
 with Tk.Widget; use Tk.Widget;
 with Tcl.Lists; use Tcl.Lists;
@@ -18,8 +18,7 @@ with Tcl.Lists; use Tcl.Lists;
 -- ****h* Tk/Winfo
 -- FUNCTION
 -- Provide bindings for Tk command winfo (information about the selected
--- widget)
--- SOURCE
+-- widget) SOURCE
 package Tk.Winfo is
 -- ****
 
@@ -106,5 +105,26 @@ package Tk.Winfo is
    function Parent(Window: Tk_Widget) return String with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Parent", Mode => Nominal);
+
+   function Path_Name
+     (Id: Positive; Window: Tk_Widget := Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
+      Test_Case => (Name => "Test_Winfo_Path_Name", Mode => Robustness);
+
+   function Pixels(Window: Tk_Widget; Number: Pixel_Data) return Integer with
+      Pre => Window /= Null_Widget and Number /= Empty_Pixel_Data,
+      Test_Case => (Name => "Test_Winfo_Pixels", Mode => Nominal);
+
+   function Pointer_X(Window: Tk_Widget) return Extended_Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Pointer_X", Mode => Nominal);
+
+   function Pointer_X_Y(Window: Tk_Widget) return Point_Position with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Pointer_X_Y", Mode => Nominal);
+
+   function Pointer_Y(Window: Tk_Widget) return Extended_Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Pointer_Y", Mode => Nominal);
 
 end Tk.Winfo;

@@ -19,16 +19,16 @@ package body Tk.Winfo is
 
    -- ****if* Winfo/Winfo.Eval_Script
    -- FUNCTION
-   -- Used to get Natural result from the selected Tcl command
+   -- Used to get Integer result from the selected Tcl command
    -- PARAMETERS
    -- Tcl_Script  - Tcl comamnd to evaluate
    -- Interpreter - Tcl interpreter from which result will be get
    -- RESULT
-   -- Natural value for the last Tcl command
+   -- Integer value for the last Tcl command
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   function Eval_Script is new Generic_Scalar_Tcl_Eval(Result_Type => Natural);
+   function Eval_Script is new Generic_Scalar_Tcl_Eval(Result_Type => Integer);
    -- ****
 
    -- ****if* Winfo/Winfo.Float_Eval_Script
@@ -270,5 +270,68 @@ package body Tk.Winfo is
           (Tcl_Script => "winfo parent " & Tk_Path_Name(Widgt => Window),
            Interpreter => Tk_Interp(Widgt => Window));
    end Parent;
+
+   function Path_Name
+     (Id: Positive; Window: Tk_Widget := Null_Widget;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
+   begin
+      if Window /= Null_Widget then
+         return
+           Tcl_Eval
+             (Tcl_Script =>
+                "winfo pathname -displayof " & Tk_Path_Name(Widgt => Window) &
+                Positive'Image(Id),
+              Interpreter => Tk_Interp(Widgt => Window));
+      end if;
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo pathname" & Positive'Image(Id),
+           Interpreter => Interpreter);
+   end Path_Name;
+
+   function Pixels(Window: Tk_Widget; Number: Pixel_Data) return Integer is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script =>
+             "winfo pixels " & Tk_Path_Name(Widgt => Window) & " " &
+             Pixel_Data_Image(Value => Number));
+   end Pixels;
+
+   function Pointer_X(Window: Tk_Widget) return Extended_Natural is
+   begin
+      return
+        Extended_Natural
+          (Eval_Script
+             (Tcl_Script =>
+                "winfo pointerx " & Tk_Path_Name(Widgt => Window)));
+   end Pointer_X;
+
+   function Pointer_X_Y(Window: Tk_Widget) return Point_Position is
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "winfo pointerxy " & Tk_Path_Name(Widgt => Window),
+                Interpreter => Tk_Interp(Widgt => Window)),
+           Interpreter => Tk_Interp(Widgt => Window));
+   begin
+      return Pointer_Location: Point_Position := Empty_Point_Position do
+         Pointer_Location.X :=
+           Extended_Natural'Value(To_Ada_String(Result_List(1)));
+         Pointer_Location.Y :=
+           Extended_Natural'Value(To_Ada_String(Result_List(2)));
+      end return;
+   end Pointer_X_Y;
+
+   function Pointer_Y(Window: Tk_Widget) return Extended_Natural is
+   begin
+      return
+        Extended_Natural
+          (Eval_Script
+             (Tcl_Script =>
+                "winfo pointery " & Tk_Path_Name(Widgt => Window)));
+   end Pointer_Y;
 
 end Tk.Winfo;
