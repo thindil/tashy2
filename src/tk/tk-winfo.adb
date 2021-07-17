@@ -334,4 +334,18 @@ package body Tk.Winfo is
                 "winfo pointery " & Tk_Path_Name(Widgt => Window)));
    end Pointer_Y;
 
+   function Requested_Height(Window: Tk_Widget) return Natural is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo reqheight " & Tk_Path_Name(Widgt => Window));
+   end Requested_Height;
+
+   function Requested_Width(Window: Tk_Widget) return Natural is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo reqheight " & Tk_Path_Name(Widgt => Window));
+   end Requested_Width;
+
 end Tk.Winfo;

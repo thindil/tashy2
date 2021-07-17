@@ -127,4 +127,12 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Pointer_Y", Mode => Nominal);
 
+   function Requested_Height(Window: Tk_Widget) return Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Requested_Height", Mode => Nominal);
+
+   function Requested_Width(Window: Tk_Widget) return Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Requested_Width", Mode => Nominal);
+
 end Tk.Winfo;
