@@ -1334,6 +1334,128 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Requested_Height_dc94e9_a6c984
+     (Window: Tk_Widget) return Natural is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Requested_Height test requirement violated");
+      end;
+      declare
+         Test_Requested_Height_dc94e9_a6c984_Result: constant Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Requested_Height
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Requested_Height test commitment violated");
+         end;
+         return Test_Requested_Height_dc94e9_a6c984_Result;
+      end;
+   end Wrap_Test_Requested_Height_dc94e9_a6c984;
+--  end read only
+
+--  begin read only
+   procedure Test_Requested_Height_test_winfo_requested_height
+     (Gnattest_T: in out Test);
+   procedure Test_Requested_Height_dc94e9_a6c984
+     (Gnattest_T: in out Test) renames
+     Test_Requested_Height_test_winfo_requested_height;
+--  id:2.2/dc94e910d301053f/Requested_Height/1/0/test_winfo_requested_height/
+   procedure Test_Requested_Height_test_winfo_requested_height
+     (Gnattest_T: in out Test) is
+      function Requested_Height(Window: Tk_Widget) return Natural renames
+        Wrap_Test_Requested_Height_dc94e9_a6c984;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Requested_Height(Get_Main_Window) > 0,
+         "Failed to get the requested height for the Tk main window.");
+
+--  begin read only
+   end Test_Requested_Height_test_winfo_requested_height;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Requested_Width_701192_2835fe
+     (Window: Tk_Widget) return Natural is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Requested_Width test requirement violated");
+      end;
+      declare
+         Test_Requested_Width_701192_2835fe_Result: constant Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Requested_Width
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Requested_Width test commitment violated");
+         end;
+         return Test_Requested_Width_701192_2835fe_Result;
+      end;
+   end Wrap_Test_Requested_Width_701192_2835fe;
+--  end read only
+
+--  begin read only
+   procedure Test_Requested_Width_test_winfo_requested_width
+     (Gnattest_T: in out Test);
+   procedure Test_Requested_Width_701192_2835fe
+     (Gnattest_T: in out Test) renames
+     Test_Requested_Width_test_winfo_requested_width;
+--  id:2.2/701192129fc44dd3/Requested_Width/1/0/test_winfo_requested_width/
+   procedure Test_Requested_Width_test_winfo_requested_width
+     (Gnattest_T: in out Test) is
+      function Requested_Width(Window: Tk_Widget) return Natural renames
+        Wrap_Test_Requested_Width_701192_2835fe;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Requested_Width(Get_Main_Window) > 0,
+         "Failed to get the requested width for the Tk main window.");
+
+--  begin read only
+   end Test_Requested_Width_test_winfo_requested_width;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

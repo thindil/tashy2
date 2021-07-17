@@ -79,5 +79,11 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Pointer_Y_37e90e_63e9b1(Gnattest_T: in out Test);
    --  tk-winfo.ads:126:4:Pointer_Y:Test_Winfo_Pointer_Y
 
+   procedure Test_Requested_Height_dc94e9_a6c984(Gnattest_T: in out Test);
+   --  tk-winfo.ads:130:4:Requested_Height:Test_Winfo_Requested_Height
+
+   procedure Test_Requested_Width_701192_2835fe(Gnattest_T: in out Test);
+   --  tk-winfo.ads:134:4:Requested_Width:Test_Winfo_Requested_Width
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
