@@ -348,4 +348,51 @@ package body Tk.Winfo is
           (Tcl_Script => "winfo reqheight " & Tk_Path_Name(Widgt => Window));
    end Requested_Width;
 
+   function Rgb(Window: Tk_Widget; Name: String) return Color_Type is
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "winfo rgb " & Tk_Path_Name(Widgt => Window) & " " & Name,
+                Interpreter => Tk_Interp(Widgt => Window)),
+           Interpreter => Tk_Interp(Widgt => Window));
+   begin
+      return Colors: Color_Type := Empty_Color do
+         Colors.Red := Color_Range'Value(To_Ada_String(Result_List(1)));
+         Colors.Blue := Color_Range'Value(To_Ada_String(Result_List(2)));
+         Colors.Green := Color_Range'Value(To_Ada_String(Result_List(3)));
+      end return;
+   end Rgb;
+
+   function Root_X(Window: Tk_Widget) return Extended_Natural is
+   begin
+      return
+        Extended_Natural
+          (Eval_Script
+             (Tcl_Script => "winfo rootx " & Tk_Path_Name(Widgt => Window)));
+   end Root_X;
+
+   function Root_Y(Window: Tk_Widget) return Extended_Natural is
+   begin
+      return
+        Extended_Natural
+          (Eval_Script
+             (Tcl_Script => "winfo rooty " & Tk_Path_Name(Widgt => Window)));
+   end Root_Y;
+
+   function Screen(Window: Tk_Widget) return String is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo screen " & Tk_Path_Name(Widgt => Window));
+   end Screen;
+
+   function Screen_Cells(Window: Tk_Widget) return Positive is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo screencells " & Tk_Path_Name(Widgt => Window));
+   end Screen_Cells;
+
 end Tk.Winfo;

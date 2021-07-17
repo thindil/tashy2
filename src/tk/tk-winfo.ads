@@ -180,5 +180,25 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Requested_Width", Mode => Nominal);
 
+   function Rgb(Window: Tk_Widget; Name: String) return Color_Type with
+      Pre => Window /= Null_Widget and Name'Length > 0,
+      Test_Case => (Name => "Test_Winfo_Rgb", Mode => Nominal);
+
+   function Root_X(Window: Tk_Widget) return Extended_Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Root_X", Mode => Nominal);
+
+   function Root_Y(Window: Tk_Widget) return Extended_Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Root_Y", Mode => Nominal);
+
+   function Screen(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Screen", Mode => Nominal);
+
+   function Screen_Cells(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Screen_Cells", Mode => Nominal);
+
    --## rule on REDUCEABLE_SCOPE
 end Tk.Winfo;
