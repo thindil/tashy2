@@ -370,7 +370,8 @@ package body Tk.Winfo is
       return
         Extended_Natural
           (Eval_Script
-             (Tcl_Script => "winfo rootx " & Tk_Path_Name(Widgt => Window)));
+             (Tcl_Script => "winfo rootx " & Tk_Path_Name(Widgt => Window),
+              Interpreter => Tk_Interp(Widgt => Window)));
    end Root_X;
 
    function Root_Y(Window: Tk_Widget) return Extended_Natural is
@@ -378,36 +379,40 @@ package body Tk.Winfo is
       return
         Extended_Natural
           (Eval_Script
-             (Tcl_Script => "winfo rooty " & Tk_Path_Name(Widgt => Window)));
+             (Tcl_Script => "winfo rooty " & Tk_Path_Name(Widgt => Window),
+              Interpreter => Tk_Interp(Widgt => Window)));
    end Root_Y;
 
    function Screen(Window: Tk_Widget) return String is
    begin
       return
         Tcl_Eval
-          (Tcl_Script => "winfo screen " & Tk_Path_Name(Widgt => Window));
+          (Tcl_Script => "winfo screen " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Screen;
 
    function Screen_Cells(Window: Tk_Widget) return Positive is
    begin
       return
         Eval_Script
-          (Tcl_Script => "winfo screencells " & Tk_Path_Name(Widgt => Window));
+          (Tcl_Script => "winfo screencells " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Cells;
 
    function Screen_Depth(Window: Tk_Widget) return Positive is
    begin
       return
         Eval_Script
-          (Tcl_Script => "winfo screendepth " & Tk_Path_Name(Widgt => Window));
+          (Tcl_Script => "winfo screendepth " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Depth;
 
    function Screen_Height(Window: Tk_Widget) return Positive is
    begin
       return
         Eval_Script
-          (Tcl_Script =>
-             "winfo screenheight " & Tk_Path_Name(Widgt => Window));
+          (Tcl_Script => "winfo screenheight " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Height;
 
    function Screen_Milimeters_Height(Window: Tk_Widget) return Positive is
@@ -415,7 +420,8 @@ package body Tk.Winfo is
       return
         Eval_Script
           (Tcl_Script =>
-             "winfo screenmmheight " & Tk_Path_Name(Widgt => Window));
+             "winfo screenmmheight " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Milimeters_Height;
 
    function Screen_Milimeters_Width(Window: Tk_Widget) return Positive is
@@ -423,7 +429,8 @@ package body Tk.Winfo is
       return
         Eval_Script
           (Tcl_Script =>
-             "winfo screenmmwidth " & Tk_Path_Name(Widgt => Window));
+             "winfo screenmmwidth " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Milimeters_Width;
 
 end Tk.Winfo;
