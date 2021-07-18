@@ -1742,6 +1742,250 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Screen_Depth_60dc8d_a34485
+     (Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Screen_Depth test requirement violated");
+      end;
+      declare
+         Test_Screen_Depth_60dc8d_a34485_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Screen_Depth(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Screen_Depth test commitment violated");
+         end;
+         return Test_Screen_Depth_60dc8d_a34485_Result;
+      end;
+   end Wrap_Test_Screen_Depth_60dc8d_a34485;
+--  end read only
+
+--  begin read only
+   procedure Test_Screen_Depth_test_winfo_screen_depth
+     (Gnattest_T: in out Test);
+   procedure Test_Screen_Depth_60dc8d_a34485(Gnattest_T: in out Test) renames
+     Test_Screen_Depth_test_winfo_screen_depth;
+--  id:2.2/60dc8d6275da6d87/Screen_Depth/1/0/test_winfo_screen_depth/
+   procedure Test_Screen_Depth_test_winfo_screen_depth
+     (Gnattest_T: in out Test) is
+      function Screen_Depth(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Screen_Depth_60dc8d_a34485;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Screen_Depth(Get_Main_Window) = 24,
+         "Failed to get the screen depth of Tk main window.");
+
+--  begin read only
+   end Test_Screen_Depth_test_winfo_screen_depth;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Screen_Height_0d8e96_07a2f4
+     (Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Screen_Height test requirement violated");
+      end;
+      declare
+         Test_Screen_Height_0d8e96_07a2f4_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Screen_Height(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Screen_Height test commitment violated");
+         end;
+         return Test_Screen_Height_0d8e96_07a2f4_Result;
+      end;
+   end Wrap_Test_Screen_Height_0d8e96_07a2f4;
+--  end read only
+
+--  begin read only
+   procedure Test_Screen_Height_test_winfo_screen_height
+     (Gnattest_T: in out Test);
+   procedure Test_Screen_Height_0d8e96_07a2f4(Gnattest_T: in out Test) renames
+     Test_Screen_Height_test_winfo_screen_height;
+--  id:2.2/0d8e96378acbd1b8/Screen_Height/1/0/test_winfo_screen_height/
+   procedure Test_Screen_Height_test_winfo_screen_height
+     (Gnattest_T: in out Test) is
+      function Screen_Height(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Screen_Height_0d8e96_07a2f4;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Screen_Height(Get_Main_Window) > 0,
+         "Failed to get the screen height of Tk main window.");
+
+--  begin read only
+   end Test_Screen_Height_test_winfo_screen_height;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Screen_Milimeters_Height_64f6ac_98364e
+     (Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Screen_Milimeters_Height test requirement violated");
+      end;
+      declare
+         Test_Screen_Milimeters_Height_64f6ac_98364e_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo
+             .Screen_Milimeters_Height
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Screen_Milimeters_Height test commitment violated");
+         end;
+         return Test_Screen_Milimeters_Height_64f6ac_98364e_Result;
+      end;
+   end Wrap_Test_Screen_Milimeters_Height_64f6ac_98364e;
+--  end read only
+
+--  begin read only
+   procedure Test_Screen_Milimeters_Height_test_winfo_screen_milimeters_height
+     (Gnattest_T: in out Test);
+   procedure Test_Screen_Milimeters_Height_64f6ac_98364e
+     (Gnattest_T: in out Test) renames
+     Test_Screen_Milimeters_Height_test_winfo_screen_milimeters_height;
+--  id:2.2/64f6ac20ec1658d4/Screen_Milimeters_Height/1/0/test_winfo_screen_milimeters_height/
+   procedure Test_Screen_Milimeters_Height_test_winfo_screen_milimeters_height
+     (Gnattest_T: in out Test) is
+      function Screen_Milimeters_Height
+        (Window: Tk_Widget) return Positive renames
+        Wrap_Test_Screen_Milimeters_Height_64f6ac_98364e;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Screen_Milimeters_Height(Get_Main_Window) > 0,
+         "Failed to get the screen height in milimeters of Tk main window.");
+
+--  begin read only
+   end Test_Screen_Milimeters_Height_test_winfo_screen_milimeters_height;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Screen_Milimeters_Width_aa8ee0_a6bf9c
+     (Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Screen_Milimeters_Width test requirement violated");
+      end;
+      declare
+         Test_Screen_Milimeters_Width_aa8ee0_a6bf9c_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo
+             .Screen_Milimeters_Width
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Screen_Milimeters_Width test commitment violated");
+         end;
+         return Test_Screen_Milimeters_Width_aa8ee0_a6bf9c_Result;
+      end;
+   end Wrap_Test_Screen_Milimeters_Width_aa8ee0_a6bf9c;
+--  end read only
+
+--  begin read only
+   procedure Test_Screen_Milimeters_Width_test_winfo_screen_milimeters_width
+     (Gnattest_T: in out Test);
+   procedure Test_Screen_Milimeters_Width_aa8ee0_a6bf9c
+     (Gnattest_T: in out Test) renames
+     Test_Screen_Milimeters_Width_test_winfo_screen_milimeters_width;
+--  id:2.2/aa8ee0d99449fa4b/Screen_Milimeters_Width/1/0/test_winfo_screen_milimeters_width/
+   procedure Test_Screen_Milimeters_Width_test_winfo_screen_milimeters_width
+     (Gnattest_T: in out Test) is
+      function Screen_Milimeters_Width
+        (Window: Tk_Widget) return Positive renames
+        Wrap_Test_Screen_Milimeters_Width_aa8ee0_a6bf9c;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Screen_Milimeters_Width(Get_Main_Window) > 0,
+         "Failed to get the screen width in milimeters of Tk main window.");
+
+--  begin read only
+   end Test_Screen_Milimeters_Width_test_winfo_screen_milimeters_width;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

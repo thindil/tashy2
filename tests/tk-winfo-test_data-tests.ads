@@ -100,5 +100,19 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Screen_Cells_37d289_147863(Gnattest_T: in out Test);
    --  tk-winfo.ads:199:4:Screen_Cells:Test_Winfo_Screen_Cells
 
+   procedure Test_Screen_Depth_60dc8d_a34485(Gnattest_T: in out Test);
+   --  tk-winfo.ads:203:4:Screen_Depth:Test_Winfo_Screen_Depth
+
+   procedure Test_Screen_Height_0d8e96_07a2f4(Gnattest_T: in out Test);
+   --  tk-winfo.ads:207:4:Screen_Height:Test_Winfo_Screen_Height
+
+   procedure Test_Screen_Milimeters_Height_64f6ac_98364e
+     (Gnattest_T: in out Test);
+   --  tk-winfo.ads:211:4:Screen_Milimeters_Height:Test_Winfo_Screen_Milimeters_Height
+
+   procedure Test_Screen_Milimeters_Width_aa8ee0_a6bf9c
+     (Gnattest_T: in out Test);
+   --  tk-winfo.ads:215:4:Screen_Milimeters_Width:Test_Winfo_Screen_Milimeters_Width
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
