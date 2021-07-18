@@ -433,4 +433,46 @@ package body Tk.Winfo is
            Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Milimeters_Width;
 
+   function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type is
+   begin
+      return
+        Screen_Visual_Type'Value
+          (Tcl_Eval
+             (Tcl_Script =>
+                "winfo screenvisual " & Tk_Path_Name(Widgt => Window),
+              Interpreter => Tk_Interp(Widgt => Window)));
+   end Screen_Visual;
+
+   function Screen_Width(Window: Tk_Widget) return Positive is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo screenwidth " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Screen_Width;
+
+   function Server(Window: Tk_Widget) return String is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo server " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Server;
+
+   function Toplevel(Window: Tk_Widget) return String is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo toplevel " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Toplevel;
+
+   function Viewable(Window: Tk_Widget) return Boolean is
+   begin
+      return
+        Tcl_Eval
+          (Tcl_Script => "winfo viewable " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Viewable;
+
 end Tk.Winfo;

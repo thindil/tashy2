@@ -29,7 +29,7 @@ package Tk.Winfo is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Color_Range is new Integer range -1 .. 65535 with
+   type Color_Range is new Integer range -1 .. 65_535 with
       Default_Value => 0;
    -- ****
 
@@ -66,6 +66,13 @@ package Tk.Winfo is
    -- SOURCE
    Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
    -- ****
+
+   type Screen_Visual_Type is
+     (DIRECTCOLOR, GRAYSCALE, PSEUDOCOLOR, STATICCOLOR, STATICGRAY,
+      TRUECOLOR) with
+      Default_Value => TRUECOLOR;
+
+   Default_Screen_Visual: constant Screen_Visual_Type := TRUECOLOR;
 
    function Atom
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
@@ -210,10 +217,32 @@ package Tk.Winfo is
 
    function Screen_Milimeters_Height(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
-      Test_Case => (Name => "Test_Winfo_Screen_Milimeters_Height", Mode => Nominal);
+      Test_Case => (Name => "Test_Winfo_Screen_Milimeters_Height",
+       Mode => Nominal);
 
    function Screen_Milimeters_Width(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
-      Test_Case => (Name => "Test_Winfo_Screen_Milimeters_Width", Mode => Nominal);
+      Test_Case => (Name => "Test_Winfo_Screen_Milimeters_Width",
+       Mode => Nominal);
+
+   function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Screen_Visual", Mode => Nominal);
+
+   function Screen_Width(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Screen_Width", Mode => Nominal);
+
+   function Server(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Server", Mode => Nominal);
+
+   function Toplevel(Window: Tk_Widget) return String with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Toplevel", Mode => Nominal);
+
+   function Viewable(Window: Tk_Widget) return Boolean with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Viewable", Mode => Nominal);
    --## rule on REDUCEABLE_SCOPE
 end Tk.Winfo;
