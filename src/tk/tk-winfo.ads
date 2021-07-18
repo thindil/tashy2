@@ -200,5 +200,20 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Cells", Mode => Nominal);
 
+   function Screen_Depth(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Screen_Depth", Mode => Nominal);
+
+   function Screen_Height(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Screen_Height", Mode => Nominal);
+
+   function Screen_Milimeters_Height(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Screen_Milimeters_Height", Mode => Nominal);
+
+   function Screen_Milimeters_Width(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Screen_Milimeters_Width", Mode => Nominal);
    --## rule on REDUCEABLE_SCOPE
 end Tk.Winfo;
