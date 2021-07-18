@@ -1986,6 +1986,295 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Screen_Visual_fa94d0_3e55fd
+     (Window: Tk_Widget) return Screen_Visual_Type is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Screen_Visual test requirement violated");
+      end;
+      declare
+         Test_Screen_Visual_fa94d0_3e55fd_Result: constant Screen_Visual_Type :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Screen_Visual(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Screen_Visual test commitment violated");
+         end;
+         return Test_Screen_Visual_fa94d0_3e55fd_Result;
+      end;
+   end Wrap_Test_Screen_Visual_fa94d0_3e55fd;
+--  end read only
+
+--  begin read only
+   procedure Test_Screen_Visual_test_winfo_screen_visual
+     (Gnattest_T: in out Test);
+   procedure Test_Screen_Visual_fa94d0_3e55fd(Gnattest_T: in out Test) renames
+     Test_Screen_Visual_test_winfo_screen_visual;
+--  id:2.2/fa94d0bde32bc0f2/Screen_Visual/1/0/test_winfo_screen_visual/
+   procedure Test_Screen_Visual_test_winfo_screen_visual
+     (Gnattest_T: in out Test) is
+      function Screen_Visual
+        (Window: Tk_Widget) return Screen_Visual_Type renames
+        Wrap_Test_Screen_Visual_fa94d0_3e55fd;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Screen_Visual(Get_Main_Window) = TRUECOLOR,
+         "Failed to get screen visual for Tk main window.");
+
+--  begin read only
+   end Test_Screen_Visual_test_winfo_screen_visual;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Screen_Width_8321ec_7e95f9
+     (Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Screen_Width test requirement violated");
+      end;
+      declare
+         Test_Screen_Width_8321ec_7e95f9_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Screen_Width(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Screen_Width test commitment violated");
+         end;
+         return Test_Screen_Width_8321ec_7e95f9_Result;
+      end;
+   end Wrap_Test_Screen_Width_8321ec_7e95f9;
+--  end read only
+
+--  begin read only
+   procedure Test_Screen_Width_test_winfo_screen_width
+     (Gnattest_T: in out Test);
+   procedure Test_Screen_Width_8321ec_7e95f9(Gnattest_T: in out Test) renames
+     Test_Screen_Width_test_winfo_screen_width;
+--  id:2.2/8321ecd166a383a6/Screen_Width/1/0/test_winfo_screen_width/
+   procedure Test_Screen_Width_test_winfo_screen_width
+     (Gnattest_T: in out Test) is
+      function Screen_Width(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Screen_Width_8321ec_7e95f9;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Screen_Width(Get_Main_Window) > 0,
+         "Failed to get the screen width of Tk main window.");
+
+--  begin read only
+   end Test_Screen_Width_test_winfo_screen_width;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Server_e424b7_51e986(Window: Tk_Widget) return String is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Server test requirement violated");
+      end;
+      declare
+         Test_Server_e424b7_51e986_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Server(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Server test commitment violated");
+         end;
+         return Test_Server_e424b7_51e986_Result;
+      end;
+   end Wrap_Test_Server_e424b7_51e986;
+--  end read only
+
+--  begin read only
+   procedure Test_Server_test_winfo_server(Gnattest_T: in out Test);
+   procedure Test_Server_e424b7_51e986(Gnattest_T: in out Test) renames
+     Test_Server_test_winfo_server;
+--  id:2.2/e424b7f8de42cc3a/Server/1/0/test_winfo_server/
+   procedure Test_Server_test_winfo_server(Gnattest_T: in out Test) is
+      function Server(Window: Tk_Widget) return String renames
+        Wrap_Test_Server_e424b7_51e986;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Server(Get_Main_Window)'Length > 0,
+         "Failed to get the name of the display server for Tk main window.");
+
+--  begin read only
+   end Test_Server_test_winfo_server;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Toplevel_5fee9d_f90ff3
+     (Window: Tk_Widget) return String is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Toplevel test requirement violated");
+      end;
+      declare
+         Test_Toplevel_5fee9d_f90ff3_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Toplevel(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Toplevel test commitment violated");
+         end;
+         return Test_Toplevel_5fee9d_f90ff3_Result;
+      end;
+   end Wrap_Test_Toplevel_5fee9d_f90ff3;
+--  end read only
+
+--  begin read only
+   procedure Test_Toplevel_test_winfo_toplevel(Gnattest_T: in out Test);
+   procedure Test_Toplevel_5fee9d_f90ff3(Gnattest_T: in out Test) renames
+     Test_Toplevel_test_winfo_toplevel;
+--  id:2.2/5fee9d10c3705c8f/Toplevel/1/0/test_winfo_toplevel/
+   procedure Test_Toplevel_test_winfo_toplevel(Gnattest_T: in out Test) is
+      function Toplevel(Window: Tk_Widget) return String renames
+        Wrap_Test_Toplevel_5fee9d_f90ff3;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Toplevel(Get_Main_Window) = ".",
+         "Failed to get toplevel window for Tk main window.");
+
+--  begin read only
+   end Test_Toplevel_test_winfo_toplevel;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Viewable_dc7973_b838da
+     (Window: Tk_Widget) return Boolean is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Viewable test requirement violated");
+      end;
+      declare
+         Test_Viewable_dc7973_b838da_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Viewable(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Viewable test commitment violated");
+         end;
+         return Test_Viewable_dc7973_b838da_Result;
+      end;
+   end Wrap_Test_Viewable_dc7973_b838da;
+--  end read only
+
+--  begin read only
+   procedure Test_Viewable_test_winfo_viewable(Gnattest_T: in out Test);
+   procedure Test_Viewable_dc7973_b838da(Gnattest_T: in out Test) renames
+     Test_Viewable_test_winfo_viewable;
+--  id:2.2/dc7973d5e13409ea/Viewable/1/0/test_winfo_viewable/
+   procedure Test_Viewable_test_winfo_viewable(Gnattest_T: in out Test) is
+      function Viewable(Window: Tk_Widget) return Boolean renames
+        Wrap_Test_Viewable_dc7973_b838da;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Viewable(Get_Main_Window),
+         "Failed to get viewable state for Tk main window.");
+
+--  begin read only
+   end Test_Viewable_test_winfo_viewable;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
