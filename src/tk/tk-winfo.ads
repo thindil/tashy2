@@ -228,6 +228,8 @@ package Tk.Winfo is
    function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Visual", Mode => Nominal);
+   function Visual(Window: Tk_Widget) return Screen_Visual_Type renames
+     Screen_Visual;
 
    function Screen_Width(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
@@ -244,5 +246,10 @@ package Tk.Winfo is
    function Viewable(Window: Tk_Widget) return Boolean with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Viewable", Mode => Nominal);
+
+   function Visual_Id(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Visual_Id", Mode => Nominal);
+
    --## rule on REDUCEABLE_SCOPE
 end Tk.Winfo;

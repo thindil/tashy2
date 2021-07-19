@@ -475,4 +475,13 @@ package body Tk.Winfo is
            Interpreter => Tk_Interp(Widgt => Window));
    end Viewable;
 
+   function Visual_Id(Window: Tk_Widget) return Positive is
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "winfo visualid " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   begin
+      return Positive'Value("16#" & Result(3 .. Result'Last) & "#");
+   end Visual_Id;
+
 end Tk.Winfo;
