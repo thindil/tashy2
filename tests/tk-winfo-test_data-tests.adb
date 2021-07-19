@@ -2275,6 +2275,63 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Visual_Id_bfbe6b_3ec6f0
+     (Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Visual_Id test requirement violated");
+      end;
+      declare
+         Test_Visual_Id_bfbe6b_3ec6f0_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Visual_Id(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Visual_Id test commitment violated");
+         end;
+         return Test_Visual_Id_bfbe6b_3ec6f0_Result;
+      end;
+   end Wrap_Test_Visual_Id_bfbe6b_3ec6f0;
+--  end read only
+
+--  begin read only
+   procedure Test_Visual_Id_test_winfo_visual_id(Gnattest_T: in out Test);
+   procedure Test_Visual_Id_bfbe6b_3ec6f0(Gnattest_T: in out Test) renames
+     Test_Visual_Id_test_winfo_visual_id;
+--  id:2.2/bfbe6bf365344960/Visual_Id/1/0/test_winfo_visual_id/
+   procedure Test_Visual_Id_test_winfo_visual_id(Gnattest_T: in out Test) is
+      function Visual_Id(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Visual_Id_bfbe6b_3ec6f0;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Visual_Id(Get_Main_Window) = 16#21#,
+         "Failed to get Id for visual for Tk main window.");
+
+--  begin read only
+   end Test_Visual_Id_test_winfo_visual_id;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

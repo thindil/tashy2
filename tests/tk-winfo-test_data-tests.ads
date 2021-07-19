@@ -118,16 +118,19 @@ package Tk.Winfo.Test_Data.Tests is
    --  tk-winfo.ads:228:4:Screen_Visual:Test_Winfo_Screen_Visual
 
    procedure Test_Screen_Width_8321ec_7e95f9(Gnattest_T: in out Test);
-   --  tk-winfo.ads:232:4:Screen_Width:Test_Winfo_Screen_Width
+   --  tk-winfo.ads:234:4:Screen_Width:Test_Winfo_Screen_Width
 
    procedure Test_Server_e424b7_51e986(Gnattest_T: in out Test);
-   --  tk-winfo.ads:236:4:Server:Test_Winfo_Server
+   --  tk-winfo.ads:238:4:Server:Test_Winfo_Server
 
    procedure Test_Toplevel_5fee9d_f90ff3(Gnattest_T: in out Test);
-   --  tk-winfo.ads:240:4:Toplevel:Test_Winfo_Toplevel
+   --  tk-winfo.ads:242:4:Toplevel:Test_Winfo_Toplevel
 
    procedure Test_Viewable_dc7973_b838da(Gnattest_T: in out Test);
-   --  tk-winfo.ads:244:4:Viewable:Test_Winfo_Viewable
+   --  tk-winfo.ads:246:4:Viewable:Test_Winfo_Viewable
+
+   procedure Test_Visual_Id_bfbe6b_3ec6f0(Gnattest_T: in out Test);
+   --  tk-winfo.ads:250:4:Visual_Id:Test_Winfo_Visual_Id
 
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
