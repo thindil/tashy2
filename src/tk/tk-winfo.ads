@@ -74,6 +74,20 @@ package Tk.Winfo is
 
    Default_Screen_Visual: constant Screen_Visual_Type := TRUECOLOR;
 
+   type Visual_Record(Include_Id: Boolean := False) is record
+      Visual_Type: Screen_Visual_Type;
+      Depth: Positive;
+      case Include_Id is
+         when True =>
+            Id: Positive;
+         when False =>
+            null;
+      end case;
+   end record;
+
+   Default_Visual: constant Visual_Record :=
+     (Visual_Type => TRUECOLOR, Depth => 24, Include_Id => False);
+
    function Atom
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return Positive with
