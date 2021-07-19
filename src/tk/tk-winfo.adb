@@ -484,4 +484,36 @@ package body Tk.Winfo is
       return Positive'Value("16#" & Result(3 .. Result'Last) & "#");
    end Visual_Id;
 
+   function Visuals_Available
+     (Window: Tk_Widget; Include_Ids: Boolean := False) return Visuals_List is
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "winfo visualsavailable " & Tk_Path_Name(Widgt => Window) &
+                  (if Include_Ids then " includeids" else ""),
+                Interpreter => Tk_Interp(Widgt => Window)),
+           Interpreter => Tk_Interp(Widgt => Window));
+      Result_Values: Array_List(1 .. (if Include_Ids then 3 else 2));
+   begin
+      return Visuals: Visuals_List (Result_List'Range) := (others => <>) do
+         for I in Result_List'Range loop
+            Result_Values := Split_List(To_Ada_String(Result_List(I)));
+            Visuals(I).Visual_Type :=
+              Screen_Visual_Type'Value(To_Ada_String(Result_Values(1)));
+            Visuals(I).Depth :=
+              Positive'Value(To_Ada_String(Result_Values(2)));
+            if Include_Ids then
+               Visuals(I).Id :=
+                 Positive'Value
+                   ("16#" &
+                    To_Ada_String(Result_Values(3))
+                      (3 .. To_Ada_String(Result_Values(3))'Last) &
+                    "#");
+            end if;
+         end loop;
+      end return;
+   end Visuals_Available;
+
 end Tk.Winfo;

@@ -88,6 +88,10 @@ package Tk.Winfo is
    Default_Visual: constant Visual_Record :=
      (Visual_Type => TRUECOLOR, Depth => 24, Include_Id => False);
 
+   type Visuals_List is array(Positive range <>) of Visual_Record;
+
+   Empty_Visual_List: constant Visuals_List(1 .. 0) := (others => <>);
+
    function Atom
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return Positive with
@@ -264,6 +268,12 @@ package Tk.Winfo is
    function Visual_Id(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Visual_Id", Mode => Nominal);
+
+   function Visuals_Available
+     (Window: Tk_Widget; Include_Ids: Boolean := False)
+      return Visuals_List with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Visuals_Available", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE
 end Tk.Winfo;
