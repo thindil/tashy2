@@ -2332,6 +2332,69 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Visuals_Available_a6aadc_de5564
+     (Window: Tk_Widget; Include_Ids: Boolean := False) return Visuals_List is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Visuals_Available test requirement violated");
+      end;
+      declare
+         Test_Visuals_Available_a6aadc_de5564_Result: constant Visuals_List :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Visuals_Available
+             (Window, Include_Ids);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Visuals_Available test commitment violated");
+         end;
+         return Test_Visuals_Available_a6aadc_de5564_Result;
+      end;
+   end Wrap_Test_Visuals_Available_a6aadc_de5564;
+--  end read only
+
+--  begin read only
+   procedure Test_Visuals_Available_test_winfo_visuals_available
+     (Gnattest_T: in out Test);
+   procedure Test_Visuals_Available_a6aadc_de5564
+     (Gnattest_T: in out Test) renames
+     Test_Visuals_Available_test_winfo_visuals_available;
+--  id:2.2/a6aadccaa5000111/Visuals_Available/1/0/test_winfo_visuals_available/
+   procedure Test_Visuals_Available_test_winfo_visuals_available
+     (Gnattest_T: in out Test) is
+      function Visuals_Available
+        (Window: Tk_Widget; Include_Ids: Boolean := False)
+         return Visuals_List renames
+        Wrap_Test_Visuals_Available_a6aadc_de5564;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Visuals_Available(Get_Main_Window) /= Empty_Visual_List,
+         "Failed to get the list of available visuals for TK main window.");
+
+--  begin read only
+   end Test_Visuals_Available_test_winfo_visuals_available;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
