@@ -150,5 +150,11 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Width_fa2186_53745f(Gnattest_T: in out Test);
    --  tk-winfo.ads:294:4:Width:Test_Winfo_Width
 
+   procedure Test_X_91dd91_776ecc(Gnattest_T: in out Test);
+   --  tk-winfo.ads:298:4:X:Test_Winfo_X
+
+   procedure Test_Y_07f0ff_4d9e51(Gnattest_T: in out Test);
+   --  tk-winfo.ads:302:4:Y:Test_Winfo_Y
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
