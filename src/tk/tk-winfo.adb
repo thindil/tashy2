@@ -516,4 +516,44 @@ package body Tk.Winfo is
       end return;
    end Visuals_Available;
 
+   function Virtual_Root_Height(Window: Tk_Widget) return Positive is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo vrootheight " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Virtual_Root_Height;
+
+   function Virtual_Root_Width(Window: Tk_Widget) return Positive is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo vrootwidth " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Virtual_Root_Width;
+
+   function Virtual_Root_X(Window: Tk_Widget) return Natural is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo vrootx " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Virtual_Root_X;
+
+   function Virtual_Root_Y(Window: Tk_Widget) return Natural is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo vrooty " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Virtual_Root_Y;
+
+   function Width(Window: Tk_Widget) return Positive is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo width " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Width;
+
 end Tk.Winfo;

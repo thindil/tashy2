@@ -275,5 +275,24 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Visuals_Available", Mode => Nominal);
 
+   function Virtual_Root_Height(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Virtual_Root_Height", Mode => Nominal);
+
+   function Virtual_Root_Width(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Virtual_Root_Width", Mode => Nominal);
+
+   function Virtual_Root_X(Window: Tk_Widget) return Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Virtual_Root_X", Mode => Nominal);
+
+   function Virtual_Root_Y(Window: Tk_Widget) return Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Virtual_Root_Y", Mode => Nominal);
+
+   function Width(Window: Tk_Widget) return Positive with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Width", Mode => Nominal);
    --## rule on REDUCEABLE_SCOPE
 end Tk.Winfo;
