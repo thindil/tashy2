@@ -2395,6 +2395,303 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Virtual_Root_Height_c10eb6_0cf3d9
+     (Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Virtual_Root_Height test requirement violated");
+      end;
+      declare
+         Test_Virtual_Root_Height_c10eb6_0cf3d9_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Virtual_Root_Height
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Virtual_Root_Height test commitment violated");
+         end;
+         return Test_Virtual_Root_Height_c10eb6_0cf3d9_Result;
+      end;
+   end Wrap_Test_Virtual_Root_Height_c10eb6_0cf3d9;
+--  end read only
+
+--  begin read only
+   procedure Test_Virtual_Root_Height_test_winfo_virtual_root_height
+     (Gnattest_T: in out Test);
+   procedure Test_Virtual_Root_Height_c10eb6_0cf3d9
+     (Gnattest_T: in out Test) renames
+     Test_Virtual_Root_Height_test_winfo_virtual_root_height;
+--  id:2.2/c10eb6bfd36ab96b/Virtual_Root_Height/1/0/test_winfo_virtual_root_height/
+   procedure Test_Virtual_Root_Height_test_winfo_virtual_root_height
+     (Gnattest_T: in out Test) is
+      function Virtual_Root_Height(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Virtual_Root_Height_c10eb6_0cf3d9;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Virtual_Root_Height(Get_Main_Window) > 0,
+         "Failed to get virtual root height of Tk main window.");
+
+--  begin read only
+   end Test_Virtual_Root_Height_test_winfo_virtual_root_height;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Virtual_Root_Width_34af8b_13e28c
+     (Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Virtual_Root_Width test requirement violated");
+      end;
+      declare
+         Test_Virtual_Root_Width_34af8b_13e28c_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Virtual_Root_Width
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Virtual_Root_Width test commitment violated");
+         end;
+         return Test_Virtual_Root_Width_34af8b_13e28c_Result;
+      end;
+   end Wrap_Test_Virtual_Root_Width_34af8b_13e28c;
+--  end read only
+
+--  begin read only
+   procedure Test_Virtual_Root_Width_test_winfo_virtual_root_width
+     (Gnattest_T: in out Test);
+   procedure Test_Virtual_Root_Width_34af8b_13e28c
+     (Gnattest_T: in out Test) renames
+     Test_Virtual_Root_Width_test_winfo_virtual_root_width;
+--  id:2.2/34af8ba4fc834109/Virtual_Root_Width/1/0/test_winfo_virtual_root_width/
+   procedure Test_Virtual_Root_Width_test_winfo_virtual_root_width
+     (Gnattest_T: in out Test) is
+      function Virtual_Root_Width(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Virtual_Root_Width_34af8b_13e28c;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Virtual_Root_Width(Get_Main_Window) > 0,
+         "Failed to get virtual root width of Tk main window.");
+
+--  begin read only
+   end Test_Virtual_Root_Width_test_winfo_virtual_root_width;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Virtual_Root_X_6cfaed_207bc9
+     (Window: Tk_Widget) return Natural is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Virtual_Root_X test requirement violated");
+      end;
+      declare
+         Test_Virtual_Root_X_6cfaed_207bc9_Result: constant Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Virtual_Root_X
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Virtual_Root_X test commitment violated");
+         end;
+         return Test_Virtual_Root_X_6cfaed_207bc9_Result;
+      end;
+   end Wrap_Test_Virtual_Root_X_6cfaed_207bc9;
+--  end read only
+
+--  begin read only
+   procedure Test_Virtual_Root_X_test_winfo_virtual_root_x
+     (Gnattest_T: in out Test);
+   procedure Test_Virtual_Root_X_6cfaed_207bc9(Gnattest_T: in out Test) renames
+     Test_Virtual_Root_X_test_winfo_virtual_root_x;
+--  id:2.2/6cfaed2a8125b797/Virtual_Root_X/1/0/test_winfo_virtual_root_x/
+   procedure Test_Virtual_Root_X_test_winfo_virtual_root_x
+     (Gnattest_T: in out Test) is
+      function Virtual_Root_X(Window: Tk_Widget) return Natural renames
+        Wrap_Test_Virtual_Root_X_6cfaed_207bc9;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Virtual_Root_X(Get_Main_Window) > -1,
+         "Failed to get virtual root X of Tk main window.");
+
+--  begin read only
+   end Test_Virtual_Root_X_test_winfo_virtual_root_x;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Virtual_Root_Y_6a3724_e36110
+     (Window: Tk_Widget) return Natural is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Virtual_Root_Y test requirement violated");
+      end;
+      declare
+         Test_Virtual_Root_Y_6a3724_e36110_Result: constant Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Virtual_Root_Y
+             (Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Virtual_Root_Y test commitment violated");
+         end;
+         return Test_Virtual_Root_Y_6a3724_e36110_Result;
+      end;
+   end Wrap_Test_Virtual_Root_Y_6a3724_e36110;
+--  end read only
+
+--  begin read only
+   procedure Test_Virtual_Root_Y_test_winfo_virtual_root_y
+     (Gnattest_T: in out Test);
+   procedure Test_Virtual_Root_Y_6a3724_e36110(Gnattest_T: in out Test) renames
+     Test_Virtual_Root_Y_test_winfo_virtual_root_y;
+--  id:2.2/6a3724ab671cea28/Virtual_Root_Y/1/0/test_winfo_virtual_root_y/
+   procedure Test_Virtual_Root_Y_test_winfo_virtual_root_y
+     (Gnattest_T: in out Test) is
+      function Virtual_Root_Y(Window: Tk_Widget) return Natural renames
+        Wrap_Test_Virtual_Root_Y_6a3724_e36110;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Virtual_Root_Y(Get_Main_Window) > -1,
+         "Failed to get virtual root Y of Tk main window.");
+
+--  begin read only
+   end Test_Virtual_Root_Y_test_winfo_virtual_root_y;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Width_fa2186_53745f(Window: Tk_Widget) return Positive is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Width test requirement violated");
+      end;
+      declare
+         Test_Width_fa2186_53745f_Result: constant Positive :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Width(Window);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Width test commitment violated");
+         end;
+         return Test_Width_fa2186_53745f_Result;
+      end;
+   end Wrap_Test_Width_fa2186_53745f;
+--  end read only
+
+--  begin read only
+   procedure Test_Width_test_winfo_width(Gnattest_T: in out Test);
+   procedure Test_Width_fa2186_53745f(Gnattest_T: in out Test) renames
+     Test_Width_test_winfo_width;
+--  id:2.2/fa2186de9c5ca5ec/Width/1/0/test_winfo_width/
+   procedure Test_Width_test_winfo_width(Gnattest_T: in out Test) is
+      function Width(Window: Tk_Widget) return Positive renames
+        Wrap_Test_Width_fa2186_53745f;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Width(Get_Main_Window) > 0, "Failed to get width of Tk main window.");
+
+--  begin read only
+   end Test_Width_test_winfo_width;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

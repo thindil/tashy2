@@ -135,5 +135,20 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Visuals_Available_a6aadc_de5564(Gnattest_T: in out Test);
    --  tk-winfo.ads:272:4:Visuals_Available:Test_Winfo_Visuals_Available
 
+   procedure Test_Virtual_Root_Height_c10eb6_0cf3d9(Gnattest_T: in out Test);
+   --  tk-winfo.ads:278:4:Virtual_Root_Height:Test_Winfo_Virtual_Root_Height
+
+   procedure Test_Virtual_Root_Width_34af8b_13e28c(Gnattest_T: in out Test);
+   --  tk-winfo.ads:282:4:Virtual_Root_Width:Test_Winfo_Virtual_Root_Width
+
+   procedure Test_Virtual_Root_X_6cfaed_207bc9(Gnattest_T: in out Test);
+   --  tk-winfo.ads:286:4:Virtual_Root_X:Test_Winfo_Virtual_Root_X
+
+   procedure Test_Virtual_Root_Y_6a3724_e36110(Gnattest_T: in out Test);
+   --  tk-winfo.ads:290:4:Virtual_Root_Y:Test_Winfo_Virtual_Root_Y
+
+   procedure Test_Width_fa2186_53745f(Gnattest_T: in out Test);
+   --  tk-winfo.ads:294:4:Width:Test_Winfo_Width
+
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
