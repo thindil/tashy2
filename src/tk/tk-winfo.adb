@@ -556,4 +556,20 @@ package body Tk.Winfo is
            Interpreter => Tk_Interp(Widgt => Window));
    end Width;
 
+   function X(Window: Tk_Widget) return Natural is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo x " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end X;
+
+   function Y(Window: Tk_Widget) return Natural is
+   begin
+      return
+        Eval_Script
+          (Tcl_Script => "winfo y " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   end Y;
+
 end Tk.Winfo;

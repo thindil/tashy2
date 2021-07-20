@@ -294,5 +294,13 @@ package Tk.Winfo is
    function Width(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Width", Mode => Nominal);
+
+   function X(Window: Tk_Widget) return Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_X", Mode => Nominal);
+
+   function Y(Window: Tk_Widget) return Natural with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Winfo_Y", Mode => Nominal);
    --## rule on REDUCEABLE_SCOPE
 end Tk.Winfo;
