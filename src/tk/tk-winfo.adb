@@ -112,22 +112,6 @@ package body Tk.Winfo is
       end return;
    end Children;
 
-   function Class(Window: Tk_Widget) return String is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo class " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Class;
-
-   function Color_Map_Full(Window: Tk_Widget) return Boolean is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo colormapfull " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Color_Map_Full;
-
    function Containing
      (Root_X, Root_Y: Natural; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget is
@@ -156,15 +140,6 @@ package body Tk.Winfo is
           (Tcl_Script => "winfo depth " & Tk_Path_Name(Widgt => Window),
            Interpreter => Tk_Interp(Widgt => Window));
    end Colors_Depth;
-
-   function Exists
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo exists " & Name, Interpreter => Interpreter);
-   end Exists;
 
    function Floating_Point_Pixels
      (Window: Tk_Widget; Number: Pixel_Data) return Float is
@@ -238,22 +213,6 @@ package body Tk.Winfo is
              (if Window = Null_Widget then Interpreter
               else Tk_Interp(Widgt => Window)));
    end Interpreters;
-
-   function Is_Mapped(Window: Tk_Widget) return Boolean is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo ismapped " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Is_Mapped;
-
-   function Manager(Window: Tk_Widget) return String is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo manager " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Manager;
 
    function Name(Window: Tk_Widget) return String is
    begin

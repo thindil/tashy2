@@ -111,11 +111,17 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Children", Mode => Nominal);
 
-   function Class(Window: Tk_Widget) return String with
+   function Class(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "winfo class " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Class", Mode => Nominal);
 
-   function Color_Map_Full(Window: Tk_Widget) return Boolean with
+   function Color_Map_Full(Window: Tk_Widget) return Boolean is
+     (Tcl_Eval
+        (Tcl_Script => "winfo colormapfull " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Color_Map_Full", Mode => Nominal);
 
@@ -130,7 +136,10 @@ package Tk.Winfo is
 
    function Exists
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean with
+      return Boolean is
+     (Tcl_Eval
+        (Tcl_Script => "winfo exists " & Name,
+         Interpreter => Interpreter)) with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Winfo_Exists", Mode => Nominal);
 
@@ -158,11 +167,17 @@ package Tk.Winfo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
       Test_Case => (Name => "Test_Winfo_Interpreters", Mode => Robustness);
 
-   function Is_Mapped(Window: Tk_Widget) return Boolean with
+   function Is_Mapped(Window: Tk_Widget) return Boolean is
+     (Tcl_Eval
+        (Tcl_Script => "winfo ismapped " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Is_Mapped", Mode => Nominal);
 
-   function Manager(Window: Tk_Widget) return String with
+   function Manager(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "winfo manager " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Post => Manager'Result'Length > 0,
       Test_Case => (Name => "Test_Winfo_Manager", Mode => Nominal);
