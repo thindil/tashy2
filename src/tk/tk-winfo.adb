@@ -376,22 +376,6 @@ package body Tk.Winfo is
            Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Width;
 
-   function Toplevel(Window: Tk_Widget) return String is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo toplevel " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Toplevel;
-
-   function Viewable(Window: Tk_Widget) return Boolean is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo viewable " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Viewable;
-
    function Visual_Id(Window: Tk_Widget) return Positive is
       Result: constant String :=
         Tcl_Eval

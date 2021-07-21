@@ -289,11 +289,17 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Server", Mode => Nominal);
 
-   function Toplevel(Window: Tk_Widget) return String with
+   function Toplevel(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "winfo toplevel " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Toplevel", Mode => Nominal);
 
-   function Viewable(Window: Tk_Widget) return Boolean with
+   function Viewable(Window: Tk_Widget) return Boolean is
+     (Tcl_Eval
+        (Tcl_Script => "winfo viewable " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Viewable", Mode => Nominal);
 
