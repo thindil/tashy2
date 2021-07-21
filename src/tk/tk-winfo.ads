@@ -182,12 +182,18 @@ package Tk.Winfo is
       Post => Manager'Result'Length > 0,
       Test_Case => (Name => "Test_Winfo_Manager", Mode => Nominal);
 
-   function Name(Window: Tk_Widget) return String with
+   function Name(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "winfo name " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Post => Name'Result'Length > 0,
       Test_Case => (Name => "Test_Winfo_Name", Mode => Nominal);
 
-   function Parent(Window: Tk_Widget) return String with
+   function Parent(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "winfo parent " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Parent", Mode => Nominal);
 
@@ -232,7 +238,10 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Root_Y", Mode => Nominal);
 
-   function Screen(Window: Tk_Widget) return String with
+   function Screen(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "winfo screen " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen", Mode => Nominal);
 
@@ -258,7 +267,12 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Screen_Milimeters_Width",
        Mode => Nominal);
 
-   function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type with
+   function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type is
+     (Screen_Visual_Type'Value
+        (Tcl_Eval
+           (Tcl_Script =>
+              "winfo screenvisual " & Tk_Path_Name(Widgt => Window),
+            Interpreter => Tk_Interp(Widgt => Window)))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Visual", Mode => Nominal);
    function Visual(Window: Tk_Widget) return Screen_Visual_Type renames
@@ -268,7 +282,10 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Width", Mode => Nominal);
 
-   function Server(Window: Tk_Widget) return String with
+   function Server(Window: Tk_Widget) return String is
+     (Tcl_Eval
+        (Tcl_Script => "winfo server " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Server", Mode => Nominal);
 

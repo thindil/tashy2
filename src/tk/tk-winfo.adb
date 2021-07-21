@@ -214,22 +214,6 @@ package body Tk.Winfo is
               else Tk_Interp(Widgt => Window)));
    end Interpreters;
 
-   function Name(Window: Tk_Widget) return String is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo name " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Name;
-
-   function Parent(Window: Tk_Widget) return String is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo parent " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Parent;
-
    function Path_Name
      (Id: Positive; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
@@ -342,14 +326,6 @@ package body Tk.Winfo is
               Interpreter => Tk_Interp(Widgt => Window)));
    end Root_Y;
 
-   function Screen(Window: Tk_Widget) return String is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo screen " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Screen;
-
    function Screen_Cells(Window: Tk_Widget) return Positive is
    begin
       return
@@ -392,16 +368,6 @@ package body Tk.Winfo is
            Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Milimeters_Width;
 
-   function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type is
-   begin
-      return
-        Screen_Visual_Type'Value
-          (Tcl_Eval
-             (Tcl_Script =>
-                "winfo screenvisual " & Tk_Path_Name(Widgt => Window),
-              Interpreter => Tk_Interp(Widgt => Window)));
-   end Screen_Visual;
-
    function Screen_Width(Window: Tk_Widget) return Positive is
    begin
       return
@@ -409,14 +375,6 @@ package body Tk.Winfo is
           (Tcl_Script => "winfo screenwidth " & Tk_Path_Name(Widgt => Window),
            Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Width;
-
-   function Server(Window: Tk_Widget) return String is
-   begin
-      return
-        Tcl_Eval
-          (Tcl_Script => "winfo server " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
-   end Server;
 
    function Toplevel(Window: Tk_Widget) return String is
    begin
