@@ -90,14 +90,15 @@ package body Tk.Winfo is
    end Cells;
 
    function Children(Window: Tk_Widget) return Widgets_Array is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result_List: constant Array_List :=
         Split_List
           (List =>
              Tcl_Eval
                (Tcl_Script =>
                   "winfo children " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Tk_Interp(Widgt => Window)),
-           Interpreter => Tk_Interp(Widgt => Window));
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
       return
         Widgets: Widgets_Array(1 .. Result_List'Last) :=
@@ -107,7 +108,7 @@ package body Tk.Winfo is
             Widgets(I) :=
               Get_Widget
                 (Path_Name => To_Ada_String(Source => Result_List(I)),
-                 Interpreter => Tk_Interp(Widgt => Window));
+                 Interpreter => Interpreter);
          end loop Fill_Result_Array_Loop;
       end return;
    end Children;
@@ -251,14 +252,15 @@ package body Tk.Winfo is
    end Pointer_X;
 
    function Pointer_X_Y(Window: Tk_Widget) return Point_Position is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result_List: constant Array_List :=
         Split_List
           (List =>
              Tcl_Eval
                (Tcl_Script =>
                   "winfo pointerxy " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Tk_Interp(Widgt => Window)),
-           Interpreter => Tk_Interp(Widgt => Window));
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
       return Pointer_Location: Point_Position := Empty_Point_Position do
          Pointer_Location.X :=
@@ -292,14 +294,15 @@ package body Tk.Winfo is
    end Requested_Width;
 
    function Rgb(Window: Tk_Widget; Name: String) return Color_Type is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result_List: constant Array_List :=
         Split_List
           (List =>
              Tcl_Eval
                (Tcl_Script =>
                   "winfo rgb " & Tk_Path_Name(Widgt => Window) & " " & Name,
-                Interpreter => Tk_Interp(Widgt => Window)),
-           Interpreter => Tk_Interp(Widgt => Window));
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
    begin
       return Colors: Color_Type := Empty_Color do
          Colors.Red := Color_Range'Value(To_Ada_String(Result_List(1)));
@@ -387,6 +390,7 @@ package body Tk.Winfo is
 
    function Visuals_Available
      (Window: Tk_Widget; Include_Ids: Boolean := False) return Visuals_List is
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result_List: constant Array_List :=
         Split_List
           (List =>
@@ -394,8 +398,8 @@ package body Tk.Winfo is
                (Tcl_Script =>
                   "winfo visualsavailable " & Tk_Path_Name(Widgt => Window) &
                   (if Include_Ids then " includeids" else ""),
-                Interpreter => Tk_Interp(Widgt => Window)),
-           Interpreter => Tk_Interp(Widgt => Window));
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
       Result_Values: Array_List(1 .. (if Include_Ids then 3 else 2));
    begin
       return Visuals: Visuals_List (Result_List'Range) := (others => <>) do
