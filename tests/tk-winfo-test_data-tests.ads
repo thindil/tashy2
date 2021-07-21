@@ -127,34 +127,34 @@ package Tk.Winfo.Test_Data.Tests is
    --  tk-winfo.ads:292:4:Toplevel:Test_Winfo_Toplevel
 
    procedure Test_Viewable_dc7973_b838da(Gnattest_T: in out Test);
-   --  tk-winfo.ads:296:4:Viewable:Test_Winfo_Viewable
+   --  tk-winfo.ads:299:4:Viewable:Test_Winfo_Viewable
 
    procedure Test_Visual_Id_bfbe6b_3ec6f0(Gnattest_T: in out Test);
-   --  tk-winfo.ads:300:4:Visual_Id:Test_Winfo_Visual_Id
+   --  tk-winfo.ads:306:4:Visual_Id:Test_Winfo_Visual_Id
 
    procedure Test_Visuals_Available_a6aadc_de5564(Gnattest_T: in out Test);
-   --  tk-winfo.ads:304:4:Visuals_Available:Test_Winfo_Visuals_Available
+   --  tk-winfo.ads:310:4:Visuals_Available:Test_Winfo_Visuals_Available
 
    procedure Test_Virtual_Root_Height_c10eb6_0cf3d9(Gnattest_T: in out Test);
-   --  tk-winfo.ads:310:4:Virtual_Root_Height:Test_Winfo_Virtual_Root_Height
+   --  tk-winfo.ads:316:4:Virtual_Root_Height:Test_Winfo_Virtual_Root_Height
 
    procedure Test_Virtual_Root_Width_34af8b_13e28c(Gnattest_T: in out Test);
-   --  tk-winfo.ads:314:4:Virtual_Root_Width:Test_Winfo_Virtual_Root_Width
+   --  tk-winfo.ads:320:4:Virtual_Root_Width:Test_Winfo_Virtual_Root_Width
 
    procedure Test_Virtual_Root_X_6cfaed_207bc9(Gnattest_T: in out Test);
-   --  tk-winfo.ads:318:4:Virtual_Root_X:Test_Winfo_Virtual_Root_X
+   --  tk-winfo.ads:324:4:Virtual_Root_X:Test_Winfo_Virtual_Root_X
 
    procedure Test_Virtual_Root_Y_6a3724_e36110(Gnattest_T: in out Test);
-   --  tk-winfo.ads:322:4:Virtual_Root_Y:Test_Winfo_Virtual_Root_Y
+   --  tk-winfo.ads:328:4:Virtual_Root_Y:Test_Winfo_Virtual_Root_Y
 
    procedure Test_Width_fa2186_53745f(Gnattest_T: in out Test);
-   --  tk-winfo.ads:326:4:Width:Test_Winfo_Width
+   --  tk-winfo.ads:332:4:Width:Test_Winfo_Width
 
    procedure Test_X_91dd91_776ecc(Gnattest_T: in out Test);
-   --  tk-winfo.ads:330:4:X:Test_Winfo_X
+   --  tk-winfo.ads:336:4:X:Test_Winfo_X
 
    procedure Test_Y_07f0ff_4d9e51(Gnattest_T: in out Test);
-   --  tk-winfo.ads:334:4:Y:Test_Winfo_Y
+   --  tk-winfo.ads:340:4:Y:Test_Winfo_Y
 
 end Tk.Winfo.Test_Data.Tests;
 --  end read only
