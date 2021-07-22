@@ -283,9 +283,10 @@ package Tk.Winfo is
       -- ****
 
    function Containing
-     (Root_X, Root_Y: Natural; Window: Tk_Widget := Null_Widget;
+     (Root_X, Root_Y: Pixel_Data; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget with
-      Test_Case => (Name => "Test_Winfo_Containing", Mode => Robustness);
+      Pre => Root_X /= Empty_Pixel_Data and Root_Y /= Empty_Pixel_Data,
+      Test_Case => (Name => "Test_Winfo_Containing", Mode => Nominal);
 
    function Colors_Depth(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,

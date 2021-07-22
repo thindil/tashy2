@@ -114,7 +114,7 @@ package body Tk.Winfo is
    end Children;
 
    function Containing
-     (Root_X, Root_Y: Natural; Window: Tk_Widget := Null_Widget;
+     (Root_X, Root_Y: Pixel_Data; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget is
    begin
       return
@@ -125,7 +125,8 @@ package body Tk.Winfo is
                   "winfo containing" &
                   (if Window = Null_Widget then ""
                    else " -displayof " & Tk_Path_Name(Widgt => Window) & "") &
-                  Natural'Image(Root_X) & Natural'Image(Root_Y),
+                  " " & Pixel_Data_Image(Root_X) & " " &
+                  Pixel_Data_Image(Root_Y),
                 Interpreter =>
                   (if Window = Null_Widget then Interpreter
                    else Tk_Interp(Widgt => Window))),
