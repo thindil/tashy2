@@ -259,12 +259,28 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Class", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Color_Map_Full
+      -- FUNCTION
+      -- Check if the color map of the selected widget is full or not
+      -- PARAMETERS
+      -- Window - Tk widget which the color map will be check
+      -- RESULT
+      -- True if color map of the Window is full, otherwise False
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check color map of the My_Button widget
+      -- Is_Full: constant Boolean := Color_Map_Full(My_Button);
+      -- COMMANDS
+      -- winfo colormapfull Window
+      -- SOURCE
    function Color_Map_Full(Window: Tk_Widget) return Boolean is
      (Tcl_Eval
         (Tcl_Script => "winfo colormapfull " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Color_Map_Full", Mode => Nominal);
+      -- ****
 
    function Containing
      (Root_X, Root_Y: Natural; Window: Tk_Widget := Null_Widget;
