@@ -137,16 +137,63 @@ package Tk.Winfo is
    Empty_Visual_List: constant Visuals_List(1 .. 0) := (others => <>);
    -- ****
 
+   -- ****f* Winfo/Winfo.Atom
+   -- FUNCTION
+   -- Get the identifier of the atom with the selected name. If no atom exists
+   -- with that name, create a new.
+   -- PARAMETERS
+   -- Name        - The name of the atom which Id will be get
+   -- Interpreter - The Tcl interpreter on which the atom name will be get.
+   --               Can be empty. Default value is the current interpreter.
+   -- Window      - If set, the atom will be looked up at the display of the
+   --               selected Tk widget. Can be empty. Default value is empty.
+   -- RESULT
+   -- The Id of the selected atom or the id of newly created atom
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get or create atom with name myatom on the default Tcl interpreter
+   -- Atom_Id: constant Positive := Atom("myatom");
+   -- SEE ALSO
+   -- Winfo.Atom_Name
+   -- COMMANDS
+   -- winfo atom ?-displayof Window? Name
+   -- SOURCE
    function Atom
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return Positive with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Winfo_Atom", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Atom_Name
+      -- FUNCTION
+      -- Get the name of the selected atom.
+      -- PARAMETERS
+      -- Id          - The id of the atom which name will be get
+      -- Interpreter - The Tcl interpreter on which the atom name will be get.
+      --               Can be empty. Default value is the current interpreter.
+      -- Window      - If set, the atom name will be looked up at the display
+      --               of the selected widget. Can be empty. Default value is
+      --               empty.
+      -- RESULT
+      -- The name of the selected atom or TCL_EXCEPTION if the atom doesn't
+      -- exists
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of the atom with Id 605 on the default Tcl interpreter
+      -- Name: constant String := Atom_Name(605);
+      -- SEE ALSO
+      -- Winfo.Atom
+      -- COMMANDS
+      -- winfo atomname ?-displayof Window? Id
+      -- SOURCE
    function Atom_Name
      (Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return String with
       Test_Case => (Name => "Test_Winfo_Atom_Name", Mode => Robustness);
+      -- ****
 
    function Cells(Window: Tk_Widget) return Natural with
       Pre => Window /= Null_Widget,
