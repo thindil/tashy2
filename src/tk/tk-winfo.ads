@@ -18,7 +18,8 @@ with Tcl.Lists; use Tcl.Lists;
 -- ****h* Tk/Winfo
 -- FUNCTION
 -- Provide bindings for Tk command winfo (information about the selected
--- widget) SOURCE
+-- widget)
+-- SOURCE
 package Tk.Winfo is
 -- ****
 
@@ -60,20 +61,41 @@ package Tk.Winfo is
    -- ****d* Winfo/Winfo.Empty_Color
    -- FUNCTION
    -- Empty color value
-   -- image
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
    -- ****
 
+   -- ****t* Winfo/Winfo.Screen_Visual_Type
+   -- FUNCTION
+   -- Type of available screen visuals colors
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Screen_Visual_Type is
      (DIRECTCOLOR, GRAYSCALE, PSEUDOCOLOR, STATICCOLOR, STATICGRAY,
       TRUECOLOR) with
       Default_Value => TRUECOLOR;
+      -- ****
 
+      -- ****d* Winfo/Winfo.Default_Screen_Visual
+      -- FUNCTION
+      -- Default type of screen visuals colors
+      -- SOURCE
    Default_Screen_Visual: constant Screen_Visual_Type := TRUECOLOR;
+   -- ****
 
+   -- ****s* Winfo/Winfo.Visual_Record
+   -- FUNCTION
+   -- Data structure for information about screen visual
+   -- OPTIONS
+   -- Visual_Type - The type of the selected visual
+   -- Depth       - The color depth in the selected visual
+   -- Id          - The Id of the selected visual
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Visual_Record(Include_Id: Boolean := False) is record
       Visual_Type: Screen_Visual_Type;
       Depth: Positive;
@@ -84,13 +106,36 @@ package Tk.Winfo is
             null;
       end case;
    end record;
+   -- ****
 
+   -- ****d* Winfo/Winfo.Default_Visual
+   -- FUNCTION
+   -- Default screen visual data
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Default_Visual: constant Visual_Record :=
      (Visual_Type => TRUECOLOR, Depth => 24, Include_Id => False);
+   -- ****
 
+   -- ****t* Winfo/Winfo.Visuals_List
+   -- FUNCTION
+   -- Used to get the list of available visuals for the selected
+   -- widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Visuals_List is array(Positive range <>) of Visual_Record;
+   -- ****
 
+   -- ****d* Winfo/Winfo.Empty_Visual_List
+   -- FUNCTION
+   -- Empty list of available screen visuals
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    Empty_Visual_List: constant Visuals_List(1 .. 0) := (others => <>);
+   -- ****
 
    function Atom
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
