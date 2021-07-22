@@ -195,20 +195,69 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Atom_Name", Mode => Robustness);
       -- ****
 
+      -- ****f* Winfo/Winfo.Cells
+      -- FUNCTION
+      -- Get the amount of cells in the color map of the selected widget
+      -- PARAMETERS
+      -- Window - Tk widget which amount of cell will be get
+      -- RESULT
+      -- The amount of cells in the color map of the selected widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the amount of cells of Tk widget My_Button
+      -- Cell_Amount: constant Natural := Cells(My_Button);
+      -- COMMANDS
+      -- winfo cells Window
+      -- SOURCE
    function Cells(Window: Tk_Widget) return Natural with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Cells", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Children
+      -- FUNCTION
+      -- Get the children of the selected widget.
+      -- PARAMETERS
+      -- Window -  Tk widget which children will be get
+      -- RESULT
+      -- The Widgets_Array with all children of the selected widget in
+      -- stacking order, the lowest window first
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the children of the main Tk window
+      -- Widgets: constant Widgets_Array := Children(Get_Main_Window);
+      -- COMMANDS
+      -- winfo children Window
+      -- SOURCE
    function Children(Window: Tk_Widget) return Widgets_Array with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Children", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Class
+      -- FUNCTION
+      -- Get the class name of the selected Tk widget
+      -- PARAMETERS
+      -- Window - Tk widget which name will be get
+      -- RESULT
+      -- The String with the name of the class of the selected Tk widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the class name of My_Label widget
+      -- Class_Name: constant String := Class(My_Label);
+      -- COMMANDS
+      -- winfo class Window
+      -- SOURCE
    function Class(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo class " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Class", Mode => Nominal);
+      -- ****
 
    function Color_Map_Full(Window: Tk_Widget) return Boolean is
      (Tcl_Eval
