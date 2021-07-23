@@ -331,6 +331,23 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Depth", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Exists
+      -- FUNCTION
+      -- Check if the selected widget exists
+      -- PARAMETERS
+      -- Name        - The name of the widget to check
+      -- Interpreter - Tcl interpreter on which the check will be done. Can be
+      --               empty. Default value is the current Tcl interpreter.
+      -- RESULT
+      -- True if Tk widget with the selected path name exists. Otherwise False
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if widget .mybutton exists in the default Tcl interpreter
+      -- Is_Existing: constant Boolean := Exists(".mybutton");
+      -- COMMANDS
+      -- winfo exists Window
+      -- SOURCE
    function Exists
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
@@ -339,17 +356,52 @@ package Tk.Winfo is
          Interpreter => Interpreter)) with
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Winfo_Exists", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Floating_Point_Pixels
+      -- FUNCTION
+      -- Get the numbers of pixels for the selected distance in the selected
+      -- Tk Widget
+      -- PARAMETERS
+      -- Window - The Tk widget in which the distance will be counted
+      -- Number - The end value for the distance to count
+      -- RESULT
+      -- The Float value of pixels in the selected distance
+      -- EXAMPLE
+      -- -- Get the distance to point 2 inch in the Tk widget My_Button
+      -- Distance: constant Float := Floating_Point_Pixels(My_Button, (2, I));
+      -- SEE ALSO
+      -- Winfo.Point_Pixels
+      -- COMMANDS
+      -- winfo fpixels Window Number
+      -- SOURCE
    function Floating_Point_Pixels
      (Window: Tk_Widget; Number: Pixel_Data) return Float with
       Pre => Window /= Null_Widget and Number /= Empty_Pixel_Data,
       Test_Case => (Name => "Test_Winfo_Floating_Point_Pixels",
        Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Geometry
+      -- FUNCTION
+      -- Get the current geometry of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which geometry will be get
+      -- RESULT
+      -- Window_Geometry record with the current geometry of the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the geometry of the Tk widget My_Label
+      -- Widget_Geometry: constant Window_Geometry := Geometry(My_Label);
+      -- COMMANDS
+      -- winfo geometry Window
+      -- SOURCE
    function Geometry(Window: Tk_Widget) return Window_Geometry with
       Pre => Window /= Null_Widget,
       Post => Geometry'Result /= Empty_Window_Geometry,
       Test_Case => (Name => "Test_Winfo_Geometry", Mode => Nominal);
+      -- ****
 
    function Height(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
