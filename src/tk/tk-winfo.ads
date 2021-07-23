@@ -472,13 +472,46 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Interpreters", Mode => Robustness);
       -- ****
 
+      -- ****f* Winfo/Winfo.Is_Mapped
+      -- FUNCTION
+      -- Check if the selected Tk_Widget is mapped (visible) or not
+      -- PARAMETERS
+      -- Window - Tk_Widget to check its visibility
+      -- RESULT
+      -- True if the Window is visible, otherwise False.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if Tk_Widget My_Label is visible
+      -- Is_Visible: constant Boolean := Is_Mapped(My_Label);
+      -- COMMANDS
+      -- winfo ismapped Window
+      -- SOURCE
    function Is_Mapped(Window: Tk_Widget) return Boolean is
      (Tcl_Eval
         (Tcl_Script => "winfo ismapped " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Is_Mapped", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Manager
+      -- FUNCTION
+      -- Get the name of the geometry manager which is responsible for the
+      -- Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which geometry manager will be get
+      -- RESULT
+      -- The name of the Tcl command like "pack" or "grid" or the name of
+      -- Tcl widget if managed by like "canvas" or "text".
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the geometry manager for the Tk widget My_Label
+      -- Geometry_Manager: constant String := Manager(My_Label);
+      -- COMMANDS
+      -- winfo manager Window
+      -- SOURCE
    function Manager(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo manager " & Tk_Path_Name(Widgt => Window),
@@ -486,7 +519,23 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Post => Manager'Result'Length > 0,
       Test_Case => (Name => "Test_Winfo_Manager", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Name
+      -- FUNCTION
+      -- Get the name, inside the Tk_Widget full path name
+      -- PARAMETERS
+      -- Window - Tk_Widget which name will be get
+      -- RESULT
+      -- The name of the selected Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of the Tk widget My_Button
+      -- Widget_Name: constant String := Name(My_Button);
+      -- COMMANDS
+      -- winfo name Window
+      -- SOURCE
    function Name(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo name " & Tk_Path_Name(Widgt => Window),
@@ -494,6 +543,7 @@ package Tk.Winfo is
       Pre => Window /= Null_Widget,
       Post => Name'Result'Length > 0,
       Test_Case => (Name => "Test_Winfo_Name", Mode => Nominal);
+      -- ****
 
    function Parent(Window: Tk_Widget) return String is
      (Tcl_Eval
