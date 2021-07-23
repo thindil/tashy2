@@ -282,15 +282,54 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Color_Map_Full", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Containing
+      -- FUNCTION
+      -- Get the Tk widget which contains the selected point on the screen
+      -- PARAMETERS
+      -- Root_X      - The X coordinate of the point in the root window to check
+      -- Root_Y      - The Y coordinate of the point in the root window to check
+      -- Window      - If set, the widget will be looked up at the display of
+      --               the selected window. Can be empty. Default value is
+      --               empty.
+      -- Interpreter - The Tcl interpreter on which the selected point will
+      --               be checked. Can be empty. Default value is the current
+      --               interpreter.
+      -- RESULT
+      -- Tk_Widget which contains the selected point
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the Tk widget at point (0, 0) on the default Tcl interpreter
+      -- My_Widget: Tk_Widget := Containing((0.0, PIXEL), (0.0, PIXEL));
+      -- COMMANDS
+      -- winfo containing ?-displayof Window? Root_X Root_Y
+      -- SOURCE
    function Containing
      (Root_X, Root_Y: Pixel_Data; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget with
       Pre => Root_X /= Empty_Pixel_Data and Root_Y /= Empty_Pixel_Data,
       Test_Case => (Name => "Test_Winfo_Containing", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Colors_Depth
+      -- FUNCTION
+      -- Get the color depth of the selecte Tk widget
+      -- PARAMETERS
+      -- Window -  Tk Widget which color depth will be get
+      -- RESULT
+      -- The amount of bits per pixel used to store the color data
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the color depth of the widget My_Label
+      -- Depth: constant Positive := Colors_Depth(My_Label);
+      -- COMMANDS
+      -- winfo depth Window
+      -- SOURCE
    function Colors_Depth(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Depth", Mode => Nominal);
+      -- ****
 
    function Exists
      (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
