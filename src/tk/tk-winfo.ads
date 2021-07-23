@@ -403,18 +403,74 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Geometry", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Height
+      -- FUNCTION
+      -- Get the current height of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window -  Tk_Widget which height will be get
+      -- RESULT
+      -- Height of the selected Window in pixels
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the height of the Tk widget My_Button
+      -- Widget_Height: constant Positive := Height(My_Button);
+      -- COMMANDS
+      -- winfo height Window
+      -- SOURCE
    function Height(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Height", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Id
+      -- FUNCTION
+      -- Get the low level platform-specific identifier for the selected
+      -- Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which identifier will be get
+      -- RESULT
+      -- The identifer of the selected Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the identifier of the Tk widget My_Frame
+      -- Widget_Id: constant Positive := Id(My_Frame);
+      -- COMMANDS
+      -- winfo id Window
+      -- SOURCE
    function Id(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Id", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Interpreters
+      -- FUNCTION
+      -- Get the names of the Tcl interpreters currently registered for the
+      -- selected display.
+      -- PARAMETERS
+      -- Window      - If specified, the interpreters will be get for the
+      --               display on which the selected Tk_Widget is. Can be
+      --               empty. Default value is empty.
+      -- Interpreter - The Tcl interpreter on which the selected display is.
+      --               Can be empty. Default value is the current Tcl
+      --               intepreter
+      -- RESULT
+      -- The Array_List with names of all registered Tcl interpreters for the
+      -- selected display
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get Tcl interpreters for the Tk main window
+      -- Interpreters_Names: constant Array_List := Interpreters(Get_Main_Window);
+      -- COMMANDS
+      -- winfo interpreters ?-displayof Window?
+      -- SOURCE
    function Interpreters
      (Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
       Test_Case => (Name => "Test_Winfo_Interpreters", Mode => Robustness);
+      -- ****
 
    function Is_Mapped(Window: Tk_Widget) return Boolean is
      (Tcl_Eval
