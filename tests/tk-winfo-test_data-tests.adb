@@ -376,31 +376,50 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Containing_ed034e_1e0939
-     (Root_X, Root_Y: Natural; Window: Tk_Widget := Null_Widget;
+   function Wrap_Test_Containing_916a42_0a1dcf
+     (Root_X, Root_Y: Pixel_Data; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget is
    begin
+      begin
+         pragma Assert
+           (Root_X /= Empty_Pixel_Data and Root_Y /= Empty_Pixel_Data);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-winfo.ads:0):Test_Winfo_Containing test requirement violated");
+      end;
       declare
-         Test_Containing_ed034e_1e0939_Result: constant Tk_Widget :=
+         Test_Containing_916a42_0a1dcf_Result: constant Tk_Widget :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Containing
              (Root_X, Root_Y, Window, Interpreter);
       begin
-         return Test_Containing_ed034e_1e0939_Result;
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Containing test commitment violated");
+         end;
+         return Test_Containing_916a42_0a1dcf_Result;
       end;
-   end Wrap_Test_Containing_ed034e_1e0939;
+   end Wrap_Test_Containing_916a42_0a1dcf;
 --  end read only
 
 --  begin read only
    procedure Test_Containing_test_winfo_containing(Gnattest_T: in out Test);
-   procedure Test_Containing_ed034e_1e0939(Gnattest_T: in out Test) renames
+   procedure Test_Containing_916a42_0a1dcf(Gnattest_T: in out Test) renames
      Test_Containing_test_winfo_containing;
---  id:2.2/ed034e691e4ca512/Containing/1/0/test_winfo_containing/
+--  id:2.2/916a42abf702d325/Containing/1/0/test_winfo_containing/
    procedure Test_Containing_test_winfo_containing(Gnattest_T: in out Test) is
       function Containing
-        (Root_X, Root_Y: Natural; Window: Tk_Widget := Null_Widget;
+        (Root_X, Root_Y: Pixel_Data; Window: Tk_Widget := Null_Widget;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tk_Widget renames
-        Wrap_Test_Containing_ed034e_1e0939;
+        Wrap_Test_Containing_916a42_0a1dcf;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -412,7 +431,7 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Containing(0, 0) = Get_Main_Window,
+        (Containing((0.0, PIXEL), (0.0, PIXEL)) = Get_Main_Window,
          "Failed to get window at 0,0 coordinates.");
 
 --  begin read only
