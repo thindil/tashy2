@@ -207,6 +207,8 @@ package Tk.Winfo is
       -- EXAMPLE
       -- -- Get the amount of cells of Tk widget My_Button
       -- Cell_Amount: constant Natural := Cells(My_Button);
+      -- SEE ALSO
+      -- Winfo.Screen_Cells
       -- COMMANDS
       -- winfo cells Window
       -- SOURCE
@@ -323,6 +325,8 @@ package Tk.Winfo is
       -- EXAMPLE
       -- -- Get the color depth of the widget My_Label
       -- Depth: constant Positive := Colors_Depth(My_Label);
+      -- SEE ALSO
+      -- Winfo.Screen_Depth
       -- COMMANDS
       -- winfo depth Window
       -- SOURCE
@@ -823,17 +827,75 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Screen", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Screen_Cells
+      -- FUNCTION
+      -- Get the amount of cells in the color map of the screen for the
+      -- selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk widget which screen's amount of cell will be get
+      -- RESULT
+      -- The amount of cells in the color map of the screen for the selected
+      -- Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the amount of cells of the screen for Tk widget My_Button
+      -- Cell_Amount: constant Positive := Screen_Cells(My_Button);
+      -- SEE ALSO
+      -- Winfo.Cells
+      -- COMMANDS
+      -- winfo screencells Window
+      -- SOURCE
    function Screen_Cells(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Cells", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Screen_Depth
+      -- FUNCTION
+      -- Get the color depth of the root window of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window -  Tk Widget which root window color depth will be get
+      -- RESULT
+      -- The amount of bits per pixel used to store the color data in the
+      -- root window of the selected Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the color depth of the root window of widget My_Label
+      -- Depth: constant Positive := Screen_Depth(My_Label);
+      -- SEE ALSO
+      -- Winfo.Colors_Depth
+      -- COMMANDS
+      -- winfo screendepth Window
+      -- SOURCE
    function Screen_Depth(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Depth", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Screen_Height
+      -- FUNCTION
+      -- Get the screen height in pixels for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which screen height will be get
+      -- RESULT
+      -- The height of the screen as amount of pixels
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the screen height of the widget My_Button
+      -- Height: constant Positive := Screen_Height(My_Button);
+      -- SEE ALSO
+      -- Winfo.Screen_Width, Winfo.Screen_Milimeters_Height,
+      -- Winfo.Screen_Milimeters_Width
+      -- COMMANDS
+      -- winfo screenheight Window
+      -- SOURCE
    function Screen_Height(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Height", Mode => Nominal);
+      -- ****
 
    function Screen_Milimeters_Height(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
