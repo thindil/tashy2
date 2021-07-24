@@ -689,17 +689,70 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Pointer_Y", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Requested_Height
+      -- FUNCTION
+      -- Get the requested height of the Tk_Widget in pixels.
+      -- PARAMETERS
+      -- Window - The Tk widget which requested height will be get
+      -- RESULT
+      -- The requested height of the selected Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the requested height of the widget My_Button
+      -- Req_Height: constant Natural := Requested_Height(My_Button);
+      -- SEE ALSO
+      -- Winfo.Requested_Width
+      -- COMMANDS
+      -- winfo reqheight Window
+      -- SOURCE
    function Requested_Height(Window: Tk_Widget) return Natural with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Requested_Height", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Requested_Width
+      -- FUNCTION
+      -- Get the requested width of the Tk_Widget in pixels.
+      -- PARAMETERS
+      -- Window - The Tk widget which requested width will be get
+      -- RESULT
+      -- The requested width of the selected Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the requested width of the widget My_Button
+      -- Req_Width: constant Natural := Requested_Width(My_Button);
+      -- SEE ALSO
+      -- Winfo.Requested_Height
+      -- COMMANDS
+      -- winfo reqwidth Window
+      -- SOURCE
    function Requested_Width(Window: Tk_Widget) return Natural with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Requested_Width", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Rgb
+      -- FUNCTION
+      -- Get the RGB values of the selected color in the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - The Tk widget in which the color will be checked
+      -- Name   - The name of the color to check
+      -- RESULT
+      -- Color_Type record with RGB values for the selected color
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the RGB values for color red in Tk widget My_Frame
+      -- Red_Rgb: constant Color_Type := Rgb(My_Frame, "red");
+      -- COMMANDS
+      -- winfo rgb Window Name
+      -- SOURCE
    function Rgb(Window: Tk_Widget; Name: String) return Color_Type with
       Pre => Window /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Winfo_Rgb", Mode => Nominal);
+      -- ****
 
    function Root_X(Window: Tk_Widget) return Extended_Natural with
       Pre => Window /= Null_Widget,
