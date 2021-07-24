@@ -545,21 +545,77 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Name", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Parent
+      -- FUNCTION
+      -- Get the full path name for the parent of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which the parent's path name will be get
+      -- RESULT
+      -- The full path name of the parent of the selected Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the parent path name of the Tk widget My_Frame
+      -- Parent_Path: constant String := Parent(My_Frame);
+      -- COMMANDS
+      -- winfo parent Window
+      -- SOURCE
    function Parent(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo parent " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Parent", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Path_Name
+      -- FUNCTION
+      -- Get the full path name of the selected Tk_Widget
+      -- PARAMETERS
+      -- Id          - The low level id of the Tk widget which the path name
+      --               will be get
+      -- Window      - The Tk_Widget on which display the path name will be
+      --               looked for. Can be empty. Default value is empty.
+      -- Interpreter - The Tcl interpreter on which the path name will be get.
+      --               Can be empty. Default value is the current Tcl
+      --               interpreter.
+      -- RESULT
+      -- The full path name of the selected Tk_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the path name of the Tk_Widget with id 2321 on the default Tcl interpreter
+      -- Widget_Path_Name: constant String := Path_Name(2321);
+      -- COMMANDS
+      -- winfo pathname ?-displayof Window? Id
+      -- SOURCE
    function Path_Name
      (Id: Positive; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Test_Case => (Name => "Test_Winfo_Path_Name", Mode => Robustness);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Pixels
+      -- FUNCTION
+      -- Get the numbers of pixels for the selected distance in the selected
+      -- Tk Widget
+      -- PARAMETERS
+      -- Window - The Tk widget in which the distance will be counted
+      -- Number - The end value for the distance to count
+      -- RESULT
+      -- The Integer value of pixels in the selected distance
+      -- EXAMPLE
+      -- -- Get the distance to point 2 inch in the Tk widget My_Button
+      -- Distance: constant Integer := Pixels(My_Button, (2, I));
+      -- SEE ALSO
+      -- Winfo.Floating_Point_Pixels
+      -- COMMANDS
+      -- winfo pixels Window Number
+      -- SOURCE
    function Pixels(Window: Tk_Widget; Number: Pixel_Data) return Integer with
       Pre => Window /= Null_Widget and Number /= Empty_Pixel_Data,
       Test_Case => (Name => "Test_Winfo_Pixels", Mode => Nominal);
+      -- ****
 
    function Pointer_X(Window: Tk_Widget) return Extended_Natural with
       Pre => Window /= Null_Widget,
