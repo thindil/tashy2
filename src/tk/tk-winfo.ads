@@ -604,6 +604,8 @@ package Tk.Winfo is
       -- Number - The end value for the distance to count
       -- RESULT
       -- The Integer value of pixels in the selected distance
+      -- HISTORY
+      -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the distance to point 2 inch in the Tk widget My_Button
       -- Distance: constant Integer := Pixels(My_Button, (2, I));
@@ -617,17 +619,75 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Pixels", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Pointer_X
+      -- FUNCTION
+      -- Get the X coordinate of the mouse in the Tk_Widget
+      -- PARAMETERS
+      -- Window - The Tk widget in which the mouse position will be check
+      -- RESULT
+      -- The mouse X coordinate in the selected Window or -1 if the mouse is
+      -- outside the window or on different display
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the X coordinate for the mouse in My_Label widget
+      -- X_Position: constant Extended_Natural := Pointer_X(My_Label);
+      -- SEE ALSO
+      -- Winfo.Pointer_Y, Winfo.Pointer_X_Y
+      -- COMMANDS
+      -- winfo pointerx Window
+      -- SOURCE
    function Pointer_X(Window: Tk_Widget) return Extended_Natural with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Pointer_X", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Pointer_X_Y
+      -- FUNCTION
+      -- Get the X and Y coordinates of the mouse in the Tk_Widget
+      -- PARAMETERS
+      -- Window - The Tk widget in which the mouse position will be check
+      -- RESULT
+      -- The mouse X and Y coordinates in the selected Window or
+      -- Empty_Point_Position if the mouse is outside the window or on
+      -- different display
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the X and Y coordinates for the mouse in My_Label widget
+      -- Mouse_Position: constant Point_Position := Pointer_X_Y(My_Label);
+      -- SEE ALSO
+      -- Winfo.Pointer_Y, Winfo.Pointer_X
+      -- COMMANDS
+      -- winfo pointerxy Window
+      -- SOURCE
    function Pointer_X_Y(Window: Tk_Widget) return Point_Position with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Pointer_X_Y", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Pointer_Y
+      -- FUNCTION
+      -- Get the Y coordinate of the mouse in the Tk_Widget
+      -- PARAMETERS
+      -- Window - The Tk widget in which the mouse position will be check
+      -- RESULT
+      -- The mouse Y coordinate in the selected Window or -1 if the mouse is
+      -- outside the window or on different display
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the Y coordinate for the mouse in My_Label widget
+      -- Y_Position: constant Extended_Natural := Pointer_Y(My_Label);
+      -- SEE ALSO
+      -- Winfo.Pointer_X, Winfo.Pointer_X_Y
+      -- COMMANDS
+      -- winfo pointery Window
+      -- SOURCE
    function Pointer_Y(Window: Tk_Widget) return Extended_Natural with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Pointer_Y", Mode => Nominal);
+      -- ****
 
    function Requested_Height(Window: Tk_Widget) return Natural with
       Pre => Window /= Null_Widget,
