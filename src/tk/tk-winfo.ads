@@ -754,20 +754,74 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Rgb", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Root_X
+      -- FUNCTION
+      -- Get the X coordinate of the top-left corner of the Tk_Widget on the
+      -- screen
+      -- PARAMETERS
+      -- Window - The Tk widget which X position will be get
+      -- RESULT
+      -- The X coordinate of the top-left corner of Window on the screen
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the X position of the Tk main window on the screen
+      -- X_Position: constant Extended_Natural := Root_X(Get_Main_Window);
+      -- SEE ALSO
+      -- Winfo.Root_Y;
+      -- COMMANDS
+      -- winfo rootx Window
+      -- SOURCE
    function Root_X(Window: Tk_Widget) return Extended_Natural with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Root_X", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Root_Y
+      -- FUNCTION
+      -- Get the Y coordinate of the top-left corner of the Tk_Widget on the
+      -- screen
+      -- PARAMETERS
+      -- Window - The Tk widget which Y position will be get
+      -- RESULT
+      -- The Y coordinate of the top-left corner of Window on the screen
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the Y position of the Tk main window on the screen
+      -- Y_Position: constant Extended_Natural := Root_Y(Get_Main_Window);
+      -- SEE ALSO
+      -- Winfo.Root_X;
+      -- COMMANDS
+      -- winfo rooty Window
+      -- SOURCE
    function Root_Y(Window: Tk_Widget) return Extended_Natural with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Root_Y", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Screen
+      -- FUNCTION
+      -- Get the name of the screen associated with the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - The Tk widget which screen name will be get
+      -- RESULT
+      -- The name of the screen associated with the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the name of the screen associated with Tk widget My_Button
+      -- Screen_Name: constant String := Screen(My_Button);
+      -- COMMANDS
+      -- winfo screen Window
+      -- SOURCE
    function Screen(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo screen " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen", Mode => Nominal);
+      -- ****
 
    function Screen_Cells(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
