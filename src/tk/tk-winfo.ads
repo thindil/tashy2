@@ -897,16 +897,73 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Screen_Height", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Screen_Milimeters_Height
+      -- FUNCTION
+      -- Get the screen height in milimeters for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which screen height will be get
+      -- RESULT
+      -- The height of the screen as amount of milimeters
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the screen height of the widget My_Button
+      -- Height: constant Positive := Screen_Milimeters_Height(My_Button);
+      -- SEE ALSO
+      -- Winfo.Screen_Width, Winfo.Screen_Height,
+      -- Winfo.Screen_Milimeters_Width
+      -- COMMANDS
+      -- winfo screenmmheight Window
+      -- SOURCE
    function Screen_Milimeters_Height(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Milimeters_Height",
        Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Screen_Milimeters_Width
+      -- FUNCTION
+      -- Get the screen width in milimeters for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which screen width will be get
+      -- RESULT
+      -- The width of the screen as amount of milimeters
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the screen width of the widget My_Button
+      -- Width: constant Positive := Screen_Milimeters_Width(My_Button);
+      -- SEE ALSO
+      -- Winfo.Screen_Width, Winfo.Screen_Milimeters_Height,
+      -- Winfo.Screen_Height
+      -- COMMANDS
+      -- winfo screenmmwidth Window
+      -- SOURCE
    function Screen_Milimeters_Width(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Milimeters_Width",
        Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Screen_Visual
+      -- FUNCTION
+      -- Get the default visual class for the selected Tk_Widget screen
+      -- PARAMETERS
+      -- Window - The Tk_Widget which screen's visual class will be get
+      -- RESULT
+      -- The screen's visual class for the selected Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the visual class of the screen for the Tk main window
+      -- Visual_Name: constant Screen_Visual_Type := Screen_Visual(Get_Main_Window);
+      -- Visual_Name: constant Screen_Visual_Type := Visual(Get_Main_Window);
+      -- SEE ALSO
+      -- Winfo.Visual_Id, Winfo.Visuals_Available
+      -- COMMANDS
+      -- winfo screenvisual Window
+      -- winfo visual Window
+      -- SOURCE
    function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type is
      (Screen_Visual_Type'Value
         (Tcl_Eval
@@ -917,6 +974,7 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Screen_Visual", Mode => Nominal);
    function Visual(Window: Tk_Widget) return Screen_Visual_Type renames
      Screen_Visual;
+     -- ****
 
    function Screen_Width(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
