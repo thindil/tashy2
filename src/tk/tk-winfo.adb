@@ -438,7 +438,7 @@ package body Tk.Winfo is
            Interpreter => Tk_Interp(Widgt => Window));
    end Virtual_Root_Width;
 
-   function Virtual_Root_X(Window: Tk_Widget) return Natural is
+   function Virtual_Root_X(Window: Tk_Widget) return Integer is
    begin
       return
         Eval_Script
@@ -446,7 +446,7 @@ package body Tk.Winfo is
            Interpreter => Tk_Interp(Widgt => Window));
    end Virtual_Root_X;
 
-   function Virtual_Root_Y(Window: Tk_Widget) return Natural is
+   function Virtual_Root_Y(Window: Tk_Widget) return Integer is
    begin
       return
         Eval_Script

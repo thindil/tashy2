@@ -1162,11 +1162,11 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Virtual_Root_Width", Mode => Nominal);
       -- ****
 
-   function Virtual_Root_X(Window: Tk_Widget) return Natural with
+   function Virtual_Root_X(Window: Tk_Widget) return Integer with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Virtual_Root_X", Mode => Nominal);
 
-   function Virtual_Root_Y(Window: Tk_Widget) return Natural with
+   function Virtual_Root_Y(Window: Tk_Widget) return Integer with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Virtual_Root_Y", Mode => Nominal);
 
