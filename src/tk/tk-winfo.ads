@@ -1045,22 +1045,74 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Toplevel", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Viewable
+      -- FUNCTION
+      -- Check if the Tk widget and its ancestors are mapped or not
+      -- PARAMETERS
+      -- Window - Tk_Widget which mapped state will be check
+      -- RESULT
+      -- True if the Window is mapped, otherwise False
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the mapped state of the Tk widget My_Label
+      -- Is_Mapped: constant Boolean := Viewable(My_Label);
+      -- COMMANDS
+      -- winfo viewable Window
+      -- SOURCE
    function Viewable(Window: Tk_Widget) return Boolean is
      (Tcl_Eval
         (Tcl_Script => "winfo viewable " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Viewable", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Visual_Id
+      -- FUNCTION
+      -- Get the identifier of visual for the selected Tk widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which visual identifier will be get
+      -- RESULT
+      -- Numerical identifier of visual of the selected Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the visual identifier of the Tk widget My_Button
+      -- Id: constant Positive := Visual_Id(My_Button);
+      -- COMMANDS
+      -- winfo visualid Window
+      -- SOURCE
    function Visual_Id(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Visual_Id", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Visuals_Available
+      -- FUNCTION
+      -- Get the all available visuals modes for the selected Tk widget's
+      -- screen
+      -- PARAMETERS
+      -- Window      - Tk_Widget which screen visuals modes will be get
+      -- Include_Ids - If True, append the visuals' ids to the result. Can
+      --               be empty. Default value is False
+      -- RESULT
+      -- The Visuals_List with information about the available visual modes
+      -- on the selected Window's screen
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the visuals without ids for the Tk main window screen
+      -- Visuals: constant Visuals_List := Visuals_Available(Get_Main_Window);
+      -- COMMANDS
+      -- winfo visualsavailable Window ?Include_Ids?
+      -- SOURCE
    function Visuals_Available
      (Window: Tk_Widget; Include_Ids: Boolean := False)
       return Visuals_List with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Visuals_Available", Mode => Nominal);
+      -- ****
 
    function Virtual_Root_Height(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
