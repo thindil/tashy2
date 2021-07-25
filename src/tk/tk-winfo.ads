@@ -976,23 +976,74 @@ package Tk.Winfo is
      Screen_Visual;
      -- ****
 
+      -- ****f* Winfo/Winfo.Screen_Width
+      -- FUNCTION
+      -- Get the screen width in pixels for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which screen width will be get
+      -- RESULT
+      -- The width of the screen as amount of pixels
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the screen width of the widget My_Button
+      -- Width: constant Positive := Screen_Width(My_Button);
+      -- SEE ALSO
+      -- Winfo.Screen_Height, Winfo.Screen_Milimeters_Height,
+      -- Winfo.Screen_Milimeters_Width
+      -- COMMANDS
+      -- winfo screenwidth Window
+      -- SOURCE
    function Screen_Width(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Screen_Width", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Server
+      -- FUNCTION
+      -- Get the information about the server for Tk_Widget's display
+      -- PARAMETERS
+      -- Window - Tk_Widget which server info will be get
+      -- RESULT
+      -- The information about the Window's display server
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the information about Tk widget My_Frame display
+      -- Server_Info: constant String := Server(My_Frame);
+      -- COMMANDS
+      -- winfo server Window
+      -- SOURCE
    function Server(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo server " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Server", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Toplevel
+      -- FUNCTION
+      -- Get the path name of the toplevel widget of the selected Tk widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which toplevel window will be get
+      -- RESULT
+      -- The path name of the toplevel Tk widget for the selected Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the toplevel path name for Tk widget My_Button
+      -- TopLevel_Name: constant String := Toplevel(My_Button);
+      -- COMMANDS
+      -- winfo toplevel Window
+      -- SOURCE
    function Toplevel(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo toplevel " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Toplevel", Mode => Nominal);
+      -- ****
 
    function Viewable(Window: Tk_Widget) return Boolean is
      (Tcl_Eval
