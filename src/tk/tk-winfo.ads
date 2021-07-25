@@ -1114,13 +1114,53 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Visuals_Available", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Virtual_Root_Height
+      -- FUNCTION
+      -- Get the height of virtual root window associated with the selected Tk
+      -- widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which virtual root window height will be get
+      -- RESULT
+      -- The virtual root window height of the selected Window or screen height
+      -- if there is no virtual root window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the virtual root window height for Tk widget My_Label
+      -- Virtual_Height: constant Positive := Virtual_Root_Height(My_Label);
+      -- SEE ALSO
+      -- Winfo.Virtual_Root_Width, Winfo.Virtual_Root_X, Winfo.Virtual_Root_Y
+      -- COMMANDS
+      -- winfo vrootheight Window
+      -- SOURCE
    function Virtual_Root_Height(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Virtual_Root_Height", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Virtual_Root_Width
+      -- FUNCTION
+      -- Get the width of virtual root window associated with the selected Tk
+      -- widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which virtual root window width will be get
+      -- RESULT
+      -- The virtual root window width of the selected Window or screen width
+      -- if there is no virtual root window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the virtual root window width for Tk widget My_Label
+      -- Virtual_Width: constant Positive := Virtual_Root_Width(My_Label);
+      -- SEE ALSO
+      -- Winfo.Virtual_Root_Height, Winfo.Virtual_Root_X, Winfo.Virtual_Root_Y
+      -- COMMANDS
+      -- winfo vrootwidth Window
+      -- SOURCE
    function Virtual_Root_Width(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Virtual_Root_Width", Mode => Nominal);
+      -- ****
 
    function Virtual_Root_X(Window: Tk_Widget) return Natural with
       Pre => Window /= Null_Widget,
