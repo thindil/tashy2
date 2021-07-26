@@ -2537,7 +2537,7 @@ package body Tk.Winfo.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_Virtual_Root_X_6cfaed_207bc9
-     (Window: Tk_Widget) return Natural is
+     (Window: Tk_Widget) return Integer is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -2549,7 +2549,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Virtual_Root_X test requirement violated");
       end;
       declare
-         Test_Virtual_Root_X_6cfaed_207bc9_Result: constant Natural :=
+         Test_Virtual_Root_X_6cfaed_207bc9_Result: constant Integer :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Virtual_Root_X
              (Window);
       begin
@@ -2575,7 +2575,7 @@ package body Tk.Winfo.Test_Data.Tests is
 --  id:2.2/6cfaed2a8125b797/Virtual_Root_X/1/0/test_winfo_virtual_root_x/
    procedure Test_Virtual_Root_X_test_winfo_virtual_root_x
      (Gnattest_T: in out Test) is
-      function Virtual_Root_X(Window: Tk_Widget) return Natural renames
+      function Virtual_Root_X(Window: Tk_Widget) return Integer renames
         Wrap_Test_Virtual_Root_X_6cfaed_207bc9;
 --  end read only
 
@@ -2597,7 +2597,7 @@ package body Tk.Winfo.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_Virtual_Root_Y_6a3724_e36110
-     (Window: Tk_Widget) return Natural is
+     (Window: Tk_Widget) return Integer is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -2609,7 +2609,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Virtual_Root_Y test requirement violated");
       end;
       declare
-         Test_Virtual_Root_Y_6a3724_e36110_Result: constant Natural :=
+         Test_Virtual_Root_Y_6a3724_e36110_Result: constant Integer :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Virtual_Root_Y
              (Window);
       begin
@@ -2635,7 +2635,7 @@ package body Tk.Winfo.Test_Data.Tests is
 --  id:2.2/6a3724ab671cea28/Virtual_Root_Y/1/0/test_winfo_virtual_root_y/
    procedure Test_Virtual_Root_Y_test_winfo_virtual_root_y
      (Gnattest_T: in out Test) is
-      function Virtual_Root_Y(Window: Tk_Widget) return Natural renames
+      function Virtual_Root_Y(Window: Tk_Widget) return Integer renames
         Wrap_Test_Virtual_Root_Y_6a3724_e36110;
 --  end read only
 
