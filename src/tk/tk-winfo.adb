@@ -217,7 +217,7 @@ package body Tk.Winfo is
    end Interpreters;
 
    function Path_Name
-     (Id: Positive; Window: Tk_Widget := Null_Widget;
+     (Window_Id: Positive; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       if Window /= Null_Widget then
@@ -225,12 +225,12 @@ package body Tk.Winfo is
            Tcl_Eval
              (Tcl_Script =>
                 "winfo pathname -displayof " & Tk_Path_Name(Widgt => Window) &
-                Positive'Image(Id),
+                Positive'Image(Window_Id),
               Interpreter => Tk_Interp(Widgt => Window));
       end if;
       return
         Tcl_Eval
-          (Tcl_Script => "winfo pathname" & Positive'Image(Id),
+          (Tcl_Script => "winfo pathname" & Positive'Image(Window_Id),
            Interpreter => Interpreter);
    end Path_Name;
 
@@ -294,14 +294,15 @@ package body Tk.Winfo is
           (Tcl_Script => "winfo reqheight " & Tk_Path_Name(Widgt => Window));
    end Requested_Width;
 
-   function Rgb(Window: Tk_Widget; Name: String) return Color_Type is
+   function Rgb(Window: Tk_Widget; Color_Name: String) return Color_Type is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result_List: constant Array_List :=
         Split_List
           (List =>
              Tcl_Eval
                (Tcl_Script =>
-                  "winfo rgb " & Tk_Path_Name(Widgt => Window) & " " & Name,
+                  "winfo rgb " & Tk_Path_Name(Widgt => Window) & " " &
+                  Color_Name,
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin

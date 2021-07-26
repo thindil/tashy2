@@ -578,7 +578,7 @@ package Tk.Winfo is
       -- FUNCTION
       -- Get the full path name of the selected Tk_Widget
       -- PARAMETERS
-      -- Id          - The low level id of the Tk widget which the path name
+      -- Window_Id   - The low level id of the Tk widget which the path name
       --               will be get
       -- Window      - The Tk_Widget on which display the path name will be
       --               looked for. Can be empty. Default value is empty.
@@ -596,7 +596,7 @@ package Tk.Winfo is
       -- winfo pathname ?-displayof Window? Id
       -- SOURCE
    function Path_Name
-     (Id: Positive; Window: Tk_Widget := Null_Widget;
+     (Window_Id: Positive; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
       Test_Case => (Name => "Test_Winfo_Path_Name", Mode => Robustness);
       -- ****
@@ -743,8 +743,8 @@ package Tk.Winfo is
       -- FUNCTION
       -- Get the RGB values of the selected color in the selected Tk_Widget
       -- PARAMETERS
-      -- Window - The Tk widget in which the color will be checked
-      -- Name   - The name of the color to check
+      -- Window     - The Tk widget in which the color will be checked
+      -- Color_Name - The name of the color to check
       -- RESULT
       -- Color_Type record with RGB values for the selected color
       -- HISTORY
@@ -755,8 +755,8 @@ package Tk.Winfo is
       -- COMMANDS
       -- winfo rgb Window Name
       -- SOURCE
-   function Rgb(Window: Tk_Widget; Name: String) return Color_Type with
-      Pre => Window /= Null_Widget and Name'Length > 0,
+   function Rgb(Window: Tk_Widget; Color_Name: String) return Color_Type with
+      Pre => Window /= Null_Widget and Color_Name'Length > 0,
       Test_Case => (Name => "Test_Winfo_Rgb", Mode => Nominal);
       -- ****
 
