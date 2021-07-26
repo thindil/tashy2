@@ -1236,12 +1236,51 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Width", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.X
+      -- FUNCTION
+      -- Get the X coordinate of the top left corner of the selected Tk widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which X coordinate of top left corner will be get
+      -- RESULT
+      -- The X coordinate of top left corner of the selected Window in the
+      -- parent widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the X coordinate of Tk widget My_Label
+      -- X_Position: constant Natural := X(My_Label);
+      -- SEE ALSO
+      -- Winfo.Y
+      -- COMMANDS
+      -- winfo x Window
+      -- SOURCE
    function X(Window: Tk_Widget) return Natural with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_X", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Y
+      -- FUNCTION
+      -- Get the Y coordinate of the top left corner of the selected Tk widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which Y coordinate of top left corner will be get
+      -- RESULT
+      -- The Y coordinate of top left corner of the selected Window in the
+      -- parent widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the Y coordinate of Tk widget My_Label
+      -- Y_Position: constant Natural := Y(My_Label);
+      -- SEE ALSO
+      -- Winfo.X
+      -- COMMANDS
+      -- winfo y Window
+      -- SOURCE
    function Y(Window: Tk_Widget) return Natural with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Y", Mode => Nominal);
-   --## rule on REDUCEABLE_SCOPE
+      -- ****
+      --## rule on REDUCEABLE_SCOPE
+
 end Tk.Winfo;
