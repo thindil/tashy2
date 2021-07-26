@@ -419,6 +419,8 @@ package Tk.Winfo is
       -- EXAMPLE
       -- -- Get the height of the Tk widget My_Button
       -- Widget_Height: constant Positive := Height(My_Button);
+      -- SEE ALSO
+      -- Winfo.Width
       -- COMMANDS
       -- winfo height Window
       -- SOURCE
@@ -1162,17 +1164,77 @@ package Tk.Winfo is
       Test_Case => (Name => "Test_Winfo_Virtual_Root_Width", Mode => Nominal);
       -- ****
 
+      -- ****f* Winfo/Winfo.Virtual_Root_X
+      -- FUNCTION
+      -- Get the X-offset of the virtual root window associated with the Tk
+      -- widget.
+      -- PARAMETERS
+      -- Window - Tk_Widget which X-offset will be get
+      -- RESULT
+      -- Usually 0 or negative value. If there is no virtual root window then
+      -- 0.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the X-offset of virtual root window for Tk widget My_Label
+      -- Virtual_X: constant Integer := Virtual_Root_X(My_Label);
+      -- SEE ALSO
+      -- Winfo.Virtual_Root_Height, Winfo.Virtual_Root_Y,
+      -- Winfo.Virtual_Root_Width
+      -- COMMANDS
+      -- winfo vrootx Window
+      -- SOURCE
    function Virtual_Root_X(Window: Tk_Widget) return Integer with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Virtual_Root_X", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Virtual_Root_Y
+      -- FUNCTION
+      -- Get the Y-offset of the virtual root window associated with the Tk
+      -- widget.
+      -- PARAMETERS
+      -- Window - Tk_Widget which Y-offset will be get
+      -- RESULT
+      -- Usually 0 or negative value. If there is no virtual root window then
+      -- 0.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the Y-offset of virtual root window for Tk widget My_Label
+      -- Virtual_Y: constant Integer := Virtual_Root_Y(My_Label);
+      -- SEE ALSO
+      -- Winfo.Virtual_Root_Height, Winfo.Virtual_Root_X,
+      -- Winfo.Virtual_Root_Width
+      -- COMMANDS
+      -- winfo vrooty Window
+      -- SOURCE
    function Virtual_Root_Y(Window: Tk_Widget) return Integer with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Virtual_Root_Y", Mode => Nominal);
+      -- ****
 
+      -- ****f* Winfo/Winfo.Width
+      -- FUNCTION
+      -- Get the current width of the selected Tk_Widget
+      -- PARAMETERS
+      -- Window -  Tk_Widget which width will be get
+      -- RESULT
+      -- Width of the selected Window in pixels
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the width of the Tk widget My_Button
+      -- Widget_Width: constant Positive := Width(My_Button);
+      -- SEE ALSO
+      -- Winfo.Height
+      -- COMMANDS
+      -- winfo width Window
+      -- SOURCE
    function Width(Window: Tk_Widget) return Positive with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Width", Mode => Nominal);
+      -- ****
 
    function X(Window: Tk_Widget) return Natural with
       Pre => Window /= Null_Widget,
