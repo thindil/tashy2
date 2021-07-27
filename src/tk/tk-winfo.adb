@@ -47,7 +47,7 @@ package body Tk.Winfo is
    -- ****
 
    function Atom
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (A_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return Positive is
    begin
       if Window /= Null_Widget then
@@ -55,16 +55,16 @@ package body Tk.Winfo is
            Eval_Script
              (Tcl_Script =>
                 "winfo atom -displayof " & Tk_Path_Name(Widgt => Window) &
-                " " & Name,
+                " " & A_Name,
               Interpreter => Tk_Interp(Widgt => Window));
       end if;
       return
         Eval_Script
-          (Tcl_Script => "winfo atom " & Name, Interpreter => Interpreter);
+          (Tcl_Script => "winfo atom " & A_Name, Interpreter => Interpreter);
    end Atom;
 
    function Atom_Name
-     (Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Atom_Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return String is
    begin
       if Window /= Null_Widget then
@@ -72,12 +72,12 @@ package body Tk.Winfo is
            Tcl_Eval
              (Tcl_Script =>
                 "winfo atomname -displayof " & Tk_Path_Name(Widgt => Window) &
-                Positive'Image(Id),
+                Positive'Image(Atom_Id),
               Interpreter => Tk_Interp(Widgt => Window));
       end if;
       return
         Tcl_Eval
-          (Tcl_Script => "winfo atomname" & Positive'Image(Id),
+          (Tcl_Script => "winfo atomname" & Positive'Image(Atom_Id),
            Interpreter => Interpreter);
    end Atom_Name;
 
@@ -114,7 +114,8 @@ package body Tk.Winfo is
    end Children;
 
    function Containing
-     (Root_X, Root_Y: Pixel_Data; Window: Tk_Widget := Null_Widget;
+     (Root_Window_X, Root_Window_Y: Pixel_Data;
+      Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget is
    begin
       return
@@ -125,8 +126,8 @@ package body Tk.Winfo is
                   "winfo containing" &
                   (if Window = Null_Widget then ""
                    else " -displayof " & Tk_Path_Name(Widgt => Window) & "") &
-                  " " & Pixel_Data_Image(Root_X) & " " &
-                  Pixel_Data_Image(Root_Y),
+                  " " & Pixel_Data_Image(Value => Root_Window_X) & " " &
+                  Pixel_Data_Image(Value => Root_Window_Y),
                 Interpreter =>
                   (if Window = Null_Widget then Interpreter
                    else Tk_Interp(Widgt => Window))),

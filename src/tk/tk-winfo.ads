@@ -142,7 +142,7 @@ package Tk.Winfo is
    -- Get the identifier of the atom with the selected name. If no atom exists
    -- with that name, create a new.
    -- PARAMETERS
-   -- Name        - The name of the atom which Id will be get
+   -- A_Name      - The name of the atom which Id will be get
    -- Interpreter - The Tcl interpreter on which the atom name will be get.
    --               Can be empty. Default value is the current interpreter.
    -- Window      - If set, the atom will be looked up at the display of the
@@ -157,12 +157,12 @@ package Tk.Winfo is
    -- SEE ALSO
    -- Winfo.Atom_Name
    -- COMMANDS
-   -- winfo atom ?-displayof Window? Name
+   -- winfo atom ?-displayof Window? A_Name
    -- SOURCE
    function Atom
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (A_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return Positive with
-      Pre => Name'Length > 0,
+      Pre => A_Name'Length > 0,
       Test_Case => (Name => "Test_Winfo_Atom", Mode => Nominal);
       -- ****
 
@@ -170,7 +170,7 @@ package Tk.Winfo is
       -- FUNCTION
       -- Get the name of the selected atom.
       -- PARAMETERS
-      -- Id          - The id of the atom which name will be get
+      -- Atom_Id     - The id of the atom which name will be get
       -- Interpreter - The Tcl interpreter on which the atom name will be get.
       --               Can be empty. Default value is the current interpreter.
       -- Window      - If set, the atom name will be looked up at the display
@@ -187,10 +187,10 @@ package Tk.Winfo is
       -- SEE ALSO
       -- Winfo.Atom
       -- COMMANDS
-      -- winfo atomname ?-displayof Window? Id
+      -- winfo atomname ?-displayof Window? Atom_Id
       -- SOURCE
    function Atom_Name
-     (Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Atom_Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return String with
       Test_Case => (Name => "Test_Winfo_Atom_Name", Mode => Robustness);
       -- ****
@@ -288,14 +288,14 @@ package Tk.Winfo is
       -- FUNCTION
       -- Get the Tk widget which contains the selected point on the screen
       -- PARAMETERS
-      -- Root_X      - The X coordinate of the point in the root window to check
-      -- Root_Y      - The Y coordinate of the point in the root window to check
-      -- Window      - If set, the widget will be looked up at the display of
-      --               the selected window. Can be empty. Default value is
-      --               empty.
-      -- Interpreter - The Tcl interpreter on which the selected point will
-      --               be checked. Can be empty. Default value is the current
-      --               interpreter.
+      -- Root_Window_X - The X coordinate of the point in the root window to check
+      -- Root_Window_Y - The Y coordinate of the point in the root window to check
+      -- Window        - If set, the widget will be looked up at the display of
+      --                 the selected window. Can be empty. Default value is
+      --                 empty.
+      -- Interpreter   - The Tcl interpreter on which the selected point will
+      --                 be checked. Can be empty. Default value is the current
+      --                 interpreter.
       -- RESULT
       -- Tk_Widget which contains the selected point
       -- HISTORY
@@ -304,12 +304,14 @@ package Tk.Winfo is
       -- -- Get the Tk widget at point (0, 0) on the default Tcl interpreter
       -- My_Widget: Tk_Widget := Containing((0.0, PIXEL), (0.0, PIXEL));
       -- COMMANDS
-      -- winfo containing ?-displayof Window? Root_X Root_Y
+      -- winfo containing ?-displayof Window? Root_Window_X Root_Window_Y
       -- SOURCE
    function Containing
-     (Root_X, Root_Y: Pixel_Data; Window: Tk_Widget := Null_Widget;
+     (Root_Window_X, Root_Window_Y: Pixel_Data;
+      Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget with
-      Pre => Root_X /= Empty_Pixel_Data and Root_Y /= Empty_Pixel_Data,
+      Pre => Root_Window_X /= Empty_Pixel_Data and
+      Root_Window_Y /= Empty_Pixel_Data,
       Test_Case => (Name => "Test_Winfo_Containing", Mode => Nominal);
       -- ****
 
