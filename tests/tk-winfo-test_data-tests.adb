@@ -37,12 +37,12 @@ package body Tk.Winfo.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Atom_8a3ab9_da7d59
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+   function Wrap_Test_Atom_8a3ab9_cb4226
+     (A_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return Positive is
    begin
       begin
-         pragma Assert(Name'Length > 0);
+         pragma Assert(A_Name'Length > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -51,9 +51,9 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Atom test requirement violated");
       end;
       declare
-         Test_Atom_8a3ab9_da7d59_Result: constant Positive :=
+         Test_Atom_8a3ab9_cb4226_Result: constant Positive :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Atom
-             (Name, Interpreter, Window);
+             (A_Name, Interpreter, Window);
       begin
          begin
             pragma Assert(True);
@@ -64,21 +64,21 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Atom test commitment violated");
          end;
-         return Test_Atom_8a3ab9_da7d59_Result;
+         return Test_Atom_8a3ab9_cb4226_Result;
       end;
-   end Wrap_Test_Atom_8a3ab9_da7d59;
+   end Wrap_Test_Atom_8a3ab9_cb4226;
 --  end read only
 
 --  begin read only
    procedure Test_Atom_test_winfo_atom(Gnattest_T: in out Test);
-   procedure Test_Atom_8a3ab9_da7d59(Gnattest_T: in out Test) renames
+   procedure Test_Atom_8a3ab9_cb4226(Gnattest_T: in out Test) renames
      Test_Atom_test_winfo_atom;
 --  id:2.2/8a3ab96a938bcb73/Atom/1/0/test_winfo_atom/
    procedure Test_Atom_test_winfo_atom(Gnattest_T: in out Test) is
       function Atom
-        (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
+        (A_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
          Window: Tk_Widget := Null_Widget) return Positive renames
-        Wrap_Test_Atom_8a3ab9_da7d59;
+        Wrap_Test_Atom_8a3ab9_cb4226;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -98,13 +98,13 @@ package body Tk.Winfo.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_Atom_Name_ffa709_5ba3e0
-     (Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
+     (Atom_Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
       Window: Tk_Widget := Null_Widget) return String is
    begin
       declare
          Test_Atom_Name_ffa709_5ba3e0_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Atom_Name
-             (Id, Interpreter, Window);
+             (Atom_Id, Interpreter, Window);
       begin
          return Test_Atom_Name_ffa709_5ba3e0_Result;
       end;
@@ -118,7 +118,7 @@ package body Tk.Winfo.Test_Data.Tests is
 --  id:2.2/ffa70954d116edff/Atom_Name/1/0/test_winfo_atom_name/
    procedure Test_Atom_Name_test_winfo_atom_name(Gnattest_T: in out Test) is
       function Atom_Name
-        (Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
+        (Atom_Id: Positive; Interpreter: Tcl_Interpreter := Get_Interpreter;
          Window: Tk_Widget := Null_Widget) return String renames
         Wrap_Test_Atom_Name_ffa709_5ba3e0;
 --  end read only
@@ -376,13 +376,15 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Containing_916a42_0a1dcf
-     (Root_X, Root_Y: Pixel_Data; Window: Tk_Widget := Null_Widget;
+   function Wrap_Test_Containing_916a42_e3dd46
+     (Root_Window_X, Root_Window_Y: Pixel_Data;
+      Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget is
    begin
       begin
          pragma Assert
-           (Root_X /= Empty_Pixel_Data and Root_Y /= Empty_Pixel_Data);
+           (Root_Window_X /= Empty_Pixel_Data and
+            Root_Window_Y /= Empty_Pixel_Data);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -391,9 +393,9 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Containing test requirement violated");
       end;
       declare
-         Test_Containing_916a42_0a1dcf_Result: constant Tk_Widget :=
+         Test_Containing_916a42_e3dd46_Result: constant Tk_Widget :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Containing
-             (Root_X, Root_Y, Window, Interpreter);
+             (Root_Window_X, Root_Window_Y, Window, Interpreter);
       begin
          begin
             pragma Assert(True);
@@ -404,22 +406,23 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Containing test commitment violated");
          end;
-         return Test_Containing_916a42_0a1dcf_Result;
+         return Test_Containing_916a42_e3dd46_Result;
       end;
-   end Wrap_Test_Containing_916a42_0a1dcf;
+   end Wrap_Test_Containing_916a42_e3dd46;
 --  end read only
 
 --  begin read only
    procedure Test_Containing_test_winfo_containing(Gnattest_T: in out Test);
-   procedure Test_Containing_916a42_0a1dcf(Gnattest_T: in out Test) renames
+   procedure Test_Containing_916a42_e3dd46(Gnattest_T: in out Test) renames
      Test_Containing_test_winfo_containing;
 --  id:2.2/916a42abf702d325/Containing/1/0/test_winfo_containing/
    procedure Test_Containing_test_winfo_containing(Gnattest_T: in out Test) is
       function Containing
-        (Root_X, Root_Y: Pixel_Data; Window: Tk_Widget := Null_Widget;
+        (Root_Window_X, Root_Window_Y: Pixel_Data;
+         Window: Tk_Widget := Null_Widget;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tk_Widget renames
-        Wrap_Test_Containing_916a42_0a1dcf;
+        Wrap_Test_Containing_916a42_e3dd46;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1078,13 +1081,13 @@ package body Tk.Winfo.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_Path_Name_c74192_a4034c
-     (Id: Positive; Window: Tk_Widget := Null_Widget;
+     (Window_Id: Positive; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       declare
          Test_Path_Name_c74192_a4034c_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Path_Name
-             (Id, Window, Interpreter);
+             (Window_Id, Window, Interpreter);
       begin
          return Test_Path_Name_c74192_a4034c_Result;
       end;
@@ -1098,7 +1101,7 @@ package body Tk.Winfo.Test_Data.Tests is
 --  id:2.2/c74192f527d879a1/Path_Name/1/0/test_winfo_path_name/
    procedure Test_Path_Name_test_winfo_path_name(Gnattest_T: in out Test) is
       function Path_Name
-        (Id: Positive; Window: Tk_Widget := Null_Widget;
+        (Window_Id: Positive; Window: Tk_Widget := Null_Widget;
          Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
         Wrap_Test_Path_Name_c74192_a4034c;
 --  end read only
@@ -1475,11 +1478,11 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Rgb_b213e0_714681
-     (Window: Tk_Widget; Name: String) return Color_Type is
+   function Wrap_Test_Rgb_b213e0_a478a9
+     (Window: Tk_Widget; Color_Name: String) return Color_Type is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Name'Length > 0);
+         pragma Assert(Window /= Null_Widget and Color_Name'Length > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1488,8 +1491,9 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Rgb test requirement violated");
       end;
       declare
-         Test_Rgb_b213e0_714681_Result: constant Color_Type :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Rgb(Window, Name);
+         Test_Rgb_b213e0_a478a9_Result: constant Color_Type :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Rgb
+             (Window, Color_Name);
       begin
          begin
             pragma Assert(True);
@@ -1500,19 +1504,20 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Rgb test commitment violated");
          end;
-         return Test_Rgb_b213e0_714681_Result;
+         return Test_Rgb_b213e0_a478a9_Result;
       end;
-   end Wrap_Test_Rgb_b213e0_714681;
+   end Wrap_Test_Rgb_b213e0_a478a9;
 --  end read only
 
 --  begin read only
    procedure Test_Rgb_test_winfo_rgb(Gnattest_T: in out Test);
-   procedure Test_Rgb_b213e0_714681(Gnattest_T: in out Test) renames
+   procedure Test_Rgb_b213e0_a478a9(Gnattest_T: in out Test) renames
      Test_Rgb_test_winfo_rgb;
 --  id:2.2/b213e0c5b7cccdff/Rgb/1/0/test_winfo_rgb/
    procedure Test_Rgb_test_winfo_rgb(Gnattest_T: in out Test) is
-      function Rgb(Window: Tk_Widget; Name: String) return Color_Type renames
-        Wrap_Test_Rgb_b213e0_714681;
+      function Rgb
+        (Window: Tk_Widget; Color_Name: String) return Color_Type renames
+        Wrap_Test_Rgb_b213e0_a478a9;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
