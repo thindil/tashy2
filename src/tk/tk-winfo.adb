@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings.Fixed; use Ada.Strings.Fixed;
+with Ada.Strings.Fixed;
 with Tcl.Strings; use Tcl.Strings;
 
 package body Tk.Winfo is
@@ -29,21 +29,6 @@ package body Tk.Winfo is
    -- 8.6.0 - Added
    -- SOURCE
    function Eval_Script is new Generic_Scalar_Tcl_Eval(Result_Type => Integer);
-   -- ****
-
-   -- ****if* Winfo/Winfo.Float_Eval_Script
-   -- FUNCTION
-   -- Used to get Float result from the selected Tcl command
-   -- PARAMETERS
-   -- Tcl_Script  - Tcl comamnd to evaluate
-   -- Interpreter - Tcl interpreter from which result will be get
-   -- RESULT
-   -- Float value for the last Tcl command
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   function Float_Eval_Script is new Generic_Float_Tcl_Eval
-     (Result_Type => Float);
    -- ****
 
    function Atom
@@ -146,6 +131,8 @@ package body Tk.Winfo is
 
    function Floating_Point_Pixels
      (Window: Tk_Widget; Number: Pixel_Data) return Float is
+      function Float_Eval_Script is new Generic_Float_Tcl_Eval
+        (Result_Type => Float);
    begin
       return
         Float_Eval_Script
@@ -155,6 +142,8 @@ package body Tk.Winfo is
    end Floating_Point_Pixels;
 
    function Geometry(Window: Tk_Widget) return Window_Geometry is
+      use Ada.Strings.Fixed;
+
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "winfo geometry " & Tk_Path_Name(Widgt => Window),
@@ -412,17 +401,21 @@ package body Tk.Winfo is
       return Visuals: Visuals_List (Result_List'Range) := (others => <>) do
          Set_Visuals_List_Loop :
          for I in Result_List'Range loop
-            Result_Values := Split_List(To_Ada_String(Result_List(I)));
+            Result_Values :=
+              Split_List
+                (List => To_Ada_String(Source => Result_List(I)),
+                 Interpreter => Interpreter);
             Visuals(I).Visual_Type :=
-              Screen_Visual_Type'Value(To_Ada_String(Result_Values(1)));
+              Screen_Visual_Type'Value
+                (To_Ada_String(Source => Result_Values(1)));
             Visuals(I).Depth :=
-              Positive'Value(To_Ada_String(Result_Values(2)));
+              Positive'Value(To_Ada_String(Source => Result_Values(2)));
             if Include_Ids then
                Visuals(I).Id :=
                  Positive'Value
                    ("16#" &
-                    To_Ada_String(Result_Values(3))
-                      (3 .. To_Ada_String(Result_Values(3))'Last) &
+                    To_Ada_String(Source => Result_Values(3))
+                      (3 .. To_Ada_String(Source => Result_Values(3))'Last) &
                     "#");
             end if;
          end loop Set_Visuals_List_Loop;
