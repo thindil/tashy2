@@ -266,9 +266,9 @@ package body Tk.Winfo is
    begin
       return Pointer_Location: Point_Position := Empty_Point_Position do
          Pointer_Location.X :=
-           Extended_Natural'Value(To_Ada_String(Result_List(1)));
+           Extended_Natural'Value(To_Ada_String(Source => Result_List(1)));
          Pointer_Location.Y :=
-           Extended_Natural'Value(To_Ada_String(Result_List(2)));
+           Extended_Natural'Value(To_Ada_String(Source => Result_List(2)));
       end return;
    end Pointer_X_Y;
 
@@ -308,9 +308,12 @@ package body Tk.Winfo is
            Interpreter => Interpreter);
    begin
       return Colors: Color_Type := Empty_Color do
-         Colors.Red := Color_Range'Value(To_Ada_String(Result_List(1)));
-         Colors.Blue := Color_Range'Value(To_Ada_String(Result_List(2)));
-         Colors.Green := Color_Range'Value(To_Ada_String(Result_List(3)));
+         Colors.Red :=
+           Color_Range'Value(To_Ada_String(Source => Result_List(1)));
+         Colors.Blue :=
+           Color_Range'Value(To_Ada_String(Source => Result_List(2)));
+         Colors.Green :=
+           Color_Range'Value(To_Ada_String(Source => Result_List(3)));
       end return;
    end Rgb;
 
@@ -403,9 +406,11 @@ package body Tk.Winfo is
                   (if Include_Ids then " includeids" else ""),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
-      Result_Values: Array_List(1 .. (if Include_Ids then 3 else 2));
+      Result_Values: Array_List(1 .. (if Include_Ids then 3 else 2)) :=
+        (others => Null_Tcl_String);
    begin
       return Visuals: Visuals_List (Result_List'Range) := (others => <>) do
+         Set_Visuals_List_Loop :
          for I in Result_List'Range loop
             Result_Values := Split_List(To_Ada_String(Result_List(I)));
             Visuals(I).Visual_Type :=
@@ -420,7 +425,7 @@ package body Tk.Winfo is
                       (3 .. To_Ada_String(Result_Values(3))'Last) &
                     "#");
             end if;
-         end loop;
+         end loop Set_Visuals_List_Loop;
       end return;
    end Visuals_Available;
 
