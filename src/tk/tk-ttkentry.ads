@@ -38,6 +38,11 @@ package Tk.TtkEntry is
 
    Default_Entry_State: constant Entry_State_Type := NORMAL;
 
+   type Validate_Type is (NONE, FOCUS, FOCUSIN, FOCUSOUT, KEY, VALIDATEALL) with
+      Default_Value => NONE;
+
+   Default_Validate: constant Validate_Type := NONE;
+
    type Ttk_Entry_Options is new Ttk_Widget_Options with record
       X_Scroll_Command: Tcl_String;
       Export_Selection: Extended_Boolean;
@@ -46,6 +51,9 @@ package Tk.TtkEntry is
       Show: Boolean := True;
       State: Entry_State_Type;
       Text_Variable: Tcl_String;
+      Validation: Validate_Type;
+      Validate_Command: Tcl_String;
+      Width: Natural := 0;
    end record;
 
    --## rule on REDUCEABLE_SCOPE
