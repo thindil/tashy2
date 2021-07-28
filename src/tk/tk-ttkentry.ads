@@ -56,5 +56,30 @@ package Tk.TtkEntry is
       Width: Natural := 0;
    end record;
 
+   function Create
+     (Path_Name: String; Options: Ttk_Entry_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry with
+      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Post => Create'Result /= Null_Widget,
+      Test_Case => (Name => "Test_Create_TtkEntry1", Mode => Nominal);
+
+   procedure Create
+     (Entry_Widget: out Ttk_Entry; Path_Name: String; Options: Ttk_Entry_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) with
+      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Post => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Create_TtkEntry2", Mode => Nominal);
+
+   function Get_Options(Entry_Widget: Ttk_Entry) return Ttk_Entry_Options with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Get_Options_TtkEntry", Mode => Nominal);
+
+   procedure Configure(Entry_Widget: Ttk_Entry; Options: Ttk_Entry_Options) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Configure_TtkEntry", Mode => Nominal);
+
+   Default_Ttk_Entry_Options: constant Ttk_Entry_Options :=
+     Ttk_Entry_Options'(others => <>);
+
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;
