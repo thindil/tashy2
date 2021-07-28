@@ -39,6 +39,12 @@ package body Tk.TtkEntry is
         (Name => "cursor", Value => Options.Cursor,
          Options_String => Options_String);
       Option_Image
+        (Name => "exportselection", Value => Options.Export_Selection,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "invalidcommand", Value => Options.Invalid_Command,
+         Options_String => Options_String);
+      Option_Image
         (Name => "justify", Value => Options.Justify,
          Options_String => Options_String);
       Option_Image
