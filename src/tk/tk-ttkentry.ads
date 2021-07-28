@@ -33,12 +33,19 @@ package Tk.TtkEntry is
    subtype Ttk_Entry is Ttk_Widget;
    -- ****
 
+   type Entry_State_Type is (NONE, NORMAL, DISABLED, READONLY) with
+      Default_Value => NONE;
+
+   Default_Entry_State: constant Entry_State_Type := NORMAL;
+
    type Ttk_Entry_Options is new Ttk_Widget_Options with record
       X_Scroll_Command: Tcl_String;
       Export_Selection: Extended_Boolean;
       Invalid_Command: Tcl_String;
       Justify: Justify_Type;
       Show: Boolean := True;
+      State: Entry_State_Type;
+      Text_Variable: Tcl_String;
    end record;
 
    --## rule on REDUCEABLE_SCOPE
