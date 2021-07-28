@@ -12,17 +12,65 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded;
+
 package body Tk.TtkEntry is
+
+   -- ****if* TtkEntry/TtkEntry.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Ttk_Entry_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Ttk_Entry_Options) return String is
+      -- ****
+      use Ada.Strings.Unbounded;
+
+      Options_String: Unbounded_String := Null_Unbounded_String;
+   begin
+      Option_Image
+        (Name => "class", Value => Options.Class,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "cursor", Value => Options.Cursor,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "justify", Value => Options.Justify,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "style", Value => Options.Style,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "takefocus", Value => Options.Take_Focus,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "textvariable", Value => Options.Text_Variable,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "width", Value => Options.Width,
+         Options_String => Options_String);
+      return To_String(Source => Options_String);
+   end Options_To_String;
 
    function Create
      (Path_Name: String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry is
    begin
-      return Null_Widget;
+      Tcl_Eval
+        (Tcl_Script =>
+           "ttk::entry " & Path_Name & " " &
+           Options_To_String(Options => Options),
+         Interpreter => Interpreter);
+      return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
    procedure Create
-     (Entry_Widget: out Ttk_Entry; Path_Name: String; Options: Ttk_Entry_Options;
+     (Entry_Widget: out Ttk_Entry; Path_Name: String;
+      Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       null;
