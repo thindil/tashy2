@@ -48,7 +48,7 @@ package Tk.TtkEntry is
       Export_Selection: Extended_Boolean;
       Invalid_Command: Tcl_String;
       Justify: Justify_Type;
-      Show: Boolean := True;
+      Show: Extended_Boolean;
       State: Entry_State_Type;
       Text_Variable: Tcl_String;
       Validation: Validate_Type;
