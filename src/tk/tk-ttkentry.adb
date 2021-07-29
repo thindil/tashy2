@@ -68,8 +68,21 @@ package body Tk.TtkEntry is
       Option_Image
         (Name => "textvariable", Value => Options.Text_Variable,
          Options_String => Options_String);
+      if Options.Validation /= EMPTY then
+         Append
+           (Source => Options_String,
+            New_Item =>
+              " -validate " &
+              To_Lower(Item => Validate_Type'Image(Options.Validation)));
+      end if;
+      Option_Image
+        (Name => "validatecommand", Value => Options.Validate_Command,
+         Options_String => Options_String);
       Option_Image
         (Name => "width", Value => Options.Width,
+         Options_String => Options_String);
+      Option_Image
+        (Name => "xscrollcommand", Value => Options.X_Scroll_Command,
          Options_String => Options_String);
       return To_String(Source => Options_String);
    end Options_To_String;
