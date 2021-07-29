@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling;
 with Ada.Strings.Unbounded;
 
 package body Tk.TtkEntry is
@@ -28,6 +29,7 @@ package body Tk.TtkEntry is
    -- SOURCE
    function Options_To_String(Options: Ttk_Entry_Options) return String is
       -- ****
+      use Ada.Characters.Handling;
       use Ada.Strings.Unbounded;
 
       Options_String: Unbounded_String := Null_Unbounded_String;
@@ -47,6 +49,16 @@ package body Tk.TtkEntry is
       Option_Image
         (Name => "justify", Value => Options.Justify,
          Options_String => Options_String);
+      Option_Image
+        (Name => "show", Value => Options.Show,
+         Options_String => Options_String);
+      if Options.State /= NONE then
+         Append
+           (Source => Options_String,
+            New_Item =>
+              " -state " &
+              To_Lower(Item => Entry_State_Type'Image(Options.State)));
+      end if;
       Option_Image
         (Name => "style", Value => Options.Style,
          Options_String => Options_String);
