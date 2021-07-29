@@ -38,10 +38,11 @@ package Tk.TtkEntry is
 
    Default_Entry_State: constant Entry_State_Type := NORMAL;
 
-   type Validate_Type is (NONE, FOCUS, FOCUSIN, FOCUSOUT, KEY, VALIDATEALL) with
-      Default_Value => NONE;
+   type Validate_Type is
+     (EMPTY, NONE, FOCUS, FOCUSIN, FOCUSOUT, KEY, VALIDATEALL) with
+      Default_Value => EMPTY;
 
-   Default_Validate: constant Validate_Type := NONE;
+   Default_Validate: constant Validate_Type := EMPTY;
 
    type Ttk_Entry_Options is new Ttk_Widget_Options with record
       X_Scroll_Command: Tcl_String;
@@ -64,7 +65,8 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Create_TtkEntry1", Mode => Nominal);
 
    procedure Create
-     (Entry_Widget: out Ttk_Entry; Path_Name: String; Options: Ttk_Entry_Options;
+     (Entry_Widget: out Ttk_Entry; Path_Name: String;
+      Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Entry_Widget /= Null_Widget,
@@ -74,7 +76,8 @@ package Tk.TtkEntry is
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TtkEntry", Mode => Nominal);
 
-   procedure Configure(Entry_Widget: Ttk_Entry; Options: Ttk_Entry_Options) with
+   procedure Configure
+     (Entry_Widget: Ttk_Entry; Options: Ttk_Entry_Options) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TtkEntry", Mode => Nominal);
 
