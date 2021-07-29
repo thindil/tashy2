@@ -104,7 +104,10 @@ package body Tk.TtkEntry is
       Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
-      null;
+      Entry_Widget :=
+        Create
+          (Path_Name => Path_Name, Options => Options,
+           Interpreter => Interpreter);
    end Create;
 
    function Get_Options(Entry_Widget: Ttk_Entry) return Ttk_Entry_Options is
