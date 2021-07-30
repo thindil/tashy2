@@ -112,7 +112,38 @@ package body Tk.TtkEntry is
 
    function Get_Options(Entry_Widget: Ttk_Entry) return Ttk_Entry_Options is
    begin
-      return Default_Ttk_Entry_Options;
+      return Options: Ttk_Entry_Options := Default_Ttk_Entry_Options do
+         Options.Class := Option_Value(Widgt => Entry_Widget, Name => "class");
+         Options.Cursor :=
+           Option_Value(Widgt => Entry_Widget, Name => "cursor");
+         Options.Export_Selection :=
+           Option_Value(Widgt => Entry_Widget, Name => "exportselection");
+         Options.Invalid_Command :=
+           Option_Value(Widgt => Entry_Widget, Name => "invalidcommand");
+         Options.Justify :=
+           Option_Value(Widgt => Entry_Widget, Name => "justify");
+         Options.Show := Option_Value(Widgt => Entry_Widget, Name => "show");
+         Options.Style := Option_Value(Widgt => Entry_Widget, Name => "style");
+         Options.State :=
+           Entry_State_Type'Value
+             (Execute_Widget_Command
+                (Widgt => Entry_Widget, Command_Name => "cget",
+                 Options => "-state"));
+         Options.Take_Focus :=
+           Option_Value(Widgt => Entry_Widget, Name => "takefocus");
+         Options.Text_Variable :=
+           Option_Value(Widgt => Entry_Widget, Name => "textvariable");
+         Options.Validation :=
+           Validate_Type'Value
+             (Execute_Widget_Command
+                (Widgt => Entry_Widget, Command_Name => "cget",
+                 Options => "-validate"));
+         Options.Validate_Command :=
+           Option_Value(Widgt => Entry_Widget, Name => "validatecommand");
+         Options.Width := Option_Value(Widgt => Entry_Widget, Name => "width");
+         Options.X_Scroll_Command :=
+           Option_Value(Widgt => Entry_Widget, Name => "xscrollcommand");
+      end return;
    end Get_Options;
 
    procedure Configure(Entry_Widget: Ttk_Entry; Options: Ttk_Entry_Options) is
