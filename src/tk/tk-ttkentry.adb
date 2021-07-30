@@ -148,7 +148,9 @@ package body Tk.TtkEntry is
 
    procedure Configure(Entry_Widget: Ttk_Entry; Options: Ttk_Entry_Options) is
    begin
-      null;
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "configure",
+         Options => Options_To_String(Options => Options));
    end Configure;
 
 end Tk.TtkEntry;
