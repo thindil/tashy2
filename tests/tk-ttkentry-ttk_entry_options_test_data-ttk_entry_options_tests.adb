@@ -211,11 +211,21 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+      Options: Ttk_Entry_Options;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Entry_Widget, ".myentry",
+         Ttk_Entry_Options'(Width => 10, others => <>));
+      Options := Get_Options(Entry_Widget);
+      Assert(Options.Width = 10, "Failed to get options of Ttk entry.");
+      Destroy(Entry_Widget);
 
 --  begin read only
    end Test_Get_Options_test_get_options_ttkentry;
