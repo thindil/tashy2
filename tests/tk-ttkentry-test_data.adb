@@ -3,16 +3,17 @@
 --  automatically. Contents of this package can be modified in any way
 --  except for sections surrounded by a 'read only' marker.
 
-with AUnit.Test_Fixtures;
+package body Tk.TtkEntry.Test_Data is
 
-package Tk.TtkEntry.Test_Data is
+   procedure Set_Up(Gnattest_T: in out Test) is
+      pragma Unreferenced(Gnattest_T);
+   begin
+      null;
+   end Set_Up;
 
---  begin read only
-   type Test is new AUnit.Test_Fixtures.Test_Fixture
---  end read only
-   with null record;
-
-   procedure Set_Up(Gnattest_T: in out Test);
-   procedure Tear_Down(Gnattest_T: in out Test);
-
+   procedure Tear_Down(Gnattest_T: in out Test) is
+      pragma Unreferenced(Gnattest_T);
+   begin
+      null;
+   end Tear_Down;
 end Tk.TtkEntry.Test_Data;
