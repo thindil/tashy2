@@ -180,4 +180,41 @@ package body Tk.TtkEntry is
       end return;
    end Get_Bounding_Box;
 
+   procedure Delete
+     (Entry_Widget: Ttk_Entry; First: String; Last: String := "") is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "delete",
+         Options => First & (if Last'Length > 0 then " " & Last else ""));
+   end Delete;
+
+   function Get_Text(Entry_Widget: Ttk_Entry) return String is
+   begin
+      return
+        Execute_Widget_Command(Widgt => Entry_Widget, Command_Name => "get");
+   end Get_Text;
+
+   procedure Set_Insert_Cursor(Entry_Widget: Ttk_Entry; Index: String) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "icursor", Options => Index);
+   end Set_Insert_Cursor;
+
+   function Get_Index(Entry_Widget: Ttk_Entry; Index: String) return Natural is
+      function Widget_Command is new Generic_Scalar_Execute_Widget_Command
+        (Result_Type => Natural);
+   begin
+      return
+        Widget_Command
+          (Widgt => Entry_Widget, Command_Name => "index", Options => Index);
+   end Get_Index;
+
+   procedure Insert_Text
+     (Entry_Widget: Ttk_Entry; Index: String; Text: Tcl_String) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "insert",
+         Options => Index & " " & To_String(Text));
+   end Insert_Text;
+
 end Tk.TtkEntry;

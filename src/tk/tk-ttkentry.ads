@@ -102,12 +102,15 @@ package Tk.TtkEntry is
       Pre => Entry_Widget /= Null_Widget and Index'Length > 0,
       Test_Case => (Name => "Test_Set_Insert_Cursor", Mode => Nominal);
 
-   function Get_Index(Entry_Widget: Ttk_Entry; Index: String) return Natural with
+   function Get_Index
+     (Entry_Widget: Ttk_Entry; Index: String) return Natural with
       Pre => Entry_Widget /= Null_Widget and Index'Length > 0,
       Test_Case => (Name => "Test_Get_Index", Mode => Nominal);
 
-   procedure Insert_Text(Entry_Widget: Ttk_Entry; Index: String) with
-      Pre => Entry_Widget /= Null_Widget and Index'Length > 0,
+   procedure Insert_Text
+     (Entry_Widget: Ttk_Entry; Index: String; Text: Tcl_String) with
+      Pre => Entry_Widget /= Null_Widget and Index'Length > 0 and
+      Length(Text) > 0,
       Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE
