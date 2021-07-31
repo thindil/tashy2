@@ -88,5 +88,27 @@ package Tk.TtkEntry is
      (Entry_Widget: Ttk_Entry; Index: Natural) return Bbox_Data with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Bounding_Box", Mode => Nominal);
+
+   procedure Delete
+     (Entry_Widget: Ttk_Entry; First: String; Last: String := "") with
+      Pre => Entry_Widget /= Null_Widget and First'Length > 0,
+      Test_Case => (Name => "Test_Delete", Mode => Nominal);
+
+   function Get_Text(Entry_Widget: Ttk_Entry) return String with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Get_Text", Mode => Nominal);
+
+   procedure Set_Insert_Cursor(Entry_Widget: Ttk_Entry; Index: String) with
+      Pre => Entry_Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => (Name => "Test_Set_Insert_Cursor", Mode => Nominal);
+
+   function Get_Index(Entry_Widget: Ttk_Entry; Index: String) return Natural with
+      Pre => Entry_Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => (Name => "Test_Get_Index", Mode => Nominal);
+
+   procedure Insert_Text(Entry_Widget: Ttk_Entry; Index: String) with
+      Pre => Entry_Widget /= Null_Widget and Index'Length > 0,
+      Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
+
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;
