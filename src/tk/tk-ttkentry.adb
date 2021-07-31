@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Lists; use Tcl.Lists;
 with Ada.Characters.Handling;
 with Ada.Strings.Unbounded;
 
@@ -152,5 +153,31 @@ package body Tk.TtkEntry is
         (Widgt => Entry_Widget, Command_Name => "configure",
          Options => Options_To_String(Options => Options));
    end Configure;
+
+   function Get_Bounding_Box
+     (Entry_Widget: Ttk_Entry; Index: Natural) return Bbox_Data is
+      Interpreter: constant Tcl_Interpreter :=
+        Tk_Interp(Widgt => Entry_Widget);
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  Tk_Path_Name(Widgt => Entry_Widget) & " bbox" &
+                  Natural'Image(Index),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
+   begin
+      return Coords: Bbox_Data := Empty_Bbox_Data do
+         Coords.Start_X :=
+           Natural'Value(To_Ada_String(Source => Result_List(1)));
+         Coords.Start_Y :=
+           Natural'Value(To_Ada_String(Source => Result_List(2)));
+         Coords.Width :=
+           Natural'Value(To_Ada_String(Source => Result_List(3)));
+         Coords.Height :=
+           Natural'Value(To_Ada_String(Source => Result_List(4)));
+      end return;
+   end Get_Bounding_Box;
 
 end Tk.TtkEntry;

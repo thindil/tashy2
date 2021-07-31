@@ -84,5 +84,9 @@ package Tk.TtkEntry is
    Default_Ttk_Entry_Options: constant Ttk_Entry_Options :=
      Ttk_Entry_Options'(others => <>);
 
+   function Get_Bounding_Box
+     (Entry_Widget: Ttk_Entry; Index: Natural) return Bbox_Data with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Bounding_Box", Mode => Nominal);
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;
