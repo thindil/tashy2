@@ -31,8 +31,9 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Get_Bounding_Box_ec11f6_e40b4e
-     (Entry_Widget: Ttk_Entry; Index: Natural) return Bbox_Data is
+   function Wrap_Test_Get_Bounding_Box_3f26de_e40b4e
+     (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True)
+      return Bbox_Data is
    begin
       begin
          pragma Assert(Entry_Widget /= Null_Widget);
@@ -44,9 +45,9 @@ package body Tk.TtkEntry.Test_Data.Tests is
                "req_sloc(tk-ttkentry.ads:0):Test_Bounding_Box test requirement violated");
       end;
       declare
-         Test_Get_Bounding_Box_ec11f6_e40b4e_Result: constant Bbox_Data :=
+         Test_Get_Bounding_Box_3f26de_e40b4e_Result: constant Bbox_Data :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Get_Bounding_Box
-             (Entry_Widget, Index);
+             (Entry_Widget, Index, Is_Index);
       begin
          begin
             pragma Assert(True);
@@ -57,22 +58,24 @@ package body Tk.TtkEntry.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-ttkentry.ads:0:):Test_Bounding_Box test commitment violated");
          end;
-         return Test_Get_Bounding_Box_ec11f6_e40b4e_Result;
+         return Test_Get_Bounding_Box_3f26de_e40b4e_Result;
       end;
-   end Wrap_Test_Get_Bounding_Box_ec11f6_e40b4e;
+   end Wrap_Test_Get_Bounding_Box_3f26de_e40b4e;
 --  end read only
 
 --  begin read only
-   procedure Test_Get_Bounding_Box_test_bounding_box(Gnattest_T: in out Test);
-   procedure Test_Get_Bounding_Box_ec11f6_e40b4e
+   procedure Test_1_Get_Bounding_Box_test_bounding_box
+     (Gnattest_T: in out Test);
+   procedure Test_Get_Bounding_Box_3f26de_e40b4e
      (Gnattest_T: in out Test) renames
-     Test_Get_Bounding_Box_test_bounding_box;
---  id:2.2/ec11f60ea0cb7a48/Get_Bounding_Box/1/0/test_bounding_box/
-   procedure Test_Get_Bounding_Box_test_bounding_box
+     Test_1_Get_Bounding_Box_test_bounding_box;
+--  id:2.2/3f26deb6a64de62e/Get_Bounding_Box/1/0/test_bounding_box/
+   procedure Test_1_Get_Bounding_Box_test_bounding_box
      (Gnattest_T: in out Test) is
       function Get_Bounding_Box
-        (Entry_Widget: Ttk_Entry; Index: Natural) return Bbox_Data renames
-        Wrap_Test_Get_Bounding_Box_ec11f6_e40b4e;
+        (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True)
+         return Bbox_Data renames
+        Wrap_Test_Get_Bounding_Box_3f26de_e40b4e;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -87,11 +90,77 @@ package body Tk.TtkEntry.Test_Data.Tests is
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
       Assert
         (Get_Bounding_Box(Entry_Widget, 0).Start_X = 0,
-         "Failed to get bounding box of ttk::entry.");
+         "Failed to get bounding box of ttk::entry from numerical index.");
       Destroy(Entry_Widget);
 
 --  begin read only
-   end Test_Get_Bounding_Box_test_bounding_box;
+   end Test_1_Get_Bounding_Box_test_bounding_box;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Get_Bounding_Box_2eefca_9bb42f
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) return Bbox_Data is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Bounding_Box2 test requirement violated");
+      end;
+      declare
+         Test_Get_Bounding_Box_2eefca_9bb42f_Result: constant Bbox_Data :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Get_Bounding_Box
+             (Entry_Widget, Index);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-ttkentry.ads:0:):Test_Bounding_Box2 test commitment violated");
+         end;
+         return Test_Get_Bounding_Box_2eefca_9bb42f_Result;
+      end;
+   end Wrap_Test_Get_Bounding_Box_2eefca_9bb42f;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Get_Bounding_Box_test_bounding_box2
+     (Gnattest_T: in out Test);
+   procedure Test_Get_Bounding_Box_2eefca_9bb42f
+     (Gnattest_T: in out Test) renames
+     Test_2_Get_Bounding_Box_test_bounding_box2;
+--  id:2.2/2eefcaa400b4f92b/Get_Bounding_Box/0/0/test_bounding_box2/
+   procedure Test_2_Get_Bounding_Box_test_bounding_box2
+     (Gnattest_T: in out Test) is
+      function Get_Bounding_Box
+        (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type)
+         return Bbox_Data renames
+        Wrap_Test_Get_Bounding_Box_2eefca_9bb42f;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Assert
+        (Get_Bounding_Box(Entry_Widget, LAST).Start_X = 0,
+         "Failed to get bounding box of ttk::entry from Entry_Index_Type.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_2_Get_Bounding_Box_test_bounding_box2;
 --  end read only
 
 --  begin read only
