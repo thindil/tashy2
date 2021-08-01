@@ -98,27 +98,29 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Bounding_Box2", Mode => Nominal);
 
    procedure Delete
-     (Entry_Widget: Ttk_Entry; First: String; Last: String := "") with
-      Pre => Entry_Widget /= Null_Widget and First'Length > 0,
+     (Entry_Widget: Ttk_Entry; First: Natural; Last: Natural := 0;
+      Is_First_Index, Is_Last_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Delete", Mode => Nominal);
 
    function Get_Text(Entry_Widget: Ttk_Entry) return String with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Text", Mode => Nominal);
 
-   procedure Set_Insert_Cursor(Entry_Widget: Ttk_Entry; Index: String) with
-      Pre => Entry_Widget /= Null_Widget and Index'Length > 0,
+   procedure Set_Insert_Cursor
+     (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Set_Insert_Cursor", Mode => Nominal);
 
    function Get_Index
-     (Entry_Widget: Ttk_Entry; Index: String) return Natural with
-      Pre => Entry_Widget /= Null_Widget and Index'Length > 0,
+     (Entry_Widget: Ttk_Entry; Index: Natural) return Natural with
+      Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Index", Mode => Nominal);
 
    procedure Insert_Text
-     (Entry_Widget: Ttk_Entry; Index: String; Text: Tcl_String) with
-      Pre => Entry_Widget /= Null_Widget and Index'Length > 0 and
-      Length(Text) > 0,
+     (Entry_Widget: Ttk_Entry; Index: Natural; Text: Tcl_String;
+      Is_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget and Length(Text) > 0,
       Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE

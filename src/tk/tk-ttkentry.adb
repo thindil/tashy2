@@ -156,6 +156,28 @@ package body Tk.TtkEntry is
          Options => Options_To_String(Options => Options));
    end Configure;
 
+   -- ****if* TtkEntry/TtkEntry.Index_To_String
+   -- FUNCTION
+   -- Convert numeric index in ttk::entry to String
+   -- PARAMETERS
+   -- Index    - The index to convert to String
+   -- Is_Index - If True, the Index is numerical index of character to convert,
+   --            otherwise it is X coordinate in ttk::entry
+   -- RESULT
+   -- String with converted Index or, if it is X coordinate, with added "@"
+   -- sign before number
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Index_To_String(Index: Natural; Is_Index: Boolean) return String is
+      -- ****
+   begin
+      if Is_Index then
+         return Trim(Natural'Image(Index), Left);
+      end if;
+      return "@" & Trim(Natural'Image(Index), Left);
+   end Index_To_String;
+
    function Get_Bounding_Box
      (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True)
       return Bbox_Data is
@@ -167,8 +189,7 @@ package body Tk.TtkEntry is
              Tcl_Eval
                (Tcl_Script =>
                   Tk_Path_Name(Widgt => Entry_Widget) & " bbox " &
-                  (if Is_Index then "" else "@") &
-                  Trim(Natural'Image(Index), Left),
+                  Index_To_String(Index, Is_Index),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin
@@ -213,11 +234,15 @@ package body Tk.TtkEntry is
    end Get_Bounding_Box;
 
    procedure Delete
-     (Entry_Widget: Ttk_Entry; First: String; Last: String := "") is
+     (Entry_Widget: Ttk_Entry; First: Natural; Last: Natural := 0;
+      Is_First_Index, Is_Last_Index: Boolean := True) is
    begin
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "delete",
-         Options => First & (if Last'Length > 0 then " " & Last else ""));
+         Options =>
+           Index_To_String(First, Is_First_Index) &
+           (if Last > 0 then " " & Index_To_String(Last, Is_Last_Index)
+            else ""));
    end Delete;
 
    function Get_Text(Entry_Widget: Ttk_Entry) return String is
@@ -226,27 +251,32 @@ package body Tk.TtkEntry is
         Execute_Widget_Command(Widgt => Entry_Widget, Command_Name => "get");
    end Get_Text;
 
-   procedure Set_Insert_Cursor(Entry_Widget: Ttk_Entry; Index: String) is
+   procedure Set_Insert_Cursor
+     (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True) is
    begin
       Execute_Widget_Command
-        (Widgt => Entry_Widget, Command_Name => "icursor", Options => Index);
+        (Widgt => Entry_Widget, Command_Name => "icursor",
+         Options => Index_To_String(Index, Is_Index));
    end Set_Insert_Cursor;
 
-   function Get_Index(Entry_Widget: Ttk_Entry; Index: String) return Natural is
+   function Get_Index
+     (Entry_Widget: Ttk_Entry; Index: Natural) return Natural is
       function Widget_Command is new Generic_Scalar_Execute_Widget_Command
         (Result_Type => Natural);
    begin
       return
         Widget_Command
-          (Widgt => Entry_Widget, Command_Name => "index", Options => Index);
+          (Widgt => Entry_Widget, Command_Name => "index",
+           Options => Index_To_String(Index, False));
    end Get_Index;
 
    procedure Insert_Text
-     (Entry_Widget: Ttk_Entry; Index: String; Text: Tcl_String) is
+     (Entry_Widget: Ttk_Entry; Index: Natural; Text: Tcl_String;
+      Is_Index: Boolean := True) is
    begin
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "insert",
-         Options => Index & " " & To_String(Text));
+         Options => Index_To_String(Index, Is_Index) & " " & To_String(Text));
    end Insert_Text;
 
 end Tk.TtkEntry;
