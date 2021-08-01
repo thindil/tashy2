@@ -14,6 +14,8 @@
 
 with Tcl.Lists; use Tcl.Lists;
 with Ada.Characters.Handling;
+with Ada.Strings; use Ada.Strings;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded;
 
 package body Tk.TtkEntry is
@@ -155,7 +157,8 @@ package body Tk.TtkEntry is
    end Configure;
 
    function Get_Bounding_Box
-     (Entry_Widget: Ttk_Entry; Index: Natural) return Bbox_Data is
+     (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True)
+      return Bbox_Data is
       Interpreter: constant Tcl_Interpreter :=
         Tk_Interp(Widgt => Entry_Widget);
       Result_List: constant Array_List :=
@@ -163,8 +166,37 @@ package body Tk.TtkEntry is
           (List =>
              Tcl_Eval
                (Tcl_Script =>
-                  Tk_Path_Name(Widgt => Entry_Widget) & " bbox" &
-                  Natural'Image(Index),
+                  Tk_Path_Name(Widgt => Entry_Widget) & " bbox " &
+                  (if Is_Index then "" else "@") &
+                  Trim(Natural'Image(Index), Left),
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
+   begin
+      return Coords: Bbox_Data := Empty_Bbox_Data do
+         Coords.Start_X :=
+           Natural'Value(To_Ada_String(Source => Result_List(1)));
+         Coords.Start_Y :=
+           Natural'Value(To_Ada_String(Source => Result_List(2)));
+         Coords.Width :=
+           Natural'Value(To_Ada_String(Source => Result_List(3)));
+         Coords.Height :=
+           Natural'Value(To_Ada_String(Source => Result_List(4)));
+      end return;
+   end Get_Bounding_Box;
+
+   function Get_Bounding_Box
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) return Bbox_Data is
+      Interpreter: constant Tcl_Interpreter :=
+        Tk_Interp(Widgt => Entry_Widget);
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  Tk_Path_Name(Widgt => Entry_Widget) & " bbox " &
+                  (case Index is when LAST => "end", when INSERT => "insert",
+                     when SELECTIONFIRST => "sel.first",
+                     when SELECTIONLAST => "sel.last"),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin

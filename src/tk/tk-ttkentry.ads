@@ -84,10 +84,18 @@ package Tk.TtkEntry is
    Default_Ttk_Entry_Options: constant Ttk_Entry_Options :=
      Ttk_Entry_Options'(others => <>);
 
+   type Entry_Index_Type is (LAST, INSERT, SELECTIONFIRST, SELECTIONLAST);
+
    function Get_Bounding_Box
-     (Entry_Widget: Ttk_Entry; Index: Natural) return Bbox_Data with
+     (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True)
+      return Bbox_Data with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Bounding_Box", Mode => Nominal);
+
+   function Get_Bounding_Box
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) return Bbox_Data with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Bounding_Box2", Mode => Nominal);
 
    procedure Delete
      (Entry_Widget: Ttk_Entry; First: String; Last: String := "") with
