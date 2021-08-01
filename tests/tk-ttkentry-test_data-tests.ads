@@ -16,20 +16,20 @@ package Tk.TtkEntry.Test_Data.Tests is
    procedure Test_Get_Bounding_Box_2eefca_9bb42f(Gnattest_T: in out Test);
    --  tk-ttkentry.ads:95:4:Get_Bounding_Box:Test_Bounding_Box2
 
-   procedure Test_Delete_7e606b_442b94(Gnattest_T: in out Test);
+   procedure Test_Delete_50540f_6a08ac(Gnattest_T: in out Test);
    --  tk-ttkentry.ads:100:4:Delete:Test_Delete
 
    procedure Test_Get_Text_85804d_23b61d(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:105:4:Get_Text:Test_Get_Text
+   --  tk-ttkentry.ads:106:4:Get_Text:Test_Get_Text
 
-   procedure Test_Set_Insert_Cursor_4388d5_03ad1f(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:109:4:Set_Insert_Cursor:Test_Set_Insert_Cursor
+   procedure Test_Set_Insert_Cursor_52b496_42a5d1(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:110:4:Set_Insert_Cursor:Test_Set_Insert_Cursor
 
-   procedure Test_Get_Index_bb67b1_863454(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:113:4:Get_Index:Test_Get_Index
+   procedure Test_Get_Index_421652_13e4f7(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:115:4:Get_Index:Test_Get_Index
 
-   procedure Test_Insert_Text_23cb11_c46745(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:118:4:Insert_Text:Test_Insert_Text
+   procedure Test_Insert_Text_f548e1_0216f7(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:120:4:Insert_Text:Test_Insert_Text
 
 end Tk.TtkEntry.Test_Data.Tests;
 --  end read only
