@@ -34,11 +34,20 @@ package Tk.TtkEntry.Test_Data.Tests is
    procedure Test_Set_Insert_Cursor_52b496_42a5d1(Gnattest_T: in out Test);
    --  tk-ttkentry.ads:130:4:Set_Insert_Cursor:Test_Set_Insert_Cursor
 
+   procedure Test_Set_Insert_Cursor_60c8aa_e28574(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:135:4:Set_Insert_Cursor:Test_Set_Insert_Cursor2
+
    procedure Test_Get_Index_421652_13e4f7(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:135:4:Get_Index:Test_Get_Index
+   --  tk-ttkentry.ads:140:4:Get_Index:Test_Get_Index
+
+   procedure Test_Get_Index_ad8c06_595b62(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:145:4:Get_Index:Test_Get_Index2
 
    procedure Test_Insert_Text_f548e1_0216f7(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:140:4:Insert_Text:Test_Insert_Text
+   --  tk-ttkentry.ads:150:4:Insert_Text:Test_Insert_Text
+
+   procedure Test_Insert_Text_a9d4de_0216f7(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:156:4:Insert_Text:Test_Insert_Text
 
 end Tk.TtkEntry.Test_Data.Tests;
 --  end read only

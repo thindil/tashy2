@@ -500,13 +500,13 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Set_Insert_Cursor_test_set_insert_cursor
+   procedure Test_1_Set_Insert_Cursor_test_set_insert_cursor
      (Gnattest_T: in out Test);
    procedure Test_Set_Insert_Cursor_52b496_42a5d1
      (Gnattest_T: in out Test) renames
-     Test_Set_Insert_Cursor_test_set_insert_cursor;
+     Test_1_Set_Insert_Cursor_test_set_insert_cursor;
 --  id:2.2/52b4963c893e9549/Set_Insert_Cursor/1/0/test_set_insert_cursor/
-   procedure Test_Set_Insert_Cursor_test_set_insert_cursor
+   procedure Test_1_Set_Insert_Cursor_test_set_insert_cursor
      (Gnattest_T: in out Test) is
       procedure Set_Insert_Cursor
         (Entry_Widget: Ttk_Entry; Index: Natural;
@@ -529,7 +529,66 @@ package body Tk.TtkEntry.Test_Data.Tests is
       Destroy(Entry_Widget);
 
 --  begin read only
-   end Test_Set_Insert_Cursor_test_set_insert_cursor;
+   end Test_1_Set_Insert_Cursor_test_set_insert_cursor;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Set_Insert_Cursor_60c8aa_e28574
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Set_Insert_Cursor2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Set_Insert_Cursor
+        (Entry_Widget, Index);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Set_Insert_Cursor2 test commitment violated");
+      end;
+   end Wrap_Test_Set_Insert_Cursor_60c8aa_e28574;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Set_Insert_Cursor_test_set_insert_cursor2
+     (Gnattest_T: in out Test);
+   procedure Test_Set_Insert_Cursor_60c8aa_e28574
+     (Gnattest_T: in out Test) renames
+     Test_2_Set_Insert_Cursor_test_set_insert_cursor2;
+--  id:2.2/60c8aab4afb0817e/Set_Insert_Cursor/0/0/test_set_insert_cursor2/
+   procedure Test_2_Set_Insert_Cursor_test_set_insert_cursor2
+     (Gnattest_T: in out Test) is
+      procedure Set_Insert_Cursor
+        (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) renames
+        Wrap_Test_Set_Insert_Cursor_60c8aa_e28574;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Set_Insert_Cursor(Entry_Widget, LAST);
+      Assert(True, "This test can only crash.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_2_Set_Insert_Cursor_test_set_insert_cursor2;
 --  end read only
 
 --  begin read only
@@ -565,11 +624,11 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Get_Index_test_get_index(Gnattest_T: in out Test);
+   procedure Test_1_Get_Index_test_get_index(Gnattest_T: in out Test);
    procedure Test_Get_Index_421652_13e4f7(Gnattest_T: in out Test) renames
-     Test_Get_Index_test_get_index;
+     Test_1_Get_Index_test_get_index;
 --  id:2.2/42165254b3e9093e/Get_Index/1/0/test_get_index/
-   procedure Test_Get_Index_test_get_index(Gnattest_T: in out Test) is
+   procedure Test_1_Get_Index_test_get_index(Gnattest_T: in out Test) is
       function Get_Index
         (Entry_Widget: Ttk_Entry; Index: Natural) return Natural renames
         Wrap_Test_Get_Index_421652_13e4f7;
@@ -586,11 +645,75 @@ package body Tk.TtkEntry.Test_Data.Tests is
       end if;
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
       Assert
-        (Get_Index(Entry_Widget, 0) = 0, "Failed to get index in ttk::entry.");
+        (Get_Index(Entry_Widget, 0) = 0,
+         "Failed to get index from X coordinate in ttk::entry.");
       Destroy(Entry_Widget);
 
 --  begin read only
-   end Test_Get_Index_test_get_index;
+   end Test_1_Get_Index_test_get_index;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Get_Index_ad8c06_595b62
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) return Natural is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Get_Index2 test requirement violated");
+      end;
+      declare
+         Test_Get_Index_ad8c06_595b62_Result: constant Natural :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Get_Index
+             (Entry_Widget, Index);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-ttkentry.ads:0:):Test_Get_Index2 test commitment violated");
+         end;
+         return Test_Get_Index_ad8c06_595b62_Result;
+      end;
+   end Wrap_Test_Get_Index_ad8c06_595b62;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Get_Index_test_get_index2(Gnattest_T: in out Test);
+   procedure Test_Get_Index_ad8c06_595b62(Gnattest_T: in out Test) renames
+     Test_2_Get_Index_test_get_index2;
+--  id:2.2/ad8c06ac0c9ff43a/Get_Index/0/0/test_get_index2/
+   procedure Test_2_Get_Index_test_get_index2(Gnattest_T: in out Test) is
+      function Get_Index
+        (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type)
+         return Natural renames
+        Wrap_Test_Get_Index_ad8c06_595b62;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Assert
+        (Get_Index(Entry_Widget, LAST) = 0,
+         "Failed to get index from Entry_Index_Type in ttk::entry.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_2_Get_Index_test_get_index2;
 --  end read only
 
 --  begin read only
@@ -622,11 +745,11 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Insert_Text_test_insert_text(Gnattest_T: in out Test);
+   procedure Test_1_Insert_Text_test_insert_text(Gnattest_T: in out Test);
    procedure Test_Insert_Text_f548e1_0216f7(Gnattest_T: in out Test) renames
-     Test_Insert_Text_test_insert_text;
+     Test_1_Insert_Text_test_insert_text;
 --  id:2.2/f548e1ba01a17a97/Insert_Text/1/0/test_insert_text/
-   procedure Test_Insert_Text_test_insert_text(Gnattest_T: in out Test) is
+   procedure Test_1_Insert_Text_test_insert_text(Gnattest_T: in out Test) is
       procedure Insert_Text
         (Entry_Widget: Ttk_Entry; Index: Natural; Text: Tcl_String;
          Is_Index: Boolean := True) renames
@@ -646,11 +769,70 @@ package body Tk.TtkEntry.Test_Data.Tests is
       Insert_Text(Entry_Widget, 0, To_Tcl_String("my text"));
       Assert
         (Get_Text(Entry_Widget) = "my text",
-         "Failed to insert text to ttk::entry.");
+         "Failed to insert text to ttk::entry with numeric index.");
       Destroy(Entry_Widget);
 
 --  begin read only
-   end Test_Insert_Text_test_insert_text;
+   end Test_1_Insert_Text_test_insert_text;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Insert_Text_a9d4de_0216f7
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type; Text: Tcl_String) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget and Length(Text) > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Insert_Text test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Insert_Text
+        (Entry_Widget, Index, Text);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Insert_Text test commitment violated");
+      end;
+   end Wrap_Test_Insert_Text_a9d4de_0216f7;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Insert_Text_test_insert_text(Gnattest_T: in out Test);
+   procedure Test_Insert_Text_a9d4de_0216f7(Gnattest_T: in out Test) renames
+     Test_2_Insert_Text_test_insert_text;
+--  id:2.2/a9d4def153cb94e2/Insert_Text/0/0/test_insert_text/
+   procedure Test_2_Insert_Text_test_insert_text(Gnattest_T: in out Test) is
+      procedure Insert_Text
+        (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type;
+         Text: Tcl_String) renames
+        Wrap_Test_Insert_Text_a9d4de_0216f7;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Insert_Text(Entry_Widget, LAST, To_Tcl_String("my text"));
+      Assert
+        (Get_Text(Entry_Widget) = "my text",
+         "Failed to insert text to ttk::entry with Entry_Index_Type index.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_2_Insert_Text_test_insert_text;
 --  end read only
 
 --  begin read only
