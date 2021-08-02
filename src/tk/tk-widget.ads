@@ -910,7 +910,7 @@ package Tk.Widget is
       -- command isn't implemented. If you want to get result of the command,
       -- use Tcl_GetStringResult function.
       -- PARAMETERS
-      -- Widget       - Tk widget on which the command will be executed
+      -- Widgt       - Tk widget on which the command will be executed
       -- Command_Name - Tk command which will be executed
       -- Options      - Option for the selected Tk command
       -- HISTORY
@@ -933,7 +933,7 @@ package Tk.Widget is
       -- result as Ada Strings. Generally the function shouldn't be used,
       -- use it only when the selected Tk widget command isn't implemented.
       -- PARAMETERS
-      -- Widget       - Tk widget on which the command will be executed
+      -- Widgt        - Tk widget on which the command will be executed
       -- Command_Name - Tk command which will be executed
       -- Options      - Option for the selected Tk command
       -- RESULT
@@ -958,7 +958,7 @@ package Tk.Widget is
       -- Generic function to execute Tk widget command and return its result
       -- as as scalar type
       -- PARAMETERS
-      -- Widget       - Tk widget on which the command will be executed
+      -- Widgt        - Tk widget on which the command will be executed
       -- Command_Name - Tk command which will be executed
       -- Options      - Option for the selected Tk command
       -- RESULT
@@ -984,7 +984,7 @@ package Tk.Widget is
       -- Generic function to execute Tk widget command and return its result
       -- as as float type
       -- PARAMETERS
-      -- Widget       - Tk widget on which the command will be executed
+      -- Widgt        - Tk widget on which the command will be executed
       -- Command_Name - Tk command which will be executed
       -- Options      - Option for the selected Tk command
       -- RESULT
