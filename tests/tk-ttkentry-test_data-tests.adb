@@ -192,11 +192,11 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_Delete_test_delete(Gnattest_T: in out Test);
+   procedure Test_1_Delete_test_delete(Gnattest_T: in out Test);
    procedure Test_Delete_50540f_6a08ac(Gnattest_T: in out Test) renames
-     Test_Delete_test_delete;
+     Test_1_Delete_test_delete;
 --  id:2.2/50540f228ec47939/Delete/1/0/test_delete/
-   procedure Test_Delete_test_delete(Gnattest_T: in out Test) is
+   procedure Test_1_Delete_test_delete(Gnattest_T: in out Test) is
       procedure Delete
         (Entry_Widget: Ttk_Entry; First: Natural; Last: Natural := 0;
          Is_First_Index, Is_Last_Index: Boolean := True) renames
@@ -221,7 +221,193 @@ package body Tk.TtkEntry.Test_Data.Tests is
       Destroy(Entry_Widget);
 
 --  begin read only
-   end Test_Delete_test_delete;
+   end Test_1_Delete_test_delete;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Delete_3b495c_262e03
+     (Entry_Widget: Ttk_Entry; First: Entry_Index_Type;
+      Last: Entry_Index_Type := NONE) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Delete2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Delete
+        (Entry_Widget, First, Last);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Delete2 test commitment violated");
+      end;
+   end Wrap_Test_Delete_3b495c_262e03;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Delete_test_delete2(Gnattest_T: in out Test);
+   procedure Test_Delete_3b495c_262e03(Gnattest_T: in out Test) renames
+     Test_2_Delete_test_delete2;
+--  id:2.2/3b495c6da5020278/Delete/0/0/test_delete2/
+   procedure Test_2_Delete_test_delete2(Gnattest_T: in out Test) is
+      procedure Delete
+        (Entry_Widget: Ttk_Entry; First: Entry_Index_Type;
+         Last: Entry_Index_Type := NONE) renames
+        Wrap_Test_Delete_3b495c_262e03;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Insert_Text(Entry_Widget, 0, To_Tcl_String("my text"));
+      Set_Insert_Cursor(Entry_Widget, 2);
+      Delete(Entry_Widget, INSERT, LAST);
+      Assert
+        (Get_Text(Entry_Widget) = "my",
+         "Failed to delete ttk::entry text with Entry_Index_Type indexes.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_2_Delete_test_delete2;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Delete_f1c89f_42ab10
+     (Entry_Widget: Ttk_Entry; First: Natural; Last: Entry_Index_Type := NONE;
+      Is_First_Index: Boolean := True) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Delete3 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Delete
+        (Entry_Widget, First, Last, Is_First_Index);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Delete3 test commitment violated");
+      end;
+   end Wrap_Test_Delete_f1c89f_42ab10;
+--  end read only
+
+--  begin read only
+   procedure Test_3_Delete_test_delete3(Gnattest_T: in out Test);
+   procedure Test_Delete_f1c89f_42ab10(Gnattest_T: in out Test) renames
+     Test_3_Delete_test_delete3;
+--  id:2.2/f1c89faaf00d8a74/Delete/0/0/test_delete3/
+   procedure Test_3_Delete_test_delete3(Gnattest_T: in out Test) is
+      procedure Delete
+        (Entry_Widget: Ttk_Entry; First: Natural;
+         Last: Entry_Index_Type := NONE;
+         Is_First_Index: Boolean := True) renames
+        Wrap_Test_Delete_f1c89f_42ab10;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Insert_Text(Entry_Widget, 0, To_Tcl_String("my text"));
+      Delete(Entry_Widget, 2, LAST);
+      Assert
+        (Get_Text(Entry_Widget) = "my",
+         "Failed to delete ttk::entry text with numerical and Entry_Index_Type indexes.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_3_Delete_test_delete3;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Delete_3540bf_3e9e54
+     (Entry_Widget: Ttk_Entry; First: Entry_Index_Type; Last: Natural := 0;
+      Is_Last_Index: Boolean := True) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Delete4 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Delete
+        (Entry_Widget, First, Last, Is_Last_Index);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Delete4 test commitment violated");
+      end;
+   end Wrap_Test_Delete_3540bf_3e9e54;
+--  end read only
+
+--  begin read only
+   procedure Test_4_Delete_test_delete4(Gnattest_T: in out Test);
+   procedure Test_Delete_3540bf_3e9e54(Gnattest_T: in out Test) renames
+     Test_4_Delete_test_delete4;
+--  id:2.2/3540bff6c37bc974/Delete/0/0/test_delete4/
+   procedure Test_4_Delete_test_delete4(Gnattest_T: in out Test) is
+      procedure Delete
+        (Entry_Widget: Ttk_Entry; First: Entry_Index_Type; Last: Natural := 0;
+         Is_Last_Index: Boolean := True) renames
+        Wrap_Test_Delete_3540bf_3e9e54;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Insert_Text(Entry_Widget, 0, To_Tcl_String("my text"));
+      Set_Insert_Cursor(Entry_Widget, 2);
+      Delete(Entry_Widget, INSERT, 7);
+      Assert
+        (Get_Text(Entry_Widget) = "my",
+         "Failed to delete ttk::entry text with Entry_Index_Type and numerical indexes.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_4_Delete_test_delete4;
 --  end read only
 
 --  begin read only
