@@ -132,14 +132,29 @@ package Tk.TtkEntry is
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Set_Insert_Cursor", Mode => Nominal);
 
+   procedure Set_Insert_Cursor
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Set_Insert_Cursor2", Mode => Nominal);
+
    function Get_Index
      (Entry_Widget: Ttk_Entry; Index: Natural) return Natural with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Index", Mode => Nominal);
 
+   function Get_Index
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) return Natural with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Get_Index2", Mode => Nominal);
+
    procedure Insert_Text
      (Entry_Widget: Ttk_Entry; Index: Natural; Text: Tcl_String;
       Is_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget and Length(Text) > 0,
+      Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
+
+   procedure Insert_Text
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type; Text: Tcl_String) with
       Pre => Entry_Widget /= Null_Widget and Length(Text) > 0,
       Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
 

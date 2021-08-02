@@ -20,6 +20,22 @@ with Ada.Strings.Unbounded;
 
 package body Tk.TtkEntry is
 
+   -- ****if* TtkEntry/TtkEntry.Widget_Command
+   -- FUNCTION
+   -- Used to get Natural result from the selected Tcl widget command
+   -- PARAMETERS
+   -- Widgt        - Tk widget on which the command will be executed
+   -- Command_Name - Tk command which will be executed
+   -- Options      - Option for the selected Tk command
+   -- RESULT
+   -- Natural type with the result of the Tk widget command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Widget_Command is new Generic_Scalar_Execute_Widget_Command
+     (Result_Type => Natural);
+   -- ****
+
    -- ****if* TtkEntry/TtkEntry.Options_To_String
    -- FUNCTION
    -- Convert Ada structure to Tcl command
@@ -318,15 +334,30 @@ package body Tk.TtkEntry is
          Options => Index_To_String(Index, Is_Index));
    end Set_Insert_Cursor;
 
+   procedure Set_Insert_Cursor
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "icursor",
+         Options => Index_To_String(Index));
+   end Set_Insert_Cursor;
+
    function Get_Index
      (Entry_Widget: Ttk_Entry; Index: Natural) return Natural is
-      function Widget_Command is new Generic_Scalar_Execute_Widget_Command
-        (Result_Type => Natural);
    begin
       return
         Widget_Command
           (Widgt => Entry_Widget, Command_Name => "index",
            Options => Index_To_String(Index, False));
+   end Get_Index;
+
+   function Get_Index
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) return Natural is
+   begin
+      return
+        Widget_Command
+          (Widgt => Entry_Widget, Command_Name => "index",
+           Options => Index_To_String(Index));
    end Get_Index;
 
    procedure Insert_Text
@@ -336,6 +367,14 @@ package body Tk.TtkEntry is
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "insert",
          Options => Index_To_String(Index, Is_Index) & " " & To_String(Text));
+   end Insert_Text;
+
+   procedure Insert_Text
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type; Text: Tcl_String) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "insert",
+         Options => Index_To_String(Index) & " " & To_String(Text));
    end Insert_Text;
 
 end Tk.TtkEntry;
