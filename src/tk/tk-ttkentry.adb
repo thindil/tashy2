@@ -156,7 +156,7 @@ package body Tk.TtkEntry is
          Options => Options_To_String(Options => Options));
    end Configure;
 
-   -- ****if* TtkEntry/TtkEntry.Index_To_String
+   -- ****if* TtkEntry/TtkEntry.Index_To_String_(numerical)
    -- FUNCTION
    -- Convert numeric index in ttk::entry to String
    -- PARAMETERS
@@ -176,6 +176,33 @@ package body Tk.TtkEntry is
          return Trim(Natural'Image(Index), Left);
       end if;
       return "@" & Trim(Natural'Image(Index), Left);
+   end Index_To_String;
+
+   -- ****if* TtkEntry/TtkEntry.Index_To_String_(Entry_Index_Type)
+   -- FUNCTION
+   -- Convert Entry_Index_Type index in ttk::entry to String
+   -- PARAMETERS
+   -- Index    - The index to convert to String
+   -- RESULT
+   -- String with converted Index
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Index_To_String(Index: Entry_Index_Type) return String is
+      -- ****
+   begin
+      case Index is
+         when LAST =>
+            return "end";
+         when INSERT =>
+            return "insert";
+         when SELECTIONFIRST =>
+            return "sel.first";
+         when SELECTIONLAST =>
+            return "sel.last";
+         when NONE =>
+            return "";
+      end case;
    end Index_To_String;
 
    function Get_Bounding_Box
@@ -215,9 +242,7 @@ package body Tk.TtkEntry is
              Tcl_Eval
                (Tcl_Script =>
                   Tk_Path_Name(Widgt => Entry_Widget) & " bbox " &
-                  (case Index is when LAST => "end", when INSERT => "insert",
-                     when SELECTIONFIRST => "sel.first",
-                     when SELECTIONLAST => "sel.last"),
+                  Index_To_String(Index),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin
@@ -241,6 +266,40 @@ package body Tk.TtkEntry is
         (Widgt => Entry_Widget, Command_Name => "delete",
          Options =>
            Index_To_String(First, Is_First_Index) &
+           (if Last > 0 then " " & Index_To_String(Last, Is_Last_Index)
+            else ""));
+   end Delete;
+
+   procedure Delete
+     (Entry_Widget: Ttk_Entry; First: Entry_Index_Type;
+      Last: Entry_Index_Type := NONE) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "delete",
+         Options =>
+           Index_To_String(First) &
+           (if Last = NONE then "" else " " & Index_To_String(Last)));
+   end Delete;
+
+   procedure Delete
+     (Entry_Widget: Ttk_Entry; First: Natural; Last: Entry_Index_Type := NONE;
+      Is_First_Index: Boolean := True) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "delete",
+         Options =>
+           Index_To_String(First, Is_First_Index) &
+           (if Last = NONE then "" else " " & Index_To_String(Last)));
+   end Delete;
+
+   procedure Delete
+     (Entry_Widget: Ttk_Entry; First: Entry_Index_Type; Last: Natural := 0;
+      Is_Last_Index: Boolean := True) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "delete",
+         Options =>
+           Index_To_String(First) &
            (if Last > 0 then " " & Index_To_String(Last, Is_Last_Index)
             else ""));
    end Delete;

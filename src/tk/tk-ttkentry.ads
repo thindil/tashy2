@@ -84,7 +84,9 @@ package Tk.TtkEntry is
    Default_Ttk_Entry_Options: constant Ttk_Entry_Options :=
      Ttk_Entry_Options'(others => <>);
 
-   type Entry_Index_Type is (LAST, INSERT, SELECTIONFIRST, SELECTIONLAST);
+   type Entry_Index_Type is
+     (LAST, INSERT, SELECTIONFIRST, SELECTIONLAST, NONE) with
+      Default_Value => NONE;
 
    function Get_Bounding_Box
      (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True)
@@ -102,6 +104,24 @@ package Tk.TtkEntry is
       Is_First_Index, Is_Last_Index: Boolean := True) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Delete", Mode => Nominal);
+
+   procedure Delete
+     (Entry_Widget: Ttk_Entry; First: Entry_Index_Type;
+      Last: Entry_Index_Type := NONE) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Delete2", Mode => Nominal);
+
+   procedure Delete
+     (Entry_Widget: Ttk_Entry; First: Natural; Last: Entry_Index_Type := NONE;
+      Is_First_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Delete3", Mode => Nominal);
+
+   procedure Delete
+     (Entry_Widget: Ttk_Entry; First: Entry_Index_Type; Last: Natural := 0;
+      Is_Last_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Delete4", Mode => Nominal);
 
    function Get_Text(Entry_Widget: Ttk_Entry) return String with
       Pre => Entry_Widget /= Null_Widget,
