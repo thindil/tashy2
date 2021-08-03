@@ -377,4 +377,22 @@ package body Tk.TtkEntry is
          Options => Index_To_String(Index) & " " & To_String(Text));
    end Insert_Text;
 
+   procedure Selection_Clear(Entry_Widget: Ttk_Entry) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "selection",
+         Options => "clear");
+   end Selection_Clear;
+
+   function Selection_Present(Entry_Widget: Ttk_Entry) return Boolean is
+   begin
+      if Execute_Widget_Command
+          (Widgt => Entry_Widget, Command_Name => "selection",
+           Options => "present") =
+        "1" then
+         return True;
+      end if;
+      return False;
+   end Selection_Present;
+
 end Tk.TtkEntry;

@@ -158,5 +158,13 @@ package Tk.TtkEntry is
       Pre => Entry_Widget /= Null_Widget and Length(Text) > 0,
       Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
 
+   procedure Selection_Clear(Entry_Widget: Ttk_Entry) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Selection_Clear", Mode => Nominal);
+
+   function Selection_Present(Entry_Widget: Ttk_Entry) return Boolean with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Selection_Present", Mode => Nominal);
+
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;
