@@ -836,6 +836,131 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Selection_Clear_7c6919_401526
+     (Entry_Widget: Ttk_Entry) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Selection_Clear test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Selection_Clear
+        (Entry_Widget);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Selection_Clear test commitment violated");
+      end;
+   end Wrap_Test_Selection_Clear_7c6919_401526;
+--  end read only
+
+--  begin read only
+   procedure Test_Selection_Clear_test_selection_clear
+     (Gnattest_T: in out Test);
+   procedure Test_Selection_Clear_7c6919_401526
+     (Gnattest_T: in out Test) renames
+     Test_Selection_Clear_test_selection_clear;
+--  id:2.2/7c691965dadcc4a1/Selection_Clear/1/0/test_selection_clear/
+   procedure Test_Selection_Clear_test_selection_clear
+     (Gnattest_T: in out Test) is
+      procedure Selection_Clear(Entry_Widget: Ttk_Entry) renames
+        Wrap_Test_Selection_Clear_7c6919_401526;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Selection_Clear(Entry_Widget);
+      Assert
+        (not Selection_Present(Entry_Widget),
+         "Failed to clear ttk::entry selection.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_Selection_Clear_test_selection_clear;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Selection_Present_43ac3d_c0789f
+     (Entry_Widget: Ttk_Entry) return Boolean is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Selection_Present test requirement violated");
+      end;
+      declare
+         Test_Selection_Present_43ac3d_c0789f_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Selection_Present
+             (Entry_Widget);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-ttkentry.ads:0:):Test_Selection_Present test commitment violated");
+         end;
+         return Test_Selection_Present_43ac3d_c0789f_Result;
+      end;
+   end Wrap_Test_Selection_Present_43ac3d_c0789f;
+--  end read only
+
+--  begin read only
+   procedure Test_Selection_Present_test_selection_present
+     (Gnattest_T: in out Test);
+   procedure Test_Selection_Present_43ac3d_c0789f
+     (Gnattest_T: in out Test) renames
+     Test_Selection_Present_test_selection_present;
+--  id:2.2/43ac3df9d942d245/Selection_Present/1/0/test_selection_present/
+   procedure Test_Selection_Present_test_selection_present
+     (Gnattest_T: in out Test) is
+      function Selection_Present
+        (Entry_Widget: Ttk_Entry) return Boolean renames
+        Wrap_Test_Selection_Present_43ac3d_c0789f;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Assert
+        (not Selection_Present(Entry_Widget),
+         "Failed to check if ttk::entry selection exists.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_Selection_Present_test_selection_present;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

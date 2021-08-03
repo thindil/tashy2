@@ -49,5 +49,11 @@ package Tk.TtkEntry.Test_Data.Tests is
    procedure Test_Insert_Text_a9d4de_0216f7(Gnattest_T: in out Test);
    --  tk-ttkentry.ads:156:4:Insert_Text:Test_Insert_Text
 
+   procedure Test_Selection_Clear_7c6919_401526(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:161:4:Selection_Clear:Test_Selection_Clear
+
+   procedure Test_Selection_Present_43ac3d_c0789f(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:165:4:Selection_Present:Test_Selection_Present
+
 end Tk.TtkEntry.Test_Data.Tests;
 --  end read only
