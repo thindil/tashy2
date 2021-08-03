@@ -386,13 +386,10 @@ package body Tk.TtkEntry is
 
    function Selection_Present(Entry_Widget: Ttk_Entry) return Boolean is
    begin
-      if Execute_Widget_Command
+      return
+        Execute_Widget_Command
           (Widgt => Entry_Widget, Command_Name => "selection",
-           Options => "present") =
-        "1" then
-         return True;
-      end if;
-      return False;
+           Options => "present");
    end Selection_Present;
 
 end Tk.TtkEntry;
