@@ -23,6 +23,7 @@ with Tk.Labelframe; use Tk.Labelframe;
 with Tk.Menu; use Tk.Menu;
 with Tk.TopLevel; use Tk.TopLevel;
 with Tk.TtkButton; use Tk.TtkButton;
+with Tk.TtkEntry; use Tk.TtkEntry;
 with Tk.TtkLabel; use Tk.TtkLabel;
 
 --  begin read only
@@ -2570,6 +2571,74 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    end Test_2_Execute_Widget_Command_test_execute_widget_command2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Execute_Widget_Command_46f5b9_9df879
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+      return Boolean is
+   begin
+      begin
+         pragma Assert(Widgt /= Null_Widget and Command_Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Execute_Widget_Command3 test requirement violated");
+      end;
+      declare
+         Test_Execute_Widget_Command_46f5b9_9df879_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Widget
+             .Execute_Widget_Command
+             (Widgt, Command_Name, Options);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-widget.ads:0:):Test_Execute_Widget_Command3 test commitment violated");
+         end;
+         return Test_Execute_Widget_Command_46f5b9_9df879_Result;
+      end;
+   end Wrap_Test_Execute_Widget_Command_46f5b9_9df879;
+--  end read only
+
+--  begin read only
+   procedure Test_3_Execute_Widget_Command_test_execute_widget_command3
+     (Gnattest_T: in out Test);
+   procedure Test_Execute_Widget_Command_46f5b9_9df879
+     (Gnattest_T: in out Test) renames
+     Test_3_Execute_Widget_Command_test_execute_widget_command3;
+--  id:2.2/46f5b9ccec8c49ac/Execute_Widget_Command/0/0/test_execute_widget_command3/
+   procedure Test_3_Execute_Widget_Command_test_execute_widget_command3
+     (Gnattest_T: in out Test) is
+      function Execute_Widget_Command
+        (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+         return Boolean renames
+        Wrap_Test_Execute_Widget_Command_46f5b9_9df879;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create(Entry_Widget, ".myentry", Ttk_Entry_Options'(others => <>));
+      Assert
+        (not Execute_Widget_Command(Entry_Widget, "selection", "present"),
+         "Failed to execute and get boolean result of Tcl command on the selected Tk_Widget.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_3_Execute_Widget_Command_test_execute_widget_command3;
 --  end read only
 
 --  begin read only

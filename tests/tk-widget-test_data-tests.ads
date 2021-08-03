@@ -126,11 +126,15 @@ package Tk.Widget.Test_Data.Tests is
 
    procedure Test_Execute_Widget_Command_7643c6_2f4d36
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:924:4:Execute_Widget_Command:Test_Execute_Widget_Command
+   --  tk-widget.ads:925:4:Execute_Widget_Command:Test_Execute_Widget_Command
 
    procedure Test_Execute_Widget_Command_fc11cd_9808c7
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:949:4:Execute_Widget_Command:Test_Execute_Widget_Command2
+   --  tk-widget.ads:951:4:Execute_Widget_Command:Test_Execute_Widget_Command2
+
+   procedure Test_Execute_Widget_Command_46f5b9_9df879
+     (Gnattest_T: in out Test);
+   --  tk-widget.ads:978:4:Execute_Widget_Command:Test_Execute_Widget_Command3
 
 end Tk.Widget.Test_Data.Tests;
 --  end read only
