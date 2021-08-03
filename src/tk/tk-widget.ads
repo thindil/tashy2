@@ -919,7 +919,8 @@ package Tk.Widget is
       -- -- Set text on My_Button to click me
       -- Execute_Widget_Command(My_Button, "text", "{click me}");
       -- SEE ALSO
-      -- Widget.Execute_Widget_Command_(function)
+      -- Widget.Execute_Widget_Command_(function_boolean_result),
+      -- Widget.Execute_Widget_Command_(function_string_result)
       -- SOURCE
    procedure Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "") with
@@ -927,7 +928,7 @@ package Tk.Widget is
       Test_Case => (Name => "Test_Execute_Widget_Command", Mode => Nominal);
       -- ****
 
-      -- ****f* Widget/Widget.Execute_Widget_Command_(function)
+      -- ****f* Widget/Widget.Execute_Widget_Command_(function_string_result)
       -- FUNCTION
       -- Execute the selected command on the selected widget and returns its
       -- result as Ada Strings. Generally the function shouldn't be used,
@@ -944,13 +945,41 @@ package Tk.Widget is
       -- -- Get the type of menu entry of My_Menu second entry
       -- Menu_Entry_Type: constant String := Execute_Widget_Command(My_Menu, "type", "1");
       -- SEE ALSO
-      -- Widget.Execute_Widget_Command_(procedure)
+      -- Widget.Execute_Widget_Command_(procedure),
+      -- Widget.Execute_Widget_Command_(function_boolean_result)
       -- SOURCE
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return String with
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command2", Mode => Nominal);
+      -- ****
+
+      -- ****f* Widget/Widget.Execute_Widget_Command_(function_boolean_result)
+      -- FUNCTION
+      -- Execute the selected command on the selected widget and returns its
+      -- result as Ada Boolean. Generally the function shouldn't be used,
+      -- use it only when the selected Tk widget command isn't implemented.
+      -- PARAMETERS
+      -- Widgt        - Tk widget on which the command will be executed
+      -- Command_Name - Tk command which will be executed
+      -- Options      - Option for the selected Tk command
+      -- RESULT
+      -- Ada Boolean with result of the executed Tk widget command
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if selection is present in My_Entry widget
+      -- Has_Selection: constant Boolean := Execute_Widget_Command(My_Entry, "selection", "present");
+      -- SEE ALSO
+      -- Widget.Execute_Widget_Command_(procedure),
+      -- Widget.Execute_Widget_Command_(function_string_result)
+      -- SOURCE
+   function Execute_Widget_Command
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+      return Boolean with
+      Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
+      Test_Case => (Name => "Test_Execute_Widget_Command3", Mode => Nominal);
       -- ****
 
       -- ****g* Widget/Widget.Generic_Scalar_Execute_Widget_Command

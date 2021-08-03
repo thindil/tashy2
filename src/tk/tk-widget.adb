@@ -522,6 +522,20 @@ package body Tk.Widget is
            Interpreter => Tk_Interp(Widgt => Widgt));
    end Execute_Widget_Command;
 
+   function Execute_Widget_Command
+     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+      return Boolean is
+   begin
+      if Tcl_Eval
+          (Tcl_Script =>
+             Tk_Path_Name(Widgt => Widgt) & " " & Command_Name & " " & Options,
+           Interpreter => Tk_Interp(Widgt => Widgt)) =
+        "0" then
+         return False;
+      end if;
+      return True;
+   end Execute_Widget_Command;
+
    function Generic_Scalar_Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return Result_Type is
