@@ -961,6 +961,263 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Selection_Range_212aed_bae09d
+     (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Natural;
+      Is_Start_Index, Is_End_Index: Boolean := True) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Selection_Range test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Selection_Range
+        (Entry_Widget, Start_Index, End_Index, Is_Start_Index, Is_End_Index);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Selection_Range test commitment violated");
+      end;
+   end Wrap_Test_Selection_Range_212aed_bae09d;
+--  end read only
+
+--  begin read only
+   procedure Test_1_Selection_Range_test_selection_range
+     (Gnattest_T: in out Test);
+   procedure Test_Selection_Range_212aed_bae09d
+     (Gnattest_T: in out Test) renames
+     Test_1_Selection_Range_test_selection_range;
+--  id:2.2/212aedb28c13ceb2/Selection_Range/1/0/test_selection_range/
+   procedure Test_1_Selection_Range_test_selection_range
+     (Gnattest_T: in out Test) is
+      procedure Selection_Range
+        (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Natural;
+         Is_Start_Index, Is_End_Index: Boolean := True) renames
+        Wrap_Test_Selection_Range_212aed_bae09d;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Insert_Text(Entry_Widget, 0, To_Tcl_String("new text"));
+      Selection_Range(Entry_Widget, 0, 1);
+      Assert
+        (Selection_Present(Entry_Widget),
+         "Failed to set range for selection in ttk::entry with numerical indexes.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_1_Selection_Range_test_selection_range;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Selection_Range_b08707_09cc67
+     (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Entry_Index_Type) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Selection_Range2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Selection_Range
+        (Entry_Widget, Start_Index, End_Index);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Selection_Range2 test commitment violated");
+      end;
+   end Wrap_Test_Selection_Range_b08707_09cc67;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Selection_Range_test_selection_range2
+     (Gnattest_T: in out Test);
+   procedure Test_Selection_Range_b08707_09cc67
+     (Gnattest_T: in out Test) renames
+     Test_2_Selection_Range_test_selection_range2;
+--  id:2.2/b08707d6a2ab7c31/Selection_Range/0/0/test_selection_range2/
+   procedure Test_2_Selection_Range_test_selection_range2
+     (Gnattest_T: in out Test) is
+      procedure Selection_Range
+        (Entry_Widget: Ttk_Entry;
+         Start_Index, End_Index: Entry_Index_Type) renames
+        Wrap_Test_Selection_Range_b08707_09cc67;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Insert_Text(Entry_Widget, 0, To_Tcl_String("new text"));
+      Set_Insert_Cursor(Entry_Widget, 0);
+      Selection_Range(Entry_Widget, INSERT, LAST);
+      Assert
+        (Selection_Present(Entry_Widget),
+         "Failed to set range for selection in ttk::entry with Entry_Index_Type indexes.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_2_Selection_Range_test_selection_range2;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Selection_Range_4b6a3d_907ebb
+     (Entry_Widget: Ttk_Entry; Start_Index: Natural;
+      End_Index: Entry_Index_Type; Is_Start_Index: Boolean := True) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Selection_Range3 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Selection_Range
+        (Entry_Widget, Start_Index, End_Index, Is_Start_Index);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Selection_Range3 test commitment violated");
+      end;
+   end Wrap_Test_Selection_Range_4b6a3d_907ebb;
+--  end read only
+
+--  begin read only
+   procedure Test_3_Selection_Range_test_selection_range3
+     (Gnattest_T: in out Test);
+   procedure Test_Selection_Range_4b6a3d_907ebb
+     (Gnattest_T: in out Test) renames
+     Test_3_Selection_Range_test_selection_range3;
+--  id:2.2/4b6a3d1f5633e0ef/Selection_Range/0/0/test_selection_range3/
+   procedure Test_3_Selection_Range_test_selection_range3
+     (Gnattest_T: in out Test) is
+      procedure Selection_Range
+        (Entry_Widget: Ttk_Entry; Start_Index: Natural;
+         End_Index: Entry_Index_Type; Is_Start_Index: Boolean := True) renames
+        Wrap_Test_Selection_Range_4b6a3d_907ebb;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Insert_Text(Entry_Widget, 0, To_Tcl_String("new text"));
+      Selection_Range(Entry_Widget, 0, LAST);
+      Assert
+        (Selection_Present(Entry_Widget),
+         "Failed to set range for selection in ttk::entry with numerical and Entry_Index_Type indexes.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_3_Selection_Range_test_selection_range3;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Selection_Range_d3f0c4_0118df
+     (Entry_Widget: Ttk_Entry; Start_Index: Entry_Index_Type;
+      End_Index: Natural; Is_End_Index: Boolean := True) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Selection_Range4 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Selection_Range
+        (Entry_Widget, Start_Index, End_Index, Is_End_Index);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_Selection_Range4 test commitment violated");
+      end;
+   end Wrap_Test_Selection_Range_d3f0c4_0118df;
+--  end read only
+
+--  begin read only
+   procedure Test_4_Selection_Range_test_selection_range4
+     (Gnattest_T: in out Test);
+   procedure Test_Selection_Range_d3f0c4_0118df
+     (Gnattest_T: in out Test) renames
+     Test_4_Selection_Range_test_selection_range4;
+--  id:2.2/d3f0c4420d83b926/Selection_Range/0/0/test_selection_range4/
+   procedure Test_4_Selection_Range_test_selection_range4
+     (Gnattest_T: in out Test) is
+      procedure Selection_Range
+        (Entry_Widget: Ttk_Entry; Start_Index: Entry_Index_Type;
+         End_Index: Natural; Is_End_Index: Boolean := True) renames
+        Wrap_Test_Selection_Range_d3f0c4_0118df;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Insert_Text(Entry_Widget, 0, To_Tcl_String("new text"));
+      Set_Insert_Cursor(Entry_Widget, 0);
+      Selection_Range(Entry_Widget, INSERT, 1);
+      Assert
+        (Selection_Present(Entry_Widget),
+         "Failed to set range for selection in ttk::entry with Entry_Index_Type and numerical indexes.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_4_Selection_Range_test_selection_range4;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

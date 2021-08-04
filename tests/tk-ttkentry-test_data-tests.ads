@@ -55,5 +55,17 @@ package Tk.TtkEntry.Test_Data.Tests is
    procedure Test_Selection_Present_43ac3d_c0789f(Gnattest_T: in out Test);
    --  tk-ttkentry.ads:165:4:Selection_Present:Test_Selection_Present
 
+   procedure Test_Selection_Range_212aed_bae09d(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:169:4:Selection_Range:Test_Selection_Range
+
+   procedure Test_Selection_Range_b08707_09cc67(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:175:4:Selection_Range:Test_Selection_Range2
+
+   procedure Test_Selection_Range_4b6a3d_907ebb(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:180:4:Selection_Range:Test_Selection_Range3
+
+   procedure Test_Selection_Range_d3f0c4_0118df(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:186:4:Selection_Range:Test_Selection_Range4
+
 end Tk.TtkEntry.Test_Data.Tests;
 --  end read only
