@@ -57,6 +57,31 @@ package Tk.TtkEntry is
       Width: Natural := 0;
    end record;
 
+   type Entry_Index_Type is
+     (LAST, INSERT, SELECTIONFIRST, SELECTIONLAST, NONE) with
+      Default_Value => NONE;
+
+   -- ****t* TtkEntry/TtkEntry.Fraction_Type
+   -- FUNCTION
+   -- Type used to get or set visible fraction of Ttk_Entry. Value 0 means the
+   -- start of the Ttk_Entry on the left, 1.0 end of the Ttk_Entry on the
+   -- right.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Fraction_Type is digits 2 range 0.0 .. 1.0 with
+      Default_Value => 0.0;
+      -- ****
+
+      -- ****d* TtkEntry/TtkEntry.Default_Alpha
+      -- FUNCTION
+      -- Default fraciton value for Ttk_Entry (left side of the widget)
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
+   Default_Fraction: constant Fraction_Type := 0.0;
+   -- ****
+
    function Create
      (Path_Name: String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry with
@@ -83,10 +108,6 @@ package Tk.TtkEntry is
 
    Default_Ttk_Entry_Options: constant Ttk_Entry_Options :=
      Ttk_Entry_Options'(others => <>);
-
-   type Entry_Index_Type is
-     (LAST, INSERT, SELECTIONFIRST, SELECTIONLAST, NONE) with
-      Default_Value => NONE;
 
    function Get_Bounding_Box
      (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True)
