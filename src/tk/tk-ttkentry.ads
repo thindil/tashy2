@@ -166,5 +166,28 @@ package Tk.TtkEntry is
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Selection_Present", Mode => Nominal);
 
+   procedure Selection_Range
+     (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Natural;
+      Is_Start_Index, Is_End_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Selection_Range", Mode => Nominal);
+
+   procedure Selection_Range
+     (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Entry_Index_Type) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Selection_Range2", Mode => Nominal);
+
+   procedure Selection_Range
+     (Entry_Widget: Ttk_Entry; Start_Index: Natural;
+      End_Index: Entry_Index_Type; Is_Start_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Selection_Range3", Mode => Nominal);
+
+   procedure Selection_Range
+     (Entry_Widget: Ttk_Entry; Start_Index: Entry_Index_Type;
+      End_Index: Natural; Is_End_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Selection_Range4", Mode => Nominal);
+
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;

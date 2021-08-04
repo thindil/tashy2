@@ -392,4 +392,47 @@ package body Tk.TtkEntry is
            Options => "present");
    end Selection_Present;
 
+   procedure Selection_Range
+     (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Natural;
+      Is_Start_Index, Is_End_Index: Boolean := True) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "selection",
+         Options =>
+           "range " & Index_To_String(Start_Index, Is_Start_Index) & " " &
+           Index_To_String(End_Index, Is_End_Index));
+   end Selection_Range;
+
+   procedure Selection_Range
+     (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Entry_Index_Type) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "selection",
+         Options =>
+           "range " & Index_To_String(Start_Index) & " " &
+           Index_To_String(End_Index));
+   end Selection_Range;
+
+   procedure Selection_Range
+     (Entry_Widget: Ttk_Entry; Start_Index: Natural;
+      End_Index: Entry_Index_Type; Is_Start_Index: Boolean := True) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "selection",
+         Options =>
+           "range " & Index_To_String(Start_Index, Is_Start_Index) & " " &
+           Index_To_String(End_Index));
+   end Selection_Range;
+
+   procedure Selection_Range
+     (Entry_Widget: Ttk_Entry; Start_Index: Entry_Index_Type;
+      End_Index: Natural; Is_End_Index: Boolean := True) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "selection",
+         Options =>
+           "range " & Index_To_String(Start_Index) & " " &
+           Index_To_String(End_Index, Is_End_Index));
+   end Selection_Range;
+
 end Tk.TtkEntry;
