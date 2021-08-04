@@ -1218,6 +1218,70 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Validate_deb16a_7d02a7
+     (Entry_Widget: Ttk_Entry) return Boolean is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_Validate test requirement violated");
+      end;
+      declare
+         Test_Validate_deb16a_7d02a7_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Validate
+             (Entry_Widget);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-ttkentry.ads:0:):Test_Validate test commitment violated");
+         end;
+         return Test_Validate_deb16a_7d02a7_Result;
+      end;
+   end Wrap_Test_Validate_deb16a_7d02a7;
+--  end read only
+
+--  begin read only
+   procedure Test_Validate_test_validate(Gnattest_T: in out Test);
+   procedure Test_Validate_deb16a_7d02a7(Gnattest_T: in out Test) renames
+     Test_Validate_test_validate;
+--  id:2.2/deb16a07cfd049ba/Validate/1/0/test_validate/
+   procedure Test_Validate_test_validate(Gnattest_T: in out Test) is
+      function Validate(Entry_Widget: Ttk_Entry) return Boolean renames
+        Wrap_Test_Validate_deb16a_7d02a7;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget :=
+        Create
+          (".myentry",
+           Ttk_Entry_Options'
+             (Validation => KEY, Validate_Command => To_Tcl_String("return 1"),
+              others => <>));
+      Assert
+        (Validate(Entry_Widget), "Failed to validate value of ttk::entry.");
+
+--  begin read only
+   end Test_Validate_test_validate;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

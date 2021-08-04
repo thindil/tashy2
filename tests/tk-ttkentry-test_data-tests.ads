@@ -67,5 +67,8 @@ package Tk.TtkEntry.Test_Data.Tests is
    procedure Test_Selection_Range_d3f0c4_0118df(Gnattest_T: in out Test);
    --  tk-ttkentry.ads:186:4:Selection_Range:Test_Selection_Range4
 
+   procedure Test_Validate_deb16a_7d02a7(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:192:4:Validate:Test_Validate
+
 end Tk.TtkEntry.Test_Data.Tests;
 --  end read only
