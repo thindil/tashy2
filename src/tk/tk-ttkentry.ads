@@ -189,5 +189,9 @@ package Tk.TtkEntry is
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Selection_Range4", Mode => Nominal);
 
+   function Validate(Entry_Widget: Ttk_Entry) return Boolean with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_Validate", Mode => Nominal);
+
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;

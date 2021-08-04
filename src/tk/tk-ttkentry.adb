@@ -435,4 +435,11 @@ package body Tk.TtkEntry is
            Index_To_String(End_Index, Is_End_Index));
    end Selection_Range;
 
+   function Validate(Entry_Widget: Ttk_Entry) return Boolean is
+   begin
+      return
+        Execute_Widget_Command
+          (Widgt => Entry_Widget, Command_Name => "validate");
+   end Validate;
+
 end Tk.TtkEntry;
