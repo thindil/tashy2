@@ -82,6 +82,9 @@ package Tk.TtkEntry is
    Default_Fraction: constant Fraction_Type := 0.0;
    -- ****
 
+   type Fractions_Array is array (1 .. 2) of Fraction_Type with
+      Default_Component_Value => Default_Fraction;
+
    function Create
      (Path_Name: String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry with
