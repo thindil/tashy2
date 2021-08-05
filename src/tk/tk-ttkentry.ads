@@ -82,7 +82,7 @@ package Tk.TtkEntry is
    Default_Fraction: constant Fraction_Type := 0.0;
    -- ****
 
-   type Fractions_Array is array (1 .. 2) of Fraction_Type with
+   type Fractions_Array is array(1 .. 2) of Fraction_Type with
       Default_Component_Value => Default_Fraction;
 
    Default_Fractions_Array: constant Fractions_Array := (others => <>);
@@ -222,6 +222,20 @@ package Tk.TtkEntry is
    function X_View(Entry_Widget: Ttk_Entry) return Fractions_Array with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_View", Mode => Nominal);
+
+   procedure X_View_Adjust
+     (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_X_View_Adjust", Mode => Nominal);
+
+   procedure X_View_Adjust
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_X_View_Adjust2", Mode => Nominal);
+
+   procedure X_View_Move_To(Entry_Widget: Ttk_Entry; Fraction: Fraction_Type) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_X_View_Move_To", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;

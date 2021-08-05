@@ -461,4 +461,27 @@ package body Tk.TtkEntry is
       end return;
    end X_View;
 
+   procedure X_View_Adjust
+     (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "xview",
+         Options => Index_To_String(Index, Is_Index));
+   end X_View_Adjust;
+
+   procedure X_View_Adjust(Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "xview",
+         Options => Index_To_String(Index));
+   end X_View_Adjust;
+
+   procedure X_View_Move_To
+     (Entry_Widget: Ttk_Entry; Fraction: Fraction_Type) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "xview",
+         Options => "moveto " & Fraction_Type'Image(Fraction));
+   end X_View_Move_To;
+
 end Tk.TtkEntry;
