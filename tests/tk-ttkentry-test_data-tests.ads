@@ -11,64 +11,67 @@ package Tk.TtkEntry.Test_Data.Tests is
    null record;
 
    procedure Test_Get_Bounding_Box_3f26de_e40b4e(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:91:4:Get_Bounding_Box:Test_Bounding_Box
+   --  tk-ttkentry.ads:117:4:Get_Bounding_Box:Test_Bounding_Box
 
    procedure Test_Get_Bounding_Box_2eefca_9bb42f(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:97:4:Get_Bounding_Box:Test_Bounding_Box2
+   --  tk-ttkentry.ads:123:4:Get_Bounding_Box:Test_Bounding_Box2
 
    procedure Test_Delete_50540f_6a08ac(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:102:4:Delete:Test_Delete
+   --  tk-ttkentry.ads:128:4:Delete:Test_Delete
 
    procedure Test_Delete_3b495c_262e03(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:108:4:Delete:Test_Delete2
+   --  tk-ttkentry.ads:134:4:Delete:Test_Delete2
 
    procedure Test_Delete_f1c89f_42ab10(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:114:4:Delete:Test_Delete3
+   --  tk-ttkentry.ads:140:4:Delete:Test_Delete3
 
    procedure Test_Delete_3540bf_3e9e54(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:120:4:Delete:Test_Delete4
+   --  tk-ttkentry.ads:146:4:Delete:Test_Delete4
 
    procedure Test_Get_Text_85804d_23b61d(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:126:4:Get_Text:Test_Get_Text
+   --  tk-ttkentry.ads:152:4:Get_Text:Test_Get_Text
 
    procedure Test_Set_Insert_Cursor_52b496_42a5d1(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:130:4:Set_Insert_Cursor:Test_Set_Insert_Cursor
+   --  tk-ttkentry.ads:156:4:Set_Insert_Cursor:Test_Set_Insert_Cursor
 
    procedure Test_Set_Insert_Cursor_60c8aa_e28574(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:135:4:Set_Insert_Cursor:Test_Set_Insert_Cursor2
+   --  tk-ttkentry.ads:161:4:Set_Insert_Cursor:Test_Set_Insert_Cursor2
 
    procedure Test_Get_Index_421652_13e4f7(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:140:4:Get_Index:Test_Get_Index
+   --  tk-ttkentry.ads:166:4:Get_Index:Test_Get_Index
 
    procedure Test_Get_Index_ad8c06_595b62(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:145:4:Get_Index:Test_Get_Index2
+   --  tk-ttkentry.ads:171:4:Get_Index:Test_Get_Index2
 
    procedure Test_Insert_Text_f548e1_0216f7(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:150:4:Insert_Text:Test_Insert_Text
+   --  tk-ttkentry.ads:176:4:Insert_Text:Test_Insert_Text
 
    procedure Test_Insert_Text_a9d4de_0216f7(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:156:4:Insert_Text:Test_Insert_Text
+   --  tk-ttkentry.ads:182:4:Insert_Text:Test_Insert_Text
 
    procedure Test_Selection_Clear_7c6919_401526(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:161:4:Selection_Clear:Test_Selection_Clear
+   --  tk-ttkentry.ads:187:4:Selection_Clear:Test_Selection_Clear
 
    procedure Test_Selection_Present_43ac3d_c0789f(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:165:4:Selection_Present:Test_Selection_Present
+   --  tk-ttkentry.ads:191:4:Selection_Present:Test_Selection_Present
 
    procedure Test_Selection_Range_212aed_bae09d(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:169:4:Selection_Range:Test_Selection_Range
+   --  tk-ttkentry.ads:195:4:Selection_Range:Test_Selection_Range
 
    procedure Test_Selection_Range_b08707_09cc67(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:175:4:Selection_Range:Test_Selection_Range2
+   --  tk-ttkentry.ads:201:4:Selection_Range:Test_Selection_Range2
 
    procedure Test_Selection_Range_4b6a3d_907ebb(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:180:4:Selection_Range:Test_Selection_Range3
+   --  tk-ttkentry.ads:206:4:Selection_Range:Test_Selection_Range3
 
    procedure Test_Selection_Range_d3f0c4_0118df(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:186:4:Selection_Range:Test_Selection_Range4
+   --  tk-ttkentry.ads:212:4:Selection_Range:Test_Selection_Range4
 
    procedure Test_Validate_deb16a_7d02a7(Gnattest_T: in out Test);
-   --  tk-ttkentry.ads:192:4:Validate:Test_Validate
+   --  tk-ttkentry.ads:218:4:Validate:Test_Validate
+
+   procedure Test_X_View_2a360c_fac801(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:222:4:X_View:Test_X_View
 
 end Tk.TtkEntry.Test_Data.Tests;
 --  end read only

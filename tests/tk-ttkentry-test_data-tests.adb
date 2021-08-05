@@ -1282,6 +1282,67 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_X_View_2a360c_fac801
+     (Entry_Widget: Ttk_Entry) return Fractions_Array is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_X_View test requirement violated");
+      end;
+      declare
+         Test_X_View_2a360c_fac801_Result: constant Fractions_Array :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.X_View
+             (Entry_Widget);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-ttkentry.ads:0:):Test_X_View test commitment violated");
+         end;
+         return Test_X_View_2a360c_fac801_Result;
+      end;
+   end Wrap_Test_X_View_2a360c_fac801;
+--  end read only
+
+--  begin read only
+   procedure Test_X_View_test_x_view(Gnattest_T: in out Test);
+   procedure Test_X_View_2a360c_fac801(Gnattest_T: in out Test) renames
+     Test_X_View_test_x_view;
+--  id:2.2/2a360cb9bfcd4c30/X_View/1/0/test_x_view/
+   procedure Test_X_View_test_x_view(Gnattest_T: in out Test) is
+      function X_View(Entry_Widget: Ttk_Entry) return Fractions_Array renames
+        Wrap_Test_X_View_2a360c_fac801;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      Assert
+        (X_View(Entry_Widget) = (0.0, 1.0),
+         "Failed to get visible range for ttk::entry.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_X_View_test_x_view;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
