@@ -85,6 +85,8 @@ package Tk.TtkEntry is
    type Fractions_Array is array (1 .. 2) of Fraction_Type with
       Default_Component_Value => Default_Fraction;
 
+   Default_Fractions_Array: constant Fractions_Array := (others => <>);
+
    function Create
      (Path_Name: String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry with
@@ -216,6 +218,10 @@ package Tk.TtkEntry is
    function Validate(Entry_Widget: Ttk_Entry) return Boolean with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Validate", Mode => Nominal);
+
+   function X_View(Entry_Widget: Ttk_Entry) return Fractions_Array with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_X_View", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;

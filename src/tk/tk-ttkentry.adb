@@ -442,4 +442,23 @@ package body Tk.TtkEntry is
           (Widgt => Entry_Widget, Command_Name => "validate");
    end Validate;
 
+   function X_View(Entry_Widget: Ttk_Entry) return Fractions_Array is
+      Interpreter: constant Tcl_Interpreter :=
+        Tk_Interp(Widgt => Entry_Widget);
+      Result_List: constant Array_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => Tk_Path_Name(Widgt => Entry_Widget) & " xview",
+                Interpreter => Interpreter),
+           Interpreter => Interpreter);
+   begin
+      return Fractions: Fractions_Array := Default_Fractions_Array do
+         Fractions(1) :=
+           Fraction_Type'Value(To_Ada_String(Source => Result_List(1)));
+         Fractions(2) :=
+           Fraction_Type'Value(To_Ada_String(Source => Result_List(2)));
+      end return;
+   end X_View;
+
 end Tk.TtkEntry;
