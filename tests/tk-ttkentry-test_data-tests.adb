@@ -1343,6 +1343,178 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_X_View_Adjust_4d030c_ce5610
+     (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_X_View_Adjust test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.X_View_Adjust
+        (Entry_Widget, Index, Is_Index);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_X_View_Adjust test commitment violated");
+      end;
+   end Wrap_Test_X_View_Adjust_4d030c_ce5610;
+--  end read only
+
+--  begin read only
+   procedure Test_1_X_View_Adjust_test_x_view_adjust(Gnattest_T: in out Test);
+   procedure Test_X_View_Adjust_4d030c_ce5610(Gnattest_T: in out Test) renames
+     Test_1_X_View_Adjust_test_x_view_adjust;
+--  id:2.2/4d030cc7e64ce228/X_View_Adjust/1/0/test_x_view_adjust/
+   procedure Test_1_X_View_Adjust_test_x_view_adjust
+     (Gnattest_T: in out Test) is
+      procedure X_View_Adjust
+        (Entry_Widget: Ttk_Entry; Index: Natural;
+         Is_Index: Boolean := True) renames
+        Wrap_Test_X_View_Adjust_4d030c_ce5610;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      X_View_Adjust(Entry_Widget, 0);
+      Assert(True, "This test can only crash.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_1_X_View_Adjust_test_x_view_adjust;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_X_View_Adjust_9b5765_53940a
+     (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_X_View_Adjust2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.X_View_Adjust
+        (Entry_Widget, Index);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_X_View_Adjust2 test commitment violated");
+      end;
+   end Wrap_Test_X_View_Adjust_9b5765_53940a;
+--  end read only
+
+--  begin read only
+   procedure Test_2_X_View_Adjust_test_x_view_adjust2(Gnattest_T: in out Test);
+   procedure Test_X_View_Adjust_9b5765_53940a(Gnattest_T: in out Test) renames
+     Test_2_X_View_Adjust_test_x_view_adjust2;
+--  id:2.2/9b576515d26272f3/X_View_Adjust/0/0/test_x_view_adjust2/
+   procedure Test_2_X_View_Adjust_test_x_view_adjust2
+     (Gnattest_T: in out Test) is
+      procedure X_View_Adjust
+        (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) renames
+        Wrap_Test_X_View_Adjust_9b5765_53940a;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      X_View_Adjust(Entry_Widget, LAST);
+      Assert(True, "This test can only crash.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_2_X_View_Adjust_test_x_view_adjust2;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_X_View_Move_To_e93a2e_470a38
+     (Entry_Widget: Ttk_Entry; Fraction: Fraction_Type) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_X_View_Move_To test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.X_View_Move_To
+        (Entry_Widget, Fraction);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_X_View_Move_To test commitment violated");
+      end;
+   end Wrap_Test_X_View_Move_To_e93a2e_470a38;
+--  end read only
+
+--  begin read only
+   procedure Test_X_View_Move_To_test_x_view_move_to(Gnattest_T: in out Test);
+   procedure Test_X_View_Move_To_e93a2e_470a38(Gnattest_T: in out Test) renames
+     Test_X_View_Move_To_test_x_view_move_to;
+--  id:2.2/e93a2ede4a3360c1/X_View_Move_To/1/0/test_x_view_move_to/
+   procedure Test_X_View_Move_To_test_x_view_move_to
+     (Gnattest_T: in out Test) is
+      procedure X_View_Move_To
+        (Entry_Widget: Ttk_Entry; Fraction: Fraction_Type) renames
+        Wrap_Test_X_View_Move_To_e93a2e_470a38;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      X_View_Move_To(Entry_Widget, 0.5);
+      Assert(True, "This test can only crash.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_X_View_Move_To_test_x_view_move_to;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.

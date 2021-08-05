@@ -73,5 +73,14 @@ package Tk.TtkEntry.Test_Data.Tests is
    procedure Test_X_View_2a360c_fac801(Gnattest_T: in out Test);
    --  tk-ttkentry.ads:222:4:X_View:Test_X_View
 
+   procedure Test_X_View_Adjust_4d030c_ce5610(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:226:4:X_View_Adjust:Test_X_View_Adjust
+
+   procedure Test_X_View_Adjust_9b5765_53940a(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:231:4:X_View_Adjust:Test_X_View_Adjust2
+
+   procedure Test_X_View_Move_To_e93a2e_470a38(Gnattest_T: in out Test);
+   --  tk-ttkentry.ads:236:4:X_View_Move_To:Test_X_View_Move_To
+
 end Tk.TtkEntry.Test_Data.Tests;
 --  end read only
