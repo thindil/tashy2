@@ -73,7 +73,7 @@ package Tk.TtkEntry is
       Default_Value => 0.0;
       -- ****
 
-      -- ****d* TtkEntry/TtkEntry.Default_Alpha
+      -- ****d* TtkEntry/TtkEntry.Default_Fraction
       -- FUNCTION
       -- Default fraciton value for Ttk_Entry (left side of the widget)
       -- HISTORY
@@ -81,6 +81,11 @@ package Tk.TtkEntry is
       -- SOURCE
    Default_Fraction: constant Fraction_Type := 0.0;
    -- ****
+
+   type Scroll_Unit_Type is (UNITS, PAGES) with
+      Default_Value => UNITS;
+
+   Default_Scroll_Unit: constant Scroll_Unit_Type := UNITS;
 
    type Fractions_Array is array(1 .. 2) of Fraction_Type with
       Default_Component_Value => Default_Fraction;
