@@ -13,7 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Lists; use Tcl.Lists;
-with Ada.Characters.Handling;
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded;
@@ -48,7 +48,6 @@ package body Tk.TtkEntry is
    -- SOURCE
    function Options_To_String(Options: Ttk_Entry_Options) return String is
       -- ****
-      use Ada.Characters.Handling;
       use Ada.Strings.Unbounded;
 
       Options_String: Unbounded_String := Null_Unbounded_String;
@@ -483,5 +482,15 @@ package body Tk.TtkEntry is
         (Widgt => Entry_Widget, Command_Name => "xview",
          Options => "moveto " & Fraction_Type'Image(Fraction));
    end X_View_Move_To;
+
+   procedure X_View_Scroll
+     (Entry_Widget: Ttk_Entry; Number: Integer; What: Scroll_Unit_Type) is
+   begin
+      Execute_Widget_Command
+        (Widgt => Entry_Widget, Command_Name => "xview",
+         Options =>
+           "scroll " & Integer'Image(Number) & " " &
+           To_Lower(Scroll_Unit_Type'Image(What)));
+   end X_View_Scroll;
 
 end Tk.TtkEntry;

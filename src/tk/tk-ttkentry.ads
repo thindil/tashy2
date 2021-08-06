@@ -238,9 +238,15 @@ package Tk.TtkEntry is
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_View_Adjust2", Mode => Nominal);
 
-   procedure X_View_Move_To(Entry_Widget: Ttk_Entry; Fraction: Fraction_Type) with
+   procedure X_View_Move_To
+     (Entry_Widget: Ttk_Entry; Fraction: Fraction_Type) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_View_Move_To", Mode => Nominal);
+
+   procedure X_View_Scroll
+     (Entry_Widget: Ttk_Entry; Number: Integer; What: Scroll_Unit_Type) with
+      Pre => Entry_Widget /= Null_Widget,
+      Test_Case => (Name => "Test_X_View_Scroll", Mode => Nominal);
 
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;
