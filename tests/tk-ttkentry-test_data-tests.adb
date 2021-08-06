@@ -155,7 +155,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
       end if;
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
       Assert
-        (Get_Bounding_Box(Entry_Widget, LAST).Start_X = 0,
+        (Get_Bounding_Box(Entry_Widget, LASTCHARACTER).Start_X = 0,
          "Failed to get bounding box of ttk::entry from Entry_Index_Type.");
       Destroy(Entry_Widget);
 
@@ -276,7 +276,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
       Insert_Text(Entry_Widget, 0, To_Tcl_String("my text"));
       Set_Insert_Cursor(Entry_Widget, 2);
-      Delete(Entry_Widget, INSERT, LAST);
+      Delete(Entry_Widget, INSERT, LASTCHARACTER);
       Assert
         (Get_Text(Entry_Widget) = "my",
          "Failed to delete ttk::entry text with Entry_Index_Type indexes.");
@@ -338,7 +338,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
       end if;
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
       Insert_Text(Entry_Widget, 0, To_Tcl_String("my text"));
-      Delete(Entry_Widget, 2, LAST);
+      Delete(Entry_Widget, 2, LASTCHARACTER);
       Assert
         (Get_Text(Entry_Widget) = "my",
          "Failed to delete ttk::entry text with numerical and Entry_Index_Type indexes.");
@@ -583,7 +583,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
          return;
       end if;
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
-      Set_Insert_Cursor(Entry_Widget, LAST);
+      Set_Insert_Cursor(Entry_Widget, LASTCHARACTER);
       Assert(True, "This test can only crash.");
       Destroy(Entry_Widget);
 
@@ -708,7 +708,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
       end if;
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
       Assert
-        (Get_Index(Entry_Widget, LAST) = 0,
+        (Get_Index(Entry_Widget, LASTCHARACTER) = 0,
          "Failed to get index from Entry_Index_Type in ttk::entry.");
       Destroy(Entry_Widget);
 
@@ -825,7 +825,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
          return;
       end if;
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
-      Insert_Text(Entry_Widget, LAST, To_Tcl_String("my text"));
+      Insert_Text(Entry_Widget, LASTCHARACTER, To_Tcl_String("my text"));
       Assert
         (Get_Text(Entry_Widget) = "my text",
          "Failed to insert text to ttk::entry with Entry_Index_Type index.");
@@ -1078,7 +1078,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
       Insert_Text(Entry_Widget, 0, To_Tcl_String("new text"));
       Set_Insert_Cursor(Entry_Widget, 0);
-      Selection_Range(Entry_Widget, INSERT, LAST);
+      Selection_Range(Entry_Widget, INSERT, LASTCHARACTER);
       Assert
         (Selection_Present(Entry_Widget),
          "Failed to set range for selection in ttk::entry with Entry_Index_Type indexes.");
@@ -1142,7 +1142,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
       end if;
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
       Insert_Text(Entry_Widget, 0, To_Tcl_String("new text"));
-      Selection_Range(Entry_Widget, 0, LAST);
+      Selection_Range(Entry_Widget, 0, LASTCHARACTER);
       Assert
         (Selection_Present(Entry_Widget),
          "Failed to set range for selection in ttk::entry with numerical and Entry_Index_Type indexes.");
@@ -1449,7 +1449,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
          return;
       end if;
       Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
-      X_View_Adjust(Entry_Widget, LAST);
+      X_View_Adjust(Entry_Widget, LASTCHARACTER);
       Assert(True, "This test can only crash.");
       Destroy(Entry_Widget);
 
