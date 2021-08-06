@@ -207,7 +207,7 @@ package body Tk.TtkEntry is
       -- ****
    begin
       case Index is
-         when LAST =>
+         when LASTCHARACTER =>
             return "end";
          when INSERT =>
             return "insert";

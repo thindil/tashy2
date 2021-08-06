@@ -58,7 +58,7 @@ package Tk.TtkEntry is
    end record;
 
    type Entry_Index_Type is
-     (LAST, INSERT, SELECTIONFIRST, SELECTIONLAST, NONE) with
+     (LASTCHARACTER, INSERT, SELECTIONFIRST, SELECTIONLAST, NONE) with
       Default_Value => NONE;
 
    -- ****t* TtkEntry/TtkEntry.Fraction_Type
