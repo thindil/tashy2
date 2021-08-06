@@ -1515,6 +1515,63 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_X_View_Scroll_84331f_ff6390
+     (Entry_Widget: Ttk_Entry; Number: Integer; What: Scroll_Unit_Type) is
+   begin
+      begin
+         pragma Assert(Entry_Widget /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-ttkentry.ads:0):Test_X_View_Scroll test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.X_View_Scroll
+        (Entry_Widget, Number, What);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-ttkentry.ads:0:):Test_X_View_Scroll test commitment violated");
+      end;
+   end Wrap_Test_X_View_Scroll_84331f_ff6390;
+--  end read only
+
+--  begin read only
+   procedure Test_X_View_Scroll_test_x_view_scroll(Gnattest_T: in out Test);
+   procedure Test_X_View_Scroll_84331f_ff6390(Gnattest_T: in out Test) renames
+     Test_X_View_Scroll_test_x_view_scroll;
+--  id:2.2/84331fc34c539da3/X_View_Scroll/1/0/test_x_view_scroll/
+   procedure Test_X_View_Scroll_test_x_view_scroll(Gnattest_T: in out Test) is
+      procedure X_View_Scroll
+        (Entry_Widget: Ttk_Entry; Number: Integer;
+         What: Scroll_Unit_Type) renames
+        Wrap_Test_X_View_Scroll_84331f_ff6390;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Entry_Widget: Ttk_Entry;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Entry_Widget := Create(".myentry", Ttk_Entry_Options'(others => <>));
+      X_View_Scroll(Entry_Widget, 1, UNITS);
+      Assert(True, "This test can only crash.");
+      Destroy(Entry_Widget);
+
+--  begin read only
+   end Test_X_View_Scroll_test_x_view_scroll;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
