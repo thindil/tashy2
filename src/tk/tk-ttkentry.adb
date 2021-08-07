@@ -15,7 +15,7 @@
 with Tcl.Lists; use Tcl.Lists;
 with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings; use Ada.Strings;
-with Ada.Strings.Fixed; use Ada.Strings.Fixed;
+with Ada.Strings.Fixed;
 with Ada.Strings.Unbounded;
 
 package body Tk.TtkEntry is
@@ -186,6 +186,7 @@ package body Tk.TtkEntry is
    -- SOURCE
    function Index_To_String(Index: Natural; Is_Index: Boolean) return String is
       -- ****
+      use Ada.Strings.Fixed;
    begin
       if Is_Index then
          return Trim(Source => Natural'Image(Index), Side => Left);
@@ -473,14 +474,14 @@ package body Tk.TtkEntry is
    begin
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "xview",
-         Options => Index_To_String(Index, Is_Index));
+         Options => Index_To_String(Index => Index, Is_Index => Is_Index));
    end X_View_Adjust;
 
    procedure X_View_Adjust(Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) is
    begin
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "xview",
-         Options => Index_To_String(Index));
+         Options => Index_To_String(Index => Index));
    end X_View_Adjust;
 
    procedure X_View_Move_To
@@ -498,7 +499,7 @@ package body Tk.TtkEntry is
         (Widgt => Entry_Widget, Command_Name => "xview",
          Options =>
            "scroll " & Integer'Image(Number) & " " &
-           To_Lower(Scroll_Unit_Type'Image(What)));
+           To_Lower(Item => Scroll_Unit_Type'Image(What)));
    end X_View_Scroll;
 
 end Tk.TtkEntry;
