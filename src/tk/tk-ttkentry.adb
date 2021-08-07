@@ -188,9 +188,9 @@ package body Tk.TtkEntry is
       -- ****
    begin
       if Is_Index then
-         return Trim(Natural'Image(Index), Left);
+         return Trim(Source => Natural'Image(Index), Side => Left);
       end if;
-      return "@" & Trim(Natural'Image(Index), Left);
+      return "@" & Trim(Source => Natural'Image(Index), Side => Left);
    end Index_To_String;
 
    -- ****if* TtkEntry/TtkEntry.Index_To_String_(Entry_Index_Type)
@@ -231,7 +231,7 @@ package body Tk.TtkEntry is
              Tcl_Eval
                (Tcl_Script =>
                   Tk_Path_Name(Widgt => Entry_Widget) & " bbox " &
-                  Index_To_String(Index, Is_Index),
+                  Index_To_String(Index => Index, Is_Index => Is_Index),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin
@@ -257,7 +257,7 @@ package body Tk.TtkEntry is
              Tcl_Eval
                (Tcl_Script =>
                   Tk_Path_Name(Widgt => Entry_Widget) & " bbox " &
-                  Index_To_String(Index),
+                  Index_To_String(Index => Index),
                 Interpreter => Interpreter),
            Interpreter => Interpreter);
    begin
@@ -280,8 +280,9 @@ package body Tk.TtkEntry is
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "delete",
          Options =>
-           Index_To_String(First, Is_First_Index) &
-           (if Last > 0 then " " & Index_To_String(Last, Is_Last_Index)
+           Index_To_String(Index => First, Is_Index => Is_First_Index) &
+           (if Last > 0 then
+              " " & Index_To_String(Index => Last, Is_Index => Is_Last_Index)
             else ""));
    end Delete;
 
@@ -292,8 +293,8 @@ package body Tk.TtkEntry is
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "delete",
          Options =>
-           Index_To_String(First) &
-           (if Last = NONE then "" else " " & Index_To_String(Last)));
+           Index_To_String(Index => First) &
+           (if Last = NONE then "" else " " & Index_To_String(Index => Last)));
    end Delete;
 
    procedure Delete
@@ -303,8 +304,8 @@ package body Tk.TtkEntry is
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "delete",
          Options =>
-           Index_To_String(First, Is_First_Index) &
-           (if Last = NONE then "" else " " & Index_To_String(Last)));
+           Index_To_String(Index => First, Is_Index => Is_First_Index) &
+           (if Last = NONE then "" else " " & Index_To_String(Index => Last)));
    end Delete;
 
    procedure Delete
@@ -314,8 +315,9 @@ package body Tk.TtkEntry is
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "delete",
          Options =>
-           Index_To_String(First) &
-           (if Last > 0 then " " & Index_To_String(Last, Is_Last_Index)
+           Index_To_String(Index => First) &
+           (if Last > 0 then
+              " " & Index_To_String(Index => Last, Is_Index => Is_Last_Index)
             else ""));
    end Delete;
 
@@ -330,7 +332,7 @@ package body Tk.TtkEntry is
    begin
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "icursor",
-         Options => Index_To_String(Index, Is_Index));
+         Options => Index_To_String(Index => Index, Is_Index => Is_Index));
    end Set_Insert_Cursor;
 
    procedure Set_Insert_Cursor
