@@ -340,7 +340,7 @@ package body Tk.TtkEntry is
    begin
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "icursor",
-         Options => Index_To_String(Index));
+         Options => Index_To_String(Index => Index));
    end Set_Insert_Cursor;
 
    function Get_Index
@@ -349,7 +349,7 @@ package body Tk.TtkEntry is
       return
         Widget_Command
           (Widgt => Entry_Widget, Command_Name => "index",
-           Options => Index_To_String(Index, False));
+           Options => Index_To_String(Index => Index, Is_Index => False));
    end Get_Index;
 
    function Get_Index
@@ -358,7 +358,7 @@ package body Tk.TtkEntry is
       return
         Widget_Command
           (Widgt => Entry_Widget, Command_Name => "index",
-           Options => Index_To_String(Index));
+           Options => Index_To_String(Index => Index));
    end Get_Index;
 
    procedure Insert_Text
@@ -367,7 +367,9 @@ package body Tk.TtkEntry is
    begin
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "insert",
-         Options => Index_To_String(Index, Is_Index) & " " & To_String(Text));
+         Options =>
+           Index_To_String(Index => Index, Is_Index => Is_Index) & " " &
+           To_String(Source => Text));
    end Insert_Text;
 
    procedure Insert_Text
@@ -375,7 +377,8 @@ package body Tk.TtkEntry is
    begin
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "insert",
-         Options => Index_To_String(Index) & " " & To_String(Text));
+         Options =>
+           Index_To_String(Index => Index) & " " & To_String(Source => Text));
    end Insert_Text;
 
    procedure Selection_Clear(Entry_Widget: Ttk_Entry) is
@@ -400,8 +403,10 @@ package body Tk.TtkEntry is
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "selection",
          Options =>
-           "range " & Index_To_String(Start_Index, Is_Start_Index) & " " &
-           Index_To_String(End_Index, Is_End_Index));
+           "range " &
+           Index_To_String(Index => Start_Index, Is_Index => Is_Start_Index) &
+           " " &
+           Index_To_String(Index => End_Index, Is_Index => Is_End_Index));
    end Selection_Range;
 
    procedure Selection_Range
@@ -410,8 +415,8 @@ package body Tk.TtkEntry is
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "selection",
          Options =>
-           "range " & Index_To_String(Start_Index) & " " &
-           Index_To_String(End_Index));
+           "range " & Index_To_String(Index => Start_Index) & " " &
+           Index_To_String(Index => End_Index));
    end Selection_Range;
 
    procedure Selection_Range
@@ -421,8 +426,9 @@ package body Tk.TtkEntry is
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "selection",
          Options =>
-           "range " & Index_To_String(Start_Index, Is_Start_Index) & " " &
-           Index_To_String(End_Index));
+           "range " &
+           Index_To_String(Index => Start_Index, Is_Index => Is_Start_Index) &
+           " " & Index_To_String(Index => End_Index));
    end Selection_Range;
 
    procedure Selection_Range
@@ -432,8 +438,8 @@ package body Tk.TtkEntry is
       Execute_Widget_Command
         (Widgt => Entry_Widget, Command_Name => "selection",
          Options =>
-           "range " & Index_To_String(Start_Index) & " " &
-           Index_To_String(End_Index, Is_End_Index));
+           "range " & Index_To_String(Index => Start_Index) & " " &
+           Index_To_String(Index => End_Index, Is_Index => Is_End_Index));
    end Selection_Range;
 
    function Validate(Entry_Widget: Ttk_Entry) return Boolean is
