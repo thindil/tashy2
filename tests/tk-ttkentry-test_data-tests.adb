@@ -717,12 +717,13 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Insert_Text_f548e1_0216f7
+   procedure Wrap_Test_Insert_Text_f548e1_a4d8a8
      (Entry_Widget: Ttk_Entry; Index: Natural; Text: Tcl_String;
       Is_Index: Boolean := True) is
    begin
       begin
-         pragma Assert(Entry_Widget /= Null_Widget and Length(Text) > 0);
+         pragma Assert
+           (Entry_Widget /= Null_Widget and Length(Source => Text) > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -741,19 +742,19 @@ package body Tk.TtkEntry.Test_Data.Tests is
               (False,
                "ens_sloc(tk-ttkentry.ads:0:):Test_Insert_Text test commitment violated");
       end;
-   end Wrap_Test_Insert_Text_f548e1_0216f7;
+   end Wrap_Test_Insert_Text_f548e1_a4d8a8;
 --  end read only
 
 --  begin read only
    procedure Test_1_Insert_Text_test_insert_text(Gnattest_T: in out Test);
-   procedure Test_Insert_Text_f548e1_0216f7(Gnattest_T: in out Test) renames
+   procedure Test_Insert_Text_f548e1_a4d8a8(Gnattest_T: in out Test) renames
      Test_1_Insert_Text_test_insert_text;
 --  id:2.2/f548e1ba01a17a97/Insert_Text/1/0/test_insert_text/
    procedure Test_1_Insert_Text_test_insert_text(Gnattest_T: in out Test) is
       procedure Insert_Text
         (Entry_Widget: Ttk_Entry; Index: Natural; Text: Tcl_String;
          Is_Index: Boolean := True) renames
-        Wrap_Test_Insert_Text_f548e1_0216f7;
+        Wrap_Test_Insert_Text_f548e1_a4d8a8;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -777,11 +778,12 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Insert_Text_a9d4de_0216f7
+   procedure Wrap_Test_Insert_Text_a9d4de_a4d8a8
      (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type; Text: Tcl_String) is
    begin
       begin
-         pragma Assert(Entry_Widget /= Null_Widget and Length(Text) > 0);
+         pragma Assert
+           (Entry_Widget /= Null_Widget and Length(Source => Text) > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -800,19 +802,19 @@ package body Tk.TtkEntry.Test_Data.Tests is
               (False,
                "ens_sloc(tk-ttkentry.ads:0:):Test_Insert_Text test commitment violated");
       end;
-   end Wrap_Test_Insert_Text_a9d4de_0216f7;
+   end Wrap_Test_Insert_Text_a9d4de_a4d8a8;
 --  end read only
 
 --  begin read only
    procedure Test_2_Insert_Text_test_insert_text(Gnattest_T: in out Test);
-   procedure Test_Insert_Text_a9d4de_0216f7(Gnattest_T: in out Test) renames
+   procedure Test_Insert_Text_a9d4de_a4d8a8(Gnattest_T: in out Test) renames
      Test_2_Insert_Text_test_insert_text;
 --  id:2.2/a9d4def153cb94e2/Insert_Text/0/0/test_insert_text/
    procedure Test_2_Insert_Text_test_insert_text(Gnattest_T: in out Test) is
       procedure Insert_Text
         (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type;
          Text: Tcl_String) renames
-        Wrap_Test_Insert_Text_a9d4de_0216f7;
+        Wrap_Test_Insert_Text_a9d4de_a4d8a8;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
