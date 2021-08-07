@@ -61,6 +61,8 @@ package Tk.TtkEntry is
      (LASTCHARACTER, INSERT, SELECTIONFIRST, SELECTIONLAST, NONE) with
       Default_Value => NONE;
 
+   Default_Entry_Index: constant Entry_Index_Type := NONE;
+
    -- ****t* TtkEntry/TtkEntry.Fraction_Type
    -- FUNCTION
    -- Type used to get or set visible fraction of Ttk_Entry. Value 0 means the
@@ -181,12 +183,12 @@ package Tk.TtkEntry is
    procedure Insert_Text
      (Entry_Widget: Ttk_Entry; Index: Natural; Text: Tcl_String;
       Is_Index: Boolean := True) with
-      Pre => Entry_Widget /= Null_Widget and Length(Text) > 0,
+      Pre => Entry_Widget /= Null_Widget and Length(Source => Text) > 0,
       Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
 
    procedure Insert_Text
      (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type; Text: Tcl_String) with
-      Pre => Entry_Widget /= Null_Widget and Length(Text) > 0,
+      Pre => Entry_Widget /= Null_Widget and Length(Source => Text) > 0,
       Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
 
    procedure Selection_Clear(Entry_Widget: Ttk_Entry) with
