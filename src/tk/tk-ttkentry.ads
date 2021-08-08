@@ -33,16 +33,52 @@ package Tk.TtkEntry is
    subtype Ttk_Entry is Ttk_Widget;
    -- ****
 
+   -- ****t* TtkEntry/TtkEntry.Entry_State_Type
+   -- FUNCTION
+   -- Available states of Ttk_Entry widget
+   -- OPTIONS
+   -- NONE     - Used mostly when setting default state for widget
+   -- NORMAL   - The normal state of widget, can be edited
+   -- DISABLED - The widget can't be edited and text can't be selected
+   -- READONLY - The widget can't be edited but text can be selected
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Entry_State_Type is (NONE, NORMAL, DISABLED, READONLY) with
       Default_Value => NONE;
+      -- ****
 
+      -- ****d* TtkEntry/TtkEntry.Default_Entry_State
+      -- FUNCTION
+      -- The default state of the Ttk_Entry widget
+      -- SOURCE
    Default_Entry_State: constant Entry_State_Type := NORMAL;
+   -- ****
 
+   -- ****t* TtkEntry/TtkEntry.Validate_Type
+   -- FUNCTION
+   -- Available types of Ttk_Entry widget text validation
+   -- OPTIONS
+   -- EMPTY       - Used mostly when setting default validation state for
+   --               widget
+   -- NONE        - No validation of text
+   -- FOCUS       - Validate text when Ttk_Widget receive or loss focus
+   -- FOCUSIN     - Validate text when Ttk_Widget receive focus
+   -- FOCUSOUT    - Validate text when Ttk_Widget loss focus
+   -- KEY         - Validate text before insert or delete it
+   -- VALIDATEALL - Validate text for all above conditions
+   -- SOURCE
    type Validate_Type is
      (EMPTY, NONE, FOCUS, FOCUSIN, FOCUSOUT, KEY, VALIDATEALL) with
       Default_Value => EMPTY;
+      -- ****
 
+      -- ****d* TtkEntry/TtkEntry.Default_Validate
+      -- FUNCTION
+      -- The default validation condition for Ttk_Entry widget
+      -- SOURCE
    Default_Validate: constant Validate_Type := EMPTY;
+   -- ****
 
    type Ttk_Entry_Options is new Ttk_Widget_Options with record
       X_Scroll_Command: Tcl_String;
