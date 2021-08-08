@@ -177,10 +177,27 @@ package Tk.TtkEntry is
    Default_Fraction: constant Fraction_Type := 0.0;
    -- ****
 
+   -- ****t* TtkEntry/TtkEntry.Scroll_Unit_Type
+   -- FUNCTION
+   -- Types of unit used in setting scrolling position
+   -- OPTIONS
+   -- UNITS - The value used to scroll is in characters
+   -- PAGES - The value used to scroll is in screens
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Scroll_Unit_Type is (UNITS, PAGES) with
       Default_Value => UNITS;
+      -- ****
 
+      -- ****d* TtkEntry/TtkEntry.Default_Scroll_Unit
+      -- FUNCTION
+      -- Default type of unit used in setting scrolling position
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
    Default_Scroll_Unit: constant Scroll_Unit_Type := UNITS;
+   -- ****
 
    type Fractions_Array is array(1 .. 2) of Fraction_Type with
       Default_Component_Value => Default_Fraction;
