@@ -51,6 +51,8 @@ package Tk.TtkEntry is
       -- ****d* TtkEntry/TtkEntry.Default_Entry_State
       -- FUNCTION
       -- The default state of the Ttk_Entry widget
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Entry_State: constant Entry_State_Type := NORMAL;
    -- ****
@@ -67,6 +69,8 @@ package Tk.TtkEntry is
    -- FOCUSOUT    - Validate text when Ttk_Widget loss focus
    -- KEY         - Validate text before insert or delete it
    -- VALIDATEALL - Validate text for all above conditions
+   -- HISTORY
+   -- 8.6.0 - Added
    -- SOURCE
    type Validate_Type is
      (EMPTY, NONE, FOCUS, FOCUSIN, FOCUSOUT, KEY, VALIDATEALL) with
@@ -76,10 +80,42 @@ package Tk.TtkEntry is
       -- ****d* TtkEntry/TtkEntry.Default_Validate
       -- FUNCTION
       -- The default validation condition for Ttk_Entry widget
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Validate: constant Validate_Type := EMPTY;
    -- ****
 
+   -- ****s* TtkEntry/TtkEntry.Ttk_Entry_Options
+   -- FUNCTION
+   -- Data structure for all available options for the Tk ttk::entry
+   -- OPTIONS
+   -- X_Scroll_Command - Tcl command used to communicate with the horizontal
+   --                    scrollbars. When the view of the Ttk_Entry changes, it
+   --                    will execute that command with two parameters. The
+   --                    first is fraction between 1 and 0 for the first
+   --                    visible position in the entry, the second, also
+   --                    fraction between 1 and 0 is the last visible position
+   --                    in the entry.
+   -- Export_Selection - If true, synchronize selection in Ttk_Entry with the
+   --                    system selection (deselect other windows selections, etc.)
+   -- Invalid_Command  - Tcl command which will be executed when the content of
+   --                    Ttk_Entry is invalid
+   -- Justify          - Specifies how the text in Ttk_Entry should be justified
+   -- Show             - If True, show the content of the Ttk_Entry. If false,
+   --                    show the content as bullet or "*".
+   -- State            - The state of the Ttk_Entry
+   -- Text_Variable    - The name of the Tcl variable which contains the content
+   --                    of the Ttk_Entry. When its value change, the content
+   --                    will be changed too and vice versa.
+   -- Validation       - Set the validation mode for the Ttk_Entry
+   -- Validate_Command - Tcl command which will be executed to validate the
+   --                    content of the Ttk_Entry. That command must return 1
+   --                    for valid content and 0 for invalid.
+   -- Width            - The width of Ttk_Entry in characters
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Ttk_Entry_Options is new Ttk_Widget_Options with record
       X_Scroll_Command: Tcl_String;
       Export_Selection: Extended_Boolean;
@@ -92,6 +128,7 @@ package Tk.TtkEntry is
       Validate_Command: Tcl_String;
       Width: Natural := 0;
    end record;
+   -- ****
 
    type Entry_Index_Type is
      (LASTCHARACTER, INSERT, SELECTIONFIRST, SELECTIONLAST, NONE) with
