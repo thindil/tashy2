@@ -199,10 +199,26 @@ package Tk.TtkEntry is
    Default_Scroll_Unit: constant Scroll_Unit_Type := UNITS;
    -- ****
 
+   -- ****t* TtkEntry/TtkEntry.Fractions_Array
+   -- FUNCTION
+   -- Used to get the current view fraction of the Ttk_Entry. The first value
+   -- is the fraction of the first visible element in the widget. The second
+   -- value is the fraction of the last visible element in the widget.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Fractions_Array is array(1 .. 2) of Fraction_Type with
       Default_Component_Value => Default_Fraction;
+      -- ****
 
+      -- ****d* TtkEntry/TtkEntry.Default_Fractions_Array
+      -- FUNCTION
+      -- The default or empty array of fractions
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
    Default_Fractions_Array: constant Fractions_Array := (others => <>);
+   -- ****
 
    function Create
      (Path_Name: String; Options: Ttk_Entry_Options;
