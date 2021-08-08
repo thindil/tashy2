@@ -130,11 +130,31 @@ package Tk.TtkEntry is
    end record;
    -- ****
 
+   -- ****t* TtkEntry/TtkEntry.Entry_Index_Type
+   -- FUNCTION
+   -- Available types of Ttk_Entry indices
+   -- OPTIONS
+   -- LASTCHARACTER  - The position just after the last character in Ttk_Entry
+   -- INSERT         - The current position of the insert cursor in Ttk_Entry
+   -- SELECTIONFIRST - The first character in the selection in Ttk_Entry
+   -- SELECTIONLAST  - The last character in the selection in Ttk_Entry
+   -- NONE           - Used mostly when setting empty position in Ttk_Entry
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Entry_Index_Type is
      (LASTCHARACTER, INSERT, SELECTIONFIRST, SELECTIONLAST, NONE) with
       Default_Value => NONE;
+      -- ****
 
+      -- ****d* TtkEntry/TtkEntry.Default_Entry_Index
+      -- FUNCTION
+      -- The default type of Ttk_Entry indice
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
    Default_Entry_Index: constant Entry_Index_Type := NONE;
+   -- ****
 
    -- ****t* TtkEntry/TtkEntry.Fraction_Type
    -- FUNCTION
