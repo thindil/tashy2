@@ -395,17 +395,68 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Bounding_Box2", Mode => Nominal);
       -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Delete_(natural_indexes)
+      -- FUNCTION
+      -- Delete one or more elements from the Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget   - The Ttk_Entry widget in which the characters will be
+      --                  deleted
+      -- First          - The index or X coordinate of the first character to
+      --                  delete
+      -- Last           - The index or X coordinate after the last character
+      --                  to delete. Can be empty. Default value is 0.
+      -- Is_First_Index - If True, the First index is numerical index, otherwise
+      --                  it is X coordinate. Can be empty. Default value is
+      --                  True.
+      -- Is_Last_Index  - If True, the Last index is numerical index, otherwise
+      --                  it is X coordinate. Can be empty. Default value is
+      --                  True. Means nothing if Last is equal to 0.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Delete the first character in Ttk_Entry My_Entry
+      -- Delete(My_Entry, 0);
+      -- SEE ALSO
+      -- TtkEntry.Delete_(entry_index_type),
+      -- TtkEntry.Delete_(numerical_entry_index_type),
+      -- TtkEntry.Delete_(entry_index_type_numerical)
+      -- COMMANDS
+      -- Entry_Widget delete First ?Last?
+      -- SOURCE
    procedure Delete
      (Entry_Widget: Ttk_Entry; First: Natural; Last: Natural := 0;
       Is_First_Index, Is_Last_Index: Boolean := True) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Delete", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Delete_(entry_index_type)
+      -- FUNCTION
+      -- Delete one or more elements from the Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget   - The Ttk_Entry widget in which the characters will be
+      --                  deleted
+      -- First          - The index of the first character to delete
+      -- Last           - The index after the last character to delete. Can be
+      --                  empty. Default value is NONE.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Delete the last character in Ttk_Entry My_Entry
+      -- Delete(My_Entry, LASTCHARACTER);
+      -- SEE ALSO
+      -- TtkEntry.Delete_(numerical_indexes),
+      -- TtkEntry.Delete_(numerical_entry_index_type),
+      -- TtkEntry.Delete_(entry_index_type_numerical)
+      -- COMMANDS
+      -- Entry_Widget delete First ?Last?
+      -- SOURCE
    procedure Delete
      (Entry_Widget: Ttk_Entry; First: Entry_Index_Type;
       Last: Entry_Index_Type := NONE) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Delete2", Mode => Nominal);
+      -- ****
 
    procedure Delete
      (Entry_Widget: Ttk_Entry; First: Natural; Last: Entry_Index_Type := NONE;
