@@ -282,17 +282,59 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Create_TtkEntry2", Mode => Nominal);
       -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Get_Options
+      -- FUNCTION
+      -- Get all values of Tk options of the selected entry
+      -- PARAMETERS
+      -- Entry_Widget - Ttk_Entry which options' values will be taken
+      -- RESULT
+      -- Ttk_Entry_Options record with values of the selected entry options
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get all values of option of ttk::entry with pathname .myentry
+      -- My_Entry_Options: constant Ttk_Entry_Options := Get_Options(Get_Widget(".myentry"));
+      -- SEE ALSO
+      -- TtkEntry.Configure
+      -- COMMANDS
+      -- Entry_Widget configure
+      -- SOURCE
    function Get_Options(Entry_Widget: Ttk_Entry) return Ttk_Entry_Options with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TtkEntry", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Configure
+      -- FUNCTION
+      -- Set the selected options for the selected ttk::entry
+      -- PARAMETERS
+      -- Entry_Widget - Ttk_Entry which options will be set
+      -- Options      - The record with new values for the entry options
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Disable entry with pathname .myentry
+      -- Configure(Get_Widget(".myentry"), (State => DISABLED, others => <>));
+      -- SEE ALSO
+      -- TtkEntry.Get_Options
+      -- COMMANDS
+      -- Entry_Widget configure Options
+      -- SOURCE
    procedure Configure
      (Entry_Widget: Ttk_Entry; Options: Ttk_Entry_Options) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TtkEntry", Mode => Nominal);
+      -- ****
 
+      -- ****d* TtkEntry/TtkEntry.Default_Ttk_Entry_Options
+      -- FUNCTION
+      -- The default options for the Ttk_Entry
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
    Default_Ttk_Entry_Options: constant Ttk_Entry_Options :=
      Ttk_Entry_Options'(others => <>);
+     -- ****
 
    function Get_Bounding_Box
      (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True)
