@@ -336,16 +336,64 @@ package Tk.TtkEntry is
      Ttk_Entry_Options'(others => <>);
      -- ****
 
+     -- ****f* TtkEntry/TtkEntry.Get_Bounding_Box_(numeric_index)
+     -- FUNCTION
+     -- Get the bouding box for the character in Ttk_Entry with the selected
+     -- numerical index
+     -- PARAMETERS
+     -- Entry_Widget - The Ttk_Entry widget which bouding box will be get
+     -- Index        - The index or X coordinate of the character in
+     --                Entry_Widget.
+     -- Is_Index     - If True, Index is numerical index of the character. If
+     --                False, Index is X coordinate of the character. Can be
+     --                empty. Default value is True.
+     -- RESULT
+     -- BBox_Data with 4 values. The first two are staring point (x, y) of
+     -- the bounding box, the third is width and the fourth is height of the
+     -- bounding box.
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- EXAMPLE
+     -- -- Get the bouding box of the second character in Ttk_Entry My_Entry widget
+      -- Bounding_Box: constant BBox_Data := Get_Bounding_Box(My_Entry, 1);
+     -- SEE ALSO
+     -- TtkEntry.Get_Bounding_Box_(entry_index_type)
+     -- COMMANDS
+     -- Entry_Widget bbox Index
+     -- SOURCE
    function Get_Bounding_Box
      (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True)
       return Bbox_Data with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Bounding_Box", Mode => Nominal);
+      -- ****
 
+     -- ****f* TtkEntry/TtkEntry.Get_Bounding_Box_(entry_index_type)
+     -- FUNCTION
+     -- Get the bouding box for the character in Ttk_Entry with the selected
+     -- Entry_Index_Type index
+     -- PARAMETERS
+     -- Entry_Widget - The Ttk_Entry widget which bouding box will be get
+     -- Index        - The index of the character in Entry_Widget.
+     -- RESULT
+     -- BBox_Data with 4 values. The first two are staring point (x, y) of
+     -- the bounding box, the third is width and the fourth is height of the
+     -- bounding box.
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- EXAMPLE
+     -- -- Get the bouding box of the last character in Ttk_Entry My_Entry widget
+      -- Bounding_Box: constant BBox_Data := Get_Bounding_Box(My_Entry, LASTCHARACTER);
+     -- SEE ALSO
+     -- TtkEntry.Get_Bounding_Box_(numerical_index)
+     -- COMMANDS
+     -- Entry_Widget bbox Index
+     -- SOURCE
    function Get_Bounding_Box
      (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) return Bbox_Data with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Bounding_Box2", Mode => Nominal);
+      -- ****
 
    procedure Delete
      (Entry_Widget: Ttk_Entry; First: Natural; Last: Natural := 0;
