@@ -220,13 +220,59 @@ package Tk.TtkEntry is
    Default_Fractions_Array: constant Fractions_Array := (others => <>);
    -- ****
 
+   -- ****f* TtkEntry/TtkEntry.Create_(function)
+   -- FUNCTION
+   -- Create a new Tk ttk::entry widget with the selected pathname and options
+   -- PARAMETERS
+   -- Path_Name   - Tk pathname for the newly created entry
+   -- Options     - Options for the newly created entry
+   -- Interpreter - Tcl interpreter on which the entry will be created. Can
+   --               be empty. Default value is the default Tcl interpreter
+   -- RESULT
+   -- The Tk identifier of the newly created entry widget
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Create the entry with pathname .myentry, with width 15 characters
+   -- My_Entry: constant Ttk_Entry := Create(".myentry", (Width => 15, others => <>));
+   -- SEE ALSO
+   -- TtkEntry.Create_(procedure)
+   -- COMMANDS
+   -- ttk::entry Path_Name Options
+   -- SOURCE
    function Create
      (Path_Name: String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkEntry1", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Create_(procedure)
+      -- FUNCTION
+      -- Create a new Tk ttk::entry widget with the selected pathname and options
+      -- PARAMETERS
+      -- Entry_Widget - Ttk_Entry identifier which will be returned
+      -- Path_Name    - Tk pathname for the newly created entry
+      -- Options      - Options for the newly created entry
+      -- Interpreter  - Tcl interpreter on which the entry will be created. Can
+      --                be empty. Default value is the default Tcl interpreter
+      -- OUTPUT
+      -- The Entry_Widget parameter as Tk identifier of the newly created entry widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Create the entry with pathname .myentry, disabled by default
+      -- declare
+      --    My_Entry: Ttk_Entry;
+      -- begin
+      --    Create(My_Entry, ".myentry", (State => DISABLED, others => <>));
+      -- end;
+      -- SEE ALSO
+      -- TtkEntry.Create_(function)
+      -- COMMANDS
+      -- ttk::entry Path_Name Options
+      -- SOURCE
    procedure Create
      (Entry_Widget: out Ttk_Entry; Path_Name: String;
       Options: Ttk_Entry_Options;
@@ -234,6 +280,7 @@ package Tk.TtkEntry is
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkEntry2", Mode => Nominal);
+      -- ****
 
    function Get_Options(Entry_Widget: Ttk_Entry) return Ttk_Entry_Options with
       Pre => Entry_Widget /= Null_Widget,
