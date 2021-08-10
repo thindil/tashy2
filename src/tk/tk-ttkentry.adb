@@ -344,13 +344,12 @@ package body Tk.TtkEntry is
          Options => Index_To_String(Index => Index));
    end Set_Insert_Cursor;
 
-   function Get_Index
-     (Entry_Widget: Ttk_Entry; Index: Natural) return Natural is
+   function Get_Index(Entry_Widget: Ttk_Entry; X: Natural) return Natural is
    begin
       return
         Widget_Command
           (Widgt => Entry_Widget, Command_Name => "index",
-           Options => Index_To_String(Index => Index, Is_Index => False));
+           Options => Index_To_String(Index => X, Is_Index => False));
    end Get_Index;
 
    function Get_Index

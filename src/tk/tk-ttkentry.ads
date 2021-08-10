@@ -592,8 +592,7 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Set_Insert_Cursor2", Mode => Nominal);
       -- ****
 
-   function Get_Index
-     (Entry_Widget: Ttk_Entry; Index: Natural) return Natural with
+   function Get_Index(Entry_Widget: Ttk_Entry; X: Natural) return Natural with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Index", Mode => Nominal);
 
