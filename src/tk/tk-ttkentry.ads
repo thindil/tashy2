@@ -521,19 +521,76 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Delete4", Mode => Nominal);
       -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Get_Text
+      -- FUNCTION
+      -- Get the content of the selected ttk::entry
+      -- PARAMETERS
+      -- Entry_Widget - Ttk_Entry which content will be get
+      -- RESULT
+      -- String with the content of the selected Entry_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the content of Ttk_Entry My_Entry
+      -- My_Text: constant String := Get_Text(My_Entry);
+      -- COMMANDS
+      -- Entry_Widget get
+      -- SOURCE
    function Get_Text(Entry_Widget: Ttk_Entry) return String with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Text", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Set_Insert_Cursor_(numerical_index)
+      -- FUNCTION
+      -- Set the insertion cursor to the selected position in the selected
+      -- ttk::entry
+      -- PARAMETERS
+      -- Entry_Widget - Ttk_Entry in which the insertion cursor will be set
+      -- Index        - The index or X coordinate of the character on which
+      --                the insertion cursor will be set
+      -- Is_Index     - If True, Index is numerical index of the character. If
+      --                False, Index is X coordinate of the character. Can be
+      --                empty. Default value is True.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the insertion cursor at the beginning of Ttk_Entry My_Entry
+      -- Set_Insert_Cursor(My_Entry, 0);
+      -- SEE ALSO
+      -- TtkEntry.Set_Insert_Cursor_(entry_index_type)
+      -- COMMANDS
+      -- Entry_Widget icursor Index
+      -- SOURCE
    procedure Set_Insert_Cursor
      (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Set_Insert_Cursor", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Set_Insert_Cursor_(entry_index_type)
+      -- FUNCTION
+      -- Set the insertion cursor to the selected position in the selected
+      -- ttk::entry
+      -- PARAMETERS
+      -- Entry_Widget - Ttk_Entry in which the insertion cursor will be set
+      -- Index        - The index of the character on which the insertion
+      --                cursor will be set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the insertion cursor at the end of Ttk_Entry My_Entry
+      -- Set_Insert_Cursor(My_Entry, LASTCHARACTER);
+      -- SEE ALSO
+      -- TtkEntry.Set_Insert_Cursor_(numerical_index)
+      -- COMMANDS
+      -- Entry_Widget icursor Index
+      -- SOURCE
    procedure Set_Insert_Cursor
      (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Set_Insert_Cursor2", Mode => Nominal);
+      -- ****
 
    function Get_Index
      (Entry_Widget: Ttk_Entry; Index: Natural) return Natural with
