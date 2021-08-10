@@ -592,7 +592,7 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Set_Insert_Cursor2", Mode => Nominal);
       -- ****
 
-      -- ****f* Tk.TtkEntry/Get_Index_(x_coordinate)
+      -- ****f* TtkEntry/TtkEntry.Get_Index_(x_coordinate)
       -- FUNCTION
       -- Get the numerical index of the character in ttk::entry at the selected
       -- X coordinate
@@ -617,7 +617,7 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Get_Index", Mode => Nominal);
       -- ****
 
-      -- ****f* Tk.TtkEntry/Get_Index_(entry_index_type)
+      -- ****f* TtkEntry/TtkEntry.Get_Index_(entry_index_type)
       -- FUNCTION
       -- Get the numerical index of the character in ttk::entry at the selected
       -- Entry_Index_Type index
@@ -642,16 +642,57 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Get_Index2", Mode => Nominal);
       -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Insert_Text_(numerical_index)
+      -- FUNCTION
+      -- Insert the text at the selected position into the selected ttk::entry
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry in which the text will be inserted
+      -- Index        - The index or X coordinate of the character on which
+      --                the text will be inserted
+      -- Text         - The text to insert to the Ttk_Entry
+      -- Is_Index     - If True, Index is numerical index of the character. If
+      --                False, Index is X coordinate of the character. Can be
+      --                empty. Default value is True.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Insert text my text at the start of My_Entry widget
+      -- Insert_Text(My_Entry, 0, To_Tcl_String("my text"));
+      -- SEE ALSO
+      -- TtkEntry.Insert_Text_(entry_index_type)
+      -- COMMANDS
+      -- Entry_Widget insert Index Text
+      -- SOURCE
    procedure Insert_Text
      (Entry_Widget: Ttk_Entry; Index: Natural; Text: Tcl_String;
       Is_Index: Boolean := True) with
       Pre => Entry_Widget /= Null_Widget and Length(Source => Text) > 0,
       Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Insert_Text_(entry_index_type)
+      -- FUNCTION
+      -- Insert the text at the selected position into the selected ttk::entry
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry in which the text will be inserted
+      -- Index        - The index of the character in Entry_Widget at which the
+      --                text will be inserted
+      -- Text         - The text to insert to the Ttk_Entry
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Insert text my text at the end of My_Entry widget
+      -- Insert_Text(My_Entry, LASTCHARACTER, To_Tcl_String("my text"));
+      -- SEE ALSO
+      -- TtkEntry.Insert_Text_(numerical_index)
+      -- COMMANDS
+      -- Entry_Widget insert Index Text
+      -- SOURCE
    procedure Insert_Text
      (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type; Text: Tcl_String) with
       Pre => Entry_Widget /= Null_Widget and Length(Source => Text) > 0,
       Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
+      -- ****
 
    procedure Selection_Clear(Entry_Widget: Ttk_Entry) with
       Pre => Entry_Widget /= Null_Widget,
