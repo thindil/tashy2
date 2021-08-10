@@ -592,14 +592,55 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Set_Insert_Cursor2", Mode => Nominal);
       -- ****
 
+      -- ****f* Tk.TtkEntry/Get_Index_(x_coordinate)
+      -- FUNCTION
+      -- Get the numerical index of the character in ttk::entry at the selected
+      -- X coordinate
+      -- PARAMETERS
+      -- Entry_Widget - Ttk_Entry in which the index will be get
+      -- X            - The X coordinate at which the index will be get
+      -- RESULT
+      -- The numerical index of the character at the selected X position in
+      -- Entry_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the numerical index at start of My_Entry Ttk_Entry widget
+      -- Index: constant Natural := Get_Index(My_Entry, 0);
+      -- SEE ALSO
+      -- TtkEntry.Get_Index_(entry_index_type)
+      -- COMAMNDS
+      -- Entry_Widget index X
+      -- SOURCE
    function Get_Index(Entry_Widget: Ttk_Entry; X: Natural) return Natural with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Index", Mode => Nominal);
+      -- ****
 
+      -- ****f* Tk.TtkEntry/Get_Index_(entry_index_type)
+      -- FUNCTION
+      -- Get the numerical index of the character in ttk::entry at the selected
+      -- Entry_Index_Type index
+      -- PARAMETERS
+      -- Entry_Widget - Ttk_Entry in which the index will be get
+      -- Index        - The Entry_Index_Type index at which the index will be get
+      -- RESULT
+      -- The numerical index of the character at the selected Index in Entry_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the numerical index at end of My_Entry Ttk_Entry widget
+      -- Index: constant Natural := Get_Index(My_Entry, LASTCHARACTER);
+      -- SEE ALSO
+      -- TtkEntry.Get_Index_(x_coordinate)
+      -- COMAMNDS
+      -- Entry_Widget index Index
+      -- SOURCE
    function Get_Index
      (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) return Natural with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Index2", Mode => Nominal);
+      -- ****
 
    procedure Insert_Text
      (Entry_Widget: Ttk_Entry; Index: Natural; Text: Tcl_String;
