@@ -593,7 +593,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_Get_Index_421652_13e4f7
-     (Entry_Widget: Ttk_Entry; Index: Natural) return Natural is
+     (Entry_Widget: Ttk_Entry; X: Natural) return Natural is
    begin
       begin
          pragma Assert(Entry_Widget /= Null_Widget);
@@ -607,7 +607,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
       declare
          Test_Get_Index_421652_13e4f7_Result: constant Natural :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Get_Index
-             (Entry_Widget, Index);
+             (Entry_Widget, X);
       begin
          begin
             pragma Assert(True);
@@ -630,7 +630,7 @@ package body Tk.TtkEntry.Test_Data.Tests is
 --  id:2.2/42165254b3e9093e/Get_Index/1/0/test_get_index/
    procedure Test_1_Get_Index_test_get_index(Gnattest_T: in out Test) is
       function Get_Index
-        (Entry_Widget: Ttk_Entry; Index: Natural) return Natural renames
+        (Entry_Widget: Ttk_Entry; X: Natural) return Natural renames
         Wrap_Test_Get_Index_421652_13e4f7;
 --  end read only
 
