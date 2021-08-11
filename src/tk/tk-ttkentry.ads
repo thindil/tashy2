@@ -852,23 +852,97 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Selection_Range4", Mode => Nominal);
       -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Validate
+      -- FUNCTION
+      -- Revalidate the content of the selected Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry which content will be validated
+      -- RESULT
+      -- If content is valid, return True, otherwise False
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Validate the content of My_Entry widget
+      -- Is_Valid: constant Boolean := Validate(My_Entry);
+      -- COMMANDS
+      -- Entry_Widget validate
+      -- SOURCE
    function Validate(Entry_Widget: Ttk_Entry) return Boolean with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Validate", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.X_View
+      -- FUNCTION
+      -- Get the fraction of currently visible part of the selected Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry which visible part coordinates will be
+      --                get
+      -- RESULT
+      -- Factions_Array, where the first element is start point of visible part,
+      -- the second is the end point of visible part of Entry_Widget
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the visible coordinates of My_Entry widget
+      -- Visible_Part: constant Fractions_Array := X_View(My_Entry);
+      -- COMMANDS
+      -- Entry_Widget xview
+      -- SOURCE
    function X_View(Entry_Widget: Ttk_Entry) return Fractions_Array with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_View", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.X_View_Adjust_(numerical_index)
+      -- FUNCTION
+      -- Adjust the view of the Ttk_Entry so the selected character will be
+      -- displayed at the left edge of the widget
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry which view will be adjusted
+      -- Index        - The index or X coordinate of the character to which
+      --                the Ttk_Entry view will be adjusted
+      -- Is_Index     - If True, Index is numerical index of the character. If
+      --                False, Index is X coordinate of the character. Can be
+      --                empty. Default value is True.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Adjust My_Entry so it will show the content from the first character
+      -- X_View_Adjust(My_Entry, 0);
+      -- SEE ALSO
+      -- X_View_Adjust_(entry_index_type)
+      -- COMMANDS
+      -- Entry_Widget xview adjust Index
+      -- SOURCE
    procedure X_View_Adjust
      (Entry_Widget: Ttk_Entry; Index: Natural; Is_Index: Boolean := True) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_View_Adjust", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.X_View_Adjust_(entry_index_type)
+      -- FUNCTION
+      -- Adjust the view of the Ttk_Entry so the selected character will be
+      -- displayed at the left edge of the widget
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry which view will be adjusted
+      -- Index        - The index of the character to which the Ttk_Entry
+      --                view will be adjusted
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Adjust My_Entry so it will show the content from the insertion cursor
+      -- X_View_Adjust(My_Entry, INSERT);
+      -- SEE ALSO
+      -- X_View_Adjust_(numeric_index)
+      -- COMMANDS
+      -- Entry_Widget xview adjust Index
    procedure X_View_Adjust
      (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_View_Adjust2", Mode => Nominal);
+      -- ****
 
    procedure X_View_Move_To
      (Entry_Widget: Ttk_Entry; Fraction: Fraction_Type) with
