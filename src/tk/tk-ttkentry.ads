@@ -944,15 +944,47 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_X_View_Adjust2", Mode => Nominal);
       -- ****
 
+      -- ****f* TtkEntry/TtkEntry.X_View_Move_To
+      -- FUNCTION
+      -- Move Ttk_Entry view by the selected fraction. The selected fraction
+      -- will be displayed at the left edge of the widget.
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry which view will be moved
+      -- Fraction     - The fraction about which the view will be moved
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Move view of My_Entry by half
+      -- X_View_Move_To(My_Entry, 0.5);
+      -- COMMANDS
+      -- Entry_Widget xview moveto Fraction
+      -- SOURCE
    procedure X_View_Move_To
      (Entry_Widget: Ttk_Entry; Fraction: Fraction_Type) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_View_Move_To", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/Ttk_Entry.X_View_Scroll
+      -- FUNCTION
+      -- Shift the view in the Ttk_Entry on the left or right.
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry which will be shifted
+      -- Number       - The amount of units. If it is positive then move to
+      --                the right, if negative, move to the left
+      -- What         - If UNITS then move by selected amount of characters,
+      --                when PAGES then amount of screens
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Scroll My_Entry by two screens
+      -- X_View_Scroll(My_Entry, 2, PAGES);
+      -- SOURCE
    procedure X_View_Scroll
      (Entry_Widget: Ttk_Entry; Number: Integer; What: Scroll_Unit_Type) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_X_View_Scroll", Mode => Nominal);
+      -- ****
 
    --## rule on REDUCEABLE_SCOPE
 end Tk.TtkEntry;
