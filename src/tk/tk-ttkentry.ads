@@ -733,28 +733,124 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Selection_Present", Mode => Nominal);
       -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Selection_Range_(numeric_indexes)
+      -- FUNCTION
+      -- Set the selection in the selected Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget   - The Ttk_Entry in which the selection will be set
+      -- Start_Index    - The index or X coordinate of the first character in
+      --                  the selection
+      -- End_Index      - The index or X coordinate of the last character in
+      --                  the selection
+      -- Is_Start_Index - If True, the Start_Index index is numerical index,
+      --                  otherwise it is X coordinate. Can be empty. Default
+      --                  value is True.
+      -- Is_End_Index   - If True, the End_Index index is numerical index,
+      --                  otherwise it is X coordinate. Can be empty. Default
+      --                  value is True.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the selection in My_Entry widget to the first two characters
+      -- Selection_Range(My_Entry, 0, 1);
+      -- SEE ALSO
+      -- TtkEntry.Selection_Range_(entry_index_type),
+      -- TtkEntry.Selection_Range_(numerical_entry_index_type),
+      -- TtkEntry.Selection_Range_(entry_index_type_numerical)
+      -- COMMANDS
+      -- Entry_Widget selection range Start_Index End_Index
+      -- SOURCE
    procedure Selection_Range
      (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Natural;
       Is_Start_Index, Is_End_Index: Boolean := True) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Selection_Range", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Selection_Range_(entry_index_type)
+      -- FUNCTION
+      -- Set the selection in the selected Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget   - The Ttk_Entry in which the selection will be set
+      -- Start_Index    - The index of the first character in the selection
+      -- End_Index      - The index of the last character in the selection
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the selection in My_Entry widget from the insertion cursor to the end
+      -- Selection_Range(My_Entry, INSERT, LASTCHARACTER);
+      -- SEE ALSO
+      -- TtkEntry.Selection_Range_(numerical_indexes),
+      -- TtkEntry.Selection_Range_(numerical_entry_index_type),
+      -- TtkEntry.Selection_Range_(entry_index_type_numerical)
+      -- COMMANDS
+      -- Entry_Widget selection range Start_Index End_Index
+      -- SOURCE
    procedure Selection_Range
      (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Entry_Index_Type) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Selection_Range2", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Selection_Range_(numerical_entry_index_type)
+      -- FUNCTION
+      -- Set the selection in the selected Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget   - The Ttk_Entry in which the selection will be set
+      -- Start_Index    - The index or X coordinate of the first character in
+      --                  the selection
+      -- End_Index      - The index of the last character in the selection
+      -- Is_Start_Index - If True, the Start_Index index is numerical index,
+      --                  otherwise it is X coordinate. Can be empty. Default
+      --                  value is True.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the selection in My_Entry widget to the all characters
+      -- Selection_Range(My_Entry, 0, LASTCHARACTER);
+      -- SEE ALSO
+      -- TtkEntry.Selection_Range_(numerical_indexes),
+      -- TtkEntry.Selection_Range_(entry_index_type),
+      -- TtkEntry.Selection_Range_(entry_index_type_numerical)
+      -- COMMANDS
+      -- Entry_Widget selection range Start_Index End_Index
+      -- SOURCE
    procedure Selection_Range
      (Entry_Widget: Ttk_Entry; Start_Index: Natural;
       End_Index: Entry_Index_Type; Is_Start_Index: Boolean := True) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Selection_Range3", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Selection_Range_(entry_index_type_numerical)
+      -- FUNCTION
+      -- Set the selection in the selected Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget   - The Ttk_Entry in which the selection will be set
+      -- Start_Index    - The index of the first character in the selection
+      -- End_Index      - The index or X coordinate of the last character in
+      --                  the selection
+      -- Is_End_Index   - If True, the End_Index index is numerical index,
+      --                  otherwise it is X coordinate. Can be empty. Default
+      --                  value is True.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the selection in My_Entry widget from insertion cursor to 10th character
+      -- Selection_Range(My_Entry, INSERT, 9);
+      -- SEE ALSO
+      -- TtkEntry.Selection_Range_(numerical_indexes),
+      -- TtkEntry.Selection_Range_(entry_index_type),
+      -- TtkEntry.Selection_Range_(numerical_entry_index_type),
+      -- COMMANDS
+      -- Entry_Widget selection range Start_Index End_Index
+      -- SOURCE
    procedure Selection_Range
      (Entry_Widget: Ttk_Entry; Start_Index: Entry_Index_Type;
       End_Index: Natural; Is_End_Index: Boolean := True) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Selection_Range4", Mode => Nominal);
+      -- ****
 
    function Validate(Entry_Widget: Ttk_Entry) return Boolean with
       Pre => Entry_Widget /= Null_Widget,
