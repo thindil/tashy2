@@ -88,7 +88,7 @@ package Tk.TtkEntry is
 
    -- ****s* TtkEntry/TtkEntry.Ttk_Entry_Options
    -- FUNCTION
-   -- Data structure for all available options for the Tk ttk::entry
+   -- Data structure for all available options for the Tk Ttk_Entry
    -- OPTIONS
    -- X_Scroll_Command - Tcl command used to communicate with the horizontal
    --                    scrollbars. When the view of the Ttk_Entry changes, it
@@ -292,7 +292,7 @@ package Tk.TtkEntry is
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
-      -- -- Get all values of option of ttk::entry with pathname .myentry
+      -- -- Get all values of option of Ttk_Entry with pathname .myentry
       -- My_Entry_Options: constant Ttk_Entry_Options := Get_Options(Get_Widget(".myentry"));
       -- SEE ALSO
       -- TtkEntry.Configure
@@ -306,7 +306,7 @@ package Tk.TtkEntry is
 
       -- ****f* TtkEntry/TtkEntry.Configure
       -- FUNCTION
-      -- Set the selected options for the selected ttk::entry
+      -- Set the selected options for the selected Ttk_Entry
       -- PARAMETERS
       -- Entry_Widget - Ttk_Entry which options will be set
       -- Options      - The record with new values for the entry options
@@ -523,7 +523,7 @@ package Tk.TtkEntry is
 
       -- ****f* TtkEntry/TtkEntry.Get_Text
       -- FUNCTION
-      -- Get the content of the selected ttk::entry
+      -- Get the content of the selected Ttk_Entry
       -- PARAMETERS
       -- Entry_Widget - Ttk_Entry which content will be get
       -- RESULT
@@ -544,7 +544,7 @@ package Tk.TtkEntry is
       -- ****f* TtkEntry/TtkEntry.Set_Insert_Cursor_(numerical_index)
       -- FUNCTION
       -- Set the insertion cursor to the selected position in the selected
-      -- ttk::entry
+      -- Ttk_Entry
       -- PARAMETERS
       -- Entry_Widget - Ttk_Entry in which the insertion cursor will be set
       -- Index        - The index or X coordinate of the character on which
@@ -571,7 +571,7 @@ package Tk.TtkEntry is
       -- ****f* TtkEntry/TtkEntry.Set_Insert_Cursor_(entry_index_type)
       -- FUNCTION
       -- Set the insertion cursor to the selected position in the selected
-      -- ttk::entry
+      -- Ttk_Entry
       -- PARAMETERS
       -- Entry_Widget - Ttk_Entry in which the insertion cursor will be set
       -- Index        - The index of the character on which the insertion
@@ -594,7 +594,7 @@ package Tk.TtkEntry is
 
       -- ****f* TtkEntry/TtkEntry.Get_Index_(x_coordinate)
       -- FUNCTION
-      -- Get the numerical index of the character in ttk::entry at the selected
+      -- Get the numerical index of the character in Ttk_Entry at the selected
       -- X coordinate
       -- PARAMETERS
       -- Entry_Widget - Ttk_Entry in which the index will be get
@@ -619,7 +619,7 @@ package Tk.TtkEntry is
 
       -- ****f* TtkEntry/TtkEntry.Get_Index_(entry_index_type)
       -- FUNCTION
-      -- Get the numerical index of the character in ttk::entry at the selected
+      -- Get the numerical index of the character in Ttk_Entry at the selected
       -- Entry_Index_Type index
       -- PARAMETERS
       -- Entry_Widget - Ttk_Entry in which the index will be get
@@ -644,7 +644,7 @@ package Tk.TtkEntry is
 
       -- ****f* TtkEntry/TtkEntry.Insert_Text_(numerical_index)
       -- FUNCTION
-      -- Insert the text at the selected position into the selected ttk::entry
+      -- Insert the text at the selected position into the selected Ttk_Entry
       -- PARAMETERS
       -- Entry_Widget - The Ttk_Entry in which the text will be inserted
       -- Index        - The index or X coordinate of the character on which
@@ -672,7 +672,7 @@ package Tk.TtkEntry is
 
       -- ****f* TtkEntry/TtkEntry.Insert_Text_(entry_index_type)
       -- FUNCTION
-      -- Insert the text at the selected position into the selected ttk::entry
+      -- Insert the text at the selected position into the selected Ttk_Entry
       -- PARAMETERS
       -- Entry_Widget - The Ttk_Entry in which the text will be inserted
       -- Index        - The index of the character in Entry_Widget at which the
@@ -694,13 +694,44 @@ package Tk.TtkEntry is
       Test_Case => (Name => "Test_Insert_Text", Mode => Nominal);
       -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Selection_Clear
+      -- FUNCTION
+      -- Clear the selection in the selected Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry which selection will be cleared
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Clear the selection in My_Entry widget
+      -- Selection_Clear(My_Entry);
+      -- COMMANDS
+      -- Entry_Widget selection clear
+      -- SOURCE
    procedure Selection_Clear(Entry_Widget: Ttk_Entry) with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Selection_Clear", Mode => Nominal);
+      -- ****
 
+      -- ****f* TtkEntry/TtkEntry.Selection_Present
+      -- FUNCTION
+      -- Check if the selection is set in the selected Ttk_Entry
+      -- PARAMETERS
+      -- Entry_Widget - The Ttk_Entry which will be check for a selection
+      -- RESULT
+      -- True if there is a character selected in the Entry_Widget, otherwise
+      -- False
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if selection exists in widget My_Entry
+      -- Has_Selection: constant Boolean := Selection_Present(My_Entry);
+      -- COMMANDS
+      -- Entry_Widget selection present
+      -- SOURCE
    function Selection_Present(Entry_Widget: Ttk_Entry) return Boolean with
       Pre => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Selection_Present", Mode => Nominal);
+      -- ****
 
    procedure Selection_Range
      (Entry_Widget: Ttk_Entry; Start_Index, End_Index: Natural;
