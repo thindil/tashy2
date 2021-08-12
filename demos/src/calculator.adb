@@ -64,7 +64,14 @@ begin
      Create
        (Path_Name => ".display",
         Options =>
-          Ttk_Label_Options'(Text => To_Tcl_String("0"), others => <>));
+          Ttk_Label_Options'
+            (Text => To_Tcl_String("0"), Relief => SUNKEN, Anchor => E,
+             Padding =>
+               (Left => (Value => 0.0, Value_Unit => PIXEL),
+                Top => (Value => 0.0, Value_Unit => PIXEL),
+                Right => (Value => 2.0, Value_Unit => PIXEL),
+                Bottom => (Value => 0.0, Value_Unit => PIXEL)),
+             others => <>));
 
    -- Set the program's simple menu File with one entry Quit to quit from the
    -- program
@@ -118,7 +125,7 @@ begin
    Add
      (Child => Display_Label,
       Options =>
-        (Sticky => E,
+        (Sticky => WIDTH,
          Pad_Y => (Top => (Value => 5.0, Value_Unit => <>), Bottom => <>),
          Pad_X => (Left => (Value => 10.0, Value_Unit => <>), Right => <>),
          Column_Span => 2, others => <>));
