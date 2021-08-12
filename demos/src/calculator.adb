@@ -27,6 +27,7 @@ with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkFrame; use Tk.TtkFrame;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
+with Tk.Winfo; use Tk.Winfo;
 with Tk.Wm; use Tk.Wm;
 with CalculatorCommands; use CalculatorCommands;
 
@@ -46,7 +47,12 @@ begin
 
    -- Set the size of the main window
    Set_Geometry
-     (Window => Main_Window, Width => 600, Height => 400, X => 0, Y => 0);
+     (Window => Main_Window, Width => 600, Height => 400,
+      X =>
+        Extended_Natural(Virtual_Root_Width(Window => Main_Window) - 600) / 2,
+      Y =>
+        Extended_Natural(Virtual_Root_Height(Window => Main_Window) - 400) /
+        2);
 
    -- Set the title for the main window
    Set_Title
