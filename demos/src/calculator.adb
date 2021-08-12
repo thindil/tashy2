@@ -126,8 +126,8 @@ begin
      (Child => Display_Label,
       Options =>
         (Sticky => WIDTH,
-         Pad_Y => (Top => (Value => 5.0, Value_Unit => <>), Bottom => <>),
-         Pad_X => (Left => (Value => 10.0, Value_Unit => <>), Right => <>),
+         Pad_Y => (Top => (Value => 5.0, Value_Unit => PIXEL), Bottom => <>),
+         Pad_X => (Left => (Value => 10.0, Value_Unit => PIXEL), Right => <>),
          Column_Span => 2, others => <>));
    -- Resize the display to the width of the main window
    Column_Configure(Main_Window, Display_Label, (Weight => 1, others => <>));
