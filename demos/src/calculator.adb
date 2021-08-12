@@ -69,7 +69,7 @@ begin
              Padding =>
                (Left => (Value => 0.0, Value_Unit => PIXEL),
                 Top => (Value => 0.0, Value_Unit => PIXEL),
-                Right => (Value => 2.0, Value_Unit => PIXEL),
+                Right => (Value => 2.0, Value_Unit => M),
                 Bottom => (Value => 0.0, Value_Unit => PIXEL)),
              others => <>));
 
