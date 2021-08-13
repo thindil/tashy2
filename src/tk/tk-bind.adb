@@ -12,20 +12,38 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+
 package body Tk.Bind is
 
    procedure Bind
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) is
    begin
-      null;
+      Execute_Widget_Command
+        (Widgt => Window, Command_Name => "bind",
+         Options =>
+           "<" & To_Lower(Modifiers_Type'Image(Sequence)) & "> " &
+           (if Append then "+" else "") & To_String(Script));
    end Bind;
 
    procedure Bind
      (Window: Tk_Widget; Sequence: Modifiers_Array; Script: Tcl_String;
       Append: Boolean := False) is
+      Modifier: Unbounded_String := Null_Unbounded_String;
    begin
-      null;
+      for I in Sequence'Range loop
+         Modifier := Modifier & To_Lower(Modifiers_Type'Image(Sequence(I)));
+         if I < Sequence'Last then
+            Modifier := Modifier & "-";
+         end if;
+      end loop;
+      Execute_Widget_Command
+        (Widgt => Window, Command_Name => "bind",
+         Options =>
+           "<" & To_String(Modifier) & "> " & (if Append then "+" else "") &
+           To_String(Script));
    end Bind;
 
 end Tk.Bind;
