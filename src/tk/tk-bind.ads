@@ -25,6 +25,8 @@ package Tk.Bind is
 
    Empty_Modifiers_Array: constant Modifiers_Array(1 .. 0) := (others => <>);
 
+   function Modifier_Type_Image(Modifier: Modifiers_Type) return String;
+
    procedure Bind
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) with

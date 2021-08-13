@@ -17,18 +17,24 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Bind is
 
+   function Modifier_Type_Image(Modifier: Modifiers_Type) return String is
+      Image: String := To_Lower(Modifiers_Type'Image(Modifier));
+   begin
+      Image(1) := To_Upper(Image(1));
+      if Image(Image'Last - 1) = '_' then
+         Image(Image'Last - 1) := '-';
+      end if;
+      return Image;
+   end Modifier_Type_Image;
+
    procedure Bind
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) is
-      Modifier: String := To_Lower(Modifiers_Type'Image(Sequence));
    begin
-      Modifier(1) := To_Upper(Modifier(1));
-      if Modifier(Modifier'Last - 1) = '_' then
-         Modifier(Modifier'Last - 1) := '-';
-      end if;
       Tcl_Eval
         (Tcl_Script =>
-           "bind " & Tk_Path_Name(Widgt => Window) & " <" & Modifier & "> " &
+           "bind " & Tk_Path_Name(Widgt => Window) & " <" &
+           Modifier_Type_Image(Sequence) & "> " &
            (if Append then "+" else "") & To_String(Script),
          Interpreter => Tk_Interp(Widgt => Window));
    end Bind;
