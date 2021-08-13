@@ -21,10 +21,21 @@ package Tk.Bind is
      (CONTROL, ALT, SHIFT, LOCK, EXTENDED, BUTTON1, BUTTON2, BUTTON3, BUTTON4,
       BUTTON5, MOD1, MOD2, MOD3, MOD4, MOD5, META, DOUBLE, TRIPLE, QUADRUPLE);
 
+   type Modifiers_Array is array(Positive range <>) of Modifiers_Type;
+
+   Empty_Modifiers_Array: constant Modifiers_Array(1 .. 0) := (others => <>);
+
    procedure Bind
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) with
       Pre => Window /= Null_Widget and Length(Script) > 0,
       Test_Case => (Name => "Test_Bind", Mode => Nominal);
+
+   procedure Bind
+     (Window: Tk_Widget; Sequence: Modifiers_Array; Script: Tcl_String;
+      Append: Boolean := False) with
+      Pre => Window /= Null_Widget and Sequence /= Empty_Modifiers_Array and
+      Length(Script) > 0,
+      Test_Case => (Name => "Test_Bind2", Mode => Nominal);
 
 end Tk.Bind;

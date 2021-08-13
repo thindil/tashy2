@@ -21,4 +21,11 @@ package body Tk.Bind is
       null;
    end Bind;
 
+   procedure Bind
+     (Window: Tk_Widget; Sequence: Modifiers_Array; Script: Tcl_String;
+      Append: Boolean := False) is
+   begin
+      null;
+   end Bind;
+
 end Tk.Bind;
