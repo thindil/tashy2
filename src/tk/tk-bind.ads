@@ -18,8 +18,8 @@ with Tk.Widget; use Tk.Widget;
 package Tk.Bind is
 
    type Modifiers_Type is
-     (CONTROL, ALT, SHIFT, LOCK, EXTENDED, BUTTON1, BUTTON2, BUTTON3, BUTTON4,
-      BUTTON5, MOD1, MOD2, MOD3, MOD4, MOD5, META, DOUBLE, TRIPLE, QUADRUPLE);
+     (CONTROL, ALT, SHIFT, LOCK, EXTENDED, BUTTON_1, BUTTON_2, BUTTON_3, BUTTON_4,
+      BUTTON_5, MOD1, MOD2, MOD3, MOD4, MOD5, META, DOUBLE, TRIPLE, QUADRUPLE);
 
    type Modifiers_Array is array(Positive range <>) of Modifiers_Type;
 

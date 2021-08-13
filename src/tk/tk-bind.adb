@@ -20,12 +20,17 @@ package body Tk.Bind is
    procedure Bind
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) is
+      Modifier: String := To_Lower(Modifiers_Type'Image(Sequence));
    begin
-      Execute_Widget_Command
-        (Widgt => Window, Command_Name => "bind",
-         Options =>
-           "<" & To_Lower(Modifiers_Type'Image(Sequence)) & "> " &
-           (if Append then "+" else "") & To_String(Script));
+      Modifier(1) := To_Upper(Modifier(1));
+      if Modifier(Modifier'Last - 1) = '_' then
+         Modifier(Modifier'Last - 1) := '-';
+      end if;
+      Tcl_Eval
+        (Tcl_Script =>
+           "bind " & Tk_Path_Name(Widgt => Window) & " <" & Modifier & "> " &
+           (if Append then "+" else "") & To_String(Script),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Bind;
 
    procedure Bind
@@ -39,11 +44,11 @@ package body Tk.Bind is
             Modifier := Modifier & "-";
          end if;
       end loop;
-      Execute_Widget_Command
-        (Widgt => Window, Command_Name => "bind",
-         Options =>
-           "<" & To_String(Modifier) & "> " & (if Append then "+" else "") &
-           To_String(Script));
+      Tcl_Eval
+        (Tcl_Script =>
+           "bind " & Tk_Path_Name(Widgt => Window) & " <" & To_String(Script) &
+           "> " & (if Append then "+" else "") & To_String(Script),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Bind;
 
 end Tk.Bind;
