@@ -45,15 +45,16 @@ package body Tk.Bind is
       Modifier: Unbounded_String := Null_Unbounded_String;
    begin
       for I in Sequence'Range loop
-         Modifier := Modifier & To_Lower(Modifiers_Type'Image(Sequence(I)));
+         Modifier := Modifier & Modifier_Type_Image(Sequence(I));
          if I < Sequence'Last then
             Modifier := Modifier & "-";
          end if;
       end loop;
       Tcl_Eval
         (Tcl_Script =>
-           "bind " & Tk_Path_Name(Widgt => Window) & " <" & To_String(Script) &
-           "> " & (if Append then "+" else "") & To_String(Script),
+           "bind " & Tk_Path_Name(Widgt => Window) & " <" &
+           To_String(Modifier) & "> " & (if Append then "+" else "") &
+           To_String(Script),
          Interpreter => Tk_Interp(Widgt => Window));
    end Bind;
 
