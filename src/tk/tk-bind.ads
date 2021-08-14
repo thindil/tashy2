@@ -25,6 +25,8 @@ package Tk.Bind is
 
    Empty_Modifiers_Array: constant Modifiers_Array(1 .. 0) := (others => <>);
 
+   type KeySyms is (SPACE, EXCLAM, QUOTEDBL, NUMBERSIGN, DOLLAR, PERCENT, AMPERSAND, QUOTERIGHT, PARENLEFT, PARENRIGHT, ASTERISK, PLUS, COMMA, MINUS, PERIOD, SLASH, KEY_0);
+
    function Modifier_Type_Image(Modifier: Modifiers_Type) return String;
 
    procedure Bind
