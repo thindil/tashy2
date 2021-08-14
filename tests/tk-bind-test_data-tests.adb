@@ -135,8 +135,14 @@ package body Tk.Bind.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Bind(Get_Main_Window, (CONTROL, BUTTON_1), To_Tcl_String("exit"));
+      Assert
+        (Tcl_Eval("bind .") = "<Control-Button-1> <Button-1>",
+         "Failed to set bind for Tk main window with array sequence");
 
 --  begin read only
    end Test_2_Bind_test_bind2;
