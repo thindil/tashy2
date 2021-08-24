@@ -31,7 +31,7 @@ with Tk.Winfo; use Tk.Winfo;
 with Tk.Wm; use Tk.Wm;
 with CalculatorCommands; use CalculatorCommands;
 
-procedure Calculator is
+procedure Calculator with SPARK_Mode is
    Main_Window: Tk_Toplevel;
    Display_Label: Ttk_Label;
 
