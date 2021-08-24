@@ -137,3 +137,8 @@ version: 3.0
    description: Run AdaControl to check correctness of the code
    flags:
       - windowsonly
+- command:
+   name: prove
+   execute:
+      - gnatprove -P tashy2.gpr
+   description: Run Spark to formally verify the code
