@@ -16,6 +16,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Set up the library
+      run: scripts/setup.tcl auto
+
     - name: Run Spark
       run: |
          mkdir obj
@@ -23,6 +26,7 @@ jobs:
 
     - name: Upload the log
       uses: actions/upload-artifact@v2
+      if: ${{ always() }}
       with:
          name: logs
          path: |
