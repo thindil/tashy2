@@ -20,7 +20,9 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget ttk::label
 -- SOURCE
-package Tk.TtkLabel is
+package Tk.TtkLabel with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -71,21 +73,21 @@ package Tk.TtkLabel is
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Label_Options is new Ttk_Widget_Options with record
-      Anchor: Directions_Type;
-      Background: Tcl_String;
-      Compound: Compound_Type;
-      Font: Tcl_String;
-      Foreground: Tcl_String;
-      Image: Ttk_Image_Option;
-      Justify: Justify_Type;
-      Padding: Padding_Data;
-      Relief: Relief_Type;
-      State: Disabled_State_Type;
-      Text: Tcl_String;
-      Text_Variable: Tcl_String;
-      Underline: Extended_Natural;
+      Anchor: Directions_Type := NONE;
+      Background: Tcl_String := Null_Tcl_String;
+      Compound: Compound_Type := EMPTY;
+      Font: Tcl_String := Null_Tcl_String;
+      Foreground: Tcl_String := Null_Tcl_String;
+      Image: Ttk_Image_Option := Default_Ttk_Image_Option;
+      Justify: Justify_Type := NONE;
+      Padding: Padding_Data := Empty_Padding_Data;
+      Relief: Relief_Type := NONE;
+      State: Disabled_State_Type := NORMAL;
+      Text: Tcl_String := Null_Tcl_String;
+      Text_Variable: Tcl_String := Null_Tcl_String;
+      Underline: Extended_Natural := -1;
       Width: Integer := 0;
-      Wrap_Length: Extended_Natural;
+      Wrap_Length: Extended_Natural := -1;
    end record;
    -- ****
 
@@ -114,7 +116,7 @@ package Tk.TtkLabel is
    function Create
      (Path_Name: String; Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabel1", Mode => Nominal);
       -- ****
@@ -149,7 +151,7 @@ package Tk.TtkLabel is
    procedure Create
      (Label: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Label /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabel2", Mode => Nominal);
       -- ****
@@ -172,7 +174,7 @@ package Tk.TtkLabel is
       -- Label configure
       -- SOURCE
    function Get_Options(Label: Ttk_Label) return Ttk_Label_Options with
-      Pre => Label /= Null_Widget,
+      Pre'Class => Label /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TtkLabel", Mode => Nominal);
       -- ****
 
@@ -193,7 +195,7 @@ package Tk.TtkLabel is
       -- Label configure Options
       -- SOURCE
    procedure Configure(Label: Ttk_Label; Options: Ttk_Label_Options) with
-      Pre => Label /= Null_Widget,
+      Pre'Class => Label /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TtkLabel", Mode => Nominal);
       -- ****
 
