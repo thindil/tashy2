@@ -46,8 +46,8 @@ package Tk.TtkWidget is
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Widget_Options is abstract new Widget_Options with record
-      Class: Tcl_String;
-      Style: Tcl_String;
+      Class: Tcl_String := Null_Tcl_String;
+      Style: Tcl_String := Null_Tcl_String;
    end record;
    -- ****
    --## rule on TYPE_INITIAL_VALUES
@@ -210,10 +210,10 @@ package Tk.TtkWidget is
    -- 8.6.0 - Added
    -- SOURCE
    type Padding_Data is record
-      Left: Pixel_Data;
-      Top: Pixel_Data;
-      Right: Pixel_Data;
-      Bottom: Pixel_Data;
+      Left: Pixel_Data := Empty_Pixel_Data;
+      Top: Pixel_Data := Empty_Pixel_Data;
+      Right: Pixel_Data := Empty_Pixel_Data;
+      Bottom: Pixel_Data := Empty_Pixel_Data;
    end record;
    -- ****
 

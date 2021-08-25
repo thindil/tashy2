@@ -274,7 +274,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Pixel_Data is record
-      Value: Positive_Float;
+      Value: Positive_Float := Default_Positive_Float;
       Value_Unit: Pixel_Unit := PIXEL;
    end record;
    -- ****
@@ -301,8 +301,8 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Widget_Options is abstract tagged record
-      Cursor: Tcl_String;
-      Take_Focus: Tcl_String;
+      Cursor: Tcl_String := Null_Tcl_String;
+      Take_Focus: Tcl_String := Null_Tcl_String;
    end record;
    -- ****
    --## rule on TYPE_INITIAL_VALUES
