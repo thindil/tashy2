@@ -31,5 +31,5 @@ jobs:
          name: logs
          path: |
             spark.log
-            obj/gnatprove/gnatprove.out
+            obj/static/gnatprove/gnatprove.out
 
