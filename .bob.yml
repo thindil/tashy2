@@ -142,3 +142,8 @@ version: 3.0
    execute:
       - gnatprove -P tashy2.gpr
    description: Run Spark to formally verify the code
+- command:
+   name: provefile
+   execute:
+      - gnatprove -P tashy2.gpr -u $1
+   description: Run Spark to formally verify the selected file. Required arguments is the relative path to the file which will be check
