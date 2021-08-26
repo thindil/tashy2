@@ -147,3 +147,8 @@ version: 3.0
    execute:
       - gnatprove -P tashy2.gpr -u $1
    description: Run Spark to formally verify the selected file. Required arguments is the relative path to the file which will be check
+- command:
+   name: proveclean
+   execute:
+      - gnatprove -P tashy2.gpr --clean
+   description: Clear all the files created by the gnatprove
