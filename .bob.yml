@@ -152,3 +152,9 @@ version: 3.0
    execute:
       - gnatprove -P tashy2.gpr --clean
    description: Clear all the files created by the gnatprove
+- command:
+   name: provedemos
+   execute:
+      - cd demos
+      - gnatprove -P demos.gpr
+   description: Run Spark to formally verify the code of the library demos programs
