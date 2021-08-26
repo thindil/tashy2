@@ -158,3 +158,9 @@ version: 3.0
       - cd demos
       - gnatprove -P demos.gpr
    description: Run Spark to formally verify the code of the library demos programs
+- command:
+   name: provedemosfile
+   execute:
+      - cd demos
+      - gnatprove -P demos.gpr -u $1
+   description: Run Spark to formally verify the selected file in demos. Required arguments is the relative path to the file which will be check
