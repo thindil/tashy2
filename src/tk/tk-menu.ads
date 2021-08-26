@@ -19,7 +19,9 @@ with Tk.Widget; use Tk.Widget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget menu
 -- SOURCE
-package Tk.Menu is
+package Tk.Menu with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -83,21 +85,21 @@ package Tk.Menu is
       -- 8.6.0 - Added
       -- SOURCE
    type Menu_Options is new Widget_Options with record
-      Active_Background: Tcl_String;
-      Active_Border_Width: Pixel_Data;
-      Active_Foreground: Tcl_String;
-      Background: Tcl_String;
-      Border_Width: Pixel_Data;
-      Disabled_Foreground: Tcl_String;
-      Font: Tcl_String;
-      Foreground: Tcl_String;
-      Relief: Relief_Type;
-      Post_Command: Tcl_String;
-      Select_Color: Tcl_String;
-      Tear_Off: Extended_Boolean;
-      Tear_Off_Command: Tcl_String;
-      Title: Tcl_String;
-      Menu_Type: Menu_Types;
+      Active_Background: Tcl_String := Null_Tcl_String;
+      Active_Border_Width: Pixel_Data := Empty_Pixel_Data;
+      Active_Foreground: Tcl_String := Null_Tcl_String;
+      Background: Tcl_String := Null_Tcl_String;
+      Border_Width: Pixel_Data := Empty_Pixel_Data;
+      Disabled_Foreground: Tcl_String := Null_Tcl_String;
+      Font: Tcl_String := Null_Tcl_String;
+      Foreground: Tcl_String := Null_Tcl_String;
+      Relief: Relief_Type := NONE;
+      Post_Command: Tcl_String := Null_Tcl_String;
+      Select_Color: Tcl_String := Null_Tcl_String;
+      Tear_Off: Extended_Boolean := NONE;
+      Tear_Off_Command: Tcl_String := Null_Tcl_String;
+      Title: Tcl_String := Null_Tcl_String;
+      Menu_Type: Menu_Types := NONE;
    end record;
    -- ****
 
@@ -179,35 +181,35 @@ package Tk.Menu is
    type Menu_Item_Options(Item_Type: Menu_Item_Types := COMMAND) is record
       case Item_Type is
          when CASCADE | CHECKBUTTON | COMMAND | RADIOBUTTON =>
-            Active_Background: Tcl_String;
-            Active_Foreground: Tcl_String;
-            Accelerator: Tcl_String;
-            Background: Tcl_String;
-            Bitmap: Tcl_String;
-            Column_Break: Extended_Boolean;
-            Command: Tcl_String;
-            Compound: Place_Type;
-            Font: Tcl_String;
-            Foreground: Tcl_String;
-            Hide_Margin: Extended_Boolean;
-            Image: Tcl_String;
-            Label: Tcl_String;
-            State: State_Type;
-            Underline: Extended_Natural;
+            Active_Background: Tcl_String := Null_Tcl_String;
+            Active_Foreground: Tcl_String := Null_Tcl_String;
+            Accelerator: Tcl_String := Null_Tcl_String;
+            Background: Tcl_String := Null_Tcl_String;
+            Bitmap: Tcl_String := Null_Tcl_String;
+            Column_Break: Extended_Boolean := NONE;
+            Command: Tcl_String := Null_Tcl_String;
+            Compound: Place_Type := EMPTY;
+            Font: Tcl_String := Null_Tcl_String;
+            Foreground: Tcl_String := Null_Tcl_String;
+            Hide_Margin: Extended_Boolean := NONE;
+            Image: Tcl_String := Null_Tcl_String;
+            Label: Tcl_String := Null_Tcl_String;
+            State: State_Type := NONE;
+            Underline: Extended_Natural := -1;
             case Item_Type is
                when CASCADE =>
-                  Menu: Tk_Menu;
+                  Menu: Tk_Menu := Null_Widget;
                when CHECKBUTTON | RADIOBUTTON =>
-                  Indicator_On: Extended_Boolean;
-                  Select_Color: Tcl_String;
-                  Select_Image: Tcl_String;
-                  Variable: Tcl_String;
+                  Indicator_On: Extended_Boolean := NONE;
+                  Select_Color: Tcl_String := Null_Tcl_String;
+                  Select_Image: Tcl_String := Null_Tcl_String;
+                  Variable: Tcl_String := Null_Tcl_String;
                   case Item_Type is
                      when CHECKBUTTON =>
-                        Off_Value: Tcl_String;
-                        On_Value: Tcl_String;
+                        Off_Value: Tcl_String := Null_Tcl_String;
+                        On_Value: Tcl_String := Null_Tcl_String;
                      when RADIOBUTTON =>
-                        Value: Tcl_String;
+                        Value: Tcl_String := Null_Tcl_String;
                      when others =>
                         null;
                   end case;
@@ -278,7 +280,7 @@ package Tk.Menu is
    function Create
      (Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Menu1", Mode => Nominal);
       -- ****
@@ -311,7 +313,7 @@ package Tk.Menu is
    procedure Create
      (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Menu2", Mode => Nominal);
       -- ****
@@ -385,7 +387,7 @@ package Tk.Menu is
       -- Menu_Widget configure
       -- SOURCE
    function Get_Options(Menu_Widget: Tk_Menu) return Menu_Options with
-      Pre => Menu_Widget /= Null_Widget,
+      Pre'Class => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_Menu", Mode => Nominal);
       -- ****
 
@@ -431,7 +433,7 @@ package Tk.Menu is
       -- Menu_Widget configure Options
       -- SOURCE
    procedure Configure(Menu_Widget: Tk_Menu; Options: Menu_Options) with
-      Pre => Menu_Widget /= Null_Widget,
+      Pre'Class => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_Menu", Mode => Nominal);
       -- ****
 
