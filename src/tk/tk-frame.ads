@@ -19,7 +19,9 @@ with Tcl.Strings; use Tcl.Strings;
 -- FUNCTION
 -- Provides code for manipulate Tk widget frame
 -- SOURCE
-package Tk.Frame is
+package Tk.Frame with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -56,16 +58,16 @@ package Tk.Frame is
    -- 8.6.0 - Added
    -- SOURCE
    type Frame_Options is new Widget_Options with record
-      Background: Tcl_String;
-      Border_Width: Pixel_Data;
-      Height: Pixel_Data;
-      Highlight_Background: Tcl_String;
-      Highlight_Color: Tcl_String;
-      Highlight_Thickness: Pixel_Data;
-      Pad_X: Pixel_Data;
-      Pad_Y: Pixel_Data;
-      Relief: Relief_Type;
-      Width: Pixel_Data;
+      Background: Tcl_String := Null_Tcl_String;
+      Border_Width: Pixel_Data := Empty_Pixel_Data;
+      Height: Pixel_Data := Empty_Pixel_Data;
+      Highlight_Background: Tcl_String := Null_Tcl_String;
+      Highlight_Color: Tcl_String := Null_Tcl_String;
+      Highlight_Thickness: Pixel_Data := Empty_Pixel_Data;
+      Pad_X: Pixel_Data := Empty_Pixel_Data;
+      Pad_Y: Pixel_Data := Empty_Pixel_Data;
+      Relief: Relief_Type := NONE;
+      Width: Pixel_Data := Empty_Pixel_Data;
    end record;
    -- ****
 
@@ -86,7 +88,7 @@ package Tk.Frame is
    -- Widget configure Options
    -- SOURCE
    procedure Configure(Frame_Widget: Tk_Frame; Options: Frame_Options) with
-      Pre => Frame_Widget /= Null_Widget,
+      Pre'Class => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_Frame", Mode => Nominal);
       -- ****
 
@@ -115,10 +117,10 @@ package Tk.Frame is
    -- 8.6.0 - Added
    -- SOURCE
    type Frame_Create_Options is new Frame_Options with record
-      Class: Tcl_String;
-      Color_Map: Tcl_String;
-      Container: Extended_Boolean;
-      Visual: Tcl_String;
+      Class: Tcl_String := Null_Tcl_String;
+      Color_Map: Tcl_String := Null_Tcl_String;
+      Container: Extended_Boolean := NONE;
+      Visual: Tcl_String := Null_Tcl_String;
    end record;
    -- ****
 
@@ -146,7 +148,7 @@ package Tk.Frame is
    function Create
      (Path_Name: String; Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Frame with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Frame1", Mode => Nominal);
       -- ****
@@ -180,7 +182,7 @@ package Tk.Frame is
      (Frame_Widget: out Tk_Frame; Path_Name: String;
       Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Frame2", Mode => Nominal);
    -- ****
@@ -203,7 +205,7 @@ package Tk.Frame is
    -- SOURCE
    function Get_Options
      (Frame_Widget: Tk_Frame) return Frame_Create_Options with
-      Pre => Frame_Widget /= Null_Widget,
+      Pre'Class => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_Frame", Mode => Nominal);
       -- ****
 
