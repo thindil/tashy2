@@ -164,3 +164,9 @@ version: 3.0
       - cd demos
       - gnatprove -P demos.gpr -u $1
    description: Run Spark to formally verify the selected file in demos. Required arguments is the relative path to the file which will be check
+- command:
+   name: provedemosclean
+   execute:
+      - cd demos
+      - gnatprove -P demos.gpr --clean
+   description: Clear all the files created by the gnatprove in demos
