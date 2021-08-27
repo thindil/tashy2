@@ -111,10 +111,10 @@ package Tk.Grid is
    -- 8.6.0 - Added
    -- SOURCE
    type Column_Options is record
-      Min_Size: Pixel_Data;
-      Weight: Extended_Natural;
-      Uniform: Tcl_String;
-      Pad: Pixel_Data;
+      Min_Size: Pixel_Data := Empty_Pixel_Data;
+      Weight: Extended_Natural := -1;
+      Uniform: Tcl_String := Null_Tcl_String;
+      Pad: Pixel_Data := Empty_Pixel_Data;
    end record;
    -- ****
 
