@@ -21,7 +21,8 @@ with Tk.Widget; use Tk.Widget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget toplevel
 -- SOURCE
-package Tk.TopLevel is
+package Tk.TopLevel with SPARK_Mode is
+   pragma Elaborate_Body;
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -80,19 +81,9 @@ package Tk.TopLevel is
    -- SOURCE
    overriding procedure Configure
      (Toplevel_Widget: Tk_Toplevel; Options: Toplevel_Options) with
-      Pre => Toplevel_Widget /= Null_Widget,
+      Pre'Class => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TopLevel", Mode => Nominal);
       -- ****
-
-      -- ****d* TopLevel/TopLevel.Default_Toplevel_Options
-      -- FUNCTION
-      -- Default options for Toplevel widget
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- SOURCE
-   Default_Toplevel_Options: constant Toplevel_Options :=
-     Toplevel_Options'(others => <>);
-   -- ****
 
    -- ****s* TopLevel/TopLevel.TopLevel_Create_Options
    -- FUNCTION
@@ -112,7 +103,7 @@ package Tk.TopLevel is
    -- SOURCE
    type Toplevel_Create_Options is new Frame_Create_Options with record
       Menu: Tk_Menu := Null_Widget;
-      Screen: Tcl_String;
+      Screen: Tcl_String := Null_Tcl_String;
       Use_Container: Tk_Window := Null_Window;
    end record;
    -- ****
@@ -141,7 +132,7 @@ package Tk.TopLevel is
    overriding function Create
      (Path_Name: String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TopLevel1", Mode => Nominal);
       -- ****
@@ -175,7 +166,7 @@ package Tk.TopLevel is
      (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_TopLevel2", Mode => Nominal);
    -- ****
@@ -198,7 +189,7 @@ package Tk.TopLevel is
    -- SOURCE
    overriding function Get_Options
      (Toplevel_Widget: Tk_Toplevel) return Toplevel_Create_Options with
-      Pre => Toplevel_Widget /= Null_Widget,
+      Pre'Class => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TopLevel", Mode => Nominal);
       -- ****
 
