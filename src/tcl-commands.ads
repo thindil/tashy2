@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Pointers;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
@@ -138,6 +139,18 @@ package Tcl.Commands is
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_CreateCommand", Mode => Nominal);
       -- ****
+
+   type Arguments_Array is array(Positive range <>) of Unbounded_String;
+
+   generic
+      with function Ada_Command
+        (Arguments: Arguments_Array;
+         Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_Results;
+   package Ada_Tcl_Command is
+      function Add_Command
+        (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Tcl_Command;
+   end Ada_Tcl_Command;
 
       -----------------------------------------
       -- Manipulating a Tcl command arguments
