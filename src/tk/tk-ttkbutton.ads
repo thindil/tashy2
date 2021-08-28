@@ -20,7 +20,9 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget ttk::button
 -- SOURCE
-package Tk.TtkButton is
+package Tk.TtkButton with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -60,14 +62,14 @@ package Tk.TtkButton is
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Button_Options is new Ttk_Widget_Options with record
-      Command: Tcl_String;
-      Compound: Compound_Type;
-      Default: State_Type;
-      Image: Ttk_Image_Option;
-      State: Disabled_State_Type;
-      Text: Tcl_String;
-      Text_Variable: Tcl_String;
-      Underline: Extended_Natural;
+      Command: Tcl_String := Null_Tcl_String;
+      Compound: Compound_Type := EMPTY;
+      Default: State_Type := NONE;
+      Image: Ttk_Image_Option := Default_Ttk_Image_Option;
+      State: Disabled_State_Type := NONE;
+      Text: Tcl_String := Null_Tcl_String;
+      Text_Variable: Tcl_String := Null_Tcl_String;
+      Underline: Extended_Natural := -1;
       Width: Integer := 0;
    end record;
    -- ****
@@ -97,7 +99,7 @@ package Tk.TtkButton is
    function Create
      (Path_Name: String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkButton1", Mode => Nominal);
       -- ****
@@ -132,7 +134,7 @@ package Tk.TtkButton is
    procedure Create
      (Button: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Button /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkButton2", Mode => Nominal);
       -- ****
@@ -155,7 +157,7 @@ package Tk.TtkButton is
       -- Button configure
       -- SOURCE
    function Get_Options(Button: Ttk_Button) return Ttk_Button_Options with
-      Pre => Button /= Null_Widget,
+      Pre'Class => Button /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TtkButton", Mode => Nominal);
       -- ****
 
@@ -176,7 +178,7 @@ package Tk.TtkButton is
       -- Button configure Options
       -- SOURCE
    procedure Configure(Button: Ttk_Button; Options: Ttk_Button_Options) with
-      Pre => Button /= Null_Widget,
+      Pre'Class => Button /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TtkButton", Mode => Nominal);
       -- ****
 
