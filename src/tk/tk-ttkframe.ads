@@ -19,7 +19,9 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget ttk::frame
 -- SOURCE
-package Tk.TtkFrame is
+package Tk.TtkFrame with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -75,7 +77,7 @@ package Tk.TtkFrame is
    -- SOURCE
    procedure Configure
      (Frame_Widget: Ttk_Frame; Options: Ttk_Frame_Options) with
-      Pre => Frame_Widget /= Null_Widget,
+      Pre'Class => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_Frame", Mode => Nominal);
       -- ****
 
@@ -103,7 +105,7 @@ package Tk.TtkFrame is
    function Create
      (Path_Name: String; Options: Ttk_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Frame with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Frame1", Mode => Nominal);
       -- ****
@@ -137,7 +139,7 @@ package Tk.TtkFrame is
      (Frame_Widget: out Ttk_Frame; Path_Name: String;
       Options: Ttk_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Frame2", Mode => Nominal);
    -- ****
@@ -159,7 +161,7 @@ package Tk.TtkFrame is
    -- Widget configure
    -- SOURCE
    function Get_Options(Frame_Widget: Ttk_Frame) return Ttk_Frame_Options with
-      Pre => Frame_Widget /= Null_Widget,
+      Pre'Class => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_Frame", Mode => Nominal);
       -- ****
 
