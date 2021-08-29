@@ -240,7 +240,8 @@ package Tk.Bind is
       KEY_KP_F1, KEY_KP_F2, KEY_KP_F3, KEY_KP_F4, KEY_KP_MULTIPLY, KEY_KP_ADD,
       KEY_KP_SEPARATOR, KEY_KP_SUBTRACT, KEY_KP_DECIMAL, KEY_KP_DIVIDE,
       KEY_KP_0, KEY_KP_1, KEY_KP_2, KEY_KP_3, KEY_KP_4, KEY_KP_5, KEY_KP_6,
-      KEY_KP_7, KEY_KP_8, KEY_KP_9, KEY_KP_EQUAL);
+      KEY_KP_7, KEY_KP_8, KEY_KP_9, KEY_KP_EQUAL, KEY_F1, KEY_F2, KEY_F3,
+      KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10);
 
    function Modifier_Type_Image(Modifier: Modifiers_Type) return String;
 
