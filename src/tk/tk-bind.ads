@@ -15,14 +15,17 @@
 with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
-package Tk.Bind is
+package Tk.Bind with
+   SPARK_Mode
+is
 
    type Modifiers_Type is
      (CONTROL, ALT, SHIFT, LOCK, EXTENDED, BUTTON_1, BUTTON_2, BUTTON_3,
       BUTTON_4, BUTTON_5, MOD1, MOD2, MOD3, MOD4, MOD5, META, DOUBLE, TRIPLE,
-      QUADRUPLE);
+      QUADRUPLE, NONE);
 
-   type Modifiers_Array is array(Positive range <>) of Modifiers_Type;
+   type Modifiers_Array is array(Positive range <>) of Modifiers_Type with
+      Default_Component_Value => NONE;
 
    Empty_Modifiers_Array: constant Modifiers_Array(1 .. 0) := (others => <>);
 
