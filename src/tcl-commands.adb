@@ -40,35 +40,6 @@ package body Tcl.Commands is
       return Result;
    end Tcl_Create_Command;
 
-   package body Ada_Tcl_Command is
-      function Command
-        (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
-         Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results with
-         Convention => C;
-      function Command
-        (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
-         Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results is
-         Arguments: Arguments_Array(1 .. Argc);
-      begin
-         for I in Arguments'Range loop
-            Arguments(I) :=
-              To_Unbounded_String
-                (Source =>
-                   Value(Item => Argv_Pointer.Value(Ref => Argv)(size_t(I))));
-         end loop;
-         return Ada_Command(Arguments, Interpreter);
-      end Command;
-      function Add_Command
-        (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Tcl_Command is
-      begin
-         return
-           Tcl_Create_Command
-             (Command_Name => Name, Proc => Command'Access,
-              Interpreter => Interpreter);
-      end Add_Command;
-   end Ada_Tcl_Command;
-
    function Get_Argument
      (Arguments_Pointer: not null Argv_Pointer.Pointer; Index: Natural)
       return String is
