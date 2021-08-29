@@ -16,12 +16,39 @@ with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Maps; use Ada.Strings.Maps;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Float_Text_IO; use Ada.Float_Text_IO;
+with Ada.Text_IO;
+with System;
+with Tcl; use Tcl;
+with Tcl.Commands; use Tcl.Commands;
 with Tcl.Strings; use Tcl.Strings;
 with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
 
 package body CalculatorCommands is
+
+   -- ****o* CalculatorCommands/CalculatorCommands.On_Click
+   -- FUNCTION
+   -- Update display with the pressed button text or count its expression if
+   -- button equal was pressed
+   -- PARAMETERS
+   -- Unused_Client_Data - Optional data passed to the function.
+   -- Interpreter        - Tcl interpreter on which the command was invoked.
+   -- Unused_Argc        - The amount of arguments passed to the command.
+   -- Argv               - The array of arguments passed to the command
+   -- RESULT
+   -- This function always return TCL_OK
+   -- COMMANDS
+   -- OnClick buttonpath displaypath
+   -- Buttonpath is Tk path name for the button which was clicked, displaypath
+   -- is the Tk path name for the calculator display widget
+   -- SOURCE
+   function On_Click
+     (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
+      Unused_Argc: Positive; Argv: Argv_Pointer.Pointer)
+      return Tcl_Results with
+      Convention => C;
+      -- ****
 
    function On_Click
      (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
@@ -162,6 +189,26 @@ package body CalculatorCommands is
       return TCL_OK;
    end On_Click;
 
+      -- ****o* CalculatorCommands/CalculatorCommands.Clear_Display
+      -- FUNCTION
+      -- Reset the calculator's display to it inital state. Show just zero
+      -- number
+      -- Client_Data - Optional data passed to the function. Unused
+      -- Interpreter - Tcl interpreter on which the command was invoked.
+      -- Argc        - The amount of arguments passed to the command. Unused
+      -- Argv        - The array of arguments passed to the command
+      -- RESULT
+      -- This function always return TCL_OK
+      -- COMMANDS
+      -- ClearDisplay displaypath
+      -- Displaypath is the Tk path name for the calculator's display widget
+      -- SOURCE
+   function Clear_Display
+     (Client_Data: System.Address; Interpreter: Tcl_Interpreter;
+      Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results with
+      Convention => C;
+      -- ****
+
    function Clear_Display
      (Client_Data: System.Address; Interpreter: Tcl_Interpreter;
       Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results is
@@ -176,5 +223,19 @@ package body CalculatorCommands is
          Options => (Text => To_Tcl_String(Source => "0"), others => <>));
       return TCL_OK;
    end Clear_Display;
+
+   function Add_Commands return Boolean is
+   begin
+      if Tcl_Create_Command("OnClick", On_Click'Access) = Null_Tcl_Command then
+         Ada.Text_IO.Put_Line(Item => "Failed to add OnClick command");
+         return False;
+      end if;
+      if Tcl_Create_Command("ClearDisplay", Clear_Display'Access) =
+        Null_Tcl_Command then
+         Ada.Text_IO.Put_Line(Item => "Failed to add ClearDisplay command");
+         return False;
+      end if;
+      return True;
+   end Add_Commands;
 
 end CalculatorCommands;

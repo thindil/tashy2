@@ -14,9 +14,7 @@
 
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
-with Ada.Text_IO;
 with Tcl; use Tcl;
-with Tcl.Commands; use Tcl.Commands;
 with Tcl.Strings; use Tcl.Strings;
 with Tk; use Tk;
 with Tk.Grid; use Tk.Grid;
@@ -234,13 +232,7 @@ begin
          Options => (Row => 1, Column => 1, Sticky => N, others => <>));
    end;
 
-   if Tcl_Create_Command("OnClick", On_Click'Access) = Null_Tcl_Command then
-      Ada.Text_IO.Put_Line(Item => "Failed to add OnClick command");
-      return;
-   end if;
-   if Tcl_Create_Command("ClearDisplay", Clear_Display'Access) =
-     Null_Tcl_Command then
-      Ada.Text_IO.Put_Line(Item => "Failed to add ClearDisplay command");
+   if not Add_Commands then
       return;
    end if;
 
