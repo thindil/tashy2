@@ -19,7 +19,9 @@ with Tk.Widget; use Tk.Widget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget button
 -- SOURCE
-package Tk.Button is
+package Tk.Button with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -83,36 +85,36 @@ package Tk.Button is
    -- 8.6.0 - Added
    -- SOURCE
    type Button_Options is new Widget_Options with record
-      Active_Background: Tcl_String;
-      Active_Foreground: Tcl_String;
-      Anchor: Directions_Type;
-      Background: Tcl_String;
-      Bitmap: Tcl_String;
-      Border_Width: Pixel_Data;
-      Command: Tcl_String;
-      Compound: Place_Type;
-      Default: State_Type;
-      Disabled_Foreground: Tcl_String;
-      Font: Tcl_String;
-      Foreground: Tcl_String;
-      Height: Pixel_Data;
-      Highlight_Background: Tcl_String;
-      Highlight_Color: Tcl_String;
-      Highlight_Thickness: Pixel_Data;
-      Image: Tcl_String;
-      Justify: Justify_Type;
-      Over_Relief: Relief_Type;
-      Pad_X: Pixel_Data;
-      Pad_Y: Pixel_Data;
-      Relief: Relief_Type;
-      Repeat_Delay: Extended_Natural;
-      Repeat_Interval: Extended_Natural;
-      State: State_Type;
-      Text: Tcl_String;
-      Text_Variable: Tcl_String;
-      Underline: Extended_Natural;
-      Width: Pixel_Data;
-      Wrap_Length: Pixel_Data;
+      Active_Background: Tcl_String := Null_Tcl_String;
+      Active_Foreground: Tcl_String := Null_Tcl_String;
+      Anchor: Directions_Type := NONE;
+      Background: Tcl_String := Null_Tcl_String;
+      Bitmap: Tcl_String := Null_Tcl_String;
+      Border_Width: Pixel_Data := Empty_Pixel_Data;
+      Command: Tcl_String := Null_Tcl_String;
+      Compound: Place_Type := EMPTY;
+      Default: State_Type := NONE;
+      Disabled_Foreground: Tcl_String := Null_Tcl_String;
+      Font: Tcl_String := Null_Tcl_String;
+      Foreground: Tcl_String := Null_Tcl_String;
+      Height: Pixel_Data := Empty_Pixel_Data;
+      Highlight_Background: Tcl_String := Null_Tcl_String;
+      Highlight_Color: Tcl_String := Null_Tcl_String;
+      Highlight_Thickness: Pixel_Data := Empty_Pixel_Data;
+      Image: Tcl_String := Null_Tcl_String;
+      Justify: Justify_Type := NONE;
+      Over_Relief: Relief_Type := NONE;
+      Pad_X: Pixel_Data := Empty_Pixel_Data;
+      Pad_Y: Pixel_Data := Empty_Pixel_Data;
+      Relief: Relief_Type := NONE;
+      Repeat_Delay: Extended_Natural := -1;
+      Repeat_Interval: Extended_Natural := -1;
+      State: State_Type := NONE;
+      Text: Tcl_String := Null_Tcl_String;
+      Text_Variable: Tcl_String := Null_Tcl_String;
+      Underline: Extended_Natural := -1;
+      Width: Pixel_Data := Empty_Pixel_Data;
+      Wrap_Length: Pixel_Data := Empty_Pixel_Data;
    end record;
    -- ****
 
@@ -141,7 +143,7 @@ package Tk.Button is
    function Create
      (Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Button1", Mode => Nominal);
       -- ****
@@ -176,7 +178,7 @@ package Tk.Button is
    procedure Create
      (Button_Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Button2", Mode => Nominal);
       -- ****
@@ -199,7 +201,7 @@ package Tk.Button is
       -- Button_Widget configure
       -- SOURCE
    function Get_Options(Button_Widget: Tk_Button) return Button_Options with
-      Pre => Button_Widget /= Null_Widget,
+      Pre'Class => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_Button", Mode => Nominal);
       -- ****
 
@@ -220,7 +222,7 @@ package Tk.Button is
       -- Button_Widget configure Options
       -- SOURCE
    procedure Configure(Button_Widget: Tk_Button; Options: Button_Options) with
-      Pre => Button_Widget /= Null_Widget,
+      Pre'Class => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_Button", Mode => Nominal);
       -- ****
 
