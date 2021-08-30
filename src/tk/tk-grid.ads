@@ -235,7 +235,7 @@ package Tk.Grid is
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
-      -- -- Get anchor of grid in My_Frame widget to west
+      -- -- Get anchor of grid in My_Frame widget
       -- Current_Anchor: constant Directions_Type := Get_Anchor(My_Frame);
       -- SEE ALSO
       -- Grid.Set_Anchor
