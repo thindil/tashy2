@@ -19,6 +19,13 @@
 package CalculatorCommands is
 -- ****
 
+   -- ****f* CalculatorCommands/CalculatorCommands.Add_Commands
+   -- FUNCTION
+   -- Add Tcl commands needed by the program
+   -- RESULT
+   -- True if commands were successfully added, otherwise False
+   -- SOURCE
    function Add_Commands return Boolean;
+   -- ****
 
 end CalculatorCommands;
