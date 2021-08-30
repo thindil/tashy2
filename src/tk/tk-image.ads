@@ -46,8 +46,8 @@ package Tk.Image is
    -- 8.6.0 - Added
    -- SOURCE
    type Image_Options is abstract tagged record
-      Data: Tcl_String;
-      File: Tcl_String;
+      Data: Tcl_String := Null_Tcl_String;
+      File: Tcl_String := Null_Tcl_String;
    end record;
    -- ****
    --## rule on TYPE_INITIAL_VALUES

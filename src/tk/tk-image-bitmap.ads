@@ -16,7 +16,9 @@
 -- FUNCTION
 -- Provide bindings for manipulate Tk images type bitmap
 -- SOURCE
-package Tk.Image.Bitmap is
+package Tk.Image.Bitmap with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -39,10 +41,10 @@ package Tk.Image.Bitmap is
    -- 8.6.0 - Added
    -- SOURCE
    type Bitmap_Options is new Image_Options with record
-      Background: Tcl_String;
-      Foreground: Tcl_String;
-      Mask_Data: Tcl_String;
-      Mask_File: Tcl_String;
+      Background: Tcl_String := Null_Tcl_String;
+      Foreground: Tcl_String := Null_Tcl_String;
+      Mask_Data: Tcl_String := Null_Tcl_String;
+      Mask_File: Tcl_String := Null_Tcl_String;
    end record;
    -- ****
 
@@ -67,7 +69,7 @@ package Tk.Image.Bitmap is
    procedure Create
      (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create_Bitmap", Mode => Nominal);
       -- ****
 
@@ -93,7 +95,7 @@ package Tk.Image.Bitmap is
    function Create
      (Options: Bitmap_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Image with
-      Pre => Interpreter /= Null_Interpreter,
+      Pre'Class => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create2_Bitmap", Mode => Nominal);
       -- ****
 
@@ -117,7 +119,7 @@ package Tk.Image.Bitmap is
    procedure Configure
      (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Configure_Bitmap", Mode => Nominal);
       -- ****
 
@@ -176,7 +178,7 @@ package Tk.Image.Bitmap is
    function Get_Options
      (Bitmap_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Bitmap_Options with
-      Pre => Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Options_Bitmap", Mode => Nominal);
       -- ****
 
