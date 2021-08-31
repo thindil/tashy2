@@ -18,7 +18,9 @@ with Tk.Widget; use Tk.Widget;
 -- FUNCTION
 -- Provide bindings for manipulate Tk images type photo
 -- SOURCE
-package Tk.Image.Photo is
+package Tk.Image.Photo with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -56,11 +58,11 @@ package Tk.Image.Photo is
    type Shades_Type(Grayscale: Boolean := False) is record
       case Grayscale is
          when True =>
-            Gray: Shades_Range;
+            Gray: Shades_Range := Default_Shade_Value;
          when False =>
-            Red: Shades_Range;
-            Green: Shades_Range;
-            Blue: Shades_Range;
+            Red: Shades_Range := Default_Shade_Value;
+            Green: Shades_Range := Default_Shade_Value;
+            Blue: Shades_Range := Default_Shade_Value;
       end case;
    end record;
    -- ****
@@ -96,10 +98,10 @@ package Tk.Image.Photo is
    -- 8.6.0 - Added
    -- SOURCE
    type Photo_Options is new Image_Options with record
-      Format: Tcl_String;
-      Gamma: Positive_Float;
+      Format: Tcl_String := Null_Tcl_String;
+      Gamma: Positive_Float := -1.0;
       Height: Natural := 0;
-      Palette: Shades_Type;
+      Palette: Shades_Type := Empty_Shades;
       Width: Natural := 0;
    end record;
    -- ****
@@ -224,7 +226,7 @@ package Tk.Image.Photo is
    procedure Create
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create_Photo", Mode => Nominal);
       -- ****
 
@@ -250,7 +252,7 @@ package Tk.Image.Photo is
    function Create
      (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Image with
-      Pre => Interpreter /= Null_Interpreter,
+      Pre'Class => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create2_Photo", Mode => Nominal);
       -- ****
 
@@ -297,7 +299,7 @@ package Tk.Image.Photo is
    procedure Configure
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Configure_Photo", Mode => Nominal);
       -- ****
 
@@ -356,7 +358,7 @@ package Tk.Image.Photo is
    function Get_Options
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options with
-      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Options_Photo", Mode => Nominal);
       -- ****
 
