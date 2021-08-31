@@ -16,7 +16,9 @@
 -- FUNCTION
 -- Provide various Tcl commands related to the calculator demo
 -- SOURCE
-package CalculatorCommands is
+package CalculatorCommands with
+   SPARK_Mode
+is
 -- ****
 
    -- ****f* CalculatorCommands/CalculatorCommands.Add_Commands
