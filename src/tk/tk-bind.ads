@@ -245,7 +245,9 @@ is
       KEY_KP_0, KEY_KP_1, KEY_KP_2, KEY_KP_3, KEY_KP_4, KEY_KP_5, KEY_KP_6,
       KEY_KP_7, KEY_KP_8, KEY_KP_9, KEY_KP_EQUAL, KEY_F1, KEY_F2, KEY_F3,
       KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_L1, KEY_L2,
-      KEY_L3, KEY_L4, KEY_L5, KEY_L6, KEY_L7, KEY_L8, KEY_L9, KEY_L10);
+      KEY_L3, KEY_L4, KEY_L5, KEY_L6, KEY_L7, KEY_L8, KEY_L9, KEY_L10, KEY_R1,
+      KEY_R2, KEY_R3, KEY_R4, KEY_R5, KEY_R6, KEY_R7, KEY_R8, KEY_R9, KEY_R10,
+      KEY_R11, KEY_R12, KEY_F33, KEY_R14, KEY_R15);
 
    function Modifier_Type_Image(Modifier: Modifiers_Type) return String;
 
