@@ -102,7 +102,7 @@ package body Tk.Labelframe is
    begin
       return
         Options: Label_Frame_Create_Options :=
-          Default_Label_Frame_Create_Options do
+          Label_Frame_Create_Options'(others => <>) do
          Options.Background :=
            Option_Value(Widgt => Frame_Widget, Name => "background");
          Options.Border_Width :=

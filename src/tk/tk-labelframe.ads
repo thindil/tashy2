@@ -20,7 +20,10 @@ with Tcl.Strings; use Tcl.Strings;
 -- FUNCTION
 -- Provides code for manipulate Tk widget labelframe
 -- SOURCE
-package Tk.Labelframe is
+package Tk.Labelframe with
+   SPARK_Mode
+is
+   pragma Elaborate_Body;
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -88,19 +91,9 @@ package Tk.Labelframe is
    -- SOURCE
    overriding procedure Configure
      (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) with
-      Pre => Frame_Widget /= Null_Widget,
+      Pre'Class => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_Label_Frame", Mode => Nominal);
       -- ****
-
-      -- ****d* Labelframe/Labelframe.Default_Frame_Options
-      -- FUNCTION
-      -- Default options for frame widget
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- SOURCE
-   Default_Frame_Options: constant Label_Frame_Options :=
-     Label_Frame_Options'(others => <>);
-   -- ****
 
    -- ****s* Labelframe/Labelframe.Frame_Create_Options
    -- FUNCTION
@@ -147,7 +140,7 @@ package Tk.Labelframe is
      (Path_Name: String; Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Label_Frame with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Label_Frame1", Mode => Nominal);
       -- ****
@@ -181,7 +174,7 @@ package Tk.Labelframe is
      (Frame_Widget: out Tk_Label_Frame; Path_Name: String;
       Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Label_Frame2", Mode => Nominal);
    -- ****
@@ -204,18 +197,9 @@ package Tk.Labelframe is
    -- SOURCE
    function Get_Options
      (Frame_Widget: Tk_Label_Frame) return Label_Frame_Create_Options with
-      Pre => Frame_Widget /= Null_Widget,
+      Pre'Class => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_Label_Frame", Mode => Nominal);
       -- ****
 
-      -- ****d* Labelframe/Labelframe.Default_Label_Frame_Create_Options
-      -- FUNCTION
-      -- Default options used during creating lableframe widget
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- SOURCE
-   Default_Label_Frame_Create_Options: constant Label_Frame_Create_Options :=
-     Label_Frame_Create_Options'(others => <>);
-     -- ****
    --## rule on REDUCEABLE_SCOPE
 end Tk.Labelframe;
