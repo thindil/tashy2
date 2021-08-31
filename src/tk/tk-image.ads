@@ -19,7 +19,9 @@ with Tcl.Strings; use Tcl.Strings;
 -- FUNCTION
 -- Provides code for manipulate Tk images
 -- SOURCE
-package Tk.Image is
+package Tk.Image with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
