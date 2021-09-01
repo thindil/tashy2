@@ -21,46 +21,35 @@ with System;
 with Tcl; use Tcl;
 with Tcl.Commands; use Tcl.Commands;
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Lists; use Tcl.Lists;
 with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
 
 package body CalculatorCommands is
 
-   -- ****o* CalculatorCommands/CalculatorCommands.On_Click
+   -- ****if* CalculatorCommands/CalculatorCommands.Click_Action
    -- FUNCTION
    -- Update display with the pressed button text or count its expression if
-   -- button equal was pressed
+   -- button equal was pressed. It is moved from On_Click function so it can
+   -- be checked by SPARK
    -- PARAMETERS
-   -- Unused_Client_Data - Optional data passed to the function.
-   -- Interpreter        - Tcl interpreter on which the command was invoked.
-   -- Unused_Argc        - The amount of arguments passed to the command.
-   -- Argv               - The array of arguments passed to the command
+   -- Arguments   - The arguments sent to the Tcl command when button was
+   --               pressed
+   -- Interpreter - The Tcl interpreter on which the button was clicked
    -- RESULT
    -- This function always return TCL_OK
-   -- COMMANDS
-   -- OnClick buttonpath displaypath
-   -- Buttonpath is Tk path name for the button which was clicked, displaypath
-   -- is the Tk path name for the calculator display widget
    -- SOURCE
-   function On_Click
-     (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
-      Unused_Argc: Positive; Argv: Argv_Pointer.Pointer)
-      return Tcl_Results with
-      Convention => C;
+   function Click_Action
+     (Arguments: Array_List; Interpreter: Tcl_Interpreter)
+      return Tcl_Results with SPARK_Mode is
       -- ****
-
-   function On_Click
-     (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
-      Unused_Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results is
       Button: constant Ttk_Button :=
         Get_Widget
-          (Path_Name => Get_Argument(Arguments_Pointer => Argv, Index => 1),
-           Interpreter => Interpreter);
+          (Path_Name => To_String(Arguments(1)), Interpreter => Interpreter);
       Display_Label: constant Ttk_Label :=
         Get_Widget
-          (Path_Name => Get_Argument(Arguments_Pointer => Argv, Index => 2),
-           Interpreter => Interpreter);
+          (Path_Name => To_String(Arguments(2)), Interpreter => Interpreter);
       Label_Options: Ttk_Label_Options := Get_Options(Label => Display_Label);
       Button_Options: constant Ttk_Button_Options :=
         Get_Options(Button => Button);
@@ -187,6 +176,40 @@ package body CalculatorCommands is
          Options =>
            (Text => Label_Options.Text & Button_Options.Text, others => <>));
       return TCL_OK;
+   end Click_Action;
+
+   -- ****o* CalculatorCommands/CalculatorCommands.On_Click
+   -- FUNCTION
+   -- Update display with the pressed button text or count its expression if
+   -- button equal was pressed
+   -- PARAMETERS
+   -- Unused_Client_Data - Optional data passed to the function.
+   -- Interpreter        - Tcl interpreter on which the command was invoked.
+   -- Unused_Argc        - The amount of arguments passed to the command.
+   -- Argv               - The array of arguments passed to the command
+   -- RESULT
+   -- This function always return TCL_OK
+   -- COMMANDS
+   -- OnClick buttonpath displaypath
+   -- Buttonpath is Tk path name for the button which was clicked, displaypath
+   -- is the Tk path name for the calculator display widget
+   -- SOURCE
+   function On_Click
+     (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
+      Unused_Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results with
+      Convention => C;
+      -- ****
+
+   function On_Click
+     (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
+      Unused_Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results is
+      Arguments: Array_List(1 .. 2);
+   begin
+      Get_Tcl_Arguments_Loop :
+      for I in Arguments'Range loop
+         Arguments(I) := To_Tcl_String(Get_Argument(Argv, I));
+      end loop Get_Tcl_Arguments_Loop;
+      return Click_Action(Arguments, Interpreter);
    end On_Click;
 
       -- ****o* CalculatorCommands/CalculatorCommands.Clear_Display
