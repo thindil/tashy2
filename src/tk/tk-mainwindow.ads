@@ -18,7 +18,9 @@ with Tk.TopLevel;
 -- FUNCTION
 -- Provides code for manipulate Tk main window widget
 -- SOURCE
-package Tk.MainWindow is
+package Tk.MainWindow with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
