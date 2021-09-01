@@ -20,7 +20,9 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget ttk::labelframe
 -- SOURCE
-package Tk.TtkLabelFrame is
+package Tk.TtkLabelFrame with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -57,15 +59,15 @@ package Tk.TtkLabelFrame is
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Label_Frame_Options is new Ttk_Widget_Options with record
-      Border_Width: Pixel_Data;
-      Height: Pixel_Data;
-      Label_Anchor: Anchor_Directions;
+      Border_Width: Pixel_Data := Empty_Pixel_Data;
+      Height: Pixel_Data := Empty_Pixel_Data;
+      Label_Anchor: Anchor_Directions := NONE;
       Label_Widget: Tk_Widget := Null_Widget;
-      Padding: Padding_Data;
-      Relief: Relief_Type;
-      Text: Tcl_String;
-      Underline: Extended_Natural;
-      Width: Pixel_Data;
+      Padding: Padding_Data := Empty_Padding_Data;
+      Relief: Relief_Type := NONE;
+      Text: Tcl_String := Null_Tcl_String;
+      Underline: Extended_Natural := -1;
+      Width: Pixel_Data := Empty_Pixel_Data;
    end record;
    -- ****
 
@@ -87,7 +89,7 @@ package Tk.TtkLabelFrame is
    -- SOURCE
    procedure Configure
      (Frame_Widget: Ttk_Label_Frame; Options: Ttk_Label_Frame_Options) with
-      Pre => Frame_Widget /= Null_Widget,
+      Pre'Class => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TtkLabelFrame", Mode => Nominal);
       -- ****
 
@@ -116,7 +118,7 @@ package Tk.TtkLabelFrame is
      (Path_Name: String; Options: Ttk_Label_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Ttk_Label_Frame with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabelFrame1", Mode => Nominal);
       -- ****
@@ -150,7 +152,7 @@ package Tk.TtkLabelFrame is
      (Frame_Widget: out Ttk_Label_Frame; Path_Name: String;
       Options: Ttk_Label_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabelFrame2", Mode => Nominal);
    -- ****
@@ -173,7 +175,7 @@ package Tk.TtkLabelFrame is
    -- SOURCE
    function Get_Options
      (Frame_Widget: Ttk_Label_Frame) return Ttk_Label_Frame_Options with
-      Pre => Frame_Widget /= Null_Widget,
+      Pre'Class => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TtkLabelFrame", Mode => Nominal);
       -- ****
 
