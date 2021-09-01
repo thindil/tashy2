@@ -20,7 +20,9 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget ttk::entry
 -- SOURCE
-package Tk.TtkEntry is
+package Tk.TtkEntry with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -117,15 +119,15 @@ package Tk.TtkEntry is
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Entry_Options is new Ttk_Widget_Options with record
-      X_Scroll_Command: Tcl_String;
-      Export_Selection: Extended_Boolean;
-      Invalid_Command: Tcl_String;
-      Justify: Justify_Type;
-      Show: Extended_Boolean;
-      State: Entry_State_Type;
-      Text_Variable: Tcl_String;
-      Validation: Validate_Type;
-      Validate_Command: Tcl_String;
+      X_Scroll_Command: Tcl_String := Null_Tcl_String;
+      Export_Selection: Extended_Boolean := NONE;
+      Invalid_Command: Tcl_String := Null_Tcl_String;
+      Justify: Justify_Type := NONE;
+      Show: Extended_Boolean := NONE;
+      State: Entry_State_Type := NONE;
+      Text_Variable: Tcl_String := Null_Tcl_String;
+      Validation: Validate_Type := EMPTY;
+      Validate_Command: Tcl_String := Null_Tcl_String;
       Width: Natural := 0;
    end record;
    -- ****
@@ -243,7 +245,7 @@ package Tk.TtkEntry is
    function Create
      (Path_Name: String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkEntry1", Mode => Nominal);
       -- ****
@@ -277,7 +279,7 @@ package Tk.TtkEntry is
      (Entry_Widget: out Ttk_Entry; Path_Name: String;
       Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkEntry2", Mode => Nominal);
       -- ****
@@ -300,7 +302,7 @@ package Tk.TtkEntry is
       -- Entry_Widget configure
       -- SOURCE
    function Get_Options(Entry_Widget: Ttk_Entry) return Ttk_Entry_Options with
-      Pre => Entry_Widget /= Null_Widget,
+      Pre'Class => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Get_Options_TtkEntry", Mode => Nominal);
       -- ****
 
@@ -322,7 +324,7 @@ package Tk.TtkEntry is
       -- SOURCE
    procedure Configure
      (Entry_Widget: Ttk_Entry; Options: Ttk_Entry_Options) with
-      Pre => Entry_Widget /= Null_Widget,
+      Pre'Class => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Configure_TtkEntry", Mode => Nominal);
       -- ****
 
