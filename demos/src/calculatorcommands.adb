@@ -21,7 +21,6 @@ with System;
 with Tcl; use Tcl;
 with Tcl.Commands; use Tcl.Commands;
 with Tcl.Strings; use Tcl.Strings;
-with Tcl.Lists; use Tcl.Lists;
 with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
@@ -34,22 +33,20 @@ package body CalculatorCommands is
    -- button equal was pressed. It is moved from On_Click function so it can
    -- be checked by SPARK
    -- PARAMETERS
-   -- Arguments   - The arguments sent to the Tcl command when button was
-   --               pressed
    -- Interpreter - The Tcl interpreter on which the button was clicked
    -- RESULT
    -- This function always return TCL_OK
    -- SOURCE
    function Click_Action
-     (Arguments: Array_List; Interpreter: Tcl_Interpreter)
-      return Tcl_Results with SPARK_Mode is
+     (ButtonName, LabelName: String; Interpreter: Tcl_Interpreter)
+      return Tcl_Results with
+      SPARK_Mode
+   is
       -- ****
       Button: constant Ttk_Button :=
-        Get_Widget
-          (Path_Name => To_String(Arguments(1)), Interpreter => Interpreter);
+        Get_Widget(Path_Name => ButtonName, Interpreter => Interpreter);
       Display_Label: constant Ttk_Label :=
-        Get_Widget
-          (Path_Name => To_String(Arguments(2)), Interpreter => Interpreter);
+        Get_Widget(Path_Name => LabelName, Interpreter => Interpreter);
       Label_Options: Ttk_Label_Options := Get_Options(Label => Display_Label);
       Button_Options: constant Ttk_Button_Options :=
         Get_Options(Button => Button);
@@ -196,20 +193,18 @@ package body CalculatorCommands is
    -- SOURCE
    function On_Click
      (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
-      Unused_Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results with
+      Unused_Argc: Positive; Argv: Argv_Pointer.Pointer)
+      return Tcl_Results with
       Convention => C;
       -- ****
 
    function On_Click
      (Unused_Client_Data: System.Address; Interpreter: Tcl_Interpreter;
       Unused_Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results is
-      Arguments: Array_List(1 .. 2);
    begin
-      Get_Tcl_Arguments_Loop :
-      for I in Arguments'Range loop
-         Arguments(I) := To_Tcl_String(Get_Argument(Argv, I));
-      end loop Get_Tcl_Arguments_Loop;
-      return Click_Action(Arguments, Interpreter);
+      return
+        Click_Action
+          (Get_Argument(Argv, 1), Get_Argument(Argv, 2), Interpreter);
    end On_Click;
 
       -- ****o* CalculatorCommands/CalculatorCommands.Clear_Display
