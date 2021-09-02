@@ -20,7 +20,9 @@ with Tcl.Strings; use Tcl.Strings;
 -- FUNCTION
 -- Provide code for manipulate Tk widgets. Parent of the all widget.
 -- SOURCE
-package Tk.Widget is
+package Tk.Widget with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -323,7 +325,8 @@ package Tk.Widget is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   Empty_Widgets_Array: constant Widgets_Array(1 .. 0) := (others => <>);
+   Empty_Widgets_Array: constant Widgets_Array(1 .. 0) :=
+     (others => Null_Widget);
    -- ****
 
    -- ****s* Widget/Widget.Horizontal_Pad_Data
@@ -612,6 +615,7 @@ package Tk.Widget is
    function Tk_Path_Name(Widgt: Tk_Widget) return String with
       Pre => Widgt /= Null_Widget,
       Post => Tk_Path_Name'Result'Length > 0,
+      Global => null,
       Test_Case => (Name => "Test_Tk_PathName", Mode => Nominal);
    -- ****
 
@@ -630,6 +634,8 @@ package Tk.Widget is
    -- SOURCE
    function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter with
       Pre => Widgt /= Null_Widget,
+      Post => Tk_Interp'Result /= Null_Interpreter,
+      Global => null,
       Test_Case => (Name => "Test_Tk_Interp", Mode => Nominal),
       Import,
       Convention => C,
