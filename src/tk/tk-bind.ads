@@ -252,7 +252,8 @@ is
       KEY_META_R, KEY_ALT_L, KEY_ALT_R, KEY_SUPER_L, KEY_SUPER_R, KEY_HYPER_L,
       KEY_HYPER_R, KEY_DELETE);
 
-   function Modifier_Type_Image(Modifier: Modifiers_Type) return String;
+   function Modifier_Type_Image(Modifier: Modifiers_Type) return String with
+      Test_Case => (Name => "Test_Modifier_Type_Image", Mode => Robustness);
 
    procedure Bind
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
