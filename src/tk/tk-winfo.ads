@@ -20,7 +20,9 @@ with Tcl.Lists; use Tcl.Lists;
 -- Provide bindings for Tk command winfo (information about the selected
 -- widget)
 -- SOURCE
-package Tk.Winfo is
+package Tk.Winfo with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -134,7 +136,8 @@ package Tk.Winfo is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   Empty_Visual_List: constant Visuals_List(1 .. 0) := (others => <>);
+   Empty_Visual_List: constant Visuals_List(1 .. 0) :=
+     (others => Default_Visual);
    -- ****
 
    -- ****f* Winfo/Winfo.Atom
