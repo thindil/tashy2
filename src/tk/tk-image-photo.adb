@@ -171,42 +171,41 @@ package body Tk.Image.Photo is
              (Get_Option
                 (Photo_Image => Photo_Image, Name => "width",
                  Interpreter => Interpreter));
-         if Slash_Index = 0 then
-            Options.Palette.Red := Shades_Range'Value(Result);
-         else
-            --## rule off IMPROPER_INITIALIZATION
-            Get_Palette_Block :
-            declare
-               Result_Palette: Shades_Type
-                 (Grayscale => (if Slash_Index = 0 then True else False));
-            begin
-               if Slash_Index = 0 then
+         --## rule off IMPROPER_INITIALIZATION
+         Get_Palette_Block :
+         declare
+            Result_Palette: Shades_Type
+              (Grayscale => (if Slash_Index = 0 then True else False));
+         begin
+            if Slash_Index = 0 then
+               if Result'Length > 0 then
                   Result_Palette.Gray := Shades_Range'Value(Result);
                else
-                  Result_Palette.Red :=
-                    Shades_Range'Value
-                      (Result(Result'First .. Slash_Index - 1));
-                  Result_Palette.Green :=
-                    Shades_Range'Value
-                      (Result
-                         (Slash_Index + 1 ..
-                              Index
-                                (Source => Result, Pattern => "/",
-                                 From => Slash_Index + 1) -
-                              1));
-                  Result_Palette.Blue :=
-                    Shades_Range'Value
-                      (Result
-                         (Index
-                              (Source => Result, Pattern => "/",
-                               Going => Backward) +
-                            1 ..
-                              Result'Last));
+                  Result_Palette.Gray := -1;
                end if;
-               Options.Palette := Result_Palette;
-            end Get_Palette_Block;
-            --## rule on IMPROPER_INITIALIZATION
-         end if;
+            else
+               Result_Palette.Red :=
+                 Shades_Range'Value(Result(Result'First .. Slash_Index - 1));
+               Result_Palette.Green :=
+                 Shades_Range'Value
+                   (Result
+                      (Slash_Index + 1 ..
+                           Index
+                             (Source => Result, Pattern => "/",
+                              From => Slash_Index + 1) -
+                           1));
+               Result_Palette.Blue :=
+                 Shades_Range'Value
+                   (Result
+                      (Index
+                           (Source => Result, Pattern => "/",
+                            Going => Backward) +
+                         1 ..
+                           Result'Last));
+            end if;
+            Options.Palette := Result_Palette;
+         end Get_Palette_Block;
+         --## rule on IMPROPER_INITIALIZATION
       end return;
    end Get_Options;
 
