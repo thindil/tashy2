@@ -64,8 +64,9 @@ package body Tk.Bind.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (Modifier_Type_Image(BUTTON_1) = "Button-1",
+         "Failed to get Image of Modifier_Type.");
 
 --  begin read only
    end Test_Modifier_Type_Image_test_modifier_type_image;
