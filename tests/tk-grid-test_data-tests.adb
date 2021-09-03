@@ -205,11 +205,13 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Anchor_3fef99_19ef1e
+   function Wrap_Test_Get_Anchor_3fef99_b06609
      (Master: Tk_Widget) return Directions_Type is
    begin
       begin
-         pragma Assert(Master /= Null_Widget);
+         pragma Assert
+           (Master /= Null_Widget
+            or else Tk_Interp(Widgt => Master) /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -218,7 +220,7 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Anchor2 test requirement violated");
       end;
       declare
-         Test_Get_Anchor_3fef99_19ef1e_Result: constant Directions_Type :=
+         Test_Get_Anchor_3fef99_b06609_Result: constant Directions_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Anchor(Master);
       begin
          begin
@@ -230,19 +232,19 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Anchor2 test commitment violated");
          end;
-         return Test_Get_Anchor_3fef99_19ef1e_Result;
+         return Test_Get_Anchor_3fef99_b06609_Result;
       end;
-   end Wrap_Test_Get_Anchor_3fef99_19ef1e;
+   end Wrap_Test_Get_Anchor_3fef99_b06609;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Anchor_test_anchor2(Gnattest_T: in out Test);
-   procedure Test_Get_Anchor_3fef99_19ef1e(Gnattest_T: in out Test) renames
+   procedure Test_Get_Anchor_3fef99_b06609(Gnattest_T: in out Test) renames
      Test_Get_Anchor_test_anchor2;
 --  id:2.2/3fef99fba2d1c85d/Get_Anchor/1/0/test_anchor2/
    procedure Test_Get_Anchor_test_anchor2(Gnattest_T: in out Test) is
       function Get_Anchor(Master: Tk_Widget) return Directions_Type renames
-        Wrap_Test_Get_Anchor_3fef99_19ef1e;
+        Wrap_Test_Get_Anchor_3fef99_b06609;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

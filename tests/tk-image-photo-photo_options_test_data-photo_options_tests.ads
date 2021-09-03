@@ -12,19 +12,19 @@ package Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
      .Test_Photo_Options with
    null record;
 
-   procedure Test_Create_22037c_edee6e(Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:224:4:Create:Tests_Create_Photo
+   procedure Test_Create_22037c_8377bb(Gnattest_T: in out Test_Photo_Options);
+   --  tk-image-photo.ads:226:4:Create:Tests_Create_Photo
 
-   procedure Test_Create_fa334a_af82af(Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:250:4:Create:Tests_Create2_Photo
+   procedure Test_Create_fa334a_6f3d65(Gnattest_T: in out Test_Photo_Options);
+   --  tk-image-photo.ads:252:4:Create:Tests_Create2_Photo
 
-   procedure Test_Configure_6e2ac0_325e32
+   procedure Test_Configure_6e2ac0_462460
      (Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:297:4:Configure:Tests_Configure_Photo
+   --  tk-image-photo.ads:299:4:Configure:Tests_Configure_Photo
 
-   procedure Test_Get_Options_5c7a9c_6cc0f7
+   procedure Test_Get_Options_5c7a9c_d39689
      (Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:356:4:Get_Options:Tests_Get_Options_Photo
+   --  tk-image-photo.ads:358:4:Get_Options:Tests_Get_Options_Photo
 
 end Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests;
 --  end read only

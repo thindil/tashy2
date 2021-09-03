@@ -31,11 +31,11 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_380f02
+   procedure Wrap_Test_Configure_0076be_f3ea46
      (Frame_Widget: Ttk_Frame; Options: Ttk_Frame_Options) is
    begin
       begin
-         pragma Assert(Frame_Widget /= Null_Widget);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -54,13 +54,13 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
               (False,
                "ens_sloc(tk-ttkframe.ads:0:):Test_Configure_Frame test commitment violated");
       end;
-   end Wrap_Test_Configure_0076be_380f02;
+   end Wrap_Test_Configure_0076be_f3ea46;
 --  end read only
 
 --  begin read only
    procedure Test_Configure_test_configure_frame
      (Gnattest_T: in out Test_Ttk_Frame_Options);
-   procedure Test_Configure_0076be_380f02
+   procedure Test_Configure_0076be_f3ea46
      (Gnattest_T: in out Test_Ttk_Frame_Options) renames
      Test_Configure_test_configure_frame;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_frame/
@@ -68,7 +68,7 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
      (Gnattest_T: in out Test_Ttk_Frame_Options) is
       procedure Configure
         (Frame_Widget: Ttk_Frame; Options: Ttk_Frame_Options) renames
-        Wrap_Test_Configure_0076be_380f02;
+        Wrap_Test_Configure_0076be_f3ea46;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -94,13 +94,12 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Create_32e405_f18995
+   function Wrap_Test_Create_32e405_d4efed
      (Path_Name: String; Options: Ttk_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Frame is
    begin
       begin
-         pragma Assert
-           (Path_Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -109,12 +108,12 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
                "req_sloc(tk-ttkframe.ads:0):Test_Create_Frame1 test requirement violated");
       end;
       declare
-         Test_Create_32e405_f18995_Result: constant Ttk_Frame :=
+         Test_Create_32e405_d4efed_Result: constant Ttk_Frame :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkFrame.Create
              (Path_Name, Options, Interpreter);
       begin
          begin
-            pragma Assert(Test_Create_32e405_f18995_Result /= Null_Widget);
+            pragma Assert(Test_Create_32e405_d4efed_Result /= Null_Widget);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -122,15 +121,15 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
                  (False,
                   "ens_sloc(tk-ttkframe.ads:0:):Test_Create_Frame1 test commitment violated");
          end;
-         return Test_Create_32e405_f18995_Result;
+         return Test_Create_32e405_d4efed_Result;
       end;
-   end Wrap_Test_Create_32e405_f18995;
+   end Wrap_Test_Create_32e405_d4efed;
 --  end read only
 
 --  begin read only
    procedure Test_1_Create_test_create_frame1
      (Gnattest_T: in out Test_Ttk_Frame_Options);
-   procedure Test_Create_32e405_f18995
+   procedure Test_Create_32e405_d4efed
      (Gnattest_T: in out Test_Ttk_Frame_Options) renames
      Test_1_Create_test_create_frame1;
 --  id:2.2/32e405543423d7b8/Create/1/0/test_create_frame1/
@@ -140,7 +139,7 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
         (Path_Name: String; Options: Ttk_Frame_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Ttk_Frame renames
-        Wrap_Test_Create_32e405_f18995;
+        Wrap_Test_Create_32e405_d4efed;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -163,14 +162,13 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Create_ebbdc1_94cd82
+   procedure Wrap_Test_Create_ebbdc1_e79b17
      (Frame_Widget: out Ttk_Frame; Path_Name: String;
       Options: Ttk_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert
-           (Path_Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -189,13 +187,13 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
               (False,
                "ens_sloc(tk-ttkframe.ads:0:):Test_Create_Frame2 test commitment violated");
       end;
-   end Wrap_Test_Create_ebbdc1_94cd82;
+   end Wrap_Test_Create_ebbdc1_e79b17;
 --  end read only
 
 --  begin read only
    procedure Test_2_Create_test_create_frame2
      (Gnattest_T: in out Test_Ttk_Frame_Options);
-   procedure Test_Create_ebbdc1_94cd82
+   procedure Test_Create_ebbdc1_e79b17
      (Gnattest_T: in out Test_Ttk_Frame_Options) renames
      Test_2_Create_test_create_frame2;
 --  id:2.2/ebbdc1934f0fa33d/Create/0/0/test_create_frame2/
@@ -205,7 +203,7 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
         (Frame_Widget: out Ttk_Frame; Path_Name: String;
          Options: Ttk_Frame_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Create_ebbdc1_94cd82;
+        Wrap_Test_Create_ebbdc1_e79b17;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -228,11 +226,11 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Options_ded36e_681455
+   function Wrap_Test_Get_Options_ded36e_ce77f0
      (Frame_Widget: Ttk_Frame) return Ttk_Frame_Options is
    begin
       begin
-         pragma Assert(Frame_Widget /= Null_Widget);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -241,7 +239,7 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
                "req_sloc(tk-ttkframe.ads:0):Test_Get_Options_Frame test requirement violated");
       end;
       declare
-         Test_Get_Options_ded36e_681455_Result: constant Ttk_Frame_Options :=
+         Test_Get_Options_ded36e_ce77f0_Result: constant Ttk_Frame_Options :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkFrame.Get_Options
              (Frame_Widget);
       begin
@@ -254,15 +252,15 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
                  (False,
                   "ens_sloc(tk-ttkframe.ads:0:):Test_Get_Options_Frame test commitment violated");
          end;
-         return Test_Get_Options_ded36e_681455_Result;
+         return Test_Get_Options_ded36e_ce77f0_Result;
       end;
-   end Wrap_Test_Get_Options_ded36e_681455;
+   end Wrap_Test_Get_Options_ded36e_ce77f0;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Options_test_get_options_frame
      (Gnattest_T: in out Test_Ttk_Frame_Options);
-   procedure Test_Get_Options_ded36e_681455
+   procedure Test_Get_Options_ded36e_ce77f0
      (Gnattest_T: in out Test_Ttk_Frame_Options) renames
      Test_Get_Options_test_get_options_frame;
 --  id:2.2/ded36e34d54c20f9/Get_Options/1/0/test_get_options_frame/
@@ -270,7 +268,7 @@ package body Tk.TtkFrame.Ttk_Frame_Options_Test_Data.Ttk_Frame_Options_Tests is
      (Gnattest_T: in out Test_Ttk_Frame_Options) is
       function Get_Options
         (Frame_Widget: Ttk_Frame) return Ttk_Frame_Options renames
-        Wrap_Test_Get_Options_ded36e_681455;
+        Wrap_Test_Get_Options_ded36e_ce77f0;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

@@ -32,11 +32,11 @@ package body Tk.Labelframe.Label_Frame_Options_Test_Data
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_84934b
+   procedure Wrap_Test_Configure_0076be_d66704
      (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) is
    begin
       begin
-         pragma Assert(Frame_Widget /= Null_Widget);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -55,13 +55,13 @@ package body Tk.Labelframe.Label_Frame_Options_Test_Data
               (False,
                "ens_sloc(tk-labelframe.ads:0:):Test_Configure_Label_Frame test commitment violated");
       end;
-   end Wrap_Test_Configure_0076be_84934b;
+   end Wrap_Test_Configure_0076be_d66704;
 --  end read only
 
 --  begin read only
    procedure Test_Configure_test_configure_label_frame
      (Gnattest_T: in out Test_Label_Frame_Options);
-   procedure Test_Configure_0076be_84934b
+   procedure Test_Configure_0076be_d66704
      (Gnattest_T: in out Test_Label_Frame_Options) renames
      Test_Configure_test_configure_label_frame;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_label_frame/
@@ -69,7 +69,7 @@ package body Tk.Labelframe.Label_Frame_Options_Test_Data
      (Gnattest_T: in out Test_Label_Frame_Options) is
       procedure Configure
         (Frame_Widget: Tk_Label_Frame; Options: Label_Frame_Options) renames
-        Wrap_Test_Configure_0076be_84934b;
+        Wrap_Test_Configure_0076be_d66704;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

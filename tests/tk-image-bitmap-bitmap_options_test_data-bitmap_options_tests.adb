@@ -31,13 +31,12 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Create_22037c_8bd2c6
+   procedure Wrap_Test_Create_22037c_81543e
      (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert
-           (Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -56,13 +55,13 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
               (False,
                "ens_sloc(tk-image-bitmap.ads:0:):Tests_Create_Bitmap test commitment violated");
       end;
-   end Wrap_Test_Create_22037c_8bd2c6;
+   end Wrap_Test_Create_22037c_81543e;
 --  end read only
 
 --  begin read only
    procedure Test_1_Create_tests_create_bitmap
      (Gnattest_T: in out Test_Bitmap_Options);
-   procedure Test_Create_22037c_8bd2c6
+   procedure Test_Create_22037c_81543e
      (Gnattest_T: in out Test_Bitmap_Options) renames
      Test_1_Create_tests_create_bitmap;
 --  id:2.2/22037c1fbc7ae682/Create/1/0/tests_create_bitmap/
@@ -71,7 +70,7 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
       procedure Create
         (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Create_22037c_8bd2c6;
+        Wrap_Test_Create_22037c_81543e;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -99,12 +98,12 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Create_fa334a_afeffb
+   function Wrap_Test_Create_fa334a_79ca4a
      (Options: Bitmap_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Image is
    begin
       begin
-         pragma Assert(Interpreter /= Null_Interpreter);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -113,7 +112,7 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
                "req_sloc(tk-image-bitmap.ads:0):Tests_Create2_Bitmap test requirement violated");
       end;
       declare
-         Test_Create_fa334a_afeffb_Result: constant Tk_Image :=
+         Test_Create_fa334a_79ca4a_Result: constant Tk_Image :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Bitmap.Create
              (Options, Interpreter);
       begin
@@ -126,15 +125,15 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
                  (False,
                   "ens_sloc(tk-image-bitmap.ads:0:):Tests_Create2_Bitmap test commitment violated");
          end;
-         return Test_Create_fa334a_afeffb_Result;
+         return Test_Create_fa334a_79ca4a_Result;
       end;
-   end Wrap_Test_Create_fa334a_afeffb;
+   end Wrap_Test_Create_fa334a_79ca4a;
 --  end read only
 
 --  begin read only
    procedure Test_2_Create_tests_create2_bitmap
      (Gnattest_T: in out Test_Bitmap_Options);
-   procedure Test_Create_fa334a_afeffb
+   procedure Test_Create_fa334a_79ca4a
      (Gnattest_T: in out Test_Bitmap_Options) renames
      Test_2_Create_tests_create2_bitmap;
 --  id:2.2/fa334a87cdcf0776/Create/0/0/tests_create2_bitmap/
@@ -144,7 +143,7 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
         (Options: Bitmap_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tk_Image renames
-        Wrap_Test_Create_fa334a_afeffb;
+        Wrap_Test_Create_fa334a_79ca4a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -169,13 +168,12 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Configure_6e2ac0_59fc30
+   procedure Wrap_Test_Configure_6e2ac0_d54688
      (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert
-           (Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -194,13 +192,13 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
               (False,
                "ens_sloc(tk-image-bitmap.ads:0:):Tests_Configure_Bitmap test commitment violated");
       end;
-   end Wrap_Test_Configure_6e2ac0_59fc30;
+   end Wrap_Test_Configure_6e2ac0_d54688;
 --  end read only
 
 --  begin read only
    procedure Test_Configure_tests_configure_bitmap
      (Gnattest_T: in out Test_Bitmap_Options);
-   procedure Test_Configure_6e2ac0_59fc30
+   procedure Test_Configure_6e2ac0_d54688
      (Gnattest_T: in out Test_Bitmap_Options) renames
      Test_Configure_tests_configure_bitmap;
 --  id:2.2/6e2ac08c4cd9ce38/Configure/1/0/tests_configure_bitmap/
@@ -209,7 +207,7 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
       procedure Configure
         (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Configure_6e2ac0_59fc30;
+        Wrap_Test_Configure_6e2ac0_d54688;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -232,13 +230,12 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Options_5c7a9c_1a3561
+   function Wrap_Test_Get_Options_5c7a9c_cd346b
      (Bitmap_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Bitmap_Options is
    begin
       begin
-         pragma Assert
-           (Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -247,7 +244,7 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
                "req_sloc(tk-image-bitmap.ads:0):Tests_Get_Options_Bitmap test requirement violated");
       end;
       declare
-         Test_Get_Options_5c7a9c_1a3561_Result: constant Bitmap_Options :=
+         Test_Get_Options_5c7a9c_cd346b_Result: constant Bitmap_Options :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Bitmap.Get_Options
              (Bitmap_Image, Interpreter);
       begin
@@ -260,15 +257,15 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
                  (False,
                   "ens_sloc(tk-image-bitmap.ads:0:):Tests_Get_Options_Bitmap test commitment violated");
          end;
-         return Test_Get_Options_5c7a9c_1a3561_Result;
+         return Test_Get_Options_5c7a9c_cd346b_Result;
       end;
-   end Wrap_Test_Get_Options_5c7a9c_1a3561;
+   end Wrap_Test_Get_Options_5c7a9c_cd346b;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Options_tests_get_options_bitmap
      (Gnattest_T: in out Test_Bitmap_Options);
-   procedure Test_Get_Options_5c7a9c_1a3561
+   procedure Test_Get_Options_5c7a9c_cd346b
      (Gnattest_T: in out Test_Bitmap_Options) renames
      Test_Get_Options_tests_get_options_bitmap;
 --  id:2.2/5c7a9c2ff87b2567/Get_Options/1/0/tests_get_options_bitmap/
@@ -278,7 +275,7 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
         (Bitmap_Image: Tk_Image;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Bitmap_Options renames
-        Wrap_Test_Get_Options_5c7a9c_1a3561;
+        Wrap_Test_Get_Options_5c7a9c_cd346b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

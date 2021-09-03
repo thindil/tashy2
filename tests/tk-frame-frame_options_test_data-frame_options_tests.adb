@@ -31,11 +31,11 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_380f02
+   procedure Wrap_Test_Configure_0076be_f3ea46
      (Frame_Widget: Tk_Frame; Options: Frame_Options) is
    begin
       begin
-         pragma Assert(Frame_Widget /= Null_Widget);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -54,13 +54,13 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
               (False,
                "ens_sloc(tk-frame.ads:0:):Test_Configure_Frame test commitment violated");
       end;
-   end Wrap_Test_Configure_0076be_380f02;
+   end Wrap_Test_Configure_0076be_f3ea46;
 --  end read only
 
 --  begin read only
    procedure Test_Configure_test_configure_frame
      (Gnattest_T: in out Test_Frame_Options);
-   procedure Test_Configure_0076be_380f02
+   procedure Test_Configure_0076be_f3ea46
      (Gnattest_T: in out Test_Frame_Options) renames
      Test_Configure_test_configure_frame;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_frame/
@@ -68,7 +68,7 @@ package body Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
      (Gnattest_T: in out Test_Frame_Options) is
       procedure Configure
         (Frame_Widget: Tk_Frame; Options: Frame_Options) renames
-        Wrap_Test_Configure_0076be_380f02;
+        Wrap_Test_Configure_0076be_f3ea46;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

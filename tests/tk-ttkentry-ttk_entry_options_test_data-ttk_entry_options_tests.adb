@@ -31,13 +31,12 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Create_32e405_754d98
+   function Wrap_Test_Create_32e405_07cbb0
      (Path_Name: String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry is
    begin
       begin
-         pragma Assert
-           (Path_Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -46,12 +45,12 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
                "req_sloc(tk-ttkentry.ads:0):Test_Create_TtkEntry1 test requirement violated");
       end;
       declare
-         Test_Create_32e405_754d98_Result: constant Ttk_Entry :=
+         Test_Create_32e405_07cbb0_Result: constant Ttk_Entry :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Create
              (Path_Name, Options, Interpreter);
       begin
          begin
-            pragma Assert(Test_Create_32e405_754d98_Result /= Null_Widget);
+            pragma Assert(Test_Create_32e405_07cbb0_Result /= Null_Widget);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -59,15 +58,15 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
                  (False,
                   "ens_sloc(tk-ttkentry.ads:0:):Test_Create_TtkEntry1 test commitment violated");
          end;
-         return Test_Create_32e405_754d98_Result;
+         return Test_Create_32e405_07cbb0_Result;
       end;
-   end Wrap_Test_Create_32e405_754d98;
+   end Wrap_Test_Create_32e405_07cbb0;
 --  end read only
 
 --  begin read only
    procedure Test_1_Create_test_create_ttkentry1
      (Gnattest_T: in out Test_Ttk_Entry_Options);
-   procedure Test_Create_32e405_754d98
+   procedure Test_Create_32e405_07cbb0
      (Gnattest_T: in out Test_Ttk_Entry_Options) renames
      Test_1_Create_test_create_ttkentry1;
 --  id:2.2/32e405543423d7b8/Create/1/0/test_create_ttkentry1/
@@ -77,7 +76,7 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
         (Path_Name: String; Options: Ttk_Entry_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Ttk_Entry renames
-        Wrap_Test_Create_32e405_754d98;
+        Wrap_Test_Create_32e405_07cbb0;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -100,14 +99,13 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Create_ebbdc1_4965ea
+   procedure Wrap_Test_Create_ebbdc1_917a97
      (Entry_Widget: out Ttk_Entry; Path_Name: String;
       Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
-         pragma Assert
-           (Path_Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -126,13 +124,13 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
               (False,
                "ens_sloc(tk-ttkentry.ads:0:):Test_Create_TtkEntry2 test commitment violated");
       end;
-   end Wrap_Test_Create_ebbdc1_4965ea;
+   end Wrap_Test_Create_ebbdc1_917a97;
 --  end read only
 
 --  begin read only
    procedure Test_2_Create_test_create_ttkentry2
      (Gnattest_T: in out Test_Ttk_Entry_Options);
-   procedure Test_Create_ebbdc1_4965ea
+   procedure Test_Create_ebbdc1_917a97
      (Gnattest_T: in out Test_Ttk_Entry_Options) renames
      Test_2_Create_test_create_ttkentry2;
 --  id:2.2/ebbdc1934f0fa33d/Create/0/0/test_create_ttkentry2/
@@ -142,7 +140,7 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
         (Entry_Widget: out Ttk_Entry; Path_Name: String;
          Options: Ttk_Entry_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Create_ebbdc1_4965ea;
+        Wrap_Test_Create_ebbdc1_917a97;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -165,11 +163,11 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Options_ded36e_b6e91d
+   function Wrap_Test_Get_Options_ded36e_af90f3
      (Entry_Widget: Ttk_Entry) return Ttk_Entry_Options is
    begin
       begin
-         pragma Assert(Entry_Widget /= Null_Widget);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -178,7 +176,7 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
                "req_sloc(tk-ttkentry.ads:0):Test_Get_Options_TtkEntry test requirement violated");
       end;
       declare
-         Test_Get_Options_ded36e_b6e91d_Result: constant Ttk_Entry_Options :=
+         Test_Get_Options_ded36e_af90f3_Result: constant Ttk_Entry_Options :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkEntry.Get_Options
              (Entry_Widget);
       begin
@@ -191,15 +189,15 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
                  (False,
                   "ens_sloc(tk-ttkentry.ads:0:):Test_Get_Options_TtkEntry test commitment violated");
          end;
-         return Test_Get_Options_ded36e_b6e91d_Result;
+         return Test_Get_Options_ded36e_af90f3_Result;
       end;
-   end Wrap_Test_Get_Options_ded36e_b6e91d;
+   end Wrap_Test_Get_Options_ded36e_af90f3;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Options_test_get_options_ttkentry
      (Gnattest_T: in out Test_Ttk_Entry_Options);
-   procedure Test_Get_Options_ded36e_b6e91d
+   procedure Test_Get_Options_ded36e_af90f3
      (Gnattest_T: in out Test_Ttk_Entry_Options) renames
      Test_Get_Options_test_get_options_ttkentry;
 --  id:2.2/ded36e34d54c20f9/Get_Options/1/0/test_get_options_ttkentry/
@@ -207,7 +205,7 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
      (Gnattest_T: in out Test_Ttk_Entry_Options) is
       function Get_Options
         (Entry_Widget: Ttk_Entry) return Ttk_Entry_Options renames
-        Wrap_Test_Get_Options_ded36e_b6e91d;
+        Wrap_Test_Get_Options_ded36e_af90f3;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -232,11 +230,11 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Configure_0076be_f010fa
+   procedure Wrap_Test_Configure_0076be_30574d
      (Entry_Widget: Ttk_Entry; Options: Ttk_Entry_Options) is
    begin
       begin
-         pragma Assert(Entry_Widget /= Null_Widget);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -255,13 +253,13 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
               (False,
                "ens_sloc(tk-ttkentry.ads:0:):Test_Configure_TtkEntry test commitment violated");
       end;
-   end Wrap_Test_Configure_0076be_f010fa;
+   end Wrap_Test_Configure_0076be_30574d;
 --  end read only
 
 --  begin read only
    procedure Test_Configure_test_configure_ttkentry
      (Gnattest_T: in out Test_Ttk_Entry_Options);
-   procedure Test_Configure_0076be_f010fa
+   procedure Test_Configure_0076be_30574d
      (Gnattest_T: in out Test_Ttk_Entry_Options) renames
      Test_Configure_test_configure_ttkentry;
 --  id:2.2/0076be6725db0897/Configure/1/0/test_configure_ttkentry/
@@ -269,7 +267,7 @@ package body Tk.TtkEntry.Ttk_Entry_Options_Test_Data.Ttk_Entry_Options_Tests is
      (Gnattest_T: in out Test_Ttk_Entry_Options) is
       procedure Configure
         (Entry_Widget: Ttk_Entry; Options: Ttk_Entry_Options) renames
-        Wrap_Test_Configure_0076be_f010fa;
+        Wrap_Test_Configure_0076be_30574d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

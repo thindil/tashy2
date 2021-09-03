@@ -304,7 +304,7 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Tk_Interp_37dfaa_a9040e
+   function Wrap_Test_Tk_Interp_37dfaa_4dad3f
      (Widgt: Tk_Widget) return Tcl_Interpreter is
    begin
       begin
@@ -317,11 +317,12 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Tk_Interp test requirement violated");
       end;
       declare
-         Test_Tk_Interp_37dfaa_a9040e_Result: constant Tcl_Interpreter :=
+         Test_Tk_Interp_37dfaa_4dad3f_Result: constant Tcl_Interpreter :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Tk_Interp(Widgt);
       begin
          begin
-            pragma Assert(True);
+            pragma Assert
+              (Test_Tk_Interp_37dfaa_4dad3f_Result /= Null_Interpreter);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -329,19 +330,19 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Tk_Interp test commitment violated");
          end;
-         return Test_Tk_Interp_37dfaa_a9040e_Result;
+         return Test_Tk_Interp_37dfaa_4dad3f_Result;
       end;
-   end Wrap_Test_Tk_Interp_37dfaa_a9040e;
+   end Wrap_Test_Tk_Interp_37dfaa_4dad3f;
 --  end read only
 
 --  begin read only
    procedure Test_Tk_Interp_test_tk_interp(Gnattest_T: in out Test);
-   procedure Test_Tk_Interp_37dfaa_a9040e(Gnattest_T: in out Test) renames
+   procedure Test_Tk_Interp_37dfaa_4dad3f(Gnattest_T: in out Test) renames
      Test_Tk_Interp_test_tk_interp;
 --  id:2.2/37dfaac7975d5a6d/Tk_Interp/1/0/test_tk_interp/
    procedure Test_Tk_Interp_test_tk_interp(Gnattest_T: in out Test) is
       function Tk_Interp(Widgt: Tk_Widget) return Tcl_Interpreter renames
-        Wrap_Test_Tk_Interp_37dfaa_a9040e;
+        Wrap_Test_Tk_Interp_37dfaa_4dad3f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

@@ -33,6 +33,45 @@ package body Tk.Bind.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
+   function Wrap_Test_Modifier_Type_Image_4c8acf_353f1d
+     (Modifier: Modifiers_Type) return String is
+   begin
+      declare
+         Test_Modifier_Type_Image_4c8acf_353f1d_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Bind.Modifier_Type_Image
+             (Modifier);
+      begin
+         return Test_Modifier_Type_Image_4c8acf_353f1d_Result;
+      end;
+   end Wrap_Test_Modifier_Type_Image_4c8acf_353f1d;
+--  end read only
+
+--  begin read only
+   procedure Test_Modifier_Type_Image_test_modifier_type_image
+     (Gnattest_T: in out Test);
+   procedure Test_Modifier_Type_Image_4c8acf_353f1d
+     (Gnattest_T: in out Test) renames
+     Test_Modifier_Type_Image_test_modifier_type_image;
+--  id:2.2/4c8acf146866aa03/Modifier_Type_Image/1/0/test_modifier_type_image/
+   procedure Test_Modifier_Type_Image_test_modifier_type_image
+     (Gnattest_T: in out Test) is
+      function Modifier_Type_Image
+        (Modifier: Modifiers_Type) return String renames
+        Wrap_Test_Modifier_Type_Image_4c8acf_353f1d;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Modifier_Type_Image_test_modifier_type_image;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Bind_04d206_6eb3e9
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) is
