@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
 with Tcl.Strings; use Tcl.Strings;
@@ -510,6 +511,32 @@ is
    Empty_Window_Geometry: constant Window_Geometry :=
      Window_Geometry'(others => 0);
      -- ****
+
+     -- ****t* Widget/Widget.Tk_Path_String
+     -- FUNCTION
+     -- The string used to set or get Tk path name for widgets. It must starts
+     -- with dot "." (which is name of the main window) and then can have only
+     -- letters, numbers and dots
+     -- HISTORY
+     -- 8.6.0 - Added
+     -- SOURCE
+   type Tk_Path_String is new String with
+      Dynamic_Predicate => Tk_Path_String'Length > 0
+      and then
+      (Tk_Path_String(Tk_Path_String'First) = '.' and
+       (for all I in Tk_Path_String'Range =>
+          Is_Alphanumeric(Item => Tk_Path_String(I)) or
+          Tk_Path_String(I) = '.'));
+      -- ****
+
+      -- ****d* Widget/Widget.Main_Window_Name
+      -- FUNCTION
+      -- The Tk path name of the main window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
+   Main_Window_Name: constant Tk_Path_String := ".";
+   -- ****
 
    -----------------------------------------------
    -- Various functions to convert types to String
