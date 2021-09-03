@@ -33,6 +33,8 @@ package body CalculatorCommands is
    -- button equal was pressed. It is moved from On_Click function so it can
    -- be checked by SPARK
    -- PARAMETERS
+   -- ButtonName  - The Tk path name of the button which was clicked
+   -- LabelName   - The Tk path name of the display label
    -- Interpreter - The Tcl interpreter on which the button was clicked
    -- RESULT
    -- This function always return TCL_OK
@@ -207,6 +209,29 @@ package body CalculatorCommands is
           (Get_Argument(Argv, 1), Get_Argument(Argv, 2), Interpreter);
    end On_Click;
 
+   -- ****if* CalculatorCommands/CalculatorCommands.Clear_Action
+   -- FUNCTION
+   -- Reset the calculator's display to it inital state. Show just zero
+   -- number. It is moved from On_Click function so it can be checked by SPARK
+   -- PARAMETERS
+   -- LabelName   - The name of display label to clear
+   -- Interpreter - The Tcl interpreter on which the button was clicked
+   -- RESULT
+   -- This function always return TCL_OK
+   -- SOURCE
+   function Clear_Action
+     (LabelName: String; Interpreter: Tcl_Interpreter) return Tcl_Results with
+      SPARK_Mode
+   is
+      Display_Label: constant Ttk_Label :=
+        Get_Widget(Path_Name => LabelName, Interpreter => Interpreter);
+   begin
+      Configure
+        (Label => Display_Label,
+         Options => (Text => To_Tcl_String(Source => "0"), others => <>));
+      return TCL_OK;
+   end Clear_Action;
+
       -- ****o* CalculatorCommands/CalculatorCommands.Clear_Display
       -- FUNCTION
       -- Reset the calculator's display to it inital state. Show just zero
@@ -231,15 +256,10 @@ package body CalculatorCommands is
      (Client_Data: System.Address; Interpreter: Tcl_Interpreter;
       Argc: Positive; Argv: Argv_Pointer.Pointer) return Tcl_Results is
       pragma Unreferenced(Client_Data, Argc);
-      Display_Label: constant Ttk_Label :=
-        Get_Widget
-          (Path_Name => Get_Argument(Arguments_Pointer => Argv, Index => 1),
-           Interpreter => Interpreter);
    begin
-      Configure
-        (Label => Display_Label,
-         Options => (Text => To_Tcl_String(Source => "0"), others => <>));
-      return TCL_OK;
+      return
+        Clear_Action
+          (Get_Argument(Arguments_Pointer => Argv, Index => 1), Interpreter);
    end Clear_Display;
 
    function Add_Commands return Boolean is
