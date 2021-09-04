@@ -132,7 +132,7 @@ package body Tk.Button is
    end Options_To_String;
 
    function Create
-     (Path_Name: String; Options: Button_Options;
+     (Path_Name: Tk_Path_String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button is
    begin
       Tcl_Eval
@@ -143,7 +143,8 @@ package body Tk.Button is
    end Create;
 
    procedure Create
-     (Button_Widget: out Tk_Button; Path_Name: String; Options: Button_Options;
+     (Button_Widget: out Tk_Button; Path_Name: Tk_Path_String;
+      Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Button_Widget :=

@@ -17,7 +17,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Tk.TopLevel is
 
    overriding function Create
-     (Path_Name: String; Options: Toplevel_Create_Options;
+     (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
@@ -86,7 +86,7 @@ package body Tk.TopLevel is
    end Create;
 
    overriding procedure Create
-     (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
+     (Toplevel_Widget: out Tk_Toplevel; Path_Name: Tk_Path_String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin

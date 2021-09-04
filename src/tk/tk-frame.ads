@@ -146,7 +146,7 @@ is
    -- frame Path_Name Options
    -- SOURCE
    function Create
-     (Path_Name: String; Options: Frame_Create_Options;
+     (Path_Name: Tk_Path_String; Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Frame with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
@@ -179,7 +179,7 @@ is
       -- frame Path_Name Options
       -- SOURCE
    procedure Create
-     (Frame_Widget: out Tk_Frame; Path_Name: String;
+     (Frame_Widget: out Tk_Frame; Path_Name: Tk_Path_String;
       Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,

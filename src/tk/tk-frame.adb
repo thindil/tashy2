@@ -17,7 +17,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Tk.Frame is
 
    function Create
-     (Path_Name: String; Options: Frame_Create_Options;
+     (Path_Name: Tk_Path_String; Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Frame is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
@@ -77,7 +77,7 @@ package body Tk.Frame is
    end Create;
 
    procedure Create
-     (Frame_Widget: out Tk_Frame; Path_Name: String;
+     (Frame_Widget: out Tk_Frame; Path_Name: Tk_Path_String;
       Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin

@@ -132,7 +132,7 @@ is
    -- toplevel Path_Name Options
    -- SOURCE
    overriding function Create
-     (Path_Name: String; Options: Toplevel_Create_Options;
+     (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
@@ -165,7 +165,7 @@ is
       -- toplevel Path_Name Options
       -- SOURCE
    overriding procedure Create
-     (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
+     (Toplevel_Widget: out Tk_Toplevel; Path_Name: Tk_Path_String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
