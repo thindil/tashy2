@@ -448,13 +448,16 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Widget is
+      Result: constant String :=
+        Execute_Widget_Command
+          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
    begin
+      if Result'Length = 0 then
+         return Null_Widget;
+      end if;
       return
         Get_Widget
-          (Path_Name =>
-             Execute_Widget_Command
-               (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name),
-           Interpreter => Tk_Interp(Widgt => Widgt));
+          (Path_Name => Result, Interpreter => Tk_Interp(Widgt => Widgt));
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Window is
