@@ -68,8 +68,8 @@ package body Tk.Widget is
    end Pixel_Data_Image;
 
    function Get_Widget
-     (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_Widget is
+     (Path_Name: Tk_Path_String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget is
       use Tk.MainWindow;
 
       function Tk_Name_To_Window
@@ -85,7 +85,7 @@ package body Tk.Widget is
            Tk_Win => Get_Main_Window(Interpreter => Interpreter));
    end Get_Widget;
 
-   function Tk_Path_Name(Widgt: Tk_Widget) return String is
+   function Tk_Path_Name(Widgt: Tk_Widget) return Tk_Path_String is
       function Get_Path_Name(Tk_Win: Tk_Widget) return chars_ptr with
          Import,
          Convention => C,

@@ -520,7 +520,7 @@ is
      -- HISTORY
      -- 8.6.0 - Added
      -- SOURCE
-   type Tk_Path_String is new String with
+   subtype Tk_Path_String is String with
       Dynamic_Predicate => Tk_Path_String'Length > 0
       and then
       (Tk_Path_String(Tk_Path_String'First) = '.' and
@@ -620,8 +620,8 @@ is
    -- My_Button: constant Tk_Widget := Get_Widget(".mybutton");
    -- SOURCE
    function Get_Widget
-     (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_Widget with
+     (Path_Name: Tk_Path_String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget with
       Pre => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Get_Widget", Mode => Nominal);
       -- ****
@@ -639,7 +639,7 @@ is
       -- -- Get the Tk path name of widget My_Button
       -- Path_Name: constant String := Tk_Path_Name(My_Button);
       -- SOURCE
-   function Tk_Path_Name(Widgt: Tk_Widget) return String with
+   function Tk_Path_Name(Widgt: Tk_Widget) return Tk_Path_String with
       Pre => Widgt /= Null_Widget,
       Post => Tk_Path_Name'Result'Length > 0,
       Global => null,

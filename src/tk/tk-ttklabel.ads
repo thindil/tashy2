@@ -114,7 +114,7 @@ is
    -- ttk::label Path_Name Options
    -- SOURCE
    function Create
-     (Path_Name: String; Options: Ttk_Label_Options;
+     (Path_Name: Tk_Path_String; Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
@@ -149,7 +149,8 @@ is
       -- ttk::label Path_Name Options
       -- SOURCE
    procedure Create
-     (Label: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
+     (Label: out Ttk_Label; Path_Name: Tk_Path_String;
+      Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Label /= Null_Widget,

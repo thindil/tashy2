@@ -93,7 +93,7 @@ package body Tk.TtkLabel is
    end Options_To_String;
 
    function Create
-     (Path_Name: String; Options: Ttk_Label_Options;
+     (Path_Name: Tk_Path_String; Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label is
    begin
       Tcl_Eval
@@ -105,7 +105,8 @@ package body Tk.TtkLabel is
    end Create;
 
    procedure Create
-     (Label: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
+     (Label: out Ttk_Label; Path_Name: Tk_Path_String;
+      Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Label :=
