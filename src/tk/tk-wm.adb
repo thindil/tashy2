@@ -755,14 +755,15 @@ package body Tk.Wm is
 
    function Get_Transient(Window: Tk_Widget) return Tk_Widget is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
-   begin
-      return
-        Get_Widget
-          (Path_Name =>
-             Tcl_Eval
-               (Tcl_Script => "wm transient " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter),
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "wm transient " & Tk_Path_Name(Widgt => Window),
            Interpreter => Interpreter);
+   begin
+      if Result'Length = 0 then
+         return Null_Widget;
+      end if;
+      return Get_Widget(Path_Name => Result, Interpreter => Interpreter);
    end Get_Transient;
 
    procedure Set_Transient(Window, Master: Tk_Widget) is
