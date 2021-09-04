@@ -21,6 +21,7 @@ package body Tk.Labelframe.Label_Frame_Options_Test_Data is
    end Set_Up;
 
    procedure Tear_Down(Gnattest_T: in out Test_Label_Frame_Options) is
+      Frame: Tk_Label_Frame;
    begin
       GNATtest_Generated.GNATtest_Standard.Tk.Frame.Frame_Options_Test_Data
         .Frame_Options_Tests
@@ -29,6 +30,10 @@ package body Tk.Labelframe.Label_Frame_Options_Test_Data is
            .Frame_Options_Tests
            .Test_Frame_Options
            (Gnattest_T));
+      Frame := Get_Widget(".myframe");
+      if Frame /= Null_Widget then
+         Destroy(Frame);
+      end if;
    end Tear_Down;
 
 end Tk.Labelframe.Label_Frame_Options_Test_Data;
