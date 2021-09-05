@@ -3,6 +3,8 @@
 --  automatically. Contents of this package can be modified in any way
 --  except for sections surrounded by a 'read only' marker.
 
+with Ada.Environment_Variables; use Ada.Environment_Variables;
+
 package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data is
 
    Local_Ttk_Label_Frame_Options: aliased GNATtest_Generated.GNATtest_Standard
@@ -35,6 +37,9 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data is
            .Ttk_Widget_Options_Tests
            .Test_Ttk_Widget_Options
            (Gnattest_T));
+      if Value("DISPLAY", "")'Length = 0 then
+         return;
+      end if;
       Frame := Get_Widget(".myframe");
       if Frame /= Null_Widget then
          Destroy(Frame);
