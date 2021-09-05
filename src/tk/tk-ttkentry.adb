@@ -106,7 +106,7 @@ package body Tk.TtkEntry is
    end Options_To_String;
 
    function Create
-     (Path_Name: String; Options: Ttk_Entry_Options;
+     (Path_Name: Tk_Path_String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry is
    begin
       Tcl_Eval
@@ -118,7 +118,7 @@ package body Tk.TtkEntry is
    end Create;
 
    procedure Create
-     (Entry_Widget: out Ttk_Entry; Path_Name: String;
+     (Entry_Widget: out Ttk_Entry; Path_Name: Tk_Path_String;
       Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin

@@ -17,7 +17,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Tk.TtkLabelFrame is
 
    function Create
-     (Path_Name: String; Options: Ttk_Label_Frame_Options;
+     (Path_Name: Tk_Path_String; Options: Ttk_Label_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Ttk_Label_Frame is
       Options_String: Unbounded_String := Null_Unbounded_String;
@@ -67,7 +67,7 @@ package body Tk.TtkLabelFrame is
    end Create;
 
    procedure Create
-     (Frame_Widget: out Ttk_Label_Frame; Path_Name: String;
+     (Frame_Widget: out Ttk_Label_Frame; Path_Name: Tk_Path_String;
       Options: Ttk_Label_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin

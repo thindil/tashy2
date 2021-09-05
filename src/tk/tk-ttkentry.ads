@@ -243,7 +243,7 @@ is
    -- ttk::entry Path_Name Options
    -- SOURCE
    function Create
-     (Path_Name: String; Options: Ttk_Entry_Options;
+     (Path_Name: Tk_Path_String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
@@ -276,7 +276,7 @@ is
       -- ttk::entry Path_Name Options
       -- SOURCE
    procedure Create
-     (Entry_Widget: out Ttk_Entry; Path_Name: String;
+     (Entry_Widget: out Ttk_Entry; Path_Name: Tk_Path_String;
       Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
