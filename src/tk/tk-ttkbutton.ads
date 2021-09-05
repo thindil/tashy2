@@ -97,7 +97,7 @@ is
    -- ttk::button Path_Name Options
    -- SOURCE
    function Create
-     (Path_Name: String; Options: Ttk_Button_Options;
+     (Path_Name: Tk_Path_String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
@@ -132,7 +132,8 @@ is
       -- ttk::button Path_Name Options
       -- SOURCE
    procedure Create
-     (Button: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
+     (Button: out Ttk_Button; Path_Name: Tk_Path_String;
+      Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Button /= Null_Widget,

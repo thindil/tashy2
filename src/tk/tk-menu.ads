@@ -278,7 +278,7 @@ is
    -- menu Path_Name Options
    -- SOURCE
    function Create
-     (Path_Name: String; Options: Menu_Options;
+     (Path_Name: Tk_Path_String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Create'Result /= Null_Widget,
@@ -311,7 +311,8 @@ is
       -- menu Path_Name Options
       -- SOURCE
    procedure Create
-     (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
+     (Menu_Widget: out Tk_Menu; Path_Name: Tk_Path_String;
+      Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Post => Menu_Widget /= Null_Widget,
@@ -410,7 +411,7 @@ is
       -- Menu_Widget clone New_Path_Name ?Menu_Type?
       -- SOURCE
    function Clone
-     (Menu_Widget: Tk_Menu; New_Path_Name: String;
+     (Menu_Widget: Tk_Menu; New_Path_Name: Tk_Path_String;
       Menu_Type: Menu_Types := NONE) return Tk_Menu with
       Pre => Menu_Widget /= Null_Widget and New_Path_Name'Length > 0,
       Test_Case => (Name => "Test_Clone_Menu", Mode => Nominal);

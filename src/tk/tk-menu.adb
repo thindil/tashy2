@@ -106,7 +106,7 @@ package body Tk.Menu is
    end Options_To_String;
 
    function Create
-     (Path_Name: String; Options: Menu_Options;
+     (Path_Name: Tk_Path_String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu is
    begin
       Tcl_Eval
@@ -117,7 +117,7 @@ package body Tk.Menu is
    end Create;
 
    procedure Create
-     (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
+     (Menu_Widget: out Tk_Menu; Path_Name: Tk_Path_String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Menu_Widget :=
@@ -301,7 +301,7 @@ package body Tk.Menu is
    end Get_Options;
 
    function Clone
-     (Menu_Widget: Tk_Menu; New_Path_Name: String;
+     (Menu_Widget: Tk_Menu; New_Path_Name: Tk_Path_String;
       Menu_Type: Menu_Types := NONE) return Tk_Menu is
    begin
       Execute_Widget_Command
