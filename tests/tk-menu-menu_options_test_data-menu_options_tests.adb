@@ -32,7 +32,7 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 --  begin read only
    function Wrap_Test_Create_32e405_0ceee6
-     (Path_Name: String; Options: Menu_Options;
+     (Path_Name: Tk_Path_String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu is
    begin
       begin
@@ -73,7 +73,7 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
    procedure Test_1_Create_test_create_menu1
      (Gnattest_T: in out Test_Menu_Options) is
       function Create
-        (Path_Name: String; Options: Menu_Options;
+        (Path_Name: Tk_Path_String; Options: Menu_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tk_Menu renames
         Wrap_Test_Create_32e405_0ceee6;
@@ -98,7 +98,8 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 
 --  begin read only
    procedure Wrap_Test_Create_ebbdc1_d9adfa
-     (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
+     (Menu_Widget: out Tk_Menu; Path_Name: Tk_Path_String;
+      Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -134,7 +135,8 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
    procedure Test_2_Create_test_create_menu2
      (Gnattest_T: in out Test_Menu_Options) is
       procedure Create
-        (Menu_Widget: out Tk_Menu; Path_Name: String; Options: Menu_Options;
+        (Menu_Widget: out Tk_Menu; Path_Name: Tk_Path_String;
+         Options: Menu_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Create_ebbdc1_d9adfa;
 --  end read only

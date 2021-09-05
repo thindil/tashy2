@@ -33,7 +33,7 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
 --  end read only
 --  begin read only
    function Wrap_Test_Create_32e405_6b2100
-     (Path_Name: String; Options: Toplevel_Create_Options;
+     (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
    begin
       begin
@@ -74,7 +74,7 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
    procedure Test_1_Create_test_create_toplevel1
      (Gnattest_T: in out Test_Toplevel_Create_Options) is
       function Create
-        (Path_Name: String; Options: Toplevel_Create_Options;
+        (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tk_Toplevel renames
         Wrap_Test_Create_32e405_6b2100;
@@ -99,7 +99,7 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
 
 --  begin read only
    procedure Wrap_Test_Create_ebbdc1_9910a6
-     (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
+     (Toplevel_Widget: out Tk_Toplevel; Path_Name: Tk_Path_String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -136,7 +136,7 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
    procedure Test_2_Create_test_create_toplevel2
      (Gnattest_T: in out Test_Toplevel_Create_Options) is
       procedure Create
-        (Toplevel_Widget: out Tk_Toplevel; Path_Name: String;
+        (Toplevel_Widget: out Tk_Toplevel; Path_Name: Tk_Path_String;
          Options: Toplevel_Create_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Create_ebbdc1_9910a6;

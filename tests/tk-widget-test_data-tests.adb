@@ -175,8 +175,8 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_Get_Widget_331ad1_ff97b7
-     (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Tk_Widget is
+     (Path_Name: Tk_Path_String;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget is
    begin
       begin
          pragma Assert
@@ -214,7 +214,8 @@ package body Tk.Widget.Test_Data.Tests is
 --  id:2.2/331ad1a0fc5269a6/Get_Widget/1/0/test_get_widget/
    procedure Test_Get_Widget_test_get_widget(Gnattest_T: in out Test) is
       function Get_Widget
-        (Path_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+        (Path_Name: Tk_Path_String;
+         Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tk_Widget renames
         Wrap_Test_Get_Widget_331ad1_ff97b7;
 --  end read only
@@ -245,7 +246,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_Tk_Path_Name_5c8bcc_22ac87
-     (Widgt: Tk_Widget) return String is
+     (Widgt: Tk_Widget) return Tk_Path_String is
    begin
       begin
          pragma Assert(Widgt /= Null_Widget);
@@ -257,7 +258,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Tk_PathName test requirement violated");
       end;
       declare
-         Test_Tk_Path_Name_5c8bcc_22ac87_Result: constant String :=
+         Test_Tk_Path_Name_5c8bcc_22ac87_Result: constant Tk_Path_String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Tk_Path_Name(Widgt);
       begin
          begin
@@ -280,7 +281,7 @@ package body Tk.Widget.Test_Data.Tests is
      Test_Tk_Path_Name_test_tk_pathname;
 --  id:2.2/5c8bcc67c7e58aca/Tk_Path_Name/1/0/test_tk_pathname/
    procedure Test_Tk_Path_Name_test_tk_pathname(Gnattest_T: in out Test) is
-      function Tk_Path_Name(Widgt: Tk_Widget) return String renames
+      function Tk_Path_Name(Widgt: Tk_Widget) return Tk_Path_String renames
         Wrap_Test_Tk_Path_Name_5c8bcc_22ac87;
 --  end read only
 

@@ -32,7 +32,7 @@ package body Tk.TtkLabel.Ttk_Label_Options_Test_Data.Ttk_Label_Options_Tests is
 --  end read only
 --  begin read only
    function Wrap_Test_Create_32e405_cf77f4
-     (Path_Name: String; Options: Ttk_Label_Options;
+     (Path_Name: Tk_Path_String; Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label is
    begin
       begin
@@ -73,7 +73,7 @@ package body Tk.TtkLabel.Ttk_Label_Options_Test_Data.Ttk_Label_Options_Tests is
    procedure Test_1_Create_test_create_ttklabel1
      (Gnattest_T: in out Test_Ttk_Label_Options) is
       function Create
-        (Path_Name: String; Options: Ttk_Label_Options;
+        (Path_Name: Tk_Path_String; Options: Ttk_Label_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Ttk_Label renames
         Wrap_Test_Create_32e405_cf77f4;
@@ -100,7 +100,8 @@ package body Tk.TtkLabel.Ttk_Label_Options_Test_Data.Ttk_Label_Options_Tests is
 
 --  begin read only
    procedure Wrap_Test_Create_ebbdc1_341022
-     (Label: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
+     (Label: out Ttk_Label; Path_Name: Tk_Path_String;
+      Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -136,7 +137,8 @@ package body Tk.TtkLabel.Ttk_Label_Options_Test_Data.Ttk_Label_Options_Tests is
    procedure Test_2_Create_test_create_ttklabel2
      (Gnattest_T: in out Test_Ttk_Label_Options) is
       procedure Create
-        (Label: out Ttk_Label; Path_Name: String; Options: Ttk_Label_Options;
+        (Label: out Ttk_Label; Path_Name: Tk_Path_String;
+         Options: Ttk_Label_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Create_ebbdc1_341022;
 --  end read only

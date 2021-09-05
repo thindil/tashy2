@@ -278,7 +278,7 @@ package body Tk.Menu.Test_Data.Tests is
 
 --  begin read only
    function Wrap_Test_Clone_cce6c8_8fed8c
-     (Menu_Widget: Tk_Menu; New_Path_Name: String;
+     (Menu_Widget: Tk_Menu; New_Path_Name: Tk_Path_String;
       Menu_Type: Menu_Types := NONE) return Tk_Menu is
    begin
       begin
@@ -317,7 +317,7 @@ package body Tk.Menu.Test_Data.Tests is
 --  id:2.2/cce6c8abdd50593a/Clone/1/0/test_clone_menu/
    procedure Test_Clone_test_clone_menu(Gnattest_T: in out Test) is
       function Clone
-        (Menu_Widget: Tk_Menu; New_Path_Name: String;
+        (Menu_Widget: Tk_Menu; New_Path_Name: Tk_Path_String;
          Menu_Type: Menu_Types := NONE) return Tk_Menu renames
         Wrap_Test_Clone_cce6c8_8fed8c;
 --  end read only

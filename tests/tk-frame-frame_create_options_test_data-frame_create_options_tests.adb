@@ -33,7 +33,7 @@ package body Tk.Frame.Frame_Create_Options_Test_Data
 --  end read only
 --  begin read only
    function Wrap_Test_Create_32e405_d4efed
-     (Path_Name: String; Options: Frame_Create_Options;
+     (Path_Name: Tk_Path_String; Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Frame is
    begin
       begin
@@ -74,7 +74,7 @@ package body Tk.Frame.Frame_Create_Options_Test_Data
    procedure Test_1_Create_test_create_frame1
      (Gnattest_T: in out Test_Frame_Create_Options) is
       function Create
-        (Path_Name: String; Options: Frame_Create_Options;
+        (Path_Name: Tk_Path_String; Options: Frame_Create_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tk_Frame renames
         Wrap_Test_Create_32e405_d4efed;
@@ -99,7 +99,7 @@ package body Tk.Frame.Frame_Create_Options_Test_Data
 
 --  begin read only
    procedure Wrap_Test_Create_ebbdc1_e79b17
-     (Frame_Widget: out Tk_Frame; Path_Name: String;
+     (Frame_Widget: out Tk_Frame; Path_Name: Tk_Path_String;
       Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -136,7 +136,7 @@ package body Tk.Frame.Frame_Create_Options_Test_Data
    procedure Test_2_Create_test_create_frame2
      (Gnattest_T: in out Test_Frame_Create_Options) is
       procedure Create
-        (Frame_Widget: out Tk_Frame; Path_Name: String;
+        (Frame_Widget: out Tk_Frame; Path_Name: Tk_Path_String;
          Options: Frame_Create_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Create_ebbdc1_e79b17;

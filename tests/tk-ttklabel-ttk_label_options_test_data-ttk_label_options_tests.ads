@@ -22,11 +22,11 @@ package Tk.TtkLabel.Ttk_Label_Options_Test_Data.Ttk_Label_Options_Tests is
 
    procedure Test_Get_Options_ded36e_523496
      (Gnattest_T: in out Test_Ttk_Label_Options);
-   --  tk-ttklabel.ads:176:4:Get_Options:Test_Get_Options_TtkLabel
+   --  tk-ttklabel.ads:177:4:Get_Options:Test_Get_Options_TtkLabel
 
    procedure Test_Configure_0076be_ea215f
      (Gnattest_T: in out Test_Ttk_Label_Options);
-   --  tk-ttklabel.ads:197:4:Configure:Test_Configure_TtkLabel
+   --  tk-ttklabel.ads:198:4:Configure:Test_Configure_TtkLabel
 
 end Tk.TtkLabel.Ttk_Label_Options_Test_Data.Ttk_Label_Options_Tests;
 --  end read only

@@ -33,7 +33,7 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
 --  end read only
 --  begin read only
    function Wrap_Test_Create_32e405_5bd331
-     (Path_Name: String; Options: Ttk_Button_Options;
+     (Path_Name: Tk_Path_String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button is
    begin
       begin
@@ -74,7 +74,7 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
    procedure Test_1_Create_test_create_ttkbutton1
      (Gnattest_T: in out Test_Ttk_Button_Options) is
       function Create
-        (Path_Name: String; Options: Ttk_Button_Options;
+        (Path_Name: Tk_Path_String; Options: Ttk_Button_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Ttk_Button renames
         Wrap_Test_Create_32e405_5bd331;
@@ -101,7 +101,8 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
 
 --  begin read only
    procedure Wrap_Test_Create_ebbdc1_44e87c
-     (Button: out Ttk_Button; Path_Name: String; Options: Ttk_Button_Options;
+     (Button: out Ttk_Button; Path_Name: Tk_Path_String;
+      Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
@@ -137,7 +138,7 @@ package body Tk.TtkButton.Ttk_Button_Options_Test_Data
    procedure Test_2_Create_test_create_ttkbutton2
      (Gnattest_T: in out Test_Ttk_Button_Options) is
       procedure Create
-        (Button: out Ttk_Button; Path_Name: String;
+        (Button: out Ttk_Button; Path_Name: Tk_Path_String;
          Options: Ttk_Button_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Create_ebbdc1_44e87c;

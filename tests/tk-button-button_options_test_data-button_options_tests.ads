@@ -20,11 +20,11 @@ package Tk.Button.Button_Options_Test_Data.Button_Options_Tests is
 
    procedure Test_Get_Options_ded36e_1401ab
      (Gnattest_T: in out Test_Button_Options);
-   --  tk-button.ads:203:4:Get_Options:Test_Get_Options_Button
+   --  tk-button.ads:204:4:Get_Options:Test_Get_Options_Button
 
    procedure Test_Configure_0076be_5d096f
      (Gnattest_T: in out Test_Button_Options);
-   --  tk-button.ads:224:4:Configure:Test_Configure_Button
+   --  tk-button.ads:225:4:Configure:Test_Configure_Button
 
 end Tk.Button.Button_Options_Test_Data.Button_Options_Tests;
 --  end read only

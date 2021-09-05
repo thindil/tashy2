@@ -22,11 +22,11 @@ package Tk.TtkButton.Ttk_Button_Options_Test_Data.Ttk_Button_Options_Tests is
 
    procedure Test_Get_Options_ded36e_15baa7
      (Gnattest_T: in out Test_Ttk_Button_Options);
-   --  tk-ttkbutton.ads:159:4:Get_Options:Test_Get_Options_TtkButton
+   --  tk-ttkbutton.ads:160:4:Get_Options:Test_Get_Options_TtkButton
 
    procedure Test_Configure_0076be_566320
      (Gnattest_T: in out Test_Ttk_Button_Options);
-   --  tk-ttkbutton.ads:180:4:Configure:Test_Configure_TtkButton
+   --  tk-ttkbutton.ads:181:4:Configure:Test_Configure_TtkButton
 
 end Tk.TtkButton.Ttk_Button_Options_Test_Data.Ttk_Button_Options_Tests;
 --  end read only
