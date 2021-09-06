@@ -27,7 +27,7 @@ with Tk.TtkLabel; use Tk.TtkLabel;
 with Tk.Widget; use Tk.Widget;
 with Tk.Winfo; use Tk.Winfo;
 with Tk.Wm; use Tk.Wm;
-with CalculatorCommands; use CalculatorCommands;
+with CalculatorCommands.Unproved; use CalculatorCommands.Unproved;
 
 procedure Calculator with
    SPARK_Mode
@@ -232,6 +232,7 @@ begin
          Options => (Row => 1, Column => 1, Sticky => N, others => <>));
    end;
 
+   -- Add all needed Tcl commands. If there was error, quit from the program
    if not Add_Commands then
       return;
    end if;

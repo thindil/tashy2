@@ -12,6 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl; use Tcl;
+
 -- ****h* CalculatorCommands/CalculatorCommands
 -- FUNCTION
 -- Provide various Tcl commands related to the calculator demo
@@ -21,13 +23,37 @@ package CalculatorCommands with
 is
 -- ****
 
-   -- ****f* CalculatorCommands/CalculatorCommands.Add_Commands
+private
+
+   -- ****f* CalculatorCommands/CalculatorCommands.Click_Action
    -- FUNCTION
-   -- Add Tcl commands needed by the program
+   -- Update display with the pressed button text or count its expression if
+   -- button equal was pressed. It is moved from On_Click function so it can
+   -- be checked by SPARK
+   -- PARAMETERS
+   -- ButtonName  - The Tk path name of the button which was clicked
+   -- LabelName   - The Tk path name of the display label
+   -- Interpreter - The Tcl interpreter on which the button was clicked
    -- RESULT
-   -- True if commands were successfully added, otherwise False
+   -- This function always return TCL_OK
    -- SOURCE
-   function Add_Commands return Boolean;
-   -- ****
+   function Click_Action
+     (ButtonName, LabelName: String; Interpreter: Tcl_Interpreter)
+      return Tcl_Results;
+      -- ****
+
+   -- ****f* CalculatorCommands/CalculatorCommands.Clear_Action
+   -- FUNCTION
+   -- Reset the calculator's display to it inital state. Show just zero
+   -- number. It is moved from On_Click function so it can be checked by SPARK
+   -- PARAMETERS
+   -- LabelName   - The name of display label to clear
+   -- Interpreter - The Tcl interpreter on which the button was clicked
+   -- RESULT
+   -- This function always return TCL_OK
+   -- SOURCE
+   function Clear_Action
+     (LabelName: String; Interpreter: Tcl_Interpreter) return Tcl_Results;
+     -- ****
 
 end CalculatorCommands;
