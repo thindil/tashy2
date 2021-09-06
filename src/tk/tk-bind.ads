@@ -255,6 +255,9 @@ is
    function Modifier_Type_Image(Modifier: Modifiers_Type) return String with
       Test_Case => (Name => "Test_Modifier_Type_Image", Mode => Robustness);
 
+   function Key_Syms_Type_Image(Key: Key_Syms) return String with
+      Test_Case => (Name => "Test_Key_Syms_Image", Mode => Robustness);
+
    procedure Bind
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) with
