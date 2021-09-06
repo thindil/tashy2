@@ -523,10 +523,7 @@ is
       -- COMMANDS
       -- winfo manager Window
       -- SOURCE
-   function Manager(Window: Tk_Widget) return String is
-     (Tcl_Eval
-        (Tcl_Script => "winfo manager " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window))) with
+   function Manager(Window: Tk_Widget) return String with
       Pre => Window /= Null_Widget,
       Post => Manager'Result'Length > 0,
       Test_Case => (Name => "Test_Winfo_Manager", Mode => Nominal);
@@ -547,10 +544,7 @@ is
       -- COMMANDS
       -- winfo name Window
       -- SOURCE
-   function Name(Window: Tk_Widget) return String is
-     (Tcl_Eval
-        (Tcl_Script => "winfo name " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window))) with
+   function Name(Window: Tk_Widget) return String with
       Pre => Window /= Null_Widget,
       Post => Name'Result'Length > 0,
       Test_Case => (Name => "Test_Winfo_Name", Mode => Nominal);
@@ -977,7 +971,7 @@ is
            (Tcl_Script =>
               "winfo screenvisual " & Tk_Path_Name(Widgt => Window),
             Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget and Get_Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Winfo_Screen_Visual", Mode => Nominal);
    function Visual(Window: Tk_Widget) return Screen_Visual_Type renames
      Screen_Visual;

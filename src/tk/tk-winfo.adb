@@ -206,6 +206,29 @@ package body Tk.Winfo is
               else Tk_Interp(Widgt => Window)));
    end Interpreters;
 
+   function Manager(Window: Tk_Widget) return String is
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "winfo manager " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   begin
+      if Result'Length = 0 then
+         return "unknown";
+      end if;
+      return Result;
+   end Manager;
+
+   function Name(Window: Tk_Widget) return String is
+      Result: constant String := Tcl_Eval
+        (Tcl_Script => "winfo name " & Tk_Path_Name(Widgt => Window),
+         Interpreter => Tk_Interp(Widgt => Window));
+   begin
+      if Result'Length = 0 then
+         return "unknown";
+      end if;
+      return Result;
+   end Name;
+
    function Path_Name
      (Window_Id: Positive; Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
