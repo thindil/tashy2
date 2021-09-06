@@ -18,7 +18,9 @@ with System;
 -- FUNCTION
 -- Provides binding to Tcl API
 -- SOURCE
-package Tcl is
+package Tcl with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -70,7 +72,8 @@ package Tcl is
    -- My_Interpreter: constant Tcl_Interpreter := Create_Interpreter;
    -- SOURCE
    function Create_Interpreter
-     (Default: Boolean := True) return Tcl_Interpreter;
+     (Default: Boolean := True) return Tcl_Interpreter with
+     Post => Create_Interpreter'Result /= Null_Interpreter;
      -- ****
      --## rule off REDUCEABLE_SCOPE
 
