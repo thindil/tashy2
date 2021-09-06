@@ -358,7 +358,7 @@ is
       -- winfo exists Window
       -- SOURCE
    function Exists
-     (Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+     (Name: Tk_Path_String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
      (Tcl_Eval
         (Tcl_Script => "winfo exists " & Name,
