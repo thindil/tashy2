@@ -21,7 +21,9 @@ with Tk.Widget; use Tk.Widget;
 -- FUNCTION
 -- Provide bindings for Tk command wm (communication with the window manager)
 -- SOURCE
-package Tk.Wm is
+package Tk.Wm with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
