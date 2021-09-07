@@ -99,7 +99,7 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 
 --  begin read only
    function Wrap_Test_Create_32e405_465c74
-     (Path_Name: String; Options: Ttk_Label_Frame_Options;
+     (Path_Name: Tk_Path_String; Options: Ttk_Label_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Ttk_Label_Frame is
    begin
@@ -141,7 +141,7 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
    procedure Test_1_Create_test_create_ttklabelframe1
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options) is
       function Create
-        (Path_Name: String; Options: Ttk_Label_Frame_Options;
+        (Path_Name: Tk_Path_String; Options: Ttk_Label_Frame_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Ttk_Label_Frame renames
         Wrap_Test_Create_32e405_465c74;
@@ -168,7 +168,7 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 
 --  begin read only
    procedure Wrap_Test_Create_ebbdc1_d1ec6f
-     (Frame_Widget: out Ttk_Label_Frame; Path_Name: String;
+     (Frame_Widget: out Ttk_Label_Frame; Path_Name: Tk_Path_String;
       Options: Ttk_Label_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -205,7 +205,7 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
    procedure Test_2_Create_test_create_ttklabelframe2
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options) is
       procedure Create
-        (Frame_Widget: out Ttk_Label_Frame; Path_Name: String;
+        (Frame_Widget: out Ttk_Label_Frame; Path_Name: Tk_Path_String;
          Options: Ttk_Label_Frame_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
         Wrap_Test_Create_ebbdc1_d1ec6f;

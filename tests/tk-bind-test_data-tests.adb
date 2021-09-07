@@ -73,6 +73,44 @@ package body Tk.Bind.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Key_Syms_Type_Image_c4d722_679161
+     (Key: Key_Syms) return String is
+   begin
+      declare
+         Test_Key_Syms_Type_Image_c4d722_679161_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Bind.Key_Syms_Type_Image
+             (Key);
+      begin
+         return Test_Key_Syms_Type_Image_c4d722_679161_Result;
+      end;
+   end Wrap_Test_Key_Syms_Type_Image_c4d722_679161;
+--  end read only
+
+--  begin read only
+   procedure Test_Key_Syms_Type_Image_test_key_syms_image
+     (Gnattest_T: in out Test);
+   procedure Test_Key_Syms_Type_Image_c4d722_679161
+     (Gnattest_T: in out Test) renames
+     Test_Key_Syms_Type_Image_test_key_syms_image;
+--  id:2.2/c4d7226df5041a94/Key_Syms_Type_Image/1/0/test_key_syms_image/
+   procedure Test_Key_Syms_Type_Image_test_key_syms_image
+     (Gnattest_T: in out Test) is
+      function Key_Syms_Type_Image(Key: Key_Syms) return String renames
+        Wrap_Test_Key_Syms_Type_Image_c4d722_679161;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Key_Syms_Type_Image_test_key_syms_image;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Bind_04d206_6eb3e9
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) is
