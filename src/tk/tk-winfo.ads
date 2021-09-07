@@ -260,7 +260,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "winfo class " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 12,
       Test_Case => (Name => "Test_Winfo_Class", Mode => Nominal);
       -- ****
 
@@ -283,7 +284,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "winfo colormapfull " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 19,
       Test_Case => (Name => "Test_Winfo_Color_Map_Full", Mode => Nominal);
       -- ****
 
