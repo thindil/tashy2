@@ -35,7 +35,10 @@ package body Tk.Bind is
          Image(4) := '-';
       elsif Image(1 .. 3) = "Shi" then
          Image(6 .. 7) := "-K";
-         Image(11) := To_Upper(Image(11));
+         Image(10 .. 11) := '-' & To_Upper(Image(11));
+      end if;
+      if Image (1 .. 3) = "Shi" then
+         return Image(7 .. Image'Last);
       end if;
       return Image;
    end Key_Syms_Type_Image;
