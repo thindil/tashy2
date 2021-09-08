@@ -103,9 +103,12 @@ package body Tk.Bind.Test_Data.Tests is
 
    begin
 
-      Tcl_Eval("puts {" & Key_Syms_Type_Image(SHIFT_KEY_B) & "}");
-      Assert(Key_Syms_Type_Image(KEY_SPACE) = "Key-space", "Failed to get image of the space key.");
-      Assert(Key_Syms_Type_Image(SHIFT_KEY_B) = "Key-B", "Failed to get image of the capital B key.");
+      Assert
+        (Key_Syms_Type_Image(KEY_SPACE) = "Key-space",
+         "Failed to get image of the space key.");
+      Assert
+        (Key_Syms_Type_Image(SHIFT_KEY_B) = "Key-B",
+         "Failed to get image of the capital B key.");
 
 --  begin read only
    end Test_Key_Syms_Type_Image_test_key_syms_image;
