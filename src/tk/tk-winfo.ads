@@ -365,7 +365,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "winfo exists " & Name,
          Interpreter => Interpreter)) with
-      Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Name'Length > 0 and Name'Length < Integer'Last - 13 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Winfo_Exists", Mode => Nominal);
       -- ****
 
@@ -504,7 +505,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "winfo ismapped " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 15,
       Test_Case => (Name => "Test_Winfo_Is_Mapped", Mode => Nominal);
       -- ****
 
@@ -571,7 +573,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "winfo parent " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 13,
       Test_Case => (Name => "Test_Winfo_Parent", Mode => Nominal);
       -- ****
 
@@ -826,7 +829,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "winfo screen " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 13,
       Test_Case => (Name => "Test_Winfo_Screen", Mode => Nominal);
       -- ****
 
@@ -973,7 +977,10 @@ is
            (Tcl_Script =>
               "winfo screenvisual " & Tk_Path_Name(Widgt => Window),
             Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget and Get_Interpreter /= Null_Interpreter,
+      Pre =>
+      (Window /= Null_Widget
+       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 19) and
+      Get_Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Winfo_Screen_Visual", Mode => Nominal);
    function Visual(Window: Tk_Widget) return Screen_Visual_Type renames
      Screen_Visual;
