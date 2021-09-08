@@ -13,6 +13,8 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings; use Ada.Strings;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Bind is
@@ -29,6 +31,7 @@ package body Tk.Bind is
 
    function Key_Syms_Type_Image(Key: Key_Syms) return String is
       Image: String := To_Lower(Key_Syms'Image(Key));
+      Start_Index: Positive;
    begin
       Image(1) := To_Upper(Image(1));
       if Image(1 .. 3) = "Key" then
@@ -37,7 +40,20 @@ package body Tk.Bind is
          Image(6 .. 7) := "-K";
          Image(10 .. 11) := '-' & To_Upper(Image(11));
       end if;
-      if Image (1 .. 3) = "Shi" then
+      case Key is
+         when SHIFT_KEY_AE =>
+            return "Key-AE";
+         when SHIFT_KEY_ENG =>
+            return "Key-ENG";
+         when SHIFT_KEY_KANA_WO =>
+            return "Key-kana_WO";
+         when SHIFT_KEY_KANA_A .. SHIFT_KEY_KANA_N =>
+            Start_Index := Index(Image, "_", Backward);
+            return "Key-kana_" & To_Upper(Image(Start_Index .. Image'Last));
+         when others =>
+            null;
+      end case;
+      if Image(1 .. 3) = "Shi" then
          return Image(7 .. Image'Last);
       end if;
       return Image;
