@@ -49,7 +49,7 @@ package body Tk.Bind is
             return "Key-kana_WO";
          when SHIFT_KEY_KANA_A .. SHIFT_KEY_KANA_N =>
             Start_Index := Index(Image, "_", Backward);
-            return "Key-kana_" & To_Upper(Image(Start_Index .. Image'Last));
+            return "Key-kana" & To_Upper(Image(Start_Index .. Image'Last));
          when others =>
             null;
       end case;
