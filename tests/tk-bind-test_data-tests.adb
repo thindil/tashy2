@@ -109,6 +109,9 @@ package body Tk.Bind.Test_Data.Tests is
       Assert
         (Key_Syms_Type_Image(SHIFT_KEY_B) = "Key-B",
          "Failed to get image of the capital B key.");
+      Assert
+        (Key_Syms_Type_Image(SHIFT_KEY_KANA_A) = "Key-kana_A",
+         "Failed to get image of capital kana_a key");
 
 --  begin read only
    end Test_Key_Syms_Type_Image_test_key_syms_image;
