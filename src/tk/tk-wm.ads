@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Tcl.Lists; use Tcl.Lists;
 with Tcl.Strings; use Tcl.Strings;
 with Tk.TopLevel; use Tk.TopLevel;
@@ -175,10 +176,8 @@ is
    -- FUNCTION
    -- All available types of window's attributes. Used mostly to set them
    -- OPTIONS
-   -- ALPHA            - Alpha transparency value for the selected Tk widget
    -- FULLSCREEN       - The widget takes the whole screen
    -- TOPMOST          - The widget is displayed above all other windows
-   -- WINDOWTYPE       - The type of widget (X11 only)
    -- ZOOMED           - The widget is maximized (X11 only)
    -- DISABLED         - The widget is in the disabled state (Windows only)
    -- TOOLWINDOW       - The widget is tool window (Windows only)
@@ -193,9 +192,9 @@ is
    -- 8.6.0 - Added
    -- SOURCE
    type Window_Atrributes_Type is
-     (ALPHA, FULLSCREEN, TOPMOST, WINDOW_TYPE, ZOOMED, DISABLED, TOOLWINDOW,
-      TRANSPARENTCOLOR, MODIFIED, NOTIFY, TITLEPATH, TRANSPARENT) with
-      Default_Value => ALPHA;
+     (FULLSCREEN, TOPMOST, ZOOMED, DISABLED, TOOLWINDOW, TRANSPARENTCOLOR,
+      MODIFIED, NOTIFY, TITLEPATH, TRANSPARENT) with
+      Default_Value => FULLSCREEN;
       -- ****
 
       -- ****d* Tk.Wm/Default_Window_Attribute
@@ -204,7 +203,7 @@ is
       -- HISTORY
       -- 8.6.0 - Added
       -- SOURCE
-   Default_Window_Attribute: constant Window_Atrributes_Type := ALPHA;
+   Default_Window_Attribute: constant Window_Atrributes_Type := FULLSCREEN;
    -- ****
 
    -- ****t* Wm/Wm.Focus_Model_Types
@@ -512,35 +511,39 @@ is
       -- COMMANDS
       -- wm attributes Window Name
       -- SOURCE
-   function Get_Attribute(Window: Tk_Widget; Name: String) return Tcl_String is
+   function Get_Attribute
+     (Window: Tk_Widget; Name: Window_Atrributes_Type) return Tcl_String is
      (To_Tcl_String
         (Source =>
            Tcl_Eval
              (Tcl_Script =>
-                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
+                To_Lower(Window_Atrributes_Type'Image(Name)),
               Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget and Name'Length > 0,
+      Pre => Window /= Null_Widget and Name in TRANSPARENTCOLOR | TITLEPATH,
       Test_Case => (Name => "Test_Wm_Get_Attribute", Mode => Nominal);
    function Get_Attribute
-     (Window: Tk_Widget; Name: String) return Extended_Boolean with
-      Pre => Window /= Null_Widget and Name'Length > 0,
+     (Window: Tk_Widget; Name: Window_Atrributes_Type)
+      return Extended_Boolean with
+      Pre => Window /= Null_Widget and
+      Name in FULLSCREEN | ZOOMED | DISABLED | TOOLWINDOW | MODIFIED | NOTIFY |
+          TRANSPARENT,
       Test_Case => (Name => "Test_Wm_Get_Attribute2", Mode => Nominal);
-   function Get_Attribute(Window: Tk_Widget; Name: String) return Alpha_Type is
+   function Get_Attribute(Window: Tk_Widget) return Alpha_Type is
      (Alpha_Type'Value
         (Tcl_Eval
            (Tcl_Script =>
-              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -alpha",
             Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget and Name'Length > 0,
+      Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Get_Attribute3", Mode => Nominal);
-   function Get_Attribute
-     (Window: Tk_Widget; Name: String) return Window_Types is
+   function Get_Attribute(Window: Tk_Widget) return Window_Types is
      (Window_Types'Value
         (Tcl_Eval
            (Tcl_Script =>
-              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -type",
             Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget and Name'Length > 0,
+      Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Get_Attribute4", Mode => Nominal);
       -- ****
 

@@ -12,7 +12,6 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
@@ -223,11 +222,13 @@ package body Tk.Wm is
    end Set_Attributes;
 
    function Get_Attribute
-     (Window: Tk_Widget; Name: String) return Extended_Boolean is
+     (Window: Tk_Widget; Name: Window_Atrributes_Type)
+      return Extended_Boolean is
    begin
       if Tcl_Eval
           (Tcl_Script =>
-             "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" & Name,
+             "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
+             To_Lower(Window_Atrributes_Type'Image(Name)),
            Interpreter => Tk_Interp(Widgt => Window)) =
         "1" then
          return TRUE;
