@@ -171,6 +171,42 @@ is
    Empty_Window_Attributes: constant Window_Attributes_Data := (others => <>);
    -- ****
 
+   -- ****t* Wm/Wm.Window_Atrributes_Type
+   -- FUNCTION
+   -- All available types of window's attributes. Used mostly to set them
+   -- OPTIONS
+   -- ALPHA            - Alpha transparency value for the selected Tk widget
+   -- FULLSCREEN       - The widget takes the whole screen
+   -- TOPMOST          - The widget is displayed above all other windows
+   -- WINDOWTYPE       - The type of widget (X11 only)
+   -- ZOOMED           - The widget is maximized (X11 only)
+   -- DISABLED         - The widget is in the disabled state (Windows only)
+   -- TOOLWINDOW       - The widget is tool window (Windows only)
+   -- TRANSPARENTCOLOR - The color used for the widget transparency (Windows
+   --                    only)
+   -- MODIFIED         - The widget is in the modified state (Mac OS X only)
+   -- NOTIFY           - The widget notification state (Mac OS X only)
+   -- TITLEPATH        - The path to the widget proxy icon (Mac OS X only)
+   -- TRANSPARENT      - Makes the widget content are transparent (Mac OS X
+   --                    only)
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Window_Atrributes_Type is
+     (ALPHA, FULLSCREEN, TOPMOST, WINDOW_TYPE, ZOOMED, DISABLED, TOOLWINDOW,
+      TRANSPARENTCOLOR, MODIFIED, NOTIFY, TITLEPATH, TRANSPARENT) with
+      Default_Value => ALPHA;
+      -- ****
+
+      -- ****d* Tk.Wm/Default_Window_Attribute
+      -- FUNCTION
+      -- Default window attribute to set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- SOURCE
+   Default_Window_Attribute: constant Window_Atrributes_Type := ALPHA;
+   -- ****
+
    -- ****t* Wm/Wm.Focus_Model_Types
    -- FUNCTION
    -- Types of Tk widget focus models. Active means that widget will take
