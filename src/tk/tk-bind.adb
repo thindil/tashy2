@@ -50,6 +50,8 @@ package body Tk.Bind is
          when SHIFT_KEY_KANA_A .. SHIFT_KEY_KANA_N =>
             Start_Index := Index(Image, "_", Backward);
             return "Key-kana" & To_Upper(Image(Start_Index .. Image'Last));
+         when KEY_ARABIC_COMMA ..  KEY_SERBIAN_DZE =>
+            Image(5) := To_Upper(Image(5));
          when others =>
             null;
       end case;
