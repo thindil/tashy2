@@ -112,6 +112,9 @@ package body Tk.Bind.Test_Data.Tests is
       Assert
         (Key_Syms_Type_Image(SHIFT_KEY_KANA_A) = "Key-kana_A",
          "Failed to get image of capital kana_a key");
+      Assert
+        (Key_Syms_Type_Image(KEY_ARABIC_COMMA) = "Key-Arabic_comma",
+         "Failed to get image of arabic comma.");
 
 --  begin read only
    end Test_Key_Syms_Type_Image_test_key_syms_image;
