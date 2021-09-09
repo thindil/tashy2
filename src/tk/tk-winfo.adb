@@ -219,9 +219,10 @@ package body Tk.Winfo is
    end Manager;
 
    function Name(Window: Tk_Widget) return String is
-      Result: constant String := Tcl_Eval
-        (Tcl_Script => "winfo name " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window));
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "winfo name " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
    begin
       if Result'Length = 0 then
          return "unknown";
@@ -388,6 +389,18 @@ package body Tk.Winfo is
              "winfo screenmmwidth " & Tk_Path_Name(Widgt => Window),
            Interpreter => Tk_Interp(Widgt => Window));
    end Screen_Milimeters_Width;
+
+   function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type is
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "winfo screenvisual " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window));
+   begin
+      if Result'Length = 0 then
+         return TRUECOLOR;
+      end if;
+      return Screen_Visual_Type'Value(Result);
+   end Screen_Visual;
 
    function Screen_Width(Window: Tk_Widget) return Positive is
    begin

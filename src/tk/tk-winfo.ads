@@ -971,12 +971,7 @@ is
       -- winfo screenvisual Window
       -- winfo visual Window
       -- SOURCE
-   function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type is
-     (Screen_Visual_Type'Value
-        (Tcl_Eval
-           (Tcl_Script =>
-              "winfo screenvisual " & Tk_Path_Name(Widgt => Window),
-            Interpreter => Tk_Interp(Widgt => Window)))) with
+   function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type with
       Pre =>
       (Window /= Null_Widget
        and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 19) and
@@ -1028,7 +1023,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "winfo server " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 13,
       Test_Case => (Name => "Test_Winfo_Server", Mode => Nominal);
       -- ****
 
@@ -1051,7 +1047,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "winfo toplevel " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 15,
       Test_Case => (Name => "Test_Winfo_Toplevel", Mode => Nominal);
       -- ****
 
@@ -1074,7 +1071,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "winfo viewable " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 15,
       Test_Case => (Name => "Test_Winfo_Viewable", Mode => Nominal);
       -- ****
 
