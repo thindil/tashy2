@@ -13,6 +13,8 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Numerics.Big_Numbers.Big_Integers;
+use Ada.Numerics.Big_Numbers.Big_Integers;
 with Tcl.Lists; use Tcl.Lists;
 with Tcl.Strings; use Tcl.Strings;
 with Tk.TopLevel; use Tk.TopLevel;
@@ -520,7 +522,12 @@ is
                 "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
                 To_Lower(Window_Atrributes_Type'Image(Name)),
               Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget and Name in TRANSPARENTCOLOR | TITLEPATH,
+      Pre => (Window /= Null_Widget and Name in TRANSPARENTCOLOR | TITLEPATH)
+      and then To_Lower(Window_Atrributes_Type'Image(Name))'Length <= 16
+      and then
+        To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
+          To_Big_Integer(Window_Atrributes_Type'Image(Name)'Length) <
+        To_Big_Integer(Integer'Last - 32),
       Test_Case => (Name => "Test_Wm_Get_Attribute", Mode => Nominal);
    function Get_Attribute
      (Window: Tk_Widget; Name: Window_Atrributes_Type)
