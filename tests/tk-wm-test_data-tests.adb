@@ -308,11 +308,17 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Attribute_278e4a_747c75
-     (Window: Tk_Widget; Name: String) return Tcl_String is
+   function Wrap_Test_Get_Attribute_e4067c_f7b8f9
+     (Window: Tk_Widget; Name: Window_Atrributes_Type) return Tcl_String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Name'Length > 0);
+         pragma Assert
+           ((Window /= Null_Widget and Name in TRANSPARENTCOLOR | TITLEPATH)
+            and then To_Lower(Window_Atrributes_Type'Image(Name))'Length <= 16
+            and then
+              To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
+                To_Big_Integer(Window_Atrributes_Type'Image(Name)'Length) <
+              To_Big_Integer(Integer'Last - 32));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -321,7 +327,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Get_Attribute test requirement violated");
       end;
       declare
-         Test_Get_Attribute_278e4a_747c75_Result: constant Tcl_String :=
+         Test_Get_Attribute_e4067c_f7b8f9_Result: constant Tcl_String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Attribute
              (Window, Name);
       begin
@@ -334,25 +340,36 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Get_Attribute test commitment violated");
          end;
-         return Test_Get_Attribute_278e4a_747c75_Result;
+         return Test_Get_Attribute_e4067c_f7b8f9_Result;
       end;
-   end Wrap_Test_Get_Attribute_278e4a_747c75;
+   end Wrap_Test_Get_Attribute_e4067c_f7b8f9;
 --  end read only
 
 --  begin read only
    procedure Test_1_Get_Attribute_test_wm_get_attribute
      (Gnattest_T: in out Test);
-   procedure Test_Get_Attribute_278e4a_747c75(Gnattest_T: in out Test) renames
+   procedure Test_Get_Attribute_e4067c_f7b8f9(Gnattest_T: in out Test) renames
      Test_1_Get_Attribute_test_wm_get_attribute;
---  id:2.2/278e4a69996ed047/Get_Attribute/1/0/test_wm_get_attribute/
+--  id:2.2/e4067c5f48e19ba1/Get_Attribute/1/0/test_wm_get_attribute/
    procedure Test_1_Get_Attribute_test_wm_get_attribute
      (Gnattest_T: in out Test) is
       function Get_Attribute
-        (Window: Tk_Widget; Name: String) return Tcl_String renames
-        Wrap_Test_Get_Attribute_278e4a_747c75;
+        (Window: Tk_Widget; Name: Window_Atrributes_Type)
+         return Tcl_String renames
+        Wrap_Test_Get_Attribute_e4067c_f7b8f9;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Window_Manager: constant Window_Manager_Types :=
+        (if
+           Tcl_Get_Var2(Var_Name => "tcl_platform", Index_Name => "os") =
+           "Windows"
+         then WINDOWS
+         elsif
+           Tcl_Get_Var2(Var_Name => "tcl_platform", Index_Name => "os") =
+           "Darwin"
+         then MACOSX
+         else X_11);
 
    begin
 
@@ -360,8 +377,14 @@ package body Tk.Wm.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
+      if Window_Manager /= WINDOWS then
+         Assert
+           (True, "This option is available only on WINDOWS window manager");
+         return;
+      end if;
       Assert
-        (Get_Attribute(Get_Main_Window, "alpha") = To_Tcl_String("0.3"),
+        (Get_Attribute(Get_Main_Window, TRANSPARENTCOLOR) =
+         Get_Attributes(Get_Main_Window).Transparent_Color,
          "Failed to get widget attribute as Tcl_String");
 
 --  begin read only
@@ -369,11 +392,15 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Attribute_c2eb34_2dc50d
-     (Window: Tk_Widget; Name: String) return Extended_Boolean is
+   function Wrap_Test_Get_Attribute_97698a_5dc191
+     (Window: Tk_Widget; Name: Window_Atrributes_Type)
+      return Extended_Boolean is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Name'Length > 0);
+         pragma Assert
+           (Window /= Null_Widget and
+            Name in FULLSCREEN | ZOOMED | DISABLED | TOOLWINDOW | MODIFIED |
+                NOTIFY | TRANSPARENT);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -382,7 +409,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Get_Attribute2 test requirement violated");
       end;
       declare
-         Test_Get_Attribute_c2eb34_2dc50d_Result: constant Extended_Boolean :=
+         Test_Get_Attribute_97698a_5dc191_Result: constant Extended_Boolean :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Attribute
              (Window, Name);
       begin
@@ -395,22 +422,23 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Get_Attribute2 test commitment violated");
          end;
-         return Test_Get_Attribute_c2eb34_2dc50d_Result;
+         return Test_Get_Attribute_97698a_5dc191_Result;
       end;
-   end Wrap_Test_Get_Attribute_c2eb34_2dc50d;
+   end Wrap_Test_Get_Attribute_97698a_5dc191;
 --  end read only
 
 --  begin read only
    procedure Test_2_Get_Attribute_test_wm_get_attribute2
      (Gnattest_T: in out Test);
-   procedure Test_Get_Attribute_c2eb34_2dc50d(Gnattest_T: in out Test) renames
+   procedure Test_Get_Attribute_97698a_5dc191(Gnattest_T: in out Test) renames
      Test_2_Get_Attribute_test_wm_get_attribute2;
---  id:2.2/c2eb34bc8a089909/Get_Attribute/0/0/test_wm_get_attribute2/
+--  id:2.2/97698ae96389b127/Get_Attribute/0/0/test_wm_get_attribute2/
    procedure Test_2_Get_Attribute_test_wm_get_attribute2
      (Gnattest_T: in out Test) is
       function Get_Attribute
-        (Window: Tk_Widget; Name: String) return Extended_Boolean renames
-        Wrap_Test_Get_Attribute_c2eb34_2dc50d;
+        (Window: Tk_Widget; Name: Window_Atrributes_Type)
+         return Extended_Boolean renames
+        Wrap_Test_Get_Attribute_97698a_5dc191;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -422,7 +450,7 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Get_Attribute(Get_Main_Window, "fullscreen") = FALSE,
+        (Get_Attribute(Get_Main_Window, FULLSCREEN) = FALSE,
          "Failed to get widget attribute as Extended_Boolean");
 
 --  begin read only
@@ -430,11 +458,11 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Attribute_bcffd5_2122fe
-     (Window: Tk_Widget; Name: String) return Alpha_Type is
+   function Wrap_Test_Get_Attribute_e0766a_f8161f
+     (Window: Tk_Widget) return Alpha_Type is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Name'Length > 0);
+         pragma Assert(Window /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -443,9 +471,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Get_Attribute3 test requirement violated");
       end;
       declare
-         Test_Get_Attribute_bcffd5_2122fe_Result: constant Alpha_Type :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Attribute
-             (Window, Name);
+         Test_Get_Attribute_e0766a_f8161f_Result: constant Alpha_Type :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Attribute(Window);
       begin
          begin
             pragma Assert(True);
@@ -456,22 +483,21 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Get_Attribute3 test commitment violated");
          end;
-         return Test_Get_Attribute_bcffd5_2122fe_Result;
+         return Test_Get_Attribute_e0766a_f8161f_Result;
       end;
-   end Wrap_Test_Get_Attribute_bcffd5_2122fe;
+   end Wrap_Test_Get_Attribute_e0766a_f8161f;
 --  end read only
 
 --  begin read only
    procedure Test_3_Get_Attribute_test_wm_get_attribute3
      (Gnattest_T: in out Test);
-   procedure Test_Get_Attribute_bcffd5_2122fe(Gnattest_T: in out Test) renames
+   procedure Test_Get_Attribute_e0766a_f8161f(Gnattest_T: in out Test) renames
      Test_3_Get_Attribute_test_wm_get_attribute3;
---  id:2.2/bcffd51657631dd6/Get_Attribute/0/0/test_wm_get_attribute3/
+--  id:2.2/e0766a7fc80acc58/Get_Attribute/0/0/test_wm_get_attribute3/
    procedure Test_3_Get_Attribute_test_wm_get_attribute3
      (Gnattest_T: in out Test) is
-      function Get_Attribute
-        (Window: Tk_Widget; Name: String) return Alpha_Type renames
-        Wrap_Test_Get_Attribute_bcffd5_2122fe;
+      function Get_Attribute(Window: Tk_Widget) return Alpha_Type renames
+        Wrap_Test_Get_Attribute_e0766a_f8161f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -483,7 +509,7 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Get_Attribute(Get_Main_Window, "alpha") = 0.3,
+        (Get_Attribute(Get_Main_Window) = 0.3,
          "Failed to get widget attribute as Alpha_Type");
 
 --  begin read only
@@ -491,11 +517,11 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Attribute_731b81_56b1b4
-     (Window: Tk_Widget; Name: String) return Window_Types is
+   function Wrap_Test_Get_Attribute_6aefd8_78201e
+     (Window: Tk_Widget) return Window_Types is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Name'Length > 0);
+         pragma Assert(Window /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -504,9 +530,8 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Get_Attribute4 test requirement violated");
       end;
       declare
-         Test_Get_Attribute_731b81_56b1b4_Result: constant Window_Types :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Attribute
-             (Window, Name);
+         Test_Get_Attribute_6aefd8_78201e_Result: constant Window_Types :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Attribute(Window);
       begin
          begin
             pragma Assert(True);
@@ -517,22 +542,21 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Get_Attribute4 test commitment violated");
          end;
-         return Test_Get_Attribute_731b81_56b1b4_Result;
+         return Test_Get_Attribute_6aefd8_78201e_Result;
       end;
-   end Wrap_Test_Get_Attribute_731b81_56b1b4;
+   end Wrap_Test_Get_Attribute_6aefd8_78201e;
 --  end read only
 
 --  begin read only
    procedure Test_4_Get_Attribute_test_wm_get_attribute4
      (Gnattest_T: in out Test);
-   procedure Test_Get_Attribute_731b81_56b1b4(Gnattest_T: in out Test) renames
+   procedure Test_Get_Attribute_6aefd8_78201e(Gnattest_T: in out Test) renames
      Test_4_Get_Attribute_test_wm_get_attribute4;
---  id:2.2/731b81dfb4e254bd/Get_Attribute/0/0/test_wm_get_attribute4/
+--  id:2.2/6aefd831024bf05f/Get_Attribute/0/0/test_wm_get_attribute4/
    procedure Test_4_Get_Attribute_test_wm_get_attribute4
      (Gnattest_T: in out Test) is
-      function Get_Attribute
-        (Window: Tk_Widget; Name: String) return Window_Types renames
-        Wrap_Test_Get_Attribute_731b81_56b1b4;
+      function Get_Attribute(Window: Tk_Widget) return Window_Types renames
+        Wrap_Test_Get_Attribute_6aefd8_78201e;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -558,7 +582,7 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Get_Attributes(Get_Main_Window).Window_Type = DOCK,
+        (Get_Attribute(Get_Main_Window) = DOCK,
          "Failed to get window type attribute for the main window");
 
 --  begin read only

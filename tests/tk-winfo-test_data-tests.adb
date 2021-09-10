@@ -503,12 +503,14 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Exists_e0ba6a_c15285
+   function Wrap_Test_Exists_e0ba6a_7a630c
      (Name: Tk_Path_String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Boolean is
    begin
       begin
-         pragma Assert(Name'Length > 0 and Interpreter /= Null_Interpreter);
+         pragma Assert
+           (Name'Length > 0 and Name'Length < Integer'Last - 13 and
+            Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -517,7 +519,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Exists test requirement violated");
       end;
       declare
-         Test_Exists_e0ba6a_c15285_Result: constant Boolean :=
+         Test_Exists_e0ba6a_7a630c_Result: constant Boolean :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Exists
              (Name, Interpreter);
       begin
@@ -530,21 +532,21 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Exists test commitment violated");
          end;
-         return Test_Exists_e0ba6a_c15285_Result;
+         return Test_Exists_e0ba6a_7a630c_Result;
       end;
-   end Wrap_Test_Exists_e0ba6a_c15285;
+   end Wrap_Test_Exists_e0ba6a_7a630c;
 --  end read only
 
 --  begin read only
    procedure Test_Exists_test_winfo_exists(Gnattest_T: in out Test);
-   procedure Test_Exists_e0ba6a_c15285(Gnattest_T: in out Test) renames
+   procedure Test_Exists_e0ba6a_7a630c(Gnattest_T: in out Test) renames
      Test_Exists_test_winfo_exists;
 --  id:2.2/e0ba6a6d9c808e1e/Exists/1/0/test_winfo_exists/
    procedure Test_Exists_test_winfo_exists(Gnattest_T: in out Test) is
       function Exists
         (Name: Tk_Path_String; Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Boolean renames
-        Wrap_Test_Exists_e0ba6a_c15285;
+        Wrap_Test_Exists_e0ba6a_7a630c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -847,11 +849,13 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Is_Mapped_f5e47a_3d3a78
+   function Wrap_Test_Is_Mapped_f5e47a_173a11
      (Window: Tk_Widget) return Boolean is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 15);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -860,7 +864,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Is_Mapped test requirement violated");
       end;
       declare
-         Test_Is_Mapped_f5e47a_3d3a78_Result: constant Boolean :=
+         Test_Is_Mapped_f5e47a_173a11_Result: constant Boolean :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Is_Mapped(Window);
       begin
          begin
@@ -872,19 +876,19 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Is_Mapped test commitment violated");
          end;
-         return Test_Is_Mapped_f5e47a_3d3a78_Result;
+         return Test_Is_Mapped_f5e47a_173a11_Result;
       end;
-   end Wrap_Test_Is_Mapped_f5e47a_3d3a78;
+   end Wrap_Test_Is_Mapped_f5e47a_173a11;
 --  end read only
 
 --  begin read only
    procedure Test_Is_Mapped_test_winfo_is_mapped(Gnattest_T: in out Test);
-   procedure Test_Is_Mapped_f5e47a_3d3a78(Gnattest_T: in out Test) renames
+   procedure Test_Is_Mapped_f5e47a_173a11(Gnattest_T: in out Test) renames
      Test_Is_Mapped_test_winfo_is_mapped;
 --  id:2.2/f5e47af293734994/Is_Mapped/1/0/test_winfo_is_mapped/
    procedure Test_Is_Mapped_test_winfo_is_mapped(Gnattest_T: in out Test) is
       function Is_Mapped(Window: Tk_Widget) return Boolean renames
-        Wrap_Test_Is_Mapped_f5e47a_3d3a78;
+        Wrap_Test_Is_Mapped_f5e47a_173a11;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1024,10 +1028,12 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Parent_252286_2c8b1b(Window: Tk_Widget) return String is
+   function Wrap_Test_Parent_252286_c941bb(Window: Tk_Widget) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 13);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1036,7 +1042,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Parent test requirement violated");
       end;
       declare
-         Test_Parent_252286_2c8b1b_Result: constant String :=
+         Test_Parent_252286_c941bb_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Parent(Window);
       begin
          begin
@@ -1048,19 +1054,19 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Parent test commitment violated");
          end;
-         return Test_Parent_252286_2c8b1b_Result;
+         return Test_Parent_252286_c941bb_Result;
       end;
-   end Wrap_Test_Parent_252286_2c8b1b;
+   end Wrap_Test_Parent_252286_c941bb;
 --  end read only
 
 --  begin read only
    procedure Test_Parent_test_winfo_parent(Gnattest_T: in out Test);
-   procedure Test_Parent_252286_2c8b1b(Gnattest_T: in out Test) renames
+   procedure Test_Parent_252286_c941bb(Gnattest_T: in out Test) renames
      Test_Parent_test_winfo_parent;
 --  id:2.2/252286145870bfec/Parent/1/0/test_winfo_parent/
    procedure Test_Parent_test_winfo_parent(Gnattest_T: in out Test) is
       function Parent(Window: Tk_Widget) return String renames
-        Wrap_Test_Parent_252286_2c8b1b;
+        Wrap_Test_Parent_252286_c941bb;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1655,10 +1661,12 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Screen_6fc5d3_0a76bf(Window: Tk_Widget) return String is
+   function Wrap_Test_Screen_6fc5d3_32e1e9(Window: Tk_Widget) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 13);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1667,7 +1675,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Screen test requirement violated");
       end;
       declare
-         Test_Screen_6fc5d3_0a76bf_Result: constant String :=
+         Test_Screen_6fc5d3_32e1e9_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Screen(Window);
       begin
          begin
@@ -1679,19 +1687,19 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Screen test commitment violated");
          end;
-         return Test_Screen_6fc5d3_0a76bf_Result;
+         return Test_Screen_6fc5d3_32e1e9_Result;
       end;
-   end Wrap_Test_Screen_6fc5d3_0a76bf;
+   end Wrap_Test_Screen_6fc5d3_32e1e9;
 --  end read only
 
 --  begin read only
    procedure Test_Screen_test_winfo_screen(Gnattest_T: in out Test);
-   procedure Test_Screen_6fc5d3_0a76bf(Gnattest_T: in out Test) renames
+   procedure Test_Screen_6fc5d3_32e1e9(Gnattest_T: in out Test) renames
      Test_Screen_test_winfo_screen;
 --  id:2.2/6fc5d397fb7798c8/Screen/1/0/test_winfo_screen/
    procedure Test_Screen_test_winfo_screen(Gnattest_T: in out Test) is
       function Screen(Window: Tk_Widget) return String renames
-        Wrap_Test_Screen_6fc5d3_0a76bf;
+        Wrap_Test_Screen_6fc5d3_32e1e9;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2014,12 +2022,15 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Screen_Visual_fa94d0_5a0a80
+   function Wrap_Test_Screen_Visual_fa94d0_1d67c8
      (Window: Tk_Widget) return Screen_Visual_Type is
    begin
       begin
          pragma Assert
-           (Window /= Null_Widget and Get_Interpreter /= Null_Interpreter);
+           ((Window /= Null_Widget
+             and then Tk_Path_Name(Widgt => Window)'Length <
+               Integer'Last - 19) and
+            Get_Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2028,7 +2039,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Screen_Visual test requirement violated");
       end;
       declare
-         Test_Screen_Visual_fa94d0_5a0a80_Result: constant Screen_Visual_Type :=
+         Test_Screen_Visual_fa94d0_1d67c8_Result: constant Screen_Visual_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Screen_Visual(Window);
       begin
          begin
@@ -2040,22 +2051,22 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Screen_Visual test commitment violated");
          end;
-         return Test_Screen_Visual_fa94d0_5a0a80_Result;
+         return Test_Screen_Visual_fa94d0_1d67c8_Result;
       end;
-   end Wrap_Test_Screen_Visual_fa94d0_5a0a80;
+   end Wrap_Test_Screen_Visual_fa94d0_1d67c8;
 --  end read only
 
 --  begin read only
    procedure Test_Screen_Visual_test_winfo_screen_visual
      (Gnattest_T: in out Test);
-   procedure Test_Screen_Visual_fa94d0_5a0a80(Gnattest_T: in out Test) renames
+   procedure Test_Screen_Visual_fa94d0_1d67c8(Gnattest_T: in out Test) renames
      Test_Screen_Visual_test_winfo_screen_visual;
 --  id:2.2/fa94d0bde32bc0f2/Screen_Visual/1/0/test_winfo_screen_visual/
    procedure Test_Screen_Visual_test_winfo_screen_visual
      (Gnattest_T: in out Test) is
       function Screen_Visual
         (Window: Tk_Widget) return Screen_Visual_Type renames
-        Wrap_Test_Screen_Visual_fa94d0_5a0a80;
+        Wrap_Test_Screen_Visual_fa94d0_1d67c8;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2134,10 +2145,12 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Server_e424b7_51e986(Window: Tk_Widget) return String is
+   function Wrap_Test_Server_e424b7_78bc02(Window: Tk_Widget) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 13);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2146,7 +2159,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Server test requirement violated");
       end;
       declare
-         Test_Server_e424b7_51e986_Result: constant String :=
+         Test_Server_e424b7_78bc02_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Server(Window);
       begin
          begin
@@ -2158,19 +2171,19 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Server test commitment violated");
          end;
-         return Test_Server_e424b7_51e986_Result;
+         return Test_Server_e424b7_78bc02_Result;
       end;
-   end Wrap_Test_Server_e424b7_51e986;
+   end Wrap_Test_Server_e424b7_78bc02;
 --  end read only
 
 --  begin read only
    procedure Test_Server_test_winfo_server(Gnattest_T: in out Test);
-   procedure Test_Server_e424b7_51e986(Gnattest_T: in out Test) renames
+   procedure Test_Server_e424b7_78bc02(Gnattest_T: in out Test) renames
      Test_Server_test_winfo_server;
 --  id:2.2/e424b7f8de42cc3a/Server/1/0/test_winfo_server/
    procedure Test_Server_test_winfo_server(Gnattest_T: in out Test) is
       function Server(Window: Tk_Widget) return String renames
-        Wrap_Test_Server_e424b7_51e986;
+        Wrap_Test_Server_e424b7_78bc02;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2190,11 +2203,13 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Toplevel_5fee9d_f90ff3
+   function Wrap_Test_Toplevel_5fee9d_a31831
      (Window: Tk_Widget) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 15);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2203,7 +2218,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Toplevel test requirement violated");
       end;
       declare
-         Test_Toplevel_5fee9d_f90ff3_Result: constant String :=
+         Test_Toplevel_5fee9d_a31831_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Toplevel(Window);
       begin
          begin
@@ -2215,19 +2230,19 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Toplevel test commitment violated");
          end;
-         return Test_Toplevel_5fee9d_f90ff3_Result;
+         return Test_Toplevel_5fee9d_a31831_Result;
       end;
-   end Wrap_Test_Toplevel_5fee9d_f90ff3;
+   end Wrap_Test_Toplevel_5fee9d_a31831;
 --  end read only
 
 --  begin read only
    procedure Test_Toplevel_test_winfo_toplevel(Gnattest_T: in out Test);
-   procedure Test_Toplevel_5fee9d_f90ff3(Gnattest_T: in out Test) renames
+   procedure Test_Toplevel_5fee9d_a31831(Gnattest_T: in out Test) renames
      Test_Toplevel_test_winfo_toplevel;
 --  id:2.2/5fee9d10c3705c8f/Toplevel/1/0/test_winfo_toplevel/
    procedure Test_Toplevel_test_winfo_toplevel(Gnattest_T: in out Test) is
       function Toplevel(Window: Tk_Widget) return String renames
-        Wrap_Test_Toplevel_5fee9d_f90ff3;
+        Wrap_Test_Toplevel_5fee9d_a31831;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2247,11 +2262,13 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Viewable_dc7973_b838da
+   function Wrap_Test_Viewable_dc7973_8c7bbb
      (Window: Tk_Widget) return Boolean is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 15);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2260,7 +2277,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Viewable test requirement violated");
       end;
       declare
-         Test_Viewable_dc7973_b838da_Result: constant Boolean :=
+         Test_Viewable_dc7973_8c7bbb_Result: constant Boolean :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Viewable(Window);
       begin
          begin
@@ -2272,19 +2289,19 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Viewable test commitment violated");
          end;
-         return Test_Viewable_dc7973_b838da_Result;
+         return Test_Viewable_dc7973_8c7bbb_Result;
       end;
-   end Wrap_Test_Viewable_dc7973_b838da;
+   end Wrap_Test_Viewable_dc7973_8c7bbb;
 --  end read only
 
 --  begin read only
    procedure Test_Viewable_test_winfo_viewable(Gnattest_T: in out Test);
-   procedure Test_Viewable_dc7973_b838da(Gnattest_T: in out Test) renames
+   procedure Test_Viewable_dc7973_8c7bbb(Gnattest_T: in out Test) renames
      Test_Viewable_test_winfo_viewable;
 --  id:2.2/dc7973d5e13409ea/Viewable/1/0/test_winfo_viewable/
    procedure Test_Viewable_test_winfo_viewable(Gnattest_T: in out Test) is
       function Viewable(Window: Tk_Widget) return Boolean renames
-        Wrap_Test_Viewable_dc7973_b838da;
+        Wrap_Test_Viewable_dc7973_8c7bbb;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
