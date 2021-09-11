@@ -126,7 +126,7 @@ version: 3.0
 - command:
    name: check
    execute:
-      - sudo docker run --rm -w /app -v $PWD:/app ghcr.io/thindil/adabuild:9 /bin/bash scripts/check.tcl
+      - sudo docker run --rm -w /app -v $PWD:/app ghcr.io/thindil/adacontrol:9 /bin/bash scripts/check.tcl
    description: Run AdaControl to check correctness of the code
    flags:
       - unixonly
