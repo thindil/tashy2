@@ -236,6 +236,19 @@ package body Tk.Wm is
       return FALSE;
    end Get_Attribute;
 
+   function Get_Attribute(Window: Tk_Widget) return Alpha_Type is
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script =>
+             "wm attributes " & Tk_Path_Name(Widgt => Window) & " -alpha",
+           Interpreter => Tk_Interp(Widgt => Window));
+   begin
+      if Result'Length = 0 then
+         return 1.0;
+      end if;
+      return Alpha_Type'Value(Result);
+   end Get_Attribute;
+
    procedure Set_Client(Window: Tk_Widget; Name: Tcl_String) is
    begin
       Tcl_Eval

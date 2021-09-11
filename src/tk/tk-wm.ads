@@ -536,13 +536,9 @@ is
       Name in FULLSCREEN | ZOOMED | DISABLED | TOOLWINDOW | MODIFIED | NOTIFY |
           TRANSPARENT,
       Test_Case => (Name => "Test_Wm_Get_Attribute2", Mode => Nominal);
-   function Get_Attribute(Window: Tk_Widget) return Alpha_Type is
-     (Alpha_Type'Value
-        (Tcl_Eval
-           (Tcl_Script =>
-              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -alpha",
-            Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget,
+   function Get_Attribute(Window: Tk_Widget) return Alpha_Type with
+      Pre => (Window /= Null_Widget and Get_Interpreter /= Null_Interpreter)
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 21,
       Test_Case => (Name => "Test_Wm_Get_Attribute3", Mode => Nominal);
    function Get_Attribute(Window: Tk_Widget) return Window_Types is
      (Window_Types'Value
@@ -550,7 +546,8 @@ is
            (Tcl_Script =>
               "wm attributes " & Tk_Path_Name(Widgt => Window) & " -type",
             Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget,
+      Pre => (Window /= Null_Widget and Get_Interpreter /= Null_Interpreter)
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 20,
       Test_Case => (Name => "Test_Wm_Get_Attribute4", Mode => Nominal);
       -- ****
 
