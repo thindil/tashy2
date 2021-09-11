@@ -118,6 +118,9 @@ package body Tk.Bind.Test_Data.Tests is
       Assert
         (Key_Syms_Type_Image(SHIFT_KEY_SERBIAN_DJE) = "Key-Serbian_DJE",
          "Failed to get image for capital Serbian dje key");
+      Assert
+        (Key_Syms_Type_Image(KEY_CYRILLIC_YU) = "Key-Cyrillic_yu",
+         "Failed to get image of cyrillic yu.");
 
 --  begin read only
    end Test_Key_Syms_Type_Image_test_key_syms_image;
