@@ -1036,7 +1036,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "wm iconmask " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 12,
       Test_Case => (Name => "Test_Wm_Icon_Mask", Mode => Nominal);
       -- ****
 
@@ -1083,7 +1084,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "wm iconname " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 12,
       Test_Case => (Name => "Test_Wm_Icon_Name", Mode => Nominal);
       -- ****
 
@@ -1353,7 +1355,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "wm overrideredirect " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 20,
       Test_Case => (Name => "Test_Wm_Override_Redirect", Mode => Nominal);
       -- ****
 
