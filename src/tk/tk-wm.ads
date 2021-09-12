@@ -663,7 +663,8 @@ is
            Tcl_Eval
              (Tcl_Script => "wm command " & Tk_Path_Name(Widgt => Window),
               Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 11,
       Test_Case => (Name => "Test_Wm_Command", Mode => Nominal);
       -- ****
 
@@ -917,7 +918,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "wm group " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 9,
       Test_Case => (Name => "Test_Wm_Group", Mode => Nominal);
       -- ****
 
@@ -965,7 +967,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "wm iconbitmap " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 14,
       Test_Case => (Name => "Test_Wm_Icon_Bitmap", Mode => Nominal);
       -- ****
 
