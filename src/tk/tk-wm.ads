@@ -540,12 +540,7 @@ is
       Pre => (Window /= Null_Widget and Get_Interpreter /= Null_Interpreter)
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 21,
       Test_Case => (Name => "Test_Wm_Get_Attribute3", Mode => Nominal);
-   function Get_Attribute(Window: Tk_Widget) return Window_Types is
-     (Window_Types'Value
-        (Tcl_Eval
-           (Tcl_Script =>
-              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -type",
-            Interpreter => Tk_Interp(Widgt => Window)))) with
+   function Get_Attribute(Window: Tk_Widget) return Window_Types with
       Pre => (Window /= Null_Widget and Get_Interpreter /= Null_Interpreter)
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 20,
       Test_Case => (Name => "Test_Wm_Get_Attribute4", Mode => Nominal);
@@ -572,7 +567,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "wm client " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 10,
       Test_Case => (Name => "Test_Wm_Client", Mode => Nominal);
       -- ****
 
