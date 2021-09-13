@@ -59,6 +59,18 @@ package body Tk.Bind is
             Start_Index := Index(Image, "_", Backward);
             Image(Start_Index .. Image'Last) :=
               To_Upper(Image(Start_Index .. Image'Last));
+         when SHIFT_KEY_GREEK_ALPHAACCENT =>
+            return "Key-Greek_ALPHAaccent";
+         when SHIFT_KEY_GREEK_EPSILONACCENT =>
+            return "Key-Greek_EPSILONaccent";
+         when SHIFT_KEY_GREEK_ETAACCENT =>
+            return "Key-Greek_ETAaccent";
+         when SHIFT_KEY_GREEK_IOTAACCENT =>
+            return "Key-Greek_IOTAAaccent";
+         when SHIFT_KEY_GREEK_IOTADIAERESIS =>
+            return "Key-Greek_IOTAdiaeresis";
+         when SHIFT_KEY_GREEK_IOTAACCENTDIAERESIS =>
+            return "Key-Greek_IOTAaccentdiaeresis";
          when others =>
             null;
       end case;
