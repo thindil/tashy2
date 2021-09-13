@@ -1672,7 +1672,11 @@ is
            (if Above then "isabove" else "isbelow") & " " &
            Tk_Path_Name(Widgt => Second_Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget and Second_Window /= Null_Widget,
+      Pre => (Window /= Null_Widget and Second_Window /= Null_Widget)
+      and then
+        To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
+          To_Big_Integer(Tk_Path_Name(Widgt => Second_Window)'Length) <
+        To_Big_Integer(Integer'Last - 22),
       Test_Case => (Name => "Test_Wm_Stack_Order2", Mode => Nominal);
       -- ****
 
