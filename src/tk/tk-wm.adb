@@ -761,6 +761,17 @@ package body Tk.Wm is
       end return;
    end Get_Stack_Order;
 
+   function Get_State(Window: Tk_Widget) return Window_States is
+      Result: constant String := Tcl_Eval
+           (Tcl_Script => "wm state " & Tk_Path_Name(Widgt => Window),
+            Interpreter => Tk_Interp(Widgt => Window));
+   begin
+      if Result'Length = 0 then
+         return NORMAL;
+      end if;
+      return Window_States'Value(Result);
+   end Get_State;
+
    procedure Set_State
      (Window: Tk_Widget; New_State: Window_States := Default_Window_State) is
    begin

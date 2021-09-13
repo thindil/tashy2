@@ -1697,11 +1697,7 @@ is
       -- COMMANDS
       -- wm state Window
       -- SOURCE
-   function Get_State(Window: Tk_Widget) return Window_States is
-     (Window_States'Value
-        (Tcl_Eval
-           (Tcl_Script => "wm state " & Tk_Path_Name(Widgt => Window),
-            Interpreter => Tk_Interp(Widgt => Window)))) with
+   function Get_State(Window: Tk_Widget) return Window_States with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_State", Mode => Nominal);
       -- ****
