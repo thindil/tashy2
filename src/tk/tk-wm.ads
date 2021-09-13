@@ -1481,7 +1481,11 @@ is
         (Tcl_Script =>
            "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name,
          Interpreter => Tk_Interp(Widgt => Window))) with
-      Pre => Window /= Null_Widget and Name'Length > 0,
+      Pre => (Window /= Null_Widget and Name'Length > 0)
+      and then
+        To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
+          To_Big_Integer(Name'Length) <
+        To_Big_Integer(Integer'Last - 12),
       Test_Case => (Name => "Test_Wm_Protocol2", Mode => Nominal);
       -- ****
 
