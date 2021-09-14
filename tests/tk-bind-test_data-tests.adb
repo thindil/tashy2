@@ -128,6 +128,10 @@ package body Tk.Bind.Test_Data.Tests is
         (Key_Syms_Type_Image(SHIFT_KEY_GREEK_ALPHAACCENT) =
          "Key-Greek_ALPHAaccent",
          "Failed to get image of capital Greek alpha accent.");
+      Assert
+        (Key_Syms_Type_Image(SHIFT_KEY_GREEK_OMICRONACCENT) =
+         "Key-Greek_OMICRONaccent",
+         "Failed to get image of capital Greek omicron accent.");
 
 --  begin read only
    end Test_Key_Syms_Type_Image_test_key_syms_image;
