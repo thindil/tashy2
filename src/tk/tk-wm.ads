@@ -1748,7 +1748,8 @@ is
            Tcl_Eval
              (Tcl_Script => "wm title " & Tk_Path_Name(Widgt => Window),
               Interpreter => Tk_Interp(Widgt => Window)))) with
-      Pre => Window /= Null_Widget,
+      Pre => Window /= Null_Widget
+      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 9,
       Test_Case => (Name => "Test_Wm_Title", Mode => Nominal);
       -- ****
 
