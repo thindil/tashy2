@@ -18,7 +18,9 @@ with Tcl.Lists; use Tcl.Lists;
 -- FUNCTION
 -- Provide bindings for Tcl command info
 -- SOURCE
-package Tcl.Info is
+package Tcl.Info with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -49,7 +51,9 @@ package Tcl.Info is
              (Tcl_Script => "info args " & Proc_Name,
               Interpreter => Interpreter),
          Interpreter => Interpreter)) with
-      Pre => Proc_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre =>
+      (Proc_Name'Length > 0 and Proc_Name'Length < Integer'Last - 10) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Arguments", Mode => Nominal);
       -- ****
 
@@ -76,7 +80,9 @@ package Tcl.Info is
      (Tcl_Eval
         (Tcl_Script => "info body " & Proc_Name,
          Interpreter => Interpreter)) with
-      Pre => Proc_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre =>
+      (Proc_Name'Length > 0 and Proc_Name'Length < Integer'Last - 10) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Procedure_Body", Mode => Nominal);
       -- ****
 
@@ -132,7 +138,8 @@ package Tcl.Info is
              (Tcl_Script => "info commands " & Pattern,
               Interpreter => Interpreter),
          Interpreter => Interpreter)) with
-      Pre => Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter and
+      Pattern'Length < Integer'Last - 14,
       Test_Case => (Name => "Test_Info_Command", Mode => Nominal);
       -- ****
 
