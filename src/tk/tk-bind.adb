@@ -71,6 +71,16 @@ package body Tk.Bind is
             return "Key-Greek_IOTAdiaeresis";
          when SHIFT_KEY_GREEK_IOTAACCENTDIAERESIS =>
             return "Key-Greek_IOTAaccentdiaeresis";
+         when SHIFT_KEY_GREEK_OMICRONACCENT =>
+            return "Key-Greek_OMICRONaccent";
+         when SHIFT_KEY_GREEK_UPSILONACCENT =>
+            return "Key-Greek_UPSILONAaccent";
+         when SHIFT_KEY_GREEK_UPSILONDIERESIS =>
+            return "Key-Greek_UPSILONdieresis";
+         when SHIFT_KEY_GREEK_UPSILONACCENTDIERESIS =>
+            return "Key-Greek_UPSILONaccentdieresis";
+         when SHIFT_KEY_GREEK_OMEGAACCENT =>
+            return "Key-Greek_OMEGAaccent";
          when others =>
             null;
       end case;
