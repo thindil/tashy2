@@ -51,7 +51,8 @@ package body Tk.Bind is
             Start_Index := Index(Image, "_", Backward);
             return "Key-kana" & To_Upper(Image(Start_Index .. Image'Last));
          when KEY_ARABIC_COMMA .. KEY_SERBIAN_DZE |
-           KEY_CYRILLIC_YU .. KEY_CYRILLIC_HARDSIGN =>
+           KEY_CYRILLIC_YU .. KEY_CYRILLIC_HARDSIGN |
+           KEY_GREEK_ALPHAACCENT .. KEY_GREEK_OMEGAACCENT =>
             Image(5) := To_Upper(Image(5));
          when SHIFT_KEY_SERBIAN_DJE .. SHIFT_KEY_SERBIAN_DZE |
            SHIFT_KEY_CYRILLIC_YU .. SHIFT_KEY_CYRILLIC_HARDSIGN =>
