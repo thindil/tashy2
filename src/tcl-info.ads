@@ -287,7 +287,7 @@ is
      (Tcl_Eval
         (Tcl_Script => "info exists " & Var_Name,
          Interpreter => Interpreter)) with
-      Pre => Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => (Var_Name'Length > 0 and Var_Name'Length < Integer'Last - 12) and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Exists", Mode => Nominal);
       -- ****
 
@@ -321,7 +321,7 @@ is
              (Tcl_Script => "info functions " & Pattern,
               Interpreter => Interpreter),
          Interpreter => Interpreter)) with
-      Pre => Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter and Pattern'Length < Integer'Last - 15,
       Test_Case => (Name => "Test_Info_Functions", Mode => Nominal);
       -- ****
 
@@ -355,7 +355,7 @@ is
              (Tcl_Script => "info globals " & Pattern,
               Interpreter => Interpreter),
          Interpreter => Interpreter)) with
-      Pre => Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter and Pattern'Length < Integer'Last - 13,
       Test_Case => (Name => "Test_Info_Globals", Mode => Nominal);
       -- ****
 
