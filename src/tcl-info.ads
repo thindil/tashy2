@@ -287,7 +287,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "info exists " & Var_Name,
          Interpreter => Interpreter)) with
-      Pre => (Var_Name'Length > 0 and Var_Name'Length < Integer'Last - 12) and Interpreter /= Null_Interpreter,
+      Pre => (Var_Name'Length > 0 and Var_Name'Length < Integer'Last - 12) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Exists", Mode => Nominal);
       -- ****
 
@@ -321,7 +322,8 @@ is
              (Tcl_Script => "info functions " & Pattern,
               Interpreter => Interpreter),
          Interpreter => Interpreter)) with
-      Pre => Interpreter /= Null_Interpreter and Pattern'Length < Integer'Last - 15,
+      Pre => Interpreter /= Null_Interpreter and
+      Pattern'Length < Integer'Last - 15,
       Test_Case => (Name => "Test_Info_Functions", Mode => Nominal);
       -- ****
 
@@ -355,7 +357,8 @@ is
              (Tcl_Script => "info globals " & Pattern,
               Interpreter => Interpreter),
          Interpreter => Interpreter)) with
-      Pre => Interpreter /= Null_Interpreter and Pattern'Length < Integer'Last - 13,
+      Pre => Interpreter /= Null_Interpreter and
+      Pattern'Length < Integer'Last - 13,
       Test_Case => (Name => "Test_Info_Globals", Mode => Nominal);
       -- ****
 
@@ -437,7 +440,8 @@ is
              (Tcl_Script => "info locals " & Pattern,
               Interpreter => Interpreter),
          Interpreter => Interpreter)) with
-      Pre => Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter and
+      Pattern'Length < Integer'Last - 12,
       Test_Case => (Name => "Test_Info_Locals", Mode => Nominal);
       -- ****
 
@@ -521,7 +525,8 @@ is
              (Tcl_Script => "info procs " & Pattern,
               Interpreter => Interpreter),
          Interpreter => Interpreter)) with
-      Pre => Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter and
+      Pattern'Length < Integer'Last - 11,
       Test_Case => (Name => "Test_Info_Procs", Mode => Nominal);
       -- ****
 
@@ -550,7 +555,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "info script " & File_Name,
          Interpreter => Interpreter)) with
-      Pre => Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter and
+      File_Name'Length < Integer'Last - 12,
       Test_Case => (Name => "Test_Info_Script", Mode => Nominal);
       -- ****
 
@@ -609,7 +615,8 @@ is
              (Tcl_Script => "info vars " & Pattern,
               Interpreter => Interpreter),
          Interpreter => Interpreter)) with
-      Pre => Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter and
+      Pattern'Length < Integer'Last - 10,
       Test_Case => (Name => "Test_Info_Vars", Mode => Nominal);
       -- ****
       --## rule on REDUCEABLE_SCOPE
