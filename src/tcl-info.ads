@@ -12,6 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Numerics.Big_Numbers.Big_Integers;
+use Ada.Numerics.Big_Numbers.Big_Integers;
 with Tcl.Lists; use Tcl.Lists;
 
 -- ****h* Tcl/Info
@@ -167,7 +169,8 @@ is
      (Tcl_Eval
         (Tcl_Script => "info complete " & Command,
          Interpreter => Interpreter)) with
-      Pre => Command'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => (Command'Length > 0 and Command'Length < Integer'Last - 14) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Complete", Mode => Nominal);
       -- ****
 
@@ -227,8 +230,13 @@ is
         (Tcl_Script =>
            "info default " & Proc_Name & " " & Argument & " " & Var_Name,
          Interpreter => Interpreter)) with
-      Pre => Proc_Name'Length > 0 and Argument'Length > 0 and
-      Var_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre =>
+      (Proc_Name'Length > 0 and Argument'Length > 0 and Var_Name'Length > 0 and
+       Interpreter /= Null_Interpreter)
+      and then
+        To_Big_Integer(Proc_Name'Length) + To_Big_Integer(Argument'Length) +
+          To_Big_Integer(Var_Name'Length) <
+        To_Big_Integer(Integer'Last - 15),
       Test_Case => (Name => "Test_Info_Default", Mode => Nominal);
       -- ****
 
