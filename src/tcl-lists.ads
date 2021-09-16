@@ -19,7 +19,9 @@ with Tcl.Variables;
 -- FUNCTION
 -- Provide code to manipulate the Tcl lists.
 -- SOURCE
-package Tcl.Lists is
+package Tcl.Lists with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
@@ -38,7 +40,8 @@ package Tcl.Lists is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   Empty_Array_List: constant Array_List(1 .. 0) := (others => <>);
+   Empty_Array_List: constant Array_List(1 .. 0) :=
+     (others => Null_Tcl_String);
    -- ****
 
    -- ****f* Lists/Lists.Split_List
