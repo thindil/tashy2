@@ -18,7 +18,9 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 -- FUNCTION
 -- Provide code to manipulate the Tcl strings.
 -- SOURCE
-package Tcl.Strings is
+package Tcl.Strings with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
