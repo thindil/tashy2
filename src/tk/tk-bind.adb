@@ -55,7 +55,8 @@ package body Tk.Bind is
            KEY_GREEK_ALPHAACCENT .. KEY_GREEK_OMEGAACCENT =>
             Image(5) := To_Upper(Image(5));
          when SHIFT_KEY_SERBIAN_DJE .. SHIFT_KEY_SERBIAN_DZE |
-           SHIFT_KEY_CYRILLIC_YU .. SHIFT_KEY_CYRILLIC_HARDSIGN =>
+           SHIFT_KEY_CYRILLIC_YU .. SHIFT_KEY_CYRILLIC_HARDSIGN |
+           SHIFT_KEY_GREEK_ALPHA .. SHIFT_KEY_GREEK_OMEGA =>
             Image(11) := To_Upper(Image(11));
             Start_Index := Index(Image, "_", Backward);
             Image(Start_Index .. Image'Last) :=
