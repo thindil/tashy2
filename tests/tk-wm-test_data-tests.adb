@@ -458,11 +458,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Attribute_e0766a_f8161f
+   function Wrap_Test_Get_Attribute_e0766a_48ba42
      (Window: Tk_Widget) return Alpha_Type is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           ((Window /= Null_Widget and Get_Interpreter /= Null_Interpreter)
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 21);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -471,7 +473,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Get_Attribute3 test requirement violated");
       end;
       declare
-         Test_Get_Attribute_e0766a_f8161f_Result: constant Alpha_Type :=
+         Test_Get_Attribute_e0766a_48ba42_Result: constant Alpha_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Attribute(Window);
       begin
          begin
@@ -483,21 +485,21 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Get_Attribute3 test commitment violated");
          end;
-         return Test_Get_Attribute_e0766a_f8161f_Result;
+         return Test_Get_Attribute_e0766a_48ba42_Result;
       end;
-   end Wrap_Test_Get_Attribute_e0766a_f8161f;
+   end Wrap_Test_Get_Attribute_e0766a_48ba42;
 --  end read only
 
 --  begin read only
    procedure Test_3_Get_Attribute_test_wm_get_attribute3
      (Gnattest_T: in out Test);
-   procedure Test_Get_Attribute_e0766a_f8161f(Gnattest_T: in out Test) renames
+   procedure Test_Get_Attribute_e0766a_48ba42(Gnattest_T: in out Test) renames
      Test_3_Get_Attribute_test_wm_get_attribute3;
 --  id:2.2/e0766a7fc80acc58/Get_Attribute/0/0/test_wm_get_attribute3/
    procedure Test_3_Get_Attribute_test_wm_get_attribute3
      (Gnattest_T: in out Test) is
       function Get_Attribute(Window: Tk_Widget) return Alpha_Type renames
-        Wrap_Test_Get_Attribute_e0766a_f8161f;
+        Wrap_Test_Get_Attribute_e0766a_48ba42;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -517,11 +519,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Attribute_6aefd8_78201e
+   function Wrap_Test_Get_Attribute_6aefd8_1be407
      (Window: Tk_Widget) return Window_Types is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           ((Window /= Null_Widget and Get_Interpreter /= Null_Interpreter)
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 20);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -530,7 +534,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Get_Attribute4 test requirement violated");
       end;
       declare
-         Test_Get_Attribute_6aefd8_78201e_Result: constant Window_Types :=
+         Test_Get_Attribute_6aefd8_1be407_Result: constant Window_Types :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Attribute(Window);
       begin
          begin
@@ -542,21 +546,21 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Get_Attribute4 test commitment violated");
          end;
-         return Test_Get_Attribute_6aefd8_78201e_Result;
+         return Test_Get_Attribute_6aefd8_1be407_Result;
       end;
-   end Wrap_Test_Get_Attribute_6aefd8_78201e;
+   end Wrap_Test_Get_Attribute_6aefd8_1be407;
 --  end read only
 
 --  begin read only
    procedure Test_4_Get_Attribute_test_wm_get_attribute4
      (Gnattest_T: in out Test);
-   procedure Test_Get_Attribute_6aefd8_78201e(Gnattest_T: in out Test) renames
+   procedure Test_Get_Attribute_6aefd8_1be407(Gnattest_T: in out Test) renames
      Test_4_Get_Attribute_test_wm_get_attribute4;
 --  id:2.2/6aefd831024bf05f/Get_Attribute/0/0/test_wm_get_attribute4/
    procedure Test_4_Get_Attribute_test_wm_get_attribute4
      (Gnattest_T: in out Test) is
       function Get_Attribute(Window: Tk_Widget) return Window_Types renames
-        Wrap_Test_Get_Attribute_6aefd8_78201e;
+        Wrap_Test_Get_Attribute_6aefd8_1be407;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -590,11 +594,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Client_c3e755_991856
+   function Wrap_Test_Get_Client_c3e755_649902
      (Window: Tk_Widget) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 10);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -603,7 +609,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Client test requirement violated");
       end;
       declare
-         Test_Get_Client_c3e755_991856_Result: constant String :=
+         Test_Get_Client_c3e755_649902_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Client(Window);
       begin
          begin
@@ -615,19 +621,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Client test commitment violated");
          end;
-         return Test_Get_Client_c3e755_991856_Result;
+         return Test_Get_Client_c3e755_649902_Result;
       end;
-   end Wrap_Test_Get_Client_c3e755_991856;
+   end Wrap_Test_Get_Client_c3e755_649902;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Client_test_wm_client(Gnattest_T: in out Test);
-   procedure Test_Get_Client_c3e755_991856(Gnattest_T: in out Test) renames
+   procedure Test_Get_Client_c3e755_649902(Gnattest_T: in out Test) renames
      Test_Get_Client_test_wm_client;
 --  id:2.2/c3e75564763f438b/Get_Client/1/0/test_wm_client/
    procedure Test_Get_Client_test_wm_client(Gnattest_T: in out Test) is
       function Get_Client(Window: Tk_Widget) return String renames
-        Wrap_Test_Get_Client_c3e755_991856;
+        Wrap_Test_Get_Client_c3e755_649902;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -828,11 +834,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Command_93826d_cb0619
+   function Wrap_Test_Get_Command_93826d_e6db9d
      (Window: Tk_Widget) return Tcl_String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 11);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -841,7 +849,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Command test requirement violated");
       end;
       declare
-         Test_Get_Command_93826d_cb0619_Result: constant Tcl_String :=
+         Test_Get_Command_93826d_e6db9d_Result: constant Tcl_String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Command(Window);
       begin
          begin
@@ -853,19 +861,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Command test commitment violated");
          end;
-         return Test_Get_Command_93826d_cb0619_Result;
+         return Test_Get_Command_93826d_e6db9d_Result;
       end;
-   end Wrap_Test_Get_Command_93826d_cb0619;
+   end Wrap_Test_Get_Command_93826d_e6db9d;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Command_test_wm_command(Gnattest_T: in out Test);
-   procedure Test_Get_Command_93826d_cb0619(Gnattest_T: in out Test) renames
+   procedure Test_Get_Command_93826d_e6db9d(Gnattest_T: in out Test) renames
      Test_Get_Command_test_wm_command;
 --  id:2.2/93826dbefac44151/Get_Command/1/0/test_wm_command/
    procedure Test_Get_Command_test_wm_command(Gnattest_T: in out Test) is
       function Get_Command(Window: Tk_Widget) return Tcl_String renames
-        Wrap_Test_Get_Command_93826d_cb0619;
+        Wrap_Test_Get_Command_93826d_e6db9d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1449,11 +1457,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Group_f9ea32_42ff38
+   function Wrap_Test_Get_Group_f9ea32_7210ab
      (Window: Tk_Widget) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 9);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1462,7 +1472,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Group test requirement violated");
       end;
       declare
-         Test_Get_Group_f9ea32_42ff38_Result: constant String :=
+         Test_Get_Group_f9ea32_7210ab_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Group(Window);
       begin
          begin
@@ -1474,19 +1484,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Group test commitment violated");
          end;
-         return Test_Get_Group_f9ea32_42ff38_Result;
+         return Test_Get_Group_f9ea32_7210ab_Result;
       end;
-   end Wrap_Test_Get_Group_f9ea32_42ff38;
+   end Wrap_Test_Get_Group_f9ea32_7210ab;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Group_test_wm_group(Gnattest_T: in out Test);
-   procedure Test_Get_Group_f9ea32_42ff38(Gnattest_T: in out Test) renames
+   procedure Test_Get_Group_f9ea32_7210ab(Gnattest_T: in out Test) renames
      Test_Get_Group_test_wm_group;
 --  id:2.2/f9ea329d4f6f9334/Get_Group/1/0/test_wm_group/
    procedure Test_Get_Group_test_wm_group(Gnattest_T: in out Test) is
       function Get_Group(Window: Tk_Widget) return String renames
-        Wrap_Test_Get_Group_f9ea32_42ff38;
+        Wrap_Test_Get_Group_f9ea32_7210ab;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1559,11 +1569,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Icon_Bitmap_6135da_127eea
+   function Wrap_Test_Get_Icon_Bitmap_6135da_c75fae
      (Window: Tk_Widget) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 14);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1572,7 +1584,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Bitmap test requirement violated");
       end;
       declare
-         Test_Get_Icon_Bitmap_6135da_127eea_Result: constant String :=
+         Test_Get_Icon_Bitmap_6135da_c75fae_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Icon_Bitmap(Window);
       begin
          begin
@@ -1584,21 +1596,21 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Bitmap test commitment violated");
          end;
-         return Test_Get_Icon_Bitmap_6135da_127eea_Result;
+         return Test_Get_Icon_Bitmap_6135da_c75fae_Result;
       end;
-   end Wrap_Test_Get_Icon_Bitmap_6135da_127eea;
+   end Wrap_Test_Get_Icon_Bitmap_6135da_c75fae;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Icon_Bitmap_test_wm_icon_bitmap(Gnattest_T: in out Test);
-   procedure Test_Get_Icon_Bitmap_6135da_127eea
+   procedure Test_Get_Icon_Bitmap_6135da_c75fae
      (Gnattest_T: in out Test) renames
      Test_Get_Icon_Bitmap_test_wm_icon_bitmap;
 --  id:2.2/6135dacd09d62480/Get_Icon_Bitmap/1/0/test_wm_icon_bitmap/
    procedure Test_Get_Icon_Bitmap_test_wm_icon_bitmap
      (Gnattest_T: in out Test) is
       function Get_Icon_Bitmap(Window: Tk_Widget) return String renames
-        Wrap_Test_Get_Icon_Bitmap_6135da_127eea;
+        Wrap_Test_Get_Icon_Bitmap_6135da_c75fae;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1726,11 +1738,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Icon_Mask_dd14ea_818a6a
+   function Wrap_Test_Get_Icon_Mask_dd14ea_9079a9
      (Window: Tk_Widget) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 12);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1739,7 +1753,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Mask test requirement violated");
       end;
       declare
-         Test_Get_Icon_Mask_dd14ea_818a6a_Result: constant String :=
+         Test_Get_Icon_Mask_dd14ea_9079a9_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Icon_Mask(Window);
       begin
          begin
@@ -1751,19 +1765,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Mask test commitment violated");
          end;
-         return Test_Get_Icon_Mask_dd14ea_818a6a_Result;
+         return Test_Get_Icon_Mask_dd14ea_9079a9_Result;
       end;
-   end Wrap_Test_Get_Icon_Mask_dd14ea_818a6a;
+   end Wrap_Test_Get_Icon_Mask_dd14ea_9079a9;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Icon_Mask_test_wm_icon_mask(Gnattest_T: in out Test);
-   procedure Test_Get_Icon_Mask_dd14ea_818a6a(Gnattest_T: in out Test) renames
+   procedure Test_Get_Icon_Mask_dd14ea_9079a9(Gnattest_T: in out Test) renames
      Test_Get_Icon_Mask_test_wm_icon_mask;
 --  id:2.2/dd14ea6a5be023bd/Get_Icon_Mask/1/0/test_wm_icon_mask/
    procedure Test_Get_Icon_Mask_test_wm_icon_mask(Gnattest_T: in out Test) is
       function Get_Icon_Mask(Window: Tk_Widget) return String renames
-        Wrap_Test_Get_Icon_Mask_dd14ea_818a6a;
+        Wrap_Test_Get_Icon_Mask_dd14ea_9079a9;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1836,11 +1850,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Icon_Name_ab4de4_55536b
+   function Wrap_Test_Get_Icon_Name_ab4de4_2bafa0
      (Window: Tk_Widget) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 12);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1849,7 +1865,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Name test requirement violated");
       end;
       declare
-         Test_Get_Icon_Name_ab4de4_55536b_Result: constant String :=
+         Test_Get_Icon_Name_ab4de4_2bafa0_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Icon_Name(Window);
       begin
          begin
@@ -1861,19 +1877,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Name test commitment violated");
          end;
-         return Test_Get_Icon_Name_ab4de4_55536b_Result;
+         return Test_Get_Icon_Name_ab4de4_2bafa0_Result;
       end;
-   end Wrap_Test_Get_Icon_Name_ab4de4_55536b;
+   end Wrap_Test_Get_Icon_Name_ab4de4_2bafa0;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Icon_Name_test_wm_icon_name(Gnattest_T: in out Test);
-   procedure Test_Get_Icon_Name_ab4de4_55536b(Gnattest_T: in out Test) renames
+   procedure Test_Get_Icon_Name_ab4de4_2bafa0(Gnattest_T: in out Test) renames
      Test_Get_Icon_Name_test_wm_icon_name;
 --  id:2.2/ab4de4e943b76c5a/Get_Icon_Name/1/0/test_wm_icon_name/
    procedure Test_Get_Icon_Name_test_wm_icon_name(Gnattest_T: in out Test) is
       function Get_Icon_Name(Window: Tk_Widget) return String renames
-        Wrap_Test_Get_Icon_Name_ab4de4_55536b;
+        Wrap_Test_Get_Icon_Name_ab4de4_2bafa0;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2528,11 +2544,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Override_Redirect_fe8514_fdca84
+   function Wrap_Test_Get_Override_Redirect_fe8514_2fcf15
      (Window: Tk_Widget) return Boolean is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 20);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2541,7 +2559,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Override_Redirect test requirement violated");
       end;
       declare
-         Test_Get_Override_Redirect_fe8514_fdca84_Result: constant Boolean :=
+         Test_Get_Override_Redirect_fe8514_2fcf15_Result: constant Boolean :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Override_Redirect
              (Window);
       begin
@@ -2554,22 +2572,22 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Override_Redirect test commitment violated");
          end;
-         return Test_Get_Override_Redirect_fe8514_fdca84_Result;
+         return Test_Get_Override_Redirect_fe8514_2fcf15_Result;
       end;
-   end Wrap_Test_Get_Override_Redirect_fe8514_fdca84;
+   end Wrap_Test_Get_Override_Redirect_fe8514_2fcf15;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Override_Redirect_test_wm_override_redirect
      (Gnattest_T: in out Test);
-   procedure Test_Get_Override_Redirect_fe8514_fdca84
+   procedure Test_Get_Override_Redirect_fe8514_2fcf15
      (Gnattest_T: in out Test) renames
      Test_Get_Override_Redirect_test_wm_override_redirect;
 --  id:2.2/fe851461524dd6a3/Get_Override_Redirect/1/0/test_wm_override_redirect/
    procedure Test_Get_Override_Redirect_test_wm_override_redirect
      (Gnattest_T: in out Test) is
       function Get_Override_Redirect(Window: Tk_Widget) return Boolean renames
-        Wrap_Test_Get_Override_Redirect_fe8514_fdca84;
+        Wrap_Test_Get_Override_Redirect_fe8514_2fcf15;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2827,11 +2845,16 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Protocol_aa44e2_f4acbb
+   function Wrap_Test_Get_Protocol_aa44e2_dcb754
      (Window: Tk_Widget; Name: String) return String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Name'Length > 0);
+         pragma Assert
+           ((Window /= Null_Widget and Name'Length > 0)
+            and then
+              To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
+                To_Big_Integer(Name'Length) <
+              To_Big_Integer(Integer'Last - 12));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2840,7 +2863,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Protocol2 test requirement violated");
       end;
       declare
-         Test_Get_Protocol_aa44e2_f4acbb_Result: constant String :=
+         Test_Get_Protocol_aa44e2_dcb754_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Protocol
              (Window, Name);
       begin
@@ -2853,20 +2876,20 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Protocol2 test commitment violated");
          end;
-         return Test_Get_Protocol_aa44e2_f4acbb_Result;
+         return Test_Get_Protocol_aa44e2_dcb754_Result;
       end;
-   end Wrap_Test_Get_Protocol_aa44e2_f4acbb;
+   end Wrap_Test_Get_Protocol_aa44e2_dcb754;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Protocol_test_wm_protocol2(Gnattest_T: in out Test);
-   procedure Test_Get_Protocol_aa44e2_f4acbb(Gnattest_T: in out Test) renames
+   procedure Test_Get_Protocol_aa44e2_dcb754(Gnattest_T: in out Test) renames
      Test_Get_Protocol_test_wm_protocol2;
 --  id:2.2/aa44e237072653b7/Get_Protocol/1/0/test_wm_protocol2/
    procedure Test_Get_Protocol_test_wm_protocol2(Gnattest_T: in out Test) is
       function Get_Protocol
         (Window: Tk_Widget; Name: String) return String renames
-        Wrap_Test_Get_Protocol_aa44e2_f4acbb;
+        Wrap_Test_Get_Protocol_aa44e2_dcb754;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3234,12 +3257,17 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Stack_Order_Above_db54cc_065f0c
+   function Wrap_Test_Get_Stack_Order_Above_db54cc_dc5820
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
       return Boolean is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Second_Window /= Null_Widget);
+         pragma Assert
+           ((Window /= Null_Widget and Second_Window /= Null_Widget)
+            and then
+              To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
+                To_Big_Integer(Tk_Path_Name(Widgt => Second_Window)'Length) <
+              To_Big_Integer(Integer'Last - 22));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -3248,7 +3276,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Stack_Order2 test requirement violated");
       end;
       declare
-         Test_Get_Stack_Order_Above_db54cc_065f0c_Result: constant Boolean :=
+         Test_Get_Stack_Order_Above_db54cc_dc5820_Result: constant Boolean :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Stack_Order_Above
              (Window, Second_Window, Above);
       begin
@@ -3261,15 +3289,15 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Stack_Order2 test commitment violated");
          end;
-         return Test_Get_Stack_Order_Above_db54cc_065f0c_Result;
+         return Test_Get_Stack_Order_Above_db54cc_dc5820_Result;
       end;
-   end Wrap_Test_Get_Stack_Order_Above_db54cc_065f0c;
+   end Wrap_Test_Get_Stack_Order_Above_db54cc_dc5820;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Stack_Order_Above_test_wm_stack_order2
      (Gnattest_T: in out Test);
-   procedure Test_Get_Stack_Order_Above_db54cc_065f0c
+   procedure Test_Get_Stack_Order_Above_db54cc_dc5820
      (Gnattest_T: in out Test) renames
      Test_Get_Stack_Order_Above_test_wm_stack_order2;
 --  id:2.2/db54cc362296bc0a/Get_Stack_Order_Above/1/0/test_wm_stack_order2/
@@ -3278,7 +3306,7 @@ package body Tk.Wm.Test_Data.Tests is
       function Get_Stack_Order_Above
         (Window, Second_Window: Tk_Widget; Above: Boolean := True)
          return Boolean renames
-        Wrap_Test_Get_Stack_Order_Above_db54cc_065f0c;
+        Wrap_Test_Get_Stack_Order_Above_db54cc_dc5820;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3410,11 +3438,13 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Title_0b831c_70d180
+   function Wrap_Test_Get_Title_0b831c_790475
      (Window: Tk_Widget) return Tcl_String is
    begin
       begin
-         pragma Assert(Window /= Null_Widget);
+         pragma Assert
+           (Window /= Null_Widget
+            and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 9);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -3423,7 +3453,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Title test requirement violated");
       end;
       declare
-         Test_Get_Title_0b831c_70d180_Result: constant Tcl_String :=
+         Test_Get_Title_0b831c_790475_Result: constant Tcl_String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Title(Window);
       begin
          begin
@@ -3435,19 +3465,19 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Title test commitment violated");
          end;
-         return Test_Get_Title_0b831c_70d180_Result;
+         return Test_Get_Title_0b831c_790475_Result;
       end;
-   end Wrap_Test_Get_Title_0b831c_70d180;
+   end Wrap_Test_Get_Title_0b831c_790475;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Title_test_wm_title(Gnattest_T: in out Test);
-   procedure Test_Get_Title_0b831c_70d180(Gnattest_T: in out Test) renames
+   procedure Test_Get_Title_0b831c_790475(Gnattest_T: in out Test) renames
      Test_Get_Title_test_wm_title;
 --  id:2.2/0b831c9f4899cce4/Get_Title/1/0/test_wm_title/
    procedure Test_Get_Title_test_wm_title(Gnattest_T: in out Test) is
       function Get_Title(Window: Tk_Widget) return Tcl_String renames
-        Wrap_Test_Get_Title_0b831c_70d180;
+        Wrap_Test_Get_Title_0b831c_790475;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
