@@ -15,7 +15,9 @@
 with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 
-package body Tcl is
+package body Tcl with
+   SPARK_Mode
+is
 
    --## rule off GLOBAL_REFERENCES
    -- ****iv* Tcl/Tcl.Default_Interpreter
@@ -45,6 +47,7 @@ package body Tcl is
    function Create_Interpreter
      (Default: Boolean := True) return Tcl_Interpreter is
       function Tcl_Create_Interp return Tcl_Interpreter with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_CreateInterp";
@@ -55,13 +58,13 @@ package body Tcl is
       end if;
       if Default then
          Set_Interpreter(Interpreter => Interpreter);
-         return Get_Interpreter;
       end if;
       return Interpreter;
    end Create_Interpreter;
 
    procedure Tcl_Init(Interpreter: Tcl_Interpreter) is
       function Native_Tcl_Init(Interp: Tcl_Interpreter) return Tcl_Results with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_Init";
@@ -75,6 +78,7 @@ package body Tcl is
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
       function Native_Tcl_Eval
         (Interp: Tcl_Interpreter; Script: chars_ptr) return Tcl_Results with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_Eval";
@@ -136,6 +140,7 @@ package body Tcl is
      (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
       function Native_Tcl_Eval_File
         (Interp: Tcl_Interpreter; File: chars_ptr) return Tcl_Results with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_EvalFile";
@@ -151,6 +156,7 @@ package body Tcl is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
       function Tcl_Get_String_Result
         (Interp: Tcl_Interpreter) return chars_ptr with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetStringResult";
@@ -185,6 +191,7 @@ package body Tcl is
 
       procedure Native_Tcl_Set_Result
         (Interp: Tcl_Interpreter; Result: chars_ptr; Free_Proc: int) with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_SetResult";
