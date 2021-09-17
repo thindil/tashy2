@@ -44,8 +44,7 @@ is
       return Default_Interpreter;
    end Get_Interpreter;
 
-   function Create_Interpreter
-     (Default: Boolean := True) return Tcl_Interpreter is
+   function Create_Interpreter return Tcl_Interpreter is
       function Tcl_Create_Interp return Tcl_Interpreter with
          Global => null,
          Import => True,
@@ -55,9 +54,6 @@ is
    begin
       if Interpreter = Null_Interpreter then
          raise Tcl_Exception with "Failed to create Tcl interpreter";
-      end if;
-      if Default then
-         Set_Interpreter(Interpreter => Interpreter);
       end if;
       return Interpreter;
    end Create_Interpreter;

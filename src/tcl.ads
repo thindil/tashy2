@@ -60,9 +60,6 @@ is
    -- ****f* Tcl/Tcl.Create_Interpreter
    -- FUNCTION
    -- Create a new Tcl interpreter
-   -- PARAMETERS
-   -- Default - If true, set a newly created Tcl interpreter as a default.
-   --           Default value is true
    -- RESULT
    -- Pointer to the newly created Tcl interpreter
    -- HISTORY
@@ -71,8 +68,7 @@ is
    -- -- Create a new Tcl interpreter
    -- My_Interpreter: constant Tcl_Interpreter := Create_Interpreter;
    -- SOURCE
-   function Create_Interpreter
-     (Default: Boolean := True) return Tcl_Interpreter with
+   function Create_Interpreter return Tcl_Interpreter with
      Post => Create_Interpreter'Result /= Null_Interpreter;
      -- ****
      --## rule off REDUCEABLE_SCOPE
