@@ -34,10 +34,14 @@ procedure Calculator with
 is
    Main_Window: Tk_Toplevel;
    Display_Label: Ttk_Label;
+   Interpreter: constant Tcl_Interpreter := Create_Interpreter;
 
 begin
    -- Initialize Tcl interpreter
-   Tcl_Init(Interpreter => Create_Interpreter);
+   Tcl_Init(Interpreter => Interpreter);
+
+   -- Set the current Tcl interpreter as default
+   Set_Interpreter(Interpreter => Interpreter);
 
    -- Initialize the Tk library
    Tk_Init;
