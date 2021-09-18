@@ -53,7 +53,7 @@ package body Tk.Bind is
          when KEY_ARABIC_COMMA .. KEY_SERBIAN_DZE |
            KEY_CYRILLIC_YU .. KEY_CYRILLIC_HARDSIGN |
            KEY_GREEK_ALPHAACCENT .. KEY_GREEK_OMEGAACCENT |
-           KEY_BACKSPACE .. KEY_PAUSE =>
+           KEY_BACKSPACE .. KEY_PAUSE | KEY_ESCAPE =>
             Image(5) := To_Upper(Image(5));
          when SHIFT_KEY_SERBIAN_DJE .. SHIFT_KEY_SERBIAN_DZE |
            SHIFT_KEY_CYRILLIC_YU .. SHIFT_KEY_CYRILLIC_HARDSIGN |
@@ -84,6 +84,10 @@ package body Tk.Bind is
             return "Key-Greek_UPSILONaccentdieresis";
          when SHIFT_KEY_GREEK_OMEGAACCENT =>
             return "Key-Greek_OMEGAaccent";
+         when KEY_SCROLL_LOCK | KEY_SYS_REQ | KEY_MULTI_KEY =>
+            Start_Index := Index(Image, "_", Backward);
+            Image(5) := To_Upper(Image(5));
+            Image(Start_Index + 1) := To_Upper(Image(Start_Index + 1));
          when others =>
             null;
       end case;
