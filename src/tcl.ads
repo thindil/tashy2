@@ -69,7 +69,10 @@ is
    -- My_Interpreter: constant Tcl_Interpreter := Create_Interpreter;
    -- SOURCE
    function Create_Interpreter return Tcl_Interpreter with
-     Post => Create_Interpreter'Result /= Null_Interpreter;
+         Global => null,
+         Import => True,
+         Convention => C,
+         External_Name => "Tcl_CreateInterp";
      -- ****
      --## rule off REDUCEABLE_SCOPE
 

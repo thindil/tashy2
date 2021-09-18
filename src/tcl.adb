@@ -40,20 +40,6 @@ is
       return Default_Interpreter;
    end Get_Interpreter;
 
-   function Create_Interpreter return Tcl_Interpreter is
-      function Tcl_Create_Interp return Tcl_Interpreter with
-         Global => null,
-         Import => True,
-         Convention => C,
-         External_Name => "Tcl_CreateInterp";
-      Interpreter: constant Tcl_Interpreter := Tcl_Create_Interp;
-   begin
-      if Interpreter = Null_Interpreter then
-         raise Tcl_Exception with "Failed to create Tcl interpreter";
-      end if;
-      return Interpreter;
-   end Create_Interpreter;
-
    procedure Tcl_Init(Interpreter: Tcl_Interpreter) is
       function Native_Tcl_Init(Interp: Tcl_Interpreter) return Tcl_Results with
          Global => null,
