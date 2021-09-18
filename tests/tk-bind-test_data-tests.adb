@@ -141,6 +141,9 @@ package body Tk.Bind.Test_Data.Tests is
       Assert
         (Key_Syms_Type_Image(KEY_BACKSPACE) = "Key-Backspace",
          "Failed to get image of the backspace key.");
+      Assert
+        (Key_Syms_Type_Image(KEY_SCROLL_LOCK) = "Key-Scroll_Lock",
+         "Failed to get image of the scroll lock key.");
 
 --  begin read only
    end Test_Key_Syms_Type_Image_test_key_syms_image;
