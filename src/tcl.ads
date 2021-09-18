@@ -85,7 +85,8 @@ is
      -- Set_Interpreter(My_Interpreter);
      -- SOURCE
    procedure Set_Interpreter(Interpreter: Tcl_Interpreter) with
-      Pre => Interpreter /= Null_Interpreter;
+      Pre => Interpreter /= Null_Interpreter,
+      Post => Get_Interpreter = Interpreter;
       -- ****
 
      -- ****f* Tcl/Tcl.Get_Interpreter
@@ -102,7 +103,8 @@ is
 
    -- ****f* Tcl/Tcl.Tcl_Init
    -- FUNCTION
-   -- Initialize Tcl
+   -- Initialize Tcl and set the default Tcl interpreter to the selected
+   -- interpreter
    -- PARAMETERS
    -- Interpreter - Tcl interpreter to initialize
    -- HISTORY
@@ -112,7 +114,8 @@ is
    -- Tcl_Init(Create_Interpreter);
    -- SOURCE
    procedure Tcl_Init(Interpreter: Tcl_Interpreter) with
-      Pre => Interpreter /= Null_Interpreter;
+      Pre => Interpreter /= Null_Interpreter,
+      Post => Get_Interpreter = Interpreter;
    -- ****
 
    -------------------------

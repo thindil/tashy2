@@ -37,10 +37,6 @@ is
 
    function Get_Interpreter return Tcl_Interpreter is
    begin
-      if Default_Interpreter = Null_Interpreter then
-         raise Tcl_Exception
-           with "Default Tcl interpreter is not created yet.";
-      end if;
       return Default_Interpreter;
    end Get_Interpreter;
 
@@ -68,6 +64,7 @@ is
       if Native_Tcl_Init(Interp => Interpreter) = TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
+      Set_Interpreter(Interpreter => Interpreter);
    end Tcl_Init;
 
    procedure Tcl_Eval
