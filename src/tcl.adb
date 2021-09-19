@@ -40,7 +40,7 @@ is
       return Default_Interpreter;
    end Get_Interpreter;
 
-   procedure Tcl_Init(Interpreter: Tcl_Interpreter) is
+   function Tcl_Init(Interpreter: Tcl_Interpreter) return Boolean is
       function Native_Tcl_Init(Interp: Tcl_Interpreter) return Tcl_Results with
          Global => null,
          Import => True,
@@ -48,9 +48,9 @@ is
          External_Name => "Tcl_Init";
    begin
       if Native_Tcl_Init(Interp => Interpreter) = TCL_ERROR then
-         raise Tcl_Exception with Tcl_Get_Result;
+         return False;
       end if;
-      Set_Interpreter(Interpreter => Interpreter);
+      return True;
    end Tcl_Init;
 
    procedure Tcl_Eval

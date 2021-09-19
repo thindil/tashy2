@@ -69,10 +69,10 @@ is
    -- My_Interpreter: constant Tcl_Interpreter := Create_Interpreter;
    -- SOURCE
    function Create_Interpreter return Tcl_Interpreter with
-         Global => null,
-         Import => True,
-         Convention => C,
-         External_Name => "Tcl_CreateInterp";
+      Global => null,
+      Import => True,
+      Convention => C,
+      External_Name => "Tcl_CreateInterp";
      -- ****
      --## rule off REDUCEABLE_SCOPE
 
@@ -106,19 +106,17 @@ is
 
    -- ****f* Tcl/Tcl.Tcl_Init
    -- FUNCTION
-   -- Initialize Tcl and set the default Tcl interpreter to the selected
-   -- interpreter
+   -- Initialize Tcl
    -- PARAMETERS
    -- Interpreter - Tcl interpreter to initialize
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Initialize Tcl on the new Tcl interpreter
-   -- Tcl_Init(Create_Interpreter);
+   -- Is_Initialized: constant Boolean := Tcl_Init(Create_Interpreter);
    -- SOURCE
-   procedure Tcl_Init(Interpreter: Tcl_Interpreter) with
-      Pre => Interpreter /= Null_Interpreter,
-      Post => Get_Interpreter = Interpreter;
+   function Tcl_Init(Interpreter: Tcl_Interpreter) return Boolean with
+      Pre => Interpreter /= Null_Interpreter;
    -- ****
 
    -------------------------
