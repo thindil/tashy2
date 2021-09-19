@@ -123,21 +123,60 @@ is
    -- Evaluation of Tcl code
    -------------------------
 
-      -- ****f* Tcl/Tcl.Tcl_Eval_(procedure)
+   --## rule off TYPE_INITIAL_VALUES
+   -- ****t* Tcl/Tcl.Tcl_Results
+   -- FUNCTION
+   -- Used as return Tcl result for commands
+   -- OPTIONS
+   -- TCL_OK       - Used when a command finished successfuly. Standard result
+   -- TCL_ERROR    - Used when a command meet a problem
+   -- TCL_RETURN   - Used when a command want to emulate Tcl command return
+   -- TCL_BREAK    - Used when a command want to emulate Tcl command break
+   -- TCL_CONTINUE - Used when a command want to emulate Tcl command continue
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Tcl_Results is
+     (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE) with
+      Default_Value => TCL_OK;
+      -- ****
+      --## rule off TYPE_INITIAL_VALUES
+
+      -- ****t* Tcl/Tcl.Tcl_Boolean_Result
       -- FUNCTION
-      -- Evaluate the selected Tcl script on the selected Tcl intepreter
+      -- Used to store result of evaluation of Tcl command
       -- PARAMETERS
-      -- Tcl_Script  - Tcl script to evaluate
-      -- Interpreter - Tcl interpreter on which the script will be evaluated.
-      --               By default it is current default Tcl interpreter
+      -- Message_Length - The length of the error message returned by Tcl
+      --                  command. By most time it should be 0
+      -- Return_Code    - The Tcl_Result returned by the Tcl command
+      -- Message        - If Return_Code is Tcl_Error it contains message
+      --                  returned by the Tcl command
+      -- Result         - The result of the Tcl command
       -- HISTORY
       -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Print hello world on default Tcl interpreter
-      -- Tcl_Eval("puts {hello world}");
-      -- SEE ALSO
-      -- Tcl.Tcl_Eval_(function)
       -- SOURCE
+   type Tcl_Boolean_Result(Message_Length: Natural) is record
+      Return_Code: Tcl_Results;
+      Message: String(1 .. Message_Length);
+      Result: Boolean;
+   end record;
+   -- ****
+
+   -- ****f* Tcl/Tcl.Tcl_Eval_(procedure)
+   -- FUNCTION
+   -- Evaluate the selected Tcl script on the selected Tcl intepreter
+   -- PARAMETERS
+   -- Tcl_Script  - Tcl script to evaluate
+   -- Interpreter - Tcl interpreter on which the script will be evaluated.
+   --               By default it is current default Tcl interpreter
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Print hello world on default Tcl interpreter
+   -- Tcl_Eval("puts {hello world}");
+   -- SEE ALSO
+   -- Tcl.Tcl_Eval_(function)
+   -- SOURCE
    procedure Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
@@ -172,24 +211,24 @@ is
       -- ****f* Tcl/Tcl.Tcl_Eval_(function_boolean_result)
       -- FUNCTION
       -- Evaluate the selected Tcl script on the selected Tcl intepreter and
-      -- return its result as Boolean
+      -- return its result as Tcl_Boolean_Result
       -- PARAMETERS
       -- Tcl_Script  - Tcl script to evaluate
       -- Interpreter - Tcl interpreter on which the script will be evaluated.
       --               By default it is current default Tcl interpreter
       -- RESULT
-      -- Boolean with the result of the evaluation of Tcl_Script
+      -- Tcl_Boolean_Result record with the result of the evaluation of Tcl_Script
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get result of Tcl command on default Tcl interpreter
-      -- Result: constant Boolean := Tcl_Eval("info exists myvar");
+      -- Result: constant Tcl_Boolean_Result := Tcl_Eval("info exists myvar");
       -- SEE ALSO
       -- Tcl.Tcl_Eval_(procedure), Tcl.Tcl_Eval(function_string_result)
       -- SOURCE
    function Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean with
+      return Tcl_Boolean_Result with
       Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval3", Mode => Nominal);
       -- ****
@@ -295,25 +334,6 @@ is
    -- SOURCE
    Default_Result_Type: constant Result_Types := TCL_STATIC;
    -- ****
-
-   --## rule off TYPE_INITIAL_VALUES
-   -- ****t* Tcl/Tcl.Tcl_Results
-   -- FUNCTION
-   -- Used as return Tcl result for commands
-   -- OPTIONS
-   -- TCL_OK       - Used when a command finished successfuly. Standard result
-   -- TCL_ERROR    - Used when a command meet a problem
-   -- TCL_RETURN   - Used when a command want to emulate Tcl command return
-   -- TCL_BREAK    - Used when a command want to emulate Tcl command break
-   -- TCL_CONTINUE - Used when a command want to emulate Tcl command continue
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   type Tcl_Results is
-     (TCL_OK, TCL_ERROR, TCL_RETURN, TCL_BREAK, TCL_CONTINUE) with
-      Default_Value => TCL_OK;
-      -- ****
-      --## rule off TYPE_INITIAL_VALUES
 
    -- ****f* Tcl/Tcl.Tcl_Get_Result
    -- FUNCTION

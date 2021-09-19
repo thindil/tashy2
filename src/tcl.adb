@@ -12,8 +12,10 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
+with Tcl.Variables; use Tcl.Variables;
 
 package body Tcl with
    SPARK_Mode
@@ -53,14 +55,15 @@ is
       return True;
    end Tcl_Init;
 
+   function Native_Tcl_Eval
+     (Interp: Tcl_Interpreter; Script: chars_ptr) return Tcl_Results with
+      Global => null,
+      Import => True,
+      Convention => C,
+      External_Name => "Tcl_Eval";
+
    procedure Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      function Native_Tcl_Eval
-        (Interp: Tcl_Interpreter; Script: chars_ptr) return Tcl_Results with
-         Global => null,
-         Import => True,
-         Convention => C,
-         External_Name => "Tcl_Eval";
    begin
       if Native_Tcl_Eval
           (Interp => Interpreter, Script => New_String(Str => Tcl_Script)) =
@@ -79,14 +82,28 @@ is
 
    function Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
+      Message: Unbounded_String := Null_Unbounded_String;
+      Result_Code: constant Tcl_Results :=
+        Native_Tcl_Eval
+          (Interp => Interpreter, Script => New_String(Str => Tcl_Script));
    begin
-      Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter);
-      if Tcl_Get_Result(Interpreter => Interpreter) in "1" | "true" | "on" |
-            "yes" then
-         return True;
+      if Result_Code = TCL_ERROR then
+         Message :=
+           To_Unbounded_String
+             (Tcl_Get_Var
+                (Var_Name => "errorInfo", Interpreter => Interpreter));
       end if;
-      return False;
+      return Result: Tcl_Boolean_Result (Length(Source => Message)) do
+         Result.Return_Code := Result_Code;
+         Result.Result :=
+           (if
+              Tcl_Get_Result(Interpreter => Interpreter) in "1" | "true" |
+                  "on" | "yes"
+            then True
+            else False);
+         Result.Message := To_String(Message);
+      end return;
    end Tcl_Eval;
 
    function Generic_Scalar_Tcl_Eval
