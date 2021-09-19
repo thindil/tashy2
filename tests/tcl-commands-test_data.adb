@@ -10,7 +10,9 @@ package body Tcl.Commands.Test_Data is
       Interpreter: constant Tcl_Interpreter := Create_Interpreter;
    begin
       Set_Interpreter(Interpreter);
-      Tcl_Init(Interpreter);
+      if not Tcl_Init(Interpreter) then
+         return;
+      end if;
    end Set_Up;
 
    procedure Tear_Down(Gnattest_T: in out Test) is
