@@ -159,13 +159,13 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Check if command mycommand is complete on default interpreter
-      -- Is_Complete: constant Boolean := Complete("mycommand");
+      -- Is_Complete: constant Tcl_Boolean_Result := Complete("mycommand");
       -- COMMANDS
       -- info complete Command
       -- SOURCE
    function Complete
      (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script => "info complete " & Command,
          Interpreter => Interpreter)) with
@@ -220,12 +220,12 @@ is
       -- EXAMPLE
       -- -- Get the default value of argument myarg in procedure myproc on the default
       -- -- interpreter and put it in Tcl variable myvar
-      -- Has_Default: constant Boolean := Get_Default("myproc", "myarg", "myvar");
+      -- Has_Default: constant Tcl_Boolean_Result := Get_Default("myproc", "myarg", "myvar");
       -- info default Proc_Name Argument Var_Name
       -- SOURCE
    function Get_Default
      (Proc_Name, Argument, Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script =>
            "info default " & Proc_Name & " " & Argument & " " & Var_Name,
@@ -277,13 +277,13 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Check if the Tcl variable $myvar exists in the default Tcl interpreter
-      -- Var_Exists: constant Boolean := Exists("myvar");
+      -- Var_Exists: constant Tcl_Boolean_Result := Exists("myvar");
       -- COMMANDS
       -- info exists Var_Name
       -- SOURCE
    function Exists
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script => "info exists " & Var_Name,
          Interpreter => Interpreter)) with

@@ -56,7 +56,7 @@ package body Tk.Image is
 
    function In_Use
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
    begin
       return
         Tcl_Eval

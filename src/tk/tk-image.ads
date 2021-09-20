@@ -137,13 +137,13 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Check if the Tk image "myimage" on default Tcl interpreter is used
-      -- Is_Used: constant Boolean := In_Use("myimage");
+      -- Is_Used: constant Tcl_Boolean_Result := In_Use("myimage");
       -- COMMANDS
       -- image inuse Image_Name
       -- SOURCE
    function In_Use
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean with
+      return Tcl_Boolean_Result with
       Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_In_Use", Mode => Nominal);
       -- ****
