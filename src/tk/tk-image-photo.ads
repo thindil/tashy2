@@ -597,7 +597,7 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the transparency status of pixel at (10, 12) in My_Image on the default Tcl interpreter
-      -- Is_Transparent: constant Boolean := Get_Transparency(My_Image, 10, 12);
+      -- Is_Transparent: constant Tcl_Boolean_Result := Get_Transparency(My_Image, 10, 12);
       -- SEE ALSO
       -- Photo.Set_Transparency
       -- COMMANDS
@@ -605,7 +605,7 @@ is
       -- SOURCE
    function Get_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean with
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_Boolean_Result with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Transparency_Photo", Mode => Nominal);
       -- ****

@@ -1345,13 +1345,13 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the flag value for the Tk main window
-      -- Is_Ignored: constant Boolean := Get_Override_Redirect(Get_Main_Window);
+      -- Is_Ignored: constant Tcl_Boolean_Result := Get_Override_Redirect(Get_Main_Window);
       -- SEE ALSO
       -- Wm.Set_Override_Redirect
       -- COMMANDS
       -- wm overrideredirect Window
       -- SOURCE
-   function Get_Override_Redirect(Window: Tk_Widget) return Boolean is
+   function Get_Override_Redirect(Window: Tk_Widget) return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script => "wm overrideredirect " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
@@ -1656,7 +1656,7 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Check if Tk main window is above My_Dialog in stacking order
-      -- Is_Above: constant Boolean := Get_Stack_Order_Above(Get_Main_Window, My_Dialog);
+      -- Is_Above: constant Tcl_Boolean_Result := Get_Stack_Order_Above(Get_Main_Window, My_Dialog);
       -- SEE ALSO
       -- Wm.Get_Stack_Order
       -- COMMANDS
@@ -1665,7 +1665,7 @@ is
       -- SOURCE
    function Get_Stack_Order_Above
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
-      return Boolean is
+      return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script =>
            "wm stackorder " & Tk_Path_Name(Widgt => Window) & " " &

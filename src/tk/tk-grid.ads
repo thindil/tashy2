@@ -553,13 +553,13 @@ package Tk.Grid is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the propagation state for My_Frame window grid
-      -- Is_Enabled: constant Boolean := Get_Propagate(My_Frame);
+      -- Is_Enabled: constant Tcl_Boolean_Result := Get_Propagate(My_Frame);
       -- SEE ALSO
       -- Grid.Set_Propagate
       -- COMMANDS
       -- grid propagate master
       -- SOURCE
-   function Get_Propagate(Master: Tk_Widget) return Boolean is
+   function Get_Propagate(Master: Tk_Widget) return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script => "grid propagate " & Tk_Path_Name(Widgt => Master),
          Interpreter => Tk_Interp(Widgt => Master))) with

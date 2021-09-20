@@ -276,11 +276,11 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Check color map of the My_Button widget
-      -- Is_Full: constant Boolean := Color_Map_Full(My_Button);
+      -- Is_Full: constant Tcl_Boolean_Result := Color_Map_Full(My_Button);
       -- COMMANDS
       -- winfo colormapfull Window
       -- SOURCE
-   function Color_Map_Full(Window: Tk_Widget) return Boolean is
+   function Color_Map_Full(Window: Tk_Widget) return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script => "winfo colormapfull " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
@@ -355,13 +355,13 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Check if widget .mybutton exists in the default Tcl interpreter
-      -- Is_Existing: constant Boolean := Exists(".mybutton");
+      -- Is_Existing: constant Tcl_Boolean_Result := Exists(".mybutton");
       -- COMMANDS
       -- winfo exists Window
       -- SOURCE
    function Exists
      (Name: Tk_Path_String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script => "winfo exists " & Name,
          Interpreter => Interpreter)) with
@@ -497,11 +497,11 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Check if Tk_Widget My_Label is visible
-      -- Is_Visible: constant Boolean := Is_Mapped(My_Label);
+      -- Is_Visible: constant Tcl_Boolean_Result := Is_Mapped(My_Label);
       -- COMMANDS
       -- winfo ismapped Window
       -- SOURCE
-   function Is_Mapped(Window: Tk_Widget) return Boolean is
+   function Is_Mapped(Window: Tk_Widget) return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script => "winfo ismapped " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
@@ -1063,11 +1063,11 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the mapped state of the Tk widget My_Label
-      -- Is_Mapped: constant Boolean := Viewable(My_Label);
+      -- Is_Mapped: constant Tcl_Boolean_Result := Viewable(My_Label);
       -- COMMANDS
       -- winfo viewable Window
       -- SOURCE
-   function Viewable(Window: Tk_Widget) return Boolean is
+   function Viewable(Window: Tk_Widget) return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script => "winfo viewable " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with

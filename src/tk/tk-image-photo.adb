@@ -348,7 +348,7 @@ package body Tk.Image.Photo is
 
    function Get_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_Boolean_Result is
    begin
       return
         Tcl_Eval
