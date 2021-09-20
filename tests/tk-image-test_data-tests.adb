@@ -262,7 +262,8 @@ package body Tk.Image.Test_Data.Tests is
          return;
       end if;
       Tcl_Eval("image create bitmap mybitmap -background red");
-      Assert(not In_Use("mybitmap"), "Failed to get image in use state.");
+      Assert
+        (not In_Use("mybitmap").Result, "Failed to get image in use state.");
       Delete("mybitmap");
 
 --  begin read only

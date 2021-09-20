@@ -72,7 +72,8 @@ package body Tk.Test_Data.Tests is
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 or else Info.Exists("tk_version") then
+      if Value("DISPLAY", "")'Length = 0
+        or else Info.Exists("tk_version").Result then
          Assert(True, "No display, can't test");
          return;
       end if;

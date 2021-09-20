@@ -2600,7 +2600,7 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (not Get_Override_Redirect(Get_Main_Window),
+        (not Get_Override_Redirect(Get_Main_Window).Result,
          "Failed to get override redirect value for Tk main window.");
 
 --  begin read only
@@ -2658,7 +2658,7 @@ package body Tk.Wm.Test_Data.Tests is
       end if;
       Set_Override_Redirect(Get_Main_Window, True);
       Assert
-        (Get_Override_Redirect(Get_Main_Window),
+        (Get_Override_Redirect(Get_Main_Window).Result,
          "Failed to set override redirect value for Tk main window.");
       Set_Override_Redirect(Get_Main_Window, False);
 
@@ -3319,7 +3319,7 @@ package body Tk.Wm.Test_Data.Tests is
          return;
       end if;
       Assert
-        (not Get_Stack_Order_Above(Get_Main_Window, Get_Main_Window),
+        (not Get_Stack_Order_Above(Get_Main_Window, Get_Main_Window).Result,
          "Failed to get if Tk main window is above self.");
 
 --  begin read only

@@ -373,7 +373,7 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (not Color_Map_Full(Get_Main_Window),
+        (not Color_Map_Full(Get_Main_Window).Result,
          "Failed to get the information about full color map for Tk main window.");
 
 --  begin read only
@@ -559,9 +559,11 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Winfo.Exists("."), "Failed to check if the main Tk window exists.");
+        (Winfo.Exists(".").Result,
+         "Failed to check if the main Tk window exists.");
       Assert
-        (not Winfo.Exists(".test"), "Failed to check non existing Tk window.");
+        (not Winfo.Exists(".test").Result,
+         "Failed to check non existing Tk window.");
 
 --  begin read only
    end Test_Exists_test_winfo_exists;
@@ -901,7 +903,7 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Is_Mapped(Get_Main_Window),
+        (Is_Mapped(Get_Main_Window).Result,
          "Failed to check if Tk main window is mapped.");
 
 --  begin read only
@@ -2314,7 +2316,7 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Viewable(Get_Main_Window),
+        (Viewable(Get_Main_Window).Result,
          "Failed to get viewable state for Tk main window.");
 
 --  begin read only

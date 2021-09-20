@@ -591,7 +591,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Get_Transparency("myphoto", 0, 0),
+        (Get_Transparency("myphoto", 0, 0).Result,
          "Failed to get transparency for pixel in photo image.");
 
 --  begin read only
@@ -652,7 +652,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
       end if;
       Set_Transparency("myphoto", 0, 0, False);
       Assert
-        (not Get_Transparency("myphoto", 0, 0),
+        (not Get_Transparency("myphoto", 0, 0).Result,
          "Failed to set transparency for pixel in photo image.");
 
 --  begin read only
