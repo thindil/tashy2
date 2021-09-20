@@ -318,8 +318,8 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Color_Map_Full_032f44_3de321
-     (Window: Tk_Widget) return Boolean is
+   function Wrap_Test_Color_Map_Full_f60f4e_3de321
+     (Window: Tk_Widget) return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -333,7 +333,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Color_Map_Full test requirement violated");
       end;
       declare
-         Test_Color_Map_Full_032f44_3de321_Result: constant Boolean :=
+         Test_Color_Map_Full_f60f4e_3de321_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Color_Map_Full
              (Window);
       begin
@@ -346,21 +346,22 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Color_Map_Full test commitment violated");
          end;
-         return Test_Color_Map_Full_032f44_3de321_Result;
+         return Test_Color_Map_Full_f60f4e_3de321_Result;
       end;
-   end Wrap_Test_Color_Map_Full_032f44_3de321;
+   end Wrap_Test_Color_Map_Full_f60f4e_3de321;
 --  end read only
 
 --  begin read only
    procedure Test_Color_Map_Full_test_winfo_color_map_full
      (Gnattest_T: in out Test);
-   procedure Test_Color_Map_Full_032f44_3de321(Gnattest_T: in out Test) renames
+   procedure Test_Color_Map_Full_f60f4e_3de321(Gnattest_T: in out Test) renames
      Test_Color_Map_Full_test_winfo_color_map_full;
---  id:2.2/032f44d0553a64e1/Color_Map_Full/1/0/test_winfo_color_map_full/
+--  id:2.2/f60f4e8bc5be7113/Color_Map_Full/1/0/test_winfo_color_map_full/
    procedure Test_Color_Map_Full_test_winfo_color_map_full
      (Gnattest_T: in out Test) is
-      function Color_Map_Full(Window: Tk_Widget) return Boolean renames
-        Wrap_Test_Color_Map_Full_032f44_3de321;
+      function Color_Map_Full
+        (Window: Tk_Widget) return Tcl_Boolean_Result renames
+        Wrap_Test_Color_Map_Full_f60f4e_3de321;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -503,9 +504,9 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Exists_e0ba6a_7a630c
+   function Wrap_Test_Exists_a87cb0_7a630c
      (Name: Tk_Path_String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -519,7 +520,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Exists test requirement violated");
       end;
       declare
-         Test_Exists_e0ba6a_7a630c_Result: constant Boolean :=
+         Test_Exists_a87cb0_7a630c_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Exists
              (Name, Interpreter);
       begin
@@ -532,21 +533,21 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Exists test commitment violated");
          end;
-         return Test_Exists_e0ba6a_7a630c_Result;
+         return Test_Exists_a87cb0_7a630c_Result;
       end;
-   end Wrap_Test_Exists_e0ba6a_7a630c;
+   end Wrap_Test_Exists_a87cb0_7a630c;
 --  end read only
 
 --  begin read only
    procedure Test_Exists_test_winfo_exists(Gnattest_T: in out Test);
-   procedure Test_Exists_e0ba6a_7a630c(Gnattest_T: in out Test) renames
+   procedure Test_Exists_a87cb0_7a630c(Gnattest_T: in out Test) renames
      Test_Exists_test_winfo_exists;
---  id:2.2/e0ba6a6d9c808e1e/Exists/1/0/test_winfo_exists/
+--  id:2.2/a87cb0d7f49d8e1f/Exists/1/0/test_winfo_exists/
    procedure Test_Exists_test_winfo_exists(Gnattest_T: in out Test) is
       function Exists
         (Name: Tk_Path_String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Boolean renames
-        Wrap_Test_Exists_e0ba6a_7a630c;
+         return Tcl_Boolean_Result renames
+        Wrap_Test_Exists_a87cb0_7a630c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -849,8 +850,8 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Is_Mapped_f5e47a_173a11
-     (Window: Tk_Widget) return Boolean is
+   function Wrap_Test_Is_Mapped_086085_173a11
+     (Window: Tk_Widget) return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -864,7 +865,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Is_Mapped test requirement violated");
       end;
       declare
-         Test_Is_Mapped_f5e47a_173a11_Result: constant Boolean :=
+         Test_Is_Mapped_086085_173a11_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Is_Mapped(Window);
       begin
          begin
@@ -876,19 +877,19 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Is_Mapped test commitment violated");
          end;
-         return Test_Is_Mapped_f5e47a_173a11_Result;
+         return Test_Is_Mapped_086085_173a11_Result;
       end;
-   end Wrap_Test_Is_Mapped_f5e47a_173a11;
+   end Wrap_Test_Is_Mapped_086085_173a11;
 --  end read only
 
 --  begin read only
    procedure Test_Is_Mapped_test_winfo_is_mapped(Gnattest_T: in out Test);
-   procedure Test_Is_Mapped_f5e47a_173a11(Gnattest_T: in out Test) renames
+   procedure Test_Is_Mapped_086085_173a11(Gnattest_T: in out Test) renames
      Test_Is_Mapped_test_winfo_is_mapped;
---  id:2.2/f5e47af293734994/Is_Mapped/1/0/test_winfo_is_mapped/
+--  id:2.2/086085612124ea62/Is_Mapped/1/0/test_winfo_is_mapped/
    procedure Test_Is_Mapped_test_winfo_is_mapped(Gnattest_T: in out Test) is
-      function Is_Mapped(Window: Tk_Widget) return Boolean renames
-        Wrap_Test_Is_Mapped_f5e47a_173a11;
+      function Is_Mapped(Window: Tk_Widget) return Tcl_Boolean_Result renames
+        Wrap_Test_Is_Mapped_086085_173a11;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2262,8 +2263,8 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Viewable_dc7973_8c7bbb
-     (Window: Tk_Widget) return Boolean is
+   function Wrap_Test_Viewable_7e17e3_8c7bbb
+     (Window: Tk_Widget) return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -2277,7 +2278,7 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Viewable test requirement violated");
       end;
       declare
-         Test_Viewable_dc7973_8c7bbb_Result: constant Boolean :=
+         Test_Viewable_7e17e3_8c7bbb_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Viewable(Window);
       begin
          begin
@@ -2289,19 +2290,19 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Viewable test commitment violated");
          end;
-         return Test_Viewable_dc7973_8c7bbb_Result;
+         return Test_Viewable_7e17e3_8c7bbb_Result;
       end;
-   end Wrap_Test_Viewable_dc7973_8c7bbb;
+   end Wrap_Test_Viewable_7e17e3_8c7bbb;
 --  end read only
 
 --  begin read only
    procedure Test_Viewable_test_winfo_viewable(Gnattest_T: in out Test);
-   procedure Test_Viewable_dc7973_8c7bbb(Gnattest_T: in out Test) renames
+   procedure Test_Viewable_7e17e3_8c7bbb(Gnattest_T: in out Test) renames
      Test_Viewable_test_winfo_viewable;
---  id:2.2/dc7973d5e13409ea/Viewable/1/0/test_winfo_viewable/
+--  id:2.2/7e17e32beadd956a/Viewable/1/0/test_winfo_viewable/
    procedure Test_Viewable_test_winfo_viewable(Gnattest_T: in out Test) is
-      function Viewable(Window: Tk_Widget) return Boolean renames
-        Wrap_Test_Viewable_dc7973_8c7bbb;
+      function Viewable(Window: Tk_Widget) return Tcl_Boolean_Result renames
+        Wrap_Test_Viewable_7e17e3_8c7bbb;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

@@ -208,9 +208,9 @@ package body Tk.Image.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_In_Use_ce6448_db6496
+   function Wrap_Test_In_Use_d3d7f4_db6496
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -223,7 +223,7 @@ package body Tk.Image.Test_Data.Tests is
                "req_sloc(tk-image.ads:0):Test_Image_In_Use test requirement violated");
       end;
       declare
-         Test_In_Use_ce6448_db6496_Result: constant Boolean :=
+         Test_In_Use_d3d7f4_db6496_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.In_Use
              (Image_Name, Interpreter);
       begin
@@ -236,21 +236,21 @@ package body Tk.Image.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image.ads:0:):Test_Image_In_Use test commitment violated");
          end;
-         return Test_In_Use_ce6448_db6496_Result;
+         return Test_In_Use_d3d7f4_db6496_Result;
       end;
-   end Wrap_Test_In_Use_ce6448_db6496;
+   end Wrap_Test_In_Use_d3d7f4_db6496;
 --  end read only
 
 --  begin read only
    procedure Test_In_Use_test_image_in_use(Gnattest_T: in out Test);
-   procedure Test_In_Use_ce6448_db6496(Gnattest_T: in out Test) renames
+   procedure Test_In_Use_d3d7f4_db6496(Gnattest_T: in out Test) renames
      Test_In_Use_test_image_in_use;
---  id:2.2/ce6448e619bec13f/In_Use/1/0/test_image_in_use/
+--  id:2.2/d3d7f45dad637676/In_Use/1/0/test_image_in_use/
    procedure Test_In_Use_test_image_in_use(Gnattest_T: in out Test) is
       function In_Use
         (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Boolean renames
-        Wrap_Test_In_Use_ce6448_db6496;
+         return Tcl_Boolean_Result renames
+        Wrap_Test_In_Use_d3d7f4_db6496;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

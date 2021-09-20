@@ -35,7 +35,7 @@ package Tk.Image.Photo.Test_Data.Tests is
    procedure Test_Redither_68a59f_4f3041(Gnattest_T: in out Test);
    --  tk-image-photo.ads:574:4:Redither:Tests_Redither_Photo
 
-   procedure Test_Get_Transparency_745b2d_ffe137(Gnattest_T: in out Test);
+   procedure Test_Get_Transparency_6cdf5e_ffe137(Gnattest_T: in out Test);
    --  tk-image-photo.ads:606:4:Get_Transparency:Tests_Get_Transparency_Photo
 
    procedure Test_Set_Transparency_76d5d1_e76ade(Gnattest_T: in out Test);

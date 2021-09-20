@@ -22,19 +22,19 @@ package Tcl.Info.Test_Data.Tests is
    procedure Test_Get_Commands_f2ad9c_3093bd(Gnattest_T: in out Test);
    --  tcl-info.ads:134:4:Get_Commands:Test_Info_Command
 
-   procedure Test_Complete_539361_214fb5(Gnattest_T: in out Test);
+   procedure Test_Complete_c39017_214fb5(Gnattest_T: in out Test);
    --  tcl-info.ads:166:4:Complete:Test_Info_Complete
 
    procedure Test_Get_Coroutine_df9ca4_613b2a(Gnattest_T: in out Test);
    --  tcl-info.ads:194:4:Get_Coroutine:Test_Info_Coroutine
 
-   procedure Test_Get_Default_2d3d83_fd5e6a(Gnattest_T: in out Test);
+   procedure Test_Get_Default_b559cf_fd5e6a(Gnattest_T: in out Test);
    --  tcl-info.ads:226:4:Get_Default:Test_Info_Default
 
    procedure Test_Get_Error_Stack_c33442_123ed2(Gnattest_T: in out Test);
    --  tcl-info.ads:259:4:Get_Error_Stack:Test_Info_ErrorStack
 
-   procedure Test_Exists_e0ba6a_c90638(Gnattest_T: in out Test);
+   procedure Test_Exists_a87cb0_c90638(Gnattest_T: in out Test);
    --  tcl-info.ads:284:4:Exists:Test_Info_Exists
 
    procedure Test_Get_Functions_5a1dbc_b56c6e(Gnattest_T: in out Test);

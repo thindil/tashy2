@@ -140,9 +140,9 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Tcl_Eval_8c4419_19bef1
+   function Wrap_Test_Tcl_Eval_991647_19bef1
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -155,7 +155,7 @@ package body Tcl.Test_Data.Tests is
                "req_sloc(tcl.ads:0):Test_Tcl_Eval3 test requirement violated");
       end;
       declare
-         Test_Tcl_Eval_8c4419_19bef1_Result: constant Boolean :=
+         Test_Tcl_Eval_991647_19bef1_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Eval
              (Tcl_Script, Interpreter);
       begin
@@ -168,30 +168,29 @@ package body Tcl.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl.ads:0:):Test_Tcl_Eval3 test commitment violated");
          end;
-         return Test_Tcl_Eval_8c4419_19bef1_Result;
+         return Test_Tcl_Eval_991647_19bef1_Result;
       end;
-   end Wrap_Test_Tcl_Eval_8c4419_19bef1;
+   end Wrap_Test_Tcl_Eval_991647_19bef1;
 --  end read only
 
 --  begin read only
    procedure Test_3_Tcl_Eval_test_tcl_eval3(Gnattest_T: in out Test);
-   procedure Test_Tcl_Eval_8c4419_19bef1(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Eval_991647_19bef1(Gnattest_T: in out Test) renames
      Test_3_Tcl_Eval_test_tcl_eval3;
---  id:2.2/8c4419ae7fa247fc/Tcl_Eval/0/0/test_tcl_eval3/
+--  id:2.2/9916475f68961448/Tcl_Eval/0/0/test_tcl_eval3/
    procedure Test_3_Tcl_Eval_test_tcl_eval3(Gnattest_T: in out Test) is
       function Tcl_Eval
         (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Boolean renames
-        Wrap_Test_Tcl_Eval_8c4419_19bef1;
+         return Tcl_Boolean_Result renames
+        Wrap_Test_Tcl_Eval_991647_19bef1;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      Assert
-        (not Tcl_Eval("info exists asdfervariable"),
-         "Failed to get boolean value of Tcl command.");
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
    end Test_3_Tcl_Eval_test_tcl_eval3;
@@ -403,6 +402,25 @@ package body Tcl.Test_Data.Tests is
 
 --  begin read only
    end Test_Tcl_Update_test_tcl_update;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Tcl_Eval_test_tcl_eval3 (Gnattest_T : in out Test_);
+   --  procedure Test_Tcl_Eval_8c4419_test_tcl_eval3 (Gnattest_T : in out Test_) renames Test_Tcl_Eval_test_tcl_eval3;
+--  id:2.2/8c4419ae7fa247fc/Tcl_Eval/0/1/test_tcl_eval3/
+   --  procedure Test_Tcl_Eval_test_tcl_eval3 (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        Assert
+--          (not Tcl_Eval("info exists asdfervariable"),
+--           "Failed to get boolean value of Tcl command.");
+--
+--  begin read only
+   --  end Test_Tcl_Eval_test_tcl_eval3;
 --  end read only
 
 --  begin read only

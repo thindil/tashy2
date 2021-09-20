@@ -19,7 +19,7 @@ package Tk.Image.Test_Data.Tests is
    procedure Test_Height_80fc6b_1986ce(Gnattest_T: in out Test);
    --  tk-image.ads:122:4:Height:Test_Image_Height
 
-   procedure Test_In_Use_ce6448_db6496(Gnattest_T: in out Test);
+   procedure Test_In_Use_d3d7f4_db6496(Gnattest_T: in out Test);
    --  tk-image.ads:144:4:In_Use:Test_Image_In_Use
 
    procedure Test_Names_eadae1_91e953(Gnattest_T: in out Test);

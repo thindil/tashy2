@@ -58,7 +58,7 @@ package Tk.Grid.Test_Data.Tests is
    procedure Test_Set_Propagate_38a3d0_e08f8c(Gnattest_T: in out Test);
    --  tk-grid.ads:539:4:Set_Propagate:Test_Propagate1
 
-   procedure Test_Get_Propagate_74e8b1_142129(Gnattest_T: in out Test);
+   procedure Test_Get_Propagate_b85f28_142129(Gnattest_T: in out Test);
    --  tk-grid.ads:562:4:Get_Propagate:Test_Propagate2
 
    procedure Test_Row_Configure_cd10c1_55f5f1(Gnattest_T: in out Test);

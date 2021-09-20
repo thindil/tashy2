@@ -11,25 +11,25 @@ package Tcl.Test_Data.Tests is
    null record;
 
    procedure Test_Tcl_Eval_6f41cd_5b9cd5(Gnattest_T: in out Test);
-   --  tcl.ads:141:4:Tcl_Eval:Test_Tcl_Eval
+   --  tcl.ads:180:4:Tcl_Eval:Test_Tcl_Eval
 
    procedure Test_Tcl_Eval_907c70_916b02(Gnattest_T: in out Test);
-   --  tcl.ads:165:4:Tcl_Eval:Test_Tcl_Eval2
+   --  tcl.ads:204:4:Tcl_Eval:Test_Tcl_Eval2
 
-   procedure Test_Tcl_Eval_8c4419_19bef1(Gnattest_T: in out Test);
-   --  tcl.ads:190:4:Tcl_Eval:Test_Tcl_Eval3
+   procedure Test_Tcl_Eval_991647_19bef1(Gnattest_T: in out Test);
+   --  tcl.ads:229:4:Tcl_Eval:Test_Tcl_Eval3
 
    procedure Test_Tcl_Eval_File_323881_9ae206(Gnattest_T: in out Test);
-   --  tcl.ads:265:4:Tcl_Eval_File:Test_Tcl_Eval_File
+   --  tcl.ads:304:4:Tcl_Eval_File:Test_Tcl_Eval_File
 
    procedure Test_Tcl_Get_Result_9a7ac3_b83d43(Gnattest_T: in out Test);
-   --  tcl.ads:332:4:Tcl_Get_Result:Test_Tcl_GetResult
+   --  tcl.ads:352:4:Tcl_Get_Result:Test_Tcl_GetResult
 
    procedure Test_Tcl_Set_Result_2e8975_cb8f85(Gnattest_T: in out Test);
-   --  tcl.ads:399:4:Tcl_Set_Result:Test_Tcl_SetResult
+   --  tcl.ads:419:4:Tcl_Set_Result:Test_Tcl_SetResult
 
    procedure Test_Tcl_Update_7113e2_953c64(Gnattest_T: in out Test);
-   --  tcl.ads:424:4:Tcl_Update:Test_Tcl_Update
+   --  tcl.ads:444:4:Tcl_Update:Test_Tcl_Update
 
 end Tcl.Test_Data.Tests;
 --  end read only

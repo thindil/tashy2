@@ -25,7 +25,7 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Class_1df3af_850207(Gnattest_T: in out Test);
    --  tk-winfo.ads:259:4:Class:Test_Winfo_Class
 
-   procedure Test_Color_Map_Full_032f44_3de321(Gnattest_T: in out Test);
+   procedure Test_Color_Map_Full_f60f4e_3de321(Gnattest_T: in out Test);
    --  tk-winfo.ads:283:4:Color_Map_Full:Test_Winfo_Color_Map_Full
 
    procedure Test_Containing_916a42_e3dd46(Gnattest_T: in out Test);
@@ -34,7 +34,7 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Colors_Depth_27cc4a_1900bc(Gnattest_T: in out Test);
    --  tk-winfo.ads:340:4:Colors_Depth:Test_Winfo_Depth
 
-   procedure Test_Exists_e0ba6a_7a630c(Gnattest_T: in out Test);
+   procedure Test_Exists_a87cb0_7a630c(Gnattest_T: in out Test);
    --  tk-winfo.ads:362:4:Exists:Test_Winfo_Exists
 
    procedure Test_Floating_Point_Pixels_e16a1c_9b10a0(Gnattest_T: in out Test);
@@ -52,7 +52,7 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Interpreters_aa8c94_a1d488(Gnattest_T: in out Test);
    --  tk-winfo.ads:483:4:Interpreters:Test_Winfo_Interpreters
 
-   procedure Test_Is_Mapped_f5e47a_173a11(Gnattest_T: in out Test);
+   procedure Test_Is_Mapped_086085_173a11(Gnattest_T: in out Test);
    --  tk-winfo.ads:504:4:Is_Mapped:Test_Winfo_Is_Mapped
 
    procedure Test_Manager_0c5ddb_cd7633(Gnattest_T: in out Test);
@@ -126,7 +126,7 @@ package Tk.Winfo.Test_Data.Tests is
    procedure Test_Toplevel_5fee9d_a31831(Gnattest_T: in out Test);
    --  tk-winfo.ads:1046:4:Toplevel:Test_Winfo_Toplevel
 
-   procedure Test_Viewable_dc7973_8c7bbb(Gnattest_T: in out Test);
+   procedure Test_Viewable_7e17e3_8c7bbb(Gnattest_T: in out Test);
    --  tk-winfo.ads:1070:4:Viewable:Test_Winfo_Viewable
 
    procedure Test_Visual_Id_bfbe6b_3ec6f0(Gnattest_T: in out Test);

@@ -2544,8 +2544,8 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Override_Redirect_fe8514_2fcf15
-     (Window: Tk_Widget) return Boolean is
+   function Wrap_Test_Get_Override_Redirect_09d97c_2fcf15
+     (Window: Tk_Widget) return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -2559,7 +2559,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Override_Redirect test requirement violated");
       end;
       declare
-         Test_Get_Override_Redirect_fe8514_2fcf15_Result: constant Boolean :=
+         Test_Get_Override_Redirect_09d97c_2fcf15_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Override_Redirect
              (Window);
       begin
@@ -2572,22 +2572,23 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Override_Redirect test commitment violated");
          end;
-         return Test_Get_Override_Redirect_fe8514_2fcf15_Result;
+         return Test_Get_Override_Redirect_09d97c_2fcf15_Result;
       end;
-   end Wrap_Test_Get_Override_Redirect_fe8514_2fcf15;
+   end Wrap_Test_Get_Override_Redirect_09d97c_2fcf15;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Override_Redirect_test_wm_override_redirect
      (Gnattest_T: in out Test);
-   procedure Test_Get_Override_Redirect_fe8514_2fcf15
+   procedure Test_Get_Override_Redirect_09d97c_2fcf15
      (Gnattest_T: in out Test) renames
      Test_Get_Override_Redirect_test_wm_override_redirect;
---  id:2.2/fe851461524dd6a3/Get_Override_Redirect/1/0/test_wm_override_redirect/
+--  id:2.2/09d97c525f93152b/Get_Override_Redirect/1/0/test_wm_override_redirect/
    procedure Test_Get_Override_Redirect_test_wm_override_redirect
      (Gnattest_T: in out Test) is
-      function Get_Override_Redirect(Window: Tk_Widget) return Boolean renames
-        Wrap_Test_Get_Override_Redirect_fe8514_2fcf15;
+      function Get_Override_Redirect
+        (Window: Tk_Widget) return Tcl_Boolean_Result renames
+        Wrap_Test_Get_Override_Redirect_09d97c_2fcf15;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3257,9 +3258,9 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Stack_Order_Above_db54cc_dc5820
+   function Wrap_Test_Get_Stack_Order_Above_707d59_dc5820
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
-      return Boolean is
+      return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -3276,7 +3277,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Stack_Order2 test requirement violated");
       end;
       declare
-         Test_Get_Stack_Order_Above_db54cc_dc5820_Result: constant Boolean :=
+         Test_Get_Stack_Order_Above_707d59_dc5820_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Stack_Order_Above
              (Window, Second_Window, Above);
       begin
@@ -3289,24 +3290,24 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Stack_Order2 test commitment violated");
          end;
-         return Test_Get_Stack_Order_Above_db54cc_dc5820_Result;
+         return Test_Get_Stack_Order_Above_707d59_dc5820_Result;
       end;
-   end Wrap_Test_Get_Stack_Order_Above_db54cc_dc5820;
+   end Wrap_Test_Get_Stack_Order_Above_707d59_dc5820;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Stack_Order_Above_test_wm_stack_order2
      (Gnattest_T: in out Test);
-   procedure Test_Get_Stack_Order_Above_db54cc_dc5820
+   procedure Test_Get_Stack_Order_Above_707d59_dc5820
      (Gnattest_T: in out Test) renames
      Test_Get_Stack_Order_Above_test_wm_stack_order2;
---  id:2.2/db54cc362296bc0a/Get_Stack_Order_Above/1/0/test_wm_stack_order2/
+--  id:2.2/707d596561e5f865/Get_Stack_Order_Above/1/0/test_wm_stack_order2/
    procedure Test_Get_Stack_Order_Above_test_wm_stack_order2
      (Gnattest_T: in out Test) is
       function Get_Stack_Order_Above
         (Window, Second_Window: Tk_Widget; Above: Boolean := True)
-         return Boolean renames
-        Wrap_Test_Get_Stack_Order_Above_db54cc_dc5820;
+         return Tcl_Boolean_Result renames
+        Wrap_Test_Get_Stack_Order_Above_707d59_dc5820;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

@@ -991,7 +991,7 @@ package body Tk.Grid.Test_Data.Tests is
       end if;
       Set_Propagate(Get_Main_Window, False);
       Assert
-        (not Get_Propagate(Get_Main_Window),
+        (not Get_Propagate(Get_Main_Window).Result,
          "Failed to set propagation for grid.");
 
 --  begin read only
@@ -999,8 +999,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Propagate_74e8b1_142129
-     (Master: Tk_Widget) return Boolean is
+   function Wrap_Test_Get_Propagate_b85f28_142129
+     (Master: Tk_Widget) return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert(Master /= Null_Widget);
@@ -1012,7 +1012,7 @@ package body Tk.Grid.Test_Data.Tests is
                "req_sloc(tk-grid.ads:0):Test_Propagate2 test requirement violated");
       end;
       declare
-         Test_Get_Propagate_74e8b1_142129_Result: constant Boolean :=
+         Test_Get_Propagate_b85f28_142129_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Propagate(Master);
       begin
          begin
@@ -1024,19 +1024,20 @@ package body Tk.Grid.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-grid.ads:0:):Test_Propagate2 test commitment violated");
          end;
-         return Test_Get_Propagate_74e8b1_142129_Result;
+         return Test_Get_Propagate_b85f28_142129_Result;
       end;
-   end Wrap_Test_Get_Propagate_74e8b1_142129;
+   end Wrap_Test_Get_Propagate_b85f28_142129;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Propagate_test_propagate2(Gnattest_T: in out Test);
-   procedure Test_Get_Propagate_74e8b1_142129(Gnattest_T: in out Test) renames
+   procedure Test_Get_Propagate_b85f28_142129(Gnattest_T: in out Test) renames
      Test_Get_Propagate_test_propagate2;
---  id:2.2/74e8b1a5f9bf1066/Get_Propagate/1/0/test_propagate2/
+--  id:2.2/b85f2886a59076c3/Get_Propagate/1/0/test_propagate2/
    procedure Test_Get_Propagate_test_propagate2(Gnattest_T: in out Test) is
-      function Get_Propagate(Master: Tk_Widget) return Boolean renames
-        Wrap_Test_Get_Propagate_74e8b1_142129;
+      function Get_Propagate
+        (Master: Tk_Widget) return Tcl_Boolean_Result renames
+        Wrap_Test_Get_Propagate_b85f28_142129;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1049,7 +1050,7 @@ package body Tk.Grid.Test_Data.Tests is
       end if;
       Set_Propagate(Get_Main_Window);
       Assert
-        (Get_Propagate(Get_Main_Window),
+        (Get_Propagate(Get_Main_Window).Result,
          "Failed to get propagation for grid.");
 
 --  begin read only

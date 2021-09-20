@@ -21,7 +21,7 @@ package body Tk.Button.Button_Options_Test_Data is
            .Test_Widget_Options
            (Gnattest_T));
       Gnattest_T.Fixture := Local_Button_Options'Access;
-      if Value("DISPLAY", "")'Length = 0 or else Info.Exists("tk_version") then
+      if Value("DISPLAY", "")'Length = 0 or else Info.Exists("tk_version").Result then
          return;
       end if;
       Tk_Init;

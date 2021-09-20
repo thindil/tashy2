@@ -136,7 +136,7 @@ package Tk.Wm.Test_Data.Tests is
    procedure Test_Set_Min_Size_8a0b01_86115b(Gnattest_T: in out Test);
    --  tk-wm.ads:1332:4:Set_Min_Size:Test_Wm_Min_Size2
 
-   procedure Test_Get_Override_Redirect_fe8514_2fcf15(Gnattest_T: in out Test);
+   procedure Test_Get_Override_Redirect_09d97c_2fcf15(Gnattest_T: in out Test);
    --  tk-wm.ads:1354:4:Get_Override_Redirect:Test_Wm_Override_Redirect
 
    procedure Test_Set_Override_Redirect_92338d_fdca84(Gnattest_T: in out Test);
@@ -172,7 +172,7 @@ package Tk.Wm.Test_Data.Tests is
    procedure Test_Get_Stack_Order_ad8dde_ada760(Gnattest_T: in out Test);
    --  tk-wm.ads:1635:4:Get_Stack_Order:Test_Wm_Stack_Order
 
-   procedure Test_Get_Stack_Order_Above_db54cc_dc5820(Gnattest_T: in out Test);
+   procedure Test_Get_Stack_Order_Above_707d59_dc5820(Gnattest_T: in out Test);
    --  tk-wm.ads:1666:4:Get_Stack_Order_Above:Test_Wm_Stack_Order2
 
    procedure Test_Get_State_d36f93_369ab4(Gnattest_T: in out Test);

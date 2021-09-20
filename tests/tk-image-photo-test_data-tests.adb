@@ -532,9 +532,10 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Transparency_745b2d_ffe137
+   function Wrap_Test_Get_Transparency_6cdf5e_ffe137
      (Photo_Image: Tk_Image; X, Y: Natural;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
+      Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -547,7 +548,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Get_Transparency_Photo test requirement violated");
       end;
       declare
-         Test_Get_Transparency_745b2d_ffe137_Result: constant Boolean :=
+         Test_Get_Transparency_6cdf5e_ffe137_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Get_Transparency
              (Photo_Image, X, Y, Interpreter);
       begin
@@ -560,25 +561,25 @@ package body Tk.Image.Photo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image-photo.ads:0:):Tests_Get_Transparency_Photo test commitment violated");
          end;
-         return Test_Get_Transparency_745b2d_ffe137_Result;
+         return Test_Get_Transparency_6cdf5e_ffe137_Result;
       end;
-   end Wrap_Test_Get_Transparency_745b2d_ffe137;
+   end Wrap_Test_Get_Transparency_6cdf5e_ffe137;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Transparency_tests_get_transparency_photo
      (Gnattest_T: in out Test);
-   procedure Test_Get_Transparency_745b2d_ffe137
+   procedure Test_Get_Transparency_6cdf5e_ffe137
      (Gnattest_T: in out Test) renames
      Test_Get_Transparency_tests_get_transparency_photo;
---  id:2.2/745b2d34043e9621/Get_Transparency/1/0/tests_get_transparency_photo/
+--  id:2.2/6cdf5e730aae7ad4/Get_Transparency/1/0/tests_get_transparency_photo/
    procedure Test_Get_Transparency_tests_get_transparency_photo
      (Gnattest_T: in out Test) is
       function Get_Transparency
         (Photo_Image: Tk_Image; X, Y: Natural;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Boolean renames
-        Wrap_Test_Get_Transparency_745b2d_ffe137;
+         return Tcl_Boolean_Result renames
+        Wrap_Test_Get_Transparency_6cdf5e_ffe137;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

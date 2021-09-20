@@ -282,9 +282,9 @@ package body Tcl.Info.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Complete_539361_214fb5
+   function Wrap_Test_Complete_c39017_214fb5
      (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -298,7 +298,7 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Complete test requirement violated");
       end;
       declare
-         Test_Complete_539361_214fb5_Result: constant Boolean :=
+         Test_Complete_c39017_214fb5_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Info.Complete
              (Command, Interpreter);
       begin
@@ -311,21 +311,21 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Complete test commitment violated");
          end;
-         return Test_Complete_539361_214fb5_Result;
+         return Test_Complete_c39017_214fb5_Result;
       end;
-   end Wrap_Test_Complete_539361_214fb5;
+   end Wrap_Test_Complete_c39017_214fb5;
 --  end read only
 
 --  begin read only
    procedure Test_Complete_test_info_complete(Gnattest_T: in out Test);
-   procedure Test_Complete_539361_214fb5(Gnattest_T: in out Test) renames
+   procedure Test_Complete_c39017_214fb5(Gnattest_T: in out Test) renames
      Test_Complete_test_info_complete;
---  id:2.2/539361c0b35d240d/Complete/1/0/test_info_complete/
+--  id:2.2/c3901773247ad5a6/Complete/1/0/test_info_complete/
    procedure Test_Complete_test_info_complete(Gnattest_T: in out Test) is
       function Complete
         (Command: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Boolean renames
-        Wrap_Test_Complete_539361_214fb5;
+         return Tcl_Boolean_Result renames
+        Wrap_Test_Complete_c39017_214fb5;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -333,7 +333,7 @@ package body Tcl.Info.Test_Data.Tests is
    begin
 
       Assert
-        (Complete("puts"),
+        (Complete("puts").Result,
          "Failed to get completion status of the selected Tcl command.");
 
 --  begin read only
@@ -395,9 +395,10 @@ package body Tcl.Info.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Default_2d3d83_fd5e6a
+   function Wrap_Test_Get_Default_b559cf_fd5e6a
      (Proc_Name, Argument, Var_Name: String;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Boolean is
+      Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -416,7 +417,7 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Default test requirement violated");
       end;
       declare
-         Test_Get_Default_2d3d83_fd5e6a_Result: constant Boolean :=
+         Test_Get_Default_b559cf_fd5e6a_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Default
              (Proc_Name, Argument, Var_Name, Interpreter);
       begin
@@ -429,22 +430,22 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Default test commitment violated");
          end;
-         return Test_Get_Default_2d3d83_fd5e6a_Result;
+         return Test_Get_Default_b559cf_fd5e6a_Result;
       end;
-   end Wrap_Test_Get_Default_2d3d83_fd5e6a;
+   end Wrap_Test_Get_Default_b559cf_fd5e6a;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Default_test_info_default(Gnattest_T: in out Test);
-   procedure Test_Get_Default_2d3d83_fd5e6a(Gnattest_T: in out Test) renames
+   procedure Test_Get_Default_b559cf_fd5e6a(Gnattest_T: in out Test) renames
      Test_Get_Default_test_info_default;
---  id:2.2/2d3d83648d914271/Get_Default/1/0/test_info_default/
+--  id:2.2/b559cf9b1d02f32b/Get_Default/1/0/test_info_default/
    procedure Test_Get_Default_test_info_default(Gnattest_T: in out Test) is
       function Get_Default
         (Proc_Name, Argument, Var_Name: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Boolean renames
-        Wrap_Test_Get_Default_2d3d83_fd5e6a;
+         return Tcl_Boolean_Result renames
+        Wrap_Test_Get_Default_b559cf_fd5e6a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -452,9 +453,9 @@ package body Tcl.Info.Test_Data.Tests is
    begin
 
       Assert
-        (not Get_Default("myproc", "arg1", "myvalue"),
+        (not Get_Default("myproc", "arg1", "myvalue").Result,
          "Failed to get info about no default value in Tcl procedure.");
-      if Get_Default("myproc", "arg2", "myvalue") then
+      if Get_Default("myproc", "arg2", "myvalue").Result then
          Assert
            (Tcl_Get_Var("myvalue") = "2",
             "Failed to get default value for Tcl procedure.");
@@ -524,9 +525,9 @@ package body Tcl.Info.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Exists_e0ba6a_c90638
+   function Wrap_Test_Exists_a87cb0_c90638
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Boolean is
+      return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert
@@ -540,7 +541,7 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Exists test requirement violated");
       end;
       declare
-         Test_Exists_e0ba6a_c90638_Result: constant Boolean :=
+         Test_Exists_a87cb0_c90638_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Info.Exists
              (Var_Name, Interpreter);
       begin
@@ -553,21 +554,21 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Exists test commitment violated");
          end;
-         return Test_Exists_e0ba6a_c90638_Result;
+         return Test_Exists_a87cb0_c90638_Result;
       end;
-   end Wrap_Test_Exists_e0ba6a_c90638;
+   end Wrap_Test_Exists_a87cb0_c90638;
 --  end read only
 
 --  begin read only
    procedure Test_Exists_test_info_exists(Gnattest_T: in out Test);
-   procedure Test_Exists_e0ba6a_c90638(Gnattest_T: in out Test) renames
+   procedure Test_Exists_a87cb0_c90638(Gnattest_T: in out Test) renames
      Test_Exists_test_info_exists;
---  id:2.2/e0ba6a6d9c808e1e/Exists/1/0/test_info_exists/
+--  id:2.2/a87cb0d7f49d8e1f/Exists/1/0/test_info_exists/
    procedure Test_Exists_test_info_exists(Gnattest_T: in out Test) is
       function Exists
         (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Boolean renames
-        Wrap_Test_Exists_e0ba6a_c90638;
+         return Tcl_Boolean_Result renames
+        Wrap_Test_Exists_a87cb0_c90638;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -575,9 +576,9 @@ package body Tcl.Info.Test_Data.Tests is
    begin
 
       Tcl_Set_Var("myvar", "2");
-      Assert(Info.Exists("myvar"), "Failed to find existing variable.");
+      Assert(Info.Exists("myvar").Result, "Failed to find existing variable.");
       Assert
-        (not Info.Exists("randomnamevar"),
+        (not Info.Exists("randomnamevar").Result,
          "Failed to not find non existing variable.");
 
 --  begin read only
