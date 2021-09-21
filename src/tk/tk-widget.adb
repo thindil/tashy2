@@ -360,14 +360,14 @@ package body Tk.Widget is
           (Source =>
              Execute_Widget_Command
                (Widgt => Widgt, Command_Name => "cget",
-                Options => "-" & Name));
+                Options => "-" & Name).Result);
    end Option_Value;
 
    function Option_Value
      (Widgt: Tk_Widget; Name: String) return Directions_Type is
       Result: constant String :=
         Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result;
    begin
       if Result'Length = 0 then
          return NONE;
@@ -382,7 +382,7 @@ package body Tk.Widget is
           (Value =>
              Execute_Widget_Command
                (Widgt => Widgt, Command_Name => "cget",
-                Options => "-" & Name));
+                Options => "-" & Name).Result);
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Place_Type is
@@ -390,7 +390,7 @@ package body Tk.Widget is
       return
         Place_Type'Value
           (Execute_Widget_Command
-             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name));
+             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result);
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return State_Type is
@@ -398,13 +398,13 @@ package body Tk.Widget is
       return
         State_Type'Value
           (Execute_Widget_Command
-             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name));
+             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result);
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Justify_Type is
       Result: constant String :=
         Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result;
    begin
       if Result'Length = 0 then
          return NONE;
@@ -415,7 +415,7 @@ package body Tk.Widget is
    function Option_Value(Widgt: Tk_Widget; Name: String) return Relief_Type is
       Result: constant String :=
         Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result;
    begin
       if Result'Length > 0 then
          return Relief_Type'Value(Result);
@@ -427,7 +427,7 @@ package body Tk.Widget is
      (Widgt: Tk_Widget; Name: String) return Extended_Natural is
       Result: constant String :=
         Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result;
    begin
       if Result'Length > 0 then
          return Extended_Natural'Value(Result);
@@ -450,7 +450,7 @@ package body Tk.Widget is
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Widget is
       Result: constant String :=
         Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result;
    begin
       if Result'Length = 0 then
          return Null_Widget;
@@ -463,7 +463,7 @@ package body Tk.Widget is
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Window is
       Result: constant String :=
         Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result;
    begin
       if Result'Length > 0 then
          return
@@ -477,7 +477,7 @@ package body Tk.Widget is
    function Option_Value(Widgt: Tk_Widget; Name: String) return Integer is
       Result: constant String :=
         Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result;
    begin
       if Result'Length = 0 then
          return 0;
@@ -491,7 +491,7 @@ package body Tk.Widget is
       return
         Anchor_Directions'Value
           (Execute_Widget_Command
-             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name));
+             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name).Result);
    end Option_Value;
 
    procedure Destroy(Widgt: in out Tk_Widget) is
@@ -515,7 +515,7 @@ package body Tk.Widget is
 
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return String is
+      return Tcl_String_Result is
    begin
       return
         Tcl_Eval
@@ -526,16 +526,13 @@ package body Tk.Widget is
 
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return Boolean is
+      return Tcl_Boolean_Result is
    begin
-      if Tcl_Eval
+      return
+        Tcl_Eval
           (Tcl_Script =>
              Tk_Path_Name(Widgt => Widgt) & " " & Command_Name & " " & Options,
-           Interpreter => Tk_Interp(Widgt => Widgt)) =
-        "0" then
-         return False;
-      end if;
-      return True;
+           Interpreter => Tk_Interp(Widgt => Widgt));
    end Execute_Widget_Command;
 
    function Generic_Scalar_Execute_Widget_Command
@@ -550,7 +547,7 @@ package body Tk.Widget is
         Result_Type'Value
           (Execute_Widget_Command
              (Widgt => Widgt, Command_Name => Command_Name,
-              Options => Options));
+              Options => Options).Result);
    end Generic_Scalar_Execute_Widget_Command;
 
    function Generic_Float_Execute_Widget_Command
@@ -565,7 +562,7 @@ package body Tk.Widget is
         Result_Type'Value
           (Execute_Widget_Command
              (Widgt => Widgt, Command_Name => Command_Name,
-              Options => Options));
+              Options => Options).Result);
    end Generic_Float_Execute_Widget_Command;
 
 end Tk.Widget;

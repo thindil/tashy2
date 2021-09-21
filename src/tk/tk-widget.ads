@@ -976,14 +976,14 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the type of menu entry of My_Menu second entry
-      -- Menu_Entry_Type: constant String := Execute_Widget_Command(My_Menu, "type", "1");
+      -- Menu_Entry_Type: constant Tcl_String_Result := Execute_Widget_Command(My_Menu, "type", "1");
       -- SEE ALSO
       -- Widget.Execute_Widget_Command_(procedure),
       -- Widget.Execute_Widget_Command_(function_boolean_result)
       -- SOURCE
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return String with
+      return Tcl_String_Result with
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command2", Mode => Nominal);
       -- ****
@@ -1003,14 +1003,14 @@ is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Check if selection is present in My_Entry widget
-      -- Has_Selection: constant Boolean := Execute_Widget_Command(My_Entry, "selection", "present");
+      -- Has_Selection: constant Tcl_Boolean_Result := Execute_Widget_Command(My_Entry, "selection", "present");
       -- SEE ALSO
       -- Widget.Execute_Widget_Command_(procedure),
       -- Widget.Execute_Widget_Command_(function_string_result)
       -- SOURCE
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return Boolean with
+      return Tcl_Boolean_Result with
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command3", Mode => Nominal);
       -- ****

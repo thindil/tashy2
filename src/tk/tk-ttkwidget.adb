@@ -143,7 +143,7 @@ package body Tk.TtkWidget is
      (Ttk_Widgt: Ttk_Widget; Name: String) return Compound_Type is
       Result: constant String :=
         Execute_Widget_Command
-          (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name);
+          (Widgt => Ttk_Widgt, Command_Name => "cget", Options => "-" & Name).Result;
    begin
       if Result'Length = 0 then
          return EMPTY;
@@ -158,7 +158,7 @@ package body Tk.TtkWidget is
         Disabled_State_Type'Value
           (Execute_Widget_Command
              (Widgt => Ttk_Widgt, Command_Name => "cget",
-              Options => "-" & Name));
+              Options => "-" & Name).Result);
    end Option_Value;
 
    function Option_Value
@@ -169,7 +169,7 @@ package body Tk.TtkWidget is
           (List =>
              Execute_Widget_Command
                (Widgt => Ttk_Widgt, Command_Name => "cget",
-                Options => "-" & Name),
+                Options => "-" & Name).Result,
            Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
       Index: Positive := 2;
    begin
@@ -214,7 +214,7 @@ package body Tk.TtkWidget is
           (List =>
              Execute_Widget_Command
                (Widgt => Ttk_Widgt, Command_Name => "cget",
-                Options => "-" & Name),
+                Options => "-" & Name).Result,
            Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
    begin
       if Result_List'Length = 0 then
@@ -287,7 +287,7 @@ package body Tk.TtkWidget is
         Split_List
           (List =>
              Execute_Widget_Command
-               (Widgt => Ttk_Widgt, Command_Name => "state"),
+               (Widgt => Ttk_Widgt, Command_Name => "state").Result,
            Interpreter => Tk_Interp(Widgt => Ttk_Widgt));
    begin
       return
