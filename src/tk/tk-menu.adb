@@ -117,7 +117,8 @@ package body Tk.Menu is
    end Create;
 
    procedure Create
-     (Menu_Widget: out Tk_Menu; Path_Name: Tk_Path_String; Options: Menu_Options;
+     (Menu_Widget: out Tk_Menu; Path_Name: Tk_Path_String;
+      Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       Menu_Widget :=
@@ -377,7 +378,8 @@ package body Tk.Menu is
                 Execute_Widget_Command
                   (Widgt => Menu_Widget, Command_Name => "entrycget",
                    Options =>
-                     To_Ada_String(Source => Menu_Index) & " -" & Name));
+                     To_Ada_String(Source => Menu_Index) & " -" & Name)
+                  .Result);
       end Item_Value;
       function Item_Value(Name: String) return Extended_Boolean is
       begin
@@ -407,8 +409,8 @@ package body Tk.Menu is
            Place_Type'Value
              (Execute_Widget_Command
                 (Widgt => Menu_Widget, Command_Name => "entrycget",
-                 Options =>
-                   To_Ada_String(Source => Menu_Index) & " -compound"));
+                 Options => To_Ada_String(Source => Menu_Index) & " -compound")
+                .Result);
          Options.Font := Item_Value(Name => "font");
          Options.Foreground := Item_Value(Name => "foreground");
          Options.Hide_Margin := Item_Value(Name => "hidemargin");
@@ -418,13 +420,15 @@ package body Tk.Menu is
            State_Type'Value
              (Execute_Widget_Command
                 (Widgt => Menu_Widget, Command_Name => "entrycget",
-                 Options => To_Ada_String(Source => Menu_Index) & " -state"));
+                 Options => To_Ada_String(Source => Menu_Index) & " -state")
+                .Result);
          Options.Underline :=
            Extended_Natural'Value
              (Execute_Widget_Command
                 (Widgt => Menu_Widget, Command_Name => "entrycget",
                  Options =>
-                   To_Ada_String(Source => Menu_Index) & " -underline"));
+                   To_Ada_String(Source => Menu_Index) & " -underline")
+                .Result);
          case Item_Type is
             when CASCADE =>
                Options.Menu :=
@@ -433,7 +437,8 @@ package body Tk.Menu is
                       Execute_Widget_Command
                         (Widgt => Menu_Widget, Command_Name => "entrycget",
                          Options =>
-                           To_Ada_String(Source => Menu_Index) & " -menu"),
+                           To_Ada_String(Source => Menu_Index) & " -menu")
+                        .Result,
                     Interpreter => Interpreter);
             when CHECKBUTTON | RADIOBUTTON =>
                Options.Indicator_On := Item_Value(Name => "inditatoron");
@@ -498,7 +503,8 @@ package body Tk.Menu is
                 Menu_Item_Types'Value
                   (Execute_Widget_Command
                      (Widgt => Menu_Widget, Command_Name => "type",
-                      Options => To_Ada_String(Source => Menu_Index)))));
+                      Options => To_Ada_String(Source => Menu_Index))
+                     .Result)));
    end Entry_Configure;
 
    procedure Entry_Configure
@@ -519,7 +525,8 @@ package body Tk.Menu is
                 Menu_Item_Types'Value
                   (Execute_Widget_Command
                      (Widgt => Menu_Widget, Command_Name => "type",
-                      Options => New_Index))));
+                      Options => New_Index)
+                     .Result)));
    end Entry_Configure;
 
    procedure Entry_Configure
@@ -537,8 +544,8 @@ package body Tk.Menu is
                   (Execute_Widget_Command
                      (Widgt => Menu_Widget, Command_Name => "type",
                       Options =>
-                        To_Lower
-                          (Item => Menu_Item_Indexes'Image(Menu_Index))))));
+                        To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)))
+                     .Result)));
    end Entry_Configure;
 
    function Index
@@ -719,7 +726,8 @@ package body Tk.Menu is
         Menu_Item_Types'Value
           (Execute_Widget_Command
              (Widgt => Menu_Widget, Command_Name => "type",
-              Options => To_Ada_String(Source => Menu_Index)));
+              Options => To_Ada_String(Source => Menu_Index))
+             .Result);
    end Get_Item_Type;
 
    function Get_Item_Type
@@ -734,7 +742,8 @@ package body Tk.Menu is
         Menu_Item_Types'Value
           (Execute_Widget_Command
              (Widgt => Menu_Widget, Command_Name => "type",
-              Options => New_Index));
+              Options => New_Index)
+             .Result);
    end Get_Item_Type;
 
    function Get_Item_Type
@@ -745,8 +754,8 @@ package body Tk.Menu is
         Menu_Item_Types'Value
           (Execute_Widget_Command
              (Widgt => Menu_Widget, Command_Name => "type",
-              Options =>
-                To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index))));
+              Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)))
+             .Result);
    end Get_Item_Type;
 
    procedure Unpost(Menu_Widget: Tk_Menu) is
@@ -761,7 +770,8 @@ package body Tk.Menu is
         Natural'Value
           (Execute_Widget_Command
              (Widgt => Menu_Widget, Command_Name => "xposition",
-              Options => To_Ada_String(Source => Menu_Index)));
+              Options => To_Ada_String(Source => Menu_Index))
+             .Result);
    end X_Position;
 
    function X_Position
@@ -776,7 +786,8 @@ package body Tk.Menu is
         Natural'Value
           (Execute_Widget_Command
              (Widgt => Menu_Widget, Command_Name => "xposition",
-              Options => New_Index));
+              Options => New_Index)
+             .Result);
    end X_Position;
 
    function X_Position
@@ -786,8 +797,8 @@ package body Tk.Menu is
         Natural'Value
           (Execute_Widget_Command
              (Widgt => Menu_Widget, Command_Name => "xposition",
-              Options =>
-                To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index))));
+              Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)))
+             .Result);
    end X_Position;
 
    function Y_Position
@@ -797,7 +808,8 @@ package body Tk.Menu is
         Natural'Value
           (Execute_Widget_Command
              (Widgt => Menu_Widget, Command_Name => "yposition",
-              Options => To_Ada_String(Source => Menu_Index)));
+              Options => To_Ada_String(Source => Menu_Index))
+             .Result);
    end Y_Position;
 
    function Y_Position
@@ -812,7 +824,8 @@ package body Tk.Menu is
         Natural'Value
           (Execute_Widget_Command
              (Widgt => Menu_Widget, Command_Name => "yposition",
-              Options => New_Index));
+              Options => New_Index)
+             .Result);
    end Y_Position;
 
    function Y_Position
@@ -822,8 +835,8 @@ package body Tk.Menu is
         Natural'Value
           (Execute_Widget_Command
              (Widgt => Menu_Widget, Command_Name => "yposition",
-              Options =>
-                To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index))));
+              Options => To_Lower(Item => Menu_Item_Indexes'Image(Menu_Index)))
+             .Result);
    end Y_Position;
 
 end Tk.Menu;
