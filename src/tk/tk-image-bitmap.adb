@@ -74,7 +74,7 @@ package body Tk.Image.Bitmap is
         Tcl_Eval
           (Tcl_Script =>
              "image create bitmap" & Options_To_String(Options => Options),
-           Interpreter => Interpreter);
+           Interpreter => Interpreter).Result;
    end Create;
 
    procedure Configure
@@ -96,7 +96,7 @@ package body Tk.Image.Bitmap is
           (List =>
              Tcl_Eval
                (Tcl_Script => Bitmap_Image & " configure -" & Name,
-                Interpreter => Interpreter),
+                Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
    begin
       return To_Ada_String(Source => Result_List(Result_List'Last));
