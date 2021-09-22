@@ -70,7 +70,7 @@ package body Tk.Image is
       return
         Split_List
           (List =>
-             Tcl_Eval(Tcl_Script => "image names", Interpreter => Interpreter),
+             Tcl_Eval(Tcl_Script => "image names", Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
    end Names;
 
@@ -81,7 +81,7 @@ package body Tk.Image is
       return
         Tcl_Eval
           (Tcl_Script => "image type " & Image_Name,
-           Interpreter => Interpreter);
+           Interpreter => Interpreter).Result;
    end Image_Type;
 
    function Types
@@ -90,7 +90,7 @@ package body Tk.Image is
       return
         Split_List
           (List =>
-             Tcl_Eval(Tcl_Script => "image types", Interpreter => Interpreter),
+             Tcl_Eval(Tcl_Script => "image types", Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
    end Types;
 
