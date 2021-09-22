@@ -146,7 +146,7 @@ package body Tk.TtkEntry is
            Entry_State_Type'Value
              (Execute_Widget_Command
                 (Widgt => Entry_Widget, Command_Name => "cget",
-                 Options => "-state"));
+                 Options => "-state").Result);
          Options.Take_Focus :=
            Option_Value(Widgt => Entry_Widget, Name => "takefocus");
          Options.Text_Variable :=
@@ -155,7 +155,7 @@ package body Tk.TtkEntry is
            Validate_Type'Value
              (Execute_Widget_Command
                 (Widgt => Entry_Widget, Command_Name => "cget",
-                 Options => "-validate"));
+                 Options => "-validate").Result);
          Options.Validate_Command :=
            Option_Value(Widgt => Entry_Widget, Name => "validatecommand");
          Options.Width := Option_Value(Widgt => Entry_Widget, Name => "width");
@@ -233,7 +233,7 @@ package body Tk.TtkEntry is
                (Tcl_Script =>
                   Tk_Path_Name(Widgt => Entry_Widget) & " bbox " &
                   Index_To_String(Index => Index, Is_Index => Is_Index),
-                Interpreter => Interpreter),
+                Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
    begin
       return Coords: Bbox_Data := Empty_Bbox_Data do
@@ -259,7 +259,7 @@ package body Tk.TtkEntry is
                (Tcl_Script =>
                   Tk_Path_Name(Widgt => Entry_Widget) & " bbox " &
                   Index_To_String(Index => Index),
-                Interpreter => Interpreter),
+                Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
    begin
       return Coords: Bbox_Data := Empty_Bbox_Data do
@@ -325,7 +325,7 @@ package body Tk.TtkEntry is
    function Get_Text(Entry_Widget: Ttk_Entry) return String is
    begin
       return
-        Execute_Widget_Command(Widgt => Entry_Widget, Command_Name => "get");
+        Execute_Widget_Command(Widgt => Entry_Widget, Command_Name => "get").Result;
    end Get_Text;
 
    procedure Set_Insert_Cursor
@@ -393,7 +393,7 @@ package body Tk.TtkEntry is
       return
         Execute_Widget_Command
           (Widgt => Entry_Widget, Command_Name => "selection",
-           Options => "present");
+           Options => "present").Result;
    end Selection_Present;
 
    procedure Selection_Range
@@ -446,7 +446,7 @@ package body Tk.TtkEntry is
    begin
       return
         Execute_Widget_Command
-          (Widgt => Entry_Widget, Command_Name => "validate");
+          (Widgt => Entry_Widget, Command_Name => "validate").Result;
    end Validate;
 
    function X_View(Entry_Widget: Ttk_Entry) return Fractions_Array is
@@ -457,7 +457,7 @@ package body Tk.TtkEntry is
           (List =>
              Tcl_Eval
                (Tcl_Script => Tk_Path_Name(Widgt => Entry_Widget) & " xview",
-                Interpreter => Interpreter),
+                Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
    begin
       return Fractions: Fractions_Array := Default_Fractions_Array do
