@@ -58,12 +58,12 @@ package body Tk.Winfo is
              (Tcl_Script =>
                 "winfo atomname -displayof " & Tk_Path_Name(Widgt => Window) &
                 Positive'Image(Atom_Id),
-              Interpreter => Tk_Interp(Widgt => Window));
+              Interpreter => Tk_Interp(Widgt => Window)).Result;
       end if;
       return
         Tcl_Eval
           (Tcl_Script => "winfo atomname" & Positive'Image(Atom_Id),
-           Interpreter => Interpreter);
+           Interpreter => Interpreter).Result;
    end Atom_Name;
 
    function Cells(Window: Tk_Widget) return Natural is
@@ -82,7 +82,7 @@ package body Tk.Winfo is
              Tcl_Eval
                (Tcl_Script =>
                   "winfo children " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter),
+                Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
    begin
       return
@@ -115,7 +115,7 @@ package body Tk.Winfo is
                   Pixel_Data_Image(Value => Root_Window_Y),
                 Interpreter =>
                   (if Window = Null_Widget then Interpreter
-                   else Tk_Interp(Widgt => Window))),
+                   else Tk_Interp(Widgt => Window))).Result,
            Interpreter =>
              (if Window = Null_Widget then Interpreter
               else Tk_Interp(Widgt => Window)));
@@ -147,7 +147,7 @@ package body Tk.Winfo is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "winfo geometry " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
+           Interpreter => Tk_Interp(Widgt => Window)).Result;
       Start_Index, End_Index: Positive := 1;
    begin
       return Win_Geometry: Window_Geometry := Empty_Window_Geometry do
@@ -181,7 +181,7 @@ package body Tk.Winfo is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "winfo id " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
+           Interpreter => Tk_Interp(Widgt => Window)).Result;
    begin
       return Positive'Value("16#" & Result(3 .. Result'Last) & "#");
    end Id;
@@ -200,7 +200,7 @@ package body Tk.Winfo is
                    else " -displayof " & Tk_Path_Name(Widgt => Window)),
                 Interpreter =>
                   (if Window = Null_Widget then Interpreter
-                   else Tk_Interp(Widgt => Window))),
+                   else Tk_Interp(Widgt => Window))).Result,
            Interpreter =>
              (if Window = Null_Widget then Interpreter
               else Tk_Interp(Widgt => Window)));
@@ -210,7 +210,7 @@ package body Tk.Winfo is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "winfo manager " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
+           Interpreter => Tk_Interp(Widgt => Window)).Result;
    begin
       if Result'Length = 0 then
          return "unknown";
@@ -222,7 +222,7 @@ package body Tk.Winfo is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "winfo name " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
+           Interpreter => Tk_Interp(Widgt => Window)).Result;
    begin
       if Result'Length = 0 then
          return "unknown";
@@ -240,12 +240,12 @@ package body Tk.Winfo is
              (Tcl_Script =>
                 "winfo pathname -displayof " & Tk_Path_Name(Widgt => Window) &
                 Positive'Image(Window_Id),
-              Interpreter => Tk_Interp(Widgt => Window));
+              Interpreter => Tk_Interp(Widgt => Window)).Result;
       end if;
       return
         Tcl_Eval
           (Tcl_Script => "winfo pathname" & Positive'Image(Window_Id),
-           Interpreter => Interpreter);
+           Interpreter => Interpreter).Result;
    end Path_Name;
 
    function Pixels(Window: Tk_Widget; Number: Pixel_Data) return Integer is
@@ -274,7 +274,7 @@ package body Tk.Winfo is
              Tcl_Eval
                (Tcl_Script =>
                   "winfo pointerxy " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter),
+                Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
    begin
       return Pointer_Location: Point_Position := Empty_Point_Position do
@@ -317,7 +317,7 @@ package body Tk.Winfo is
                (Tcl_Script =>
                   "winfo rgb " & Tk_Path_Name(Widgt => Window) & " " &
                   Color_Name,
-                Interpreter => Interpreter),
+                Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
    begin
       return Colors: Color_Type := Empty_Color do
@@ -394,7 +394,7 @@ package body Tk.Winfo is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "winfo screenvisual " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
+           Interpreter => Tk_Interp(Widgt => Window)).Result;
    begin
       if Result'Length = 0 then
          return TRUECOLOR;
@@ -414,7 +414,7 @@ package body Tk.Winfo is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "winfo visualid " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window));
+           Interpreter => Tk_Interp(Widgt => Window)).Result;
    begin
       return Positive'Value("16#" & Result(3 .. Result'Last) & "#");
    end Visual_Id;
@@ -429,7 +429,7 @@ package body Tk.Winfo is
                (Tcl_Script =>
                   "winfo visualsavailable " & Tk_Path_Name(Widgt => Window) &
                   (if Include_Ids then " includeids" else ""),
-                Interpreter => Interpreter),
+                Interpreter => Interpreter).Result,
            Interpreter => Interpreter);
       Result_Values: Array_List(1 .. (if Include_Ids then 3 else 2)) :=
         (others => Null_Tcl_String);
