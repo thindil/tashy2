@@ -605,7 +605,8 @@ is
       -- SOURCE
    function Get_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_Boolean_Result with
+      Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Boolean_Result with
       Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Transparency_Photo", Mode => Nominal);
       -- ****

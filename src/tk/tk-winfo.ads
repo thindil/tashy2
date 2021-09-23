@@ -259,7 +259,8 @@ is
    function Class(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo class " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 12,
       Test_Case => (Name => "Test_Winfo_Class", Mode => Nominal);
@@ -572,7 +573,8 @@ is
    function Parent(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo parent " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 13,
       Test_Case => (Name => "Test_Winfo_Parent", Mode => Nominal);
@@ -828,7 +830,8 @@ is
    function Screen(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo screen " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 13,
       Test_Case => (Name => "Test_Winfo_Screen", Mode => Nominal);
@@ -1022,7 +1025,8 @@ is
    function Server(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo server " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 13,
       Test_Case => (Name => "Test_Winfo_Server", Mode => Nominal);
@@ -1046,7 +1050,8 @@ is
    function Toplevel(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "winfo toplevel " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 15,
       Test_Case => (Name => "Test_Winfo_Toplevel", Mode => Nominal);

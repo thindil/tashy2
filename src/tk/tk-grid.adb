@@ -169,7 +169,8 @@ package body Tk.Grid is
                (Tcl_Script =>
                   "grid bbox " & Tk_Path_Name(Widgt => Master) &
                   To_String(Source => Options),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
       return Coords: Bbox_Data := Empty_Bbox_Data do
          Coords.Start_X :=
@@ -274,7 +275,8 @@ package body Tk.Grid is
                   "grid " & Config_Type & "configure " &
                   Tk_Path_Name(Widgt => Master) & Natural'Image(Index) & " -" &
                   Name,
-                Interpreter => Tk_Interp(Widgt => Master)).Result);
+                Interpreter => Tk_Interp(Widgt => Master))
+               .Result);
    end Get_Value;
 
    -- ****if* Grid/Grid.Get_Value_(Tcl_String)
@@ -306,7 +308,8 @@ package body Tk.Grid is
                   "grid " & Config_Type & "configure " &
                   Tk_Path_Name(Widgt => Master) & Natural'Image(Index) & " -" &
                   Name,
-                Interpreter => Tk_Interp(Widgt => Master)).Result);
+                Interpreter => Tk_Interp(Widgt => Master))
+               .Result);
    end Get_Value;
 
    -- ****if* Grid/Grid.Get_Value_(Extended_Natural)
@@ -337,7 +340,8 @@ package body Tk.Grid is
                 "grid " & Config_Type & "configure " &
                 Tk_Path_Name(Widgt => Master) & Natural'Image(Index) & " -" &
                 Name,
-              Interpreter => Tk_Interp(Widgt => Master)).Result);
+              Interpreter => Tk_Interp(Widgt => Master))
+             .Result);
    end Get_Value;
 
    function Get_Column_Options
@@ -546,7 +550,8 @@ package body Tk.Grid is
                   To_Lower(Item => Pixel_Unit'Image(X.Value_Unit)) &
                   Positive_Float'Image(Y.Value) &
                   To_Lower(Item => Pixel_Unit'Image(Y.Value_Unit)),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       return
@@ -643,7 +648,8 @@ package body Tk.Grid is
           (List =>
              Tcl_Eval
                (Tcl_Script => "grid size " & Tk_Path_Name(Widgt => Master),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       return
@@ -678,7 +684,8 @@ package body Tk.Grid is
                   (Tcl_Script =>
                      "grid slaves " & Tk_Path_Name(Widgt => Master) &
                      To_String(Source => Options),
-                   Interpreter => Interpreter).Result,
+                   Interpreter => Interpreter)
+                  .Result,
               Interpreter => Interpreter);
       begin
          return

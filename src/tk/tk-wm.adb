@@ -39,7 +39,8 @@ package body Tk.Wm is
           (List =>
              Tcl_Eval
                (Tcl_Script => "wm aspect " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       if Result = Empty_Array_List then
@@ -66,7 +67,8 @@ package body Tk.Wm is
           (List =>
              Tcl_Eval
                (Tcl_Script => "wm attributes " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
       Index: Positive := 1;
       Window_Manager: constant Window_Manager_Types :=
@@ -229,7 +231,8 @@ package body Tk.Wm is
           (Tcl_Script =>
              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
              To_Lower(Window_Atrributes_Type'Image(Name)),
-           Interpreter => Tk_Interp(Widgt => Window)).Result =
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result =
         "1" then
          return TRUE;
       end if;
@@ -241,7 +244,8 @@ package body Tk.Wm is
         Tcl_Eval
           (Tcl_Script =>
              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -alpha",
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    begin
       if Result'Length = 0 then
          return 1.0;
@@ -254,7 +258,8 @@ package body Tk.Wm is
         Tcl_Eval
           (Tcl_Script =>
              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -type",
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    begin
       if Result'Length = 0 then
          return NONE;
@@ -280,7 +285,8 @@ package body Tk.Wm is
              Tcl_Eval
                (Tcl_Script =>
                   "wm colormapwindows " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    end Get_Color_Map_Windows;
 
@@ -321,7 +327,8 @@ package body Tk.Wm is
    begin
       if Tcl_Eval
           (Tcl_Script => "wm focusmodel " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result =
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result =
         "passive" then
          return PASSIVE;
       end if;
@@ -348,7 +355,8 @@ package body Tk.Wm is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm frame " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    begin
       if Result'Length > 0 then
          return
@@ -363,7 +371,8 @@ package body Tk.Wm is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm geometry " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
       Start_Index, End_Index: Positive := 1;
    begin
       return Win_Geometry: Window_Geometry := Empty_Window_Geometry do
@@ -433,7 +442,8 @@ package body Tk.Wm is
           (List =>
              Tcl_Eval
                (Tcl_Script => "wm grid " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       if Result'Length = 0 then
@@ -524,7 +534,8 @@ package body Tk.Wm is
              Tcl_Eval
                (Tcl_Script =>
                   "wm iconposition " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       return Icon_Pos: Point_Position := Empty_Point_Position do
@@ -559,7 +570,8 @@ package body Tk.Wm is
       Path_Name: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm iconwindow " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Interpreter).Result;
+           Interpreter => Interpreter)
+          .Result;
    begin
       if Path_Name'Length = 0 then
          return Null_Widget;
@@ -569,7 +581,8 @@ package body Tk.Wm is
           (Path_Name =>
              Tcl_Eval
                (Tcl_Script => "wm iconwindow " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    end Get_Icon_Window;
 
@@ -596,7 +609,8 @@ package body Tk.Wm is
           (List =>
              Tcl_Eval
                (Tcl_Script => "wm maxsize " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       return Current_Size: Window_Size := Empty_Window_Size do
@@ -621,7 +635,8 @@ package body Tk.Wm is
           (List =>
              Tcl_Eval
                (Tcl_Script => "wm minsize " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       return Current_Size: Window_Size := Empty_Window_Size do
@@ -652,7 +667,8 @@ package body Tk.Wm is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm positionfrom " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    begin
       if Result'Length = 0 then
          return Default_Position_From;
@@ -678,7 +694,8 @@ package body Tk.Wm is
           (List =>
              Tcl_Eval
                (Tcl_Script => "wm protocol " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    end Get_Protocols;
 
@@ -699,7 +716,8 @@ package body Tk.Wm is
           (List =>
              Tcl_Eval
                (Tcl_Script => "wm resizable " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       return Resizable_Result: Resizable_Data := Default_Resizable_Data do
@@ -721,7 +739,8 @@ package body Tk.Wm is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm sizefrom " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    begin
       if Result'Length = 0 then
          return Default_Position_From;
@@ -746,7 +765,8 @@ package body Tk.Wm is
           (List =>
              Tcl_Eval
                (Tcl_Script => "wm stackorder " & Tk_Path_Name(Widgt => Window),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       return
@@ -762,9 +782,11 @@ package body Tk.Wm is
    end Get_Stack_Order;
 
    function Get_State(Window: Tk_Widget) return Window_States is
-      Result: constant String := Tcl_Eval
-           (Tcl_Script => "wm state " & Tk_Path_Name(Widgt => Window),
-            Interpreter => Tk_Interp(Widgt => Window)).Result;
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script => "wm state " & Tk_Path_Name(Widgt => Window),
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    begin
       if Result'Length = 0 then
          return NORMAL;
@@ -796,7 +818,8 @@ package body Tk.Wm is
       Result: constant String :=
         Tcl_Eval
           (Tcl_Script => "wm transient " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Interpreter).Result;
+           Interpreter => Interpreter)
+          .Result;
    begin
       if Result'Length = 0 then
          return Null_Widget;

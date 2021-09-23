@@ -521,7 +521,8 @@ is
              (Tcl_Script =>
                 "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
                 To_Lower(Window_Atrributes_Type'Image(Name)),
-              Interpreter => Tk_Interp(Widgt => Window)).Result)) with
+              Interpreter => Tk_Interp(Widgt => Window))
+             .Result)) with
       Pre => (Window /= Null_Widget and Name in TRANSPARENTCOLOR | TITLEPATH)
       and then To_Lower(Window_Atrributes_Type'Image(Name))'Length <= 16
       and then
@@ -566,7 +567,8 @@ is
    function Get_Client(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm client " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 10,
       Test_Case => (Name => "Test_Wm_Client", Mode => Nominal);
@@ -662,7 +664,8 @@ is
         (Source =>
            Tcl_Eval
              (Tcl_Script => "wm command " & Tk_Path_Name(Widgt => Window),
-              Interpreter => Tk_Interp(Widgt => Window)).Result)) with
+              Interpreter => Tk_Interp(Widgt => Window))
+             .Result)) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 11,
       Test_Case => (Name => "Test_Wm_Command", Mode => Nominal);
@@ -917,7 +920,8 @@ is
    function Get_Group(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm group " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 9,
       Test_Case => (Name => "Test_Wm_Group", Mode => Nominal);
@@ -966,7 +970,8 @@ is
    function Get_Icon_Bitmap(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm iconbitmap " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 14,
       Test_Case => (Name => "Test_Wm_Icon_Bitmap", Mode => Nominal);
@@ -1035,7 +1040,8 @@ is
    function Get_Icon_Mask(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm iconmask " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 12,
       Test_Case => (Name => "Test_Wm_Icon_Mask", Mode => Nominal);
@@ -1083,7 +1089,8 @@ is
    function Get_Icon_Name(Window: Tk_Widget) return String is
      (Tcl_Eval
         (Tcl_Script => "wm iconname " & Tk_Path_Name(Widgt => Window),
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 12,
       Test_Case => (Name => "Test_Wm_Icon_Name", Mode => Nominal);
@@ -1351,7 +1358,8 @@ is
       -- COMMANDS
       -- wm overrideredirect Window
       -- SOURCE
-   function Get_Override_Redirect(Window: Tk_Widget) return Tcl_Boolean_Result is
+   function Get_Override_Redirect
+     (Window: Tk_Widget) return Tcl_Boolean_Result is
      (Tcl_Eval
         (Tcl_Script => "wm overrideredirect " & Tk_Path_Name(Widgt => Window),
          Interpreter => Tk_Interp(Widgt => Window))) with
@@ -1480,7 +1488,8 @@ is
      (Tcl_Eval
         (Tcl_Script =>
            "wm protocol " & Tk_Path_Name(Widgt => Window) & " " & Name,
-         Interpreter => Tk_Interp(Widgt => Window)).Result) with
+         Interpreter => Tk_Interp(Widgt => Window))
+        .Result) with
       Pre => (Window /= Null_Widget and Name'Length > 0)
       and then
         To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
@@ -1747,7 +1756,8 @@ is
         (Source =>
            Tcl_Eval
              (Tcl_Script => "wm title " & Tk_Path_Name(Widgt => Window),
-              Interpreter => Tk_Interp(Widgt => Window)).Result)) with
+              Interpreter => Tk_Interp(Widgt => Window))
+             .Result)) with
       Pre => Window /= Null_Widget
       and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 9,
       Test_Case => (Name => "Test_Wm_Title", Mode => Nominal);

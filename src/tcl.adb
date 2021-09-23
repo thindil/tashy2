@@ -134,7 +134,8 @@ is
       end if;
       return
         Result_Type'Value
-          (Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter).Result);
+          (Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter)
+             .Result);
    end Generic_Scalar_Tcl_Eval;
 
    function Generic_Float_Tcl_Eval
@@ -147,7 +148,8 @@ is
       end if;
       return
         Result_Type'Value
-          (Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter).Result);
+          (Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter)
+             .Result);
    end Generic_Float_Tcl_Eval;
 
    procedure Tcl_Eval_File

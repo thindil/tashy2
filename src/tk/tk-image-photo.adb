@@ -93,7 +93,8 @@ package body Tk.Image.Photo is
         Tcl_Eval
           (Tcl_Script =>
              "image create photo" & Options_To_String(Options => Options),
-           Interpreter => Interpreter).Result;
+           Interpreter => Interpreter)
+          .Result;
    end Create;
 
    procedure Blank
@@ -122,7 +123,8 @@ package body Tk.Image.Photo is
           (List =>
              Tcl_Eval
                (Tcl_Script => Photo_Image & " configure -" & Name,
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       return To_Ada_String(Source => Result_List(Result_List'Last));
@@ -279,7 +281,8 @@ package body Tk.Image.Photo is
              Tcl_Eval
                (Tcl_Script =>
                   Photo_Image & " data" & To_String(Source => Options),
-                Interpreter => Interpreter).Result);
+                Interpreter => Interpreter)
+               .Result);
    end Get_Data;
 
    function Get_Color
@@ -291,7 +294,8 @@ package body Tk.Image.Photo is
              Tcl_Eval
                (Tcl_Script =>
                   Photo_Image & " get" & Natural'Image(X) & Natural'Image(Y),
-                Interpreter => Interpreter).Result,
+                Interpreter => Interpreter)
+               .Result,
            Interpreter => Interpreter);
    begin
       return
@@ -348,7 +352,8 @@ package body Tk.Image.Photo is
 
    function Get_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_Boolean_Result is
+      Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Boolean_Result is
    begin
       return
         Tcl_Eval

@@ -246,7 +246,8 @@ package Tk.Grid is
      (Directions_Type'Value
         (Tcl_Eval
            (Tcl_Script => "grid anchor " & Tk_Path_Name(Widgt => Master),
-            Interpreter => Tk_Interp(Widgt => Master)).Result)) with
+            Interpreter => Tk_Interp(Widgt => Master))
+           .Result)) with
       Pre => Master /= Null_Widget
       or else Tk_Interp(Widgt => Master) /= Null_Interpreter,
       Test_Case => (Name => "Test_Anchor2", Mode => Nominal);

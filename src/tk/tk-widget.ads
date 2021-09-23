@@ -521,12 +521,12 @@ is
      -- 8.6.0 - Added
      -- SOURCE
    subtype Tk_Path_String is String with
-      Dynamic_Predicate => Tk_Path_String'Length > 0
-      and then
-      (Tk_Path_String(Tk_Path_String'First) = '.' and
-       (for all I in Tk_Path_String'Range =>
-          Is_Alphanumeric(Item => Tk_Path_String(I)) or
-          Tk_Path_String(I) = '.'));
+        Dynamic_Predicate => Tk_Path_String'Length > 0
+        and then
+        (Tk_Path_String(Tk_Path_String'First) = '.' and
+         (for all I in Tk_Path_String'Range =>
+            Is_Alphanumeric(Item => Tk_Path_String(I)) or
+            Tk_Path_String(I) = '.'));
       -- ****
 
       -- ****d* Widget/Widget.Main_Window_Name
