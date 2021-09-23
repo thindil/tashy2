@@ -51,7 +51,7 @@ is
         (List =>
            Tcl_Eval
              (Tcl_Script => "info args " & Proc_Name,
-              Interpreter => Interpreter),
+              Interpreter => Interpreter).Result,
          Interpreter => Interpreter)) with
       Pre =>
       (Proc_Name'Length > 0 and Proc_Name'Length < Integer'Last - 10) and
@@ -81,7 +81,7 @@ is
       return String is
      (Tcl_Eval
         (Tcl_Script => "info body " & Proc_Name,
-         Interpreter => Interpreter)) with
+         Interpreter => Interpreter).Result) with
       Pre =>
       (Proc_Name'Length > 0 and Proc_Name'Length < Integer'Last - 10) and
       Interpreter /= Null_Interpreter,
@@ -138,7 +138,7 @@ is
         (List =>
            Tcl_Eval
              (Tcl_Script => "info commands " & Pattern,
-              Interpreter => Interpreter),
+              Interpreter => Interpreter).Result,
          Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter and
       Pattern'Length < Integer'Last - 14,
@@ -194,7 +194,7 @@ is
    function Get_Coroutine
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
-        (Tcl_Script => "info coroutine", Interpreter => Interpreter)) with
+        (Tcl_Script => "info coroutine", Interpreter => Interpreter).Result) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Coroutine", Mode => Nominal);
       -- ****
@@ -259,7 +259,7 @@ is
    function Get_Error_Stack
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
-        (Tcl_Script => "info errorstack", Interpreter => Interpreter)) with
+        (Tcl_Script => "info errorstack", Interpreter => Interpreter).Result) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_ErrorStack", Mode => Nominal);
       -- ****
@@ -320,7 +320,7 @@ is
         (List =>
            Tcl_Eval
              (Tcl_Script => "info functions " & Pattern,
-              Interpreter => Interpreter),
+              Interpreter => Interpreter).Result,
          Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter and
       Pattern'Length < Integer'Last - 15,
@@ -355,7 +355,7 @@ is
         (List =>
            Tcl_Eval
              (Tcl_Script => "info globals " & Pattern,
-              Interpreter => Interpreter),
+              Interpreter => Interpreter).Result,
          Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter and
       Pattern'Length < Integer'Last - 13,
@@ -381,7 +381,7 @@ is
       -- SOURCE
    function Get_Host_Name
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
-     (Tcl_Eval(Tcl_Script => "info hostname", Interpreter => Interpreter)) with
+     (Tcl_Eval(Tcl_Script => "info hostname", Interpreter => Interpreter).Result) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_HostName", Mode => Nominal);
       -- ****
@@ -405,7 +405,7 @@ is
       -- SOURCE
    function Get_Library
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
-     (Tcl_Eval(Tcl_Script => "info library", Interpreter => Interpreter)) with
+     (Tcl_Eval(Tcl_Script => "info library", Interpreter => Interpreter).Result) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Library", Mode => Nominal);
       -- ****
@@ -438,7 +438,7 @@ is
         (List =>
            Tcl_Eval
              (Tcl_Script => "info locals " & Pattern,
-              Interpreter => Interpreter),
+              Interpreter => Interpreter).Result,
          Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter and
       Pattern'Length < Integer'Last - 12,
@@ -464,7 +464,7 @@ is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
         (Tcl_Script => "info nameofexecutable",
-         Interpreter => Interpreter)) with
+         Interpreter => Interpreter).Result) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Name_Of_Executable", Mode => Nominal);
       -- ****
@@ -489,7 +489,7 @@ is
    function Get_Patch_Level
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
-        (Tcl_Script => "info patchlevel", Interpreter => Interpreter)) with
+        (Tcl_Script => "info patchlevel", Interpreter => Interpreter).Result) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Patch_Level", Mode => Nominal);
       -- ****
@@ -523,7 +523,7 @@ is
         (List =>
            Tcl_Eval
              (Tcl_Script => "info procs " & Pattern,
-              Interpreter => Interpreter),
+              Interpreter => Interpreter).Result,
          Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter and
       Pattern'Length < Integer'Last - 11,
@@ -554,7 +554,7 @@ is
       return String is
      (Tcl_Eval
         (Tcl_Script => "info script " & File_Name,
-         Interpreter => Interpreter)) with
+         Interpreter => Interpreter).Result) with
       Pre => Interpreter /= Null_Interpreter and
       File_Name'Length < Integer'Last - 12,
       Test_Case => (Name => "Test_Info_Script", Mode => Nominal);
@@ -580,7 +580,7 @@ is
    function Get_Tcl_Version
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
      (Tcl_Eval
-        (Tcl_Script => "info tclversion", Interpreter => Interpreter)) with
+        (Tcl_Script => "info tclversion", Interpreter => Interpreter).Result) with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Info_Tcl_Version", Mode => Nominal);
       -- ****
@@ -613,7 +613,7 @@ is
         (List =>
            Tcl_Eval
              (Tcl_Script => "info vars " & Pattern,
-              Interpreter => Interpreter),
+              Interpreter => Interpreter).Result,
          Interpreter => Interpreter)) with
       Pre => Interpreter /= Null_Interpreter and
       Pattern'Length < Integer'Last - 10,
