@@ -129,8 +129,7 @@ is
       return Result_Type is
    begin
       if Interpreter = Null_Interpreter then
-         raise Tcl_Exception
-           with "Can't evaluate Tcl code on non existing Tcl interpreter";
+         return Result_Type'Value("-1");
       end if;
       return
         Result_Type'Value
@@ -143,8 +142,7 @@ is
       return Result_Type is
    begin
       if Interpreter = Null_Interpreter then
-         raise Tcl_Exception
-           with "Can't get result from non existing Tcl interpreter";
+         return Result_Type'Value("-1.0");
       end if;
       return
         Result_Type'Value
