@@ -2506,9 +2506,9 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Execute_Widget_Command_fc11cd_9808c7
+   function Wrap_Test_Execute_Widget_Command_6ed39c_9808c7
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return String is
+      return Tcl_String_Result is
    begin
       begin
          pragma Assert(Widgt /= Null_Widget and Command_Name'Length > 0);
@@ -2520,7 +2520,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Execute_Widget_Command2 test requirement violated");
       end;
       declare
-         Test_Execute_Widget_Command_fc11cd_9808c7_Result: constant String :=
+         Test_Execute_Widget_Command_6ed39c_9808c7_Result: constant Tcl_String_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget
              .Execute_Widget_Command
              (Widgt, Command_Name, Options);
@@ -2534,24 +2534,24 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Execute_Widget_Command2 test commitment violated");
          end;
-         return Test_Execute_Widget_Command_fc11cd_9808c7_Result;
+         return Test_Execute_Widget_Command_6ed39c_9808c7_Result;
       end;
-   end Wrap_Test_Execute_Widget_Command_fc11cd_9808c7;
+   end Wrap_Test_Execute_Widget_Command_6ed39c_9808c7;
 --  end read only
 
 --  begin read only
    procedure Test_2_Execute_Widget_Command_test_execute_widget_command2
      (Gnattest_T: in out Test);
-   procedure Test_Execute_Widget_Command_fc11cd_9808c7
+   procedure Test_Execute_Widget_Command_6ed39c_9808c7
      (Gnattest_T: in out Test) renames
      Test_2_Execute_Widget_Command_test_execute_widget_command2;
---  id:2.2/fc11cdf946a86007/Execute_Widget_Command/0/0/test_execute_widget_command2/
+--  id:2.2/6ed39c8302f3fc5b/Execute_Widget_Command/0/0/test_execute_widget_command2/
    procedure Test_2_Execute_Widget_Command_test_execute_widget_command2
      (Gnattest_T: in out Test) is
       function Execute_Widget_Command
         (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-         return String renames
-        Wrap_Test_Execute_Widget_Command_fc11cd_9808c7;
+         return Tcl_String_Result renames
+        Wrap_Test_Execute_Widget_Command_6ed39c_9808c7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2567,7 +2567,7 @@ package body Tk.Widget.Test_Data.Tests is
         (Button, ".mybutton",
          Button_Options'(Text => To_Tcl_String("NewQuit"), others => <>));
       Assert
-        (Execute_Widget_Command(Button, "cget", "-text") = "NewQuit",
+        (Execute_Widget_Command(Button, "cget", "-text").Result = "NewQuit",
          "Failed to execute and get result of Tcl command on the selected Tk_Widget.");
       Destroy(Button);
 
@@ -2576,9 +2576,9 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Execute_Widget_Command_46f5b9_9df879
+   function Wrap_Test_Execute_Widget_Command_7bae5e_9df879
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return Boolean is
+      return Tcl_Boolean_Result is
    begin
       begin
          pragma Assert(Widgt /= Null_Widget and Command_Name'Length > 0);
@@ -2590,7 +2590,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Execute_Widget_Command3 test requirement violated");
       end;
       declare
-         Test_Execute_Widget_Command_46f5b9_9df879_Result: constant Boolean :=
+         Test_Execute_Widget_Command_7bae5e_9df879_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget
              .Execute_Widget_Command
              (Widgt, Command_Name, Options);
@@ -2604,24 +2604,24 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Execute_Widget_Command3 test commitment violated");
          end;
-         return Test_Execute_Widget_Command_46f5b9_9df879_Result;
+         return Test_Execute_Widget_Command_7bae5e_9df879_Result;
       end;
-   end Wrap_Test_Execute_Widget_Command_46f5b9_9df879;
+   end Wrap_Test_Execute_Widget_Command_7bae5e_9df879;
 --  end read only
 
 --  begin read only
    procedure Test_3_Execute_Widget_Command_test_execute_widget_command3
      (Gnattest_T: in out Test);
-   procedure Test_Execute_Widget_Command_46f5b9_9df879
+   procedure Test_Execute_Widget_Command_7bae5e_9df879
      (Gnattest_T: in out Test) renames
      Test_3_Execute_Widget_Command_test_execute_widget_command3;
---  id:2.2/46f5b9ccec8c49ac/Execute_Widget_Command/0/0/test_execute_widget_command3/
+--  id:2.2/7bae5e800ff19112/Execute_Widget_Command/0/0/test_execute_widget_command3/
    procedure Test_3_Execute_Widget_Command_test_execute_widget_command3
      (Gnattest_T: in out Test) is
       function Execute_Widget_Command
         (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-         return Boolean renames
-        Wrap_Test_Execute_Widget_Command_46f5b9_9df879;
+         return Tcl_Boolean_Result renames
+        Wrap_Test_Execute_Widget_Command_7bae5e_9df879;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2635,7 +2635,8 @@ package body Tk.Widget.Test_Data.Tests is
       end if;
       Create(Entry_Widget, ".myentry", Ttk_Entry_Options'(others => <>));
       Assert
-        (not Execute_Widget_Command(Entry_Widget, "selection", "present"),
+        (not Execute_Widget_Command(Entry_Widget, "selection", "present")
+           .Result,
          "Failed to execute and get boolean result of Tcl command on the selected Tk_Widget.");
       Destroy(Entry_Widget);
 

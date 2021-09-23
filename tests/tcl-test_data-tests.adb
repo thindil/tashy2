@@ -82,9 +82,9 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Tcl_Eval_907c70_916b02
+   function Wrap_Test_Tcl_Eval_aa3c35_916b02
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return String is
+      return Tcl_String_Result is
    begin
       begin
          pragma Assert
@@ -97,7 +97,7 @@ package body Tcl.Test_Data.Tests is
                "req_sloc(tcl.ads:0):Test_Tcl_Eval2 test requirement violated");
       end;
       declare
-         Test_Tcl_Eval_907c70_916b02_Result: constant String :=
+         Test_Tcl_Eval_aa3c35_916b02_Result: constant Tcl_String_Result :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Eval
              (Tcl_Script, Interpreter);
       begin
@@ -110,21 +110,21 @@ package body Tcl.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl.ads:0:):Test_Tcl_Eval2 test commitment violated");
          end;
-         return Test_Tcl_Eval_907c70_916b02_Result;
+         return Test_Tcl_Eval_aa3c35_916b02_Result;
       end;
-   end Wrap_Test_Tcl_Eval_907c70_916b02;
+   end Wrap_Test_Tcl_Eval_aa3c35_916b02;
 --  end read only
 
 --  begin read only
    procedure Test_2_Tcl_Eval_test_tcl_eval2(Gnattest_T: in out Test);
-   procedure Test_Tcl_Eval_907c70_916b02(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Eval_aa3c35_916b02(Gnattest_T: in out Test) renames
      Test_2_Tcl_Eval_test_tcl_eval2;
---  id:2.2/907c70df81e5b2fb/Tcl_Eval/0/0/test_tcl_eval2/
+--  id:2.2/aa3c355d19bf848c/Tcl_Eval/0/0/test_tcl_eval2/
    procedure Test_2_Tcl_Eval_test_tcl_eval2(Gnattest_T: in out Test) is
       function Tcl_Eval
         (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return String renames
-        Wrap_Test_Tcl_Eval_907c70_916b02;
+         return Tcl_String_Result renames
+        Wrap_Test_Tcl_Eval_aa3c35_916b02;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -132,7 +132,7 @@ package body Tcl.Test_Data.Tests is
    begin
 
       Assert
-        (Tcl_Eval("expr 2 + 5") = "7",
+        (Tcl_Eval("expr 2 + 5").Result = "7",
          "Failed to evaluate and get result of Tcl code.");
 
 --  begin read only

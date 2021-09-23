@@ -202,7 +202,7 @@ package body Tk.Bind.Test_Data.Tests is
       end if;
       Bind(Get_Main_Window, BUTTON_1, To_Tcl_String("exit"));
       Assert
-        (Tcl_Eval("bind .") = "<Button-1>",
+        (Tcl_Eval("bind .").Result = "<Button-1>",
          "Failed to set bind for Tk main window with simple sequence");
 
 --  begin read only
@@ -261,7 +261,7 @@ package body Tk.Bind.Test_Data.Tests is
       end if;
       Bind(Get_Main_Window, (CONTROL, BUTTON_1), To_Tcl_String("exit"));
       Assert
-        (Tcl_Eval("bind .") = "<Control-Button-1> <Button-1>",
+        (Tcl_Eval("bind .").Result = "<Control-Button-1> <Button-1>",
          "Failed to set bind for Tk main window with array sequence");
 
 --  begin read only
