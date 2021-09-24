@@ -39,10 +39,10 @@ package Tk.Image.Photo.Test_Data.Tests is
    --  tk-image-photo.ads:606:4:Get_Transparency:Tests_Get_Transparency_Photo
 
    procedure Test_Set_Transparency_76d5d1_e76ade(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:637:4:Set_Transparency:Tests_Set_Transparency_Photo
+   --  tk-image-photo.ads:638:4:Set_Transparency:Tests_Set_Transparency_Photo
 
    procedure Test_Write_a9d740_96f97b(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:672:4:Write:Tests_Write_Photo
+   --  tk-image-photo.ads:673:4:Write:Tests_Write_Photo
 
 end Tk.Image.Photo.Test_Data.Tests;
 --  end read only
