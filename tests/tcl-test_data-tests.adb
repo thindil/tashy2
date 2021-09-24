@@ -256,6 +256,64 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Tcl_Eval_629595_f7c23b
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Float_Result is
+   begin
+      begin
+         pragma Assert
+           (Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tcl.ads:0):Test_Tcl_Eval5 test requirement violated");
+      end;
+      declare
+         Test_Tcl_Eval_629595_f7c23b_Result: constant Tcl_Float_Result :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Eval
+             (Tcl_Script, Interpreter);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl.ads:0:):Test_Tcl_Eval5 test commitment violated");
+         end;
+         return Test_Tcl_Eval_629595_f7c23b_Result;
+      end;
+   end Wrap_Test_Tcl_Eval_629595_f7c23b;
+--  end read only
+
+--  begin read only
+   procedure Test_5_Tcl_Eval_test_tcl_eval5(Gnattest_T: in out Test);
+   procedure Test_Tcl_Eval_629595_f7c23b(Gnattest_T: in out Test) renames
+     Test_5_Tcl_Eval_test_tcl_eval5;
+--  id:2.2/629595d58c48dc53/Tcl_Eval/0/0/test_tcl_eval5/
+   procedure Test_5_Tcl_Eval_test_tcl_eval5(Gnattest_T: in out Test) is
+      function Tcl_Eval
+        (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Tcl_Float_Result renames
+        Wrap_Test_Tcl_Eval_629595_f7c23b;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (Tcl_Eval("expr 2.5 + 2.2").Result = 4.7,
+         "Failed to get Float value of Tcl command.");
+
+--  begin read only
+   end Test_5_Tcl_Eval_test_tcl_eval5;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Tcl_Eval_File_323881_9ae206
      (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
