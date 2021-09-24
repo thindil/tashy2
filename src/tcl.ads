@@ -204,6 +204,26 @@ is
    end record;
    -- ****
 
+   -- ****t* Tcl/Tcl.Tcl_Float_Result
+   -- FUNCTION
+   -- Used to store result of evaluation of Tcl command
+   -- PARAMETERS
+   -- Message_Length - The length of the error message returned by Tcl
+   --                  command. By most time it should be 0
+   -- Return_Code    - The Tcl_Result returned by the Tcl command
+   -- Message        - If Return_Code is Tcl_Error it contains message
+   --                  returned by the Tcl command
+   -- Result         - The result of the Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Tcl_Float_Result(Message_Length: Natural) is record
+      Return_Code: Tcl_Results;
+      Message: String(1 .. Message_Length);
+      Result: Float;
+   end record;
+   -- ****
+
    -- ****f* Tcl/Tcl.Tcl_Eval_(procedure)
    -- FUNCTION
    -- Evaluate the selected Tcl script on the selected Tcl intepreter
@@ -242,7 +262,7 @@ is
       -- Result: constant Tcl_String_Result := Tcl_Eval("expr 2 + 2");
       -- SEE ALSO
       -- Tcl.Tcl_Eval_(procedure), Tcl.Tcl_Eval(function_boolean_result),
-      -- Tcl.Tcl_Eval(function_integer_result)
+      -- Tcl.Tcl_Eval(function_integer_result), Tcl.Tcl_Eval(function_float_result)
       -- SOURCE
    function Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -268,7 +288,7 @@ is
       -- Result: constant Tcl_Boolean_Result := Tcl_Eval("info exists myvar");
       -- SEE ALSO
       -- Tcl.Tcl_Eval_(procedure), Tcl.Tcl_Eval(function_string_result),
-      -- Tcl.Tcl_Eval(function_integer_result)
+      -- Tcl.Tcl_Eval(function_integer_result), Tcl.Tcl_Eval(function_float_result)
       -- SOURCE
    function Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
@@ -294,13 +314,39 @@ is
       -- Result: constant Tcl_Integer_Result := Tcl_Eval("expr 2 + 2");
       -- SEE ALSO
       -- Tcl.Tcl_Eval_(procedure), Tcl.Tcl_Eval(function_string_result),
-      -- Tcl.Tcl_Eval(function_boolean_result)
+      -- Tcl.Tcl_Eval(function_boolean_result), Tcl.Tcl_Eval(function_float_result)
       -- SOURCE
    function Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tcl_Integer_Result with
       Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval4", Mode => Nominal);
+      -- ****
+
+      -- ****f* Tcl/Tcl.Tcl_Eval_(function_float_result)
+      -- FUNCTION
+      -- Evaluate the selected Tcl script on the selected Tcl intepreter and
+      -- return its result as Tcl_Float_Result
+      -- PARAMETERS
+      -- Tcl_Script  - Tcl script to evaluate
+      -- Interpreter - Tcl interpreter on which the script will be evaluated.
+      --               By default it is current default Tcl interpreter
+      -- RESULT
+      -- Tcl_Boolean_Result record with the result of the evaluation of Tcl_Script
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get result of Tcl command on default Tcl interpreter
+      -- Result: constant Tcl_Float_Result := Tcl_Eval("expr 2.5 + 2.2");
+      -- SEE ALSO
+      -- Tcl.Tcl_Eval_(procedure), Tcl.Tcl_Eval(function_string_result),
+      -- Tcl.Tcl_Eval(function_boolean_result), Tcl.Tcl_Eval(function_integer_result)
+      -- SOURCE
+   function Tcl_Eval
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Float_Result with
+      Pre => Tcl_Script'Length > 0 and Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Test_Tcl_Eval5", Mode => Nominal);
       -- ****
 
       -- ****g* Tcl/Tcl.Generic_Scalar_Tcl_Eval

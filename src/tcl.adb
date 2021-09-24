@@ -142,6 +142,28 @@ is
       end return;
    end Tcl_Eval;
 
+   function Tcl_Eval
+     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Float_Result is
+      Message: Unbounded_String := Null_Unbounded_String;
+      Result_Code: constant Tcl_Results :=
+        Native_Tcl_Eval
+          (Interp => Interpreter, Script => New_String(Str => Tcl_Script));
+   begin
+      if Result_Code = TCL_ERROR then
+         Message :=
+           To_Unbounded_String
+             (Tcl_Get_Var
+                (Var_Name => "errorInfo", Interpreter => Interpreter));
+      end if;
+      return Result: Tcl_Float_Result (Length(Source => Message)) do
+         Result.Return_Code := Result_Code;
+         Result.Result :=
+           Float'Value(Tcl_Get_Result(Interpreter => Interpreter));
+         Result.Message := To_String(Message);
+      end return;
+   end Tcl_Eval;
+
    function Generic_Scalar_Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Result_Type is
