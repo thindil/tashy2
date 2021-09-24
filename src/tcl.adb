@@ -164,32 +164,6 @@ is
       end return;
    end Tcl_Eval;
 
-   function Generic_Scalar_Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Result_Type is
-   begin
-      if Interpreter = Null_Interpreter then
-         return Result_Type'Value("-1");
-      end if;
-      return
-        Result_Type'Value
-          (Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter)
-             .Result);
-   end Generic_Scalar_Tcl_Eval;
-
-   function Generic_Float_Tcl_Eval
-     (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Result_Type is
-   begin
-      if Interpreter = Null_Interpreter then
-         return Result_Type'Value("-1.0");
-      end if;
-      return
-        Result_Type'Value
-          (Tcl_Eval(Tcl_Script => Tcl_Script, Interpreter => Interpreter)
-             .Result);
-   end Generic_Float_Tcl_Eval;
-
    procedure Tcl_Eval_File
      (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
       function Native_Tcl_Eval_File
