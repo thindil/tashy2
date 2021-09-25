@@ -16,12 +16,10 @@ package body Tcl.Info is
 
    function Get_Commands_Count
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
-      function Integer_Eval is new Generic_Scalar_Tcl_Eval
-        (Result_Type => Integer);
    begin
       return
-        Integer_Eval
-          (Tcl_Script => "info cmdcount", Interpreter => Interpreter);
+        Tcl_Eval
+          (Tcl_Script => "info cmdcount", Interpreter => Interpreter).Result;
    end Get_Commands_Count;
 
 end Tcl.Info;
