@@ -14,20 +14,6 @@
 
 package body Tk.Image is
 
-   -- ****if* Image/Image.Eval_Script
-   -- FUNCTION
-   -- Used to get Integer result from the selected Tcl command
-   -- PARAMETERS
-   -- Tcl_Script  - Tcl comamnd to evaluate
-   -- Interpreter - Tcl interpreter from which result will be get
-   -- RESULT
-   -- Integer value for the last Tcl command
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   function Eval_Script is new Generic_Scalar_Tcl_Eval(Result_Type => Natural);
-   -- ****
-
    procedure Delete
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
@@ -49,9 +35,9 @@ package body Tk.Image is
       return Natural is
    begin
       return
-        Eval_Script
+        Tcl_Eval
           (Tcl_Script => "image height " & Image_Name,
-           Interpreter => Interpreter);
+           Interpreter => Interpreter).Result;
    end Height;
 
    function In_Use
@@ -102,9 +88,9 @@ package body Tk.Image is
       return Natural is
    begin
       return
-        Eval_Script
+        Tcl_Eval
           (Tcl_Script => "image width " & Image_Name,
-           Interpreter => Interpreter);
+           Interpreter => Interpreter).Result;
    end Width;
 
 end Tk.Image;
