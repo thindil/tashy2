@@ -18,8 +18,8 @@ package body Tcl.Info is
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Natural is
    begin
       return
-        Tcl_Eval
-          (Tcl_Script => "info cmdcount", Interpreter => Interpreter).Result;
+        Tcl_Eval(Tcl_Script => "info cmdcount", Interpreter => Interpreter)
+          .Result;
    end Get_Commands_Count;
 
 end Tcl.Info;

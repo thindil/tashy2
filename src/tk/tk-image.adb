@@ -37,7 +37,8 @@ package body Tk.Image is
       return
         Tcl_Eval
           (Tcl_Script => "image height " & Image_Name,
-           Interpreter => Interpreter).Result;
+           Interpreter => Interpreter)
+          .Result;
    end Height;
 
    function In_Use
@@ -90,7 +91,8 @@ package body Tk.Image is
       return
         Tcl_Eval
           (Tcl_Script => "image width " & Image_Name,
-           Interpreter => Interpreter).Result;
+           Interpreter => Interpreter)
+          .Result;
    end Width;
 
 end Tk.Image;

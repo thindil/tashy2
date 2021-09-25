@@ -27,11 +27,13 @@ package body Tk.Winfo is
              (Tcl_Script =>
                 "winfo atom -displayof " & Tk_Path_Name(Widgt => Window) &
                 " " & A_Name,
-              Interpreter => Tk_Interp(Widgt => Window)).Result;
+              Interpreter => Tk_Interp(Widgt => Window))
+             .Result;
       end if;
       return
         Tcl_Eval
-          (Tcl_Script => "winfo atom " & A_Name, Interpreter => Interpreter).Result;
+          (Tcl_Script => "winfo atom " & A_Name, Interpreter => Interpreter)
+          .Result;
    end Atom;
 
    function Atom_Name
@@ -59,7 +61,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo cells " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Cells;
 
    function Children(Window: Tk_Widget) return Widgets_Array is
@@ -116,7 +119,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo depth " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Colors_Depth;
 
    function Floating_Point_Pixels
@@ -126,7 +130,8 @@ package body Tk.Winfo is
         Tcl_Eval
           (Tcl_Script =>
              "winfo fpixels " & Tk_Path_Name(Widgt => Window) & " " &
-             Pixel_Data_Image(Value => Number)).Result;
+             Pixel_Data_Image(Value => Number))
+          .Result;
    end Floating_Point_Pixels;
 
    function Geometry(Window: Tk_Widget) return Window_Geometry is
@@ -163,7 +168,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo height " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Height;
 
    function Id(Window: Tk_Widget) return Positive is
@@ -249,7 +255,8 @@ package body Tk.Winfo is
         Tcl_Eval
           (Tcl_Script =>
              "winfo pixels " & Tk_Path_Name(Widgt => Window) & " " &
-             Pixel_Data_Image(Value => Number)).Result;
+             Pixel_Data_Image(Value => Number))
+          .Result;
    end Pixels;
 
    function Pointer_X(Window: Tk_Widget) return Extended_Natural is
@@ -257,8 +264,8 @@ package body Tk.Winfo is
       return
         Extended_Natural'Value
           (Tcl_Eval
-             (Tcl_Script =>
-                "winfo pointerx " & Tk_Path_Name(Widgt => Window)).Result);
+             (Tcl_Script => "winfo pointerx " & Tk_Path_Name(Widgt => Window))
+             .Result);
    end Pointer_X;
 
    function Pointer_X_Y(Window: Tk_Widget) return Point_Position is
@@ -286,22 +293,24 @@ package body Tk.Winfo is
       return
         Extended_Natural'Value
           (Tcl_Eval
-             (Tcl_Script =>
-                "winfo pointery " & Tk_Path_Name(Widgt => Window)).Result);
+             (Tcl_Script => "winfo pointery " & Tk_Path_Name(Widgt => Window))
+             .Result);
    end Pointer_Y;
 
    function Requested_Height(Window: Tk_Widget) return Natural is
    begin
       return
         Tcl_Eval
-          (Tcl_Script => "winfo reqheight " & Tk_Path_Name(Widgt => Window)).Result;
+          (Tcl_Script => "winfo reqheight " & Tk_Path_Name(Widgt => Window))
+          .Result;
    end Requested_Height;
 
    function Requested_Width(Window: Tk_Widget) return Natural is
    begin
       return
         Tcl_Eval
-          (Tcl_Script => "winfo reqheight " & Tk_Path_Name(Widgt => Window)).Result;
+          (Tcl_Script => "winfo reqheight " & Tk_Path_Name(Widgt => Window))
+          .Result;
    end Requested_Width;
 
    function Rgb(Window: Tk_Widget; Color_Name: String) return Color_Type is
@@ -333,7 +342,8 @@ package body Tk.Winfo is
         Extended_Natural'Value
           (Tcl_Eval
              (Tcl_Script => "winfo rootx " & Tk_Path_Name(Widgt => Window),
-              Interpreter => Tk_Interp(Widgt => Window)).Result);
+              Interpreter => Tk_Interp(Widgt => Window))
+             .Result);
    end Root_X;
 
    function Root_Y(Window: Tk_Widget) return Extended_Natural is
@@ -342,7 +352,8 @@ package body Tk.Winfo is
         Extended_Natural'Value
           (Tcl_Eval
              (Tcl_Script => "winfo rooty " & Tk_Path_Name(Widgt => Window),
-              Interpreter => Tk_Interp(Widgt => Window)).Result);
+              Interpreter => Tk_Interp(Widgt => Window))
+             .Result);
    end Root_Y;
 
    function Screen_Cells(Window: Tk_Widget) return Positive is
@@ -350,7 +361,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo screencells " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Screen_Cells;
 
    function Screen_Depth(Window: Tk_Widget) return Positive is
@@ -358,7 +370,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo screendepth " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Screen_Depth;
 
    function Screen_Height(Window: Tk_Widget) return Positive is
@@ -366,7 +379,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo screenheight " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Screen_Height;
 
    function Screen_Milimeters_Height(Window: Tk_Widget) return Positive is
@@ -375,7 +389,8 @@ package body Tk.Winfo is
         Tcl_Eval
           (Tcl_Script =>
              "winfo screenmmheight " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Screen_Milimeters_Height;
 
    function Screen_Milimeters_Width(Window: Tk_Widget) return Positive is
@@ -384,7 +399,8 @@ package body Tk.Winfo is
         Tcl_Eval
           (Tcl_Script =>
              "winfo screenmmwidth " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Screen_Milimeters_Width;
 
    function Screen_Visual(Window: Tk_Widget) return Screen_Visual_Type is
@@ -405,7 +421,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo screenwidth " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Screen_Width;
 
    function Visual_Id(Window: Tk_Widget) return Positive is
@@ -463,7 +480,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo vrootheight " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Virtual_Root_Height;
 
    function Virtual_Root_Width(Window: Tk_Widget) return Positive is
@@ -471,7 +489,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo vrootwidth " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Virtual_Root_Width;
 
    function Virtual_Root_X(Window: Tk_Widget) return Integer is
@@ -479,7 +498,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo vrootx " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Virtual_Root_X;
 
    function Virtual_Root_Y(Window: Tk_Widget) return Integer is
@@ -487,7 +507,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo vrooty " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Virtual_Root_Y;
 
    function Width(Window: Tk_Widget) return Positive is
@@ -495,7 +516,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo width " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Width;
 
    function X(Window: Tk_Widget) return Natural is
@@ -503,7 +525,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo x " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end X;
 
    function Y(Window: Tk_Widget) return Natural is
@@ -511,7 +534,8 @@ package body Tk.Winfo is
       return
         Tcl_Eval
           (Tcl_Script => "winfo y " & Tk_Path_Name(Widgt => Window),
-           Interpreter => Tk_Interp(Widgt => Window)).Result;
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
    end Y;
 
 end Tk.Winfo;
