@@ -67,9 +67,9 @@ is
    -- 8.6.0 - Added
    -- SOURCE
    type Label_Frame_Options is new Frame_Options with record
-      Label_Anchor: Anchor_Directions;
+      Label_Anchor: Anchor_Directions := NONE;
       Label_Widget: Tk_Widget := Null_Widget;
-      Text: Tcl_String;
+      Text: Tcl_String := Null_Tcl_String;
    end record;
    -- ****
 
