@@ -451,7 +451,9 @@ package body Tk.Winfo is
       Result_Values: Array_List(1 .. (if Include_Ids then 3 else 2)) :=
         (others => Null_Tcl_String);
    begin
-      return Visuals: Visuals_List (Result_List'Range) := (others => <>) do
+      return
+        Visuals: Visuals_List (Result_List'Range) := (others => Default_Visual)
+      do
          Set_Visuals_List_Loop :
          for I in Result_List'Range loop
             Result_Values :=
