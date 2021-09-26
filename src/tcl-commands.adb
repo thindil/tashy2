@@ -12,7 +12,9 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-package body Tcl.Commands is
+package body Tcl.Commands with
+   SPARK_Mode => Off
+is
 
    function Tcl_Create_Command
      (Command_Name: String; Proc: Tcl_Cmd_Proc;

@@ -21,7 +21,9 @@ with System; use System;
 -- FUNCTION
 -- Provide code to manipulate Tcl commands (adding, deleting, etc)
 -- SOURCE
-package Tcl.Commands is
+package Tcl.Commands with
+   SPARK_Mode => Off
+is
 -- ****
 
    -----------------------------
