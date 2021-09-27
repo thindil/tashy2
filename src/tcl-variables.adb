@@ -48,6 +48,7 @@ package body Tcl.Variables is
       function Tcl_Set_Var_C
         (Interp: Tcl_Interpreter; Var_Name_C, New_Value_C: chars_ptr;
          Flags_C: int) return chars_ptr with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_SetVar";
@@ -72,6 +73,7 @@ package body Tcl.Variables is
       function Tcl_Set_Var2_C
         (Interp: Tcl_Interpreter; Name1, Name2, New_Value_C: chars_ptr;
          Flags_C: int) return chars_ptr with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_SetVar2";
@@ -97,6 +99,7 @@ package body Tcl.Variables is
       function Tcl_Get_Var_C
         (Interp: Tcl_Interpreter; Var_Name_C: chars_ptr; Flags_C: int)
          return chars_ptr with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetVar";
@@ -149,6 +152,7 @@ package body Tcl.Variables is
       function Tcl_Get_Var2_C
         (Interp: Tcl_Interpreter; Var_Name_C, Index_Name_C: chars_ptr;
          Flags_C: int) return chars_ptr with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_GetVar2";
@@ -204,6 +208,7 @@ package body Tcl.Variables is
       function Tcl_Unset_Var_C
         (Interp: Tcl_Interpreter; Var_Name_C: chars_ptr; Flags_C: int)
          return int with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_UnsetVar";
@@ -223,6 +228,7 @@ package body Tcl.Variables is
       function Tcl_Unset_Var2_C
         (Interp: Tcl_Interpreter; Var_Name_C, Index_Name_C: chars_ptr;
          Flags_C: int) return int with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_UnsetVar2";
