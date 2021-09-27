@@ -20,7 +20,9 @@ package body Tcl.Lists is
 
    function Split_List
      (List: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Array_List is
+      return Array_List with
+      SPARK_Mode => Off
+   is
       use Tcl.Commands;
       function Tcl_Split_List
         (Interp: Tcl_Interpreter; Tcl_List: chars_ptr; Argc_Ptr: out int;
