@@ -19,6 +19,7 @@ package body Tk is
    procedure Tk_Init(Interpreter: Tcl_Interpreter := Get_Interpreter) is
       use Interfaces.C;
       function Tk_Init_C(Interp: Tcl_Interpreter) return int with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tk_Init";
