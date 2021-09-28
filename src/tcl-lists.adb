@@ -57,6 +57,7 @@ package body Tcl.Lists is
    function Merge_List(List: Array_List) return String is
       function Tcl_Merge
         (Argc: int; Argv: chars_ptr_array) return chars_ptr with
+         Global => null,
          Import => True,
          Convention => C,
          External_Name => "Tcl_Merge";
