@@ -15,6 +15,7 @@
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
+with Tashy2; use Tashy2;
 with Tcl.Variables; use Tcl.Variables;
 
 package body Tcl with
@@ -62,7 +63,7 @@ is
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       if Native_Tcl_Eval
-          (Interp => Interpreter, Script => New_String(Str => Tcl_Script)) =
+          (Interp => Interpreter, Script => To_C_String(Str => Tcl_Script)) =
         TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
@@ -74,7 +75,7 @@ is
       Message: Unbounded_String := Null_Unbounded_String;
       Result_Code: constant Tcl_Results :=
         Native_Tcl_Eval
-          (Interp => Interpreter, Script => New_String(Str => Tcl_Script));
+          (Interp => Interpreter, Script => To_C_String(Str => Tcl_Script));
       Result_String: constant String :=
         Tcl_Get_Result(Interpreter => Interpreter);
    begin
@@ -100,7 +101,7 @@ is
       Message: Unbounded_String := Null_Unbounded_String;
       Result_Code: constant Tcl_Results :=
         Native_Tcl_Eval
-          (Interp => Interpreter, Script => New_String(Str => Tcl_Script));
+          (Interp => Interpreter, Script => To_C_String(Str => Tcl_Script));
    begin
       if Result_Code = TCL_ERROR then
          Message :=
@@ -126,7 +127,7 @@ is
       Message: Unbounded_String := Null_Unbounded_String;
       Result_Code: constant Tcl_Results :=
         Native_Tcl_Eval
-          (Interp => Interpreter, Script => New_String(Str => Tcl_Script));
+          (Interp => Interpreter, Script => To_C_String(Str => Tcl_Script));
    begin
       if Result_Code = TCL_ERROR then
          Message :=
@@ -148,7 +149,7 @@ is
       Message: Unbounded_String := Null_Unbounded_String;
       Result_Code: constant Tcl_Results :=
         Native_Tcl_Eval
-          (Interp => Interpreter, Script => New_String(Str => Tcl_Script));
+          (Interp => Interpreter, Script => To_C_String(Str => Tcl_Script));
    begin
       if Result_Code = TCL_ERROR then
          Message :=
@@ -174,7 +175,7 @@ is
          External_Name => "Tcl_EvalFile";
    begin
       if Native_Tcl_Eval_File
-          (Interp => Interpreter, File => New_String(Str => File_Name)) =
+          (Interp => Interpreter, File => To_C_String(Str => File_Name)) =
         TCL_ERROR then
          raise Tcl_Exception with Tcl_Get_Result;
       end if;
@@ -189,7 +190,8 @@ is
          Convention => C,
          External_Name => "Tcl_GetStringResult";
    begin
-      return Value(Item => Tcl_Get_String_Result(Interp => Interpreter));
+      return
+        From_C_String(Item => Tcl_Get_String_Result(Interp => Interpreter));
    end Tcl_Get_Result;
 
    function Generic_Scalar_Tcl_Get_Result
@@ -225,7 +227,7 @@ is
          External_Name => "Tcl_SetResult";
    begin
       Native_Tcl_Set_Result
-        (Interp => Interpreter, Result => New_String(Str => Tcl_Result),
+        (Interp => Interpreter, Result => To_C_String(Str => Tcl_Result),
          Free_Proc => Result_Types'Enum_Rep(Result_Type));
    end Tcl_Set_Result;
 
