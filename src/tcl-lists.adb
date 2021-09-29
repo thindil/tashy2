@@ -14,6 +14,7 @@
 
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
+with Tashy2; use Tashy2;
 with Tcl.Commands;
 
 package body Tcl.Lists is
@@ -66,9 +67,11 @@ package body Tcl.Lists is
       Convert_Ada_String_To_C_Loop :
       for I in List'Range loop
          New_List(size_t(I)) :=
-           New_String(Str => To_Ada_String(Source => List(I)));
+           To_C_String(Str => To_Ada_String(Source => List(I)));
       end loop Convert_Ada_String_To_C_Loop;
-      return Value(Item => Tcl_Merge(Argc => List'Length, Argv => New_List));
+      return
+        From_C_String
+          (Item => Tcl_Merge(Argc => List'Length, Argv => New_List));
    end Merge_List;
 
 end Tcl.Lists;
