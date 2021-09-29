@@ -26,16 +26,16 @@ package Tcl.Test_Data.Tests is
    --  tcl.ads:345:4:Tcl_Eval:Test_Tcl_Eval5
 
    procedure Test_Tcl_Eval_File_323881_9ae206(Gnattest_T: in out Test);
-   --  tcl.ads:420:4:Tcl_Eval_File:Test_Tcl_Eval_File
+   --  tcl.ads:368:4:Tcl_Eval_File:Test_Tcl_Eval_File
 
    procedure Test_Tcl_Get_Result_9a7ac3_b83d43(Gnattest_T: in out Test);
-   --  tcl.ads:468:4:Tcl_Get_Result:Test_Tcl_GetResult
+   --  tcl.ads:416:4:Tcl_Get_Result:Test_Tcl_GetResult
 
    procedure Test_Tcl_Set_Result_2e8975_cb8f85(Gnattest_T: in out Test);
-   --  tcl.ads:535:4:Tcl_Set_Result:Test_Tcl_SetResult
+   --  tcl.ads:483:4:Tcl_Set_Result:Test_Tcl_SetResult
 
    procedure Test_Tcl_Update_7113e2_953c64(Gnattest_T: in out Test);
-   --  tcl.ads:560:4:Tcl_Update:Test_Tcl_Update
+   --  tcl.ads:508:4:Tcl_Update:Test_Tcl_Update
 
 end Tcl.Test_Data.Tests;
 --  end read only

@@ -395,7 +395,7 @@ package body Tcl.Info.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Default_b559cf_fd5e6a
+   function Wrap_Test_Get_Default_b559cf_d982eb
      (Proc_Name, Argument, Var_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tcl_Boolean_Result is
@@ -405,10 +405,10 @@ package body Tcl.Info.Test_Data.Tests is
            ((Proc_Name'Length > 0 and Argument'Length > 0 and
              Var_Name'Length > 0 and Interpreter /= Null_Interpreter)
             and then
-              To_Big_Integer(Proc_Name'Length) +
-                To_Big_Integer(Argument'Length) +
-                To_Big_Integer(Var_Name'Length) <
-              To_Big_Integer(Integer'Last - 15));
+              Long_Long_Integer(Proc_Name'Length) +
+                Long_Long_Integer(Argument'Length) +
+                Long_Long_Integer(Var_Name'Length) <
+              Long_Long_Integer(Integer'Last - 15));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -417,7 +417,7 @@ package body Tcl.Info.Test_Data.Tests is
                "req_sloc(tcl-info.ads:0):Test_Info_Default test requirement violated");
       end;
       declare
-         Test_Get_Default_b559cf_fd5e6a_Result: constant Tcl_Boolean_Result :=
+         Test_Get_Default_b559cf_d982eb_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Info.Get_Default
              (Proc_Name, Argument, Var_Name, Interpreter);
       begin
@@ -430,14 +430,14 @@ package body Tcl.Info.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl-info.ads:0:):Test_Info_Default test commitment violated");
          end;
-         return Test_Get_Default_b559cf_fd5e6a_Result;
+         return Test_Get_Default_b559cf_d982eb_Result;
       end;
-   end Wrap_Test_Get_Default_b559cf_fd5e6a;
+   end Wrap_Test_Get_Default_b559cf_d982eb;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Default_test_info_default(Gnattest_T: in out Test);
-   procedure Test_Get_Default_b559cf_fd5e6a(Gnattest_T: in out Test) renames
+   procedure Test_Get_Default_b559cf_d982eb(Gnattest_T: in out Test) renames
      Test_Get_Default_test_info_default;
 --  id:2.2/b559cf9b1d02f32b/Get_Default/1/0/test_info_default/
    procedure Test_Get_Default_test_info_default(Gnattest_T: in out Test) is
@@ -445,7 +445,7 @@ package body Tcl.Info.Test_Data.Tests is
         (Proc_Name, Argument, Var_Name: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tcl_Boolean_Result renames
-        Wrap_Test_Get_Default_b559cf_fd5e6a;
+        Wrap_Test_Get_Default_b559cf_d982eb;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

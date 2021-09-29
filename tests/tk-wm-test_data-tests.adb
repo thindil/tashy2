@@ -308,7 +308,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Attribute_e4067c_f7b8f9
+   function Wrap_Test_Get_Attribute_e4067c_13e29a
      (Window: Tk_Widget; Name: Window_Atrributes_Type) return Tcl_String is
    begin
       begin
@@ -316,9 +316,9 @@ package body Tk.Wm.Test_Data.Tests is
            ((Window /= Null_Widget and Name in TRANSPARENTCOLOR | TITLEPATH)
             and then To_Lower(Window_Atrributes_Type'Image(Name))'Length <= 16
             and then
-              To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
-                To_Big_Integer(Window_Atrributes_Type'Image(Name)'Length) <
-              To_Big_Integer(Integer'Last - 32));
+              Long_Long_Integer(Tk_Path_Name(Widgt => Window)'Length) +
+                Long_Long_Integer(Window_Atrributes_Type'Image(Name)'Length) <
+              Long_Long_Integer(Integer'Last - 32));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -327,7 +327,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Get_Attribute test requirement violated");
       end;
       declare
-         Test_Get_Attribute_e4067c_f7b8f9_Result: constant Tcl_String :=
+         Test_Get_Attribute_e4067c_13e29a_Result: constant Tcl_String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Attribute
              (Window, Name);
       begin
@@ -340,15 +340,15 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Get_Attribute test commitment violated");
          end;
-         return Test_Get_Attribute_e4067c_f7b8f9_Result;
+         return Test_Get_Attribute_e4067c_13e29a_Result;
       end;
-   end Wrap_Test_Get_Attribute_e4067c_f7b8f9;
+   end Wrap_Test_Get_Attribute_e4067c_13e29a;
 --  end read only
 
 --  begin read only
    procedure Test_1_Get_Attribute_test_wm_get_attribute
      (Gnattest_T: in out Test);
-   procedure Test_Get_Attribute_e4067c_f7b8f9(Gnattest_T: in out Test) renames
+   procedure Test_Get_Attribute_e4067c_13e29a(Gnattest_T: in out Test) renames
      Test_1_Get_Attribute_test_wm_get_attribute;
 --  id:2.2/e4067c5f48e19ba1/Get_Attribute/1/0/test_wm_get_attribute/
    procedure Test_1_Get_Attribute_test_wm_get_attribute
@@ -356,7 +356,7 @@ package body Tk.Wm.Test_Data.Tests is
       function Get_Attribute
         (Window: Tk_Widget; Name: Window_Atrributes_Type)
          return Tcl_String renames
-        Wrap_Test_Get_Attribute_e4067c_f7b8f9;
+        Wrap_Test_Get_Attribute_e4067c_13e29a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2846,16 +2846,16 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Protocol_aa44e2_dcb754
+   function Wrap_Test_Get_Protocol_aa44e2_686681
      (Window: Tk_Widget; Name: String) return String is
    begin
       begin
          pragma Assert
            ((Window /= Null_Widget and Name'Length > 0)
             and then
-              To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
-                To_Big_Integer(Name'Length) <
-              To_Big_Integer(Integer'Last - 12));
+              Long_Long_Integer(Tk_Path_Name(Widgt => Window)'Length) +
+                Long_Long_Integer(Name'Length) <
+              Long_Long_Integer(Integer'Last - 12));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2864,7 +2864,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Protocol2 test requirement violated");
       end;
       declare
-         Test_Get_Protocol_aa44e2_dcb754_Result: constant String :=
+         Test_Get_Protocol_aa44e2_686681_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Protocol
              (Window, Name);
       begin
@@ -2877,20 +2877,20 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Protocol2 test commitment violated");
          end;
-         return Test_Get_Protocol_aa44e2_dcb754_Result;
+         return Test_Get_Protocol_aa44e2_686681_Result;
       end;
-   end Wrap_Test_Get_Protocol_aa44e2_dcb754;
+   end Wrap_Test_Get_Protocol_aa44e2_686681;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Protocol_test_wm_protocol2(Gnattest_T: in out Test);
-   procedure Test_Get_Protocol_aa44e2_dcb754(Gnattest_T: in out Test) renames
+   procedure Test_Get_Protocol_aa44e2_686681(Gnattest_T: in out Test) renames
      Test_Get_Protocol_test_wm_protocol2;
 --  id:2.2/aa44e237072653b7/Get_Protocol/1/0/test_wm_protocol2/
    procedure Test_Get_Protocol_test_wm_protocol2(Gnattest_T: in out Test) is
       function Get_Protocol
         (Window: Tk_Widget; Name: String) return String renames
-        Wrap_Test_Get_Protocol_aa44e2_dcb754;
+        Wrap_Test_Get_Protocol_aa44e2_686681;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -3258,7 +3258,7 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Stack_Order_Above_707d59_dc5820
+   function Wrap_Test_Get_Stack_Order_Above_707d59_05815a
      (Window, Second_Window: Tk_Widget; Above: Boolean := True)
       return Tcl_Boolean_Result is
    begin
@@ -3266,9 +3266,10 @@ package body Tk.Wm.Test_Data.Tests is
          pragma Assert
            ((Window /= Null_Widget and Second_Window /= Null_Widget)
             and then
-              To_Big_Integer(Tk_Path_Name(Widgt => Window)'Length) +
-                To_Big_Integer(Tk_Path_Name(Widgt => Second_Window)'Length) <
-              To_Big_Integer(Integer'Last - 22));
+              Long_Long_Integer(Tk_Path_Name(Widgt => Window)'Length) +
+                Long_Long_Integer
+                  (Tk_Path_Name(Widgt => Second_Window)'Length) <
+              Long_Long_Integer(Integer'Last - 22));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -3277,7 +3278,7 @@ package body Tk.Wm.Test_Data.Tests is
                "req_sloc(tk-wm.ads:0):Test_Wm_Stack_Order2 test requirement violated");
       end;
       declare
-         Test_Get_Stack_Order_Above_707d59_dc5820_Result: constant Tcl_Boolean_Result :=
+         Test_Get_Stack_Order_Above_707d59_05815a_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Wm.Get_Stack_Order_Above
              (Window, Second_Window, Above);
       begin
@@ -3290,15 +3291,15 @@ package body Tk.Wm.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-wm.ads:0:):Test_Wm_Stack_Order2 test commitment violated");
          end;
-         return Test_Get_Stack_Order_Above_707d59_dc5820_Result;
+         return Test_Get_Stack_Order_Above_707d59_05815a_Result;
       end;
-   end Wrap_Test_Get_Stack_Order_Above_707d59_dc5820;
+   end Wrap_Test_Get_Stack_Order_Above_707d59_05815a;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Stack_Order_Above_test_wm_stack_order2
      (Gnattest_T: in out Test);
-   procedure Test_Get_Stack_Order_Above_707d59_dc5820
+   procedure Test_Get_Stack_Order_Above_707d59_05815a
      (Gnattest_T: in out Test) renames
      Test_Get_Stack_Order_Above_test_wm_stack_order2;
 --  id:2.2/707d596561e5f865/Get_Stack_Order_Above/1/0/test_wm_stack_order2/
@@ -3307,7 +3308,7 @@ package body Tk.Wm.Test_Data.Tests is
       function Get_Stack_Order_Above
         (Window, Second_Window: Tk_Widget; Above: Boolean := True)
          return Tcl_Boolean_Result renames
-        Wrap_Test_Get_Stack_Order_Above_707d59_dc5820;
+        Wrap_Test_Get_Stack_Order_Above_707d59_05815a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
