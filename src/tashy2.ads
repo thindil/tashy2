@@ -38,7 +38,8 @@ package Tashy2 is
    -- SOURCE
    function To_C_String(Str: String) return chars_ptr is
      (New_String(Str => Str)) with
-      Global => null;
+      Global => null,
+      Test_Case => (Name => "Test_To_C_String", Mode => Nominal);
       -- ****
 
       -- ****f* Utils/Utils.From_C_String
@@ -58,7 +59,8 @@ package Tashy2 is
       -- SOURCE
    function From_C_String(Item: chars_ptr) return String is
      (Value(Item => Item)) with
-      Global => null;
+      Global => null,
+      Test_Case => (Name => "Test_From_C_String", Mode => Nominal);
       -- ****
 
 end Tashy2;
