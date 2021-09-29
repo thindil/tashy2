@@ -20,6 +20,7 @@ with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 with System.Address_Image;
+with Tashy2; use Tashy2;
 with Tk.MainWindow;
 
 package body Tk.Widget is
@@ -82,7 +83,7 @@ package body Tk.Widget is
    begin
       return
         Tk_Name_To_Window
-          (Interp => Interpreter, Path_Name_C => New_String(Str => Path_Name),
+          (Interp => Interpreter, Path_Name_C => To_C_String(Str => Path_Name),
            Tk_Win => Get_Main_Window(Interpreter => Interpreter));
    end Get_Widget;
 
@@ -93,7 +94,7 @@ package body Tk.Widget is
          Convention => C,
          External_Name => "Get_PathName";
    begin
-      return Value(Item => Get_Path_Name(Tk_Win => Widgt));
+      return From_C_String(Item => Get_Path_Name(Tk_Win => Widgt));
    end Tk_Path_Name;
 
    procedure Option_Image
