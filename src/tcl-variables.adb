@@ -14,6 +14,7 @@
 
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
+with Tashy2; use Tashy2;
 
 package body Tcl.Variables is
 
@@ -53,12 +54,12 @@ package body Tcl.Variables is
          Convention => C,
          External_Name => "Tcl_SetVar";
       Result: constant String :=
-        Value
+        From_C_String
           (Item =>
              Tcl_Set_Var_C
                (Interp => Interpreter,
-                Var_Name_C => New_String(Str => Var_Name),
-                New_Value_C => New_String(Str => New_Value),
+                Var_Name_C => To_C_String(Str => Var_Name),
+                New_Value_C => To_C_String(Str => New_Value),
                 Flags_C => Create_Flag(Flags => Flags)));
    begin
       if Result'Length = 0 then
@@ -78,12 +79,12 @@ package body Tcl.Variables is
          Convention => C,
          External_Name => "Tcl_SetVar2";
       Result: constant String :=
-        Value
+        From_C_String
           (Item =>
              Tcl_Set_Var2_C
-               (Interp => Interpreter, Name1 => New_String(Str => Array_Name),
-                Name2 => New_String(Str => Index_Name),
-                New_Value_C => New_String(Str => New_Value),
+               (Interp => Interpreter, Name1 => To_C_String(Str => Array_Name),
+                Name2 => To_C_String(Str => Index_Name),
+                New_Value_C => To_C_String(Str => New_Value),
                 Flags_C => Create_Flag(Flags => Flags)));
    begin
       if Result'Length = 0 then
@@ -105,14 +106,14 @@ package body Tcl.Variables is
          External_Name => "Tcl_GetVar";
       Result: constant chars_ptr :=
         Tcl_Get_Var_C
-          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
+          (Interp => Interpreter, Var_Name_C => To_C_String(Str => Var_Name),
            Flags_C => Create_Flag(Flags => Flags));
    begin
       if Result = Null_Ptr then
          raise Tcl_Exception
            with "Can't get value of Tcl variable '" & Var_Name & "'";
       end if;
-      return Value(Item => Result);
+      return From_C_String(Item => Result);
    end Tcl_Get_Var;
 
    function Generic_Scalar_Tcl_Get_Var
@@ -158,8 +159,8 @@ package body Tcl.Variables is
          External_Name => "Tcl_GetVar2";
       Result: constant chars_ptr :=
         Tcl_Get_Var2_C
-          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
-           Index_Name_C => New_String(Str => Index_Name),
+          (Interp => Interpreter, Var_Name_C => To_C_String(Str => Var_Name),
+           Index_Name_C => To_C_String(Str => Index_Name),
            Flags_C => Create_Flag(Flags => Flags));
    begin
       if Result = Null_Ptr then
@@ -167,7 +168,7 @@ package body Tcl.Variables is
            with "Can't get value of the element '" & Index_Name &
            "' of Tcl array '" & Var_Name & "'";
       end if;
-      return Value(Item => Result);
+      return From_C_String(Item => Result);
    end Tcl_Get_Var2;
 
    function Generic_Scalar_Tcl_Get_Var2
@@ -214,7 +215,7 @@ package body Tcl.Variables is
          External_Name => "Tcl_UnsetVar";
    begin
       if Tcl_Unset_Var_C
-          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
+          (Interp => Interpreter, Var_Name_C => To_C_String(Str => Var_Name),
            Flags_C => Create_Flag(Flags => Flags)) =
         int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
          raise Tcl_Exception with "Can't unset " & Var_Name;
@@ -234,8 +235,8 @@ package body Tcl.Variables is
          External_Name => "Tcl_UnsetVar2";
    begin
       if Tcl_Unset_Var2_C
-          (Interp => Interpreter, Var_Name_C => New_String(Str => Var_Name),
-           Index_Name_C => New_String(Str => Index_Name),
+          (Interp => Interpreter, Var_Name_C => To_C_String(Str => Var_Name),
+           Index_Name_C => To_C_String(Str => Index_Name),
            Flags_C => Create_Flag(Flags => Flags)) =
         int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
          raise Tcl_Exception
