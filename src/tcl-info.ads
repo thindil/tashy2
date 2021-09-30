@@ -18,9 +18,7 @@ with Tcl.Lists; use Tcl.Lists;
 -- FUNCTION
 -- Provide bindings for Tcl command info
 -- SOURCE
-package Tcl.Info with
-   SPARK_Mode
-is
+package Tcl.Info is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

@@ -18,9 +18,7 @@ with System;
 -- FUNCTION
 -- Provides binding to Tcl API
 -- SOURCE
-package Tcl with
-   SPARK_Mode
-is
+package Tcl is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

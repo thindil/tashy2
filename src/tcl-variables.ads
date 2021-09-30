@@ -17,9 +17,7 @@
 -- Provides binding to manipulate Tcl variables (setting, getting, removing,
 -- etc)
 -- SOURCE
-package Tcl.Variables with
-   SPARK_Mode
-is
+package Tcl.Variables is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
