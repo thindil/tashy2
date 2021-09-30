@@ -18,9 +18,7 @@ with Interfaces.C.Strings; use Interfaces.C.Strings;
 with Tashy2; use Tashy2;
 with Tcl.Variables; use Tcl.Variables;
 
-package body Tcl with
-   SPARK_Mode
-is
+package body Tcl is
 
    --## rule off GLOBAL_REFERENCES
    -- ****iv* Tcl/Tcl.Default_Interpreter FUNCTION Pointer to the default Tcl
@@ -65,7 +63,7 @@ is
       if Native_Tcl_Eval
           (Interp => Interpreter, Script => To_C_String(Str => Tcl_Script)) =
         TCL_ERROR then
-         raise Tcl_Exception with Tcl_Get_Result;
+         return;
       end if;
    end Tcl_Eval;
 
