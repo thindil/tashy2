@@ -50,12 +50,24 @@ package body Tcl is
       return True;
    end Tcl_Init;
 
+   -- ****if* Tcl/Tcl.Native_Tcl_Eval
+   -- FUNCTION
+   -- Binding to C function Tcl_Eval, evalutate the selected Tcl script
+   -- PARAMETERS
+   -- Interp - Tcl interpreter on which the Tcl script will be evaluated
+   -- Script - Tcl script to evaluate
+   -- RESULT
+   -- Tcl_Results value
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    function Native_Tcl_Eval
      (Interp: Tcl_Interpreter; Script: chars_ptr) return Tcl_Results with
       Global => null,
       Import => True,
       Convention => C,
       External_Name => "Tcl_Eval";
+      -- ****
 
    procedure Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
