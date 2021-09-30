@@ -136,7 +136,7 @@ if {[catch {open tashy2_options.gpr r} fid]} {
          append library_switches "-ltcl$tcl_version -ltk$tk_version"
       }
    }
-   set tashvar(AARGS) "-O2 -gnatafo -gnatwaL -gnaty3aAbCdefhIklnOprSux -gnatX"
+   set tashvar(AARGS) "-O2 -gnatafo -gnatwaL -gnaty3aAbCdefhIklnOprSux"
    set tashvar(LINKER) $library_switches
    set tclhome [file dirname [file dirname [info nameofexecutable]]]
    set tcl_include [file join $tclhome include]
