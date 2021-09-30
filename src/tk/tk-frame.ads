@@ -19,9 +19,7 @@ with Tcl.Strings; use Tcl.Strings;
 -- FUNCTION
 -- Provides code for manipulate Tk widget frame
 -- SOURCE
-package Tk.Frame with
-   SPARK_Mode
-is
+package Tk.Frame is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

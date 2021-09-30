@@ -21,9 +21,7 @@ with Tk.Widget; use Tk.Widget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget toplevel
 -- SOURCE
-package Tk.TopLevel with
-   SPARK_Mode
-is
+package Tk.TopLevel is
    pragma Elaborate_Body;
 -- ****
 

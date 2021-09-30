@@ -18,9 +18,7 @@ with Tk.Widget; use Tk.Widget;
 -- FUNCTION
 -- Provide bindings for manipulate Tk images type photo
 -- SOURCE
-package Tk.Image.Photo with
-   SPARK_Mode
-is
+package Tk.Image.Photo is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

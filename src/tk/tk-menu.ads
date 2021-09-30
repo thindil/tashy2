@@ -19,9 +19,7 @@ with Tk.Widget; use Tk.Widget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget menu
 -- SOURCE
-package Tk.Menu with
-   SPARK_Mode
-is
+package Tk.Menu is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

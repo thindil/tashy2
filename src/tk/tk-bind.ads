@@ -15,9 +15,7 @@
 with Tcl.Strings; use Tcl.Strings;
 with Tk.Widget; use Tk.Widget;
 
-package Tk.Bind with
-   SPARK_Mode
-is
+package Tk.Bind is
 
    type Modifiers_Type is
      (CONTROL, ALT, SHIFT, LOCK, EXTENDED, BUTTON_1, BUTTON_2, BUTTON_3,

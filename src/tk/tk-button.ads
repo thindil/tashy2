@@ -19,9 +19,7 @@ with Tk.Widget; use Tk.Widget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget button
 -- SOURCE
-package Tk.Button with
-   SPARK_Mode
-is
+package Tk.Button is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

@@ -16,9 +16,7 @@
 -- FUNCTION
 -- Provide bindings for manipulate Tk images type bitmap
 -- SOURCE
-package Tk.Image.Bitmap with
-   SPARK_Mode
-is
+package Tk.Image.Bitmap is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

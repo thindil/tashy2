@@ -20,9 +20,7 @@ with Tcl.Strings; use Tcl.Strings;
 -- FUNCTION
 -- Provides code for manipulate Tk widget labelframe
 -- SOURCE
-package Tk.Labelframe with
-   SPARK_Mode
-is
+package Tk.Labelframe is
    pragma Elaborate_Body;
 -- ****
 
