@@ -19,7 +19,9 @@ with Tcl.Variables;
 -- FUNCTION
 -- Provide code to manipulate the Tcl lists.
 -- SOURCE
-package Tcl.Lists is
+package Tcl.Lists with
+   SPARK_Mode
+is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
