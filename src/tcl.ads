@@ -22,16 +22,6 @@ package Tcl is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
-   -- ****e* Tcl/Tcl.Tcl_Exception
-   -- FUNCTION
-   -- Standard TASHY2 exception. Raised when something bad happens (mostly
-   -- when TCL_ERROR arrive)
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   Tcl_Exception: exception;
-   -- ****
-
    -- ****t* Tcl/Tcl.Tcl_Interpreter
    -- FUNCTION
    -- Pointer to the selected Tcl interpreter
