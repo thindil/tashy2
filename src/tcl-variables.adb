@@ -50,7 +50,7 @@ package body Tcl.Variables is
         (Interp: Tcl_Interpreter; Var_Name_C, New_Value_C: chars_ptr;
          Flags_C: int) return chars_ptr with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_SetVar";
       Result: constant String :=
@@ -75,7 +75,7 @@ package body Tcl.Variables is
         (Interp: Tcl_Interpreter; Name1, Name2, New_Value_C: chars_ptr;
          Flags_C: int) return chars_ptr with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_SetVar2";
       Result: constant String :=
@@ -101,7 +101,7 @@ package body Tcl.Variables is
         (Interp: Tcl_Interpreter; Var_Name_C: chars_ptr; Flags_C: int)
          return chars_ptr with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_GetVar";
       Result: constant chars_ptr :=
@@ -154,7 +154,7 @@ package body Tcl.Variables is
         (Interp: Tcl_Interpreter; Var_Name_C, Index_Name_C: chars_ptr;
          Flags_C: int) return chars_ptr with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_GetVar2";
       Result: constant chars_ptr :=
@@ -210,7 +210,7 @@ package body Tcl.Variables is
         (Interp: Tcl_Interpreter; Var_Name_C: chars_ptr; Flags_C: int)
          return int with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_UnsetVar";
    begin
@@ -230,7 +230,7 @@ package body Tcl.Variables is
         (Interp: Tcl_Interpreter; Var_Name_C, Index_Name_C: chars_ptr;
          Flags_C: int) return int with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_UnsetVar2";
    begin
