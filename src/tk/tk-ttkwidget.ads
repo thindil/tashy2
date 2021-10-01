@@ -20,9 +20,7 @@ with Tcl.Strings; use Tcl.Strings;
 -- FUNCTION
 -- Provide code for manipulate Ttk widgets. Parent of the all Ttk widgets.
 -- SOURCE
-package Tk.TtkWidget with
-   SPARK_Mode
-is
+package Tk.TtkWidget is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

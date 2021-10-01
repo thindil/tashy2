@@ -21,9 +21,7 @@ with Tcl.Strings; use Tcl.Strings;
 -- FUNCTION
 -- Provide code for manipulate Tk widgets. Parent of the all widget.
 -- SOURCE
-package Tk.Widget with
-   SPARK_Mode
-is
+package Tk.Widget is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

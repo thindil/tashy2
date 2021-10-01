@@ -19,9 +19,7 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget ttk::frame
 -- SOURCE
-package Tk.TtkFrame with
-   SPARK_Mode
-is
+package Tk.TtkFrame is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

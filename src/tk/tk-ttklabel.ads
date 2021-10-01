@@ -20,9 +20,7 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget ttk::label
 -- SOURCE
-package Tk.TtkLabel with
-   SPARK_Mode
-is
+package Tk.TtkLabel is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

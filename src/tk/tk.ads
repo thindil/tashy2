@@ -18,9 +18,7 @@ with Tcl; use Tcl;
 -- FUNCTION
 -- Provide bindings for Tk library
 -- SOURCE
-package Tk with
-   SPARK_Mode
-is
+package Tk is
 -- ****
 
    -------------------------------

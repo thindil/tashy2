@@ -20,9 +20,7 @@ with Tcl.Lists; use Tcl.Lists;
 -- Provide bindings for Tk command winfo (information about the selected
 -- widget)
 -- SOURCE
-package Tk.Winfo with
-   SPARK_Mode
-is
+package Tk.Winfo is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE

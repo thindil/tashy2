@@ -20,9 +20,7 @@ with Tk.TtkWidget; use Tk.TtkWidget;
 -- FUNCTION
 -- Provides code for manipulate Tk widget ttk::entry
 -- SOURCE
-package Tk.TtkEntry with
-   SPARK_Mode
-is
+package Tk.TtkEntry is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
