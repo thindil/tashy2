@@ -20,7 +20,7 @@ package body Tk.MainWindow is
       function Tk_Main_Window
         (Interp: Tcl_Interpreter) return Tk.TopLevel.Tk_Toplevel with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tk_MainWindow";
    begin

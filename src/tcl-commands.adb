@@ -26,7 +26,7 @@ is
         (Interp: Tcl_Interpreter; Cmd_Name: chars_ptr; Ada_Proc: Tcl_Cmd_Proc;
          Client_Data: System.Address; Delete_Proc_Ada: Tcl_Cmd_Delete_Proc)
          return Tcl_Command with
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_CreateCommand";
 

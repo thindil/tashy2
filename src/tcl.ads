@@ -68,7 +68,7 @@ package Tcl is
    -- SOURCE
    function Create_Interpreter return Tcl_Interpreter with
       Global => null,
-      Import => True,
+      Import,
       Convention => C,
       External_Name => "Tcl_CreateInterp";
      -- ****

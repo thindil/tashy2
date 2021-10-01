@@ -20,7 +20,7 @@ package body Tk is
       use Interfaces.C;
       function Tk_Init_C(Interp: Tcl_Interpreter) return int with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tk_Init";
    begin

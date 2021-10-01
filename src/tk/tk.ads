@@ -53,7 +53,7 @@ package Tk is
    -- Tk_Main_Loop;
    -- SOURCE
    procedure Tk_Main_Loop with
-      Import => True,
+      Import,
       Convention => C,
       External_Name => "Tk_MainLoop";
       -- ****

@@ -40,7 +40,7 @@ package body Tcl is
    function Tcl_Init(Interpreter: Tcl_Interpreter) return Boolean is
       function Native_Tcl_Init(Interp: Tcl_Interpreter) return Tcl_Results with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_Init";
    begin
@@ -64,7 +64,7 @@ package body Tcl is
    function Native_Tcl_Eval
      (Interp: Tcl_Interpreter; Script: chars_ptr) return Tcl_Results with
       Global => null,
-      Import => True,
+      Import,
       Convention => C,
       External_Name => "Tcl_Eval";
       -- ****
@@ -180,7 +180,7 @@ package body Tcl is
       function Native_Tcl_Eval_File
         (Interp: Tcl_Interpreter; File: chars_ptr) return Tcl_Results with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_EvalFile";
    begin
@@ -196,7 +196,7 @@ package body Tcl is
       function Tcl_Get_String_Result
         (Interp: Tcl_Interpreter) return chars_ptr with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_GetStringResult";
    begin
@@ -232,7 +232,7 @@ package body Tcl is
       procedure Native_Tcl_Set_Result
         (Interp: Tcl_Interpreter; Result: chars_ptr; Free_Proc: int) with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_SetResult";
    begin

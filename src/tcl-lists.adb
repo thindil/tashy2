@@ -28,7 +28,7 @@ package body Tcl.Lists is
       function Tcl_Split_List
         (Interp: Tcl_Interpreter; Tcl_List: chars_ptr; Argc_Ptr: out int;
          Argv_Ptr: out Argv_Pointer.Pointer) return Tcl_Results with
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_SplitList";
       Amount: Natural := 0;
@@ -59,7 +59,7 @@ package body Tcl.Lists is
       function Tcl_Merge
         (Argc: int; Argv: chars_ptr_array) return chars_ptr with
          Global => null,
-         Import => True,
+         Import,
          Convention => C,
          External_Name => "Tcl_Merge";
       New_List: chars_ptr_array(1 .. List'Length);
