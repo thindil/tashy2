@@ -32,16 +32,23 @@ package Tk is
    -- PARAMETERS
    -- Interpreter - The Tcl interpreter on which the Tk library will be
    --               initialized. By default it is the default Tcl interpreter
+   -- RESULT
+   -- Tcl_Result of initialization of the Tk library
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Initalize Tk library on the default Tcl interpreter
-   -- Tk_Init;
+   -- if Tk_Init = TCL_ERROR then
+   --    Ada.Text_IO.Put_Line("Failed to initialize Tk library");
+   --    return;
+   -- end if;
    -- SOURCE
-   procedure Tk_Init(Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Interpreter /= Null_Interpreter,
-      Test_Case => (Name => "Test_Tk_Init", Mode => Nominal);
-   -- ****
+   function Tk_Init(Interp: Tcl_Interpreter) return Tcl_Results with
+      Global => null,
+      Import,
+      Convention => C,
+      External_Name => "Tk_Init";
+      -- ****
 
    -- ****f* Tk/Tk.Tk_Main_Loop
    -- FUNCTION
