@@ -806,7 +806,8 @@ package Tk.Wm is
       -- -- Get the geometry of the Tk main window
       -- Widget_Geometry: constant Window_Geometry := Geometry(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Set_Geometry
+      -- Wm.Set_Geometry_(all_values), Wm.Set_Geometry_(width_height),
+      -- Wm.Set_Geometry_(x_y)
       -- COMMANDS
       -- wm geometry Window
       -- SOURCE
@@ -815,31 +816,76 @@ package Tk.Wm is
       Test_Case => (Name => "Test_Wm_Geometry", Mode => Nominal);
       -- ****
 
-      -- ****f* Wm/Wm.Set_Geometry
+      -- ****f* Wm/Wm.Set_Geometry_(all_values)
       -- FUNCTION
       -- Set the new geometry for the selected Tk_Widget
       -- PARAMETERS
       -- Window - Tk_Widget which geometry will be set
-      -- Width  - The new width for the Window. Must be set with Height together.
-      -- Height - The new height for the Window Must be set with Width together.
-      -- X      - The new X coordinate for top left corner of the Window. Must
-      --          be set with Y together.
-      -- Y      - The new X coordinate for top left corner of the Window. Must
-      --          be set with Y together.
+      -- Width  - The new width for the Window
+      -- Height - The new height for the Window
+      -- X      - The new X coordinate for top left corner of the Window
+      -- Y      - The new X coordinate for top left corner of the Window
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set the main Tk window geometry to 800x600 and at top left corner of the screen
       -- Geometry(Get_Main_Window, 800, 600, 0, 0);
       -- SEE ALSO
-      -- Wm.Set_Geometry
+      -- Wm.Get_Geometry, Wm.Set_Geometry_(width_height),
+      -- Wm.Set_Geometry_Position
       -- COMMANDS
-      -- wm geometry Window ?=WidthxHeight??+X+Y?
+      -- wm geometry Window =WidthxHeight+X+Y
       -- SOURCE
    procedure Set_Geometry
-     (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) with
+     (Window: Tk_Widget; Width, Height, X, Y: Natural) with
       Pre => Window /= Null_Widget,
-      Test_Case => (Name => "Test_Wm_Geometry2", Mode => Nominal);
+      Test_Case => (Name => "Test_Wm_Set_Geometry", Mode => Nominal);
+      -- ****
+
+      -- ****f* Wm/Wm.Set_Geometry_(width_height)
+      -- FUNCTION
+      -- Set the new geometry for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which geometry will be set
+      -- Width  - The new width for the Window
+      -- Height - The new height for the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the main Tk window geometry to 800x600
+      -- Geometry(Get_Main_Window, 800, 600);
+      -- SEE ALSO
+      -- Wm.Get_Geometry, Wm.Set_Geometry_(all_values),
+      -- Wm.Set_Geometry_Position
+      -- COMMANDS
+      -- wm geometry Window =WidthxHeight
+      -- SOURCE
+   procedure Set_Geometry(Window: Tk_Widget; Width, Height: Positive) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Set_Geometry2", Mode => Nominal);
+      -- ****
+
+      -- ****f* Wm/Wm.Set_Geometry_Position
+      -- FUNCTION
+      -- Set the new position for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which geometry will be set
+      -- X      - The new X coordinate for top left corner of the Window
+      -- Y      - The new X coordinate for top left corner of the Window
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Set the main Tk window at top left corner of the screen
+      -- Geometry(Get_Main_Window, 0, 0);
+      -- SEE ALSO
+      -- Wm.Get_Geometry, Wm.Set_Geometry_(width_height),
+      -- Wm.Set_Geometry_(all_values)
+      -- COMMANDS
+      -- wm geometry Window +X+Y
+      -- SOURCE
+   procedure Set_Geometry_Position(Window: Tk_Widget; X, Y: Natural) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Set_Geometry_Position", Mode => Nominal);
       -- ****
 
       -- ****f* Wm/Wm.Get_Grid
