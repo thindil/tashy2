@@ -553,10 +553,6 @@ package body Tk.Widget is
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return Result_Type is
    begin
-      if Widgt = Null_Widget then
-         raise Tcl_Exception
-           with "Can't get result from non existing Tk widget";
-      end if;
       return
         Result_Type'Value
           (Execute_Widget_Command
@@ -568,10 +564,6 @@ package body Tk.Widget is
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return Result_Type is
    begin
-      if Widgt = Null_Widget then
-         raise Tcl_Exception
-           with "Can't get result from non existing Tk widget";
-      end if;
       return
         Result_Type'Value
           (Execute_Widget_Command
