@@ -12,7 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Strings;
+with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
@@ -395,45 +395,37 @@ package body Tk.Wm is
    end Get_Geometry;
 
    procedure Set_Geometry
-     (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) is
-      use Ada.Strings;
-
-      Win_Geometry: Unbounded_String := Null_Unbounded_String;
+     (Window: Tk_Widget; Width, Height: Positive; X, Y: Natural) is
    begin
-      if Width = -1 and Height > -1 then
-         raise Tcl_Exception with "Width value not specified";
-      end if;
-      if Width > -1 and Height = -1 then
-         raise Tcl_Exception with "Height value not specified";
-      end if;
-      if X = -1 and Y > -1 then
-         raise Tcl_Exception with "X value not specified";
-      end if;
-      if X > -1 and Y = -1 then
-         raise Tcl_Exception with "Y value not specified";
-      end if;
-      if Width > -1 and Height > -1 then
-         Append
-           (Source => Win_Geometry,
-            New_Item =>
-              "=" &
-              Trim(Source => Extended_Natural'Image(Width), Side => Left) &
-              "x" &
-              Trim(Source => Extended_Natural'Image(Height), Side => Left));
-      end if;
-      if X > -1 and Y > -1 then
-         Append
-           (Source => Win_Geometry,
-            New_Item =>
-              "+" & Trim(Source => Extended_Natural'Image(X), Side => Left) &
-              "+" & Trim(Source => Extended_Natural'Image(Y), Side => Left));
-      end if;
       Tcl_Eval
         (Tcl_Script =>
-           "wm geometry " & Tk_Path_Name(Widgt => Window) & " " &
-           To_String(Source => Win_Geometry),
+           "wm geometry " & Tk_Path_Name(Widgt => Window) & " " & "=" &
+           Trim(Source => Positive'Image(Width), Side => Left) & "x" &
+           Trim(Source => Positive'Image(Height), Side => Left) & "+" &
+           Trim(Source => Natural'Image(X), Side => Left) & "+" &
+           Trim(Source => Natural'Image(Y), Side => Left),
          Interpreter => Tk_Interp(Widgt => Window));
    end Set_Geometry;
+
+   procedure Set_Geometry(Window: Tk_Widget; Width, Height: Positive) is
+   begin
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm geometry " & Tk_Path_Name(Widgt => Window) & " " & "=" &
+           Trim(Source => Positive'Image(Width), Side => Left) & "x" &
+           Trim(Source => Positive'Image(Height), Side => Left),
+         Interpreter => Tk_Interp(Widgt => Window));
+   end Set_Geometry;
+
+   procedure Set_Geometry_Position(Window: Tk_Widget; X, Y: Natural) is
+   begin
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm geometry " & Tk_Path_Name(Widgt => Window) & " " & "+" &
+           Trim(Source => Natural'Image(X), Side => Left) & "+" &
+           Trim(Source => Natural'Image(Y), Side => Left),
+         Interpreter => Tk_Interp(Widgt => Window));
+   end Set_Geometry_Position;
 
    function Get_Grid(Window: Tk_Widget) return Window_Grid_Geometry is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);

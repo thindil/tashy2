@@ -837,7 +837,7 @@ package Tk.Wm is
       -- wm geometry Window =WidthxHeight+X+Y
       -- SOURCE
    procedure Set_Geometry
-     (Window: Tk_Widget; Width, Height, X, Y: Natural) with
+     (Window: Tk_Widget; Width, Height: Positive; X, Y: Natural) with
       Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Set_Geometry", Mode => Nominal);
       -- ****
