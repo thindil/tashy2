@@ -206,20 +206,12 @@ package body Tcl is
    function Generic_Scalar_Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type is
    begin
-      if Interpreter = Null_Interpreter then
-         raise Tcl_Exception
-           with "Can't get result from non existing Tcl interpreter";
-      end if;
       return Result_Type'Value(Tcl_Get_Result(Interpreter => Interpreter));
    end Generic_Scalar_Tcl_Get_Result;
 
    function Generic_Float_Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type is
    begin
-      if Interpreter = Null_Interpreter then
-         raise Tcl_Exception
-           with "Can't get result from non existing Tcl interpreter";
-      end if;
       return Result_Type'Value(Tcl_Get_Result(Interpreter => Interpreter));
    end Generic_Float_Tcl_Get_Result;
 
