@@ -175,8 +175,9 @@ package body Tcl is
       end return;
    end Tcl_Eval;
 
-   procedure Tcl_Eval_File
-     (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   function Tcl_Eval_File
+     (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Results is
       function Native_Tcl_Eval_File
         (Interp: Tcl_Interpreter; File: chars_ptr) return Tcl_Results with
          Global => null,
@@ -184,11 +185,9 @@ package body Tcl is
          Convention => C,
          External_Name => "Tcl_EvalFile";
    begin
-      if Native_Tcl_Eval_File
-          (Interp => Interpreter, File => To_C_String(Str => File_Name)) =
-        TCL_ERROR then
-         raise Tcl_Exception with Tcl_Get_Result;
-      end if;
+      return
+        Native_Tcl_Eval_File
+          (Interp => Interpreter, File => To_C_String(Str => File_Name));
    end Tcl_Eval_File;
 
    function Tcl_Get_Result

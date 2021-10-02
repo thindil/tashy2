@@ -345,16 +345,21 @@ package Tcl is
       --               be evaluated
       -- Interpreter - Tcl interpreter on which the file will be evaluated.
       --               By default it is current default Tcl interpreter
+      -- RESULT
+      -- Tcl_Result of evaluation of the selected file
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Evaluate file myscript.tcl on the default Tcl interpreter
-      -- Tcl_Eval_File("myscript.tcl");
+      -- if Tcl_Eval_File("myscript.tcl") = TCL_ERROR then
+      --    Ada.Text_IO.Put_Line("failed to evaluate myscript.tcl file.");
+      -- end if;
       -- SEE ALSO
-      -- Tcl.Tcl_Eval_(procedure)
+      -- Tcl.Tcl_Eval_(function)
       -- SOURCE
-   procedure Tcl_Eval_File
-     (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter) with
+   function Tcl_Eval_File
+     (File_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Results with
       Pre => File_Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_Eval_File", Mode => Nominal);
       -- ****
