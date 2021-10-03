@@ -1194,7 +1194,7 @@ package Tk.Wm is
       -- -- Get the position of the Tk main window icon
       -- Position: constant Point_Position := Get_Icon_Position(Get_Main_Window);
       -- SEE ALSO
-      -- Wm.Set_Icon_Position
+      -- Wm.Set_Icon_Position, Wm.Reset_Icon_Position
       -- COMMANDS
       -- wm iconposition Window
       -- SOURCE
@@ -1216,14 +1216,33 @@ package Tk.Wm is
       -- -- Set the position of the Tk main window icon to pixel coordinates 20, 20
       -- Icon_Position(Get_Main_Window, 20, 20);
       -- SEE ALSO
-      -- Wm.Get_Icon_Position
+      -- Wm.Get_Icon_Position, Wm.Reset_Icon_Position
       -- COMMANDS
       -- wm iconposition Window X Y
       -- SOURCE
-   procedure Set_Icon_Position(Window: Tk_Widget; X, Y: Extended_Natural) with
+   procedure Set_Icon_Position(Window: Tk_Widget; X, Y: Natural) with
       Pre => Window /= Null_Widget,
-      Test_Case => (Name => "Test_Wm_Icon_Position2", Mode => Nominal);
+      Test_Case => (Name => "Test_Wm_Icon_Set_Position", Mode => Nominal);
       -- ****
+
+      -- ****f* Wm/Wm.Reset_Icon_Position
+      -- FUNCTION
+      -- Reset the hint for position of the icon for the selected Tk_Widget
+      -- PARAMETERS
+      -- Window - Tk_Widget which icon's position will be set
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Reset the hint for position of the Tk main window icon
+      -- Icon_Position(Get_Main_Window);
+      -- SEE ALSO
+      -- Wm.Get_Icon_Position, Wm.Set_Icon_Position
+      -- COMMANDS
+      -- wm iconposition Window {} {}
+      -- SOURCE
+   procedure Reset_Icon_Position(Window: Tk_Widget) with
+      Pre => Window /= Null_Widget,
+      Test_Case => (Name => "Test_Wm_Icon_Reset_Position", Mode => Nominal);
 
       -- ****f* Wm/Wm.Get_Icon_Window
       -- FUNCTION

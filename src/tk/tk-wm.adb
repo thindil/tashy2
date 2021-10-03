@@ -538,24 +538,22 @@ package body Tk.Wm is
       end return;
    end Get_Icon_Position;
 
-   procedure Set_Icon_Position(Window: Tk_Widget; X, Y: Extended_Natural) is
+   procedure Set_Icon_Position(Window: Tk_Widget; X, Y: Natural) is
    begin
-      if (X = -1 and Y > -1) or (X > -1 and Y = -1) then
-         raise Tcl_Exception with "You have to specify both coordinates";
-      end if;
-      if X = -1 and Y = -1 then
-         Tcl_Eval
-           (Tcl_Script =>
-              "wm iconposition " & Tk_Path_Name(Widgt => Window) & " {} {}",
-            Interpreter => Tk_Interp(Widgt => Window));
-      else
-         Tcl_Eval
-           (Tcl_Script =>
-              "wm iconposition " & Tk_Path_Name(Widgt => Window) &
-              Extended_Natural'Image(X) & Extended_Natural'Image(Y),
-            Interpreter => Tk_Interp(Widgt => Window));
-      end if;
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm iconposition " & Tk_Path_Name(Widgt => Window) &
+           Natural'Image(X) & Natural'Image(Y),
+         Interpreter => Tk_Interp(Widgt => Window));
    end Set_Icon_Position;
+
+   procedure Reset_Icon_Position(Window: Tk_Widget) is
+   begin
+      Tcl_Eval
+        (Tcl_Script =>
+           "wm iconposition " & Tk_Path_Name(Widgt => Window) & " {} {}",
+         Interpreter => Tk_Interp(Widgt => Window));
+   end Reset_Icon_Position;
 
    function Get_Icon_Window(Window: Tk_Widget) return Tk_Toplevel is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
