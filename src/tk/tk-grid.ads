@@ -253,44 +253,86 @@ package Tk.Grid is
       Test_Case => (Name => "Test_Anchor2", Mode => Nominal);
       -- ****
 
-      -- ****f* Grid/Grid.Get_Bounding_Box
+      -- ****f* Grid/Grid.Get_Bounding_Box_(all_values)
       -- FUNCTION
       -- Get the bounding box of the selected grid
       -- PARAMETERS
       -- Master  - Tk_Widget in which the grid is. Must be existing widget
       -- Column  - The starting column for the bounding box of the grid.
-      --           Default value is -1 (as empty). If Column has other than
-      --           default value, Row must be specified too
-      -- Row     - The starting row for the bounding box of the grid. Default
-      --           value is -1 (as empty). If Row has other than default
-      --           value, Column must be specified too
-      -- Column2 - The ending column for the bounding box of the grid. Default
-      --           value is -1 (as empty). If Column2 has other than default
-      --           value, Column, Row and Row2 must be specified too
-      -- Row2    - The ending column for the bounding box of the grid. Default
-      --           value is -1 (as empty). If Row2 has other than default
-      --           value, Column, Row and Column2 must be specified too
+      -- Row     - The starting row for the bounding box of the grid.
+      -- Column2 - The ending column for the bounding box of the grid.
+      -- Row2    - The ending column for the bounding box of the grid.
       -- RESULT
       -- BBox_Data with 4 values. The first two are staring point (x, y) of
       -- the bounding box, the third is width and the fourth is height of the
-      -- bounding box. If Column and Row are specified, then return the
-      -- bouding box of the selected cell. If Column, Row, Column2 and Row2
-      -- are specified then return the bouding box of the selected columns and
+      -- bounding box. The return is the bouding box of the selected columns and
       -- rows.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the bounding box of grid from two first rows and columns in My_Frame widget
+      -- Bounding_Box: constant BBox_Data := Get_Bounding_Box(My_Frame, 0, 0, 1, 1);
+      -- SEE ALSO
+      -- Grid.Get_Bounding_Box_(col_row), Grid.Get_Bounding_Box
+      -- COMMANDS
+      -- grid bbox master column row column2 row2
+      -- SOURCE
+   function Get_Bounding_Box
+     (Master: Tk_Widget; Column, Row, Column2, Row2: Natural)
+      return Bbox_Data with
+      Pre => Master /= Null_Widget,
+      Test_Case => (Name => "Test_Get_BBox", Mode => Nominal);
+      -- ****
+
+      -- ****f* Grid/Grid.Get_Bounding_Box_(col_row)
+      -- FUNCTION
+      -- Get the bounding box of the selected cell in grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- Column  - The starting column for the bounding box of the grid.
+      -- Row     - The starting row for the bounding box of the grid.
+      -- RESULT
+      -- BBox_Data with 4 values. The first two are staring point (x, y) of
+      -- the bounding box, the third is width and the fourth is height of the
+      -- bounding box. It is the bounding box of the selected cell.
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Get the bounding box of grid for the first row and column in My_Frame widget
+      -- Bounding_Box: constant BBox_Data := Get_Bounding_Box(My_Frame, 0, 0);
+      -- SEE ALSO
+      -- Grid.Get_Bounding_Box_(all_values), Grid.Get_Bounding_Box
+      -- COMMANDS
+      -- grid bbox master column row
+      -- SOURCE
+   function Get_Bounding_Box
+     (Master: Tk_Widget; Column, Row: Natural) return Bbox_Data with
+      Pre => Master /= Null_Widget,
+      Test_Case => (Name => "Test_Get_BBox2", Mode => Nominal);
+      -- ****
+
+      -- ****f* Grid/Grid.Get_Bounding_Box
+      -- FUNCTION
+      -- Get the bounding box of the selected grid
+      -- PARAMETERS
+      -- Master  - Tk_Widget in which the grid is. Must be existing widget
+      -- RESULT
+      -- BBox_Data with 4 values. The first two are staring point (x, y) of
+      -- the bounding box, the third is width and the fourth is height of the
+      -- bounding box. The return is the bouding box of the whole grid.
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the bounding box of grid in My_Frame widget
       -- Bounding_Box: constant BBox_Data := Get_Bounding_Box(My_Frame);
+      -- SEE ALSO
+      -- Grid.Get_Bounding_Box_(col_row), Grid.Get_Bounding_Box_(all_values)
       -- COMMANDS
-      -- grid bbox master ?column row? ?column2 row2?
+      -- grid bbox master
       -- SOURCE
-   function Get_Bounding_Box
-     (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
-      return Bbox_Data with
+   function Get_Bounding_Box(Master: Tk_Widget) return Bbox_Data with
       Pre => Master /= Null_Widget,
-      Test_Case => (Name => "Test_BBox", Mode => Nominal);
-      -- ****
+      Test_Case => (Name => "Test_Get_BBox3", Mode => Nominal);
 
       -- ****f* Grid/Grid.Column_Configure_(child_name)
       -- FUNCTION
