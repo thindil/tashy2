@@ -125,50 +125,70 @@ package body Tk.Grid is
    end Set_Anchor;
 
    function Get_Bounding_Box
-     (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
+     (Master: Tk_Widget; Column, Row, Column2, Row2: Natural)
       return Bbox_Data is
-      Options: Unbounded_String := Null_Unbounded_String;
       Result_List: Array_List(1 .. 4);
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
    begin
-      if Column > -1 then
-         Append(Source => Options, New_Item => Extended_Natural'Image(Column));
-      end if;
-      if Row > -1 then
-         if Column = -1 then
-            raise Tcl_Exception with "Column value not specified";
-         end if;
-         Append(Source => Options, New_Item => Extended_Natural'Image(Row));
-      end if;
-      if Column2 > -1 then
-         if Column = -1 then
-            raise Tcl_Exception with "Column value not specified";
-         end if;
-         if Row = -1 then
-            raise Tcl_Exception with "Row value not specified";
-         end if;
-         Append
-           (Source => Options, New_Item => Extended_Natural'Image(Column2));
-      end if;
-      if Row2 > -1 then
-         if Column = -1 then
-            raise Tcl_Exception with "Column value not specified";
-         end if;
-         if Row = -1 then
-            raise Tcl_Exception with "Row value not specified";
-         end if;
-         if Column2 = -1 then
-            raise Tcl_Exception with "Column2 value not specified";
-         end if;
-         Append(Source => Options, New_Item => Extended_Natural'Image(Row2));
-      end if;
       Result_List :=
         Split_List
           (List =>
              Tcl_Eval
                (Tcl_Script =>
                   "grid bbox " & Tk_Path_Name(Widgt => Master) &
-                  To_String(Source => Options),
+                  Natural'Image(Column) & Natural'Image(Row) &
+                  Natural'Image(Column2) & Natural'Image(Row2),
+                Interpreter => Interpreter)
+               .Result,
+           Interpreter => Interpreter);
+      return Coords: Bbox_Data := Empty_Bbox_Data do
+         Coords.Start_X :=
+           Natural'Value(To_Ada_String(Source => Result_List(1)));
+         Coords.Start_Y :=
+           Natural'Value(To_Ada_String(Source => Result_List(2)));
+         Coords.Width :=
+           Natural'Value(To_Ada_String(Source => Result_List(3)));
+         Coords.Height :=
+           Natural'Value(To_Ada_String(Source => Result_List(4)));
+      end return;
+   end Get_Bounding_Box;
+
+   function Get_Bounding_Box
+     (Master: Tk_Widget; Column, Row: Natural) return Bbox_Data is
+      Result_List: Array_List(1 .. 4);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
+   begin
+      Result_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script =>
+                  "grid bbox " & Tk_Path_Name(Widgt => Master) &
+                  Natural'Image(Column) & Natural'Image(Row),
+                Interpreter => Interpreter)
+               .Result,
+           Interpreter => Interpreter);
+      return Coords: Bbox_Data := Empty_Bbox_Data do
+         Coords.Start_X :=
+           Natural'Value(To_Ada_String(Source => Result_List(1)));
+         Coords.Start_Y :=
+           Natural'Value(To_Ada_String(Source => Result_List(2)));
+         Coords.Width :=
+           Natural'Value(To_Ada_String(Source => Result_List(3)));
+         Coords.Height :=
+           Natural'Value(To_Ada_String(Source => Result_List(4)));
+      end return;
+   end Get_Bounding_Box;
+
+   function Get_Bounding_Box(Master: Tk_Widget) return Bbox_Data is
+      Result_List: Array_List(1 .. 4);
+      Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Master);
+   begin
+      Result_List :=
+        Split_List
+          (List =>
+             Tcl_Eval
+               (Tcl_Script => "grid bbox " & Tk_Path_Name(Widgt => Master),
                 Interpreter => Interpreter)
                .Result,
            Interpreter => Interpreter);
