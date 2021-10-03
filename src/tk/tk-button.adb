@@ -245,18 +245,12 @@ package body Tk.Button is
    function Generic_Scalar_Invoke_Button
      (Button_Widget: Tk_Button) return Result_Type is
    begin
-      if Button_Widget = Null_Widget then
-         raise Tcl_Exception with "Can't invoke non-existing button.";
-      end if;
       return Result_Type'Value(Invoke(Button_Widget => Button_Widget));
    end Generic_Scalar_Invoke_Button;
 
    function Generic_Float_Invoke_Button
      (Button_Widget: Tk_Button) return Result_Type is
    begin
-      if Button_Widget = Null_Widget then
-         raise Tcl_Exception with "Can't invoke non-existing button.";
-      end if;
       return Result_Type'Value(Invoke(Button_Widget => Button_Widget));
    end Generic_Float_Invoke_Button;
 
