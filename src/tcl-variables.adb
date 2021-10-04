@@ -42,10 +42,10 @@ package body Tcl.Variables is
       return int(Flag);
    end Create_Flag;
 
-   procedure Tcl_Set_Var
+   function Tcl_Set_Var
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) is
+      Flags: Flags_Array := Default_Flags_Array) return Boolean is
       function Tcl_Set_Var_C
         (Interp: Tcl_Interpreter; Var_Name_C, New_Value_C: chars_ptr;
          Flags_C: int) return chars_ptr with
@@ -63,8 +63,9 @@ package body Tcl.Variables is
                 Flags_C => Create_Flag(Flags => Flags)));
    begin
       if Result'Length = 0 then
-         raise Tcl_Exception with "Can't set " & Var_Name & " to " & New_Value;
+         return False;
       end if;
+      return True;
    end Tcl_Set_Var;
 
    procedure Tcl_Set_Var2

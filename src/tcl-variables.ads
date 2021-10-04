@@ -90,16 +90,20 @@ package Tcl.Variables is
    --               default it is current default Tcl interpreter.
    -- Flags       - Array of flags used in setting variable. Can be empty.
    --               Default value is one element array NONE
+   -- RESULT
+   -- True if variable was set or created, otherwise False
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
    -- -- Set the value of the Tcl variable $myvar to 2 on default Tcl interpreter
-   -- Tcl_Set_Var("myvar", "2");
+   -- if not Tcl_Set_Var("myvar", "2") then
+   --    Ada.Text_IO.Put_Line("Can't set value for Tcl variable myvar.");
+   -- end if;
    -- SOURCE
-   procedure Tcl_Set_Var
+   function Tcl_Set_Var
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) with
+      Flags: Flags_Array := Default_Flags_Array) return Boolean with
       Pre => Var_Name'Length > 0 and New_Value'Length > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_SetVar", Mode => Nominal);
