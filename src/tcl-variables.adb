@@ -110,8 +110,7 @@ package body Tcl.Variables is
            Flags_C => Create_Flag(Flags => Flags));
    begin
       if Result = Null_Ptr then
-         raise Tcl_Exception
-           with "Can't get value of Tcl variable '" & Var_Name & "'";
+         return "";
       end if;
       return From_C_String(Item => Result);
    end Tcl_Get_Var;

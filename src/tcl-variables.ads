@@ -154,7 +154,8 @@ package Tcl.Variables is
       -- Flags       - Array of flags used in getting variable. Can be empty.
       --               Default value is one element array NONE
       -- RESULT
-      -- String with the value of the selected Tcl variable
+      -- String with the value of the selected Tcl variable. If there no
+      -- variable with that name, return empty String.
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
