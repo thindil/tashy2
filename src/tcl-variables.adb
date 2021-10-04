@@ -68,10 +68,10 @@ package body Tcl.Variables is
       return True;
    end Tcl_Set_Var;
 
-   procedure Tcl_Set_Var2
+   function Tcl_Set_Var2
      (Array_Name, Index_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) is
+      Flags: Flags_Array := Default_Flags_Array) return Boolean is
       function Tcl_Set_Var2_C
         (Interp: Tcl_Interpreter; Name1, Name2, New_Value_C: chars_ptr;
          Flags_C: int) return chars_ptr with
@@ -89,10 +89,9 @@ package body Tcl.Variables is
                 Flags_C => Create_Flag(Flags => Flags)));
    begin
       if Result'Length = 0 then
-         raise Tcl_Exception
-           with "Can't set element " & Index_Name & " to " & New_Value &
-           " in array " & Array_Name;
+         return False;
       end if;
+      return True;
    end Tcl_Set_Var2;
 
    function Tcl_Get_Var
