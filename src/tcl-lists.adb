@@ -38,7 +38,7 @@ package body Tcl.Lists is
           (Interp => Interpreter, Tcl_List => New_String(Str => List),
            Argc_Ptr => int(Amount), Argv_Ptr => Values) =
         TCL_ERROR then
-         raise Tcl_Exception with Tcl_Get_Result(Interpreter => Interpreter);
+         return Empty_Array_List;
       end if;
       if Amount = 0 then
          return Empty_Array_List;
