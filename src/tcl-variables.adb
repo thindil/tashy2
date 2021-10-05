@@ -184,9 +184,9 @@ package body Tcl.Variables is
               Interpreter => Interpreter, Flags => Flags));
    end Generic_Float_Tcl_Get_Var2;
 
-   procedure Tcl_Unset_Var
+   function Tcl_Unset_Var
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) is
+      Flags: Flags_Array := Default_Flags_Array) return Boolean is
       function Tcl_Unset_Var_C
         (Interp: Tcl_Interpreter; Var_Name_C: chars_ptr; Flags_C: int)
          return int with
@@ -199,8 +199,9 @@ package body Tcl.Variables is
           (Interp => Interpreter, Var_Name_C => To_C_String(Str => Var_Name),
            Flags_C => Create_Flag(Flags => Flags)) =
         int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
-         raise Tcl_Exception with "Can't unset " & Var_Name;
+         return False;
       end if;
+      return True;
    end Tcl_Unset_Var;
 
    procedure Tcl_Unset_Var2
