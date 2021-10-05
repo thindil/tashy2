@@ -204,10 +204,10 @@ package body Tcl.Variables is
       return True;
    end Tcl_Unset_Var;
 
-   procedure Tcl_Unset_Var2
+   function Tcl_Unset_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) is
+      Flags: Flags_Array := Default_Flags_Array) return Boolean is
       function Tcl_Unset_Var2_C
         (Interp: Tcl_Interpreter; Var_Name_C, Index_Name_C: chars_ptr;
          Flags_C: int) return int with
@@ -221,9 +221,9 @@ package body Tcl.Variables is
            Index_Name_C => To_C_String(Str => Index_Name),
            Flags_C => Create_Flag(Flags => Flags)) =
         int(Tcl_Results'Enum_Rep(TCL_ERROR)) then
-         raise Tcl_Exception
-           with "Can't unset element " & Index_Name & " in array " & Var_Name;
+         return False;
       end if;
+      return True;
    end Tcl_Unset_Var2;
 
 end Tcl.Variables;

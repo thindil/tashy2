@@ -363,16 +363,21 @@ package Tcl.Variables is
       --               default it is current default Tcl interpreter.
       -- Flags       - Array of flags used in deleting variable. Can be empty.
       --               Default value is one element array NONE
+      -- RESULT
+      -- True if the selected Tcl variable was succesfully unset, otherwise
+      -- False
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Delete the third element in the Tcl array $myarray on default Tcl interpreter
-      -- Tcl_Unset_Var("myarray", "2");
+      -- if not Tcl_Unset_Var("myarray", "2") then
+      --    Ada.Text_IO.Put_Line("Can't unset the third element in Tcl array $myarray");
+      -- end if;
       -- SOURCE
-   procedure Tcl_Unset_Var2
+   function Tcl_Unset_Var2
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) with
+      Flags: Flags_Array := Default_Flags_Array) return Boolean with
       Pre => Var_Name'Length > 0 and Index_Name'Length > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_UnsetVar2", Mode => Nominal);
