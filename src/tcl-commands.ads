@@ -124,7 +124,8 @@ is
    -- Delete_Proc  - The code which will be executed on deleting Tcl command.
    --                Default value is null
    -- RESULT
-   -- The pointer to the newly created Tcl command
+   -- The pointer to the newly created Tcl command or Null_Tcl_Command is the
+   -- command can't be created
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
