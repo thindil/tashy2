@@ -165,10 +165,6 @@ package body Tcl.Variables is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return Result_Type is
    begin
-      if Interpreter = Null_Interpreter then
-         raise Tcl_Exception
-           with "Can't get variable value on non existing Tcl interpreter";
-      end if;
       return
         Result_Type'Value
           (Tcl_Get_Var2
@@ -181,10 +177,6 @@ package body Tcl.Variables is
       Interpreter: Tcl_Interpreter := Get_Interpreter;
       Flags: Flags_Array := Default_Flags_Array) return Result_Type is
    begin
-      if Interpreter = Null_Interpreter then
-         raise Tcl_Exception
-           with "Can't get variable value on non existing Tcl interpreter";
-      end if;
       return
         Result_Type'Value
           (Tcl_Get_Var2
