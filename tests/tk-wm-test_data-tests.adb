@@ -1287,8 +1287,8 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Set_Geometry_218b77_9bd66a
-     (Window: Tk_Widget; Width, Height, X, Y: Extended_Natural := -1) is
+   procedure Wrap_Test_Set_Geometry_812d71_574eec
+     (Window: Tk_Widget; Width, Height: Positive; X, Y: Natural) is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -1297,7 +1297,7 @@ package body Tk.Wm.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-wm.ads:0):Test_Wm_Geometry2 test requirement violated");
+               "req_sloc(tk-wm.ads:0):Test_Wm_Set_Geometry test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Geometry
         (Window, Width, Height, X, Y);
@@ -1308,38 +1308,134 @@ package body Tk.Wm.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "ens_sloc(tk-wm.ads:0:):Test_Wm_Geometry2 test commitment violated");
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Set_Geometry test commitment violated");
       end;
-   end Wrap_Test_Set_Geometry_218b77_9bd66a;
+   end Wrap_Test_Set_Geometry_812d71_574eec;
 --  end read only
 
 --  begin read only
-   procedure Test_Set_Geometry_test_wm_geometry2(Gnattest_T: in out Test);
-   procedure Test_Set_Geometry_218b77_9bd66a(Gnattest_T: in out Test) renames
-     Test_Set_Geometry_test_wm_geometry2;
---  id:2.2/218b77a0cb8ea295/Set_Geometry/1/0/test_wm_geometry2/
-   procedure Test_Set_Geometry_test_wm_geometry2(Gnattest_T: in out Test) is
+   procedure Test_1_Set_Geometry_test_wm_set_geometry(Gnattest_T: in out Test);
+   procedure Test_Set_Geometry_812d71_574eec(Gnattest_T: in out Test) renames
+     Test_1_Set_Geometry_test_wm_set_geometry;
+--  id:2.2/812d71b638a78b1f/Set_Geometry/1/0/test_wm_set_geometry/
+   procedure Test_1_Set_Geometry_test_wm_set_geometry
+     (Gnattest_T: in out Test) is
       procedure Set_Geometry
-        (Window: Tk_Widget;
-         Width, Height, X, Y: Extended_Natural := -1) renames
-        Wrap_Test_Set_Geometry_218b77_9bd66a;
+        (Window: Tk_Widget; Width, Height: Positive; X, Y: Natural) renames
+        Wrap_Test_Set_Geometry_812d71_574eec;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      Set_Geometry(Get_Main_Window, -1, -1, 10, 12);
-      Assert
-        (Get_Geometry(Get_Main_Window).X = 10,
-         "Failed to set geometry for Tk main window.");
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_Set_Geometry_test_wm_geometry2;
+   end Test_1_Set_Geometry_test_wm_set_geometry;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Set_Geometry_ab86cd_24d3e6
+     (Window: Tk_Widget; Width, Height: Positive) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Set_Geometry2 test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Geometry
+        (Window, Width, Height);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Set_Geometry2 test commitment violated");
+      end;
+   end Wrap_Test_Set_Geometry_ab86cd_24d3e6;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Set_Geometry_test_wm_set_geometry2
+     (Gnattest_T: in out Test);
+   procedure Test_Set_Geometry_ab86cd_24d3e6(Gnattest_T: in out Test) renames
+     Test_2_Set_Geometry_test_wm_set_geometry2;
+--  id:2.2/ab86cdb5192c935b/Set_Geometry/0/0/test_wm_set_geometry2/
+   procedure Test_2_Set_Geometry_test_wm_set_geometry2
+     (Gnattest_T: in out Test) is
+      procedure Set_Geometry
+        (Window: Tk_Widget; Width, Height: Positive) renames
+        Wrap_Test_Set_Geometry_ab86cd_24d3e6;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Set_Geometry_test_wm_set_geometry2;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Set_Geometry_Position_816b2e_f16759
+     (Window: Tk_Widget; X, Y: Natural) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Set_Geometry_Position test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Geometry_Position
+        (Window, X, Y);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Set_Geometry_Position test commitment violated");
+      end;
+   end Wrap_Test_Set_Geometry_Position_816b2e_f16759;
+--  end read only
+
+--  begin read only
+   procedure Test_Set_Geometry_Position_test_wm_set_geometry_position
+     (Gnattest_T: in out Test);
+   procedure Test_Set_Geometry_Position_816b2e_f16759
+     (Gnattest_T: in out Test) renames
+     Test_Set_Geometry_Position_test_wm_set_geometry_position;
+--  id:2.2/816b2e57f0c91933/Set_Geometry_Position/1/0/test_wm_set_geometry_position/
+   procedure Test_Set_Geometry_Position_test_wm_set_geometry_position
+     (Gnattest_T: in out Test) is
+      procedure Set_Geometry_Position(Window: Tk_Widget; X, Y: Natural) renames
+        Wrap_Test_Set_Geometry_Position_816b2e_f16759;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Set_Geometry_Position_test_wm_set_geometry_position;
 --  end read only
 
 --  begin read only
@@ -2083,8 +2179,8 @@ package body Tk.Wm.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Set_Icon_Position_801b76_ebaaaa
-     (Window: Tk_Widget; X, Y: Extended_Natural) is
+   procedure Wrap_Test_Set_Icon_Position_6df176_86302c
+     (Window: Tk_Widget; X, Y: Natural) is
    begin
       begin
          pragma Assert(Window /= Null_Widget);
@@ -2093,7 +2189,7 @@ package body Tk.Wm.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Position2 test requirement violated");
+               "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Set_Position test requirement violated");
       end;
       GNATtest_Generated.GNATtest_Standard.Tk.Wm.Set_Icon_Position
         (Window, X, Y);
@@ -2104,40 +2200,82 @@ package body Tk.Wm.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Position2 test commitment violated");
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Set_Position test commitment violated");
       end;
-   end Wrap_Test_Set_Icon_Position_801b76_ebaaaa;
+   end Wrap_Test_Set_Icon_Position_6df176_86302c;
 --  end read only
 
 --  begin read only
-   procedure Test_Set_Icon_Position_test_wm_icon_position2
+   procedure Test_Set_Icon_Position_test_wm_icon_set_position
      (Gnattest_T: in out Test);
-   procedure Test_Set_Icon_Position_801b76_ebaaaa
+   procedure Test_Set_Icon_Position_6df176_86302c
      (Gnattest_T: in out Test) renames
-     Test_Set_Icon_Position_test_wm_icon_position2;
---  id:2.2/801b76afc5d765d3/Set_Icon_Position/1/0/test_wm_icon_position2/
-   procedure Test_Set_Icon_Position_test_wm_icon_position2
+     Test_Set_Icon_Position_test_wm_icon_set_position;
+--  id:2.2/6df17675c1acc0c2/Set_Icon_Position/1/0/test_wm_icon_set_position/
+   procedure Test_Set_Icon_Position_test_wm_icon_set_position
      (Gnattest_T: in out Test) is
-      procedure Set_Icon_Position
-        (Window: Tk_Widget; X, Y: Extended_Natural) renames
-        Wrap_Test_Set_Icon_Position_801b76_ebaaaa;
+      procedure Set_Icon_Position(Window: Tk_Widget; X, Y: Natural) renames
+        Wrap_Test_Set_Icon_Position_6df176_86302c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      Set_Icon_Position(Get_Main_Window, 12, 13);
-      Assert
-        (Get_Icon_Position(Get_Main_Window).X = 12,
-         "Failed to set icon position for main window.");
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_Set_Icon_Position_test_wm_icon_position2;
+   end Test_Set_Icon_Position_test_wm_icon_set_position;
+--  end read only
+
+--  begin read only
+   procedure Wrap_Test_Reset_Icon_Position_e1c582_37ae99(Window: Tk_Widget) is
+   begin
+      begin
+         pragma Assert(Window /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-wm.ads:0):Test_Wm_Icon_Reset_Position test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Wm.Reset_Icon_Position(Window);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-wm.ads:0:):Test_Wm_Icon_Reset_Position test commitment violated");
+      end;
+   end Wrap_Test_Reset_Icon_Position_e1c582_37ae99;
+--  end read only
+
+--  begin read only
+   procedure Test_Reset_Icon_Position_test_wm_icon_reset_position
+     (Gnattest_T: in out Test);
+   procedure Test_Reset_Icon_Position_e1c582_37ae99
+     (Gnattest_T: in out Test) renames
+     Test_Reset_Icon_Position_test_wm_icon_reset_position;
+--  id:2.2/e1c5821e88e411ff/Reset_Icon_Position/1/0/test_wm_icon_reset_position/
+   procedure Test_Reset_Icon_Position_test_wm_icon_reset_position
+     (Gnattest_T: in out Test) is
+      procedure Reset_Icon_Position(Window: Tk_Widget) renames
+        Wrap_Test_Reset_Icon_Position_e1c582_37ae99;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_Reset_Icon_Position_test_wm_icon_reset_position;
 --  end read only
 
 --  begin read only
@@ -3715,6 +3853,54 @@ package body Tk.Wm.Test_Data.Tests is
 
 --  begin read only
    end Test_Withdraw_test_wm_withdraw;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Set_Geometry_test_wm_geometry2 (Gnattest_T : in out Test_);
+   --  procedure Test_Set_Geometry_218b77_test_wm_geometry2 (Gnattest_T : in out Test_) renames Test_Set_Geometry_test_wm_geometry2;
+--  id:2.2/218b77a0cb8ea295/Set_Geometry/1/1/test_wm_geometry2/
+   --  procedure Test_Set_Geometry_test_wm_geometry2 (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Set_Geometry(Get_Main_Window, -1, -1, 10, 12);
+--        Assert
+--          (Get_Geometry(Get_Main_Window).X = 10,
+--           "Failed to set geometry for Tk main window.");
+--
+--  begin read only
+   --  end Test_Set_Geometry_test_wm_geometry2;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Set_Icon_Position_test_wm_icon_position2 (Gnattest_T : in out Test_);
+   --  procedure Test_Set_Icon_Position_801b76_test_wm_icon_position2 (Gnattest_T : in out Test_) renames Test_Set_Icon_Position_test_wm_icon_position2;
+--  id:2.2/801b76afc5d765d3/Set_Icon_Position/1/1/test_wm_icon_position2/
+   --  procedure Test_Set_Icon_Position_test_wm_icon_position2 (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Set_Icon_Position(Get_Main_Window, 12, 13);
+--        Assert
+--          (Get_Icon_Position(Get_Main_Window).X = 12,
+--           "Failed to set icon position for main window.");
+--
+--  begin read only
+   --  end Test_Set_Icon_Position_test_wm_icon_position2;
 --  end read only
 
 --  begin read only

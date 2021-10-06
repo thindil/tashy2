@@ -575,7 +575,9 @@ package body Tcl.Info.Test_Data.Tests is
 
    begin
 
-      Tcl_Set_Var("myvar", "2");
+      if not Tcl_Set_Var("myvar", "2") then
+         Assert(False, "Failed to set Tcl variable for Info.Exists tests");
+      end if;
       Assert(Info.Exists("myvar").Result, "Failed to find existing variable.");
       Assert
         (not Info.Exists("randomnamevar").Result,

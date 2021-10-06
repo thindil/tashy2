@@ -13,18 +13,18 @@ package Tk.Button.Button_Options_Test_Data.Button_Options_Tests is
    null record;
 
    procedure Test_Create_32e405_2ce228(Gnattest_T: in out Test_Button_Options);
-   --  tk-button.ads:143:4:Create:Test_Create_Button1
+   --  tk-button.ads:141:4:Create:Test_Create_Button1
 
    procedure Test_Create_ebbdc1_478794(Gnattest_T: in out Test_Button_Options);
-   --  tk-button.ads:178:4:Create:Test_Create_Button2
+   --  tk-button.ads:176:4:Create:Test_Create_Button2
 
    procedure Test_Get_Options_ded36e_1401ab
      (Gnattest_T: in out Test_Button_Options);
-   --  tk-button.ads:204:4:Get_Options:Test_Get_Options_Button
+   --  tk-button.ads:202:4:Get_Options:Test_Get_Options_Button
 
    procedure Test_Configure_0076be_5d096f
      (Gnattest_T: in out Test_Button_Options);
-   --  tk-button.ads:225:4:Configure:Test_Configure_Button
+   --  tk-button.ads:223:4:Configure:Test_Configure_Button
 
 end Tk.Button.Button_Options_Test_Data.Button_Options_Tests;
 --  end read only

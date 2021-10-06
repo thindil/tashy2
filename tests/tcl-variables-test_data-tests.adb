@@ -31,10 +31,10 @@ package body Tcl.Variables.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Tcl_Set_Var_524f28_838ae7
+   function Wrap_Test_Tcl_Set_Var_2fed84_838ae7
      (Var_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) is
+      Flags: Flags_Array := Default_Flags_Array) return Boolean is
    begin
       begin
          pragma Assert
@@ -47,50 +47,56 @@ package body Tcl.Variables.Test_Data.Tests is
               (False,
                "req_sloc(tcl-variables.ads:0):Test_Tcl_SetVar test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tcl.Variables.Tcl_Set_Var
-        (Var_Name, New_Value, Interpreter, Flags);
+      declare
+         Test_Tcl_Set_Var_2fed84_838ae7_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Variables.Tcl_Set_Var
+             (Var_Name, New_Value, Interpreter, Flags);
       begin
-         pragma Assert(True);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "ens_sloc(tcl-variables.ads:0:):Test_Tcl_SetVar test commitment violated");
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-variables.ads:0:):Test_Tcl_SetVar test commitment violated");
+         end;
+         return Test_Tcl_Set_Var_2fed84_838ae7_Result;
       end;
-   end Wrap_Test_Tcl_Set_Var_524f28_838ae7;
+   end Wrap_Test_Tcl_Set_Var_2fed84_838ae7;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_Set_Var_test_tcl_setvar(Gnattest_T: in out Test);
-   procedure Test_Tcl_Set_Var_524f28_838ae7(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Set_Var_2fed84_838ae7(Gnattest_T: in out Test) renames
      Test_Tcl_Set_Var_test_tcl_setvar;
---  id:2.2/524f28d8df9078d6/Tcl_Set_Var/1/0/test_tcl_setvar/
+--  id:2.2/2fed84775431142f/Tcl_Set_Var/1/0/test_tcl_setvar/
    procedure Test_Tcl_Set_Var_test_tcl_setvar(Gnattest_T: in out Test) is
-      procedure Tcl_Set_Var
+      function Tcl_Set_Var
         (Var_Name, New_Value: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter;
-         Flags: Flags_Array := Default_Flags_Array) renames
-        Wrap_Test_Tcl_Set_Var_524f28_838ae7;
+         Flags: Flags_Array := Default_Flags_Array) return Boolean renames
+        Wrap_Test_Tcl_Set_Var_2fed84_838ae7;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      Tcl_Set_Var("myvar", "2");
-      Tcl_Eval("expr 2 + $myvar");
-      Assert(Get_Result = 4, "Failed to set value of Tcl variable 'myvar'");
+      if not Tcl_Set_Var("myvar", "2") then
+         Assert(False, "Failed to set value of Tcl variable 'myvar'");
+      end if;
+      Assert(True, "This test can only crash.");
 
 --  begin read only
    end Test_Tcl_Set_Var_test_tcl_setvar;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Tcl_Set_Var2_256ebf_939c43
+   function Wrap_Test_Tcl_Set_Var2_cf5c20_939c43
      (Array_Name, Index_Name, New_Value: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) is
+      Flags: Flags_Array := Default_Flags_Array) return Boolean is
    begin
       begin
          pragma Assert
@@ -103,42 +109,48 @@ package body Tcl.Variables.Test_Data.Tests is
               (False,
                "req_sloc(tcl-variables.ads:0):Test_Tcl_SetVar2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tcl.Variables.Tcl_Set_Var2
-        (Array_Name, Index_Name, New_Value, Interpreter, Flags);
+      declare
+         Test_Tcl_Set_Var2_cf5c20_939c43_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Variables.Tcl_Set_Var2
+             (Array_Name, Index_Name, New_Value, Interpreter, Flags);
       begin
-         pragma Assert(True);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "ens_sloc(tcl-variables.ads:0:):Test_Tcl_SetVar2 test commitment violated");
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-variables.ads:0:):Test_Tcl_SetVar2 test commitment violated");
+         end;
+         return Test_Tcl_Set_Var2_cf5c20_939c43_Result;
       end;
-   end Wrap_Test_Tcl_Set_Var2_256ebf_939c43;
+   end Wrap_Test_Tcl_Set_Var2_cf5c20_939c43;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_Set_Var2_test_tcl_setvar2(Gnattest_T: in out Test);
-   procedure Test_Tcl_Set_Var2_256ebf_939c43(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Set_Var2_cf5c20_939c43(Gnattest_T: in out Test) renames
      Test_Tcl_Set_Var2_test_tcl_setvar2;
---  id:2.2/256ebf8f1093c92d/Tcl_Set_Var2/1/0/test_tcl_setvar2/
+--  id:2.2/cf5c2010f1889c78/Tcl_Set_Var2/1/0/test_tcl_setvar2/
    procedure Test_Tcl_Set_Var2_test_tcl_setvar2(Gnattest_T: in out Test) is
-      procedure Tcl_Set_Var2
+      function Tcl_Set_Var2
         (Array_Name, Index_Name, New_Value: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter;
-         Flags: Flags_Array := Default_Flags_Array) renames
-        Wrap_Test_Tcl_Set_Var2_256ebf_939c43;
+         Flags: Flags_Array := Default_Flags_Array) return Boolean renames
+        Wrap_Test_Tcl_Set_Var2_cf5c20_939c43;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      Tcl_Set_Var2("myarray", "0", "2");
-      Tcl_Eval("expr 2 + $myarray(0)");
-      Assert
-        (Get_Result = 4,
-         "Failed to set value of Tcl first element in 'myarray'");
+      if not Tcl_Set_Var2("myarray", "0", "2") then
+         Assert
+           (Get_Result = 4,
+            "Failed to set value of Tcl first element in 'myarray'");
+      end if;
+      Assert(True, "This test can only crash here.");
 
 --  begin read only
    end Test_Tcl_Set_Var2_test_tcl_setvar2;
@@ -281,9 +293,9 @@ package body Tcl.Variables.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Tcl_Unset_Var_044aaf_5d27f9
+   function Wrap_Test_Tcl_Unset_Var_8e988e_5d27f9
      (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) is
+      Flags: Flags_Array := Default_Flags_Array) return Boolean is
    begin
       begin
          pragma Assert
@@ -295,30 +307,35 @@ package body Tcl.Variables.Test_Data.Tests is
               (False,
                "req_sloc(tcl-variables.ads:0):Test_Tcl_UnsetVar test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tcl.Variables.Tcl_Unset_Var
-        (Var_Name, Interpreter, Flags);
+      declare
+         Test_Tcl_Unset_Var_8e988e_5d27f9_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Variables.Tcl_Unset_Var
+             (Var_Name, Interpreter, Flags);
       begin
-         pragma Assert(True);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "ens_sloc(tcl-variables.ads:0:):Test_Tcl_UnsetVar test commitment violated");
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-variables.ads:0:):Test_Tcl_UnsetVar test commitment violated");
+         end;
+         return Test_Tcl_Unset_Var_8e988e_5d27f9_Result;
       end;
-   end Wrap_Test_Tcl_Unset_Var_044aaf_5d27f9;
+   end Wrap_Test_Tcl_Unset_Var_8e988e_5d27f9;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_Unset_Var_test_tcl_unsetvar(Gnattest_T: in out Test);
-   procedure Test_Tcl_Unset_Var_044aaf_5d27f9(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Unset_Var_8e988e_5d27f9(Gnattest_T: in out Test) renames
      Test_Tcl_Unset_Var_test_tcl_unsetvar;
---  id:2.2/044aaf01104381e8/Tcl_Unset_Var/1/0/test_tcl_unsetvar/
+--  id:2.2/8e988e1e1f2bb3d6/Tcl_Unset_Var/1/0/test_tcl_unsetvar/
    procedure Test_Tcl_Unset_Var_test_tcl_unsetvar(Gnattest_T: in out Test) is
-      procedure Tcl_Unset_Var
+      function Tcl_Unset_Var
         (Var_Name: String; Interpreter: Tcl_Interpreter := Get_Interpreter;
-         Flags: Flags_Array := Default_Flags_Array) renames
-        Wrap_Test_Tcl_Unset_Var_044aaf_5d27f9;
+         Flags: Flags_Array := Default_Flags_Array) return Boolean renames
+        Wrap_Test_Tcl_Unset_Var_8e988e_5d27f9;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -346,10 +363,10 @@ package body Tcl.Variables.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Tcl_Unset_Var2_e9c900_618eb3
+   function Wrap_Test_Tcl_Unset_Var2_2a5c63_618eb3
      (Var_Name, Index_Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter;
-      Flags: Flags_Array := Default_Flags_Array) is
+      Flags: Flags_Array := Default_Flags_Array) return Boolean is
    begin
       begin
          pragma Assert
@@ -362,31 +379,36 @@ package body Tcl.Variables.Test_Data.Tests is
               (False,
                "req_sloc(tcl-variables.ads:0):Test_Tcl_UnsetVar2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tcl.Variables.Tcl_Unset_Var2
-        (Var_Name, Index_Name, Interpreter, Flags);
+      declare
+         Test_Tcl_Unset_Var2_2a5c63_618eb3_Result: constant Boolean :=
+           GNATtest_Generated.GNATtest_Standard.Tcl.Variables.Tcl_Unset_Var2
+             (Var_Name, Index_Name, Interpreter, Flags);
       begin
-         pragma Assert(True);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "ens_sloc(tcl-variables.ads:0:):Test_Tcl_UnsetVar2 test commitment violated");
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tcl-variables.ads:0:):Test_Tcl_UnsetVar2 test commitment violated");
+         end;
+         return Test_Tcl_Unset_Var2_2a5c63_618eb3_Result;
       end;
-   end Wrap_Test_Tcl_Unset_Var2_e9c900_618eb3;
+   end Wrap_Test_Tcl_Unset_Var2_2a5c63_618eb3;
 --  end read only
 
 --  begin read only
    procedure Test_Tcl_Unset_Var2_test_tcl_unsetvar2(Gnattest_T: in out Test);
-   procedure Test_Tcl_Unset_Var2_e9c900_618eb3(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Unset_Var2_2a5c63_618eb3(Gnattest_T: in out Test) renames
      Test_Tcl_Unset_Var2_test_tcl_unsetvar2;
---  id:2.2/e9c900ac386cc122/Tcl_Unset_Var2/1/0/test_tcl_unsetvar2/
+--  id:2.2/2a5c63d5dabeda5a/Tcl_Unset_Var2/1/0/test_tcl_unsetvar2/
    procedure Test_Tcl_Unset_Var2_test_tcl_unsetvar2(Gnattest_T: in out Test) is
-      procedure Tcl_Unset_Var2
+      function Tcl_Unset_Var2
         (Var_Name, Index_Name: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter;
-         Flags: Flags_Array := Default_Flags_Array) renames
-        Wrap_Test_Tcl_Unset_Var2_e9c900_618eb3;
+         Flags: Flags_Array := Default_Flags_Array) return Boolean renames
+        Wrap_Test_Tcl_Unset_Var2_2a5c63_618eb3;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

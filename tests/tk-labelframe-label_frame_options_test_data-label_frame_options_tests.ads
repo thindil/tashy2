@@ -15,7 +15,7 @@ is
 
    procedure Test_Configure_0076be_d66704
      (Gnattest_T: in out Test_Label_Frame_Options);
-   --  tk-labelframe.ads:92:4:Configure:Test_Configure_Label_Frame
+   --  tk-labelframe.ads:90:4:Configure:Test_Configure_Label_Frame
 
 end Tk.Labelframe.Label_Frame_Options_Test_Data.Label_Frame_Options_Tests;
 --  end read only

@@ -264,8 +264,8 @@ package body Tk.Grid.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Bounding_Box_9cd1bf_896807
-     (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
+   function Wrap_Test_Get_Bounding_Box_c2a26c_6b6e30
+     (Master: Tk_Widget; Column, Row, Column2, Row2: Natural)
       return Bbox_Data is
    begin
       begin
@@ -275,10 +275,10 @@ package body Tk.Grid.Test_Data.Tests is
          when System.Assertions.Assert_Failure =>
             AUnit.Assertions.Assert
               (False,
-               "req_sloc(tk-grid.ads:0):Test_BBox test requirement violated");
+               "req_sloc(tk-grid.ads:0):Test_Get_BBox test requirement violated");
       end;
       declare
-         Test_Get_Bounding_Box_9cd1bf_896807_Result: constant Bbox_Data :=
+         Test_Get_Bounding_Box_c2a26c_6b6e30_Result: constant Bbox_Data :=
            GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Bounding_Box
              (Master, Column, Row, Column2, Row2);
       begin
@@ -289,40 +289,144 @@ package body Tk.Grid.Test_Data.Tests is
             when System.Assertions.Assert_Failure =>
                AUnit.Assertions.Assert
                  (False,
-                  "ens_sloc(tk-grid.ads:0:):Test_BBox test commitment violated");
+                  "ens_sloc(tk-grid.ads:0:):Test_Get_BBox test commitment violated");
          end;
-         return Test_Get_Bounding_Box_9cd1bf_896807_Result;
+         return Test_Get_Bounding_Box_c2a26c_6b6e30_Result;
       end;
-   end Wrap_Test_Get_Bounding_Box_9cd1bf_896807;
+   end Wrap_Test_Get_Bounding_Box_c2a26c_6b6e30;
 --  end read only
 
 --  begin read only
-   procedure Test_Get_Bounding_Box_test_bbox(Gnattest_T: in out Test);
-   procedure Test_Get_Bounding_Box_9cd1bf_896807
+   procedure Test_1_Get_Bounding_Box_test_get_bbox(Gnattest_T: in out Test);
+   procedure Test_Get_Bounding_Box_c2a26c_6b6e30
      (Gnattest_T: in out Test) renames
-     Test_Get_Bounding_Box_test_bbox;
---  id:2.2/9cd1bf3522e0164e/Get_Bounding_Box/1/0/test_bbox/
-   procedure Test_Get_Bounding_Box_test_bbox(Gnattest_T: in out Test) is
+     Test_1_Get_Bounding_Box_test_get_bbox;
+--  id:2.2/c2a26cdb24b5a363/Get_Bounding_Box/1/0/test_get_bbox/
+   procedure Test_1_Get_Bounding_Box_test_get_bbox(Gnattest_T: in out Test) is
       function Get_Bounding_Box
-        (Master: Tk_Widget; Column, Row, Column2, Row2: Extended_Natural := -1)
+        (Master: Tk_Widget; Column, Row, Column2, Row2: Natural)
          return Bbox_Data renames
-        Wrap_Test_Get_Bounding_Box_9cd1bf_896807;
+        Wrap_Test_Get_Bounding_Box_c2a26c_6b6e30;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
 
    begin
 
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      Assert
-        (Get_Bounding_Box(Get_Main_Window) = (0, 0, 0, 0),
-         "Failed to get bounding box of the widget.");
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
 
 --  begin read only
-   end Test_Get_Bounding_Box_test_bbox;
+   end Test_1_Get_Bounding_Box_test_get_bbox;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Get_Bounding_Box_154409_8eb716
+     (Master: Tk_Widget; Column, Row: Natural) return Bbox_Data is
+   begin
+      begin
+         pragma Assert(Master /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-grid.ads:0):Test_Get_BBox2 test requirement violated");
+      end;
+      declare
+         Test_Get_Bounding_Box_154409_8eb716_Result: constant Bbox_Data :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Bounding_Box
+             (Master, Column, Row);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-grid.ads:0:):Test_Get_BBox2 test commitment violated");
+         end;
+         return Test_Get_Bounding_Box_154409_8eb716_Result;
+      end;
+   end Wrap_Test_Get_Bounding_Box_154409_8eb716;
+--  end read only
+
+--  begin read only
+   procedure Test_2_Get_Bounding_Box_test_get_bbox2(Gnattest_T: in out Test);
+   procedure Test_Get_Bounding_Box_154409_8eb716
+     (Gnattest_T: in out Test) renames
+     Test_2_Get_Bounding_Box_test_get_bbox2;
+--  id:2.2/1544093478185a78/Get_Bounding_Box/0/0/test_get_bbox2/
+   procedure Test_2_Get_Bounding_Box_test_get_bbox2(Gnattest_T: in out Test) is
+      function Get_Bounding_Box
+        (Master: Tk_Widget; Column, Row: Natural) return Bbox_Data renames
+        Wrap_Test_Get_Bounding_Box_154409_8eb716;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_2_Get_Bounding_Box_test_get_bbox2;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Get_Bounding_Box_f0c44d_c84870
+     (Master: Tk_Widget) return Bbox_Data is
+   begin
+      begin
+         pragma Assert(Master /= Null_Widget);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-grid.ads:0):Test_Get_BBox3 test requirement violated");
+      end;
+      declare
+         Test_Get_Bounding_Box_f0c44d_c84870_Result: constant Bbox_Data :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Grid.Get_Bounding_Box
+             (Master);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-grid.ads:0:):Test_Get_BBox3 test commitment violated");
+         end;
+         return Test_Get_Bounding_Box_f0c44d_c84870_Result;
+      end;
+   end Wrap_Test_Get_Bounding_Box_f0c44d_c84870;
+--  end read only
+
+--  begin read only
+   procedure Test_3_Get_Bounding_Box_test_get_bbox3(Gnattest_T: in out Test);
+   procedure Test_Get_Bounding_Box_f0c44d_c84870
+     (Gnattest_T: in out Test) renames
+     Test_3_Get_Bounding_Box_test_get_bbox3;
+--  id:2.2/f0c44deef0828329/Get_Bounding_Box/0/0/test_get_bbox3/
+   procedure Test_3_Get_Bounding_Box_test_get_bbox3(Gnattest_T: in out Test) is
+      function Get_Bounding_Box(Master: Tk_Widget) return Bbox_Data renames
+        Wrap_Test_Get_Bounding_Box_f0c44d_c84870;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_3_Get_Bounding_Box_test_get_bbox3;
 --  end read only
 
 --  begin read only
@@ -1558,6 +1662,29 @@ package body Tk.Grid.Test_Data.Tests is
 
 --  begin read only
    end Test_Get_Slaves_test_slaves;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Get_Bounding_Box_test_bbox (Gnattest_T : in out Test_);
+   --  procedure Test_Get_Bounding_Box_9cd1bf_test_bbox (Gnattest_T : in out Test_) renames Test_Get_Bounding_Box_test_bbox;
+--  id:2.2/9cd1bf3522e0164e/Get_Bounding_Box/1/1/test_bbox/
+   --  procedure Test_Get_Bounding_Box_test_bbox (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Assert
+--          (Get_Bounding_Box(Get_Main_Window) = (0, 0, 0, 0),
+--           "Failed to get bounding box of the widget.");
+--
+--  begin read only
+   --  end Test_Get_Bounding_Box_test_bbox;
 --  end read only
 
 --  begin read only

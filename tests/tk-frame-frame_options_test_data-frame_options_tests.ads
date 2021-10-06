@@ -13,7 +13,7 @@ package Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests is
 
    procedure Test_Configure_0076be_f3ea46
      (Gnattest_T: in out Test_Frame_Options);
-   --  tk-frame.ads:90:4:Configure:Test_Configure_Frame
+   --  tk-frame.ads:88:4:Configure:Test_Configure_Frame
 
 end Tk.Frame.Frame_Options_Test_Data.Frame_Options_Tests;
 --  end read only
