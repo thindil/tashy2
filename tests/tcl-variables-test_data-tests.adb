@@ -208,7 +208,7 @@ package body Tcl.Variables.Test_Data.Tests is
             "Failed to get value of variable 'myvar'");
       end if;
       Assert
-        (Tcl_Get_Var("nonexistingvariable") = "nonexistingvalue",
+        (Tcl_Get_Var("nonexistingvariable") = "",
          "Failed to handle non-existing Tcl variable.");
 
 --  begin read only
@@ -274,7 +274,7 @@ package body Tcl.Variables.Test_Data.Tests is
             "Failed to get value of the first element of array 'myarray'");
       end if;
       Assert
-        (Tcl_Get_Var2("nonexistingarray", "0") = "nonexistingvalue",
+        (Tcl_Get_Var2("nonexistingarray", "0") = "",
          "Failed to handle non-existing Tcl variable.");
 
 --  begin read only
