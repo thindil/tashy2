@@ -83,10 +83,9 @@ package body Tcl.Variables.Test_Data.Tests is
 
    begin
 
-      if not Tcl_Set_Var("myvar", "2") then
-         Assert(False, "Failed to set value of Tcl variable 'myvar'");
-      end if;
-      Assert(True, "This test can only crash.");
+      Assert
+        (Tcl_Set_Var("myvar", "2"),
+         "Failed to set value of Tcl variable 'myvar'");
 
 --  begin read only
    end Test_Tcl_Set_Var_test_tcl_setvar;
@@ -145,12 +144,9 @@ package body Tcl.Variables.Test_Data.Tests is
 
    begin
 
-      if not Tcl_Set_Var2("myarray", "0", "2") then
-         Assert
-           (Get_Result = 4,
-            "Failed to set value of Tcl first element in 'myarray'");
-      end if;
-      Assert(True, "This test can only crash here.");
+      Assert
+        (Tcl_Set_Var2("myarray", "0", "2"),
+         "Failed to set value of Tcl first element in 'myarray'");
 
 --  begin read only
    end Test_Tcl_Set_Var2_test_tcl_setvar2;
@@ -206,17 +202,14 @@ package body Tcl.Variables.Test_Data.Tests is
 
    begin
 
-      Tcl_Set_Var("myvar", "test");
+      if Tcl_Set_Var("myvar", "test") then
+         Assert
+           (Tcl_Get_Var("myvar") = "test",
+            "Failed to get value of variable 'myvar'");
+      end if;
       Assert
-        (Tcl_Get_Var("myvar") = "test",
-         "Failed to get value of variable 'myvar'");
-      begin
-         Assert(Tcl_Get_Var("nonexistingvariable") = "nonexistingvalue", "");
-         Assert(False, "Failed to handle non-existing Tcl variable.");
-      exception
-         when Tcl_Exception =>
-            null;
-      end;
+        (Tcl_Get_Var("nonexistingvariable") = "nonexistingvalue",
+         "Failed to handle non-existing Tcl variable.");
 
 --  begin read only
    end Test_Tcl_Get_Var_test_tcl_getvar;
@@ -275,18 +268,14 @@ package body Tcl.Variables.Test_Data.Tests is
 
    begin
 
-      Tcl_Set_Var2("myarray", "0", "test");
-      Assert
-        (Tcl_Get_Var2("myarray", "0") = "test",
-         "Failed to get value of the first element of array 'myarray'");
-      begin
+      if Tcl_Set_Var2("myarray", "0", "test") then
          Assert
-           (Tcl_Get_Var2("nonexistingarray", "0") = "nonexistingvalue", "");
-         Assert(False, "Failed to handle non-existing Tcl variable.");
-      exception
-         when Tcl_Exception =>
-            null;
-      end;
+           (Tcl_Get_Var2("myarray", "0") = "test",
+            "Failed to get value of the first element of array 'myarray'");
+      end if;
+      Assert
+        (Tcl_Get_Var2("nonexistingarray", "0") = "nonexistingvalue",
+         "Failed to handle non-existing Tcl variable.");
 
 --  begin read only
    end Test_Tcl_Get_Var2_test_tcl_getvar2;
@@ -342,21 +331,13 @@ package body Tcl.Variables.Test_Data.Tests is
 
    begin
 
-      Tcl_Set_Var("myvar", "2");
-      Tcl_Unset_Var("myvar");
-      begin
-         Assert(Tcl_Get_Var("myvar") = "2", "Failed to remove Tcl variable");
-      exception
-         when Tcl_Exception =>
-            null;
-      end;
-      begin
-         Tcl_Unset_Var("myvar2");
-         Assert(False, "Failed to handle removing non-existing Tcl variable");
-      exception
-         when Tcl_Exception =>
-            null;
-      end;
+      if Tcl_Set_Var("myvar", "2") then
+         Assert(Tcl_Unset_Var("myvar"), "Can't remove Tcl variable.");
+      end if;
+      Assert(Tcl_Get_Var("myvar") = "2", "Failed to remove Tcl variable");
+      Assert
+        (not Tcl_Unset_Var("myvar2"),
+         "Failed to handle removing non-existing Tcl variable");
 
 --  begin read only
    end Test_Tcl_Unset_Var_test_tcl_unsetvar;
@@ -415,25 +396,17 @@ package body Tcl.Variables.Test_Data.Tests is
 
    begin
 
-      Tcl_Set_Var2("myarray", "0", "2");
-      Tcl_Unset_Var2("myarray", "0");
-      begin
+      if Tcl_Set_Var2("myarray", "0", "2") then
          Assert
-           (Tcl_Get_Var2("myarray", "0") = "2",
-            "Failed to remove the element from the Tcl array");
-      exception
-         when Tcl_Exception =>
-            null;
-      end;
-      begin
-         Tcl_Unset_Var2("myarray", "0");
-         Assert
-           (False,
-            "Failed to handle removing non-existing element from Tcl array");
-      exception
-         when Tcl_Exception =>
-            null;
-      end;
+           (Tcl_Unset_Var2("myarray", "0"),
+            "Can't remove element from Tcl array.");
+      end if;
+      Assert
+        (Tcl_Get_Var2("myarray", "0") = "2",
+         "Failed to remove the element from the Tcl array");
+      Assert
+        (not Tcl_Unset_Var2("myarray", "0"),
+         "Failed to handle removing non-existing element from Tcl array");
 
 --  begin read only
    end Test_Tcl_Unset_Var2_test_tcl_unsetvar2;
