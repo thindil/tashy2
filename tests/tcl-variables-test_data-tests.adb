@@ -332,9 +332,8 @@ package body Tcl.Variables.Test_Data.Tests is
    begin
 
       if Tcl_Set_Var("myvar", "2") then
-         Assert(Tcl_Unset_Var("myvar"), "Can't remove Tcl variable.");
+         Assert(Tcl_Unset_Var("myvar"), "Failed to remove Tcl variable");
       end if;
-      Assert(Tcl_Get_Var("myvar") = "2", "Failed to remove Tcl variable");
       Assert
         (not Tcl_Unset_Var("myvar2"),
          "Failed to handle removing non-existing Tcl variable");
@@ -399,11 +398,8 @@ package body Tcl.Variables.Test_Data.Tests is
       if Tcl_Set_Var2("myarray", "0", "2") then
          Assert
            (Tcl_Unset_Var2("myarray", "0"),
-            "Can't remove element from Tcl array.");
+            "Failed to remove the element from the Tcl array");
       end if;
-      Assert
-        (Tcl_Get_Var2("myarray", "0") = "2",
-         "Failed to remove the element from the Tcl array");
       Assert
         (not Tcl_Unset_Var2("myarray", "0"),
          "Failed to handle removing non-existing element from Tcl array");
