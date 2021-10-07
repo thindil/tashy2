@@ -321,7 +321,7 @@ package body Tk.Image.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Assert(Names'Length > 0, "Failed to get images names.");
+      Assert(Names'Length = 0, "Failed to get images names.");
 
 --  begin read only
    end Test_Names_test_image_names;
