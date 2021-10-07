@@ -313,8 +313,13 @@ package body Tk.Grid.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Get_Bounding_Box(Get_Main_Window, 0, 0, 1, 1) = (0, 0, 0, 0),
+         "Failed to get bounding box of the widget with selected columns and rows.");
 
 --  begin read only
    end Test_1_Get_Bounding_Box_test_get_bbox;
@@ -368,8 +373,13 @@ package body Tk.Grid.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Assert
+        (Get_Bounding_Box(Get_Main_Window, 0, 0) = (0, 0, 0, 0),
+         "Failed to get bounding box of the widget with selected column and row.");
 
 --  begin read only
    end Test_2_Get_Bounding_Box_test_get_bbox2;
@@ -422,8 +432,9 @@ package body Tk.Grid.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      Assert
+        (Get_Bounding_Box(Get_Main_Window) = (0, 0, 0, 0),
+         "Failed to get bounding box of the widget.");
 
 --  begin read only
    end Test_3_Get_Bounding_Box_test_get_bbox3;
