@@ -402,7 +402,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 18"), others => <>));
       Delete(Menu, To_Tcl_String("1"));
       Invoke(Menu, To_Tcl_String("1"));
-      Assert(Integer_Get_Var("myvar") = 16, "Failed to delete menu entry.");
+      Assert(Integer_Get_Var("myvar") = 14, "Failed to delete menu entry.");
       Destroy(Menu);
 
 --  begin read only
@@ -465,7 +465,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 182"), others => <>));
       Delete(Menu, 1);
       Invoke(Menu, To_Tcl_String("1"));
-      Assert(Integer_Get_Var("myvar") = 16, "Failed to delete menu entry.");
+      Assert(Integer_Get_Var("myvar") = 14, "Failed to delete menu entry.");
       Destroy(Menu);
 
 --  begin read only
@@ -528,7 +528,7 @@ package body Tk.Menu.Test_Data.Tests is
            (Command => To_Tcl_String("set myvar 183"), others => <>));
       Delete(Menu, LAST);
       Invoke(Menu, To_Tcl_String("1"));
-      Assert(Integer_Get_Var("myvar") = 16, "Failed to delete menu entry.");
+      Assert(Integer_Get_Var("myvar") = 14, "Failed to delete menu entry.");
       Destroy(Menu);
 
 --  begin read only
