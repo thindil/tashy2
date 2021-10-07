@@ -1329,8 +1329,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Set_Geometry(Get_Main_Window, 1, 1, 10, 12);
+      Assert
+        (Get_Geometry(Get_Main_Window).X = 10,
+         "Failed to set geometry for Tk main window.");
 
 --  begin read only
    end Test_1_Set_Geometry_test_wm_set_geometry;
@@ -1380,8 +1386,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Set_Geometry(Get_Main_Window, 10, 12);
+      Assert
+        (Get_Geometry(Get_Main_Window).X = 10,
+         "Failed to set width and height for Tk main window.");
 
 --  begin read only
    end Test_2_Set_Geometry_test_wm_set_geometry2;
@@ -1431,8 +1443,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Set_Geometry(Get_Main_Window, 10, 12);
+      Assert
+        (Get_Geometry(Get_Main_Window).X = 10,
+         "Failed to set position for Tk main window.");
 
 --  begin read only
    end Test_Set_Geometry_Position_test_wm_set_geometry_position;
@@ -3853,30 +3871,6 @@ package body Tk.Wm.Test_Data.Tests is
 
 --  begin read only
    end Test_Withdraw_test_wm_withdraw;
---  end read only
-
---  begin read only
-   --  procedure Test_Set_Geometry_test_wm_geometry2 (Gnattest_T : in out Test_);
-   --  procedure Test_Set_Geometry_218b77_test_wm_geometry2 (Gnattest_T : in out Test_) renames Test_Set_Geometry_test_wm_geometry2;
---  id:2.2/218b77a0cb8ea295/Set_Geometry/1/1/test_wm_geometry2/
-   --  procedure Test_Set_Geometry_test_wm_geometry2 (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        if Value("DISPLAY", "")'Length = 0 then
---           Assert(True, "No display, can't test");
---           return;
---        end if;
---        Set_Geometry(Get_Main_Window, -1, -1, 10, 12);
---        Assert
---          (Get_Geometry(Get_Main_Window).X = 10,
---           "Failed to set geometry for Tk main window.");
---
---  begin read only
-   --  end Test_Set_Geometry_test_wm_geometry2;
 --  end read only
 
 --  begin read only
