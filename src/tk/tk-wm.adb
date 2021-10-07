@@ -530,6 +530,9 @@ package body Tk.Wm is
                .Result,
            Interpreter => Interpreter);
    begin
+      if Result'Length = 0 then
+         return Empty_Point_Position;
+      end if;
       return Icon_Pos: Point_Position := Empty_Point_Position do
          Icon_Pos.X :=
            Extended_Natural'Value(To_Ada_String(Source => Result(1)));
