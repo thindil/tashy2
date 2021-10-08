@@ -432,6 +432,10 @@ package body Tk.Grid.Test_Data.Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Assert
         (Get_Bounding_Box(Get_Main_Window) = (0, 0, 0, 0),
          "Failed to get bounding box of the widget.");
