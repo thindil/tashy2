@@ -301,23 +301,6 @@ package body Tk.Menu is
       end return;
    end Get_Options;
 
-   function Clone
-     (Menu_Widget: Tk_Menu; New_Path_Name: Tk_Path_String;
-      Menu_Type: Menu_Types := NONE) return Tk_Menu is
-   begin
-      Execute_Widget_Command
-        (Widgt => Menu_Widget, Command_Name => "clone",
-         Options =>
-           New_Path_Name &
-           (if Menu_Type = NONE then ""
-            else To_Lower(Item => Menu_Types'Image(Menu_Type))));
-      return
-        Tk_Menu
-          (Get_Widget
-             (Path_Name => New_Path_Name,
-              Interpreter => Tk_Interp(Widgt => Menu_Widget)));
-   end Clone;
-
    procedure Configure(Menu_Widget: Tk_Menu; Options: Menu_Options) is
    begin
       Execute_Widget_Command
