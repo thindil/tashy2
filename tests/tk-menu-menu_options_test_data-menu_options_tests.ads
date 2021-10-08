@@ -23,7 +23,7 @@ package Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 
    procedure Test_Configure_0076be_2b53be
      (Gnattest_T: in out Test_Menu_Options);
-   --  tk-menu.ads:434:4:Configure:Test_Configure_Menu
+   --  tk-menu.ads:409:4:Configure:Test_Configure_Menu
 
 end Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests;
 --  end read only

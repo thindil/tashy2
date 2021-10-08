@@ -277,75 +277,6 @@ package body Tk.Menu.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Clone_cce6c8_8fed8c
-     (Menu_Widget: Tk_Menu; New_Path_Name: Tk_Path_String;
-      Menu_Type: Menu_Types := NONE) return Tk_Menu is
-   begin
-      begin
-         pragma Assert
-           (Menu_Widget /= Null_Widget and New_Path_Name'Length > 0);
-         null;
-      exception
-         when System.Assertions.Assert_Failure =>
-            AUnit.Assertions.Assert
-              (False,
-               "req_sloc(tk-menu.ads:0):Test_Clone_Menu test requirement violated");
-      end;
-      declare
-         Test_Clone_cce6c8_8fed8c_Result: constant Tk_Menu :=
-           GNATtest_Generated.GNATtest_Standard.Tk.Menu.Clone
-             (Menu_Widget, New_Path_Name, Menu_Type);
-      begin
-         begin
-            pragma Assert(True);
-            null;
-         exception
-            when System.Assertions.Assert_Failure =>
-               AUnit.Assertions.Assert
-                 (False,
-                  "ens_sloc(tk-menu.ads:0:):Test_Clone_Menu test commitment violated");
-         end;
-         return Test_Clone_cce6c8_8fed8c_Result;
-      end;
-   end Wrap_Test_Clone_cce6c8_8fed8c;
---  end read only
-
---  begin read only
-   procedure Test_Clone_test_clone_menu(Gnattest_T: in out Test);
-   procedure Test_Clone_cce6c8_8fed8c(Gnattest_T: in out Test) renames
-     Test_Clone_test_clone_menu;
---  id:2.2/cce6c8abdd50593a/Clone/1/0/test_clone_menu/
-   procedure Test_Clone_test_clone_menu(Gnattest_T: in out Test) is
-      function Clone
-        (Menu_Widget: Tk_Menu; New_Path_Name: Tk_Path_String;
-         Menu_Type: Menu_Types := NONE) return Tk_Menu renames
-        Wrap_Test_Clone_cce6c8_8fed8c;
---  end read only
-
-      pragma Unreferenced(Gnattest_T);
-      Menu, CloneMenu: Tk_Menu;
-
-   begin
-
-      if Value("DISPLAY", "")'Length = 0 then
-         Assert(True, "No display, can't test");
-         return;
-      end if;
-      Create(Menu, ".mymenu", Menu_Options'(others => <>));
-      Add
-        (Menu,
-         Menu_Item_Options'
-           (Command => To_Tcl_String("set myvar 16"), others => <>));
-      CloneMenu := Clone(Menu, ".mynewmenu");
-      Invoke(CloneMenu, To_Tcl_String("1"));
-      Assert(Integer_Get_Var("myvar") = 16, "Failed to clone menu.");
-      Destroy(Menu);
-
---  begin read only
-   end Test_Clone_test_clone_menu;
---  end read only
-
---  begin read only
    procedure Wrap_Test_Delete_a9ab1b_9992c1
      (Menu_Widget: Tk_Menu; Index1: Tcl_String;
       Index2: Tcl_String := To_Tcl_String(Source => "")) is
@@ -2732,6 +2663,36 @@ package body Tk.Menu.Test_Data.Tests is
 
 --  begin read only
    end Test_3_Y_Position_test_y_position_menu3;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Clone_test_clone_menu (Gnattest_T : in out Test_);
+   --  procedure Test_Clone_cce6c8_test_clone_menu (Gnattest_T : in out Test_) renames Test_Clone_test_clone_menu;
+--  id:2.2/cce6c8abdd50593a/Clone/1/1/test_clone_menu/
+   --  procedure Test_Clone_test_clone_menu (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--        Menu, CloneMenu: Tk_Menu;
+--
+--     begin
+--
+--        if Value("DISPLAY", "")'Length = 0 then
+--           Assert(True, "No display, can't test");
+--           return;
+--        end if;
+--        Create(Menu, ".mymenu", Menu_Options'(others => <>));
+--        Add
+--          (Menu,
+--           Menu_Item_Options'
+--             (Command => To_Tcl_String("set myvar 16"), others => <>));
+--        CloneMenu := Clone(Menu, ".mynewmenu");
+--        Invoke(CloneMenu, To_Tcl_String("1"));
+--        Assert(Integer_Get_Var("myvar") = 16, "Failed to clone menu.");
+--        Destroy(Menu);
+--
+--  begin read only
+   --  end Test_Clone_test_clone_menu;
 --  end read only
 
 --  begin read only
