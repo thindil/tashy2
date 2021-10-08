@@ -2240,8 +2240,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Set_Icon_Position(Get_Main_Window, 12, 13);
+      Assert
+        (Get_Icon_Position(Get_Main_Window).X = 12,
+         "Failed to set icon position for main window.");
 
 --  begin read only
    end Test_Set_Icon_Position_test_wm_icon_set_position;
@@ -2289,8 +2295,14 @@ package body Tk.Wm.Test_Data.Tests is
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Reset_Icon_Position(Get_Main_Window);
+      Assert
+        (Get_Icon_Position(Get_Main_Window).X = -1,
+         "Failed to reset icon position for main window.");
 
 --  begin read only
    end Test_Reset_Icon_Position_test_wm_icon_reset_position;
