@@ -62,7 +62,7 @@ package body Tcl.Lists is
          Import,
          Convention => C,
          External_Name => "Tcl_Merge";
-      New_List: chars_ptr_array(1 .. List'Length);
+      New_List: chars_ptr_array(1 .. List'Length) := (others => Null_Ptr);
    begin
       Convert_Ada_String_To_C_Loop :
       for I in List'Range loop
