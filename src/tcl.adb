@@ -92,18 +92,21 @@ package body Tcl is
       if Result_Code = TCL_ERROR then
          Message :=
            To_Unbounded_String
-             (Tcl_Get_Var
-                (Var_Name => "errorInfo", Interpreter => Interpreter));
+             (Source =>
+                Tcl_Get_Var
+                  (Var_Name => "errorInfo", Interpreter => Interpreter));
       end if;
+      Return_Result_Block :
       declare
          Message_Length: constant Natural := Length(Source => Message);
-         Result: Tcl_String_Result (Message_Length, Result_String'Length);
+         Result: constant Tcl_String_Result
+           (Message_Length, Result_String'Length) :=
+           (Message_Length => Message_Length,
+            Result_Length => Result_String'Length, Return_Code => Result_Code,
+            Result => Result_String, Message => To_String(Source => Message));
       begin
-         Result.Return_Code := Result_Code;
-         Result.Result := Result_String;
-         Result.Message := To_String(Message);
          return Result;
-      end;
+      end Return_Result_Block;
    end Tcl_Eval;
 
    function Tcl_Eval
