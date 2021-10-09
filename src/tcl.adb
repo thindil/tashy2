@@ -95,14 +95,15 @@ package body Tcl is
              (Tcl_Get_Var
                 (Var_Name => "errorInfo", Interpreter => Interpreter));
       end if;
-      return
-        Result: Tcl_String_Result
-          (Length(Source => Message), Result_String'Length)
-      do
+      declare
+         Message_Length: constant Natural := Length(Source => Message);
+         Result: Tcl_String_Result (Message_Length, Result_String'Length);
+      begin
          Result.Return_Code := Result_Code;
          Result.Result := Result_String;
          Result.Message := To_String(Message);
-      end return;
+         return Result;
+      end;
    end Tcl_Eval;
 
    function Tcl_Eval
@@ -119,7 +120,10 @@ package body Tcl is
              (Tcl_Get_Var
                 (Var_Name => "errorInfo", Interpreter => Interpreter));
       end if;
-      return Result: Tcl_Boolean_Result (Length(Source => Message)) do
+      declare
+         Message_Length: constant Natural := Length(Source => Message);
+         Result: Tcl_Boolean_Result (Message_Length);
+      begin
          Result.Return_Code := Result_Code;
          Result.Result :=
            (if
@@ -128,7 +132,8 @@ package body Tcl is
             then True
             else False);
          Result.Message := To_String(Message);
-      end return;
+         return Result;
+      end;
    end Tcl_Eval;
 
    function Tcl_Eval
@@ -145,12 +150,16 @@ package body Tcl is
              (Tcl_Get_Var
                 (Var_Name => "errorInfo", Interpreter => Interpreter));
       end if;
-      return Result: Tcl_Integer_Result (Length(Source => Message)) do
+      declare
+         Message_Length: constant Natural := Length(Source => Message);
+         Result: Tcl_Integer_Result (Message_Length);
+      begin
          Result.Return_Code := Result_Code;
          Result.Result :=
            Integer'Value(Tcl_Get_Result(Interpreter => Interpreter));
          Result.Message := To_String(Message);
-      end return;
+         return Result;
+      end;
    end Tcl_Eval;
 
    function Tcl_Eval
@@ -167,12 +176,16 @@ package body Tcl is
              (Tcl_Get_Var
                 (Var_Name => "errorInfo", Interpreter => Interpreter));
       end if;
-      return Result: Tcl_Float_Result (Length(Source => Message)) do
+      declare
+         Message_Length: constant Natural := Length(Source => Message);
+         Result: Tcl_Float_Result (Message_Length);
+      begin
          Result.Return_Code := Result_Code;
          Result.Result :=
            Float'Value(Tcl_Get_Result(Interpreter => Interpreter));
          Result.Message := To_String(Message);
-      end return;
+         return Result;
+      end;
    end Tcl_Eval;
 
    function Tcl_Eval_File
