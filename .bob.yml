@@ -140,12 +140,12 @@ version: 3.0
 - command:
    name: prove
    execute:
-      - gnatprove --mode=check -P tashy2.gpr
+      - gnatprove --mode=stone -P tashy2.gpr
    description: Run Spark to formally verify the code
 - command:
    name: provefile
    execute:
-      - gnatprove --mode=check -P tashy2.gpr -u $1
+      - gnatprove --mode=stone -P tashy2.gpr -u $1
    description: Run Spark to formally verify the selected file. Required arguments is the relative path to the file which will be check
 - command:
    name: proveclean
