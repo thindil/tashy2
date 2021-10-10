@@ -96,7 +96,10 @@ package Tk.Image is
    -- SOURCE
    procedure Delete
      (Images: Array_List; Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Images'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre =>
+      (Images'Length > 0
+       and then Merge_List(List => Images)'Length < Integer'Last - 13) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Delete2", Mode => Nominal);
       -- ****
 
