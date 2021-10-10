@@ -21,6 +21,8 @@ with Interfaces.C.Strings; use Interfaces.C.Strings;
 package Tashy2 is
 -- ****
 
+   pragma Warnings (Off, "no Global Contract available");
+
    -- ****f* Utils/Utils.To_C_String
    -- FUNCTION
    -- Convert Ada String to C characters array
@@ -62,5 +64,7 @@ package Tashy2 is
       Global => null,
       Test_Case => (Name => "Test_From_C_String", Mode => Nominal);
       -- ****
+
+   pragma Warnings (On, "no Global Contract available");
 
 end Tashy2;
