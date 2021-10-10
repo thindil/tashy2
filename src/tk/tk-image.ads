@@ -72,7 +72,8 @@ package Tk.Image is
    procedure Delete
      (Image_Name: Tk_Image;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Image_Name'Length in 1 .. Integer'Last - 13 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Delete", Mode => Nominal);
       -- ****
 
@@ -120,7 +121,8 @@ package Tk.Image is
    function Height
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural with
-      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Image_Name'Length in 1 .. Integer'Last - 13 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Height", Mode => Nominal);
       -- ****
 
@@ -142,7 +144,8 @@ package Tk.Image is
    function In_Use
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tcl_Boolean_Result with
-      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Image_Name'Length in 1 .. Integer'Last - 12 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_In_Use", Mode => Nominal);
       -- ****
 
@@ -185,7 +188,8 @@ package Tk.Image is
    function Image_Type
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return String with
-      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Image_Name'Length in 1 .. Integer'Last - 11 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Type", Mode => Nominal);
       -- ****
 
@@ -206,6 +210,7 @@ package Tk.Image is
       -- SOURCE
    function Types
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Array_List with
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Types", Mode => Nominal);
       -- ****
 
@@ -230,7 +235,8 @@ package Tk.Image is
    function Width
      (Image_Name: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Natural with
-      Pre => Image_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Image_Name'Length in 1 .. Integer'Last - 12 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Image_Width", Mode => Nominal);
       -- ****
       --## rule on REDUCEABLE_SCOPE
