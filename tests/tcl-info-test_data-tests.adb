@@ -206,13 +206,12 @@ package body Tcl.Info.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
-      function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
 
    begin
 
       Tcl_Eval("info cmdcount");
       Assert
-        (Get_Commands_Count = Get_Result,
+        (Get_Commands_Count = Tcl_Get_Result,
          "Failed to get amount of available Tcl commands.");
 
 --  begin read only

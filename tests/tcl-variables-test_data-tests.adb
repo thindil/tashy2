@@ -26,8 +26,6 @@ package body Tcl.Variables.Test_Data.Tests is
 --
 --  end read only
 
-   function Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
-
 --  begin read only
 --  end read only
 --  begin read only
