@@ -164,8 +164,7 @@ package body Tcl is
          Result: constant Tcl_Integer_Result
            (Message_Length => Message_Length) :=
            (Message_Length => Message_Length, Return_Code => Result_Code,
-            Result =>
-              Integer'Value(Tcl_Get_Result(Interpreter => Interpreter)),
+            Result => Tcl_Get_Result(Interpreter => Interpreter),
             Message => To_String(Source => Message));
       begin
          return Result;
@@ -193,7 +192,7 @@ package body Tcl is
          Result: constant Tcl_Float_Result
            (Message_Length => Message_Length) :=
            (Message_Length => Message_Length, Return_Code => Result_Code,
-            Result => Float'Value(Tcl_Get_Result(Interpreter => Interpreter)),
+            Result => Tcl_Get_Result(Interpreter => Interpreter),
             Message => To_String(Source => Message));
       begin
          return Result;
