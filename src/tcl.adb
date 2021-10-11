@@ -154,19 +154,22 @@ package body Tcl is
       if Result_Code = TCL_ERROR then
          Message :=
            To_Unbounded_String
-             (Tcl_Get_Var
-                (Var_Name => "errorInfo", Interpreter => Interpreter));
+             (Source =>
+                Tcl_Get_Var
+                  (Var_Name => "errorInfo", Interpreter => Interpreter));
       end if;
+      Return_Result_Block :
       declare
          Message_Length: constant Natural := Length(Source => Message);
-         Result: Tcl_Integer_Result (Message_Length);
+         Result: constant Tcl_Integer_Result
+           (Message_Length => Message_Length) :=
+           (Message_Length => Message_Length, Return_Code => Result_Code,
+            Result =>
+              Integer'Value(Tcl_Get_Result(Interpreter => Interpreter)),
+            Message => To_String(Source => Message));
       begin
-         Result.Return_Code := Result_Code;
-         Result.Result :=
-           Integer'Value(Tcl_Get_Result(Interpreter => Interpreter));
-         Result.Message := To_String(Message);
          return Result;
-      end;
+      end Return_Result_Block;
    end Tcl_Eval;
 
    function Tcl_Eval
@@ -180,19 +183,21 @@ package body Tcl is
       if Result_Code = TCL_ERROR then
          Message :=
            To_Unbounded_String
-             (Tcl_Get_Var
-                (Var_Name => "errorInfo", Interpreter => Interpreter));
+             (Source =>
+                Tcl_Get_Var
+                  (Var_Name => "errorInfo", Interpreter => Interpreter));
       end if;
+      Return_Result_Block :
       declare
          Message_Length: constant Natural := Length(Source => Message);
-         Result: Tcl_Float_Result (Message_Length);
+         Result: constant Tcl_Float_Result
+           (Message_Length => Message_Length) :=
+           (Message_Length => Message_Length, Return_Code => Result_Code,
+            Result => Float'Value(Tcl_Get_Result(Interpreter => Interpreter)),
+            Message => To_String(Source => Message));
       begin
-         Result.Return_Code := Result_Code;
-         Result.Result :=
-           Float'Value(Tcl_Get_Result(Interpreter => Interpreter));
-         Result.Message := To_String(Message);
          return Result;
-      end;
+      end Return_Result_Block;
    end Tcl_Eval;
 
    function Tcl_Eval_File
