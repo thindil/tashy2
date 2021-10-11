@@ -19,20 +19,6 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Menu is
 
-   -- ****if* Menu/Menu.Get_Result
-   -- FUNCTION
-   -- Used to get Integer result from the last Tcl command
-   -- PARAMETERS
-   -- Interpreter - Tcl interpreter from which result will be get
-   -- RESULT
-   -- Integer value for the last Tcl command
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   function Get_Result is new Generic_Scalar_Tcl_Get_Result
-     (Result_Type => Integer);
-   -- ****
-
    -- ****if* Menu/Menu.Options_To_String
    -- FUNCTION
    -- Convert Ada structure to Tcl command
@@ -369,7 +355,7 @@ package body Tk.Menu is
          Execute_Widget_Command
            (Widgt => Menu_Widget, Command_Name => "entrycget",
             Options => To_Ada_String(Source => Menu_Index) & " -" & Name);
-         if Get_Result(Interpreter => Interpreter) = 1 then
+         if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
             return TRUE;
          end if;
          return FALSE;
@@ -541,7 +527,8 @@ package body Tk.Menu is
       if Tcl_Get_Result(Interpreter => Interpreter) = "none" then
          return -1;
       end if;
-      return Extended_Natural(Get_Result(Interpreter => Interpreter));
+      return
+        Extended_Natural'Value(Tcl_Get_Result(Interpreter => Interpreter));
    end Index;
 
    function Index
@@ -555,7 +542,8 @@ package body Tk.Menu is
       if Tcl_Get_Result(Interpreter => Interpreter) = "none" then
          return -1;
       end if;
-      return Extended_Natural(Get_Result(Interpreter => Interpreter));
+      return
+        Extended_Natural'Value(Tcl_Get_Result(Interpreter => Interpreter));
    end Index;
 
    function Index
@@ -569,7 +557,8 @@ package body Tk.Menu is
       if Tcl_Get_Result(Interpreter => Interpreter) = "none" then
          return -1;
       end if;
-      return Extended_Natural(Get_Result(Interpreter => Interpreter));
+      return
+        Extended_Natural'Value(Tcl_Get_Result(Interpreter => Interpreter));
    end Index;
 
    procedure Insert
