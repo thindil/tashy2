@@ -432,8 +432,9 @@ package Tcl is
    generic
       type Result_Type is (<>);
    function Generic_Scalar_Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type;
-     -- ****
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type with
+      Pre => Interpreter /= Null_Interpreter;
+      -- ****
 
       -- ****g* Tcl/Tcl.Generic_Float_Tcl_Get_Result
       -- FUNCTION
@@ -455,7 +456,8 @@ package Tcl is
    generic
       type Result_Type is digits <>;
    function Generic_Float_Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type;
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type with
+      Pre => Interpreter /= Null_Interpreter;
      -- ****
 
      -- ****f* Tcl/Tcl.Tcl_Set_Result
