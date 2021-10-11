@@ -392,7 +392,7 @@ package Tcl is
    Default_Result_Type: constant Result_Types := TCL_STATIC;
    -- ****
 
-   -- ****f* Tcl/Tcl.Tcl_Get_Result
+   -- ****f* Tcl/Tcl.Tcl_Get_Result_(string)
    -- FUNCTION
    -- Get the result of last Tcl command as string
    -- PARAMETERS
@@ -405,6 +405,8 @@ package Tcl is
    -- EXAMPLE
    -- -- Print the result of the last Tcl command on the default Tcl interpreter
    -- Ada.Text_IO.Put_Line(Tcl_Get_Result);
+   -- SEE ALSO
+   -- Tcl.Tcl_Get_Result_(integer), Tcl.Tcl_Get_Result_(float)
    -- SOURCE
    function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
@@ -412,53 +414,51 @@ package Tcl is
       Test_Case => (Name => "Test_Tcl_GetResult", Mode => Nominal);
       -- ****
 
-      -- ****g* Tcl/Tcl.Generic_Scalar_Tcl_Get_Result
-      -- FUNCTION
-      -- Generic function to get result of the last Tcl command as scalar type
-      -- PARAMETERS
-      -- Interpreter - Tcl interpreter from which the result will be taken. By
-      --               default it is current default Tcl interpreter.
-      -- RESULT
-      -- Scalar type with the result of the last Tcl command
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Get the result of the last Tcl command on the default Tcl interpreter as Integer
-      -- Integer_Get_Result is new Generic_Scalar_Tcl_Get_Result(Integer);
-      -- Result: constant Integer := Integer_Get_Result;
-      -- SEE ALSO
-      -- Tcl.Generic_Float_Tcl_Get_Result;
-      -- SOURCE
-   generic
-      type Result_Type is (<>);
-   function Generic_Scalar_Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type with
-      Pre => Interpreter /= Null_Interpreter;
+   -- ****f* Tcl/Tcl.Tcl_Get_Result_(integer)
+   -- FUNCTION
+   -- Get the result of last Tcl command as integer
+   -- PARAMETERS
+   -- Interpreter - Tcl interpreter from which the result will be taken. By
+   --               default it is current default Tcl interpreter.
+   -- RESULT
+   -- Integer value of the result of the last Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the result of the last Tcl command on the default Tcl interpreter
+   -- My_Result: constant Integer := Tcl_Get_Result;
+   -- SEE ALSO
+   -- Tcl.Tcl_Get_Result_(string), Tcl.Tcl_Get_Result_(float)
+   -- SOURCE
+   function Tcl_Get_Result
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer is
+     (Integer'Value(Tcl_Get_Result(Interpreter => Interpreter))) with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Test_Tcl_GetResult2", Mode => Nominal);
       -- ****
 
-      -- ****g* Tcl/Tcl.Generic_Float_Tcl_Get_Result
-      -- FUNCTION
-      -- Generic function to get result of the last Tcl command as float type
-      -- PARAMETERS
-      -- Interpreter - Tcl interpreter from which the result will be taken. By
-      --               default it is current default Tcl interpreter.
-      -- RESULT
-      -- Float type with the result of the last Tcl command
-      -- HISTORY
-      -- 8.6.0 - Added
-      -- EXAMPLE
-      -- -- Get the result of the last Tcl command on the default Tcl interpreter as Float
-      -- Float_Get_Result is new Generic_Float_Tcl_Get_Result(Float);
-      -- Result: constant Float := Float_Get_Result;
-      -- SEE ALSO
-      -- Tcl.Generic_Scalar_Tcl_Get_Result;
-      -- SOURCE
-   generic
-      type Result_Type is digits <>;
-   function Generic_Float_Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type with
-      Pre => Interpreter /= Null_Interpreter;
-     -- ****
+   -- ****f* Tcl/Tcl.Tcl_Get_Result_(float)
+   -- FUNCTION
+   -- Get the result of last Tcl command as float
+   -- PARAMETERS
+   -- Interpreter - Tcl interpreter from which the result will be taken. By
+   --               default it is current default Tcl interpreter.
+   -- RESULT
+   -- Float value of the result of the last Tcl command
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Get the result of the last Tcl command on the default Tcl interpreter
+   -- My_Result: constant Float := Tcl_Get_Result;
+   -- SEE ALSO
+   -- Tcl.Tcl_Get_Result_(string), Tcl.Tcl_Get_Result_(integer)
+   -- SOURCE
+   function Tcl_Get_Result
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Float is
+     (Float'Value(Tcl_Get_Result(Interpreter => Interpreter))) with
+      Pre => Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Test_Tcl_GetResult3", Mode => Nominal);
+      -- ****
 
      -- ****f* Tcl/Tcl.Tcl_Set_Result
      -- FUNCTION

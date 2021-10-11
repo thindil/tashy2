@@ -228,18 +228,6 @@ package body Tcl is
         From_C_String(Item => Tcl_Get_String_Result(Interp => Interpreter));
    end Tcl_Get_Result;
 
-   function Generic_Scalar_Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type is
-   begin
-      return Result_Type'Value(Tcl_Get_Result(Interpreter => Interpreter));
-   end Generic_Scalar_Tcl_Get_Result;
-
-   function Generic_Float_Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Result_Type is
-   begin
-      return Result_Type'Value(Tcl_Get_Result(Interpreter => Interpreter));
-   end Generic_Float_Tcl_Get_Result;
-
    procedure Tcl_Set_Result
      (Tcl_Result: String; Result_Type: Result_Types := Default_Result_Type;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
