@@ -61,18 +61,24 @@ package body Tcl.Strings is
          Trim
            (Source => New_String, Left => To_Set(Sequence => """"),
             Right => To_Set(Sequence => """"));
-         Remove_Quotes_Loop :
-         loop
-            Element_Index :=
-              Index
-                (Source => New_String, Pattern => "\""",
-                 From => Element_Index);
-            exit Remove_Quotes_Loop when Element_Index = 0;
-            Delete
-              (Source => New_String, From => Element_Index,
-               Through => Element_Index);
-            Element_Index := Element_Index + 1;
-         end loop Remove_Quotes_Loop;
+         if Length(Source => New_String) > 1 then
+            Remove_Quotes_Loop :
+            loop
+               pragma Loop_Invariant
+                 (Element_Index in 1 .. Length(Source => New_String));
+               Element_Index :=
+                 Index
+                   (Source => New_String, Pattern => "\""",
+                    From => Element_Index);
+               exit Remove_Quotes_Loop when Element_Index not in
+                   1 .. Length(Source => New_String);
+               Delete
+                 (Source => New_String, From => Element_Index,
+                  Through => Element_Index);
+               exit Remove_Quotes_Loop when Element_Index >
+                 Length(Source => New_String);
+            end loop Remove_Quotes_Loop;
+         end if;
       end if;
       return
         Slice
