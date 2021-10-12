@@ -14,7 +14,7 @@
 
 with Interfaces.C; use Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
-with Tashy2; use Tashy2;
+with Tashy2;
 with Tcl.Commands;
 
 package body Tcl.Lists is
@@ -56,6 +56,8 @@ package body Tcl.Lists is
    end Split_List;
 
    function Merge_List(List: Array_List) return String is
+      use Tashy2;
+
       function Tcl_Merge
         (Argc: int; Argv: chars_ptr_array) return chars_ptr with
          Global => null,
