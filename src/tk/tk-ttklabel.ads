@@ -115,7 +115,6 @@ package Tk.TtkLabel is
      (Path_Name: Tk_Path_String; Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Label with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabel1", Mode => Nominal);
       -- ****
 
@@ -151,7 +150,6 @@ package Tk.TtkLabel is
       Options: Ttk_Label_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Label /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabel2", Mode => Nominal);
       -- ****
 
