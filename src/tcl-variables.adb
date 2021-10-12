@@ -31,7 +31,7 @@ package body Tcl.Variables is
    -- SOURCE
    function Create_Flag(Flags: Flags_Array) return int is
       -- ****
-      type Unsigned_Integer is mod 2**Integer'Size;
+      type Unsigned_Integer is mod 4_096;
       Default_Unsigned_Integer: constant Unsigned_Integer := 0;
       Flag: Unsigned_Integer := Default_Unsigned_Integer;
    begin
