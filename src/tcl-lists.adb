@@ -65,11 +65,15 @@ package body Tcl.Lists is
          Convention => C,
          External_Name => "Tcl_Merge";
       New_List: chars_ptr_array(1 .. List'Length) := (others => Null_Ptr);
+      Index: size_t := New_List'First;
    begin
       Convert_Ada_String_To_C_Loop :
       for I in List'Range loop
-         New_List(size_t(I)) :=
+         pragma Loop_Invariant(Index in New_List'Range);
+         New_List(Index) :=
            To_C_String(Str => To_Ada_String(Source => List(I)));
+         Index := Index + 1;
+         exit Convert_Ada_String_To_C_Loop when Index > New_List'Last;
       end loop Convert_Ada_String_To_C_Loop;
       return
         From_C_String
