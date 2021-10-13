@@ -52,7 +52,7 @@ package Tcl.Strings is
    --            format Source to be a literal string
    -- RESULT
    -- A new Tcl_String properly formatted to be evaluated or as literal
-   -- string
+   -- string. If the resulted string will be too long, it will be truncated.
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
