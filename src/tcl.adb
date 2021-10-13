@@ -32,6 +32,9 @@ package body Tcl is
 
    procedure Set_Interpreter(Interpreter: Tcl_Interpreter) is
    begin
+      if Interpreter = Null_Interpreter then
+         return;
+      end if;
       Default_Interpreter := Interpreter;
    end Set_Interpreter;
 

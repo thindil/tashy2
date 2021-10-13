@@ -68,7 +68,9 @@ package Tcl is
      -- FUNCTION
      -- Set the default Tcl interpreter to the selected interpreter
      -- PARAMETERS
-     -- Interpreter - The Tcl interpreter which will be set as default
+     -- Interpreter - The Tcl interpreter which will be set as default. If
+      --              is Null_Interpreter. The dafault interpreter will remain
+      --              unchanged
      -- HISTORY
      -- 8.6.0 - Added
      -- EXAMPLE
@@ -76,8 +78,7 @@ package Tcl is
      -- Set_Interpreter(My_Interpreter);
      -- SOURCE
    procedure Set_Interpreter(Interpreter: Tcl_Interpreter) with
-      Pre => Interpreter /= Null_Interpreter,
-      Post => Get_Interpreter = Interpreter;
+      Pre => Interpreter /= Null_Interpreter;
       -- ****
 
      -- ****f* Tcl/Tcl.Get_Interpreter
