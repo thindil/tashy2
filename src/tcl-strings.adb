@@ -39,6 +39,16 @@ package body Tcl.Strings is
          Insert(Source => New_String, Before => 1, New_Item => """");
          Append(Source => New_String, New_Item => """");
       else
+         if Length(Source => New_String) = Natural'Last then
+            Delete
+              (Source => New_String, From => Natural'Last,
+               Through => Natural'Last);
+         end if;
+         if Length(Source => New_String) = Natural'Last - 1 then
+            Delete
+              (Source => New_String, From => Natural'Last - 1,
+               Through => Natural'Last - 1);
+         end if;
          Insert(Source => New_String, Before => 1, New_Item => "{");
          Append(Source => New_String, New_Item => "}");
       end if;
