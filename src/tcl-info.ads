@@ -232,9 +232,7 @@ package Tcl.Info is
       Pre =>
       (Proc_Name'Length > 0 and Argument'Length > 0 and Var_Name'Length > 0 and
        Interpreter /= Null_Interpreter)
-      and then
-        Long_Long_Integer(Proc_Name'Length) + Long_Long_Integer(Argument'Length) +
-          Long_Long_Integer(Var_Name'Length) <
+      and then Proc_Name'Length + Argument'Length + Var_Name'Length <
         Long_Long_Integer(Integer'Last - 15),
       Test_Case => (Name => "Test_Info_Default", Mode => Nominal);
       -- ****
