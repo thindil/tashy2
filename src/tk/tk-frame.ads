@@ -131,7 +131,8 @@ package Tk.Frame is
    -- Interpreter - Tcl interpreter on which the frame will be created. Can
    --               be empty. Default value is the default Tcl interpreter
    -- RESULT
-   -- The Tk identifier of the newly created frame widget
+   -- The Tk identifier of the newly created frame widget or Null_Widget if
+   -- the frame cannot be created
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
@@ -147,7 +148,6 @@ package Tk.Frame is
      (Path_Name: Tk_Path_String; Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Frame with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Frame1", Mode => Nominal);
       -- ****
 
@@ -161,7 +161,8 @@ package Tk.Frame is
       -- Interpreter  - Tcl interpreter on which the toplelve will be created. Can
       --                be empty. Default value is the default Tcl interpreter
       -- OUTPUT
-      -- The Widget parameter as Tk identifier of the newly created frame widget
+      -- The Widget parameter as Tk identifier of the newly created frame widget or
+      -- Null_Widget if the frame cannot be created
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -181,7 +182,6 @@ package Tk.Frame is
       Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Frame2", Mode => Nominal);
    -- ****
 
