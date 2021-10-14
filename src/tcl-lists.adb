@@ -68,10 +68,9 @@ package body Tcl.Lists is
       Index: size_t := New_List'First;
    begin
       Convert_Ada_String_To_C_Loop :
-      for I in List'Range loop
+      for Item of List loop
          pragma Loop_Invariant(Index in New_List'Range);
-         New_List(Index) :=
-           To_C_String(Str => To_Ada_String(Source => List(I)));
+         New_List(Index) := To_C_String(Str => To_Ada_String(Source => Item));
          Index := Index + 1;
          exit Convert_Ada_String_To_C_Loop when Index > New_List'Last;
       end loop Convert_Ada_String_To_C_Loop;
