@@ -12,6 +12,7 @@
 -- License for the specific language governing permissions and limitations
 -- under the License.
 
+with Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
@@ -231,6 +232,24 @@ package body Tcl is
    begin
       return
         From_C_String(Item => Tcl_Get_String_Result(Interp => Interpreter));
+   end Tcl_Get_Result;
+
+   function Tcl_Get_Result
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer is
+      use Ada.Characters.Handling;
+
+      Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
+   begin
+      if Result = "" then
+         return 0;
+      end if;
+      Check_Characters_Loop :
+      for Char of Result loop
+         if not Is_Digit(Char) then
+            return 0;
+         end if;
+      end loop Check_Characters_Loop;
+      return Integer'Value(Result);
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
