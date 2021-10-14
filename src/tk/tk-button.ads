@@ -125,7 +125,8 @@ package Tk.Button is
    -- Interpreter - Tcl interpreter on which the button will be created. Can
    --               be empty. Default value is the default Tcl interpreter
    -- RESULT
-   -- The Tk identifier of the newly created button widget
+   -- The Tk identifier of the newly created button widget or Null_Widget if
+   -- the button cannot be created
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
@@ -142,7 +143,6 @@ package Tk.Button is
      (Path_Name: Tk_Path_String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Button1", Mode => Nominal);
       -- ****
 
@@ -156,7 +156,8 @@ package Tk.Button is
       -- Interpreter   - Tcl interpreter on which the button will be created. Can
       --                 be empty. Default value is the default Tcl interpreter
       -- OUTPUT
-      -- The Button_Widget parameter as Tk identifier of the newly created button widget
+      -- The Button_Widget parameter as Tk identifier of the newly created button
+      -- widget or Null_Widget if the button cannot be created
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -178,7 +179,6 @@ package Tk.Button is
       Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Button_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Button2", Mode => Nominal);
       -- ****
 
