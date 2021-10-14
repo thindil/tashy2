@@ -20,6 +20,19 @@ package body Tcl.Strings is
      (Source: String; Evaluate: Boolean := False) return Tcl_String is
       New_String: Tcl_String := Null_Tcl_String;
       Element_Index: Natural := 1;
+      procedure Truncate_New_String is
+      begin
+         if Length(Source => New_String) = Natural'Last then
+            Delete
+              (Source => New_String, From => Natural'Last,
+               Through => Natural'Last);
+         end if;
+         if Length(Source => New_String) = Natural'Last - 1 then
+            Delete
+              (Source => New_String, From => Natural'Last - 1,
+               Through => Natural'Last - 1);
+         end if;
+      end Truncate_New_String;
    begin
       Append(Source => New_String, New_Item => Source);
       if Index(Source => New_String, Pattern => " ") = 0 then
@@ -34,21 +47,14 @@ package body Tcl.Strings is
             exit Evaluated_String_Loop when Element_Index = 0;
             Insert
               (Source => New_String, Before => Element_Index, New_Item => "\");
+            exit Evaluated_String_Loop when Element_Index > Natural'Last - 2;
             Element_Index := Element_Index + 2;
          end loop Evaluated_String_Loop;
+         Truncate_New_String;
          Insert(Source => New_String, Before => 1, New_Item => """");
          Append(Source => New_String, New_Item => """");
       else
-         if Length(Source => New_String) = Natural'Last then
-            Delete
-              (Source => New_String, From => Natural'Last,
-               Through => Natural'Last);
-         end if;
-         if Length(Source => New_String) = Natural'Last - 1 then
-            Delete
-              (Source => New_String, From => Natural'Last - 1,
-               Through => Natural'Last - 1);
-         end if;
+         Truncate_New_String;
          Insert(Source => New_String, Before => 1, New_Item => "{");
          Append(Source => New_String, New_Item => "}");
       end if;
