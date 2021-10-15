@@ -264,7 +264,8 @@ package Tk.Menu is
    -- Interpreter - Tcl interpreter on which the menu will be created. Can
    --               be empty. Default value is the default Tcl interpreter
    -- RESULT
-   -- The Tk identifier of the newly created menu widget
+   -- The Tk identifier of the newly created menu widget or Null_Widget if
+   -- the menu cannot be created
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
@@ -279,7 +280,6 @@ package Tk.Menu is
      (Path_Name: Tk_Path_String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Menu1", Mode => Nominal);
       -- ****
 
@@ -293,7 +293,8 @@ package Tk.Menu is
       -- Interpreter - Tcl interpreter on which the menu will be created. Can
       --               be empty. Default value is the default Tcl interpreter
       -- OUTPUT
-      -- The Menu_Widget parameter as Tk identifier of the newly created menu widget
+      -- The Menu_Widget parameter as Tk identifier of the newly created menu
+      -- widget or Null_Widget if the menu cannot be created
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -313,7 +314,6 @@ package Tk.Menu is
       Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Menu_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Menu2", Mode => Nominal);
       -- ****
 
