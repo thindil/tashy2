@@ -35,20 +35,27 @@ package body Tcl.Strings is
       end Truncate_New_String;
    begin
       Append(Source => New_String, New_Item => Source);
-      if Index(Source => New_String, Pattern => " ") = 0 then
+      if Index(Source => New_String, Pattern => " ") = 0 or
+        Source'Length < 2 then
          return New_String;
       end if;
       if Evaluate then
          Evaluated_String_Loop :
          loop
+            pragma Loop_Invariant
+              (Element_Index in 1 .. Length(Source => New_String));
             Element_Index :=
               Index
                 (Source => New_String, Pattern => """", From => Element_Index);
-            exit Evaluated_String_Loop when Element_Index = 0;
+            exit Evaluated_String_Loop when Element_Index = 0 or
+              Element_Index > Length(Source => New_String) or
+              Length(Source => New_String) = Natural'Last;
             Insert
               (Source => New_String, Before => Element_Index, New_Item => "\");
             exit Evaluated_String_Loop when Element_Index > Natural'Last - 2;
             Element_Index := Element_Index + 2;
+            exit Evaluated_String_Loop when Element_Index >
+              Length(Source => New_String);
          end loop Evaluated_String_Loop;
          Truncate_New_String;
          Insert(Source => New_String, Before => 1, New_Item => """");
