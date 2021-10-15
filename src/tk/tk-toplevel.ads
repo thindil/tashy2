@@ -117,7 +117,8 @@ package Tk.TopLevel is
    -- Interpreter - Tcl interpreter on which the toplevel will be created. Can
    --               be empty. Default value is the default Tcl interpreter
    -- RESULT
-   -- The Tk identifier of the newly created toplevel widget
+   -- The Tk identifier of the newly created toplevel widget or Null_Widget if
+   -- the toplevel cannot be created
    -- HISTORY
    -- 8.6.0 - Added
    -- EXAMPLE
@@ -133,7 +134,6 @@ package Tk.TopLevel is
      (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TopLevel1", Mode => Nominal);
       -- ****
 
@@ -147,7 +147,8 @@ package Tk.TopLevel is
       -- Interpreter     - Tcl interpreter on which the toplelve will be created. Can
       --                   be empty. Default value is the default Tcl interpreter
       -- OUTPUT
-      -- The Widget parameter as Tk identifier of the newly created toplevel widget
+      -- The Widget parameter as Tk identifier of the newly created toplevel
+      -- widget or Null_Widget if the toplevel cannot be created
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
@@ -167,7 +168,6 @@ package Tk.TopLevel is
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Toplevel_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_TopLevel2", Mode => Nominal);
    -- ****
 
