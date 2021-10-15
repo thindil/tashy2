@@ -245,7 +245,7 @@ package body Tcl is
       end if;
       Check_Characters_Loop :
       for Char of Result loop
-         if not Is_Digit(Char) then
+         if not Is_Digit(Item => Char) then
             return 0;
          end if;
       end loop Check_Characters_Loop;
