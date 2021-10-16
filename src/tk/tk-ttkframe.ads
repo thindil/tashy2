@@ -104,7 +104,6 @@ package Tk.TtkFrame is
      (Path_Name: Tk_Path_String; Options: Ttk_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Frame with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_Frame1", Mode => Nominal);
       -- ****
 
@@ -138,7 +137,6 @@ package Tk.TtkFrame is
       Options: Ttk_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_Frame2", Mode => Nominal);
    -- ****
 
