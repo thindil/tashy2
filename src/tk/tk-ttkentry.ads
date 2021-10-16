@@ -244,7 +244,6 @@ package Tk.TtkEntry is
      (Path_Name: Tk_Path_String; Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Entry with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkEntry1", Mode => Nominal);
       -- ****
 
@@ -278,7 +277,6 @@ package Tk.TtkEntry is
       Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Entry_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkEntry2", Mode => Nominal);
       -- ****
 
