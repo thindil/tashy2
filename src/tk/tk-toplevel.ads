@@ -35,6 +35,7 @@ package Tk.TopLevel is
    subtype Tk_Toplevel is Tk_Widget;
    -- ****
 
+   --## rule off TYPE_INITIAL_VALUES
    -- ****s* TopLevel/TopLevel.TopLevel_Options
    -- FUNCTION
    -- Data structure for all available options for the Tk toplevel which can
@@ -62,6 +63,7 @@ package Tk.TopLevel is
       Menu: Tk_Menu := Null_Widget;
    end record;
    -- ****
+   --## rule on TYPE_INITIAL_VALUES
 
    -- ****f* TopLevel/TopLevel.Configure
    -- FUNCTION
