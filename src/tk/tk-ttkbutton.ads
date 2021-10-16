@@ -98,7 +98,6 @@ package Tk.TtkButton is
      (Path_Name: Tk_Path_String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkButton1", Mode => Nominal);
       -- ****
 
@@ -134,7 +133,6 @@ package Tk.TtkButton is
       Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Button /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkButton2", Mode => Nominal);
       -- ****
 
