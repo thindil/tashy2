@@ -34,13 +34,14 @@ package body Tcl.Strings is
          end if;
       end Truncate_New_String;
    begin
-      if Source'Length <= Natural'Last - Length(New_String) then
+      if Source'Length <= Natural'Last - Length(Source => New_String) then
          Append(Source => New_String, New_Item => Source);
       else
          Append
            (Source => New_String,
             New_Item =>
-              Source(Source'First .. Natural'Last - Length(New_String)));
+              Source
+                (Source'First .. Natural'Last - Length(Source => New_String)));
       end if;
       if Index(Source => New_String, Pattern => " ") = 0 or
         Source'Length < 2 then
