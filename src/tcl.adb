@@ -243,6 +243,9 @@ package body Tcl is
       if Result = "" then
          return 0;
       end if;
+      if Result'Length > Integer'Width then
+         return 0;
+      end if;
       Check_Characters_Loop :
       for Char of Result loop
          if not Is_Digit(Item => Char) then
