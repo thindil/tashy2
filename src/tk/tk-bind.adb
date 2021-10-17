@@ -97,7 +97,7 @@ package body Tk.Bind is
       return Image;
    end Key_Syms_Type_Image;
 
-   procedure Bind
+   procedure Tk_Bind
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) is
    begin
@@ -107,9 +107,9 @@ package body Tk.Bind is
            Modifier_Type_Image(Sequence) & "> " &
            (if Append then "+" else "") & To_String(Script),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Bind;
+   end Tk_Bind;
 
-   procedure Bind
+   procedure Tk_Bind
      (Window: Tk_Widget; Sequence: Modifiers_Array; Script: Tcl_String;
       Append: Boolean := False) is
       Modifier: Unbounded_String := Null_Unbounded_String;
@@ -126,6 +126,6 @@ package body Tk.Bind is
            To_String(Modifier) & "> " & (if Append then "+" else "") &
            To_String(Script),
          Interpreter => Tk_Interp(Widgt => Window));
-   end Bind;
+   end Tk_Bind;
 
 end Tk.Bind;
