@@ -16,13 +16,13 @@ is
      .Test_Label_Frame_Create_Options with
    null record;
 
-   procedure Test_Create_32e405_e9e8b9
+   procedure Test_Create_32e405_0563f1
      (Gnattest_T: in out Test_Label_Frame_Create_Options);
-   --  tk-labelframe.ads:137:4:Create:Test_Create_Label_Frame1
+   --  tk-labelframe.ads:138:4:Create:Test_Create_Label_Frame1
 
-   procedure Test_Create_ebbdc1_bbcaba
+   procedure Test_Create_ebbdc1_776696
      (Gnattest_T: in out Test_Label_Frame_Create_Options);
-   --  tk-labelframe.ads:171:4:Create:Test_Create_Label_Frame2
+   --  tk-labelframe.ads:172:4:Create:Test_Create_Label_Frame2
 
    procedure Test_Get_Options_ded36e_6d2dd5
      (Gnattest_T: in out Test_Label_Frame_Create_Options);

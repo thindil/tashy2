@@ -28,48 +28,48 @@ package Tcl.Info.Test_Data.Tests is
    procedure Test_Get_Coroutine_df9ca4_613b2a(Gnattest_T: in out Test);
    --  tcl-info.ads:192:4:Get_Coroutine:Test_Info_Coroutine
 
-   procedure Test_Get_Default_b559cf_d982eb(Gnattest_T: in out Test);
+   procedure Test_Get_Default_b559cf_8294d7(Gnattest_T: in out Test);
    --  tcl-info.ads:224:4:Get_Default:Test_Info_Default
 
    procedure Test_Get_Error_Stack_c33442_123ed2(Gnattest_T: in out Test);
-   --  tcl-info.ads:258:4:Get_Error_Stack:Test_Info_ErrorStack
+   --  tcl-info.ads:256:4:Get_Error_Stack:Test_Info_ErrorStack
 
    procedure Test_Exists_a87cb0_c90638(Gnattest_T: in out Test);
-   --  tcl-info.ads:283:4:Exists:Test_Info_Exists
+   --  tcl-info.ads:281:4:Exists:Test_Info_Exists
 
    procedure Test_Get_Functions_5a1dbc_b56c6e(Gnattest_T: in out Test);
-   --  tcl-info.ads:315:4:Get_Functions:Test_Info_Functions
+   --  tcl-info.ads:313:4:Get_Functions:Test_Info_Functions
 
    procedure Test_Get_Globals_1284d9_ae8ce6(Gnattest_T: in out Test);
-   --  tcl-info.ads:351:4:Get_Globals:Test_Info_Globals
+   --  tcl-info.ads:349:4:Get_Globals:Test_Info_Globals
 
    procedure Test_Get_Host_Name_0a278d_b2a918(Gnattest_T: in out Test);
-   --  tcl-info.ads:383:4:Get_Host_Name:Test_Info_HostName
+   --  tcl-info.ads:381:4:Get_Host_Name:Test_Info_HostName
 
    procedure Test_Get_Library_36938c_8b9a20(Gnattest_T: in out Test);
-   --  tcl-info.ads:408:4:Get_Library:Test_Info_Library
+   --  tcl-info.ads:406:4:Get_Library:Test_Info_Library
 
    procedure Test_Get_Locals_09a275_95f4c0(Gnattest_T: in out Test);
-   --  tcl-info.ads:437:4:Get_Locals:Test_Info_Locals
+   --  tcl-info.ads:435:4:Get_Locals:Test_Info_Locals
 
    procedure Test_Get_Name_Of_Executable_1cc16d_24ff4c
      (Gnattest_T: in out Test);
-   --  tcl-info.ads:467:4:Get_Name_Of_Executable:Test_Info_Name_Of_Executable
+   --  tcl-info.ads:465:4:Get_Name_Of_Executable:Test_Info_Name_Of_Executable
 
    procedure Test_Get_Patch_Level_0baa9d_325136(Gnattest_T: in out Test);
-   --  tcl-info.ads:493:4:Get_Patch_Level:Test_Info_Patch_Level
+   --  tcl-info.ads:491:4:Get_Patch_Level:Test_Info_Patch_Level
 
    procedure Test_Get_Procedures_848b43_17d3ea(Gnattest_T: in out Test);
-   --  tcl-info.ads:523:4:Get_Procedures:Test_Info_Procs
+   --  tcl-info.ads:521:4:Get_Procedures:Test_Info_Procs
 
    procedure Test_Get_Script_86aa75_0ba2b7(Gnattest_T: in out Test);
-   --  tcl-info.ads:557:4:Get_Script:Test_Info_Script
+   --  tcl-info.ads:555:4:Get_Script:Test_Info_Script
 
    procedure Test_Get_Tcl_Version_d04078_6661d4(Gnattest_T: in out Test);
-   --  tcl-info.ads:585:4:Get_Tcl_Version:Test_Info_Tcl_Version
+   --  tcl-info.ads:583:4:Get_Tcl_Version:Test_Info_Tcl_Version
 
    procedure Test_Get_Variables_fedbab_b301bd(Gnattest_T: in out Test);
-   --  tcl-info.ads:614:4:Get_Variables:Test_Info_Vars
+   --  tcl-info.ads:612:4:Get_Variables:Test_Info_Vars
 
 end Tcl.Info.Test_Data.Tests;
 --  end read only

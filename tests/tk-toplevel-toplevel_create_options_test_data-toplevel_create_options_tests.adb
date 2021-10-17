@@ -32,7 +32,7 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Create_32e405_6b2100
+   function Wrap_Test_Create_32e405_9db90c
      (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
    begin
@@ -46,12 +46,12 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
                "req_sloc(tk-toplevel.ads:0):Test_Create_TopLevel1 test requirement violated");
       end;
       declare
-         Test_Create_32e405_6b2100_Result: constant Tk_Toplevel :=
+         Test_Create_32e405_9db90c_Result: constant Tk_Toplevel :=
            GNATtest_Generated.GNATtest_Standard.Tk.TopLevel.Create
              (Path_Name, Options, Interpreter);
       begin
          begin
-            pragma Assert(Test_Create_32e405_6b2100_Result /= Null_Widget);
+            pragma Assert(True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -59,15 +59,15 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
                  (False,
                   "ens_sloc(tk-toplevel.ads:0:):Test_Create_TopLevel1 test commitment violated");
          end;
-         return Test_Create_32e405_6b2100_Result;
+         return Test_Create_32e405_9db90c_Result;
       end;
-   end Wrap_Test_Create_32e405_6b2100;
+   end Wrap_Test_Create_32e405_9db90c;
 --  end read only
 
 --  begin read only
    procedure Test_1_Create_test_create_toplevel1
      (Gnattest_T: in out Test_Toplevel_Create_Options);
-   procedure Test_Create_32e405_6b2100
+   procedure Test_Create_32e405_9db90c
      (Gnattest_T: in out Test_Toplevel_Create_Options) renames
      Test_1_Create_test_create_toplevel1;
 --  id:2.2/32e405543423d7b8/Create/1/0/test_create_toplevel1/
@@ -77,7 +77,7 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
         (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tk_Toplevel renames
-        Wrap_Test_Create_32e405_6b2100;
+        Wrap_Test_Create_32e405_9db90c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -98,7 +98,7 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Create_ebbdc1_9910a6
+   procedure Wrap_Test_Create_ebbdc1_055047
      (Toplevel_Widget: out Tk_Toplevel; Path_Name: Tk_Path_String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
@@ -115,7 +115,7 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
       GNATtest_Generated.GNATtest_Standard.Tk.TopLevel.Create
         (Toplevel_Widget, Path_Name, Options, Interpreter);
       begin
-         pragma Assert(Toplevel_Widget /= Null_Widget);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -123,13 +123,13 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
               (False,
                "ens_sloc(tk-toplevel.ads:0:):Test_Create_TopLevel2 test commitment violated");
       end;
-   end Wrap_Test_Create_ebbdc1_9910a6;
+   end Wrap_Test_Create_ebbdc1_055047;
 --  end read only
 
 --  begin read only
    procedure Test_2_Create_test_create_toplevel2
      (Gnattest_T: in out Test_Toplevel_Create_Options);
-   procedure Test_Create_ebbdc1_9910a6
+   procedure Test_Create_ebbdc1_055047
      (Gnattest_T: in out Test_Toplevel_Create_Options) renames
      Test_2_Create_test_create_toplevel2;
 --  id:2.2/ebbdc1934f0fa33d/Create/0/0/test_create_toplevel2/
@@ -139,7 +139,7 @@ package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
         (Toplevel_Widget: out Tk_Toplevel; Path_Name: Tk_Path_String;
          Options: Toplevel_Create_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Create_ebbdc1_9910a6;
+        Wrap_Test_Create_ebbdc1_055047;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

@@ -153,12 +153,12 @@ package body Tk.Bind.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Bind_04d206_6eb3e9
+   procedure Wrap_Test_Tk_Bind_09337a_b9da3f
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Length(Script) > 0);
+         pragma Assert(Window /= Null_Widget and Length(Source => Script) > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -166,7 +166,7 @@ package body Tk.Bind.Test_Data.Tests is
               (False,
                "req_sloc(tk-bind.ads:0):Test_Bind test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Bind.Bind
+      GNATtest_Generated.GNATtest_Standard.Tk.Bind.Tk_Bind
         (Window, Sequence, Script, Append);
       begin
          pragma Assert(True);
@@ -177,19 +177,19 @@ package body Tk.Bind.Test_Data.Tests is
               (False,
                "ens_sloc(tk-bind.ads:0:):Test_Bind test commitment violated");
       end;
-   end Wrap_Test_Bind_04d206_6eb3e9;
+   end Wrap_Test_Tk_Bind_09337a_b9da3f;
 --  end read only
 
 --  begin read only
-   procedure Test_1_Bind_test_bind(Gnattest_T: in out Test);
-   procedure Test_Bind_04d206_6eb3e9(Gnattest_T: in out Test) renames
-     Test_1_Bind_test_bind;
---  id:2.2/04d2062144a2af29/Bind/1/0/test_bind/
-   procedure Test_1_Bind_test_bind(Gnattest_T: in out Test) is
-      procedure Bind
+   procedure Test_1_Tk_Bind_test_bind(Gnattest_T: in out Test);
+   procedure Test_Tk_Bind_09337a_b9da3f(Gnattest_T: in out Test) renames
+     Test_1_Tk_Bind_test_bind;
+--  id:2.2/09337ab9ce5ba9c4/Tk_Bind/1/0/test_bind/
+   procedure Test_1_Tk_Bind_test_bind(Gnattest_T: in out Test) is
+      procedure Tk_Bind
         (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
          Append: Boolean := False) renames
-        Wrap_Test_Bind_04d206_6eb3e9;
+        Wrap_Test_Tk_Bind_09337a_b9da3f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -200,24 +200,24 @@ package body Tk.Bind.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Bind(Get_Main_Window, BUTTON_1, To_Tcl_String("exit"));
+      Tk_Bind(Get_Main_Window, BUTTON_1, To_Tcl_String("exit"));
       Assert
         (Tcl_Eval("bind .").Result = "<Button-1>",
          "Failed to set bind for Tk main window with simple sequence");
 
 --  begin read only
-   end Test_1_Bind_test_bind;
+   end Test_1_Tk_Bind_test_bind;
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Bind_3ca5a8_5391b4
+   procedure Wrap_Test_Tk_Bind_45f058_8585f0
      (Window: Tk_Widget; Sequence: Modifiers_Array; Script: Tcl_String;
       Append: Boolean := False) is
    begin
       begin
          pragma Assert
            (Window /= Null_Widget and Sequence /= Empty_Modifiers_Array and
-            Length(Script) > 0);
+            Length(Source => Script) > 0);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -225,7 +225,7 @@ package body Tk.Bind.Test_Data.Tests is
               (False,
                "req_sloc(tk-bind.ads:0):Test_Bind2 test requirement violated");
       end;
-      GNATtest_Generated.GNATtest_Standard.Tk.Bind.Bind
+      GNATtest_Generated.GNATtest_Standard.Tk.Bind.Tk_Bind
         (Window, Sequence, Script, Append);
       begin
          pragma Assert(True);
@@ -236,19 +236,19 @@ package body Tk.Bind.Test_Data.Tests is
               (False,
                "ens_sloc(tk-bind.ads:0:):Test_Bind2 test commitment violated");
       end;
-   end Wrap_Test_Bind_3ca5a8_5391b4;
+   end Wrap_Test_Tk_Bind_45f058_8585f0;
 --  end read only
 
 --  begin read only
-   procedure Test_2_Bind_test_bind2(Gnattest_T: in out Test);
-   procedure Test_Bind_3ca5a8_5391b4(Gnattest_T: in out Test) renames
-     Test_2_Bind_test_bind2;
---  id:2.2/3ca5a89df5b871fe/Bind/0/0/test_bind2/
-   procedure Test_2_Bind_test_bind2(Gnattest_T: in out Test) is
-      procedure Bind
+   procedure Test_2_Tk_Bind_test_bind2(Gnattest_T: in out Test);
+   procedure Test_Tk_Bind_45f058_8585f0(Gnattest_T: in out Test) renames
+     Test_2_Tk_Bind_test_bind2;
+--  id:2.2/45f058fa2634d176/Tk_Bind/0/0/test_bind2/
+   procedure Test_2_Tk_Bind_test_bind2(Gnattest_T: in out Test) is
+      procedure Tk_Bind
         (Window: Tk_Widget; Sequence: Modifiers_Array; Script: Tcl_String;
          Append: Boolean := False) renames
-        Wrap_Test_Bind_3ca5a8_5391b4;
+        Wrap_Test_Tk_Bind_45f058_8585f0;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -259,13 +259,13 @@ package body Tk.Bind.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Bind(Get_Main_Window, (CONTROL, BUTTON_1), To_Tcl_String("exit"));
+      Tk_Bind(Get_Main_Window, (CONTROL, BUTTON_1), To_Tcl_String("exit"));
       Assert
         (Tcl_Eval("bind .").Result = "<Control-Button-1> <Button-1>",
          "Failed to set bind for Tk main window with array sequence");
 
 --  begin read only
-   end Test_2_Bind_test_bind2;
+   end Test_2_Tk_Bind_test_bind2;
 --  end read only
 
 --  begin read only

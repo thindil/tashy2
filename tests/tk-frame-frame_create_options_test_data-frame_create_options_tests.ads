@@ -13,13 +13,13 @@ package Tk.Frame.Frame_Create_Options_Test_Data.Frame_Create_Options_Tests is
      .Test_Frame_Create_Options with
    null record;
 
-   procedure Test_Create_32e405_d4efed
+   procedure Test_Create_32e405_154917
      (Gnattest_T: in out Test_Frame_Create_Options);
-   --  tk-frame.ads:146:4:Create:Test_Create_Frame1
+   --  tk-frame.ads:147:4:Create:Test_Create_Frame1
 
-   procedure Test_Create_ebbdc1_e79b17
+   procedure Test_Create_ebbdc1_471f4e
      (Gnattest_T: in out Test_Frame_Create_Options);
-   --  tk-frame.ads:179:4:Create:Test_Create_Frame2
+   --  tk-frame.ads:180:4:Create:Test_Create_Frame2
 
    procedure Test_Get_Options_ded36e_ce77f0
      (Gnattest_T: in out Test_Frame_Create_Options);

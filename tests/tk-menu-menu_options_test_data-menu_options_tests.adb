@@ -31,7 +31,7 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Create_32e405_0ceee6
+   function Wrap_Test_Create_32e405_e2d532
      (Path_Name: Tk_Path_String; Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Menu is
    begin
@@ -45,12 +45,12 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
                "req_sloc(tk-menu.ads:0):Test_Create_Menu1 test requirement violated");
       end;
       declare
-         Test_Create_32e405_0ceee6_Result: constant Tk_Menu :=
+         Test_Create_32e405_e2d532_Result: constant Tk_Menu :=
            GNATtest_Generated.GNATtest_Standard.Tk.Menu.Create
              (Path_Name, Options, Interpreter);
       begin
          begin
-            pragma Assert(Test_Create_32e405_0ceee6_Result /= Null_Widget);
+            pragma Assert(True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -58,15 +58,15 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
                  (False,
                   "ens_sloc(tk-menu.ads:0:):Test_Create_Menu1 test commitment violated");
          end;
-         return Test_Create_32e405_0ceee6_Result;
+         return Test_Create_32e405_e2d532_Result;
       end;
-   end Wrap_Test_Create_32e405_0ceee6;
+   end Wrap_Test_Create_32e405_e2d532;
 --  end read only
 
 --  begin read only
    procedure Test_1_Create_test_create_menu1
      (Gnattest_T: in out Test_Menu_Options);
-   procedure Test_Create_32e405_0ceee6
+   procedure Test_Create_32e405_e2d532
      (Gnattest_T: in out Test_Menu_Options) renames
      Test_1_Create_test_create_menu1;
 --  id:2.2/32e405543423d7b8/Create/1/0/test_create_menu1/
@@ -76,7 +76,7 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
         (Path_Name: Tk_Path_String; Options: Menu_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Tk_Menu renames
-        Wrap_Test_Create_32e405_0ceee6;
+        Wrap_Test_Create_32e405_e2d532;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -97,7 +97,7 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Create_ebbdc1_d9adfa
+   procedure Wrap_Test_Create_ebbdc1_7e498b
      (Menu_Widget: out Tk_Menu; Path_Name: Tk_Path_String;
       Options: Menu_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
@@ -114,7 +114,7 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
       GNATtest_Generated.GNATtest_Standard.Tk.Menu.Create
         (Menu_Widget, Path_Name, Options, Interpreter);
       begin
-         pragma Assert(Menu_Widget /= Null_Widget);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -122,13 +122,13 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
               (False,
                "ens_sloc(tk-menu.ads:0:):Test_Create_Menu2 test commitment violated");
       end;
-   end Wrap_Test_Create_ebbdc1_d9adfa;
+   end Wrap_Test_Create_ebbdc1_7e498b;
 --  end read only
 
 --  begin read only
    procedure Test_2_Create_test_create_menu2
      (Gnattest_T: in out Test_Menu_Options);
-   procedure Test_Create_ebbdc1_d9adfa
+   procedure Test_Create_ebbdc1_7e498b
      (Gnattest_T: in out Test_Menu_Options) renames
      Test_2_Create_test_create_menu2;
 --  id:2.2/ebbdc1934f0fa33d/Create/0/0/test_create_menu2/
@@ -138,7 +138,7 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
         (Menu_Widget: out Tk_Menu; Path_Name: Tk_Path_String;
          Options: Menu_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Create_ebbdc1_d9adfa;
+        Wrap_Test_Create_ebbdc1_7e498b;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
