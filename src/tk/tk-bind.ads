@@ -17,10 +17,14 @@ with Tk.Widget; use Tk.Widget;
 
 package Tk.Bind is
 
+   --## rule off NAMING_CONVENTION
    type Modifiers_Type is
      (CONTROL, ALT, SHIFT, LOCK, EXTENDED, BUTTON_1, BUTTON_2, BUTTON_3,
       BUTTON_4, BUTTON_5, MOD1, MOD2, MOD3, MOD4, MOD5, META, DOUBLE, TRIPLE,
       QUADRUPLE, NONE);
+   --## rule on NAMING_CONVENTION
+
+   Default_Modifier: constant Modifiers_Type := NONE;
 
    type Modifiers_Array is array(Positive range <>) of Modifiers_Type with
       Default_Component_Value => NONE;
@@ -250,23 +254,25 @@ package Tk.Bind is
       KEY_META_R, KEY_ALT_L, KEY_ALT_R, KEY_SUPER_L, KEY_SUPER_R, KEY_HYPER_L,
       KEY_HYPER_R, KEY_DELETE);
 
+   Default_Key: constant Key_Syms := KEY_SPACE;
+
    function Modifier_Type_Image(Modifier: Modifiers_Type) return String with
       Test_Case => (Name => "Test_Modifier_Type_Image", Mode => Robustness);
 
    function Key_Syms_Type_Image(Key: Key_Syms) return String with
       Test_Case => (Name => "Test_Key_Syms_Image", Mode => Robustness);
 
-   procedure Bind
+   procedure Tk_Bind
      (Window: Tk_Widget; Sequence: Modifiers_Type; Script: Tcl_String;
       Append: Boolean := False) with
-      Pre => Window /= Null_Widget and Length(Script) > 0,
+      Pre => Window /= Null_Widget and Length(Source => Script) > 0,
       Test_Case => (Name => "Test_Bind", Mode => Nominal);
 
-   procedure Bind
+   procedure Tk_Bind
      (Window: Tk_Widget; Sequence: Modifiers_Array; Script: Tcl_String;
       Append: Boolean := False) with
       Pre => Window /= Null_Widget and Sequence /= Empty_Modifiers_Array and
-      Length(Script) > 0,
+      Length(Source => Script) > 0,
       Test_Case => (Name => "Test_Bind2", Mode => Nominal);
 
 end Tk.Bind;
