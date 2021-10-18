@@ -122,6 +122,19 @@ package Tk.Frame is
    end record;
    -- ****
 
+   -- ****f* Frame/Frame.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Frame_Create_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Frame_Create_Options) return String;
+   -- ****
+
    -- ****f* Frame/Frame.Create_(function)
    -- FUNCTION
    -- Create a new Tk frame widget with the selected pathname and options
@@ -147,7 +160,13 @@ package Tk.Frame is
    function Create
      (Path_Name: Tk_Path_String; Options: Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Frame with
-      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Path_Name'Length > 0
+       and then
+         Long_Long_Integer
+           (Path_Name'Length + Options_To_String(Options => Options)'Length) <=
+         Long_Long_Integer(Natural'Last) - 7) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_Frame1", Mode => Nominal);
       -- ****
 
