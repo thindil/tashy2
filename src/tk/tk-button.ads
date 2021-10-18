@@ -116,6 +116,19 @@ package Tk.Button is
    end record;
    -- ****
 
+   -- ****f* Button/Button.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Button_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Button_Options) return String;
+   -- ****
+
    -- ****f* Button/Button.Create_(function)
    -- FUNCTION
    -- Create a new Tk button widget with the selected pathname and options
@@ -142,7 +155,13 @@ package Tk.Button is
    function Create
      (Path_Name: Tk_Path_String; Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Button with
-      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Path_Name'Length > 0
+       and then
+         Long_Long_Integer
+           (Path_Name'Length + Options_To_String(Options => Options)'Length) <=
+         Long_Long_Integer(Natural'Last) - 8) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_Button1", Mode => Nominal);
       -- ****
 
