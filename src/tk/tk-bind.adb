@@ -20,9 +20,9 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Tk.Bind is
 
    function Modifier_Type_Image(Modifier: Modifiers_Type) return String is
-      Image: String := To_Lower(Modifiers_Type'Image(Modifier));
+      Image: String := To_Lower(Item => Modifiers_Type'Image(Modifier));
    begin
-      Image(1) := To_Upper(Image(1));
+      Image(1) := To_Upper(Item => Image(1));
       if Image(Image'Last - 1) = '_' then
          Image(Image'Last - 1) := '-';
       end if;
@@ -31,14 +31,14 @@ package body Tk.Bind is
 
    function Key_Syms_Type_Image(Key: Key_Syms) return String is
       Image: String := To_Lower(Key_Syms'Image(Key));
-      Start_Index: Positive;
+      Start_Index: Positive := 1;
    begin
-      Image(1) := To_Upper(Image(1));
+      Image(1) := To_Upper(Item => Image(1));
       if Image(1 .. 3) = "Key" then
          Image(4) := '-';
       elsif Image(1 .. 3) = "Shi" then
          Image(6 .. 7) := "-K";
-         Image(10 .. 11) := '-' & To_Upper(Image(11));
+         Image(10 .. 11) := '-' & To_Upper(Item => Image(11));
       end if;
       case Key is
          when SHIFT_KEY_AE =>
@@ -48,20 +48,23 @@ package body Tk.Bind is
          when SHIFT_KEY_KANA_WO =>
             return "Key-kana_WO";
          when SHIFT_KEY_KANA_A .. SHIFT_KEY_KANA_N =>
-            Start_Index := Index(Image, "_", Backward);
-            return "Key-kana" & To_Upper(Image(Start_Index .. Image'Last));
+            Start_Index :=
+              Index(Source => Image, Pattern => "_", Going => Backward);
+            return
+              "Key-kana" & To_Upper(Item => Image(Start_Index .. Image'Last));
          when KEY_ARABIC_COMMA .. KEY_SERBIAN_DZE |
            KEY_CYRILLIC_YU .. KEY_CYRILLIC_HARDSIGN |
            KEY_GREEK_ALPHAACCENT .. KEY_GREEK_OMEGAACCENT |
            KEY_BACKSPACE .. KEY_PAUSE | KEY_ESCAPE | KEY_KANJI .. KEY_BEGIN =>
-            Image(5) := To_Upper(Image(5));
+            Image(5) := To_Upper(Item => Image(5));
          when SHIFT_KEY_SERBIAN_DJE .. SHIFT_KEY_SERBIAN_DZE |
            SHIFT_KEY_CYRILLIC_YU .. SHIFT_KEY_CYRILLIC_HARDSIGN |
            SHIFT_KEY_GREEK_ALPHA .. SHIFT_KEY_GREEK_OMEGA =>
-            Image(11) := To_Upper(Image(11));
-            Start_Index := Index(Image, "_", Backward);
+            Image(11) := To_Upper(Item => Image(11));
+            Start_Index :=
+              Index(Source => Image, Pattern => "_", Going => Backward);
             Image(Start_Index .. Image'Last) :=
-              To_Upper(Image(Start_Index .. Image'Last));
+              To_Upper(Item => Image(Start_Index .. Image'Last));
          when SHIFT_KEY_GREEK_ALPHAACCENT =>
             return "Key-Greek_ALPHAaccent";
          when SHIFT_KEY_GREEK_EPSILONACCENT =>
@@ -85,8 +88,9 @@ package body Tk.Bind is
          when SHIFT_KEY_GREEK_OMEGAACCENT =>
             return "Key-Greek_OMEGAaccent";
          when KEY_SCROLL_LOCK | KEY_SYS_REQ | KEY_MULTI_KEY =>
-            Start_Index := Index(Image, "_", Backward);
-            Image(5) := To_Upper(Image(5));
+            Start_Index :=
+              Index(Source => Image, Pattern => "_", Going => Backward);
+            Image(5) := To_Upper(Item => Image(5));
             Image(Start_Index + 1) := To_Upper(Image(Start_Index + 1));
          when others =>
             null;
