@@ -117,7 +117,6 @@ package Tk.TtkLabelFrame is
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Ttk_Label_Frame with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Create'Result /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabelFrame1", Mode => Nominal);
       -- ****
 
@@ -151,7 +150,6 @@ package Tk.TtkLabelFrame is
       Options: Ttk_Label_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
-      Post => Frame_Widget /= Null_Widget,
       Test_Case => (Name => "Test_Create_TtkLabelFrame2", Mode => Nominal);
    -- ****
 
