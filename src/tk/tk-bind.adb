@@ -30,7 +30,7 @@ package body Tk.Bind is
    end Modifier_Type_Image;
 
    function Key_Syms_Type_Image(Key: Key_Syms) return String is
-      Image: String := To_Lower(Key_Syms'Image(Key));
+      Image: String := To_Lower(Item => Key_Syms'Image(Key));
       Start_Index: Positive := 1;
    begin
       Image(1) := To_Upper(Item => Image(1));
@@ -91,7 +91,7 @@ package body Tk.Bind is
             Start_Index :=
               Index(Source => Image, Pattern => "_", Going => Backward);
             Image(5) := To_Upper(Item => Image(5));
-            Image(Start_Index + 1) := To_Upper(Image(Start_Index + 1));
+            Image(Start_Index + 1) := To_Upper(Item => Image(Start_Index + 1));
          when others =>
             null;
       end case;
@@ -108,8 +108,8 @@ package body Tk.Bind is
       Tcl_Eval
         (Tcl_Script =>
            "bind " & Tk_Path_Name(Widgt => Window) & " <" &
-           Modifier_Type_Image(Sequence) & "> " &
-           (if Append then "+" else "") & To_String(Script),
+           Modifier_Type_Image(Modifier => Sequence) & "> " &
+           (if Append then "+" else "") & To_String(Source => Script),
          Interpreter => Tk_Interp(Widgt => Window));
    end Tk_Bind;
 
@@ -118,17 +118,18 @@ package body Tk.Bind is
       Append: Boolean := False) is
       Modifier: Unbounded_String := Null_Unbounded_String;
    begin
+      Array_To_String_Loop :
       for I in Sequence'Range loop
          Modifier := Modifier & Modifier_Type_Image(Sequence(I));
          if I < Sequence'Last then
             Modifier := Modifier & "-";
          end if;
-      end loop;
+      end loop Array_To_String_Loop;
       Tcl_Eval
         (Tcl_Script =>
            "bind " & Tk_Path_Name(Widgt => Window) & " <" &
-           To_String(Modifier) & "> " & (if Append then "+" else "") &
-           To_String(Script),
+           To_String(Source => Modifier) & "> " &
+           (if Append then "+" else "") & To_String(Source => Script),
          Interpreter => Tk_Interp(Widgt => Window));
    end Tk_Bind;
 
