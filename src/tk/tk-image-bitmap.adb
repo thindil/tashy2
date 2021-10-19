@@ -17,18 +17,7 @@ with Tk.Widget;
 
 package body Tk.Image.Bitmap is
 
-   -- ****if* Bitmap/Bitmap.Options_To_String
-   -- FUNCTION
-   -- Convert Ada structure to Tcl command
-   -- PARAMETERS
-   -- Options - Ada Button_Options to convert
-   -- RESULT
-   -- String with Tcl command options
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
    function Options_To_String(Options: Bitmap_Options) return String is
-      -- ****
       use Ada.Strings.Unbounded;
       use Tk.Widget;
 

@@ -46,6 +46,19 @@ package Tk.Image.Bitmap is
    end record;
    -- ****
 
+   -- ****f* Bitmap/Bitmap.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Button_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Bitmap_Options) return String;
+   -- ****
+
    -- ****f* Bitmap/Bitmap.Create_(procedure)
    -- FUNCTION
    -- Create a new Tk image of bitmap type with the selected name and options
@@ -67,7 +80,12 @@ package Tk.Image.Bitmap is
    procedure Create
      (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre'Class => Bitmap_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Bitmap_Image'Length > 0
+       and then
+         Bitmap_Image'Length + Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 21) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create_Bitmap", Mode => Nominal);
       -- ****
 
