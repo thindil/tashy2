@@ -247,8 +247,9 @@ package body Tcl is
          return 0;
       end if;
       Check_Characters_Loop :
-      for Char of Result loop
-         if not Is_Digit(Item => Char) and then Char /= '-' then
+      for I in Result'Range loop
+         if not Is_Digit(Item => Result(I))
+           and then (I = Result'First and Result(I) /= '-') then
             return 0;
          end if;
       end loop Check_Characters_Loop;
