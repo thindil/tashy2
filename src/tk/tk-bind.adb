@@ -13,9 +13,9 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
-with Ada.Strings; use Ada.Strings;
-with Ada.Strings.Fixed; use Ada.Strings.Fixed;
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Ada.Strings;
+with Ada.Strings.Fixed;
+with Ada.Strings.Unbounded;
 
 package body Tk.Bind is
 
@@ -30,6 +30,9 @@ package body Tk.Bind is
    end Modifier_Type_Image;
 
    function Key_Syms_Type_Image(Key: Key_Syms) return String is
+      use Ada.Strings;
+      use Ada.Strings.Fixed;
+
       Image: String := To_Lower(Item => Key_Syms'Image(Key));
       Start_Index: Positive := 1;
    begin
@@ -116,11 +119,13 @@ package body Tk.Bind is
    procedure Tk_Bind
      (Window: Tk_Widget; Sequence: Modifiers_Array; Script: Tcl_String;
       Append: Boolean := False) is
+      use Ada.Strings.Unbounded;
+
       Modifier: Unbounded_String := Null_Unbounded_String;
    begin
       Array_To_String_Loop :
       for I in Sequence'Range loop
-         Modifier := Modifier & Modifier_Type_Image(Sequence(I));
+         Modifier := Modifier & Modifier_Type_Image(Modifier => Sequence(I));
          if I < Sequence'Last then
             Modifier := Modifier & "-";
          end if;
