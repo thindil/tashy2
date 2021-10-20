@@ -239,6 +239,7 @@ package body Tcl is
       use Ada.Characters.Handling;
 
       Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
+      Value: Integer := 0;
    begin
       if Result = "" then
          return 0;
@@ -247,13 +248,23 @@ package body Tcl is
          return 0;
       end if;
       Check_Characters_Loop :
-      for I in Result'Range loop
-         if not Is_Digit(Item => Result(I))
-           and then (I = Result'First and Result(I) /= '-') then
+      for I in reverse Result'Range loop
+         if I = Result'First and Result(I) = '-' then
+            Value := -(Value);
+         end if;
+         exit Check_Characters_Loop when Value < 0;
+         if Is_Digit(Item => Result(I)) then
+            if Value + (Integer'Value("" & Result(I)) * (10**(Result'Last - I))) >
+               Integer'Last then
+               return 0;
+            end if;
+            Value :=
+               Value + (Integer'Value("" & Result(I)) * (10**(Result'Last - I)));
+         else
             return 0;
          end if;
       end loop Check_Characters_Loop;
-      return Integer'Value(Result);
+      return Value;
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
