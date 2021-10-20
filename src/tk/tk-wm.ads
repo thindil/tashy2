@@ -516,14 +516,14 @@ package Tk.Wm is
            Tcl_Eval
              (Tcl_Script =>
                 "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
-                To_Lower(Window_Atrributes_Type'Image(Name)),
+                To_Lower(Item => Window_Atrributes_Type'Image(Name)),
               Interpreter => Tk_Interp(Widgt => Window))
              .Result)) with
       Pre => (Window /= Null_Widget and Name in TRANSPARENTCOLOR | TITLEPATH)
-      and then To_Lower(Window_Atrributes_Type'Image(Name))'Length <= 16
+      and then Window_Atrributes_Type'Image(Name)'Length <= 16
       and then
-        Long_Long_Integer(Tk_Path_Name(Widgt => Window)'Length) +
-          Long_Long_Integer(Window_Atrributes_Type'Image(Name)'Length) <
+        Tk_Path_Name(Widgt => Window)'Length +
+          Window_Atrributes_Type'Image(Name)'Length <
         Long_Long_Integer(Integer'Last - 32),
       Test_Case => (Name => "Test_Wm_Get_Attribute", Mode => Nominal);
    function Get_Attribute
@@ -1552,9 +1552,7 @@ package Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window))
         .Result) with
       Pre => (Window /= Null_Widget and Name'Length > 0)
-      and then
-        Long_Long_Integer(Tk_Path_Name(Widgt => Window)'Length) +
-          Long_Long_Integer(Name'Length) <
+      and then Tk_Path_Name(Widgt => Window)'Length + Name'Length <
         Long_Long_Integer(Integer'Last - 12),
       Test_Case => (Name => "Test_Wm_Protocol2", Mode => Nominal);
       -- ****
@@ -1744,8 +1742,8 @@ package Tk.Wm is
          Interpreter => Tk_Interp(Widgt => Window))) with
       Pre => (Window /= Null_Widget and Second_Window /= Null_Widget)
       and then
-        Long_Long_Integer(Tk_Path_Name(Widgt => Window)'Length) +
-          Long_Long_Integer(Tk_Path_Name(Widgt => Second_Window)'Length) <
+        Tk_Path_Name(Widgt => Window)'Length +
+          Tk_Path_Name(Widgt => Second_Window)'Length <
         Long_Long_Integer(Integer'Last - 22),
       Test_Case => (Name => "Test_Wm_Stack_Order2", Mode => Nominal);
       -- ****
