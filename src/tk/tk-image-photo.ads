@@ -203,6 +203,19 @@ package Tk.Image.Photo is
    Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
    -- ****
 
+   -- ****f* Photo/Photo.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Button_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Photo_Options) return String;
+   -- ****
+
    -- ****f* Photo/Photo.Create_(procedure)
    -- FUNCTION
    -- Create a new Tk image of photo type with the selected name and options
@@ -224,7 +237,12 @@ package Tk.Image.Photo is
    procedure Create
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre'Class => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Photo_Image'Length > 0
+       and then
+         Photo_Image'Length + Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 20) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create_Photo", Mode => Nominal);
       -- ****
 
