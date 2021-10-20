@@ -34,6 +34,7 @@ package Tk.Labelframe is
    subtype Tk_Label_Frame is Tk_Widget;
    -- ****
 
+   --## rule off TYPE_INITIAL_VALUES
    -- ****s* Labelframe/Labelframe.Label_Frame_Options
    -- FUNCTION
    -- Data structure for all available options for the Tk labelframe which can
@@ -70,6 +71,7 @@ package Tk.Labelframe is
       Text: Tcl_String := Null_Tcl_String;
    end record;
    -- ****
+   --## rule on TYPE_INITIAL_VALUES
 
    -- ****f* Labelframe/Labelframe.Configure
    -- FUNCTION
@@ -93,6 +95,7 @@ package Tk.Labelframe is
       Test_Case => (Name => "Test_Configure_Label_Frame", Mode => Nominal);
       -- ****
 
+   --## rule off TYPE_INITIAL_VALUES
    -- ****s* Labelframe/Labelframe.Frame_Create_Options
    -- FUNCTION
    -- Data structure for additional frame widget options which can be set
@@ -112,6 +115,7 @@ package Tk.Labelframe is
       Visual: Tcl_String;
    end record;
    -- ****
+   --## rule on TYPE_INITIAL_VALUES
 
    -- ****f* Labelframe/Labelframe.Create_(function)
    -- FUNCTION
