@@ -17,6 +17,7 @@ with Tk.Widget; use Tk.Widget;
 
 package Tk.Bind is
 
+   --## rule off REDUCEABLE_SCOPE
    --## rule off NAMING_CONVENTION
    type Modifiers_Type is
      (CONTROL, ALT, SHIFT, LOCK, EXTENDED, BUTTON_1, BUTTON_2, BUTTON_3,
@@ -274,5 +275,6 @@ package Tk.Bind is
       Pre => Window /= Null_Widget and Sequence /= Empty_Modifiers_Array and
       Length(Source => Script) > 0,
       Test_Case => (Name => "Test_Bind2", Mode => Nominal);
+   --## rule on REDUCEABLE_SCOPE
 
 end Tk.Bind;
