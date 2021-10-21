@@ -250,19 +250,20 @@ package body Tcl is
       Check_Characters_Loop :
       for I in reverse Result'Range loop
          if I = Result'First and Result(I) = '-' then
-            Value := -(Value);
+            Value := -Value;
          end if;
          exit Check_Characters_Loop when Value < 0;
-         if Is_Digit(Item => Result(I)) then
-            if Value + (Integer'Value("" & Result(I)) * (10**(Result'Last - I))) >
-               Integer'Last then
-               return 0;
-            end if;
-            Value :=
-               Value + (Integer'Value("" & Result(I)) * (10**(Result'Last - I)));
-         else
+         if not Is_Digit(Item => Result(I)) then
             return 0;
          end if;
+         --## rule off SIMPLIFIABLE_EXPRESSIONS
+         if Value + (Integer'Value("" & Result(I)) * (10**(Result'Last - I))) >
+            Integer'Last then
+            return 0;
+         end if;
+         Value :=
+            Value + (Integer'Value("" & Result(I)) * (10**(Result'Last - I)));
+         --## rule on SIMPLIFIABLE_EXPRESSIONS
       end loop Check_Characters_Loop;
       return Value;
    end Tcl_Get_Result;
