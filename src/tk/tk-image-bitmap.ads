@@ -111,7 +111,9 @@ package Tk.Image.Bitmap is
    function Create
      (Options: Bitmap_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Image with
-      Pre'Class => Interpreter /= Null_Interpreter,
+      Pre'Class => Options_To_String(Options => Options)'Length <=
+      Natural'Last - 19 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create2_Bitmap", Mode => Nominal);
       -- ****
 
