@@ -230,7 +230,7 @@ package body Tk.Wm is
       if Tcl_Eval
           (Tcl_Script =>
              "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
-             To_Lower(Window_Atrributes_Type'Image(Name)),
+             To_Lower(Item => Window_Atrributes_Type'Image(Name)),
            Interpreter => Tk_Interp(Widgt => Window))
           .Result =
         "1" then
