@@ -268,7 +268,9 @@ package Tk.Image.Photo is
    function Create
      (Options: Photo_Options; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Image with
-      Pre'Class => Interpreter /= Null_Interpreter,
+      Pre'Class => Options_To_String(Options => Options)'Length <=
+      Natural'Last - 18 and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Create2_Photo", Mode => Nominal);
       -- ****
 
