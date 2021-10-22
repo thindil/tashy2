@@ -20,16 +20,18 @@ package body Tcl.Strings is
      (Source: String; Evaluate: Boolean := False) return Tcl_String is
       New_String: Tcl_String := Null_Tcl_String;
       Element_Index: Natural := 1;
-      procedure Truncate_New_String is
+      procedure Truncate_New_String(Source_String: in out Tcl_String) with
+         Post => Length(Source => Source_String) <= Natural'Last - 2
+      is
       begin
-         if Length(Source => New_String) = Natural'Last then
+         if Length(Source => Source_String) = Natural'Last then
             Delete
-              (Source => New_String, From => Natural'Last,
+              (Source => Source_String, From => Natural'Last,
                Through => Natural'Last);
          end if;
-         if Length(Source => New_String) = Natural'Last - 1 then
+         if Length(Source => Source_String) = Natural'Last - 1 then
             Delete
-              (Source => New_String, From => Natural'Last - 1,
+              (Source => Source_String, From => Natural'Last - 1,
                Through => Natural'Last - 1);
          end if;
       end Truncate_New_String;
@@ -65,11 +67,11 @@ package body Tcl.Strings is
             exit Evaluated_String_Loop when Element_Index >
               Length(Source => New_String);
          end loop Evaluated_String_Loop;
-         Truncate_New_String;
+         Truncate_New_String(Source_String => New_String);
          Insert(Source => New_String, Before => 1, New_Item => """");
          Append(Source => New_String, New_Item => """");
       else
-         Truncate_New_String;
+         Truncate_New_String(Source_String => New_String);
          Insert(Source => New_String, Before => 1, New_Item => "{");
          Append(Source => New_String, New_Item => "}");
       end if;
