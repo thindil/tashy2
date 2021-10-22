@@ -12,8 +12,10 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Command_Line; use Ada.Command_Line;
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
+with Ada.Text_IO;
 with Tcl; use Tcl;
 with Tcl.Strings; use Tcl.Strings;
 with Tk; use Tk;
@@ -38,13 +40,21 @@ is
 
 begin
    -- Initialize Tcl interpreter
-   Tcl_Init(Interpreter => Interpreter);
+   if not Tcl_Init(Interpreter => Interpreter) then
+      Ada.Text_IO.Put_Line("Can't initialize Tcl interpreter");
+      Set_Exit_Status(Failure);
+      return;
+   end if;
 
    -- Set the current Tcl interpreter as default
    Set_Interpreter(Interpreter => Interpreter);
 
    -- Initialize the Tk library
-   Tk_Init;
+   if Tk_Init(Interp => Interpreter) = TCL_ERROR then
+      Ada.Text_IO.Put_Line("Can't initialize Tk library");
+      Set_Exit_Status(Failure);
+      return;
+   end if;
 
    -- Get the main window of the program
    Main_Window := Get_Main_Window;
@@ -52,11 +62,8 @@ begin
    -- Set the size of the main window
    Set_Geometry
      (Window => Main_Window, Width => 600, Height => 400,
-      X =>
-        Extended_Natural(Virtual_Root_Width(Window => Main_Window) - 600) / 2,
-      Y =>
-        Extended_Natural(Virtual_Root_Height(Window => Main_Window) - 400) /
-        2);
+      X => (Virtual_Root_Width(Window => Main_Window) - 600) / 2,
+      Y => (Virtual_Root_Height(Window => Main_Window) - 400) / 2);
 
    -- Set the title for the main window
    Set_Title
