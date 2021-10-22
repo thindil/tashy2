@@ -19,7 +19,7 @@ with Ada.Environment_Variables; use Ada.Environment_Variables;
 
 --  begin read only
 --  end read only
-package body Tk.TopLevel.Toplevel_Create_Options_Test_Data
+package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
   .Toplevel_Create_Options_Tests is
 
 --  begin read only
@@ -236,5 +236,5 @@ begin
    null;
 --  begin read only
 --  end read only
-end Tk.TopLevel.Toplevel_Create_Options_Test_Data
+end Tk.TopLevel.TopLevel_Create_Options_Test_Data
   .Toplevel_Create_Options_Tests;

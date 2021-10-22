@@ -22,7 +22,7 @@ package Tk.Wm.Test_Data.Tests is
    procedure Test_Set_Attributes_58cf2d_d28502(Gnattest_T: in out Test);
    --  tk-wm.ads:488:4:Set_Attributes:Test_Wm_Set_Attributes
 
-   procedure Test_Get_Attribute_e4067c_13e29a(Gnattest_T: in out Test);
+   procedure Test_Get_Attribute_e4067c_787a8f(Gnattest_T: in out Test);
    --  tk-wm.ads:512:4:Get_Attribute:Test_Wm_Get_Attribute
 
    procedure Test_Get_Attribute_97698a_5dc191(Gnattest_T: in out Test);
@@ -160,50 +160,50 @@ package Tk.Wm.Test_Data.Tests is
    procedure Test_Get_Protocols_dcaf07_4c2c40(Gnattest_T: in out Test);
    --  tk-wm.ads:1522:4:Get_Protocols:Test_Wm_Protocol
 
-   procedure Test_Get_Protocol_aa44e2_686681(Gnattest_T: in out Test);
+   procedure Test_Get_Protocol_aa44e2_c76ad7(Gnattest_T: in out Test);
    --  tk-wm.ads:1548:4:Get_Protocol:Test_Wm_Protocol2
 
    procedure Test_Set_Protocol_cd4a1b_4c09c4(Gnattest_T: in out Test);
-   --  tk-wm.ads:1582:4:Set_Protocol:Test_Wm_Protocol3
+   --  tk-wm.ads:1580:4:Set_Protocol:Test_Wm_Protocol3
 
    procedure Test_Get_Resizable_0f6614_2b8386(Gnattest_T: in out Test);
-   --  tk-wm.ads:1609:4:Get_Resizable:Test_Wm_Resizable
+   --  tk-wm.ads:1607:4:Get_Resizable:Test_Wm_Resizable
 
    procedure Test_Set_Resizable_0b9f82_b49918(Gnattest_T: in out Test);
-   --  tk-wm.ads:1632:4:Set_Resizable:Test_Wm_Resizable2
+   --  tk-wm.ads:1630:4:Set_Resizable:Test_Wm_Resizable2
 
    procedure Test_Get_Size_From_5c14ae_7bb223(Gnattest_T: in out Test);
-   --  tk-wm.ads:1656:4:Get_Size_From:Test_Wm_Size_From
+   --  tk-wm.ads:1654:4:Get_Size_From:Test_Wm_Size_From
 
    procedure Test_Set_Size_From_e4e6f1_bc3e6a(Gnattest_T: in out Test);
-   --  tk-wm.ads:1679:4:Set_Size_From:Test_Wm_Size_From2
+   --  tk-wm.ads:1677:4:Set_Size_From:Test_Wm_Size_From2
 
    procedure Test_Get_Stack_Order_ad8dde_ada760(Gnattest_T: in out Test);
-   --  tk-wm.ads:1705:4:Get_Stack_Order:Test_Wm_Stack_Order
+   --  tk-wm.ads:1703:4:Get_Stack_Order:Test_Wm_Stack_Order
 
-   procedure Test_Get_Stack_Order_Above_707d59_05815a(Gnattest_T: in out Test);
-   --  tk-wm.ads:1736:4:Get_Stack_Order_Above:Test_Wm_Stack_Order2
+   procedure Test_Get_Stack_Order_Above_707d59_07f28f(Gnattest_T: in out Test);
+   --  tk-wm.ads:1734:4:Get_Stack_Order_Above:Test_Wm_Stack_Order2
 
    procedure Test_Get_State_d36f93_369ab4(Gnattest_T: in out Test);
-   --  tk-wm.ads:1770:4:Get_State:Test_Wm_State
+   --  tk-wm.ads:1768:4:Get_State:Test_Wm_State
 
    procedure Test_Set_State_5b3aeb_b6b816(Gnattest_T: in out Test);
-   --  tk-wm.ads:1792:4:Set_State:Test_Wm_State2
+   --  tk-wm.ads:1790:4:Set_State:Test_Wm_State2
 
    procedure Test_Get_Title_0b831c_790475(Gnattest_T: in out Test);
-   --  tk-wm.ads:1815:4:Get_Title:Test_Wm_Title
+   --  tk-wm.ads:1813:4:Get_Title:Test_Wm_Title
 
    procedure Test_Set_Title_733354_35ca12(Gnattest_T: in out Test);
-   --  tk-wm.ads:1843:4:Set_Title:Test_Wm_Title2
+   --  tk-wm.ads:1841:4:Set_Title:Test_Wm_Title2
 
    procedure Test_Get_Transient_911661_b820a7(Gnattest_T: in out Test);
-   --  tk-wm.ads:1866:4:Get_Transient:Test_Wm_Transient
+   --  tk-wm.ads:1864:4:Get_Transient:Test_Wm_Transient
 
    procedure Test_Set_Transient_522d97_9ec765(Gnattest_T: in out Test);
-   --  tk-wm.ads:1887:4:Set_Transient:Test_Wm_Transient2
+   --  tk-wm.ads:1885:4:Set_Transient:Test_Wm_Transient2
 
    procedure Test_Withdraw_9bd119_51d547(Gnattest_T: in out Test);
-   --  tk-wm.ads:1905:4:Withdraw:Test_Wm_Withdraw
+   --  tk-wm.ads:1903:4:Withdraw:Test_Wm_Withdraw
 
 end Tk.Wm.Test_Data.Tests;
 --  end read only

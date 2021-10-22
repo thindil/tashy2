@@ -98,7 +98,7 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Create_32e405_465c74
+   function Wrap_Test_Create_32e405_76663d
      (Path_Name: Tk_Path_String; Options: Ttk_Label_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Ttk_Label_Frame is
@@ -113,12 +113,12 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
                "req_sloc(tk-ttklabelframe.ads:0):Test_Create_TtkLabelFrame1 test requirement violated");
       end;
       declare
-         Test_Create_32e405_465c74_Result: constant Ttk_Label_Frame :=
+         Test_Create_32e405_76663d_Result: constant Ttk_Label_Frame :=
            GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Create
              (Path_Name, Options, Interpreter);
       begin
          begin
-            pragma Assert(Test_Create_32e405_465c74_Result /= Null_Widget);
+            pragma Assert(True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -126,15 +126,15 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
                  (False,
                   "ens_sloc(tk-ttklabelframe.ads:0:):Test_Create_TtkLabelFrame1 test commitment violated");
          end;
-         return Test_Create_32e405_465c74_Result;
+         return Test_Create_32e405_76663d_Result;
       end;
-   end Wrap_Test_Create_32e405_465c74;
+   end Wrap_Test_Create_32e405_76663d;
 --  end read only
 
 --  begin read only
    procedure Test_1_Create_test_create_ttklabelframe1
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   procedure Test_Create_32e405_465c74
+   procedure Test_Create_32e405_76663d
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options) renames
      Test_1_Create_test_create_ttklabelframe1;
 --  id:2.2/32e405543423d7b8/Create/1/0/test_create_ttklabelframe1/
@@ -144,7 +144,7 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
         (Path_Name: Tk_Path_String; Options: Ttk_Label_Frame_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Ttk_Label_Frame renames
-        Wrap_Test_Create_32e405_465c74;
+        Wrap_Test_Create_32e405_76663d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -167,7 +167,7 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Create_ebbdc1_d1ec6f
+   procedure Wrap_Test_Create_ebbdc1_92306c
      (Frame_Widget: out Ttk_Label_Frame; Path_Name: Tk_Path_String;
       Options: Ttk_Label_Frame_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
@@ -184,7 +184,7 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
       GNATtest_Generated.GNATtest_Standard.Tk.TtkLabelFrame.Create
         (Frame_Widget, Path_Name, Options, Interpreter);
       begin
-         pragma Assert(Frame_Widget /= Null_Widget);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -192,13 +192,13 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
               (False,
                "ens_sloc(tk-ttklabelframe.ads:0:):Test_Create_TtkLabelFrame2 test commitment violated");
       end;
-   end Wrap_Test_Create_ebbdc1_d1ec6f;
+   end Wrap_Test_Create_ebbdc1_92306c;
 --  end read only
 
 --  begin read only
    procedure Test_2_Create_test_create_ttklabelframe2
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options);
-   procedure Test_Create_ebbdc1_d1ec6f
+   procedure Test_Create_ebbdc1_92306c
      (Gnattest_T: in out Test_Ttk_Label_Frame_Options) renames
      Test_2_Create_test_create_ttklabelframe2;
 --  id:2.2/ebbdc1934f0fa33d/Create/0/0/test_create_ttklabelframe2/
@@ -208,7 +208,7 @@ package body Tk.TtkLabelFrame.Ttk_Label_Frame_Options_Test_Data
         (Frame_Widget: out Ttk_Label_Frame; Path_Name: Tk_Path_String;
          Options: Ttk_Label_Frame_Options;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Create_ebbdc1_d1ec6f;
+        Wrap_Test_Create_ebbdc1_92306c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

@@ -4,7 +4,7 @@
 --  begin read only
 with GNATtest_Generated;
 
-package Tk.TopLevel.Toplevel_Options_Test_Data.Toplevel_Options_Tests is
+package Tk.TopLevel.TopLevel_Options_Test_Data.Toplevel_Options_Tests is
 
    type Test_Toplevel_Options is new GNATtest_Generated.GNATtest_Standard.Tk
      .TopLevel
@@ -16,5 +16,5 @@ package Tk.TopLevel.Toplevel_Options_Test_Data.Toplevel_Options_Tests is
      (Gnattest_T: in out Test_Toplevel_Options);
    --  tk-toplevel.ads:84:4:Configure:Test_Configure_TopLevel
 
-end Tk.TopLevel.Toplevel_Options_Test_Data.Toplevel_Options_Tests;
+end Tk.TopLevel.TopLevel_Options_Test_Data.Toplevel_Options_Tests;
 --  end read only
