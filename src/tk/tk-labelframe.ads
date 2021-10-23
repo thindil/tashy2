@@ -117,6 +117,20 @@ package Tk.Labelframe is
    -- ****
    --## rule on TYPE_INITIAL_VALUES
 
+   -- ****f* Labelframe/Labelframe.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Label_Frame_Create_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String
+     (Options: Label_Frame_Create_Options) return String;
+   -- ****
+
    -- ****f* Labelframe/Labelframe.Create_(function)
    -- FUNCTION
    -- Create a new Tk labelframe widget with the selected pathname and options
@@ -143,7 +157,12 @@ package Tk.Labelframe is
      (Path_Name: Tk_Path_String; Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tk_Label_Frame with
-      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Path_Name'Length > 0
+       and then
+         Path_Name'Length + Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 12) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_Label_Frame1", Mode => Nominal);
       -- ****
 
@@ -177,7 +196,12 @@ package Tk.Labelframe is
      (Frame_Widget: out Tk_Label_Frame; Path_Name: Tk_Path_String;
       Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Path_Name'Length > 0
+       and then
+         Path_Name'Length + Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 12) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_Label_Frame2", Mode => Nominal);
    -- ****
 
