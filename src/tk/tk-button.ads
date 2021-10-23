@@ -196,7 +196,12 @@ package Tk.Button is
      (Button_Widget: out Tk_Button; Path_Name: Tk_Path_String;
       Options: Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Path_Name'Length > 0
+       and then
+           Path_Name'Length + Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 8) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_Button2", Mode => Nominal);
       -- ****
 
