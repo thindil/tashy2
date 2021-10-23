@@ -104,6 +104,8 @@ version: 3.0
    name: createtests
    execute:
       - gnattest -P tashy2.gpr
+      - gnatpp -P tests/prettytests.gpr
+      - tclsh scripts/tests.tcl
    description: Regenerate unit tests
 - command:
    name: tests
