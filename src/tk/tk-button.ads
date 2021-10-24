@@ -126,7 +126,8 @@ package Tk.Button is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   function Options_To_String(Options: Button_Options) return String;
+   function Options_To_String(Options: Button_Options) return String with
+      Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
    -- ****
 
    -- ****f* Button/Button.Create_(function)
@@ -158,7 +159,7 @@ package Tk.Button is
       Pre'Class =>
       (Path_Name'Length > 0
        and then
-           Path_Name'Length + Options_To_String(Options => Options)'Length <=
+         Path_Name'Length + Options_To_String(Options => Options)'Length <=
          Long_Long_Integer(Natural'Last) - 8) and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_Button1", Mode => Nominal);
@@ -199,7 +200,7 @@ package Tk.Button is
       Pre'Class =>
       (Path_Name'Length > 0
        and then
-           Path_Name'Length + Options_To_String(Options => Options)'Length <=
+         Path_Name'Length + Options_To_String(Options => Options)'Length <=
          Long_Long_Integer(Natural'Last) - 8) and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_Button2", Mode => Nominal);
