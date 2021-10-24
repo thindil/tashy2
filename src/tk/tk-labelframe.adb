@@ -92,10 +92,12 @@ package body Tk.Labelframe is
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
+   --## rule off IMPROPER_INITIALIZATION
    procedure Create
      (Frame_Widget: out Tk_Label_Frame; Path_Name: Tk_Path_String;
       Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   --## rule on IMPROPER_INITIALIZATION
    begin
       Frame_Widget :=
         Create
