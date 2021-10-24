@@ -56,7 +56,8 @@ package Tk.Image.Bitmap is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   function Options_To_String(Options: Bitmap_Options) return String;
+   function Options_To_String(Options: Bitmap_Options) return String with
+      Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
    -- ****
 
    -- ****f* Bitmap/Bitmap.Create_(procedure)

@@ -31,6 +31,52 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
+   function Wrap_Test_Options_To_String_5fc431_498c45
+     (Options: Bitmap_Options) return String is
+   begin
+      declare
+         Test_Options_To_String_5fc431_498c45_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.Bitmap
+             .Options_To_String
+             (Options);
+      begin
+         return Test_Options_To_String_5fc431_498c45_Result;
+      end;
+   end Wrap_Test_Options_To_String_5fc431_498c45;
+--  end read only
+
+--  begin read only
+   procedure Test_Options_To_String_test_options_to_string
+     (Gnattest_T: in out Test_Bitmap_Options);
+   procedure Test_Options_To_String_5fc431_498c45
+     (Gnattest_T: in out Test_Bitmap_Options) renames
+     Test_Options_To_String_test_options_to_string;
+--  id:2.2/5fc431b6a7fd2e99/Options_To_String/1/0/test_options_to_string/
+   procedure Test_Options_To_String_test_options_to_string
+     (Gnattest_T: in out Test_Bitmap_Options) is
+      function Options_To_String(Options: Bitmap_Options) return String renames
+        Wrap_Test_Options_To_String_5fc431_498c45;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (Options_To_String(Bitmap_Options'(others => <>)) = "",
+         "Failed to convert default Bitmap_Options to Tcl command.");
+      Assert
+        (Options_To_String
+           (Bitmap_Options'
+              (Background => To_Tcl_String("black"), others => <>)) =
+         " -background black",
+         "Failed to convert Bitmap_Options to Tcl command.");
+
+--  begin read only
+   end Test_Options_To_String_test_options_to_string;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Create_22037c_81543e
      (Bitmap_Image: Tk_Image; Options: Bitmap_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
