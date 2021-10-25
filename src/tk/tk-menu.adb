@@ -19,18 +19,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.Menu is
 
-   -- ****if* Menu/Menu.Options_To_String
-   -- FUNCTION
-   -- Convert Ada structure to Tcl command
-   -- PARAMETERS
-   -- Options - Ada Menu_Options to convert
-   -- RESULT
-   -- String with Tcl command options
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
    function Options_To_String(Options: Menu_Options) return String is
-      -- ****
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image

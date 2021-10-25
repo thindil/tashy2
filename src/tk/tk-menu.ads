@@ -255,6 +255,20 @@ package Tk.Menu is
    Empty_Menu_Item_Index: constant Menu_Item_Indexes := NONE;
    -- ****
 
+   -- ****f* Menu/Menu.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Menu_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Menu_Options) return String with
+      Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
+   -- ****
+
    -- ****f* Menu/Menu.Create_(function)
    -- FUNCTION
    -- Create a new Tk menu widget with the selected pathname and options
