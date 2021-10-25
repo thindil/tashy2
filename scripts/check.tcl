@@ -30,3 +30,5 @@ exec gprclean -P tashy2.gpr -XLIBRARY_TYPE=static >@stdout
 file delete [file join $rootdir adacontrol.log]
 cd [file join obj static]
 checkcode [file join $rootdir src]
+cd $rootdir
+exec gprclean -P tashy2.gpr -XLIBRARY_TYPE=static >@stdout
