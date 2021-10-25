@@ -12,37 +12,37 @@ package Tk.Image.Photo.Test_Data.Tests is
    null record;
 
    procedure Test_Blank_2c1442_30601f(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:293:4:Blank:Tests_Blank_Photo
+   --  tk-image-photo.ads:294:4:Blank:Tests_Blank_Photo
 
    procedure Test_Get_Option_e3d52c_8f9fe9(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:348:4:Get_Option:Tests_Get_Option_Photo
+   --  tk-image-photo.ads:349:4:Get_Option:Tests_Get_Option_Photo
 
    procedure Test_Copy_0a35cf_21de2d(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:428:4:Copy:Tests_Copy_Photo
+   --  tk-image-photo.ads:429:4:Copy:Tests_Copy_Photo
 
    procedure Test_Get_Data_433b25_8ba84f(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:468:4:Get_Data:Tests_Get_Data_Photo
+   --  tk-image-photo.ads:469:4:Get_Data:Tests_Get_Data_Photo
 
    procedure Test_Get_Color_6fd571_5f6b3a(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:498:4:Get_Color:Tests_Get_Color_Photo
+   --  tk-image-photo.ads:499:4:Get_Color:Tests_Get_Color_Photo
 
    procedure Test_Put_Data_cd9739_ee5695(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:526:4:Put_Data:Tests_Put_Data_Photo
+   --  tk-image-photo.ads:527:4:Put_Data:Tests_Put_Data_Photo
 
    procedure Test_Read_95a1fe_24b510(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:565:4:Read:Tests_Read_Photo
+   --  tk-image-photo.ads:566:4:Read:Tests_Read_Photo
 
    procedure Test_Redither_68a59f_4f3041(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:592:4:Redither:Tests_Redither_Photo
+   --  tk-image-photo.ads:593:4:Redither:Tests_Redither_Photo
 
    procedure Test_Get_Transparency_6cdf5e_ffe137(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:624:4:Get_Transparency:Tests_Get_Transparency_Photo
+   --  tk-image-photo.ads:625:4:Get_Transparency:Tests_Get_Transparency_Photo
 
    procedure Test_Set_Transparency_76d5d1_e76ade(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:656:4:Set_Transparency:Tests_Set_Transparency_Photo
+   --  tk-image-photo.ads:657:4:Set_Transparency:Tests_Set_Transparency_Photo
 
    procedure Test_Write_a9d740_96f97b(Gnattest_T: in out Test);
-   --  tk-image-photo.ads:691:4:Write:Tests_Write_Photo
+   --  tk-image-photo.ads:692:4:Write:Tests_Write_Photo
 
 end Tk.Image.Photo.Test_Data.Tests;
 --  end read only

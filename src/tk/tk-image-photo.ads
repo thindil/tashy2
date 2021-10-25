@@ -213,7 +213,8 @@ package Tk.Image.Photo is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   function Options_To_String(Options: Photo_Options) return String;
+   function Options_To_String(Options: Photo_Options) return String with
+      Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
    -- ****
 
    -- ****f* Photo/Photo.Create_(procedure)

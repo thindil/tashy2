@@ -32,6 +32,50 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
 --  begin read only
 --  end read only
 --  begin read only
+   function Wrap_Test_Options_To_String_5fc431_498c45
+     (Options: Photo_Options) return String is
+   begin
+      declare
+         Test_Options_To_String_5fc431_498c45_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo
+             .Options_To_String
+             (Options);
+      begin
+         return Test_Options_To_String_5fc431_498c45_Result;
+      end;
+   end Wrap_Test_Options_To_String_5fc431_498c45;
+--  end read only
+
+--  begin read only
+   procedure Test_Options_To_String_test_options_to_string
+     (Gnattest_T: in out Test_Photo_Options);
+   procedure Test_Options_To_String_5fc431_498c45
+     (Gnattest_T: in out Test_Photo_Options) renames
+     Test_Options_To_String_test_options_to_string;
+--  id:2.2/5fc431b6a7fd2e99/Options_To_String/1/0/test_options_to_string/
+   procedure Test_Options_To_String_test_options_to_string
+     (Gnattest_T: in out Test_Photo_Options) is
+      function Options_To_String(Options: Photo_Options) return String renames
+        Wrap_Test_Options_To_String_5fc431_498c45;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (Options_To_String(Photo_Options'(others => <>)) = "",
+         "Failed to convert default Photo_Options to Tcl command.");
+      Assert
+        (Options_To_String(Photo_Options'(Height => 10, others => <>)) =
+         " -height 10",
+         "Failed to convert Photo_Options to Tcl command.");
+
+--  begin read only
+   end Test_Options_To_String_test_options_to_string;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Create_22037c_8377bb
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
