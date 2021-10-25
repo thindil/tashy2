@@ -128,7 +128,8 @@ package Tk.Labelframe is
    -- 8.6.0 - Added
    -- SOURCE
    function Options_To_String
-     (Options: Label_Frame_Create_Options) return String;
+     (Options: Label_Frame_Create_Options) return String with
+      Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
    -- ****
 
    -- ****f* Labelframe/Labelframe.Create_(function)

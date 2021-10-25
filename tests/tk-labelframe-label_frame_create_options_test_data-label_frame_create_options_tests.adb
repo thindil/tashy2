@@ -32,6 +32,51 @@ package body Tk.Labelframe.Label_Frame_Create_Options_Test_Data
 --  begin read only
 --  end read only
 --  begin read only
+   function Wrap_Test_Options_To_String_0a74e5_498c45
+     (Options: Label_Frame_Create_Options) return String is
+   begin
+      declare
+         Test_Options_To_String_0a74e5_498c45_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Labelframe.Options_To_String
+             (Options);
+      begin
+         return Test_Options_To_String_0a74e5_498c45_Result;
+      end;
+   end Wrap_Test_Options_To_String_0a74e5_498c45;
+--  end read only
+
+--  begin read only
+   procedure Test_Options_To_String_test_options_to_string
+     (Gnattest_T: in out Test_Label_Frame_Create_Options);
+   procedure Test_Options_To_String_0a74e5_498c45
+     (Gnattest_T: in out Test_Label_Frame_Create_Options) renames
+     Test_Options_To_String_test_options_to_string;
+--  id:2.2/0a74e5bf046dd82b/Options_To_String/1/0/test_options_to_string/
+   procedure Test_Options_To_String_test_options_to_string
+     (Gnattest_T: in out Test_Label_Frame_Create_Options) is
+      function Options_To_String
+        (Options: Label_Frame_Create_Options) return String renames
+        Wrap_Test_Options_To_String_0a74e5_498c45;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (Options_To_String(Label_Frame_Create_Options'(others => <>)) = "",
+         "Failed to convert default Label_Frame_Create_Options to Tcl command.");
+      Assert
+        (Options_To_String
+           (Label_Frame_Create_Options'(Relief => RAISED, others => <>)) =
+         " -relief raised",
+         "Failed to convert Label_Frame_Create_Options to Tcl command.");
+
+--  begin read only
+   end Test_Options_To_String_test_options_to_string;
+--  end read only
+
+--  begin read only
    function Wrap_Test_Create_32e405_0563f1
      (Path_Name: Tk_Path_String; Options: Label_Frame_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Label_Frame is

@@ -16,17 +16,21 @@ is
      .Test_Label_Frame_Create_Options with
    null record;
 
+   procedure Test_Options_To_String_0a74e5_498c45
+     (Gnattest_T: in out Test_Label_Frame_Create_Options);
+   --  tk-labelframe.ads:130:4:Options_To_String:Test_Options_To_String
+
    procedure Test_Create_32e405_0563f1
      (Gnattest_T: in out Test_Label_Frame_Create_Options);
-   --  tk-labelframe.ads:142:4:Create:Test_Create_Label_Frame1
+   --  tk-labelframe.ads:157:4:Create:Test_Create_Label_Frame1
 
    procedure Test_Create_ebbdc1_776696
      (Gnattest_T: in out Test_Label_Frame_Create_Options);
-   --  tk-labelframe.ads:176:4:Create:Test_Create_Label_Frame2
+   --  tk-labelframe.ads:196:4:Create:Test_Create_Label_Frame2
 
    procedure Test_Get_Options_ded36e_6d2dd5
      (Gnattest_T: in out Test_Label_Frame_Create_Options);
-   --  tk-labelframe.ads:200:4:Get_Options:Test_Get_Options_Label_Frame
+   --  tk-labelframe.ads:225:4:Get_Options:Test_Get_Options_Label_Frame
 
 end Tk.Labelframe.Label_Frame_Create_Options_Test_Data
   .Label_Frame_Create_Options_Tests;
