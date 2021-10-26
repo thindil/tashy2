@@ -32,6 +32,53 @@ package body Tk.TopLevel.TopLevel_Create_Options_Test_Data
 --  begin read only
 --  end read only
 --  begin read only
+   function Wrap_Test_Create_Options_To_String_99b390_8e6b01
+     (Options: Toplevel_Create_Options) return String is
+   begin
+      declare
+         Test_Create_Options_To_String_99b390_8e6b01_Result: constant String :=
+           GNATtest_Generated.GNATtest_Standard.Tk.TopLevel
+             .Create_Options_To_String
+             (Options);
+      begin
+         return Test_Create_Options_To_String_99b390_8e6b01_Result;
+      end;
+   end Wrap_Test_Create_Options_To_String_99b390_8e6b01;
+--  end read only
+
+--  begin read only
+   procedure Test_Create_Options_To_String_test_create_options_to_string
+     (Gnattest_T: in out Test_Toplevel_Create_Options);
+   procedure Test_Create_Options_To_String_99b390_8e6b01
+     (Gnattest_T: in out Test_Toplevel_Create_Options) renames
+     Test_Create_Options_To_String_test_create_options_to_string;
+--  id:2.2/99b390994ccf28e6/Create_Options_To_String/1/0/test_create_options_to_string/
+   procedure Test_Create_Options_To_String_test_create_options_to_string
+     (Gnattest_T: in out Test_Toplevel_Create_Options) is
+      function Create_Options_To_String
+        (Options: Toplevel_Create_Options) return String renames
+        Wrap_Test_Create_Options_To_String_99b390_8e6b01;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (Create_Options_To_String(Toplevel_Create_Options'(others => <>)) = "",
+         "Failed to convert default Toplevel_Create_Options to Tcl command.");
+      Assert
+        (Create_Options_To_String
+           (Toplevel_Create_Options'
+              (Screen => To_Tcl_String("0:0"), others => <>)) =
+         " -screen 0:0",
+         "Failed to convert Toplevel_Create_Options to Tcl command.");
+
+--  begin read only
+   end Test_Create_Options_To_String_test_create_options_to_string;
+--  end read only
+
+--  begin read only
    function Wrap_Test_Create_32e405_9db90c
      (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
