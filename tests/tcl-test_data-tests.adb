@@ -479,6 +479,14 @@ package body Tcl.Test_Data.Tests is
 
       Tcl_Set_Result("22");
       Assert(Tcl_Get_Result = 22, "Failed to get Tcl result as Integer");
+      Tcl_Set_Result("22222222222222222222");
+      Assert
+        (Tcl_Get_Result = 0,
+         "Failed to get Tcl result as Integer for too big value");
+      Tcl_Set_Result("-22");
+      Assert
+        (Tcl_Get_Result = -22,
+         "Failed to get Tcl result as Integer for negative value");
 
 --  begin read only
    end Test_2_Tcl_Get_Result_test_tcl_getresult2;
