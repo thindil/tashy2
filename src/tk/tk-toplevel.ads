@@ -150,7 +150,13 @@ package Tk.TopLevel is
    overriding function Create
      (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel with
-      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Path_Name'Length > 0
+       and then
+         Path_Name'Length +
+           Create_Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 10) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_TopLevel1", Mode => Nominal);
       -- ****
 
@@ -184,7 +190,13 @@ package Tk.TopLevel is
      (Toplevel_Widget: out Tk_Toplevel; Path_Name: Tk_Path_String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Path_Name'Length > 0
+       and then
+         Path_Name'Length +
+           Create_Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 10) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_TopLevel2", Mode => Nominal);
    -- ****
 
