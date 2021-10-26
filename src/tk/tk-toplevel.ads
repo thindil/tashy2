@@ -110,6 +110,21 @@ package Tk.TopLevel is
    end record;
    -- ****
 
+   -- ****f* Toplevel/Toplevel.Create_Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Toplevel_Create_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Create_Options_To_String
+     (Options: Toplevel_Create_Options) return String with
+      Test_Case => (Name => "Test_Create_Options_To_String",
+       Mode => Robustness);
+
    -- ****f* TopLevel/TopLevel.Create_(function)
    -- FUNCTION
    -- Create a new Tk toplevel widget with the selected pathname and options

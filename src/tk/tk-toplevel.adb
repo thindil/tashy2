@@ -16,9 +16,8 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.TopLevel is
 
-   overriding function Create
-     (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
+   function Create_Options_To_String
+     (Options: Toplevel_Create_Options) return String is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
@@ -78,9 +77,17 @@ package body Tk.TopLevel is
       Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
+      return To_String(Source => Options_String);
+   end Create_Options_To_String;
+
+   overriding function Create
+     (Path_Name: Tk_Path_String; Options: Toplevel_Create_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Toplevel is
+   begin
       Tcl_Eval
         (Tcl_Script =>
-           "toplevel " & Path_Name & " " & To_String(Source => Options_String),
+           "toplevel " & Path_Name & " " &
+           Create_Options_To_String(Options => Options),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
