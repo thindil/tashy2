@@ -72,6 +72,19 @@ package Tk.TtkButton is
    end record;
    -- ****
 
+   -- ****f* TtkButton/TtkButton.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Ttk_Button_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Ttk_Button_Options) return String;
+   -- ****
+
    -- ****f* TtkButton/TtkButton.Create_(function)
    -- FUNCTION
    -- Create a new Tk button widget with the selected pathname and options
@@ -97,7 +110,12 @@ package Tk.TtkButton is
    function Create
      (Path_Name: Tk_Path_String; Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Ttk_Button with
-      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Path_Name'Length > 0
+       and then
+         Path_Name'Length + Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 13) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_TtkButton1", Mode => Nominal);
       -- ****
 
@@ -132,7 +150,12 @@ package Tk.TtkButton is
      (Button: out Ttk_Button; Path_Name: Tk_Path_String;
       Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre'Class => Path_Name'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Path_Name'Length > 0
+       and then
+         Path_Name'Length + Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 13) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_TtkButton2", Mode => Nominal);
       -- ****
 
