@@ -36,18 +36,7 @@ package body Tk.TtkEntry is
      (Result_Type => Natural);
    -- ****
 
-   -- ****if* TtkEntry/TtkEntry.Options_To_String
-   -- FUNCTION
-   -- Convert Ada structure to Tcl command
-   -- PARAMETERS
-   -- Options - Ada Ttk_Entry_Options to convert
-   -- RESULT
-   -- String with Tcl command options
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
    function Options_To_String(Options: Ttk_Entry_Options) return String is
-      -- ****
       use Ada.Strings.Unbounded;
 
       Options_String: Unbounded_String := Null_Unbounded_String;
