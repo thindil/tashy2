@@ -92,10 +92,12 @@ package body Tk.TopLevel is
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
+   --## rule off IMPROPER_INITIALIZATION
    overriding procedure Create
      (Toplevel_Widget: out Tk_Toplevel; Path_Name: Tk_Path_String;
       Options: Toplevel_Create_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   --## rule on IMPROPER_INITIALIZATION
    begin
       Toplevel_Widget :=
         Create
