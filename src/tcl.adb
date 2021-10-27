@@ -12,7 +12,6 @@
 -- License for the specific language governing permissions and limitations
 -- under the License.
 
-with Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
@@ -236,39 +235,29 @@ package body Tcl is
 
    function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer is
-      use Ada.Characters.Handling;
-
       Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
-      Value: Integer := 0;
    begin
-      if Result = "" then
+      if Result'Length = 0 or Result = " " or Result = "-" then
          return 0;
       end if;
       if Result'Length > Integer'Width then
          return 0;
       end if;
-      Check_Characters_Loop :
-      for I in reverse Result'Range loop
-         if I = Result'First and Result(I) = '-' then
-            if Value >= 0 then
-               return -Value;
-            else
-               return 0;
-            end if;
-         end if;
-         if not Is_Digit(Item => Result(I)) then
-            return 0;
-         end if;
-         --## rule off SIMPLIFIABLE_EXPRESSIONS
-         if Value + (Integer'Value("" & Result(I)) * (10**(Result'Last - I))) >
-           Integer'Last then
-            return 0;
-         end if;
-         Value :=
-           Value + (Integer'Value("" & Result(I)) * (10**(Result'Last - I)));
-         --## rule on SIMPLIFIABLE_EXPRESSIONS
-      end loop Check_Characters_Loop;
-      return Value;
+      if Result(Result'First) not in '-' | '0' .. '9' then
+         return 0;
+      end if;
+      if Result'Length > 1
+        and then
+        (for some I in Result'First + 1 .. Result'Last =>
+           Result(I) not in '0' .. '9') then
+         return 0;
+      end if;
+      if Long_Long_Integer'Value(Result) not in
+          Long_Long_Integer(Integer'First) ..
+                Long_Long_Integer(Integer'Last) then
+         return 0;
+      end if;
+      return Integer'Value(Result);
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
