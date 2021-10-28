@@ -74,10 +74,12 @@ package body Tk.TtkButton is
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
+   --## rule off IMPROPER_INITIALIZATION
    procedure Create
      (Button: out Ttk_Button; Path_Name: Tk_Path_String;
       Options: Ttk_Button_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   --## rule on IMPROPER_INITIALIZATION
    begin
       Button :=
         Create
