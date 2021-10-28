@@ -230,7 +230,8 @@ package Tk.TtkEntry is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   function Options_To_String(Options: Ttk_Entry_Options) return String;
+   function Options_To_String(Options: Ttk_Entry_Options) return String with
+      Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
    -- ****
 
    -- ****f* TtkEntry/TtkEntry.Create_(function)
