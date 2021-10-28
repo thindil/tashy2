@@ -26,11 +26,11 @@ is
 
    procedure Test_Create_ebbdc1_055047
      (Gnattest_T: in out Test_Toplevel_Create_Options);
-   --  tk-toplevel.ads:183:4:Create:Test_Create_TopLevel2
+   --  tk-toplevel.ads:189:4:Create:Test_Create_TopLevel2
 
    procedure Test_Get_Options_ded36e_2e13ca
      (Gnattest_T: in out Test_Toplevel_Create_Options);
-   --  tk-toplevel.ads:207:4:Get_Options:Test_Get_Options_TopLevel
+   --  tk-toplevel.ads:219:4:Get_Options:Test_Get_Options_TopLevel
 
 end Tk.TopLevel.TopLevel_Create_Options_Test_Data
   .Toplevel_Create_Options_Tests;
