@@ -126,7 +126,7 @@ package body Tk.Button is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "button " & Path_Name & " " & Options_To_String(Options => Options),
+           "button " & Path_Name & Options_To_String(Options => Options),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
