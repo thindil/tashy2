@@ -82,7 +82,8 @@ package Tk.TtkButton is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   function Options_To_String(Options: Ttk_Button_Options) return String;
+   function Options_To_String(Options: Ttk_Button_Options) return String with
+      Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
    -- ****
 
    -- ****f* TtkButton/TtkButton.Create_(function)

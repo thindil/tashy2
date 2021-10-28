@@ -11,10 +11,10 @@ package Tk.TtkButton.Test_Data.Tests is
    null record;
 
    procedure Test_Invoke_05a9d3_1d715e(Gnattest_T: in out Test);
-   --  tk-ttkbutton.ads:209:4:Invoke:Test_Invoke_TtkButton1
+   --  tk-ttkbutton.ads:233:4:Invoke:Test_Invoke_TtkButton1
 
    procedure Test_Invoke_89eee4_5d3252(Gnattest_T: in out Test);
-   --  tk-ttkbutton.ads:232:4:Invoke:Test_Invoke_TtkButton2
+   --  tk-ttkbutton.ads:256:4:Invoke:Test_Invoke_TtkButton2
 
 end Tk.TtkButton.Test_Data.Tests;
 --  end read only
