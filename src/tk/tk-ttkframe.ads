@@ -79,6 +79,20 @@ package Tk.TtkFrame is
       Test_Case => (Name => "Test_Configure_Frame", Mode => Nominal);
       -- ****
 
+   -- ****f* TtkFrame/TtkFrame.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Ttk_Frame_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Ttk_Frame_Options) return String with
+      Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
+   -- ****
+
    -- ****f* TtkFrame/TtkFrame.Create_(function)
    -- FUNCTION
    -- Create a new Tk ttk::frame widget with the selected pathname and options
