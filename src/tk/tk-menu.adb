@@ -86,7 +86,7 @@ package body Tk.Menu is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "menu " & Path_Name & " " & Options_To_String(Options => Options),
+           "menu " & Path_Name & Options_To_String(Options => Options),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
