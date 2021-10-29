@@ -86,7 +86,7 @@ package body Tk.TopLevel is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "toplevel " & Path_Name & " " &
+           "toplevel " & Path_Name &
            Create_Options_To_String(Options => Options),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
