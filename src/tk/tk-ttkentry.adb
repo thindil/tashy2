@@ -100,8 +100,7 @@ package body Tk.TtkEntry is
    begin
       Tcl_Eval
         (Tcl_Script =>
-           "ttk::entry " & Path_Name & " " &
-           Options_To_String(Options => Options),
+           "ttk::entry " & Path_Name & Options_To_String(Options => Options),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
