@@ -60,7 +60,7 @@ package body Tk.TtkLabelFrame is
          Options_String => Options_String);
       Tcl_Eval
         (Tcl_Script =>
-           "ttk::labelframe " & Path_Name & " " &
+           "ttk::labelframe " & Path_Name &
            To_String(Source => Options_String),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
