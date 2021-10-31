@@ -89,6 +89,20 @@ package Tk.TtkLabel is
    end record;
    -- ****
 
+   -- ****f* TtkLabel/TtkLabel.Options_To_String
+   -- FUNCTION
+   -- Convert Ada structure to Tcl command
+   -- PARAMETERS
+   -- Options - Ada Ttk_Label_Options to convert
+   -- RESULT
+   -- String with Tcl command options
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   function Options_To_String(Options: Ttk_Label_Options) return String with
+      Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
+   -- ****
+
    -- ****f* TtkLabel/TtkLabel.Create_(function)
    -- FUNCTION
    -- Create a new Tk label widget with the selected pathname and options

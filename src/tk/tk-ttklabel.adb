@@ -16,18 +16,7 @@ with Ada.Strings.Unbounded;
 
 package body Tk.TtkLabel is
 
-   -- ****if* TtkLabel/TtkLabel.Options_To_String
-   -- FUNCTION
-   -- Convert Ada structure to Tcl command
-   -- PARAMETERS
-   -- Options - Ada Ttk_Label_Options to convert
-   -- RESULT
-   -- String with Tcl command options
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
    function Options_To_String(Options: Ttk_Label_Options) return String is
-      -- ****
       use Ada.Strings.Unbounded;
 
       Options_String: Unbounded_String := Null_Unbounded_String;
