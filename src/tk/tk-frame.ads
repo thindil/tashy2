@@ -164,7 +164,7 @@ package Tk.Frame is
       Pre'Class =>
       (Path_Name'Length > 0
        and then
-           Path_Name'Length + Options_To_String(Options => Options)'Length <=
+         Path_Name'Length + Options_To_String(Options => Options)'Length <=
          Long_Long_Integer(Natural'Last) - 7) and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_Frame1", Mode => Nominal);
@@ -203,7 +203,7 @@ package Tk.Frame is
       Pre'Class =>
       (Path_Name'Length > 0
        and then
-           Path_Name'Length + Options_To_String(Options => Options)'Length <=
+         Path_Name'Length + Options_To_String(Options => Options)'Length <=
          Long_Long_Integer(Natural'Last) - 7) and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Create_Frame2", Mode => Nominal);

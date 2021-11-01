@@ -31,7 +31,8 @@ is
          External_Name => "Tcl_CreateCommand";
 
    begin
-      return Tcl_Create_Command_C
+      return
+        Tcl_Create_Command_C
           (Interp => Interpreter, Cmd_Name => New_String(Str => Command_Name),
            Ada_Proc => Proc, Client_Data => Null_Address,
            Delete_Proc_Ada => Delete_Proc);
