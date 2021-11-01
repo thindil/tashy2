@@ -16,10 +16,8 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package body Tk.TtkLabelFrame is
 
-   function Create
-     (Path_Name: Tk_Path_String; Options: Ttk_Label_Frame_Options;
-      Interpreter: Tcl_Interpreter := Get_Interpreter)
-      return Ttk_Label_Frame is
+   function Options_To_String
+     (Options: Ttk_Label_Frame_Options) return String is
       Options_String: Unbounded_String := Null_Unbounded_String;
    begin
       Option_Image
@@ -58,10 +56,18 @@ package body Tk.TtkLabelFrame is
       Option_Image
         (Name => "width", Value => Options.Width,
          Options_String => Options_String);
+      return To_String(Source => Options_String);
+   end Options_To_String;
+
+   function Create
+     (Path_Name: Tk_Path_String; Options: Ttk_Label_Frame_Options;
+      Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Ttk_Label_Frame is
+   begin
       Tcl_Eval
         (Tcl_Script =>
            "ttk::labelframe " & Path_Name &
-           To_String(Source => Options_String),
+           Options_To_String(Options => Options),
          Interpreter => Interpreter);
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
