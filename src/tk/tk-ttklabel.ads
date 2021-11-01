@@ -80,7 +80,7 @@ package Tk.TtkLabel is
       Justify: Justify_Type := NONE;
       Padding: Padding_Data := Empty_Padding_Data;
       Relief: Relief_Type := NONE;
-      State: Disabled_State_Type := NORMAL;
+      State: Disabled_State_Type := NONE;
       Text: Tcl_String := Null_Tcl_String;
       Text_Variable: Tcl_String := Null_Tcl_String;
       Underline: Extended_Natural := -1;
