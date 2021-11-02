@@ -170,7 +170,7 @@ package body Tcl is
          Result: constant Tcl_Integer_Result
            (Message_Length => Message_Length) :=
            (Message_Length => Message_Length, Return_Code => Result_Code,
-            Result => Tcl_Get_Result(Interpreter => Interpreter),
+            Result => Tcl_Get_Result(Interpreter => Interpreter).Result,
             Message => To_String(Source => Message));
       begin
          return Result;
@@ -234,30 +234,50 @@ package body Tcl is
    end Tcl_Get_Result;
 
    function Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Integer_Result is
       Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
    begin
       if Result'Length = 0 or Result = " " or Result = "-" then
-         return 0;
+         return
+           Tcl_Integer_Result'
+             (Message_Length => 26, Return_Code => TCL_ERROR,
+              Message => "Tcl result has empty value", Result => 0);
       end if;
       if Result'Length > Integer'Width then
-         return 0;
+         return
+           Tcl_Integer_Result'
+             (Message_Length => 33, Return_Code => TCL_ERROR,
+              Message => "Tcl result is too long to convert", Result => 0);
       end if;
       if Result(Result'First) not in '-' | '0' .. '9' then
-         return 0;
+         return
+           Tcl_Integer_Result'
+             (Message_Length => 50, Return_Code => TCL_ERROR,
+              Message => "Tcl result doesn't start with minus sign or number",
+              Result => 0);
       end if;
       if Result'Length > 1
         and then
         (for some I in Result'First + 1 .. Result'Last =>
            Result(I) not in '0' .. '9') then
-         return 0;
+         return
+           Tcl_Integer_Result'
+             (Message_Length => 25, Return_Code => TCL_ERROR,
+              Message => "Tcl result isn't a number", Result => 0);
       end if;
       if Long_Long_Integer'Value(Result) not in
           Long_Long_Integer(Integer'First) ..
                 Long_Long_Integer(Integer'Last) then
-         return 0;
+         return
+           Tcl_Integer_Result'
+             (Message_Length => 33, Return_Code => TCL_ERROR,
+              Message => "Tcl result isn't in Integer range", Result => 0);
       end if;
-      return Integer'Value(Result);
+      return
+        Tcl_Integer_Result'
+          (Message_Length => 0, Return_Code => TCL_OK, Message => "",
+           Result => Integer'Value(Result));
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result

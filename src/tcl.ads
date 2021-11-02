@@ -422,18 +422,18 @@ package Tcl is
       -- Interpreter - Tcl interpreter from which the result will be taken. By
       --               default it is current default Tcl interpreter.
       -- RESULT
-      -- Integer value of the result of the last Tcl command, or 0 if no result
-      -- is set or result cannot be converted to Integer
+      -- Tcl_Integer_Result with value of the result of the last Tcl command
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the result of the last Tcl command on the default Tcl interpreter
-      -- My_Result: constant Integer := Tcl_Get_Result;
+      -- My_Result: constant Tcl_Integer_Result := Tcl_Get_Result;
       -- SEE ALSO
       -- Tcl.Tcl_Get_Result_(string), Tcl.Tcl_Get_Result_(float)
       -- SOURCE
    function Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer with
+     (Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Integer_Result with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_GetResult2", Mode => Nominal);
       -- ****
