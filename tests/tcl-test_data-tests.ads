@@ -31,8 +31,8 @@ package Tcl.Test_Data.Tests is
    procedure Test_Tcl_Get_Result_9a7ac3_b83d43(Gnattest_T: in out Test);
    --  tcl.ads:412:4:Tcl_Get_Result:Test_Tcl_GetResult
 
-   procedure Test_Tcl_Get_Result_8d4605_70ce85(Gnattest_T: in out Test);
-   --  tcl.ads:435:4:Tcl_Get_Result:Test_Tcl_GetResult2
+   procedure Test_Tcl_Get_Result_21fb18_70ce85(Gnattest_T: in out Test);
+   --  tcl.ads:434:4:Tcl_Get_Result:Test_Tcl_GetResult2
 
    procedure Test_Tcl_Get_Result_040714_d18240(Gnattest_T: in out Test);
    --  tcl.ads:457:4:Tcl_Get_Result:Test_Tcl_GetResult3

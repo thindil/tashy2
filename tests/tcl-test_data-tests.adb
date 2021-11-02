@@ -428,8 +428,9 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Tcl_Get_Result_8d4605_70ce85
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Integer is
+   function Wrap_Test_Tcl_Get_Result_21fb18_70ce85
+     (Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Integer_Result is
    begin
       begin
          pragma Assert(Interpreter /= Null_Interpreter);
@@ -441,7 +442,7 @@ package body Tcl.Test_Data.Tests is
                "req_sloc(tcl.ads:0):Test_Tcl_GetResult2 test requirement violated");
       end;
       declare
-         Test_Tcl_Get_Result_8d4605_70ce85_Result: constant Integer :=
+         Test_Tcl_Get_Result_21fb18_70ce85_Result: constant Tcl_Integer_Result :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Get_Result
              (Interpreter);
       begin
@@ -454,23 +455,23 @@ package body Tcl.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl.ads:0:):Test_Tcl_GetResult2 test commitment violated");
          end;
-         return Test_Tcl_Get_Result_8d4605_70ce85_Result;
+         return Test_Tcl_Get_Result_21fb18_70ce85_Result;
       end;
-   end Wrap_Test_Tcl_Get_Result_8d4605_70ce85;
+   end Wrap_Test_Tcl_Get_Result_21fb18_70ce85;
 --  end read only
 
 --  begin read only
    procedure Test_2_Tcl_Get_Result_test_tcl_getresult2
      (Gnattest_T: in out Test);
-   procedure Test_Tcl_Get_Result_8d4605_70ce85(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Get_Result_21fb18_70ce85(Gnattest_T: in out Test) renames
      Test_2_Tcl_Get_Result_test_tcl_getresult2;
---  id:2.2/8d460597473cf5f0/Tcl_Get_Result/0/0/test_tcl_getresult2/
+--  id:2.2/21fb18252577e025/Tcl_Get_Result/0/0/test_tcl_getresult2/
    procedure Test_2_Tcl_Get_Result_test_tcl_getresult2
      (Gnattest_T: in out Test) is
       function Tcl_Get_Result
         (Interpreter: Tcl_Interpreter := Get_Interpreter)
-         return Integer renames
-        Wrap_Test_Tcl_Get_Result_8d4605_70ce85;
+         return Tcl_Integer_Result renames
+        Wrap_Test_Tcl_Get_Result_21fb18_70ce85;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -478,14 +479,15 @@ package body Tcl.Test_Data.Tests is
    begin
 
       Tcl_Set_Result("22");
-      Assert(Tcl_Get_Result = 22, "Failed to get Tcl result as Integer");
+      Assert
+        (Tcl_Get_Result.Result = 22, "Failed to get Tcl result as Integer");
       Tcl_Set_Result("22222222222222222222");
       Assert
-        (Tcl_Get_Result = 0,
+        (Tcl_Get_Result.Result = 0 and Tcl_Get_Result.Return_Code = TCL_ERROR,
          "Failed to get Tcl result as Integer for too big value");
       Tcl_Set_Result("-22");
       Assert
-        (Tcl_Get_Result = -22,
+        (Tcl_Get_Result.Result = -22,
          "Failed to get Tcl result as Integer for negative value");
 
 --  begin read only
@@ -649,6 +651,32 @@ package body Tcl.Test_Data.Tests is
 
 --  begin read only
    end Test_Tcl_Update_test_tcl_update;
+--  end read only
+
+--  begin read only
+   --  procedure Test_Tcl_Get_Result_test_tcl_getresult2 (Gnattest_T : in out Test_);
+   --  procedure Test_Tcl_Get_Result_8d4605_test_tcl_getresult2 (Gnattest_T : in out Test_) renames Test_Tcl_Get_Result_test_tcl_getresult2;
+--  id:2.2/8d460597473cf5f0/Tcl_Get_Result/0/1/test_tcl_getresult2/
+   --  procedure Test_Tcl_Get_Result_test_tcl_getresult2 (Gnattest_T : in out Test_) is
+--  end read only
+--
+--        pragma Unreferenced(Gnattest_T);
+--
+--     begin
+--
+--        Tcl_Set_Result("22");
+--        Assert(Tcl_Get_Result = 22, "Failed to get Tcl result as Integer");
+--        Tcl_Set_Result("22222222222222222222");
+--        Assert
+--          (Tcl_Get_Result = 0,
+--           "Failed to get Tcl result as Integer for too big value");
+--        Tcl_Set_Result("-22");
+--        Assert
+--          (Tcl_Get_Result = -22,
+--           "Failed to get Tcl result as Integer for negative value");
+--
+--  begin read only
+   --  end Test_Tcl_Get_Result_test_tcl_getresult2;
 --  end read only
 
 --  begin read only
