@@ -251,7 +251,8 @@ package body Tk.TtkWidget is
       Execute_Widget_Command
         (Widgt => Ttk_Widgt, Command_Name => "instate",
          Options => To_Lower(Item => Ttk_State_Type'Image(State_Ttk)));
-      if Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)) = 1 then
+      if Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Ttk_Widgt)).Result =
+        1 then
          return True;
       end if;
       return False;

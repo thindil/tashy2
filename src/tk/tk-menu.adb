@@ -346,7 +346,7 @@ package body Tk.Menu is
          Execute_Widget_Command
            (Widgt => Menu_Widget, Command_Name => "entrycget",
             Options => To_Ada_String(Source => Menu_Index) & " -" & Name);
-         if Tcl_Get_Result(Interpreter => Interpreter) = 1 then
+         if Tcl_Get_Result(Interpreter => Interpreter).Result = 1 then
             return TRUE;
          end if;
          return FALSE;
