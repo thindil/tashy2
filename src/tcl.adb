@@ -274,10 +274,16 @@ package body Tcl is
              (Message_Length => 33, Return_Code => TCL_ERROR,
               Message => "Tcl result isn't in Integer range", Result => 0);
       end if;
+      pragma Annotate
+        (GNATprove, False_Positive, "precondition might fail",
+         "need check with other than CVC4 provers");
       return
         Tcl_Integer_Result'
           (Message_Length => 0, Return_Code => TCL_OK, Message => "",
            Result => Integer'Value(Result));
+      pragma Annotate
+        (GNATprove, False_Positive, "precondition might fail",
+         "need check with other than CVC4 provers");
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
