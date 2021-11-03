@@ -545,6 +545,15 @@ package body Tcl.Test_Data.Tests is
 
       Tcl_Set_Result("2.2");
       Assert(Tcl_Get_Result = 2.2, "Failed to get Tcl result as Float");
+      Tcl_Set_Result
+        ("2.222222222222222222222222222222222222222222222222222222222222222");
+      Assert
+        (Tcl_Get_Result = 0.0,
+         "Failed to get Tcl result as Float for too big value");
+      Tcl_Set_Result("-2.2");
+      Assert
+        (Tcl_Get_Result = -2.2,
+         "Failed to get Tcl result as Float for negative value");
 
 --  begin read only
    end Test_3_Tcl_Get_Result_test_tcl_getresult3;
