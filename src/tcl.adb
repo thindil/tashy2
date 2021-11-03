@@ -12,6 +12,7 @@
 -- License for the specific language governing permissions and limitations
 -- under the License.
 
+with Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
@@ -289,6 +290,8 @@ package body Tcl is
    function Tcl_Get_Result
      (Interpreter: Tcl_Interpreter := Get_Interpreter) return Float is
       Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
+      use Ada.Strings.Fixed;
+
    begin
       if Result'Length = 0 or Result = " " or Result = "-" then
          return 0.0;
@@ -296,13 +299,16 @@ package body Tcl is
       if Result'Length > Float'Width then
          return 0.0;
       end if;
-      if Result(Result'First) not in '-' | '0' .. '9' then
+      if Result(Result'First) not in '-' | '0' .. '9' | '.' then
+         return 0.0;
+      end if;
+      if Count(Result, ".") /= 1 then
          return 0.0;
       end if;
       if Result'Length > 1
         and then
         (for some I in Result'First + 1 .. Result'Last =>
-           Result(I) not in '0' .. '9') then
+           Result(I) not in '0' .. '9' | '.') then
          return 0.0;
       end if;
       return Float'Value(Result);
