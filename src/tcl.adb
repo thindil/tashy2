@@ -286,6 +286,28 @@ package body Tcl is
          "need check with other than CVC4 provers");
    end Tcl_Get_Result;
 
+   function Tcl_Get_Result
+     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Float is
+      Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
+   begin
+      if Result'Length = 0 or Result = " " or Result = "-" then
+         return 0.0;
+      end if;
+      if Result'Length > Float'Width then
+         return 0.0;
+      end if;
+      if Result(Result'First) not in '-' | '0' .. '9' then
+         return 0.0;
+      end if;
+      if Result'Length > 1
+        and then
+        (for some I in Result'First + 1 .. Result'Last =>
+           Result(I) not in '0' .. '9') then
+         return 0.0;
+      end if;
+      return Float'Value(Result);
+   end Tcl_Get_Result;
+
    procedure Tcl_Set_Result
      (Tcl_Result: String; Result_Type: Result_Types := Default_Result_Type;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
