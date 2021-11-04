@@ -288,30 +288,51 @@ package body Tcl is
    end Tcl_Get_Result;
 
    function Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Float is
+     (Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Float_Result is
       Result: constant String := Tcl_Get_Result(Interpreter => Interpreter);
       use Ada.Strings.Fixed;
 
    begin
       if Result'Length = 0 or Result = " " or Result = "-" then
-         return 0.0;
+         return
+           Tcl_Float_Result'
+             (Message_Length => 26, Return_Code => TCL_ERROR,
+              Message => "Tcl result has empty value", Result => 0.0);
       end if;
       if Result'Length > Float'Width then
-         return 0.0;
+         return
+           Tcl_Float_Result'
+             (Message_Length => 33, Return_Code => TCL_ERROR,
+              Message => "Tcl result is too long to convert", Result => 0.0);
       end if;
       if Result(Result'First) not in '-' | '0' .. '9' | '.' then
-         return 0.0;
+         return
+           Tcl_Float_Result'
+             (Message_Length => 55, Return_Code => TCL_ERROR,
+              Message =>
+                "Tcl result doesn't start with minus sign, dot or number",
+              Result => 0.0);
       end if;
       if Count(Result, ".") /= 1 then
-         return 0.0;
+         return
+           Tcl_Float_Result'
+             (Message_Length => 28, Return_Code => TCL_ERROR,
+              Message => "Tcl result has too many dots", Result => 0.0);
       end if;
       if Result'Length > 1
         and then
         (for some I in Result'First + 1 .. Result'Last =>
            Result(I) not in '0' .. '9' | '.') then
-         return 0.0;
+         return
+           Tcl_Float_Result'
+             (Message_Length => 25, Return_Code => TCL_ERROR,
+              Message => "Tcl result isn't a number", Result => 0.0);
       end if;
-      return Float'Value(Result);
+      return
+        Tcl_Float_Result'
+          (Message_Length => 0, Return_Code => TCL_OK, Message => "",
+           Result => Float'Value(Result));
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
