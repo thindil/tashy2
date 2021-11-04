@@ -314,7 +314,7 @@ package body Tcl is
                 "Tcl result doesn't start with minus sign, dot or number",
               Result => 0.0);
       end if;
-      if Count(Result, ".") /= 1 then
+      if Count(Source => Result, Pattern => ".") /= 1 then
          return
            Tcl_Float_Result'
              (Message_Length => 28, Return_Code => TCL_ERROR,
