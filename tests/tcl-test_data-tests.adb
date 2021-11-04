@@ -482,9 +482,13 @@ package body Tcl.Test_Data.Tests is
       Assert
         (Tcl_Get_Result.Result = 22, "Failed to get Tcl result as Integer");
       Tcl_Set_Result("22222222222222222222");
-      Assert
-        (Tcl_Get_Result.Result = 0 and Tcl_Get_Result.Return_Code = TCL_ERROR,
-         "Failed to get Tcl result as Integer for too big value");
+      declare
+         Result: constant Tcl_Integer_Result := Tcl_Get_Result;
+      begin
+         Assert
+           (Result.Result = 0 and Result.Return_Code = TCL_ERROR,
+            "Failed to get Tcl result as Integer for too big value");
+      end;
       Tcl_Set_Result("-22");
       Assert
         (Tcl_Get_Result.Result = -22,
@@ -495,8 +499,9 @@ package body Tcl.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Tcl_Get_Result_040714_d18240
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Float is
+   function Wrap_Test_Tcl_Get_Result_09539a_d18240
+     (Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Float_Result is
    begin
       begin
          pragma Assert(Interpreter /= Null_Interpreter);
@@ -508,7 +513,7 @@ package body Tcl.Test_Data.Tests is
                "req_sloc(tcl.ads:0):Test_Tcl_GetResult3 test requirement violated");
       end;
       declare
-         Test_Tcl_Get_Result_040714_d18240_Result: constant Float :=
+         Test_Tcl_Get_Result_09539a_d18240_Result: constant Tcl_Float_Result :=
            GNATtest_Generated.GNATtest_Standard.Tcl.Tcl_Get_Result
              (Interpreter);
       begin
@@ -521,22 +526,23 @@ package body Tcl.Test_Data.Tests is
                  (False,
                   "ens_sloc(tcl.ads:0:):Test_Tcl_GetResult3 test commitment violated");
          end;
-         return Test_Tcl_Get_Result_040714_d18240_Result;
+         return Test_Tcl_Get_Result_09539a_d18240_Result;
       end;
-   end Wrap_Test_Tcl_Get_Result_040714_d18240;
+   end Wrap_Test_Tcl_Get_Result_09539a_d18240;
 --  end read only
 
 --  begin read only
    procedure Test_3_Tcl_Get_Result_test_tcl_getresult3
      (Gnattest_T: in out Test);
-   procedure Test_Tcl_Get_Result_040714_d18240(Gnattest_T: in out Test) renames
+   procedure Test_Tcl_Get_Result_09539a_d18240(Gnattest_T: in out Test) renames
      Test_3_Tcl_Get_Result_test_tcl_getresult3;
---  id:2.2/040714248a32a2ad/Tcl_Get_Result/0/0/test_tcl_getresult3/
+--  id:2.2/09539ac8bb8552a3/Tcl_Get_Result/0/0/test_tcl_getresult3/
    procedure Test_3_Tcl_Get_Result_test_tcl_getresult3
      (Gnattest_T: in out Test) is
       function Tcl_Get_Result
-        (Interpreter: Tcl_Interpreter := Get_Interpreter) return Float renames
-        Wrap_Test_Tcl_Get_Result_040714_d18240;
+        (Interpreter: Tcl_Interpreter := Get_Interpreter)
+         return Tcl_Float_Result renames
+        Wrap_Test_Tcl_Get_Result_09539a_d18240;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -544,15 +550,19 @@ package body Tcl.Test_Data.Tests is
    begin
 
       Tcl_Set_Result("2.2");
-      Assert(Tcl_Get_Result = 2.2, "Failed to get Tcl result as Float");
+      Assert(Tcl_Get_Result.Result = 2.2, "Failed to get Tcl result as Float");
       Tcl_Set_Result
         ("2.222222222222222222222222222222222222222222222222222222222222222");
-      Assert
-        (Tcl_Get_Result = 0.0,
-         "Failed to get Tcl result as Float for too big value");
+      declare
+         Result: constant Tcl_Float_Result := Tcl_Get_Result;
+      begin
+         Assert
+           (Result.Result = 0.0 and Result.Return_Code = TCL_ERROR,
+            "Failed to get Tcl result as Float for too big value");
+      end;
       Tcl_Set_Result("-2.2");
       Assert
-        (Tcl_Get_Result = -2.2,
+        (Tcl_Get_Result.Result = -2.2,
          "Failed to get Tcl result as Float for negative value");
 
 --  begin read only
@@ -660,32 +670,6 @@ package body Tcl.Test_Data.Tests is
 
 --  begin read only
    end Test_Tcl_Update_test_tcl_update;
---  end read only
-
---  begin read only
-   --  procedure Test_Tcl_Get_Result_test_tcl_getresult2 (Gnattest_T : in out Test_);
-   --  procedure Test_Tcl_Get_Result_8d4605_test_tcl_getresult2 (Gnattest_T : in out Test_) renames Test_Tcl_Get_Result_test_tcl_getresult2;
---  id:2.2/8d460597473cf5f0/Tcl_Get_Result/0/1/test_tcl_getresult2/
-   --  procedure Test_Tcl_Get_Result_test_tcl_getresult2 (Gnattest_T : in out Test_) is
---  end read only
---
---        pragma Unreferenced(Gnattest_T);
---
---     begin
---
---        Tcl_Set_Result("22");
---        Assert(Tcl_Get_Result = 22, "Failed to get Tcl result as Integer");
---        Tcl_Set_Result("22222222222222222222");
---        Assert
---          (Tcl_Get_Result = 0,
---           "Failed to get Tcl result as Integer for too big value");
---        Tcl_Set_Result("-22");
---        Assert
---          (Tcl_Get_Result = -22,
---           "Failed to get Tcl result as Integer for negative value");
---
---  begin read only
-   --  end Test_Tcl_Get_Result_test_tcl_getresult2;
 --  end read only
 
 --  begin read only
