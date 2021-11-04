@@ -87,6 +87,7 @@ version: 3.0
    name: prettytests
    execute:
       - gnatpp -P tests/prettytests.gpr
+      - tclsh scripts/tests.tcl
    description: Pretty print unit tests source code
 - command:
    name: demos
