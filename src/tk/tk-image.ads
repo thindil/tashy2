@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Tcl.Lists; use Tcl.Lists;
 with Tcl.Strings; use Tcl.Strings;
 
@@ -29,7 +30,11 @@ package Tk.Image is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   subtype Tk_Image is String;
+   subtype Tk_Image is String with
+        Dynamic_Predicate => Tk_Image'Length > 0
+        and then
+         (for all J in Tk_Image'Range =>
+            Is_Alphanumeric(Item => Tk_Image(J)));
    -- ****
 
    --## rule off TYPE_INITIAL_VALUES
