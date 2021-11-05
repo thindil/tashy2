@@ -105,10 +105,12 @@ package body Tk.TtkEntry is
       return Get_Widget(Path_Name => Path_Name, Interpreter => Interpreter);
    end Create;
 
+   --## rule off IMPROPER_INITIALIZATION
    procedure Create
      (Entry_Widget: out Ttk_Entry; Path_Name: Tk_Path_String;
       Options: Ttk_Entry_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
+   --## rule on IMPROPER_INITIALIZATION
    begin
       Entry_Widget :=
         Create
