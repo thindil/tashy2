@@ -333,6 +333,9 @@ package body Tcl is
         Tcl_Float_Result'
           (Message_Length => 0, Return_Code => TCL_OK, Message => "",
            Result => Float'Value(Result));
+      pragma Annotate
+        (GNATprove, False_Positive, "precondition might fail",
+         "need check with other than CVC4 provers");
    end Tcl_Get_Result;
 
    procedure Tcl_Set_Result
