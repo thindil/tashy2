@@ -294,7 +294,10 @@ package Tk.Image.Photo is
    procedure Blank
      (Photo_Image: Tk_Image;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre =>
+      (Photo_Image'Length > 0
+       and then Photo_Image'Length <= Positive'Last - 6) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Blank_Photo", Mode => Nominal);
       -- ****
 
@@ -318,7 +321,12 @@ package Tk.Image.Photo is
    procedure Configure
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre'Class => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class =>
+      (Photo_Image'Length > 0
+       and then
+         Photo_Image'Length + Options_To_String(Options => Options)'Length <=
+         Long_Long_Integer(Natural'Last) - 11) and
+      Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Configure_Photo", Mode => Nominal);
       -- ****
 
@@ -349,7 +357,10 @@ package Tk.Image.Photo is
    function Get_Option
      (Photo_Image: Tk_Image; Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String with
-      Pre => Photo_Image'Length > 0 and Name'Length > 0 and
+      Pre =>
+      ((Photo_Image'Length > 0 and Name'Length > 0)
+       and then Photo_Image'Length + Name'Length <=
+         Long_Long_Integer(Natural'Last) - 12) and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Option_Photo", Mode => Nominal);
       -- ****
