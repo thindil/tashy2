@@ -26,15 +26,15 @@ package Tk.Image is
    --## rule off REDUCEABLE_SCOPE
    -- ****t* Image/Image.Tk_Image
    -- FUNCTION
-   -- The Tk identifier of the button
+   -- The Tk identifier of the button. The maximum length of it is 4096
+   -- characters. It can contains only numbers and letters.
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
    subtype Tk_Image is String with
-        Dynamic_Predicate => Tk_Image'Length > 0
+        Dynamic_Predicate => Tk_Image'Length in 1 .. 4_096
         and then
-         (for all J in Tk_Image'Range =>
-            Is_Alphanumeric(Item => Tk_Image(J)));
+        (for all J in Tk_Image'Range => Is_Alphanumeric(Item => Tk_Image(J)));
    -- ****
 
    --## rule off TYPE_INITIAL_VALUES
