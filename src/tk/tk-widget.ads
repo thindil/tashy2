@@ -514,12 +514,13 @@ package Tk.Widget is
      -- FUNCTION
      -- The string used to set or get Tk path name for widgets. It must starts
      -- with dot "." (which is name of the main window) and then can have only
-     -- letters, numbers and dots
+     -- letters, numbers and dots. Also, the maxiumu length of the string is
+     -- 4096 characters.
      -- HISTORY
      -- 8.6.0 - Added
      -- SOURCE
    subtype Tk_Path_String is String with
-        Dynamic_Predicate => Tk_Path_String'Length > 0
+        Dynamic_Predicate => Tk_Path_String'Length in 1 .. 4_096
         and then
         (Tk_Path_String(Tk_Path_String'First) = '.' and
          (for all J in Tk_Path_String'Range =>
