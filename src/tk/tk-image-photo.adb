@@ -12,7 +12,6 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Characters.Handling;
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
@@ -116,6 +115,9 @@ package body Tk.Image.Photo is
                .Result,
            Interpreter => Interpreter);
    begin
+      if Result_List'Length = 0 then
+         return "";
+      end if;
       return To_Ada_String(Source => Result_List(Result_List'Last));
    end Get_Option;
 
@@ -226,7 +228,6 @@ package body Tk.Image.Photo is
       Zoom, Sub_Sample: Point_Position := Empty_Point_Position;
       Compositing_Rule: Compositing_Types := NONE;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
-      use Ada.Characters.Handling;
 
       Options: Unbounded_String := Null_Unbounded_String;
    begin
