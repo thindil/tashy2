@@ -12,6 +12,7 @@
 -- License for the specific language governing permissions and limitations
 -- under the License.
 
+with Tk.Colors; use Tk.Colors;
 with Tk.Widget; use Tk.Widget;
 with Tcl.Lists; use Tcl.Lists;
 
@@ -24,48 +25,6 @@ package Tk.Winfo is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
-   -- ****t* Winfo/Winfo.Color_Range
-   -- FUNCTION
-   -- Type used to get the colors values
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   type Color_Range is new Integer range -1 .. 65_535 with
-      Default_Value => 0;
-   -- ****
-
-      -- ****d* Winfo/Winfo.Default_Color_Value
-      -- FUNCTION
-      -- Default value for the amount of the selected color
-      -- SOURCE
-   Default_Color_Value: constant Color_Range := 0;
-   -- ****
-
-   -- ****s* Winfo/Color_Type
-   -- FUNCTION
-   -- Data structure for setting the colors values
-   -- OPTIONS
-   -- Red   - The amount of red color
-   -- Green - The amount of green color
-   -- Blue  - The amount of blue color
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   type Color_Type is record
-      Red: Color_Range;
-      Green: Color_Range;
-      Blue: Color_Range;
-   end record;
-   -- ****
-
-   -- ****d* Winfo/Winfo.Empty_Color
-   -- FUNCTION
-   -- Empty color value
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
-   -- ****
 
    -- ****t* Winfo/Winfo.Screen_Visual_Type
    -- FUNCTION

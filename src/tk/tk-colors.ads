@@ -129,7 +129,7 @@ package Tk.Colors is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Color_Range is new Integer range -1 .. 255 with
+   type Color_Range is new Integer range -1 .. 65_535 with
       Default_Value => 0;
    -- ****
 
