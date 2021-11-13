@@ -12,6 +12,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tk.Colors; use Tk.Colors;
 with Tk.Widget; use Tk.Widget;
 
 -- ****h* Image/Photo
@@ -158,50 +159,6 @@ package Tk.Image.Photo is
    -- SOURCE
    Default_Compositing: constant Compositing_Types := OVERLAY;
 -- ****
-
-   -- ****t* Photo/Photo.Color_Range
-   -- FUNCTION
-   -- Type used to set the photo image colors values
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   type Color_Range is new Integer range -1 .. 255 with
-      Default_Value => 0;
-   -- ****
-
-      -- ****d* Photo/Photo.Default_Color_Value
-      -- FUNCTION
-      -- Default value for the amount of the selected color in photo image
-      -- SOURCE
-   Default_Color_Value: constant Color_Range := 0;
-   -- ****
-
-   -- ****s* Photo/Color_Type
-   -- FUNCTION
-   -- Data structure for setting the photo image colors values
-   -- OPTIONS
-   -- Red   - The amount of red color in the image
-   -- Green - The amount of green color in the image
-   -- Blue  - The amount of blue color in the image
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   type Color_Type is record
-      Red: Color_Range;
-      Green: Color_Range;
-      Blue: Color_Range;
-   end record;
-   -- ****
-
-   -- ****d* Photo/Photo.Empty_Color
-   -- FUNCTION
-   -- Empty color, used mostly to set default values for colors in the photo
-   -- image
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
-   -- ****
 
    -- ****f* Photo/Photo.Options_To_String
    -- FUNCTION

@@ -122,6 +122,51 @@ package Tk.Colors is
       VIOLET_RED4, WHEAT, WHEAT1, WHEAT2, WHEAT3, WHEAT4, WHITE, WHITE_SMOKE,
       YELLOW, YELLOW_GREEN, YELLOW1, YELLOW2, YELLOW3, YELLOW4);
    --## rule on NAMING_CONVENTION
+
+   -- ****t* Colors/Colors.Color_Range
+   -- FUNCTION
+   -- Type used to set the colors values
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Color_Range is new Integer range -1 .. 255 with
+      Default_Value => 0;
+   -- ****
+
+      -- ****d* Colors/Colors.Default_Color_Value
+      -- FUNCTION
+      -- Default value for the amount of the selected color
+      -- SOURCE
+   Default_Color_Value: constant Color_Range := 0;
+   -- ****
+
+   -- ****s* Colors/Color_Type
+   -- FUNCTION
+   -- Data structure for setting the colors values
+   -- OPTIONS
+   -- Red   - The amount of red color in the image
+   -- Green - The amount of green color in the image
+   -- Blue  - The amount of blue color in the image
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   type Color_Type is record
+      Red: Color_Range;
+      Green: Color_Range;
+      Blue: Color_Range;
+   end record;
+   -- ****
+
+   -- ****d* Colors/Colors.Empty_Color
+   -- FUNCTION
+   -- Empty color, used mostly to set default values for colors
+   -- image
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
+   -- ****
+
    --## rule on REDUCEABLE_SCOPE
 
 end Tk.Colors;
