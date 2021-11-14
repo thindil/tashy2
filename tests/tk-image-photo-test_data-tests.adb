@@ -33,13 +33,15 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   procedure Wrap_Test_Blank_2c1442_30601f
+   procedure Wrap_Test_Blank_2c1442_ceb039
      (Photo_Image: Tk_Image;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
    begin
       begin
          pragma Assert
-           (Photo_Image'Length > 0 and Interpreter /= Null_Interpreter);
+           ((Photo_Image'Length > 0
+             and then Photo_Image'Length <= Positive'Last - 6) and
+            Interpreter /= Null_Interpreter);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -58,19 +60,19 @@ package body Tk.Image.Photo.Test_Data.Tests is
               (False,
                "ens_sloc(tk-image-photo.ads:0:):Tests_Blank_Photo test commitment violated");
       end;
-   end Wrap_Test_Blank_2c1442_30601f;
+   end Wrap_Test_Blank_2c1442_ceb039;
 --  end read only
 
 --  begin read only
    procedure Test_Blank_tests_blank_photo(Gnattest_T: in out Test);
-   procedure Test_Blank_2c1442_30601f(Gnattest_T: in out Test) renames
+   procedure Test_Blank_2c1442_ceb039(Gnattest_T: in out Test) renames
      Test_Blank_tests_blank_photo;
 --  id:2.2/2c1442a8bb75046e/Blank/1/0/tests_blank_photo/
    procedure Test_Blank_tests_blank_photo(Gnattest_T: in out Test) is
       procedure Blank
         (Photo_Image: Tk_Image;
          Interpreter: Tcl_Interpreter := Get_Interpreter) renames
-        Wrap_Test_Blank_2c1442_30601f;
+        Wrap_Test_Blank_2c1442_ceb039;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -89,13 +91,15 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Option_e3d52c_8f9fe9
+   function Wrap_Test_Get_Option_e3d52c_f5151c
      (Photo_Image: Tk_Image; Name: String;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return String is
    begin
       begin
          pragma Assert
-           (Photo_Image'Length > 0 and Name'Length > 0 and
+           (((Photo_Image'Length > 0 and Name'Length > 0)
+             and then Photo_Image'Length + Name'Length <=
+               Long_Long_Integer(Natural'Last) - 12) and
             Interpreter /= Null_Interpreter);
          null;
       exception
@@ -105,7 +109,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Get_Option_Photo test requirement violated");
       end;
       declare
-         Test_Get_Option_e3d52c_8f9fe9_Result: constant String :=
+         Test_Get_Option_e3d52c_f5151c_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Get_Option
              (Photo_Image, Name, Interpreter);
       begin
@@ -118,21 +122,21 @@ package body Tk.Image.Photo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image-photo.ads:0:):Tests_Get_Option_Photo test commitment violated");
          end;
-         return Test_Get_Option_e3d52c_8f9fe9_Result;
+         return Test_Get_Option_e3d52c_f5151c_Result;
       end;
-   end Wrap_Test_Get_Option_e3d52c_8f9fe9;
+   end Wrap_Test_Get_Option_e3d52c_f5151c;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Option_tests_get_option_photo(Gnattest_T: in out Test);
-   procedure Test_Get_Option_e3d52c_8f9fe9(Gnattest_T: in out Test) renames
+   procedure Test_Get_Option_e3d52c_f5151c(Gnattest_T: in out Test) renames
      Test_Get_Option_tests_get_option_photo;
 --  id:2.2/e3d52c2e49e4f170/Get_Option/1/0/tests_get_option_photo/
    procedure Test_Get_Option_tests_get_option_photo(Gnattest_T: in out Test) is
       function Get_Option
         (Photo_Image: Tk_Image; Name: String;
          Interpreter: Tcl_Interpreter := Get_Interpreter) return String renames
-        Wrap_Test_Get_Option_e3d52c_8f9fe9;
+        Wrap_Test_Get_Option_e3d52c_f5151c;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -285,7 +289,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Get_Color_6fd571_5f6b3a
+   function Wrap_Test_Get_Color_ee826d_5f6b3a
      (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type is
    begin
@@ -300,7 +304,7 @@ package body Tk.Image.Photo.Test_Data.Tests is
                "req_sloc(tk-image-photo.ads:0):Tests_Get_Color_Photo test requirement violated");
       end;
       declare
-         Test_Get_Color_6fd571_5f6b3a_Result: constant Color_Type :=
+         Test_Get_Color_ee826d_5f6b3a_Result: constant Color_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Image.Photo.Get_Color
              (Photo_Image, X, Y, Interpreter);
       begin
@@ -313,22 +317,22 @@ package body Tk.Image.Photo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-image-photo.ads:0:):Tests_Get_Color_Photo test commitment violated");
          end;
-         return Test_Get_Color_6fd571_5f6b3a_Result;
+         return Test_Get_Color_ee826d_5f6b3a_Result;
       end;
-   end Wrap_Test_Get_Color_6fd571_5f6b3a;
+   end Wrap_Test_Get_Color_ee826d_5f6b3a;
 --  end read only
 
 --  begin read only
    procedure Test_Get_Color_tests_get_color_photo(Gnattest_T: in out Test);
-   procedure Test_Get_Color_6fd571_5f6b3a(Gnattest_T: in out Test) renames
+   procedure Test_Get_Color_ee826d_5f6b3a(Gnattest_T: in out Test) renames
      Test_Get_Color_tests_get_color_photo;
---  id:2.2/6fd5718a9ddd1eec/Get_Color/1/0/tests_get_color_photo/
+--  id:2.2/ee826d6666f767b1/Get_Color/1/0/tests_get_color_photo/
    procedure Test_Get_Color_tests_get_color_photo(Gnattest_T: in out Test) is
       function Get_Color
         (Photo_Image: Tk_Image; X, Y: Natural;
          Interpreter: Tcl_Interpreter := Get_Interpreter)
          return Color_Type renames
-        Wrap_Test_Get_Color_6fd571_5f6b3a;
+        Wrap_Test_Get_Color_ee826d_5f6b3a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

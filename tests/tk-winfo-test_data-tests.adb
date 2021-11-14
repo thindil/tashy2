@@ -1491,11 +1491,12 @@ package body Tk.Winfo.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Rgb_b213e0_a478a9
-     (Window: Tk_Widget; Color_Name: String) return Color_Type is
+   function Wrap_Test_Rgb_954e04_1a1bb1
+     (Color_Name: Colors_Names; Window: Tk_Widget := Get_Main_Window)
+      return Color_Type is
    begin
       begin
-         pragma Assert(Window /= Null_Widget and Color_Name'Length > 0);
+         pragma Assert(Window /= Null_Widget);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1504,9 +1505,9 @@ package body Tk.Winfo.Test_Data.Tests is
                "req_sloc(tk-winfo.ads:0):Test_Winfo_Rgb test requirement violated");
       end;
       declare
-         Test_Rgb_b213e0_a478a9_Result: constant Color_Type :=
+         Test_Rgb_954e04_1a1bb1_Result: constant Color_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Winfo.Rgb
-             (Window, Color_Name);
+             (Color_Name, Window);
       begin
          begin
             pragma Assert(True);
@@ -1517,20 +1518,21 @@ package body Tk.Winfo.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-winfo.ads:0:):Test_Winfo_Rgb test commitment violated");
          end;
-         return Test_Rgb_b213e0_a478a9_Result;
+         return Test_Rgb_954e04_1a1bb1_Result;
       end;
-   end Wrap_Test_Rgb_b213e0_a478a9;
+   end Wrap_Test_Rgb_954e04_1a1bb1;
 --  end read only
 
 --  begin read only
    procedure Test_Rgb_test_winfo_rgb(Gnattest_T: in out Test);
-   procedure Test_Rgb_b213e0_a478a9(Gnattest_T: in out Test) renames
+   procedure Test_Rgb_954e04_1a1bb1(Gnattest_T: in out Test) renames
      Test_Rgb_test_winfo_rgb;
---  id:2.2/b213e0c5b7cccdff/Rgb/1/0/test_winfo_rgb/
+--  id:2.2/954e0402ee16cd10/Rgb/1/0/test_winfo_rgb/
    procedure Test_Rgb_test_winfo_rgb(Gnattest_T: in out Test) is
       function Rgb
-        (Window: Tk_Widget; Color_Name: String) return Color_Type renames
-        Wrap_Test_Rgb_b213e0_a478a9;
+        (Color_Name: Colors_Names; Window: Tk_Widget := Get_Main_Window)
+         return Color_Type renames
+        Wrap_Test_Rgb_954e04_1a1bb1;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1542,8 +1544,8 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Rgb(Get_Main_Window, "red") = (Red => 65_535, Green => 0, Blue => 0),
-         "Failed to get rgb values for red color.");
+        (Rgb(AQUA) = (Red => 0, Green => 65_535, Blue => 65_535),
+         "Failed to get rgb values for aqua color.");
 
 --  begin read only
    end Test_Rgb_test_winfo_rgb;
