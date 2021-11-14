@@ -141,7 +141,8 @@ package Tk.Colors is
       AZURE1 => To_Tcl_String(Source => "azure1"),
       AZURE2 => To_Tcl_String(Source => "azure2"),
       AZURE3 => To_Tcl_String(Source => "azure3"),
-      AZURE4 => To_Tcl_String(Source => "azure4"));
+      AZURE4 => To_Tcl_String(Source => "azure4"),
+      others => To_Tcl_String(Source => ""));
    --## rule on NAMING_CONVENTION
 
    -- ****t* Colors/Colors.Color_Range
