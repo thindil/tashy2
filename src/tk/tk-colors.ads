@@ -12,6 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tcl.Strings; use Tcl.Strings;
+
 package Tk.Colors is
 
    --## rule off REDUCEABLE_SCOPE
@@ -121,6 +123,25 @@ package Tk.Colors is
       TURQUOISE4, VIOLET, VIOLET_RED, VIOLET_RED1, VIOLET_RED2, VIOLET_RED3,
       VIOLET_RED4, WHEAT, WHEAT1, WHEAT2, WHEAT3, WHEAT4, WHITE, WHITE_SMOKE,
       YELLOW, YELLOW_GREEN, YELLOW1, YELLOW2, YELLOW3, YELLOW4);
+
+   Names_Of_Colors: constant array(Colors_Names) of Tcl_String :=
+     (ALICE_BLUE => To_Tcl_String(Source => "AliceBlue"),
+      ANTIQUE_WHITE => To_Tcl_String(Source => "AntiqueWhite"),
+      ANTIQUE_WHITE1 => To_Tcl_String(Source => "AntiqueWhite1"),
+      ANTIQUE_WHITE2 => To_Tcl_String(Source => "AntiqueWhite2"),
+      ANTIQUE_WHITE3 => To_Tcl_String(Source => "AntiqueWhite3"),
+      ANTIQUE_WHITE4 => To_Tcl_String(Source => "AntiqueWhite4"),
+      AQUA => To_Tcl_String(Source => "aqua"),
+      AQUAMARINE => To_Tcl_String(Source => "aquamarine"),
+      AQUAMARINE1 => To_Tcl_String(Source => "aquamarine1"),
+      AQUAMARINE2 => To_Tcl_String(Source => "aquamarine2"),
+      AQUAMARINE3 => To_Tcl_String(Source => "aquamarine3"),
+      AQUAMARINE4 => To_Tcl_String(Source => "aquamarine4"),
+      AZURE => To_Tcl_String(Source => "azure"),
+      AZURE1 => To_Tcl_String(Source => "azure1"),
+      AZURE2 => To_Tcl_String(Source => "azure2"),
+      AZURE3 => To_Tcl_String(Source => "azure3"),
+      AZURE4 => To_Tcl_String(Source => "azure4"));
    --## rule on NAMING_CONVENTION
 
    -- ****t* Colors/Colors.Color_Range
