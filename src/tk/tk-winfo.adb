@@ -313,7 +313,9 @@ package body Tk.Winfo is
           .Result;
    end Requested_Width;
 
-   function Rgb(Window: Tk_Widget; Color_Name: String) return Color_Type is
+   function Rgb
+     (Color_Name: Colors_Names; Window: Tk_Widget := Get_Main_Window)
+      return Color_Type is
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result_List: constant Array_List :=
         Split_List
@@ -321,7 +323,7 @@ package body Tk.Winfo is
              Tcl_Eval
                (Tcl_Script =>
                   "winfo rgb " & Tk_Path_Name(Widgt => Window) & " " &
-                  Color_Name,
+                  To_String(Source => Names_Of_Colors(Color_Name)),
                 Interpreter => Interpreter)
                .Result,
            Interpreter => Interpreter);

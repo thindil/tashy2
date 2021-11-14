@@ -13,6 +13,7 @@
 -- under the License.
 
 with Tk.Colors; use Tk.Colors;
+with Tk.MainWindow; use Tk.MainWindow;
 with Tk.Widget; use Tk.Widget;
 with Tcl.Lists; use Tcl.Lists;
 
@@ -706,20 +707,24 @@ package Tk.Winfo is
       -- FUNCTION
       -- Get the RGB values of the selected color in the selected Tk_Widget
       -- PARAMETERS
-      -- Window     - The Tk widget in which the color will be checked
       -- Color_Name - The name of the color to check
+      -- Window     - The Tk widget in which the color will be checked. Can
+      --              be empty. Default value is the main window of the
+      --              application.
       -- RESULT
       -- Color_Type record with RGB values for the selected color
       -- HISTORY
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the RGB values for color red in Tk widget My_Frame
-      -- Red_Rgb: constant Color_Type := Rgb(My_Frame, "red");
+      -- Red_Rgb: constant Color_Type := Rgb(RED, My_Frame);
       -- COMMANDS
       -- winfo rgb Window Name
       -- SOURCE
-   function Rgb(Window: Tk_Widget; Color_Name: String) return Color_Type with
-      Pre => Window /= Null_Widget and Color_Name'Length > 0,
+   function Rgb
+     (Color_Name: Colors_Names; Window: Tk_Widget := Get_Main_Window)
+      return Color_Type with
+      Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Winfo_Rgb", Mode => Nominal);
       -- ****
 
