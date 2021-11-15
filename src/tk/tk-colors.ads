@@ -167,7 +167,8 @@ package Tk.Colors is
    Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
    -- ****
 
-   function Colors_Names_Image(Name: Colors_Names) return String;
+   function Colors_Names_Image(Name: Colors_Names) return String with
+      Test_Case => (Name => "Test_Colors_Names_Image", Mode => Robustness);
 
    --## rule on REDUCEABLE_SCOPE
 
