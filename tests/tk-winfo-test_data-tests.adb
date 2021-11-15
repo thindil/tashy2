@@ -1550,7 +1550,7 @@ package body Tk.Winfo.Test_Data.Tests is
         (Rgb(GREEN1) = (Red => 0, Green => 65_535, Blue => 0),
          "Failed to get rgb values for green1 color.");
       Assert
-        (Rgb(LIGHT_SALMON1) = (Red => 65_535, Green => 41_120, Blue => 31354),
+        (Rgb(LIGHT_SALMON1) = (Red => 65_535, Green => 41_120, Blue => 31_354),
          "Failed to get rgb values for LightSalmon1 color.");
 
 --  begin read only
