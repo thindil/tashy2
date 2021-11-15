@@ -322,8 +322,8 @@ package body Tk.Winfo is
           (List =>
              Tcl_Eval
                (Tcl_Script =>
-                  "winfo rgb " & Tk_Path_Name(Widgt => Window) & " " &
-                  To_String(Source => Names_Of_Colors(Color_Name)),
+                  "winfo rgb " & Tk_Path_Name(Widgt => Window) & " {" &
+                  Colors_Names_Image(Name => Color_Name) & "}",
                 Interpreter => Interpreter)
                .Result,
            Interpreter => Interpreter);
@@ -331,9 +331,9 @@ package body Tk.Winfo is
       return Colors: Color_Type := Empty_Color do
          Colors.Red :=
            Color_Range'Value(To_Ada_String(Source => Result_List(1)));
-         Colors.Blue :=
-           Color_Range'Value(To_Ada_String(Source => Result_List(2)));
          Colors.Green :=
+           Color_Range'Value(To_Ada_String(Source => Result_List(2)));
+         Colors.Blue :=
            Color_Range'Value(To_Ada_String(Source => Result_List(3)));
       end return;
    end Rgb;
