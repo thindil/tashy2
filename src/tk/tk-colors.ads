@@ -12,10 +12,21 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+-- ****h* Tk/Colors
+-- FUNCTION
+-- Provide code for manipulate Tk colors
+-- SOURCE
 package Tk.Colors is
+-- ****
 
    --## rule off REDUCEABLE_SCOPE
    --## rule off NAMING_CONVENTION
+   -- ****t* Tk.Colors/Colors_Names
+   -- FUNCTION
+   -- The names of Tk colors
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    type Colors_Names is
      (ALICE_BLUE, ANTIQUE_WHITE, ANTIQUE_WHITE1, ANTIQUE_WHITE2,
       ANTIQUE_WHITE3, ANTIQUE_WHITE4, AQUA, AQUAMARINE, AQUAMARINE1,
@@ -121,6 +132,7 @@ package Tk.Colors is
       TURQUOISE4, VIOLET, VIOLET_RED, VIOLET_RED1, VIOLET_RED2, VIOLET_RED3,
       VIOLET_RED4, WHEAT, WHEAT1, WHEAT2, WHEAT3, WHEAT4, WHITE, WHITE_SMOKE,
       YELLOW, YELLOW_GREEN, YELLOW1, YELLOW2, YELLOW3, YELLOW4);
+   -- ****
    --## rule on NAMING_CONVENTION
 
    -- ****t* Colors/Colors.Color_Range
@@ -167,9 +179,23 @@ package Tk.Colors is
    Empty_Color: constant Color_Type := (Red => -1, Green => -1, Blue => -1);
    -- ****
 
+   -- ****f* Colors/Colors.Colors_Names_Image
+   -- FUNCTION
+   -- Convert the selected Colors_Names enumeration value to Tk name of color
+   -- PARAMETERS
+   -- Name - The Colors_Names enumeration value which will be converted to
+   --        Tk name of color
+   -- RESULT
+   -- The String with converted enumeration value to Tk name of color
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert RED enumeration value to the proper Tk color's name
+   -- Color: constant String := Colors_Names_Image(RED);
+   -- SOURCE
    function Colors_Names_Image(Name: Colors_Names) return String with
       Test_Case => (Name => "Test_Colors_Names_Image", Mode => Robustness);
-
+      -- ****
    --## rule on REDUCEABLE_SCOPE
 
 end Tk.Colors;
