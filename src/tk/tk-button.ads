@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tk.Colors; use Tk.Colors;
 with Tk.Widget; use Tk.Widget;
 
 -- ****h* Tk/Button
@@ -83,21 +84,21 @@ package Tk.Button is
    -- 8.6.0 - Added
    -- SOURCE
    type Button_Options is new Widget_Options with record
-      Active_Background: Tcl_String := Null_Tcl_String;
-      Active_Foreground: Tcl_String := Null_Tcl_String;
+      Active_Background: Color_Type := Empty_Color;
+      Active_Foreground: Color_Type := Empty_Color;
       Anchor: Directions_Type := NONE;
-      Background: Tcl_String := Null_Tcl_String;
+      Background: Color_Type := Empty_Color;
       Bitmap: Tcl_String := Null_Tcl_String;
       Border_Width: Pixel_Data := Empty_Pixel_Data;
       Command: Tcl_String := Null_Tcl_String;
       Compound: Place_Type := EMPTY;
       Default: State_Type := NONE;
-      Disabled_Foreground: Tcl_String := Null_Tcl_String;
+      Disabled_Foreground: Color_Type := Empty_Color;
       Font: Tcl_String := Null_Tcl_String;
-      Foreground: Tcl_String := Null_Tcl_String;
+      Foreground: Color_Type := Empty_Color;
       Height: Pixel_Data := Empty_Pixel_Data;
-      Highlight_Background: Tcl_String := Null_Tcl_String;
-      Highlight_Color: Tcl_String := Null_Tcl_String;
+      Highlight_Background: Color_Type := Empty_Color;
+      Highlight_Color: Color_Type := Empty_Color;
       Highlight_Thickness: Pixel_Data := Empty_Pixel_Data;
       Image: Tcl_String := Null_Tcl_String;
       Justify: Justify_Type := NONE;
