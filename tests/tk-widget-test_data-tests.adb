@@ -1404,6 +1404,59 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Option_Image_7eb8d1_bccdda
+     (Name: String; Value: Color_Type;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Image_Color_Type test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Color_Type test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_7eb8d1_bccdda;
+--  end read only
+
+--  begin read only
+   procedure Test_18_Option_Image_test_option_image_color_type
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_7eb8d1_bccdda(Gnattest_T: in out Test) renames
+     Test_18_Option_Image_test_option_image_color_type;
+--  id:2.2/7eb8d189622ed07f/Option_Image/0/0/test_option_image_color_type/
+   procedure Test_18_Option_Image_test_option_image_color_type
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Color_Type;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_7eb8d1_bccdda;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_18_Option_Image_test_option_image_color_type;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Option_Image_e5f273_81a16f
      (Name: String; Value: Integer; Options_String: in out Unbounded_String;
       Base: Positive := 10) is
@@ -1432,12 +1485,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_18_Option_Image_test_option_image_integer
+   procedure Test_19_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_e5f273_81a16f(Gnattest_T: in out Test) renames
-     Test_18_Option_Image_test_option_image_integer;
+     Test_19_Option_Image_test_option_image_integer;
 --  id:2.2/e5f273869df45ad5/Option_Image/0/0/test_option_image_integer/
-   procedure Test_18_Option_Image_test_option_image_integer
+   procedure Test_19_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Integer; Options_String: in out Unbounded_String;
@@ -1456,7 +1509,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Integer option");
 
 --  begin read only
-   end Test_18_Option_Image_test_option_image_integer;
+   end Test_19_Option_Image_test_option_image_integer;
 --  end read only
 
 --  begin read only
@@ -2388,6 +2441,62 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    end Test_13_Option_Value_test_option_value_anchor_directions;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Option_Value_d50e55_5666b2
+     (Widgt: Tk_Widget; Name: String) return Color_Type is
+   begin
+      begin
+         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Value_Color_Type test requirement violated");
+      end;
+      declare
+         Test_Option_Value_d50e55_5666b2_Result: constant Color_Type :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
+             (Widgt, Name);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Color_Type test commitment violated");
+         end;
+         return Test_Option_Value_d50e55_5666b2_Result;
+      end;
+   end Wrap_Test_Option_Value_d50e55_5666b2;
+--  end read only
+
+--  begin read only
+   procedure Test_14_Option_Value_test_option_value_color_type
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Value_d50e55_5666b2(Gnattest_T: in out Test) renames
+     Test_14_Option_Value_test_option_value_color_type;
+--  id:2.2/d50e55abf051cfbc/Option_Value/0/0/test_option_value_color_type/
+   procedure Test_14_Option_Value_test_option_value_color_type
+     (Gnattest_T: in out Test) is
+      function Option_Value
+        (Widgt: Tk_Widget; Name: String) return Color_Type renames
+        Wrap_Test_Option_Value_d50e55_5666b2;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      AUnit.Assertions.Assert
+        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+
+--  begin read only
+   end Test_14_Option_Value_test_option_value_color_type;
 --  end read only
 
 --  begin read only

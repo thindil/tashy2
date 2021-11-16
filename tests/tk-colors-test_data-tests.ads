@@ -11,7 +11,7 @@ package Tk.Colors.Test_Data.Tests is
    null record;
 
    procedure Test_Colors_Names_Image_3b8ed4_e35b62(Gnattest_T: in out Test);
-   --  tk-colors.ads:170:4:Colors_Names_Image:Test_Colors_Names_Image
+   --  tk-colors.ads:196:4:Colors_Names_Image:Test_Colors_Names_Image
 
 end Tk.Colors.Test_Data.Tests;
 --  end read only
