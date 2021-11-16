@@ -16,6 +16,7 @@ with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
 with Tcl.Strings; use Tcl.Strings;
+with Tk.Colors; use Tk.Colors;
 
 -- ****h* Tk/Widget
 -- FUNCTION
@@ -805,6 +806,11 @@ package Tk.Widget is
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
       Test_Case => (Name => "Test_Option_Image_Boolean", Mode => Nominal);
+   procedure Option_Image
+     (Name: String; Value: Color_Type;
+      Options_String: in out Unbounded_String) with
+      Pre => Name'Length > 0,
+      Test_Case => (Name => "Test_Option_Image_Color_Type", Mode => Nominal);
       -- ****
 
       -- ****f* Widget/Widget.Option_Image_(Integer)

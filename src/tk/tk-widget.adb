@@ -356,6 +356,25 @@ package body Tk.Widget is
       end if;
    end Option_Image;
 
+   procedure Option_Image
+     (Name: String; Value: Color_Type;
+      Options_String: in out Unbounded_String) is
+   begin
+      if Value /= Empty_Color then
+         Append
+           (Source => Options_String,
+            New_Item =>
+              " -" & Name & " #" &
+              Trim
+                (Source => Color_Range'Image(Value.Red / 256), Side => Left) &
+              Trim
+                (Source => Color_Range'Image(Value.Green / 256),
+                 Side => Left) &
+              Trim
+                (Source => Color_Range'Image(Value.Blue / 256), Side => Left));
+      end if;
+   end Option_Image;
+
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tcl_String is
    begin
       return
