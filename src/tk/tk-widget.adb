@@ -21,7 +21,6 @@ with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
 with System.Address_Image;
 with Tashy2; use Tashy2;
-with Tcl.Lists; use Tcl.Lists;
 with Tk.MainWindow;
 
 package body Tk.Widget is
@@ -539,22 +538,14 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Color_Type is
-      Result: constant Array_List :=
-        Split_List
-          (List =>
+      Result: constant Tcl_String_Result :=
              Execute_Widget_Command
-               (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
-               .Result,
-           Interpreter => Tk_Interp(Widgt => Widgt));
+               (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
    begin
-      if Result'Length /= 3 then
+      if Result.Return_Code = TCL_ERROR then
          return Empty_Color;
       end if;
-      return Return_Color: Color_Type := Empty_Color do
-         Return_Color.Red := Color_Range'Value(To_Ada_String(Result(1)));
-         Return_Color.Green := Color_Range'Value(To_Ada_String(Result(2)));
-         Return_Color.Blue := Color_Range'Value(To_Ada_String(Result(3)));
-      end return;
+      return Empty_Color;
    end Option_Value;
 
    procedure Destroy(Widgt: in out Tk_Widget) is
