@@ -25,6 +25,7 @@ with Tk.TopLevel; use Tk.TopLevel;
 with Tk.TtkButton; use Tk.TtkButton;
 with Tk.TtkEntry; use Tk.TtkEntry;
 with Tk.TtkLabel; use Tk.TtkLabel;
+with Tk.Winfo; use Tk.Winfo;
 
 --  begin read only
 --  end read only
@@ -1446,11 +1447,18 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
 
    begin
 
-      AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value, "Test not implemented.");
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Option_Image("myoption", Rgb(RED), Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption #255000000",
+         "Failed to get image for Color_Type option");
 
 --  begin read only
    end Test_18_Option_Image_test_option_image_color_type;
