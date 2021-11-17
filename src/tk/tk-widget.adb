@@ -360,19 +360,30 @@ package body Tk.Widget is
    procedure Option_Image
      (Name: String; Value: Color_Type;
       Options_String: in out Unbounded_String) is
+      function Color_To_String(Color: Color_Range) return String is
+         Color_Value: constant Color_Range := Color / 256;
+      begin
+         case Color_Value is
+            when 0 .. 9 =>
+               return
+                 "00" &
+                 Trim(Source => Color_Range'Image(Color_Value), Side => Left);
+            when 10 .. 99 =>
+               return
+                 "0" &
+                 Trim(Source => Color_Range'Image(Color_Value), Side => Left);
+            when others =>
+               return
+                 Trim(Source => Color_Range'Image(Color_Value), Side => Left);
+         end case;
+      end Color_To_String;
    begin
       if Value /= Empty_Color then
          Append
            (Source => Options_String,
             New_Item =>
-              " -" & Name & " #" &
-              Trim
-                (Source => Color_Range'Image(Value.Red / 256), Side => Left) &
-              Trim
-                (Source => Color_Range'Image(Value.Green / 256),
-                 Side => Left) &
-              Trim
-                (Source => Color_Range'Image(Value.Blue / 256), Side => Left));
+              " -" & Name & " #" & Color_To_String(Value.Red) &
+              Color_To_String(Value.Green) & Color_To_String(Value.Blue));
       end if;
    end Option_Image;
 
