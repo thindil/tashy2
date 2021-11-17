@@ -126,6 +126,10 @@ package Tk.Button is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Button_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Button_Options'(Text => To_Tcl_String("Click me"), others => <>));
    -- SOURCE
    function Options_To_String(Options: Button_Options) return String with
       Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
