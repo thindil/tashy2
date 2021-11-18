@@ -67,6 +67,48 @@ package body Tk.Colors.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Colors_Names_Value_0feaaf_bbfea4
+     (Image: String) return Colors_Names is
+   begin
+      declare
+         Test_Colors_Names_Value_0feaaf_bbfea4_Result: constant Colors_Names :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Colors.Colors_Names_Value
+             (Image);
+      begin
+         return Test_Colors_Names_Value_0feaaf_bbfea4_Result;
+      end;
+   end Wrap_Test_Colors_Names_Value_0feaaf_bbfea4;
+--  end read only
+
+--  begin read only
+   procedure Test_Colors_Names_Value_test_colors_names_value
+     (Gnattest_T: in out Test);
+   procedure Test_Colors_Names_Value_0feaaf_bbfea4
+     (Gnattest_T: in out Test) renames
+     Test_Colors_Names_Value_test_colors_names_value;
+--  id:2.2/0feaaf8cbdbcee44/Colors_Names_Value/1/0/test_colors_names_value/
+   procedure Test_Colors_Names_Value_test_colors_names_value
+     (Gnattest_T: in out Test) is
+      function Colors_Names_Value(Image: String) return Colors_Names renames
+        Wrap_Test_Colors_Names_Value_0feaaf_bbfea4;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+
+   begin
+
+      Assert
+        (Colors_Names_Value("red") = RED,
+         "Failed to convert red string to color name enumeration value.");
+      Assert
+        (Colors_Names_Value("AntiqueWhite1") = ANTIQUE_WHITE1,
+         "Failed to convert AntiqueWhite1 string to color name enumeration value.");
+
+--  begin read only
+   end Test_Colors_Names_Value_test_colors_names_value;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
