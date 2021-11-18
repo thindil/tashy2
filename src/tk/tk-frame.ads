@@ -12,8 +12,9 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Tk.Widget; use Tk.Widget;
 with Tcl.Strings; use Tcl.Strings;
+with Tk.Colors; use Tk.Colors;
+with Tk.Widget; use Tk.Widget;
 
 -- ****h* Tk/Frame
 -- FUNCTION
@@ -56,11 +57,11 @@ package Tk.Frame is
    -- 8.6.0 - Added
    -- SOURCE
    type Frame_Options is new Widget_Options with record
-      Background: Tcl_String := Null_Tcl_String;
+      Background: Color_Type := Empty_Color;
       Border_Width: Pixel_Data := Empty_Pixel_Data;
       Height: Pixel_Data := Empty_Pixel_Data;
-      Highlight_Background: Tcl_String := Null_Tcl_String;
-      Highlight_Color: Tcl_String := Null_Tcl_String;
+      Highlight_Background: Color_Type := Empty_Color;
+      Highlight_Color: Color_Type := Empty_Color;
       Highlight_Thickness: Pixel_Data := Empty_Pixel_Data;
       Pad_X: Pixel_Data := Empty_Pixel_Data;
       Pad_Y: Pixel_Data := Empty_Pixel_Data;
