@@ -22,6 +22,7 @@ with Interfaces.C.Strings; use Interfaces.C.Strings;
 with System.Address_Image;
 with Tashy2; use Tashy2;
 with Tk.MainWindow;
+with Tk.Winfo;
 
 package body Tk.Widget is
 
@@ -538,12 +539,27 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Color_Type is
+      use Tk.Winfo;
+
       Result: constant Tcl_String_Result :=
-             Execute_Widget_Command
-               (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+        Execute_Widget_Command
+          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
    begin
       if Result.Return_Code = TCL_ERROR then
          return Empty_Color;
+      end if;
+      if Result.Result(Result.Result'First) /= '#' then
+         return
+           Rgb
+             (Color_Name => Colors_Names_Value(Result.Result),
+              Window => Widgt);
+      end if;
+      if Result.Result'Length = 10 then
+         return Color: Color_Type := Empty_Color do
+            Color.Red := Color_Range'Value(Result.Result(2 .. 4)) * 257;
+            Color.Green := Color_Range'Value(Result.Result(5 .. 7)) * 257;
+            Color.Blue := Color_Range'Value(Result.Result(8 .. 10)) * 257;
+         end return;
       end if;
       return Empty_Color;
    end Option_Value;
