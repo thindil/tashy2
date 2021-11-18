@@ -196,6 +196,10 @@ package Tk.Colors is
    function Colors_Names_Image(Name: Colors_Names) return String with
       Test_Case => (Name => "Test_Colors_Names_Image", Mode => Robustness);
       -- ****
+
+   function Colors_Names_Value(Image: String) return Colors_Names with
+      Test_Case => (Name => "Test_Colors_Names_Value", Mode => Robustness);
+
    --## rule on REDUCEABLE_SCOPE
 
 end Tk.Colors;
