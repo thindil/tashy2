@@ -197,8 +197,22 @@ package Tk.Colors is
       Test_Case => (Name => "Test_Colors_Names_Image", Mode => Robustness);
       -- ****
 
+      -- ****f* Colors/Colors.Colors_Names_Value
+      -- FUNCTION
+      -- Convert the selected String to Color_Names enumeration value
+      -- PARAMETERS
+      -- Image - The String which will be converted to the Colors_Names value
+      -- RESULT
+      -- The proper Colors_Names enumeration value for the selected String
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Convert "red" to Colors_Names value
+      -- Color_Name: constant Colors_Names := Colors_Names_Value("red");
+      -- SOURCE
    function Colors_Names_Value(Image: String) return Colors_Names with
       Test_Case => (Name => "Test_Colors_Names_Value", Mode => Robustness);
+      -- ****
 
    --## rule on REDUCEABLE_SCOPE
 
