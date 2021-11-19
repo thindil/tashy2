@@ -132,6 +132,10 @@ package Tk.Frame is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Frame_Create_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Frame_Create_Options'(Class => To_Tcl_String("Main"), others => <>));
    -- SOURCE
    function Options_To_String(Options: Frame_Create_Options) return String with
       Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
