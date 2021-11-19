@@ -551,7 +551,7 @@ package body Tk.Widget is
       if Result.Result(Result.Result'First) /= '#' then
          return
            Rgb
-             (Color_Name => Colors_Names_Value(Result.Result),
+             (Color_Name => Colors_Names_Value(Image => Result.Result),
               Window => Widgt);
       end if;
       if Result.Result'Length = 10 then
