@@ -12,6 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Tk.Colors; use Tk.Colors;
+
 -- ****h* Image/Bitmap
 -- FUNCTION
 -- Provide bindings for manipulate Tk images type bitmap
@@ -40,7 +42,7 @@ package Tk.Image.Bitmap is
    -- SOURCE
    type Bitmap_Options is new Image_Options with record
       Background: Tcl_String := Null_Tcl_String;
-      Foreground: Tcl_String := Null_Tcl_String;
+      Foreground: Color_Type := Empty_Color;
       Mask_Data: Tcl_String := Null_Tcl_String;
       Mask_File: Tcl_String := Null_Tcl_String;
    end record;

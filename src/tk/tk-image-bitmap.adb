@@ -14,6 +14,7 @@
 
 with Ada.Strings.Unbounded;
 with Tk.Widget;
+with Tk.Winfo;
 
 package body Tk.Image.Bitmap is
 
@@ -96,6 +97,12 @@ package body Tk.Image.Bitmap is
    function Get_Options
      (Bitmap_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Bitmap_Options is
+      use Winfo;
+
+      Color: constant String :=
+        Get_Option
+          (Bitmap_Image => Bitmap_Image, Name => "foreground",
+           Interpreter => Interpreter);
    begin
       return Options: Bitmap_Options := Default_Bitmap_Options do
          Options.Data :=
@@ -117,11 +124,13 @@ package body Tk.Image.Bitmap is
                   (Bitmap_Image => Bitmap_Image, Name => "background",
                    Interpreter => Interpreter));
          Options.Foreground :=
-           To_Tcl_String
-             (Source =>
-                Get_Option
-                  (Bitmap_Image => Bitmap_Image, Name => "foreground",
-                   Interpreter => Interpreter));
+           (if Color(Color'First) /= '#' then
+              Rgb(Color_Name => Colors_Names_Value(Image => Color))
+            elsif Color'Length = 10 then
+              (Red => Color_Range'Value(Color(2 .. 4)) * 257,
+               Green => Color_Range'Value(Color(5 .. 7)) * 257,
+               Blue => Color_Range'Value(Color(8 .. 10)) * 257)
+            else Empty_Color);
          Options.Mask_Data :=
            To_Tcl_String
              (Source =>
