@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tk.Colors; use Tk.Colors;
 with Tk.Widget; use Tk.Widget;
 
 -- ****h* Tk/Menu
@@ -83,17 +84,17 @@ package Tk.Menu is
       -- 8.6.0 - Added
       -- SOURCE
    type Menu_Options is new Widget_Options with record
-      Active_Background: Tcl_String := Null_Tcl_String;
+      Active_Background: Color_Type := Empty_Color;
       Active_Border_Width: Pixel_Data := Empty_Pixel_Data;
-      Active_Foreground: Tcl_String := Null_Tcl_String;
-      Background: Tcl_String := Null_Tcl_String;
+      Active_Foreground: Color_Type := Empty_Color;
+      Background: Color_Type := Empty_Color;
       Border_Width: Pixel_Data := Empty_Pixel_Data;
-      Disabled_Foreground: Tcl_String := Null_Tcl_String;
+      Disabled_Foreground: Color_Type := Empty_Color;
       Font: Tcl_String := Null_Tcl_String;
-      Foreground: Tcl_String := Null_Tcl_String;
+      Foreground: Color_Type := Empty_Color;
       Relief: Relief_Type := NONE;
       Post_Command: Tcl_String := Null_Tcl_String;
-      Select_Color: Tcl_String := Null_Tcl_String;
+      Select_Color: Color_Type := Empty_Color;
       Tear_Off: Extended_Boolean := NONE;
       Tear_Off_Command: Tcl_String := Null_Tcl_String;
       Title: Tcl_String := Null_Tcl_String;
@@ -179,16 +180,16 @@ package Tk.Menu is
    type Menu_Item_Options(Item_Type: Menu_Item_Types := COMMAND) is record
       case Item_Type is
          when CASCADE | CHECKBUTTON | COMMAND | RADIOBUTTON =>
-            Active_Background: Tcl_String := Null_Tcl_String;
-            Active_Foreground: Tcl_String := Null_Tcl_String;
+            Active_Background: Color_Type := Empty_Color;
+            Active_Foreground: Color_Type := Empty_Color;
             Accelerator: Tcl_String := Null_Tcl_String;
-            Background: Tcl_String := Null_Tcl_String;
+            Background: Color_Type := Empty_Color;
             Bitmap: Tcl_String := Null_Tcl_String;
             Column_Break: Extended_Boolean := NONE;
             Command: Tcl_String := Null_Tcl_String;
             Compound: Place_Type := EMPTY;
             Font: Tcl_String := Null_Tcl_String;
-            Foreground: Tcl_String := Null_Tcl_String;
+            Foreground: Color_Type := Empty_Color;
             Hide_Margin: Extended_Boolean := NONE;
             Image: Tcl_String := Null_Tcl_String;
             Label: Tcl_String := Null_Tcl_String;
@@ -199,7 +200,7 @@ package Tk.Menu is
                   Menu: Tk_Menu := Null_Widget;
                when CHECKBUTTON | RADIOBUTTON =>
                   Indicator_On: Extended_Boolean := NONE;
-                  Select_Color: Tcl_String := Null_Tcl_String;
+                  Select_Color: Color_Type := Empty_Color;
                   Select_Image: Tcl_String := Null_Tcl_String;
                   Variable: Tcl_String := Null_Tcl_String;
                   case Item_Type is

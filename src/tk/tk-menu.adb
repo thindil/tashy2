@@ -16,6 +16,7 @@ with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Tk.Winfo;
 
 package body Tk.Menu is
 
@@ -350,6 +351,28 @@ package body Tk.Menu is
             return TRUE;
          end if;
          return FALSE;
+      end Item_Value;
+      function Item_Value(Name: String) return Color_Type is
+         use Winfo;
+
+         Color: constant Tcl_String_Result :=
+           Execute_Widget_Command
+             (Widgt => Menu_Widget, Command_Name => "entrycget",
+              Options => To_Ada_String(Source => Menu_Index) & " -" & Name);
+      begin
+         if Color.Return_Code = TCL_ERROR or Color.Result'Length = 0 then
+            return Empty_Color;
+         end if;
+         if Color.Result(Color.Result'First) /= '#' then
+            return
+              Rgb(Color_Name => Colors_Names_Value(Image => Color.Result));
+         elsif Color.Result'Length = 10 then
+            return
+              (Red => Color_Range'Value(Color.Result(2 .. 4)) * 257,
+               Green => Color_Range'Value(Color.Result(5 .. 7)) * 257,
+               Blue => Color_Range'Value(Color.Result(8 .. 10)) * 257);
+         end if;
+         return Empty_Color;
       end Item_Value;
    begin
       return Options: Menu_Item_Options := Default_Menu_Item_Options do
