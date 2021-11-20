@@ -16,6 +16,7 @@ with System.Assertions;
 --  end read only
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tk.Winfo; use Tk.Winfo;
 
 --  begin read only
 --  end read only
@@ -66,9 +67,8 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
          "Failed to convert default Menu_Options to Tcl command.");
       Assert
         (Options_To_String
-           (Menu_Options'
-              (Background => To_Tcl_String("black"), others => <>)) =
-         " -background black",
+           (Menu_Options'(Background => Rgb(BLACK), others => <>)) =
+         " -background #000000000",
          "Failed to convert Menu_Options to Tcl command.");
 
 --  begin read only
