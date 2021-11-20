@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tk.Colors; use Tk.Colors;
 with Tk.Widget; use Tk.Widget;
 with Tk.TtkWidget; use Tk.TtkWidget;
 
@@ -72,10 +73,10 @@ package Tk.TtkLabel is
    -- SOURCE
    type Ttk_Label_Options is new Ttk_Widget_Options with record
       Anchor: Directions_Type := NONE;
-      Background: Tcl_String := Null_Tcl_String;
+      Background: Color_Type := Empty_Color;
       Compound: Compound_Type := EMPTY;
       Font: Tcl_String := Null_Tcl_String;
-      Foreground: Tcl_String := Null_Tcl_String;
+      Foreground: Color_Type := Empty_Color;
       Image: Ttk_Image_Option := Default_Ttk_Image_Option;
       Justify: Justify_Type := NONE;
       Padding: Padding_Data := Empty_Padding_Data;
