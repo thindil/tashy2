@@ -265,6 +265,10 @@ package Tk.Menu is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Menu_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Menu_Options'(Foreground => Rgb(BLACK), others => <>));
    -- SOURCE
    function Options_To_String(Options: Menu_Options) return String with
       Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
