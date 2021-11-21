@@ -126,6 +126,10 @@ package Tk.Labelframe is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Label_Frame_Create_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Label_Frame_Create_Options'(Text => To_Tcl_String("New frame"), others => <>));
    -- SOURCE
    function Options_To_String
      (Options: Label_Frame_Create_Options) return String with
