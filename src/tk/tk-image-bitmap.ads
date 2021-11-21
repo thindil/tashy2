@@ -57,6 +57,10 @@ package Tk.Image.Bitmap is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Bitmap_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Bitmap_Options'(Foreground => Rgb(BLACK), others => <>));
    -- SOURCE
    function Options_To_String(Options: Bitmap_Options) return String with
       Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
