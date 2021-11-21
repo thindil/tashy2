@@ -169,6 +169,10 @@ package Tk.Image.Photo is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Photo_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Photo_Options'(Format => To_Tcl_String("png"), others => <>));
    -- SOURCE
    function Options_To_String(Options: Photo_Options) return String with
       Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
