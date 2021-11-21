@@ -62,6 +62,10 @@ package body Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Assert
         (Options_To_String(Menu_Options'(others => <>)) = "",
          "Failed to convert default Menu_Options to Tcl command.");
