@@ -94,7 +94,6 @@ is
       Pre => Name'Length > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Split_List_Variable", Mode => Nominal);
       -- ****
-      --## rule on REDUCEABLE_SCOPE
 
       -- ****f* Lists/Lists.Merge_List
       -- FUNCTION
@@ -113,5 +112,6 @@ is
       Pre => List'Length > 0,
       Test_Case => (Name => "Test_Merge_List", Mode => Nominal);
       -- ****
+      --## rule on REDUCEABLE_SCOPE
 
 end Tcl.Lists;
