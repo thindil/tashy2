@@ -12,6 +12,8 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
+
 -- ****h* Tcl/Variables
 -- FUNCTION
 -- Provides binding to manipulate Tcl variables (setting, getting, removing,
@@ -21,6 +23,20 @@ package Tcl.Variables is
 -- ****
 
    --## rule off REDUCEABLE_SCOPE
+   -- ****t* Variables/Variable.Variable_Name
+   -- FUNCTION
+   -- The type to store the name of Tcl variable. The maximum length of it is
+   -- 4096 characters. It can contains only numbers and letters.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   subtype Variable_Name is String with
+        Dynamic_Predicate => Variable_Name'Length in 1 .. 4_096
+        and then
+        (for all J in Variable_Name'Range =>
+           Is_Alphanumeric(Item => Variable_Name(J)));
+   -- ****
+
    -- ****t* Variables/Variables.Variables_Flags
    -- FUNCTION
    -- Available flags for manipulation of Tcl variables
