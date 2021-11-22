@@ -119,6 +119,10 @@ package Tk.TopLevel is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Toplevel_Create_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Toplevel_Create_Options'(Screen => To_Tcl_String("0:0"), others => <>));
    -- SOURCE
    function Create_Options_To_String
      (Options: Toplevel_Create_Options) return String with
