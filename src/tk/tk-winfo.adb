@@ -328,12 +328,12 @@ package body Tk.Winfo is
                .Result,
            Interpreter => Interpreter);
    begin
-      return Colors: Color_Type := Empty_Color do
-         Colors.Red :=
+      return Colors_Values: Color_Type := Empty_Color do
+         Colors_Values.Red :=
            Color_Range'Value(To_Ada_String(Source => Result_List(1)));
-         Colors.Green :=
+         Colors_Values.Green :=
            Color_Range'Value(To_Ada_String(Source => Result_List(2)));
-         Colors.Blue :=
+         Colors_Values.Blue :=
            Color_Range'Value(To_Ada_String(Source => Result_List(3)));
       end return;
    end Rgb;
