@@ -26,7 +26,7 @@ package Tk.Image is
    --## rule off REDUCEABLE_SCOPE
    -- ****t* Image/Image.Tk_Image
    -- FUNCTION
-   -- The Tk identifier of the button. The maximum length of it is 4096
+   -- The Tk identifier of the image. The maximum length of it is 4096
    -- characters. It can contains only numbers and letters.
    -- HISTORY
    -- 8.6.0 - Added
