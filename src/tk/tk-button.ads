@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables; use Tcl.Variables;
 with Tk.Colors; use Tk.Colors;
 with Tk.Widget; use Tk.Widget;
 
@@ -110,7 +111,7 @@ package Tk.Button is
       Repeat_Interval: Extended_Natural := -1;
       State: State_Type := NONE;
       Text: Tcl_String := Null_Tcl_String;
-      Text_Variable: Tcl_String := Null_Tcl_String;
+      Text_Variable: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Underline: Extended_Natural := -1;
       Width: Pixel_Data := Empty_Pixel_Data;
       Wrap_Length: Pixel_Data := Empty_Pixel_Data;
