@@ -12,8 +12,10 @@
 -- License for the specific language governing permissions and limitations
 -- under the License.
 
-with Tk.Colors; use Tk.Colors; --## rule line off REDUCEABLE_SCOPE
+--## rule off REDUCEABLE_SCOPE
+with Tk.Colors; use Tk.Colors;
 with Tk.MainWindow; use Tk.MainWindow;
+--## rule on REDUCEABLE_SCOPE
 with Tk.Widget; use Tk.Widget;
 with Tcl.Lists; use Tcl.Lists;
 
