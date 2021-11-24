@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 -- ****h* Tcl/Variables
 -- FUNCTION
@@ -35,6 +36,30 @@ package Tcl.Variables is
         and then
         (for all J in Variable_Name'Range =>
            Is_Alphanumeric(Item => Variable_Name(J)));
+        -- ****
+
+        -- ****t* Variables/Variable.Unbounded_Variable_Name
+        -- FUNCTION
+        -- The type to store the name of Tcl variable in Unbounded_String.
+        -- The maximum length of it is 4096 characters. It can contains
+        -- only numbers and letters.
+        -- HISTORY
+        -- 8.6.0 - Added
+        -- SOURCE
+   subtype Unbounded_Variable_Name is Unbounded_String with
+        Dynamic_Predicate => Length(Unbounded_Variable_Name) in 1 .. 4_096
+        and then
+        (for all J in 1 .. Length(Unbounded_Variable_Name) =>
+           Is_Alphanumeric(Item => Element(Unbounded_Variable_Name, J)));
+        -- ****
+
+        -- ****d* Variables/Variables.Empty_Unbounded_Variable_Name
+        -- FUNCTION
+        -- Default empty name of Tcl variable as Unbounded_String
+        -- HISTORY
+        -- 8.6.0 - Added
+        -- SOURCE
+   Empty_Unbounded_Variable_Name: constant Unbounded_Variable_Name := Null_Unbounded_String;
    -- ****
 
    -- ****t* Variables/Variables.Variables_Flags
