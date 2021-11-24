@@ -816,7 +816,8 @@ package Tk.Widget is
      (Name: String; Value: Unbounded_Variable_Name;
       Options_String: in out Unbounded_String) with
       Pre => Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Image_Unbounded_Variable_Name", Mode => Nominal);
+      Test_Case => (Name => "Test_Option_Image_Unbounded_Variable_Name",
+       Mode => Nominal);
       -- ****
 
       -- ****f* Widget/Widget.Option_Image_(Integer)
@@ -920,6 +921,10 @@ package Tk.Widget is
    function Option_Value(Widgt: Tk_Widget; Name: String) return Color_Type with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Color_Type", Mode => Nominal);
+   function Option_Value
+     (Widgt: Tk_Widget; Name: String) return Unbounded_Variable_Name with
+      Pre => Widgt /= Null_Widget and Name'Length > 0,
+      Test_Case => (Name => "Test_Option_Value_Unbounded_Variable_Name", Mode => Nominal);
    -- ****
 
    --------------------------------

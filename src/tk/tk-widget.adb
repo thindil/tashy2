@@ -575,6 +575,16 @@ package body Tk.Widget is
       return Empty_Color;
    end Option_Value;
 
+   function Option_Value(Widgt: Tk_Widget; Name: String) return Unbounded_Variable_Name is
+   begin
+      return
+        To_Unbounded_String
+          (Source =>
+             Execute_Widget_Command
+               (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
+               .Result);
+   end Option_Value;
+
    procedure Destroy(Widgt: in out Tk_Widget) is
       procedure Tk_Destroy_Window(Tk_Win: Tk_Widget) with
          Global => null,
