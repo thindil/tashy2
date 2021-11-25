@@ -1465,6 +1465,65 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   procedure Wrap_Test_Option_Image_60eae0_a307f9
+     (Name: String; Value: Unbounded_Variable_Name;
+      Options_String: in out Unbounded_String) is
+   begin
+      begin
+         pragma Assert(Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Image_Unbounded_Variable_Name test requirement violated");
+      end;
+      GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Image
+        (Name, Value, Options_String);
+      begin
+         pragma Assert(True);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Unbounded_Variable_Name test commitment violated");
+      end;
+   end Wrap_Test_Option_Image_60eae0_a307f9;
+--  end read only
+
+--  begin read only
+   procedure Test_19_Option_Image_test_option_image_unbounded_variable_name
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Image_60eae0_a307f9(Gnattest_T: in out Test) renames
+     Test_19_Option_Image_test_option_image_unbounded_variable_name;
+--  id:2.2/60eae0fb13c41e7f/Option_Image/0/0/test_option_image_unbounded_variable_name/
+   procedure Test_19_Option_Image_test_option_image_unbounded_variable_name
+     (Gnattest_T: in out Test) is
+      procedure Option_Image
+        (Name: String; Value: Unbounded_Variable_Name;
+         Options_String: in out Unbounded_String) renames
+        Wrap_Test_Option_Image_60eae0_a307f9;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Options_String: Unbounded_String;
+
+   begin
+
+      Option_Image
+        ("myoption",
+         Unbounded_Variable_Name'(To_Unbounded_String("newvariable")),
+         Options_String);
+      Assert
+        (To_String(Options_String) = " -myoption newvariable",
+         "Failed to get image for Ubounded_Variable_Name option");
+
+--  begin read only
+   end Test_19_Option_Image_test_option_image_unbounded_variable_name;
+--  end read only
+
+--  begin read only
    procedure Wrap_Test_Option_Image_e5f273_81a16f
      (Name: String; Value: Integer; Options_String: in out Unbounded_String;
       Base: Positive := 10) is
@@ -1493,12 +1552,12 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Test_19_Option_Image_test_option_image_integer
+   procedure Test_20_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test);
    procedure Test_Option_Image_e5f273_81a16f(Gnattest_T: in out Test) renames
-     Test_19_Option_Image_test_option_image_integer;
+     Test_20_Option_Image_test_option_image_integer;
 --  id:2.2/e5f273869df45ad5/Option_Image/0/0/test_option_image_integer/
-   procedure Test_19_Option_Image_test_option_image_integer
+   procedure Test_20_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test) is
       procedure Option_Image
         (Name: String; Value: Integer; Options_String: in out Unbounded_String;
@@ -1517,7 +1576,7 @@ package body Tk.Widget.Test_Data.Tests is
          "Failed to get image for Integer option");
 
 --  begin read only
-   end Test_19_Option_Image_test_option_image_integer;
+   end Test_20_Option_Image_test_option_image_integer;
 --  end read only
 
 --  begin read only
@@ -2517,6 +2576,78 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    end Test_14_Option_Value_test_option_value_color_type;
+--  end read only
+
+--  begin read only
+   function Wrap_Test_Option_Value_4a4fd9_03da84
+     (Widgt: Tk_Widget; Name: String) return Unbounded_Variable_Name is
+   begin
+      begin
+         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Option_Value_Unbounded_Variable_Name test requirement violated");
+      end;
+      declare
+         Test_Option_Value_4a4fd9_03da84_Result: constant Unbounded_Variable_Name :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
+             (Widgt, Name);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Unbounded_Variable_Name test commitment violated");
+         end;
+         return Test_Option_Value_4a4fd9_03da84_Result;
+      end;
+   end Wrap_Test_Option_Value_4a4fd9_03da84;
+--  end read only
+
+--  begin read only
+   procedure Test_15_Option_Value_test_option_value_unbounded_variable_name
+     (Gnattest_T: in out Test);
+   procedure Test_Option_Value_4a4fd9_03da84(Gnattest_T: in out Test) renames
+     Test_15_Option_Value_test_option_value_unbounded_variable_name;
+--  id:2.2/4a4fd968ae741adf/Option_Value/0/0/test_option_value_unbounded_variable_name/
+   procedure Test_15_Option_Value_test_option_value_unbounded_variable_name
+     (Gnattest_T: in out Test) is
+      function Option_Value
+        (Widgt: Tk_Widget; Name: String) return Unbounded_Variable_Name renames
+        Wrap_Test_Option_Value_4a4fd9_03da84;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Create
+        (Button, ".mybutton",
+         Button_Options'
+           (Text_Variable =>
+              Unbounded_Variable_Name'(To_Unbounded_String("newvariable")),
+            others => <>));
+      Add(Button);
+      Tcl_Eval("update");
+      Assert
+        (Option_Value(Button, "textvariable") =
+         Unbounded_Variable_Name'(To_Unbounded_String("newvariable")),
+         "Failed to get value for Unbounded_Variable_Name widget option");
+      Destroy(Button);
+
+--  begin read only
+   end Test_15_Option_Value_test_option_value_unbounded_variable_name;
 --  end read only
 
 --  begin read only
