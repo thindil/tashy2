@@ -88,6 +88,10 @@ package Tk.TtkFrame is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Ttk_Frame_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Ttk_Frame_Options'(Width => Pixel_Data(Value => 10, Value_Unit => PIXEL), others => <>));
    -- SOURCE
    function Options_To_String(Options: Ttk_Frame_Options) return String with
       Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
