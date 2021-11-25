@@ -229,6 +229,10 @@ package Tk.TtkEntry is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Ttk_Entry_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Ttk_Entry_Options'(Width => 10, others => <>));
    -- SOURCE
    function Options_To_String(Options: Ttk_Entry_Options) return String with
       Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
