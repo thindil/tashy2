@@ -47,7 +47,7 @@ package Tcl.Variables is
         -- 8.6.0 - Added
         -- SOURCE
    subtype Unbounded_Variable_Name is Unbounded_String with
-        Dynamic_Predicate => Length(Unbounded_Variable_Name) in 1 .. 4_096
+        Dynamic_Predicate => Length(Unbounded_Variable_Name) <= 4_096
         and then
         (for all J in 1 .. Length(Unbounded_Variable_Name) =>
            Is_Alphanumeric(Item => Element(Unbounded_Variable_Name, J)));
