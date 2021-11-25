@@ -13,21 +13,21 @@ package Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests is
 
    procedure Test_Options_To_String_0a74e5_498c45
      (Gnattest_T: in out Test_Menu_Options);
-   --  tk-menu.ads:269:4:Options_To_String:Test_Options_To_String
+   --  tk-menu.ads:273:4:Options_To_String:Test_Options_To_String
 
    procedure Test_Create_32e405_e2d532(Gnattest_T: in out Test_Menu_Options);
-   --  tk-menu.ads:294:4:Create:Test_Create_Menu1
+   --  tk-menu.ads:298:4:Create:Test_Create_Menu1
 
    procedure Test_Create_ebbdc1_7e498b(Gnattest_T: in out Test_Menu_Options);
-   --  tk-menu.ads:332:4:Create:Test_Create_Menu2
+   --  tk-menu.ads:336:4:Create:Test_Create_Menu2
 
    procedure Test_Get_Options_ded36e_7f3252
      (Gnattest_T: in out Test_Menu_Options);
-   --  tk-menu.ads:413:4:Get_Options:Test_Get_Options_Menu
+   --  tk-menu.ads:417:4:Get_Options:Test_Get_Options_Menu
 
    procedure Test_Configure_0076be_2b53be
      (Gnattest_T: in out Test_Menu_Options);
-   --  tk-menu.ads:434:4:Configure:Test_Configure_Menu
+   --  tk-menu.ads:438:4:Configure:Test_Configure_Menu
 
 end Tk.Menu.Menu_Options_Test_Data.Menu_Options_Tests;
 --  end read only

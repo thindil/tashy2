@@ -12,7 +12,7 @@ package Tk.Image.Bitmap.Test_Data.Tests is
    null record;
 
    procedure Test_Get_Option_e3d52c_aaa578(Gnattest_T: in out Test);
-   --  tk-image-bitmap.ads:171:4:Get_Option:Tests_Get_Option_Bitmap
+   --  tk-image-bitmap.ads:175:4:Get_Option:Tests_Get_Option_Bitmap
 
 end Tk.Image.Bitmap.Test_Data.Tests;
 --  end read only
