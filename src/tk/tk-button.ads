@@ -101,7 +101,7 @@ package Tk.Button is
       Highlight_Background: Color_Type := Empty_Color;
       Highlight_Color: Color_Type := Empty_Color;
       Highlight_Thickness: Pixel_Data := Empty_Pixel_Data;
-      Image: Tcl_String := Null_Tcl_String;
+      Image: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Justify: Justify_Type := NONE;
       Over_Relief: Relief_Type := NONE;
       Pad_X: Pixel_Data := Empty_Pixel_Data;
