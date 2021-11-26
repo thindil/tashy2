@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables; use Tcl.Variables;
 with Tk.Colors; use Tk.Colors;
 with Tk.Widget; use Tk.Widget;
 
@@ -116,8 +117,8 @@ package Tk.Frame is
    -- 8.6.0 - Added
    -- SOURCE
    type Frame_Create_Options is new Frame_Options with record
-      Class: Tcl_String := Null_Tcl_String;
-      Color_Map: Tcl_String := Null_Tcl_String;
+      Class: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Color_Map: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Container: Extended_Boolean := NONE;
       Visual: Tcl_String := Null_Tcl_String;
    end record;
