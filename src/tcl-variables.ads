@@ -51,7 +51,7 @@ package Tcl.Variables is
         and then
         (for all J in 1 .. Length(Unbounded_Variable_Name) =>
            Is_Alphanumeric(Item => Element(Unbounded_Variable_Name, J)));
-        -- ****
+   -- ****
 
         -- ****d* Variables/Variables.Empty_Unbounded_Variable_Name
         -- FUNCTION
@@ -59,7 +59,8 @@ package Tcl.Variables is
         -- HISTORY
         -- 8.6.0 - Added
         -- SOURCE
-   Empty_Unbounded_Variable_Name: constant Unbounded_Variable_Name := Null_Unbounded_String;
+   Empty_Unbounded_Variable_Name: constant Unbounded_Variable_Name :=
+     Null_Unbounded_String;
    -- ****
 
    -- ****t* Variables/Variables.Variables_Flags
@@ -116,6 +117,24 @@ package Tcl.Variables is
    -- 8.6.0 - Added
    -- SOURCE
    Default_Flags_Array: constant Flags_Array(1 .. 1) := (1 => Default_Flag);
+   -- ****
+
+   -- ****f* Variables/Variables.To_Unbounded_Variable_Name
+   -- FUNCTION
+   -- Convert Ada String to Unbounded_Variable_Name subtype
+   -- PARAMETERS
+   -- Source - Ada String to convert
+   -- RESULT
+   -- Converted to Unbounded_Variable_Name Ada String
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert "myvalue" String to Unbounded_Variable_Name
+   -- Variable_Name: constant Unbounded_Variable_Name := To_Unbounded_Variable_Name("myvalue");
+   -- SOURCE
+   function To_Unbounded_Variable_Name
+     (Source: String) return Unbounded_Variable_Name renames
+     To_Unbounded_String;
    -- ****
 
    -- ****f* Variables/Variables.Tcl_Set_Var
