@@ -100,6 +100,10 @@ package Tk.TtkLabelFrame is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Ttk_Label_Frame_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Ttk_Label_Frame_Options'(Text => To_Tcl_String("My frame"), others => <>));
    -- SOURCE
    function Options_To_String
      (Options: Ttk_Label_Frame_Options) return String with
