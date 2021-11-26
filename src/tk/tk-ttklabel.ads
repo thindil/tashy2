@@ -99,6 +99,10 @@ package Tk.TtkLabel is
    -- String with Tcl command options
    -- HISTORY
    -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Convert Ttk_Label_Options to String
+   -- Options_String: constant String :=
+   --    Options_To_String(Ttk_Label_Options'(Text => To_Tcl_String("I'm label"), others => <>));
    -- SOURCE
    function Options_To_String(Options: Ttk_Label_Options) return String with
       Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
