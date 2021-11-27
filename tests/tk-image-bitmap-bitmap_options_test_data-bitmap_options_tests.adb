@@ -16,6 +16,7 @@ with System.Assertions;
 --  end read only
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Tk.Winfo; use Tk.Winfo;
 
 --  begin read only
 --  end read only
@@ -67,9 +68,8 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
          "Failed to convert default Bitmap_Options to Tcl command.");
       Assert
         (Options_To_String
-           (Bitmap_Options'
-              (Background => To_Tcl_String("black"), others => <>)) =
-         " -background black",
+           (Bitmap_Options'(Background => Rgb(BLACK), others => <>)) =
+         " -background #000000000",
          "Failed to convert Bitmap_Options to Tcl command.");
 
 --  begin read only
@@ -265,10 +265,9 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
          return;
       end if;
       Configure
-        ("mybitmap",
-         Bitmap_Options'(Background => To_Tcl_String("black"), others => <>));
+        ("mybitmap", Bitmap_Options'(Background => Rgb(BLACK), others => <>));
       Assert
-        (Get_Option("mybitmap", "background") = "black",
+        (Get_Option("mybitmap", "background") = "#000000000",
          "Failed to set options for bitmap image.");
 
 --  begin read only
@@ -333,7 +332,7 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
          return;
       end if;
       Assert
-        (Get_Options("mybitmap").Background = "black",
+        (Get_Options("mybitmap").Background = Rgb(BLACK),
          "Failed to get options for bitmap image.");
 
 --  begin read only

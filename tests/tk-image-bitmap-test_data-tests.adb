@@ -87,7 +87,7 @@ package body Tk.Image.Bitmap.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Get_Option("mybitmap", "background") = "black",
+        (Get_Option("mybitmap", "background") = "#000000000",
          "Failed to get option of the selected image");
 
 --  begin read only
