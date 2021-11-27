@@ -99,9 +99,13 @@ package body Tk.Image.Bitmap is
       return Bitmap_Options is
       use Winfo;
 
-      Color: constant String :=
+      Fore_Color: constant String :=
         Get_Option
           (Bitmap_Image => Bitmap_Image, Name => "foreground",
+           Interpreter => Interpreter);
+      Back_Color: constant String :=
+        Get_Option
+          (Bitmap_Image => Bitmap_Image, Name => "background",
            Interpreter => Interpreter);
    begin
       return Options: Bitmap_Options := Default_Bitmap_Options do
@@ -118,18 +122,20 @@ package body Tk.Image.Bitmap is
                   (Bitmap_Image => Bitmap_Image, Name => "file",
                    Interpreter => Interpreter));
          Options.Background :=
-           To_Tcl_String
-             (Source =>
-                Get_Option
-                  (Bitmap_Image => Bitmap_Image, Name => "background",
-                   Interpreter => Interpreter));
+           (if Back_Color(Fore_Color'First) /= '#' then
+              Rgb(Color_Name => Colors_Names_Value(Image => Back_Color))
+            elsif Back_Color'Length = 10 then
+              (Red => Color_Range'Value(Back_Color(2 .. 4)) * 257,
+               Green => Color_Range'Value(Back_Color(5 .. 7)) * 257,
+               Blue => Color_Range'Value(Back_Color(8 .. 10)) * 257)
+            else Empty_Color);
          Options.Foreground :=
-           (if Color(Color'First) /= '#' then
-              Rgb(Color_Name => Colors_Names_Value(Image => Color))
-            elsif Color'Length = 10 then
-              (Red => Color_Range'Value(Color(2 .. 4)) * 257,
-               Green => Color_Range'Value(Color(5 .. 7)) * 257,
-               Blue => Color_Range'Value(Color(8 .. 10)) * 257)
+           (if Fore_Color(Fore_Color'First) /= '#' then
+              Rgb(Color_Name => Colors_Names_Value(Image => Fore_Color))
+            elsif Fore_Color'Length = 10 then
+              (Red => Color_Range'Value(Fore_Color(2 .. 4)) * 257,
+               Green => Color_Range'Value(Fore_Color(5 .. 7)) * 257,
+               Blue => Color_Range'Value(Fore_Color(8 .. 10)) * 257)
             else Empty_Color);
          Options.Mask_Data :=
            To_Tcl_String

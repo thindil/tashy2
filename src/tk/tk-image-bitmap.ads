@@ -32,7 +32,7 @@ package Tk.Image.Bitmap is
    --              File options are specified, the File option takes precedence.
    -- File       - The name of the file which will be loaded as an image.
    -- Background - The color used for the background of the image. If set as
-   --              empty string, the background will be transparent
+   --              Empty_Color, the background will be transparent
    -- Foreground - The foreground color of the image
    -- Mask_Data  - The bitmap data used as mask for the image. If both Mask_Data
    --              and Mask_File are set, then Mask_Data option takes precedence.
@@ -41,7 +41,7 @@ package Tk.Image.Bitmap is
    -- 8.6.0 - Added
    -- SOURCE
    type Bitmap_Options is new Image_Options with record
-      Background: Tcl_String := Null_Tcl_String;
+      Background: Color_Type := Empty_Color;
       Foreground: Color_Type := Empty_Color;
       Mask_Data: Tcl_String := Null_Tcl_String;
       Mask_File: Tcl_String := Null_Tcl_String;
