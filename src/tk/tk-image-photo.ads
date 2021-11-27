@@ -97,7 +97,7 @@ package Tk.Image.Photo is
    -- 8.6.0 - Added
    -- SOURCE
    type Photo_Options is new Image_Options with record
-      Format: Tcl_String := Null_Tcl_String;
+      Format: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Gamma: Positive_Float := -1.0;
       Height: Natural := 0;
       Palette: Shades_Type := Empty_Shades;

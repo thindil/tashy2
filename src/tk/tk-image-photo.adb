@@ -145,7 +145,7 @@ package body Tk.Image.Photo is
                   (Photo_Image => Photo_Image, Name => "file",
                    Interpreter => Interpreter));
          Options.Format :=
-           To_Tcl_String
+           To_Unbounded_Variable_Name
              (Source =>
                 Get_Option
                   (Photo_Image => Photo_Image, Name => "format",
