@@ -16,6 +16,7 @@ with System.Assertions;
 --  end read only
 
 with Ada.Environment_Variables; use Ada.Environment_Variables;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with GNAT.Directory_Operations; use GNAT.Directory_Operations;
 
 --  begin read only
@@ -128,7 +129,7 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
       end if;
       Create
         ("myphoto",
-         (Format => To_Tcl_String("png"),
+         (Format => To_Unbounded_Variable_Name("png"),
           File => To_Tcl_String(".." & Dir_Separator & "test.png"),
           others => <>));
       Assert
@@ -198,7 +199,7 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
       end if;
       declare
          Photo_Image: constant Tk_Image :=
-           Create((Format => To_Tcl_String("png"), others => <>));
+           Create((Format => To_Unbounded_Variable_Name("png"), others => <>));
       begin
          Assert
            (Photo_Image'Length > 0,
@@ -329,7 +330,7 @@ package body Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
          return;
       end if;
       Assert
-        (Get_Options("myphoto").Format = "png",
+        (Get_Options("myphoto").Format = To_Unbounded_Variable_Name("png"),
          "Failed to get options for photo image.");
 
 --  begin read only
