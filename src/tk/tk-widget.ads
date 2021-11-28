@@ -924,7 +924,8 @@ package Tk.Widget is
    function Option_Value
      (Widgt: Tk_Widget; Name: String) return Unbounded_Variable_Name with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
-      Test_Case => (Name => "Test_Option_Value_Unbounded_Variable_Name", Mode => Nominal);
+      Test_Case => (Name => "Test_Option_Value_Unbounded_Variable_Name",
+       Mode => Nominal);
    -- ****
 
    --------------------------------

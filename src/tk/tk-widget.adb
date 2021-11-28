@@ -575,7 +575,8 @@ package body Tk.Widget is
       return Empty_Color;
    end Option_Value;
 
-   function Option_Value(Widgt: Tk_Widget; Name: String) return Unbounded_Variable_Name is
+   function Option_Value
+     (Widgt: Tk_Widget; Name: String) return Unbounded_Variable_Name is
    begin
       return
         To_Unbounded_String
