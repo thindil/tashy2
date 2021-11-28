@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables; use Tcl.Variables;
 with Tk.Colors; use Tk.Colors;
 with Tk.Widget; use Tk.Widget;
 
@@ -90,7 +91,7 @@ package Tk.Menu is
       Background: Color_Type := Empty_Color;
       Border_Width: Pixel_Data := Empty_Pixel_Data;
       Disabled_Foreground: Color_Type := Empty_Color;
-      Font: Tcl_String := Null_Tcl_String;
+      Font: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Foreground: Color_Type := Empty_Color;
       Relief: Relief_Type := NONE;
       Post_Command: Tcl_String := Null_Tcl_String;
