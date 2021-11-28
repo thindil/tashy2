@@ -63,6 +63,10 @@ package body Tk.Image.Bitmap.Bitmap_Options_Test_Data.Bitmap_Options_Tests is
 
    begin
 
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
       Assert
         (Options_To_String(Bitmap_Options'(others => <>)) = "",
          "Failed to convert default Bitmap_Options to Tcl command.");
