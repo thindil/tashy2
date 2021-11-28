@@ -134,19 +134,19 @@ package Tk.Widget.Test_Data.Tests is
    --  tk-widget.ads:924:4:Option_Value:Test_Option_Value_Unbounded_Variable_Name
 
    procedure Test_Destroy_568000_03a39f(Gnattest_T: in out Test);
-   --  tk-widget.ads:948:4:Destroy:Test_Destroy
+   --  tk-widget.ads:949:4:Destroy:Test_Destroy
 
    procedure Test_Execute_Widget_Command_7643c6_2f4d36
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:977:4:Execute_Widget_Command:Test_Execute_Widget_Command
+   --  tk-widget.ads:978:4:Execute_Widget_Command:Test_Execute_Widget_Command
 
    procedure Test_Execute_Widget_Command_6ed39c_9808c7
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1003:4:Execute_Widget_Command:Test_Execute_Widget_Command2
+   --  tk-widget.ads:1004:4:Execute_Widget_Command:Test_Execute_Widget_Command2
 
    procedure Test_Execute_Widget_Command_7bae5e_9df879
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1030:4:Execute_Widget_Command:Test_Execute_Widget_Command3
+   --  tk-widget.ads:1031:4:Execute_Widget_Command:Test_Execute_Widget_Command3
 
 end Tk.Widget.Test_Data.Tests;
 --  end read only
