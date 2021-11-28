@@ -15,6 +15,7 @@
 with Tk.Frame; use Tk.Frame;
 with Tk.Widget; use Tk.Widget;
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables; use Tcl.Variables;
 
 -- ****h* Tk/Labelframe
 -- FUNCTION
@@ -109,8 +110,8 @@ package Tk.Labelframe is
    -- 8.6.0 - Added
    -- SOURCE
    type Label_Frame_Create_Options is new Label_Frame_Options with record
-      Class: Tcl_String;
-      Color_Map: Tcl_String;
+      Class: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Color_Map: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Container: Extended_Boolean;
       Visual: Tcl_String;
    end record;
