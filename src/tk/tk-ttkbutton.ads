@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables; use Tcl.Variables;
 with Tk.Widget; use Tk.Widget;
 with Tk.TtkWidget; use Tk.TtkWidget;
 
@@ -66,7 +67,7 @@ package Tk.TtkButton is
       Image: Ttk_Image_Option := Default_Ttk_Image_Option;
       State: Disabled_State_Type := NONE;
       Text: Tcl_String := Null_Tcl_String;
-      Text_Variable: Tcl_String := Null_Tcl_String;
+      Text_Variable: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Underline: Extended_Natural := -1;
       Width: Integer := 0;
    end record;
