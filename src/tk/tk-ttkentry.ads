@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables; use Tcl.Variables;
 with Tk.Widget; use Tk.Widget;
 with Tk.TtkWidget; use Tk.TtkWidget;
 
@@ -123,7 +124,7 @@ package Tk.TtkEntry is
       Justify: Justify_Type := NONE;
       Show: Extended_Boolean := NONE;
       State: Entry_State_Type := NONE;
-      Text_Variable: Tcl_String := Null_Tcl_String;
+      Text_Variable: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Validation: Validate_Type := EMPTY;
       Validate_Command: Tcl_String := Null_Tcl_String;
       Width: Natural := 0;
