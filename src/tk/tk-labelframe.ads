@@ -109,7 +109,10 @@ package Tk.Labelframe is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Label_Frame_Create_Options is new Label_Frame_Options with record
+   type Label_Frame_Create_Options is new Frame_Options with record
+      Label_Anchor: Anchor_Directions := NONE;
+      Label_Widget: Tk_Widget := Null_Widget;
+      Text: Tcl_String := Null_Tcl_String;
       Class: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Color_Map: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Container: Extended_Boolean;
