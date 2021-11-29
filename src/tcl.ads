@@ -455,7 +455,8 @@ package Tcl is
    -- Tcl.Tcl_Get_Result_(string), Tcl.Tcl_Get_Result_(integer)
    -- SOURCE
    function Tcl_Get_Result
-     (Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_Float_Result with
+     (Interpreter: Tcl_Interpreter := Get_Interpreter)
+      return Tcl_Float_Result with
       Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Tcl_GetResult3", Mode => Nominal);
       -- ****
