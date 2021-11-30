@@ -12,9 +12,9 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
-with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Tcl.Lists; use Tcl.Lists;
 with Tcl.Strings; use Tcl.Strings;
+with Tk.Colors; use Tk.Colors;
 with Tk.TopLevel; use Tk.TopLevel;
 with Tk.Widget; use Tk.Widget;
 
@@ -151,7 +151,7 @@ package Tk.Wm is
          when WINDOWS =>
             Disabled: Extended_Boolean;
             Tool_Window: Extended_Boolean;
-            Transparent_Color: Tcl_String;
+            Transparent_Color: Color_Type;
          when MACOSX =>
             Modified: Extended_Boolean;
             Notify: Extended_Boolean;
@@ -505,26 +505,20 @@ package Tk.Wm is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Get the transparent color on Windows for the main Tk window
-      -- Transparent_Color: constant Tcl_String := Get_Attribute(Get_Main_Window, "transparentcolor");
+      -- Transparent_Color: constant Color_Type := Get_Attribute(Get_Main_Window);
       -- COMMANDS
       -- wm attributes Window Name
       -- SOURCE
    function Get_Attribute
-     (Window: Tk_Widget; Name: Window_Atrributes_Type) return Tcl_String is
+     (Window: Tk_Widget) return Tcl_String is
      (To_Tcl_String
         (Source =>
            Tcl_Eval
              (Tcl_Script =>
-                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -" &
-                To_Lower(Item => Window_Atrributes_Type'Image(Name)),
+                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -titlepath",
               Interpreter => Tk_Interp(Widgt => Window))
              .Result)) with
-      Pre => (Window /= Null_Widget and Name in TRANSPARENTCOLOR | TITLEPATH)
-      and then Window_Atrributes_Type'Image(Name)'Length <= 16
-      and then
-        Tk_Path_Name(Widgt => Window)'Length +
-          Window_Atrributes_Type'Image(Name)'Length <
-        Long_Long_Integer(Integer'Last - 32),
+      Pre => Window /= Null_Widget,
       Test_Case => (Name => "Test_Wm_Get_Attribute", Mode => Nominal);
    function Get_Attribute
      (Window: Tk_Widget; Name: Window_Atrributes_Type)

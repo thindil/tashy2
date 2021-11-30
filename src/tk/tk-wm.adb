@@ -12,11 +12,13 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+with Ada.Characters.Handling; use Ada.Characters.Handling;
 with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
 with Tcl.Variables;
+with Tk.Winfo;
 
 package body Tk.Wm is
 
@@ -60,6 +62,7 @@ package body Tk.Wm is
 
    function Get_Attributes(Window: Tk_Widget) return Window_Attributes_Data is
       use Tcl.Variables;
+      use Tk.Winfo;
 
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
@@ -120,7 +123,28 @@ package body Tk.Wm is
             Window_Attributes.Tool_Window := Get_Boolean(Array_Index => Index);
          elsif Result(Index) = "-transparentcolor" and
            Window_Manager = WINDOWS then
-            Window_Attributes.Transparent_Color := Result(Index + 1);
+            if To_String(Source => Result(Index + 1))(1) /= '#' then
+               Window_Attributes.Transparent_Color :=
+                 Rgb
+                   (Color_Name =>
+                      Colors_Names_Value
+                        (Image => To_String(Source => Result(Index + 1))),
+                    Window => Window);
+            elsif To_String(Source => Result(Index + 1))'Length = 10 then
+               Window_Attributes.Transparent_Color :=
+                 (Red =>
+                    Color_Range'Value
+                      (To_String(Source => Result(Index + 1))(2 .. 4)) *
+                    257,
+                  Green =>
+                    Color_Range'Value
+                      (To_String(Source => Result(Index + 1))(5 .. 7)) *
+                    257,
+                  Blue =>
+                    Color_Range'Value
+                      (To_String(Source => Result(Index + 1))(8 .. 10)) *
+                    257);
+            end if;
          elsif Result(Index) = "-modified" and Window_Manager = MACOSX then
             Window_Attributes.Modified := Get_Boolean(Array_Index => Index);
          elsif Result(Index) = "-notify" and Window_Manager = MACOSX then
@@ -186,16 +210,12 @@ package body Tk.Wm is
             Set_Boolean
               (Name => "toolwindow", Value => Attributes_Data.Tool_Window,
                List => Values_List);
-            if To_Ada_String(Source => Attributes_Data.Transparent_Color)'
-                Length >
-              0 then
-               Append
-                 (Source => Values_List,
-                  New_Item =>
-                    "-transparentcolor " &
-                    To_Ada_String
-                      (Source => Attributes_Data.Transparent_Color) &
-                    " ");
+            if Attributes_Data.Transparent_Color /= Empty_Color then
+               Option_Image
+                 (Name => "transparentcolor",
+                  Value => Attributes_Data.Transparent_Color,
+                  Options_String => Values_List);
+               Append(Source => Values_List, New_Item => " ");
             end if;
          when MACOSX =>
             Set_Boolean
