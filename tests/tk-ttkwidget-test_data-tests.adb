@@ -204,7 +204,8 @@ package body Tk.TtkWidget.Test_Data.Tests is
       end if;
       Option_Image
         ("image",
-         Ttk_Image_Option'(Default => To_Tcl_String("MyImage"), others => <>),
+         Ttk_Image_Option'
+           (Default => To_Unbounded_Variable_Name("MyImage"), others => <>),
          Options);
       Assert
         (Options = To_Unbounded_String(" -image {MyImage}"),
