@@ -13,6 +13,7 @@
 -- limitations under the License.
 
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables; use Tcl.Variables;
 with Tk.Colors; use Tk.Colors;
 with Tk.Widget; use Tk.Widget;
 with Tk.TtkWidget; use Tk.TtkWidget;
@@ -75,7 +76,7 @@ package Tk.TtkLabel is
       Anchor: Directions_Type := NONE;
       Background: Color_Type := Empty_Color;
       Compound: Compound_Type := EMPTY;
-      Font: Tcl_String := Null_Tcl_String;
+      Font: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Foreground: Color_Type := Empty_Color;
       Image: Ttk_Image_Option := Default_Ttk_Image_Option;
       Justify: Justify_Type := NONE;
@@ -83,7 +84,7 @@ package Tk.TtkLabel is
       Relief: Relief_Type := NONE;
       State: Disabled_State_Type := NONE;
       Text: Tcl_String := Null_Tcl_String;
-      Text_Variable: Tcl_String := Null_Tcl_String;
+      Text_Variable: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Underline: Extended_Natural := -1;
       Width: Integer := 0;
       Wrap_Length: Extended_Natural := -1;
