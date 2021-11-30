@@ -304,7 +304,7 @@ package Tk.Widget is
    -- 8.6.0 - Added
    -- SOURCE
    type Widget_Options is abstract tagged record
-      Cursor: Tcl_String := Null_Tcl_String;
+      Cursor: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Take_Focus: Tcl_String := Null_Tcl_String;
    end record;
    -- ****
