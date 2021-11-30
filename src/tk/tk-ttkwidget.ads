@@ -15,6 +15,7 @@
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Tk.Widget; use Tk.Widget;
 with Tcl.Strings; use Tcl.Strings;
+with Tcl.Variables; use Tcl.Variables;
 
 -- ****h* Tk/TtkWidget
 -- FUNCTION
@@ -46,8 +47,8 @@ package Tk.TtkWidget is
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Widget_Options is abstract new Widget_Options with record
-      Class: Tcl_String := Null_Tcl_String;
-      Style: Tcl_String := Null_Tcl_String;
+      Class: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Style: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
    end record;
    -- ****
    --## rule on TYPE_INITIAL_VALUES
@@ -174,17 +175,17 @@ package Tk.TtkWidget is
    -- 8.6.0 - Added
    -- SOURCE
    type Ttk_Image_Option is record
-      Default: Tcl_String;
-      Active: Tcl_String;
-      Disabled: Tcl_String;
-      Focus: Tcl_String;
-      Pressed: Tcl_String;
-      Selected: Tcl_String;
-      Background: Tcl_String;
-      Readonly: Tcl_String;
-      Alternate: Tcl_String;
-      Invalid: Tcl_String;
-      Hover: Tcl_String;
+      Default: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Active: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Disabled: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Focus: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Pressed: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Selected: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Background: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Readonly: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Alternate: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Invalid: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
+      Hover: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
    end record;
    -- ****
 
@@ -194,8 +195,7 @@ package Tk.TtkWidget is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   Default_Ttk_Image_Option: constant Ttk_Image_Option :=
-     (others => Null_Tcl_String);
+   Default_Ttk_Image_Option: constant Ttk_Image_Option := (others => <>);
    -- ****
 
    -- ****s* TtkWidget/TtkWidget.Padding_Data

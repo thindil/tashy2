@@ -54,53 +54,53 @@ package body Tk.TtkWidget is
       Append
         (Source => Options_String,
          New_Item => " -" & Name & " {" & To_String(Source => Value.Default));
-      if Value.Active /= Tcl_String(Null_Unbounded_String) then
+      if Value.Active /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item => " active " & To_String(Source => Value.Active));
       end if;
-      if Value.Disabled /= Tcl_String(Null_Unbounded_String) then
+      if Value.Disabled /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item => " disabled " & To_String(Source => Value.Disabled));
       end if;
-      if Value.Focus /= Tcl_String(Null_Unbounded_String) then
+      if Value.Focus /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item => " focus " & To_String(Source => Value.Focus));
       end if;
-      if Value.Pressed /= Tcl_String(Null_Unbounded_String) then
+      if Value.Pressed /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item => " pressed " & To_String(Source => Value.Pressed));
       end if;
-      if Value.Selected /= Tcl_String(Null_Unbounded_String) then
+      if Value.Selected /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item => " selected " & To_String(Source => Value.Selected));
       end if;
-      if Value.Background /= Tcl_String(Null_Unbounded_String) then
+      if Value.Background /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item =>
               " background " & To_String(Source => Value.Background));
       end if;
-      if Value.Readonly /= Tcl_String(Null_Unbounded_String) then
+      if Value.Readonly /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item => " readonly " & To_String(Source => Value.Readonly));
       end if;
-      if Value.Alternate /= Tcl_String(Null_Unbounded_String) then
+      if Value.Alternate /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item => " alternate " & To_String(Source => Value.Alternate));
       end if;
-      if Value.Invalid /= Tcl_String(Null_Unbounded_String) then
+      if Value.Invalid /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item => " invalid " & To_String(Source => Value.Invalid));
       end if;
-      if Value.Hover /= Tcl_String(Null_Unbounded_String) then
+      if Value.Hover /= Empty_Unbounded_Variable_Name then
          Append
            (Source => Options_String,
             New_Item => " hover " & To_String(Source => Value.Hover));
@@ -180,30 +180,51 @@ package body Tk.TtkWidget is
          return Options;
       end if;
       Options.Default :=
-        To_Tcl_String(Source => To_String(Source => Options_Array(1)));
+        To_Unbounded_Variable_Name
+          (Source => To_String(Source => Options_Array(1)));
       Set_Options_Loop :
       while Index <= Options_Array'Length loop
          if Options_Array(Index) = To_Tcl_String(Source => "active") then
-            Options.Active := Options_Array(Index + 1);
+            Options.Active :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          elsif Options_Array(Index) = To_Tcl_String(Source => "disabled") then
-            Options.Disabled := Options_Array(Index + 1);
+            Options.Disabled :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          elsif Options_Array(Index) = To_Tcl_String(Source => "focus") then
-            Options.Focus := Options_Array(Index + 1);
+            Options.Focus :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          elsif Options_Array(Index) = To_Tcl_String(Source => "pressed") then
-            Options.Pressed := Options_Array(Index + 1);
+            Options.Pressed :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          elsif Options_Array(Index) = To_Tcl_String(Source => "selected") then
-            Options.Selected := Options_Array(Index + 1);
+            Options.Selected :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          elsif Options_Array(Index) =
            To_Tcl_String(Source => "background") then
-            Options.Background := Options_Array(Index + 1);
+            Options.Background :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          elsif Options_Array(Index) = To_Tcl_String(Source => "readonly") then
-            Options.Readonly := Options_Array(Index + 1);
+            Options.Readonly :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          elsif Options_Array(Index) = To_Tcl_String(Source => "alternate") then
-            Options.Alternate := Options_Array(Index + 1);
+            Options.Alternate :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          elsif Options_Array(Index) = To_Tcl_String(Source => "invalid") then
-            Options.Invalid := Options_Array(Index + 1);
+            Options.Invalid :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          elsif Options_Array(Index) = To_Tcl_String(Source => "hover") then
-            Options.Hover := Options_Array(Index + 1);
+            Options.Hover :=
+              To_Unbounded_Variable_Name
+                (Source => To_String(Source => Options_Array(Index + 1)));
          end if;
          Index := Index + 2;
       end loop Set_Options_Loop;
