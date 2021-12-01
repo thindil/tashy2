@@ -509,13 +509,13 @@ package Tk.Wm is
       -- COMMANDS
       -- wm attributes Window Name
       -- SOURCE
-   function Get_Attribute
-     (Window: Tk_Widget) return Tcl_String is
+   function Get_Attribute(Window: Tk_Widget) return Tcl_String is
      (To_Tcl_String
         (Source =>
            Tcl_Eval
              (Tcl_Script =>
-                "wm attributes " & Tk_Path_Name(Widgt => Window) & " -titlepath",
+                "wm attributes " & Tk_Path_Name(Widgt => Window) &
+                " -titlepath",
               Interpreter => Tk_Interp(Widgt => Window))
              .Result)) with
       Pre => Window /= Null_Widget,
@@ -528,12 +528,10 @@ package Tk.Wm is
           TRANSPARENT,
       Test_Case => (Name => "Test_Wm_Get_Attribute2", Mode => Nominal);
    function Get_Attribute(Window: Tk_Widget) return Alpha_Type with
-      Pre => (Window /= Null_Widget and Get_Interpreter /= Null_Interpreter)
-      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 21,
+      Pre => Window /= Null_Widget and Get_Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Wm_Get_Attribute3", Mode => Nominal);
    function Get_Attribute(Window: Tk_Widget) return Window_Types with
-      Pre => (Window /= Null_Widget and Get_Interpreter /= Null_Interpreter)
-      and then Tk_Path_Name(Widgt => Window)'Length < Integer'Last - 20,
+      Pre => Window /= Null_Widget and Get_Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Wm_Get_Attribute4", Mode => Nominal);
       -- ****
 
