@@ -189,10 +189,10 @@ package Tk.Menu is
             Column_Break: Extended_Boolean := NONE;
             Command: Tcl_String := Null_Tcl_String;
             Compound: Place_Type := EMPTY;
-            Font: Tcl_String := Null_Tcl_String;
+            Font: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
             Foreground: Color_Type := Empty_Color;
             Hide_Margin: Extended_Boolean := NONE;
-            Image: Tcl_String := Null_Tcl_String;
+            Image: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
             Label: Tcl_String := Null_Tcl_String;
             State: State_Type := NONE;
             Underline: Extended_Natural := -1;
@@ -203,7 +203,8 @@ package Tk.Menu is
                   Indicator_On: Extended_Boolean := NONE;
                   Select_Color: Color_Type := Empty_Color;
                   Select_Image: Tcl_String := Null_Tcl_String;
-                  Variable: Tcl_String := Null_Tcl_String;
+                  Variable: Unbounded_Variable_Name :=
+                    Empty_Unbounded_Variable_Name;
                   case Item_Type is
                      when CHECKBUTTON =>
                         Off_Value: Tcl_String := Null_Tcl_String;
