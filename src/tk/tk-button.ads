@@ -95,7 +95,7 @@ package Tk.Button is
       Compound: Place_Type := EMPTY;
       Default: State_Type := NONE;
       Disabled_Foreground: Color_Type := Empty_Color;
-      Font: Tcl_String := Null_Tcl_String;
+      Font: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       Foreground: Color_Type := Empty_Color;
       Height: Pixel_Data := Empty_Pixel_Data;
       Highlight_Background: Color_Type := Empty_Color;
