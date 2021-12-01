@@ -533,6 +533,9 @@ package Tk.Wm is
    function Get_Attribute(Window: Tk_Widget) return Window_Types with
       Pre => Window /= Null_Widget and Get_Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Test_Wm_Get_Attribute4", Mode => Nominal);
+   function Get_Attribute(Window: Tk_Widget) return Color_Type with
+      Pre => Window /= Null_Widget and Get_Interpreter /= Null_Interpreter,
+      Test_Case => (Name => "Test_Wm_Get_Attribute5", Mode => Nominal);
       -- ****
 
       -- ****f* Wm/Wm.Get_Client

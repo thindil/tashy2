@@ -18,7 +18,7 @@ with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
 with Tcl.Variables;
-with Tk.Winfo;
+with Tk.Winfo; use Tk.Winfo;
 
 package body Tk.Wm is
 
@@ -62,7 +62,6 @@ package body Tk.Wm is
 
    function Get_Attributes(Window: Tk_Widget) return Window_Attributes_Data is
       use Tcl.Variables;
-      use Tk.Winfo;
 
       Interpreter: constant Tcl_Interpreter := Tk_Interp(Widgt => Window);
       Result: constant Array_List :=
@@ -285,6 +284,34 @@ package body Tk.Wm is
          return NONE;
       end if;
       return Window_Types'Value(Result);
+   end Get_Attribute;
+
+   function Get_Attribute(Window: Tk_Widget) return Color_Type is
+      Result: constant String :=
+        Tcl_Eval
+          (Tcl_Script =>
+             "wm attributes " & Tk_Path_Name(Widgt => Window) &
+             " -transparentcolor",
+           Interpreter => Tk_Interp(Widgt => Window))
+          .Result;
+   begin
+      if Result'Length = 0 then
+         return Empty_Color;
+      end if;
+      if Result(Result'First) /= '#' then
+         return
+           Rgb
+             (Color_Name => Colors_Names_Value(Image => Result),
+              Window => Window);
+      end if;
+      if Result'Length = 10 then
+         return Color: Color_Type := Empty_Color do
+            Color.Red := Color_Range'Value(Result(2 .. 4)) * 257;
+            Color.Green := Color_Range'Value(Result(5 .. 7)) * 257;
+            Color.Blue := Color_Range'Value(Result(8 .. 10)) * 257;
+         end return;
+      end if;
+      return Empty_Color;
    end Get_Attribute;
 
    procedure Set_Client(Window: Tk_Widget; Name: Tcl_String) is
