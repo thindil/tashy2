@@ -255,10 +255,7 @@ package Tk.Image.Photo is
    procedure Blank
      (Photo_Image: Tk_Image;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre =>
-      (Photo_Image'Length > 0
-       and then Photo_Image'Length <= Positive'Last - 6) and
-      Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Blank_Photo", Mode => Nominal);
       -- ****
 
@@ -349,7 +346,7 @@ package Tk.Image.Photo is
    function Get_Options
      (Photo_Image: Tk_Image; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Photo_Options with
-      Pre'Class => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre'Class => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Options_Photo", Mode => Nominal);
       -- ****
 
@@ -404,8 +401,7 @@ package Tk.Image.Photo is
       Zoom, Sub_Sample: Point_Position := Empty_Point_Position;
       Compositing_Rule: Compositing_Types := NONE;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Destination_Image'Length > 0 and Source_Image'Length > 0 and
-      Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Copy_Photo", Mode => Nominal);
       -- ****
 
@@ -442,7 +438,7 @@ package Tk.Image.Photo is
      (Photo_Image: Tk_Image; Background, Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String with
-      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Data_Photo", Mode => Nominal);
       -- ****
 
@@ -471,7 +467,7 @@ package Tk.Image.Photo is
    function Get_Color
      (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Color_Type with
-      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Color_Photo", Mode => Nominal);
       -- ****
 
@@ -501,7 +497,7 @@ package Tk.Image.Photo is
       Format: Tcl_String := Null_Tcl_String;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Photo_Image'Length > 0 and Length(Source => Data) > 0 and
+      Pre => Length(Source => Data) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Put_Data_Photo", Mode => Nominal);
       -- ****
@@ -541,7 +537,7 @@ package Tk.Image.Photo is
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Photo_Image'Length > 0 and Length(Source => File_Name) > 0 and
+      Pre => Length(Source => File_Name) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Read_Photo", Mode => Nominal);
       -- ****
@@ -565,7 +561,7 @@ package Tk.Image.Photo is
    procedure Redither
      (Photo_Image: Tk_Image;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Redither_Photo", Mode => Nominal);
       -- ****
 
@@ -598,7 +594,7 @@ package Tk.Image.Photo is
      (Photo_Image: Tk_Image; X, Y: Natural;
       Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tcl_Boolean_Result with
-      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Get_Transparency_Photo", Mode => Nominal);
       -- ****
 
@@ -629,7 +625,7 @@ package Tk.Image.Photo is
    procedure Set_Transparency
      (Photo_Image: Tk_Image; X, Y: Natural; Transparent: Boolean;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Photo_Image'Length > 0 and Interpreter /= Null_Interpreter,
+      Pre => Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Set_Transparency_Photo", Mode => Nominal);
       -- ****
 
@@ -666,7 +662,7 @@ package Tk.Image.Photo is
       Background, Format: Tcl_String := Null_Tcl_String;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Photo_Image'Length > 0 and Length(Source => File_Name) > 0 and
+      Pre => Length(Source => File_Name) > 0 and
       Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Write_Photo", Mode => Nominal);
       -- ****
