@@ -374,6 +374,17 @@ package body Tk.Menu is
          end if;
          return Empty_Color;
       end Item_Value;
+      function Item_Value(Name: String) return Unbounded_Variable_Name is
+      begin
+         return
+           To_Unbounded_Variable_Name
+             (Source =>
+                Execute_Widget_Command
+                  (Widgt => Menu_Widget, Command_Name => "entrycget",
+                   Options =>
+                     To_Ada_String(Source => Menu_Index) & " -" & Name)
+                  .Result);
+      end Item_Value;
    begin
       return Options: Menu_Item_Options := Default_Menu_Item_Options do
          Execute_Widget_Command
