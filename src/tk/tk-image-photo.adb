@@ -255,7 +255,9 @@ package body Tk.Image.Photo is
    end Copy;
 
    function Get_Data
-     (Photo_Image: Tk_Image; Background, Format: Tcl_String := Null_Tcl_String;
+     (Photo_Image: Tk_Image;
+      Background, Format: Unbounded_Variable_Name :=
+        Empty_Unbounded_Variable_Name;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
       Options: Unbounded_String := Null_Unbounded_String;
