@@ -497,8 +497,7 @@ package Tk.Image.Photo is
       Format: Tcl_String := Null_Tcl_String;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
-      Pre => Length(Source => Data) > 0 and
-      Interpreter /= Null_Interpreter,
+      Pre => Length(Source => Data) > 0 and Interpreter /= Null_Interpreter,
       Test_Case => (Name => "Tests_Put_Data_Photo", Mode => Nominal);
       -- ****
 
@@ -659,7 +658,8 @@ package Tk.Image.Photo is
       -- SOURCE
    procedure Write
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
-      Background, Format: Tcl_String := Null_Tcl_String;
+      Background, Format: Unbounded_Variable_Name :=
+        Empty_Unbounded_Variable_Name;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Length(Source => File_Name) > 0 and

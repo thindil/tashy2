@@ -368,7 +368,8 @@ package body Tk.Image.Photo is
 
    procedure Write
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
-      Background, Format: Tcl_String := Null_Tcl_String;
+      Background, Format: Unbounded_Variable_Name :=
+        Empty_Unbounded_Variable_Name;
       From: Dimensions_Type := Empty_Dimension; Grayscale: Boolean := False;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
