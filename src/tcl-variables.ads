@@ -23,6 +23,26 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package Tcl.Variables is
 -- ****
 
+   -- ****f* Variables/Variables.Name_Is_Valid
+   -- FUNCTION
+   -- Check if the selected variable name is proper Tcl variable name.
+   -- The maximum length of it is 4096 characters. It can contains only
+   -- numbers and letters.
+   -- PARAMETERS
+   -- Name - The name which will be checked
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- EXAMPLE
+   -- -- Check if "myvariable" is valid Tcl variable name
+   -- if not Name_Is_Valid("myvariable") then
+   --     return;
+   -- end if;
+   -- SOURCE
+   function Name_Is_Valid(Name: String) return Boolean is
+     (Name'Length in 1 .. 4_096
+      and then (for all J in Name'Range => Is_Alphanumeric(Item => Name(J))));
+   -- ****
+
    --## rule off REDUCEABLE_SCOPE
    -- ****t* Variables/Variable.Variable_Name
    -- FUNCTION
@@ -32,10 +52,7 @@ package Tcl.Variables is
    -- 8.6.0 - Added
    -- SOURCE
    subtype Variable_Name is String with
-        Dynamic_Predicate => Variable_Name'Length in 1 .. 4_096
-        and then
-        (for all J in Variable_Name'Range =>
-           Is_Alphanumeric(Item => Variable_Name(J)));
+        Dynamic_Predicate => Name_Is_Valid(Variable_Name);
         -- ****
 
         -- ****t* Variables/Variable.Unbounded_Variable_Name
