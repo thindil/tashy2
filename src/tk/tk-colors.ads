@@ -157,6 +157,8 @@ package Tk.Colors is
       -- ****d* Colors/Colors.Default_Color_Value
       -- FUNCTION
       -- Default value for the amount of the selected color
+      -- HISTORY
+      -- 8.6.0 - Added
       -- SOURCE
    Default_Color_Value: constant Color_Range := 0;
    -- ****
