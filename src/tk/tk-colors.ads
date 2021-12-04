@@ -135,6 +135,15 @@ package Tk.Colors is
    -- ****
    --## rule on NAMING_CONVENTION
 
+   -- ****d* Colors/Colors.Black_Color_Name
+   -- FUNCTION
+   -- The name of the black color
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
+   Black_Color_Name: constant Colors_Names := BLACK;
+   -- ****
+
    -- ****t* Colors/Colors.Color_Range
    -- FUNCTION
    -- Type used to set the colors values
