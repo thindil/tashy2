@@ -25,7 +25,7 @@ package body Tk.Colors is
 
       Image: String := To_Lower(Item => Colors_Names'Image(Name));
       Has_Underline: Boolean := False;
-      Underline_Index: Natural;
+      Underline_Index: Natural := 0;
    begin
       Replace_Underline_Loop :
       loop
