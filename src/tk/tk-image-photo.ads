@@ -496,7 +496,7 @@ package Tk.Image.Photo is
       -- SOURCE
    procedure Put_Data
      (Photo_Image: Tk_Image; Data: Tcl_String;
-      Format: Tcl_String := Null_Tcl_String;
+      Format: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
       Pre => Length(Source => Data) > 0 and Interpreter /= Null_Interpreter,

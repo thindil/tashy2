@@ -300,7 +300,7 @@ package body Tk.Image.Photo is
 
    procedure Put_Data
      (Photo_Image: Tk_Image; Data: Tcl_String;
-      Format: Tcl_String := Null_Tcl_String;
+      Format: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       To: Dimensions_Type := Empty_Dimension;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
