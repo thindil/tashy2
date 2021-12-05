@@ -172,30 +172,31 @@ package Tk.Image.Photo is
    -- EXAMPLE
    -- -- Convert Photo_Options to String
    -- Options_String: constant String :=
-   --    Options_To_String(Photo_Options'(Format => To_Tcl_String("png"), others => <>));
+   --    Options_To_String(Photo_Options'(Format => To_Unbounded_Variable_Name("png"), others => <>));
    -- SOURCE
    function Options_To_String(Options: Photo_Options) return String with
       Test_Case => (Name => "Test_Options_To_String", Mode => Robustness);
-   -- ****
+      -- ****
 
-   -- ****f* Photo/Photo.Create_(procedure)
-   -- FUNCTION
-   -- Create a new Tk image of photo type with the selected name and options
-   -- PARAMETERS
-   -- Name        - Tk name for the newly created image
-   -- Options     - Options for the newly created image
-   -- Interpreter - Tcl interpreter on which the image will be created. Can
-   --               be empty. Default value is the default Tcl interpreter
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- EXAMPLE
-   -- -- Create the image with name .myimage from file myimage.png
-   -- Create(".myimage", Photo_Options'(Photo_Format => PNG, File => "myimage.png", others => <>));
-   -- SEE ALSO
-   -- Photo.Create_(function)
-   -- COMMANDS
-   -- image create photo Name Options
-   -- SOURCE
+      -- ****f* Photo/Photo.Create_(procedure)
+      -- FUNCTION
+      -- Create a new Tk image of photo type with the selected name and options
+      -- PARAMETERS
+      -- Name        - Tk name for the newly created image
+      -- Options     - Options for the newly created image
+      -- Interpreter - Tcl interpreter on which the image will be created. Can
+      --               be empty. Default value is the default Tcl interpreter
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Create the image with name .myimage from file myimage.png
+      -- Create(".myimage", Photo_Options'(Format => To_Unbounded_Variable_Name("png"),
+      --                                  File => "myimage.png", others => <>));
+      -- SEE ALSO
+      -- Photo.Create_(function)
+      -- COMMANDS
+      -- image create photo Name Options
+      -- SOURCE
    procedure Create
      (Photo_Image: Tk_Image; Options: Photo_Options;
       Interpreter: Tcl_Interpreter := Get_Interpreter) with
@@ -221,7 +222,8 @@ package Tk.Image.Photo is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Create the image with random name from file myimage.png
-      -- My_Image: constant Tk_Image := Create(Photo_Options'(Photo_Format => PNG, File => "myimage.png", others => <>));
+      -- My_Image: constant Tk_Image := Create(Photo_Options'(Format => To_Unbounded_Variable_Name("png"),
+      --                                                      File => "myimage.png", others => <>));
       -- SEE ALSO
       -- Photo.Create_(procedure)
       -- COMMANDS
@@ -272,7 +274,7 @@ package Tk.Image.Photo is
       -- 8.6.0 - Added
       -- EXAMPLE
       -- -- Set My_Image format to GIF on default Tcl interpreter
-      -- Configure(My_Image, Photo_Options'(Format => To_Tcl_String("gif"), others => <>));
+      -- Configure(My_Image, Photo_Options'(Format => To_Unbounded_Variable_Name("gif"), others => <>));
       -- COMMANDS
       -- Photo_Image configure Options
       -- SOURCE
