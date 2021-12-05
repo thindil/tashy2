@@ -71,7 +71,10 @@ package Tcl.Variables is
         -- end if;
         -- SOURCE
    function Unbounded_Name_Is_Valid(Name: Unbounded_String) return Boolean is
-     (Name_Is_Valid(Name => To_String(Source => Name)));
+     (Length(Source => Name) <= 4_096
+      and then
+      (for all J in 1 .. Length(Name) =>
+         Is_Alphanumeric(Item => Element(Name, J))));
    -- ****
 
    -- ****t* Variables/Variable.Unbounded_Variable_Name
