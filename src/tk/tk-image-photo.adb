@@ -317,7 +317,7 @@ package body Tk.Image.Photo is
 
    procedure Read
      (Photo_Image: Tk_Image; File_Name: Tcl_String;
-      Format: Tcl_String := Null_Tcl_String;
+      Format: Unbounded_Variable_Name := Empty_Unbounded_Variable_Name;
       From: Dimensions_Type := Empty_Dimension; Shrink: Boolean := False;
       To: Point_Position := Empty_Point_Position;
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
