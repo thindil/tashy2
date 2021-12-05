@@ -55,19 +55,36 @@ package Tcl.Variables is
         Dynamic_Predicate => Name_Is_Valid(Name => Variable_Name);
         -- ****
 
-        -- ****t* Variables/Variable.Unbounded_Variable_Name
+        -- ****f* Variables/Variables.Unbounded_Name_Is_Valid
         -- FUNCTION
-        -- The type to store the name of Tcl variable in Unbounded_String.
-        -- The maximum length of it is 4096 characters. It can contains
-        -- only numbers and letters.
+        -- Check if the selected unbounded variable name is proper Tcl
+        -- variable name. The maximum length of it is 4096 characters.
+        -- It can contains only numbers and letters.
+        -- PARAMETERS
+        -- Name - The name which will be checked
         -- HISTORY
         -- 8.6.0 - Added
+        -- EXAMPLE
+        -- -- Check if "myvariable" is valid Tcl variable name
+        -- if not Unbounded_Name_Is_Valid(To_Unbounded_String("myvariable")) then
+        --     return;
+        -- end if;
         -- SOURCE
+   function Unbounded_Name_Is_Valid(Name: Unbounded_String) return Boolean is
+     (Name_Is_Valid(Name => To_String(Source => Name)));
+   -- ****
+
+   -- ****t* Variables/Variable.Unbounded_Variable_Name
+   -- FUNCTION
+   -- The type to store the name of Tcl variable in Unbounded_String.
+   -- The maximum length of it is 4096 characters. It can contains
+   -- only numbers and letters.
+   -- HISTORY
+   -- 8.6.0 - Added
+   -- SOURCE
    subtype Unbounded_Variable_Name is Unbounded_String with
-        Dynamic_Predicate => Length(Source => Unbounded_Variable_Name) <= 4_096
-        and then
-        (for all J in 1 .. Length(Unbounded_Variable_Name) =>
-           Is_Alphanumeric(Item => Element(Unbounded_Variable_Name, J)));
+        Dynamic_Predicate => Unbounded_Name_Is_Valid
+          (Name => Unbounded_Variable_Name);
    -- ****
 
         -- ****d* Variables/Variables.Empty_Unbounded_Variable_Name
