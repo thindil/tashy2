@@ -26,10 +26,10 @@ package Tk.Image.Photo.Test_Data.Tests is
    procedure Test_Get_Color_ee826d_322127(Gnattest_T: in out Test);
    --  tk-image-photo.ads:469:4:Get_Color:Tests_Get_Color_Photo
 
-   procedure Test_Put_Data_cd9739_d650ad(Gnattest_T: in out Test);
+   procedure Test_Put_Data_9bda04_d650ad(Gnattest_T: in out Test);
    --  tk-image-photo.ads:497:4:Put_Data:Tests_Put_Data_Photo
 
-   procedure Test_Read_95a1fe_51d80d(Gnattest_T: in out Test);
+   procedure Test_Read_1232a6_51d80d(Gnattest_T: in out Test);
    --  tk-image-photo.ads:535:4:Read:Tests_Read_Photo
 
    procedure Test_Redither_68a59f_00a312(Gnattest_T: in out Test);
