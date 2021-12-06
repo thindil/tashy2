@@ -27,7 +27,7 @@ package body Tk.Image.Photo is
          Options_String => Options_String);
       if Unbounded_Name_Is_Valid(Name => Options.Format) then
          Option_Image
-            (Name => "format", Value => Options.Format,
+           (Name => "format", Value => Options.Format,
             Options_String => Options_String);
       end if;
       Option_Image
@@ -264,6 +264,9 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tcl_String is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
+      if not Unbounded_Name_Is_Valid(Name => Format) then
+         return Null_Tcl_String;
+      end if;
       Option_Image
         (Name => "background", Value => Background, Options_String => Options);
       Option_Image
@@ -307,6 +310,9 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
+      if not Unbounded_Name_Is_Valid(Name => Format) then
+         return;
+      end if;
       Option_Image
         (Name => "format", Value => Format, Options_String => Options);
       Dimension_To_String(Name => "to", Value => To, Options => Options);
@@ -325,6 +331,9 @@ package body Tk.Image.Photo is
       Interpreter: Tcl_Interpreter := Get_Interpreter) is
       Options: Unbounded_String := Null_Unbounded_String;
    begin
+      if not Unbounded_Name_Is_Valid(Name => Format) then
+         return;
+      end if;
       Option_Image
         (Name => "format", Value => Format, Options_String => Options);
       Dimension_To_String(Name => "from", Value => From, Options => Options);
@@ -380,8 +389,10 @@ package body Tk.Image.Photo is
    begin
       Option_Image
         (Name => "background", Value => Background, Options_String => Options);
-      Option_Image
-        (Name => "format", Value => Format, Options_String => Options);
+      if Unbounded_Name_Is_Valid(Name => Format) then
+         Option_Image
+           (Name => "format", Value => Format, Options_String => Options);
+      end if;
       Dimension_To_String(Name => "from", Value => From, Options => Options);
       Option_Image
         (Name => "grayscale", Value => Grayscale, Options_String => Options);
