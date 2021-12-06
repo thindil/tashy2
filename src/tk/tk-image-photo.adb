@@ -25,9 +25,11 @@ package body Tk.Image.Photo is
       Option_Image
         (Name => "data", Value => Options.Data,
          Options_String => Options_String);
-      Option_Image
-        (Name => "format", Value => Options.Format,
-         Options_String => Options_String);
+      if Unbounded_Name_Is_Valid(Name => Options.Format) then
+         Option_Image
+            (Name => "format", Value => Options.Format,
+            Options_String => Options_String);
+      end if;
       Option_Image
         (Name => "file", Value => Options.File,
          Options_String => Options_String);
