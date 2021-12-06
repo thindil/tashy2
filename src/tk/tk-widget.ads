@@ -557,8 +557,6 @@ package Tk.Widget is
    -- Widgets_Names: constant String := Widgets_Array_Image((My_Button, My_Label));
    -- SOURCE
    function Widgets_Array_Image(Widgets: Widgets_Array) return String with
-      Pre => Widgets'Length > 0,
-      Post => Widgets_Array_Image'Result'Length > 0,
       Test_Case => (Name => "Test_Widgets_Array_Image", Mode => Nominal);
       -- ****
 
