@@ -317,7 +317,7 @@ package Tk.Widget is
    -- HISTORY
    -- 8.6.0 - Added
    -- SOURCE
-   type Widgets_Array is array(Positive range <>) of Tk_Widget;
+   type Widgets_Array is array(Max_Length_Type range <>) of Tk_Widget;
    -- ****
 
    --****d* Widget/Empty_Widgets_Array
