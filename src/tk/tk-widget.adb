@@ -34,10 +34,10 @@ package body Tk.Widget is
       end if;
       Set_Widgets_Array_Loop :
       for Widgt of Widgets loop
-         exit Set_Widgets_Array_Loop when Length(Source => Widgets_Names) +
-           Tk_Path_Name(Widgt => Widgt)'Length + 1 >
-           Natural'Last;
          if Widgt /= Null_Widget then
+            exit Set_Widgets_Array_Loop when Length(Source => Widgets_Names) +
+              Tk_Path_Name(Widgt => Widgt)'Length + 1 >
+              Natural'Last;
             Append
               (Source => Widgets_Names,
                New_Item => Tk_Path_Name(Widgt => Widgt) & " ");
