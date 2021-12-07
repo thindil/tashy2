@@ -522,7 +522,7 @@ package Tk.Widget is
      -- 8.6.0 - Added
      -- SOURCE
    subtype Tk_Path_String is String with
-        Dynamic_Predicate => Tk_Path_String'Length in 1 .. 4_096
+        Dynamic_Predicate => Tk_Path_String'Length in Max_Length_Type
         and then
         (Tk_Path_String(Tk_Path_String'First) = '.' and
          (for all J in Tk_Path_String'Range =>
