@@ -23,6 +23,13 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package Tcl.Variables is
 -- ****
 
+   -- ****t* Variables/Variables.Max_Length_Type
+   -- FUNCTION
+   -- Type used to set maximum length of variables names or arrays
+   -- SOURCE
+   subtype Max_Length_Type is Positive range 1 .. 4_096;
+   -- ****
+
    -- ****f* Variables/Variables.Name_Is_Valid
    -- FUNCTION
    -- Check if the selected variable name is proper Tcl variable name.
@@ -39,7 +46,7 @@ package Tcl.Variables is
    -- end if;
    -- SOURCE
    function Name_Is_Valid(Name: String) return Boolean is
-     (Name'Length in 1 .. 4_096
+     (Name'Length in Max_Length_Type
       and then (for all J in Name'Range => Is_Alphanumeric(Item => Name(J))));
    -- ****
 
@@ -71,7 +78,7 @@ package Tcl.Variables is
         -- end if;
         -- SOURCE
    function Unbounded_Name_Is_Valid(Name: Unbounded_String) return Boolean is
-     (Length(Source => Name) <= 4_096
+     (Length(Source => Name) <= Max_Length_Type'Last
       and then
       (for all J in 1 .. Length(Source => Name) =>
          Is_Alphanumeric(Item => Element(Source => Name, Index => J))));
