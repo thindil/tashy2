@@ -29,15 +29,21 @@ package body Tk.Widget is
    function Widgets_Array_Image(Widgets: Widgets_Array) return String is
       Widgets_Names: Unbounded_String := Null_Unbounded_String;
    begin
-      if Widgets = Empty_Widgets_Array then
+      if Widgets = Empty_Widgets_Array or Widgets'Length = 0 then
          return "";
       end if;
       Set_Widgets_Array_Loop :
       for Widgt of Widgets loop
+         pragma Loop_Invariant
+           (Long_Long_Integer
+              (Length(Source => Widgets_Names) +
+               Tk_Path_Name(Widgt => Widgt)'Length + 1) <=
+            Long_Long_Integer(Natural'Last));
          if Widgt /= Null_Widget then
-            exit Set_Widgets_Array_Loop when Length(Source => Widgets_Names) +
-              Tk_Path_Name(Widgt => Widgt)'Length + 1 >
-              Natural'Last;
+            exit Set_Widgets_Array_Loop when Long_Long_Integer
+                (Length(Source => Widgets_Names) +
+                 Tk_Path_Name(Widgt => Widgt)'Length + 1) >
+              Long_Long_Integer(Natural'Last);
             Append
               (Source => Widgets_Names,
                New_Item => Tk_Path_Name(Widgt => Widgt) & " ");
