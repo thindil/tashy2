@@ -56,8 +56,12 @@ package body Tk.Widget is
       if Value'Length = 0 then
          return Result;
       end if;
-      if Is_Digit(Item => Value(Value'Last)) then
-         Result.Value := Positive_Float'Value(Value);
+      if (for all Char of Value => Is_Digit(Item => Char)) then
+         if Float'Value(Value) >= -1.0 then
+            Result.Value := Positive_Float'Value(Value);
+         else
+            Result.Value := -1.0;
+         end if;
          Result.Value_Unit := PIXEL;
       else
          Result.Value :=
