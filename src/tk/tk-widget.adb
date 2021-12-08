@@ -32,6 +32,9 @@ package body Tk.Widget is
       if Widgets = Empty_Widgets_Array or Widgets'Length = 0 then
          return "";
       end if;
+      if (for all Widgt of Widgets => Widgt = Null_Widget) then
+         return "";
+      end if;
       Set_Widgets_Array_Loop :
       for Widgt of Widgets loop
          if Widgt /= Null_Widget then
