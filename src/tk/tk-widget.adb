@@ -34,11 +34,6 @@ package body Tk.Widget is
       end if;
       Set_Widgets_Array_Loop :
       for Widgt of Widgets loop
-         pragma Loop_Invariant
-           (Long_Long_Integer
-              (Length(Source => Widgets_Names) +
-               Tk_Path_Name(Widgt => Widgt)'Length + 1) <=
-            Long_Long_Integer(Natural'Last));
          if Widgt /= Null_Widget then
             exit Set_Widgets_Array_Loop when Long_Long_Integer
                 (Length(Source => Widgets_Names) +
