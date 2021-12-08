@@ -40,7 +40,7 @@ package body Tk.Widget is
          if Widgt /= Null_Widget then
             exit Set_Widgets_Array_Loop when Long_Long_Integer
                 (Length(Source => Widgets_Names)) +
-                 Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) + 1 >
+              Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) + 1 >
               Long_Long_Integer(Natural'Last);
             Append
               (Source => Widgets_Names,
