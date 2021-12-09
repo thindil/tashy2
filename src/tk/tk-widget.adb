@@ -626,6 +626,16 @@ package body Tk.Widget is
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return Tcl_String_Result is
    begin
+      if Widgt = Null_Widget then
+         return
+           (Message_Length => 35, Result_Length => 0, Return_Code => TCL_ERROR,
+            Message => "The selected widget is Null_Widget.", Result => "");
+      end if;
+      if Command_Name'Length = 0 then
+         return
+           (Message_Length => 23, Result_Length => 0, Return_Code => TCL_ERROR,
+            Message => "Empty the command name.", Result => "");
+      end if;
       return
         Tcl_Eval
           (Tcl_Script =>
