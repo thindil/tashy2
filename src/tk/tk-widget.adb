@@ -616,6 +616,12 @@ package body Tk.Widget is
    procedure Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "") is
    begin
+      if Widgt = Null_Widget then
+         return;
+      end if;
+      if Command_Name'Length = 0 then
+         return;
+      end if;
       Tcl_Eval
         (Tcl_Script =>
            Tk_Path_Name(Widgt => Widgt) & " " & Command_Name & " " & Options,
