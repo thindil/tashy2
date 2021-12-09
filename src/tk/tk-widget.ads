@@ -976,6 +976,7 @@ package Tk.Widget is
       -- SOURCE
    procedure Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "") with
+      Global => null,
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command", Mode => Nominal);
       -- ****
@@ -1003,6 +1004,7 @@ package Tk.Widget is
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return Tcl_String_Result with
+      Global => null,
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command2", Mode => Nominal);
       -- ****
@@ -1030,6 +1032,7 @@ package Tk.Widget is
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return Tcl_Boolean_Result with
+      Global => null,
       Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
       Test_Case => (Name => "Test_Execute_Widget_Command3", Mode => Nominal);
       -- ****
