@@ -977,7 +977,12 @@ package Tk.Widget is
    procedure Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "") with
       Global => null,
-      Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
+      Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)
+      and then
+        Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+          Long_Long_Integer(Command_Name'Length) +
+          Long_Long_Integer(Options'Length) + 2 <=
+        Long_Long_Integer(Natural'Last),
       Test_Case => (Name => "Test_Execute_Widget_Command", Mode => Nominal);
       -- ****
 
@@ -1005,7 +1010,12 @@ package Tk.Widget is
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return Tcl_String_Result with
       Global => null,
-      Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
+      Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)
+      and then
+        Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+          Long_Long_Integer(Command_Name'Length) +
+          Long_Long_Integer(Options'Length) + 2 <=
+        Long_Long_Integer(Natural'Last),
       Test_Case => (Name => "Test_Execute_Widget_Command2", Mode => Nominal);
       -- ****
 
@@ -1033,7 +1043,12 @@ package Tk.Widget is
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return Tcl_Boolean_Result with
       Global => null,
-      Pre => Widgt /= Null_Widget and Command_Name'Length > 0,
+      Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)
+      and then
+        Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+          Long_Long_Integer(Command_Name'Length) +
+          Long_Long_Integer(Options'Length) + 2 <=
+        Long_Long_Integer(Natural'Last),
       Test_Case => (Name => "Test_Execute_Widget_Command3", Mode => Nominal);
       -- ****
 
