@@ -41,11 +41,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  begin read only
 --  end read only
 --  begin read only
-   function Wrap_Test_Widgets_Array_Image_8ee9dc_a68b37
+   function Wrap_Test_Widgets_Array_Image_8ee9dc_d1be2e
      (Widgets: Widgets_Array) return String is
    begin
       begin
-         pragma Assert(Widgets'Length > 0);
+         pragma Assert(True);
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -54,13 +54,12 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Widgets_Array_Image test requirement violated");
       end;
       declare
-         Test_Widgets_Array_Image_8ee9dc_a68b37_Result: constant String :=
+         Test_Widgets_Array_Image_8ee9dc_d1be2e_Result: constant String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Widgets_Array_Image
              (Widgets);
       begin
          begin
-            pragma Assert
-              (Test_Widgets_Array_Image_8ee9dc_a68b37_Result'Length > 0);
+            pragma Assert(True);
             null;
          exception
             when System.Assertions.Assert_Failure =>
@@ -68,15 +67,15 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Widgets_Array_Image test commitment violated");
          end;
-         return Test_Widgets_Array_Image_8ee9dc_a68b37_Result;
+         return Test_Widgets_Array_Image_8ee9dc_d1be2e_Result;
       end;
-   end Wrap_Test_Widgets_Array_Image_8ee9dc_a68b37;
+   end Wrap_Test_Widgets_Array_Image_8ee9dc_d1be2e;
 --  end read only
 
 --  begin read only
    procedure Test_Widgets_Array_Image_test_widgets_array_image
      (Gnattest_T: in out Test);
-   procedure Test_Widgets_Array_Image_8ee9dc_a68b37
+   procedure Test_Widgets_Array_Image_8ee9dc_d1be2e
      (Gnattest_T: in out Test) renames
      Test_Widgets_Array_Image_test_widgets_array_image;
 --  id:2.2/8ee9dccd40bd054f/Widgets_Array_Image/1/0/test_widgets_array_image/
@@ -84,7 +83,7 @@ package body Tk.Widget.Test_Data.Tests is
      (Gnattest_T: in out Test) is
       function Widgets_Array_Image
         (Widgets: Widgets_Array) return String renames
-        Wrap_Test_Widgets_Array_Image_8ee9dc_a68b37;
+        Wrap_Test_Widgets_Array_Image_8ee9dc_d1be2e;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1778,14 +1777,12 @@ package body Tk.Widget.Test_Data.Tests is
          Assert(True, "No display, can't test");
          return;
       end if;
-      Create
-        (Button, ".mybutton",
-         Button_Options'(Border_Width => (2.0, PIXEL), others => <>));
+      Create(Button, ".mybutton", Button_Options'(others => <>));
       Add(Button);
       Tcl_Eval("update");
       Result := Option_Value(Button, "borderwidth");
       Assert
-        (Result = (2.0, PIXEL),
+        (Result = (1.0, PIXEL),
          "Failed to get value for Pixel_Data widget option");
       Destroy(Button);
 
@@ -2703,11 +2700,17 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Execute_Widget_Command_7643c6_2f4d36
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "") is
+   procedure Wrap_Test_Execute_Widget_Command_7643c6_8d02bb
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "") is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Command_Name'Length > 0);
+         pragma Assert
+           ((Widgt /= Null_Widget and Command_Name'Length > 0)
+            and then
+              Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+                Long_Long_Integer(Command_Name'Length) +
+                Long_Long_Integer(Options'Length) + 2 <=
+              Long_Long_Integer(Natural'Last));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2726,21 +2729,22 @@ package body Tk.Widget.Test_Data.Tests is
               (False,
                "ens_sloc(tk-widget.ads:0:):Test_Execute_Widget_Command test commitment violated");
       end;
-   end Wrap_Test_Execute_Widget_Command_7643c6_2f4d36;
+   end Wrap_Test_Execute_Widget_Command_7643c6_8d02bb;
 --  end read only
 
 --  begin read only
    procedure Test_1_Execute_Widget_Command_test_execute_widget_command
      (Gnattest_T: in out Test);
-   procedure Test_Execute_Widget_Command_7643c6_2f4d36
+   procedure Test_Execute_Widget_Command_7643c6_8d02bb
      (Gnattest_T: in out Test) renames
      Test_1_Execute_Widget_Command_test_execute_widget_command;
 --  id:2.2/7643c6ae56a5b360/Execute_Widget_Command/1/0/test_execute_widget_command/
    procedure Test_1_Execute_Widget_Command_test_execute_widget_command
      (Gnattest_T: in out Test) is
       procedure Execute_Widget_Command
-        (Widgt: Tk_Widget; Command_Name: String; Options: String := "") renames
-        Wrap_Test_Execute_Widget_Command_7643c6_2f4d36;
+        (Widgt: Tk_Widget; Command_Name: Variable_Name;
+         Options: String := "") renames
+        Wrap_Test_Execute_Widget_Command_7643c6_8d02bb;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2766,12 +2770,18 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Execute_Widget_Command_6ed39c_9808c7
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+   function Wrap_Test_Execute_Widget_Command_6ed39c_4e3a6a
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
       return Tcl_String_Result is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Command_Name'Length > 0);
+         pragma Assert
+           ((Widgt /= Null_Widget and Command_Name'Length > 0)
+            and then
+              Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+                Long_Long_Integer(Command_Name'Length) +
+                Long_Long_Integer(Options'Length) + 2 <=
+              Long_Long_Integer(Natural'Last));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2780,7 +2790,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Execute_Widget_Command2 test requirement violated");
       end;
       declare
-         Test_Execute_Widget_Command_6ed39c_9808c7_Result: constant Tcl_String_Result :=
+         Test_Execute_Widget_Command_6ed39c_4e3a6a_Result: constant Tcl_String_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget
              .Execute_Widget_Command
              (Widgt, Command_Name, Options);
@@ -2794,24 +2804,24 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Execute_Widget_Command2 test commitment violated");
          end;
-         return Test_Execute_Widget_Command_6ed39c_9808c7_Result;
+         return Test_Execute_Widget_Command_6ed39c_4e3a6a_Result;
       end;
-   end Wrap_Test_Execute_Widget_Command_6ed39c_9808c7;
+   end Wrap_Test_Execute_Widget_Command_6ed39c_4e3a6a;
 --  end read only
 
 --  begin read only
    procedure Test_2_Execute_Widget_Command_test_execute_widget_command2
      (Gnattest_T: in out Test);
-   procedure Test_Execute_Widget_Command_6ed39c_9808c7
+   procedure Test_Execute_Widget_Command_6ed39c_4e3a6a
      (Gnattest_T: in out Test) renames
      Test_2_Execute_Widget_Command_test_execute_widget_command2;
 --  id:2.2/6ed39c8302f3fc5b/Execute_Widget_Command/0/0/test_execute_widget_command2/
    procedure Test_2_Execute_Widget_Command_test_execute_widget_command2
      (Gnattest_T: in out Test) is
       function Execute_Widget_Command
-        (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+        (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
          return Tcl_String_Result renames
-        Wrap_Test_Execute_Widget_Command_6ed39c_9808c7;
+        Wrap_Test_Execute_Widget_Command_6ed39c_4e3a6a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -2836,12 +2846,18 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Execute_Widget_Command_7bae5e_9df879
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+   function Wrap_Test_Execute_Widget_Command_7bae5e_49a7ad
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
       return Tcl_Boolean_Result is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Command_Name'Length > 0);
+         pragma Assert
+           ((Widgt /= Null_Widget and Command_Name'Length > 0)
+            and then
+              Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+                Long_Long_Integer(Command_Name'Length) +
+                Long_Long_Integer(Options'Length) + 2 <=
+              Long_Long_Integer(Natural'Last));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2850,7 +2866,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Execute_Widget_Command3 test requirement violated");
       end;
       declare
-         Test_Execute_Widget_Command_7bae5e_9df879_Result: constant Tcl_Boolean_Result :=
+         Test_Execute_Widget_Command_7bae5e_49a7ad_Result: constant Tcl_Boolean_Result :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget
              .Execute_Widget_Command
              (Widgt, Command_Name, Options);
@@ -2864,24 +2880,24 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Execute_Widget_Command3 test commitment violated");
          end;
-         return Test_Execute_Widget_Command_7bae5e_9df879_Result;
+         return Test_Execute_Widget_Command_7bae5e_49a7ad_Result;
       end;
-   end Wrap_Test_Execute_Widget_Command_7bae5e_9df879;
+   end Wrap_Test_Execute_Widget_Command_7bae5e_49a7ad;
 --  end read only
 
 --  begin read only
    procedure Test_3_Execute_Widget_Command_test_execute_widget_command3
      (Gnattest_T: in out Test);
-   procedure Test_Execute_Widget_Command_7bae5e_9df879
+   procedure Test_Execute_Widget_Command_7bae5e_49a7ad
      (Gnattest_T: in out Test) renames
      Test_3_Execute_Widget_Command_test_execute_widget_command3;
 --  id:2.2/7bae5e800ff19112/Execute_Widget_Command/0/0/test_execute_widget_command3/
    procedure Test_3_Execute_Widget_Command_test_execute_widget_command3
      (Gnattest_T: in out Test) is
       function Execute_Widget_Command
-        (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+        (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
          return Tcl_Boolean_Result renames
-        Wrap_Test_Execute_Widget_Command_7bae5e_9df879;
+        Wrap_Test_Execute_Widget_Command_7bae5e_49a7ad;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

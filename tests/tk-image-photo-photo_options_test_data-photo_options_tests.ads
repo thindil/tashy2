@@ -17,18 +17,18 @@ package Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests is
    --  tk-image-photo.ads:177:4:Options_To_String:Test_Options_To_String
 
    procedure Test_Create_22037c_8377bb(Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:199:4:Create:Tests_Create_Photo
+   --  tk-image-photo.ads:200:4:Create:Tests_Create_Photo
 
    procedure Test_Create_fa334a_6f3d65(Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:230:4:Create:Tests_Create2_Photo
+   --  tk-image-photo.ads:232:4:Create:Tests_Create2_Photo
 
    procedure Test_Configure_6e2ac0_462460
      (Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:279:4:Configure:Tests_Configure_Photo
+   --  tk-image-photo.ads:281:4:Configure:Tests_Configure_Photo
 
    procedure Test_Get_Options_5c7a9c_d39689
      (Gnattest_T: in out Test_Photo_Options);
-   --  tk-image-photo.ads:346:4:Get_Options:Tests_Get_Options_Photo
+   --  tk-image-photo.ads:348:4:Get_Options:Tests_Get_Options_Photo
 
 end Tk.Image.Photo.Photo_Options_Test_Data.Photo_Options_Tests;
 --  end read only
