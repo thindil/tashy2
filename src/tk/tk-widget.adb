@@ -622,6 +622,12 @@ package body Tk.Widget is
       if Command_Name'Length = 0 then
          return;
       end if;
+      if Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+        Long_Long_Integer(Command_Name'Length) +
+        Long_Long_Integer(Options'Length) + 2 >
+        Long_Long_Integer(Natural'Last) then
+         return;
+      end if;
       Tcl_Eval
         (Tcl_Script =>
            Tk_Path_Name(Widgt => Widgt) & " " & Command_Name & " " & Options,
@@ -641,6 +647,14 @@ package body Tk.Widget is
          return
            (Message_Length => 23, Result_Length => 0, Return_Code => TCL_ERROR,
             Message => "Empty the command name.", Result => "");
+      end if;
+      if Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+        Long_Long_Integer(Command_Name'Length) +
+        Long_Long_Integer(Options'Length) + 2 >
+        Long_Long_Integer(Natural'Last) then
+         return
+           (Message_Length => 17, Result_Length => 0, Return_Code => TCL_ERROR,
+            Message => "Command too long.", Result => "");
       end if;
       return
         Tcl_Eval
@@ -662,6 +676,14 @@ package body Tk.Widget is
          return
            (Message_Length => 23, Return_Code => TCL_ERROR,
             Message => "Empty the command name.", Result => False);
+      end if;
+      if Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+        Long_Long_Integer(Command_Name'Length) +
+        Long_Long_Integer(Options'Length) + 2 >
+        Long_Long_Integer(Natural'Last) then
+         return
+           (Message_Length => 17, Return_Code => TCL_ERROR,
+            Message => "Command too long.", Result => False);
       end if;
       return
         Tcl_Eval
