@@ -975,7 +975,8 @@ package Tk.Widget is
       -- Widget.Execute_Widget_Command_(function_string_result)
       -- SOURCE
    procedure Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "") with
+     (Widgt: Tk_Widget; Command_Name: Variable_Name;
+      Options: String := "") with
       Global => null,
       Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)
       and then
@@ -1007,7 +1008,7 @@ package Tk.Widget is
       -- Widget.Execute_Widget_Command_(function_boolean_result)
       -- SOURCE
    function Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
       return Tcl_String_Result with
       Global => null,
       Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)
@@ -1040,7 +1041,7 @@ package Tk.Widget is
       -- Widget.Execute_Widget_Command_(function_string_result)
       -- SOURCE
    function Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
       return Tcl_Boolean_Result with
       Global => null,
       Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)

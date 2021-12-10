@@ -614,7 +614,7 @@ package body Tk.Widget is
    end Destroy;
 
    procedure Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "") is
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "") is
    begin
       if Widgt = Null_Widget then
          return;
@@ -635,7 +635,7 @@ package body Tk.Widget is
    end Execute_Widget_Command;
 
    function Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
       return Tcl_String_Result is
    begin
       if Widgt = Null_Widget then
@@ -664,7 +664,7 @@ package body Tk.Widget is
    end Execute_Widget_Command;
 
    function Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
       return Tcl_Boolean_Result is
    begin
       if Widgt = Null_Widget then
