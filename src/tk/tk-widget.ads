@@ -1045,6 +1045,7 @@ package Tk.Widget is
       return Tcl_Boolean_Result with
       Global => null,
       Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)
+      and then Name_Is_Valid(Command_Name)
       and then
         Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
           Long_Long_Integer(Command_Name'Length) +
