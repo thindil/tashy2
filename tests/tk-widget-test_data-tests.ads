@@ -130,7 +130,7 @@ package Tk.Widget.Test_Data.Tests is
    procedure Test_Option_Value_d50e55_5666b2(Gnattest_T: in out Test);
    --  tk-widget.ads:920:4:Option_Value:Test_Option_Value_Color_Type
 
-   procedure Test_Option_Value_4a4fd9_03da84(Gnattest_T: in out Test);
+   procedure Test_Option_Value_4a4fd9_d2c911(Gnattest_T: in out Test);
    --  tk-widget.ads:923:4:Option_Value:Test_Option_Value_Unbounded_Variable_Name
 
    procedure Test_Destroy_568000_03a39f(Gnattest_T: in out Test);
@@ -144,7 +144,7 @@ package Tk.Widget.Test_Data.Tests is
      (Gnattest_T: in out Test);
    --  tk-widget.ads:1010:4:Execute_Widget_Command:Test_Execute_Widget_Command2
 
-   procedure Test_Execute_Widget_Command_7bae5e_49a7ad
+   procedure Test_Execute_Widget_Command_7bae5e_147055
      (Gnattest_T: in out Test);
    --  tk-widget.ads:1043:4:Execute_Widget_Command:Test_Execute_Widget_Command3
 
