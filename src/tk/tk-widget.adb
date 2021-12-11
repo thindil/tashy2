@@ -593,17 +593,24 @@ package body Tk.Widget is
 
    function Option_Value
      (Widgt: Tk_Widget; Name: Variable_Name) return Unbounded_Variable_Name is
-      Result: constant Unbounded_String :=
+      Result: Unbounded_String;
+   begin
+      if Widgt = Null_Widget then
+         return Empty_Unbounded_Variable_Name;
+      end if;
+      if not Name_Is_Valid(Name => Name) then
+         return Empty_Unbounded_Variable_Name;
+      end if;
+      Result :=
         To_Unbounded_String
           (Source =>
              Execute_Widget_Command
                (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
                .Result);
-   begin
-      if Unbounded_Name_Is_Valid(Result) then
+      if Unbounded_Name_Is_Valid(Name => Result) then
          return Result;
       end if;
-      return Null_Unbounded_String;
+      return Empty_Unbounded_Variable_Name;
    end Option_Value;
 
    procedure Destroy(Widgt: in out Tk_Widget) is
