@@ -664,6 +664,11 @@ package body Tk.Widget is
            (Message_Length => 23, Result_Length => 0, Return_Code => TCL_ERROR,
             Message => "Empty the command name.", Result => "");
       end if;
+      if not Name_Is_Valid(Command_Name) then
+         return
+           (Message_Length => 25, Result_Length => 0, Return_Code => TCL_ERROR,
+            Message => "Invalid the command name.", Result => "");
+      end if;
       if Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
         Long_Long_Integer(Command_Name'Length) +
         Long_Long_Integer(Options'Length) + 2 >
