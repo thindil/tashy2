@@ -143,12 +143,12 @@ version: 3.0
 - command:
    name: prove
    execute:
-      - gnatprove --mode=prove -P tashy2.gpr
+      - gnatprove --prover=z3 --mode=prove -P tashy2.gpr
    description: Run Spark to formally verify the code
 - command:
    name: provefile
    execute:
-      - gnatprove --mode=prove -P tashy2.gpr -u $1
+      - gnatprove --prover=z3 --mode=prove -P tashy2.gpr -u $1
    description: Run Spark to formally verify the selected file. Required arguments is the relative path to the file which will be check
 - command:
    name: proveclean
@@ -159,13 +159,13 @@ version: 3.0
    name: provedemos
    execute:
       - cd demos
-      - gnatprove --mode=check -P demos.gpr
+      - gnatprove --prover=z3 --mode=check -P demos.gpr
    description: Run Spark to formally verify the code of the library demos programs
 - command:
    name: provedemosfile
    execute:
       - cd demos
-      - gnatprove --mode=check -P demos.gpr -u $1
+      - gnatprove --prover=z3 --mode=check -P demos.gpr -u $1
    description: Run Spark to formally verify the selected file in demos. Required arguments is the relative path to the file which will be check
 - command:
    name: provedemosclean
