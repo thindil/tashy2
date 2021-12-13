@@ -682,9 +682,6 @@ package body Tk.Widget is
           (Tcl_Script =>
              Tk_Path_Name(Widgt => Widgt) & " " & Command_Name & " " & Options,
            Interpreter => Tk_Interp(Widgt => Widgt));
-      pragma Annotate
-        (GNATprove, False_Positive, "range check might fail",
-         "need check with other than CVC4 provers");
    end Execute_Widget_Command;
 
    function Execute_Widget_Command
@@ -719,9 +716,6 @@ package body Tk.Widget is
           (Tcl_Script =>
              Tk_Path_Name(Widgt => Widgt) & " " & Command_Name & " " & Options,
            Interpreter => Tk_Interp(Widgt => Widgt));
-      pragma Annotate
-        (GNATprove, False_Positive, "range check might fail",
-         "need check with other than CVC4 provers");
    end Execute_Widget_Command;
 
    function Generic_Scalar_Execute_Widget_Command
