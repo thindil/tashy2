@@ -431,7 +431,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_df3576_53f0ec
-     (Name: String; Value: Tcl_String;
+     (Name: Variable_Name; Value: Tcl_String;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -466,7 +466,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_1_Option_Image_test_option_image_tcl_string
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Tcl_String;
+        (Name: Variable_Name; Value: Tcl_String;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_df3576_53f0ec;
 --  end read only
@@ -487,7 +487,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_63348c_5cc1ad
-     (Name: String; Value: Extended_Natural;
+     (Name: Variable_Name; Value: Extended_Natural;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -522,7 +522,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_2_Option_Image_test_option_image_extended_natural
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Extended_Natural;
+        (Name: Variable_Name; Value: Extended_Natural;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_63348c_5cc1ad;
 --  end read only
@@ -543,7 +543,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_a5c722_ce612d
-     (Name: String; Value: Pixel_Data;
+     (Name: Variable_Name; Value: Pixel_Data;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -578,7 +578,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_3_Option_Image_test_option_image_pixed_data
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Pixel_Data;
+        (Name: Variable_Name; Value: Pixel_Data;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_a5c722_ce612d;
 --  end read only
@@ -601,7 +601,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_5707c3_208fae
-     (Name: String; Value: Relief_Type;
+     (Name: Variable_Name; Value: Relief_Type;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -636,7 +636,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_4_Option_Image_test_option_image_relief_type
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Relief_Type;
+        (Name: Variable_Name; Value: Relief_Type;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_5707c3_208fae;
 --  end read only
@@ -657,7 +657,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_a39172_0792dc
-     (Name: String; Value: State_Type;
+     (Name: Variable_Name; Value: State_Type;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -692,7 +692,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_5_Option_Image_test_option_image_state_type
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: State_Type;
+        (Name: Variable_Name; Value: State_Type;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_a39172_0792dc;
 --  end read only
@@ -713,7 +713,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_9aff01_51f5f4
-     (Name: String; Value: Directions_Type;
+     (Name: Variable_Name; Value: Directions_Type;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -748,7 +748,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_6_Option_Image_test_option_image_directions_type
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Directions_Type;
+        (Name: Variable_Name; Value: Directions_Type;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_9aff01_51f5f4;
 --  end read only
@@ -769,7 +769,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_6245ae_247131
-     (Name: String; Value: Place_Type;
+     (Name: Variable_Name; Value: Place_Type;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -804,7 +804,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_7_Option_Image_test_option_image_place_type
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Place_Type;
+        (Name: Variable_Name; Value: Place_Type;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_6245ae_247131;
 --  end read only
@@ -825,7 +825,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_509411_31f5ae
-     (Name: String; Value: Justify_Type;
+     (Name: Variable_Name; Value: Justify_Type;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -860,7 +860,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_8_Option_Image_test_option_image_justify_type
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Justify_Type;
+        (Name: Variable_Name; Value: Justify_Type;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_509411_31f5ae;
 --  end read only
@@ -881,7 +881,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_8ca0c0_f0d5d6
-     (Name: String; Value: Horizontal_Pad_Data;
+     (Name: Variable_Name; Value: Horizontal_Pad_Data;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -916,7 +916,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_9_Option_Image_test_option_image_pad_data
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Horizontal_Pad_Data;
+        (Name: Variable_Name; Value: Horizontal_Pad_Data;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_8ca0c0_f0d5d6;
 --  end read only
@@ -939,7 +939,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_e74cc8_5d77f2
-     (Name: String; Value: Vertical_Pad_Data;
+     (Name: Variable_Name; Value: Vertical_Pad_Data;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -974,7 +974,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_10_Option_Image_test_option_image_vertical_pad_data
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Vertical_Pad_Data;
+        (Name: Variable_Name; Value: Vertical_Pad_Data;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_e74cc8_5d77f2;
 --  end read only
@@ -997,7 +997,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_22581b_a1b982
-     (Name: String; Value: Tk_Widget;
+     (Name: Variable_Name; Value: Tk_Widget;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -1032,7 +1032,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_11_Option_Image_test_option_image_tk_widget
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Tk_Widget;
+        (Name: Variable_Name; Value: Tk_Widget;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_22581b_a1b982;
 --  end read only
@@ -1062,7 +1062,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_08d32e_f8251b
-     (Name: String; Value: Extended_Boolean;
+     (Name: Variable_Name; Value: Extended_Boolean;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -1097,7 +1097,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_12_Option_Image_test_option_image_extended_boolean
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Extended_Boolean;
+        (Name: Variable_Name; Value: Extended_Boolean;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_08d32e_f8251b;
 --  end read only
@@ -1118,7 +1118,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_5269f4_fb7043
-     (Name: String; Value: Tk_Window;
+     (Name: Variable_Name; Value: Tk_Window;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -1153,7 +1153,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_13_Option_Image_test_option_image_tk_window
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Tk_Window;
+        (Name: Variable_Name; Value: Tk_Window;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_5269f4_fb7043;
 --  end read only
@@ -1184,7 +1184,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_183a44_55069e
-     (Name: String; Value: Anchor_Directions;
+     (Name: Variable_Name; Value: Anchor_Directions;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -1219,7 +1219,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_14_Option_Image_test_option_image_anchor_directions
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Anchor_Directions;
+        (Name: Variable_Name; Value: Anchor_Directions;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_183a44_55069e;
 --  end read only
@@ -1240,7 +1240,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_2254d6_97b6c7
-     (Name: String; Value: Positive_Float;
+     (Name: Variable_Name; Value: Positive_Float;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -1275,7 +1275,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_15_Option_Image_test_option_image_positive_float
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Positive_Float;
+        (Name: Variable_Name; Value: Positive_Float;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_2254d6_97b6c7;
 --  end read only
@@ -1296,7 +1296,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_e3c074_1ae135
-     (Name: String; Value: Point_Position;
+     (Name: Variable_Name; Value: Point_Position;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -1331,7 +1331,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_16_Option_Image_test_option_image_point_position
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Point_Position;
+        (Name: Variable_Name; Value: Point_Position;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_e3c074_1ae135;
 --  end read only
@@ -1352,7 +1352,8 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_7332d0_b72ca9
-     (Name: String; Value: Boolean; Options_String: in out Unbounded_String) is
+     (Name: Variable_Name; Value: Boolean;
+      Options_String: in out Unbounded_String) is
    begin
       begin
          pragma Assert(Name'Length > 0);
@@ -1386,7 +1387,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_17_Option_Image_test_option_image_boolean
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Boolean;
+        (Name: Variable_Name; Value: Boolean;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_7332d0_b72ca9;
 --  end read only
@@ -1407,7 +1408,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_7eb8d1_bccdda
-     (Name: String; Value: Color_Type;
+     (Name: Variable_Name; Value: Color_Type;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -1442,7 +1443,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_18_Option_Image_test_option_image_color_type
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Color_Type;
+        (Name: Variable_Name; Value: Color_Type;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_7eb8d1_bccdda;
 --  end read only
@@ -1467,7 +1468,7 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_60eae0_a307f9
-     (Name: String; Value: Unbounded_Variable_Name;
+     (Name: Variable_Name; Value: Unbounded_Variable_Name;
       Options_String: in out Unbounded_String) is
    begin
       begin
@@ -1502,7 +1503,7 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_19_Option_Image_test_option_image_unbounded_variable_name
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Unbounded_Variable_Name;
+        (Name: Variable_Name; Value: Unbounded_Variable_Name;
          Options_String: in out Unbounded_String) renames
         Wrap_Test_Option_Image_60eae0_a307f9;
 --  end read only
@@ -1526,8 +1527,8 @@ package body Tk.Widget.Test_Data.Tests is
 
 --  begin read only
    procedure Wrap_Test_Option_Image_e5f273_81a16f
-     (Name: String; Value: Integer; Options_String: in out Unbounded_String;
-      Base: Positive := 10) is
+     (Name: Variable_Name; Value: Integer;
+      Options_String: in out Unbounded_String; Base: Positive := 10) is
    begin
       begin
          pragma Assert(Name'Length > 0 and Base in 10 | 16);
@@ -1561,8 +1562,8 @@ package body Tk.Widget.Test_Data.Tests is
    procedure Test_20_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test) is
       procedure Option_Image
-        (Name: String; Value: Integer; Options_String: in out Unbounded_String;
-         Base: Positive := 10) renames
+        (Name: Variable_Name; Value: Integer;
+         Options_String: in out Unbounded_String; Base: Positive := 10) renames
         Wrap_Test_Option_Image_e5f273_81a16f;
 --  end read only
 
