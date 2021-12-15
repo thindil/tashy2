@@ -719,104 +719,104 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Tcl_String;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Tcl_String", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Extended_Natural;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Extended_Natural",
        Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Pixel_Data;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Pixed_Data", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Relief_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Relief_Type", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: State_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_State_Type", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Directions_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Directions_Type",
        Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Place_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Place_Type", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Justify_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Justify_Type", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Horizontal_Pad_Data;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Pad_Data", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Vertical_Pad_Data;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Vertical_Pad_Data",
        Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Tk_Widget;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Tk_Widget", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Extended_Boolean;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Extended_Boolean",
        Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Tk_Window;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Tk_Window", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Anchor_Directions;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Anchor_Directions",
        Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Positive_Float;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Positive_Float",
        Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Point_Position;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Point_Position",
        Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Boolean;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Boolean", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Color_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Color_Type", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Unbounded_Variable_Name;
       Options_String: in out Unbounded_String) with
-      Pre => Name'Length > 0,
+      Pre => Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Image_Unbounded_Variable_Name",
        Mode => Nominal);
       -- ****
@@ -850,7 +850,7 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Integer;
       Options_String: in out Unbounded_String; Base: Positive := 10) with
-      Pre => Name'Length > 0 and Base in 10 | 16,
+      Pre => Name_Is_Valid(Name => Name) and Base in 10 | 16,
       Test_Case => (Name => "Test_Option_Image_Integer", Mode => Nominal);
       -- ****
 
