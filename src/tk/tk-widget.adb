@@ -143,6 +143,15 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Extended_Natural;
       Options_String: in out Unbounded_String) is
    begin
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer(Extended_Natural'Image(Value)'Length) +
+        Long_Long_Integer(Name'Length) + 2 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
       if Value > -1 then
          Append
            (Source => Options_String,
