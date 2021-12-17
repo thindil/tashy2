@@ -163,6 +163,15 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Pixel_Data;
       Options_String: in out Unbounded_String) is
    begin
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer(Pixel_Data_Image(Value)'Length) +
+        Long_Long_Integer(Name'Length) + 3 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
       if Value.Value > -1.0 then
          Append
            (Source => Options_String,
