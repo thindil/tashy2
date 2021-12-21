@@ -123,6 +123,9 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Tcl_String;
       Options_String: in out Unbounded_String) is
    begin
+      if Length(Source => Value) = 0 then
+         return;
+      end if;
       if not Name_Is_Valid(Name => Name) then
          return;
       end if;
@@ -132,17 +135,18 @@ package body Tk.Widget is
         Long_Long_Integer(Positive'Last) then
          return;
       end if;
-      if Length(Source => Value) > 0 then
-         Append
-           (Source => Options_String,
-            New_Item => " -" & Name & " " & To_String(Source => Value));
-      end if;
+      Append
+        (Source => Options_String,
+         New_Item => " -" & Name & " " & To_String(Source => Value));
    end Option_Image;
 
    procedure Option_Image
      (Name: Variable_Name; Value: Extended_Natural;
       Options_String: in out Unbounded_String) is
    begin
+      if Value = -1 then
+         return;
+      end if;
       if not Name_Is_Valid(Name => Name) then
          return;
       end if;
@@ -152,17 +156,18 @@ package body Tk.Widget is
         Long_Long_Integer(Positive'Last) then
          return;
       end if;
-      if Value > -1 then
-         Append
-           (Source => Options_String,
-            New_Item => " -" & Name & Extended_Natural'Image(Value));
-      end if;
+      Append
+        (Source => Options_String,
+         New_Item => " -" & Name & Extended_Natural'Image(Value));
    end Option_Image;
 
    procedure Option_Image
      (Name: Variable_Name; Value: Pixel_Data;
       Options_String: in out Unbounded_String) is
    begin
+      if Value.Value = -1.0 then
+         return;
+      end if;
       if not Name_Is_Valid(Name => Name) then
          return;
       end if;
@@ -172,17 +177,15 @@ package body Tk.Widget is
         Long_Long_Integer(Positive'Last) then
          return;
       end if;
-      if Value.Value > -1.0 then
-         Append
-           (Source => Options_String,
-            New_Item => " -" & Name & " " & Pixel_Data_Image(Value => Value));
-      end if;
    end Option_Image;
 
    procedure Option_Image
      (Name: Variable_Name; Value: Relief_Type;
       Options_String: in out Unbounded_String) is
    begin
+      if Value = NONE then
+         return;
+      end if;
       if not Name_Is_Valid(Name => Name) then
          return;
       end if;
@@ -192,18 +195,19 @@ package body Tk.Widget is
         Long_Long_Integer(Positive'Last) then
          return;
       end if;
-      if Value /= NONE then
-         Append
-           (Source => Options_String,
-            New_Item =>
-              " -" & Name & " " & To_Lower(Item => Relief_Type'Image(Value)));
-      end if;
+      Append
+        (Source => Options_String,
+         New_Item =>
+           " -" & Name & " " & To_Lower(Item => Relief_Type'Image(Value)));
    end Option_Image;
 
    procedure Option_Image
      (Name: Variable_Name; Value: State_Type;
       Options_String: in out Unbounded_String) is
    begin
+      if Value = NONE then
+         return;
+      end if;
       if not Name_Is_Valid(Name => Name) then
          return;
       end if;
@@ -213,18 +217,19 @@ package body Tk.Widget is
         Long_Long_Integer(Positive'Last) then
          return;
       end if;
-      if Value /= NONE then
-         Append
-           (Source => Options_String,
-            New_Item =>
-              " -" & Name & " " & To_Lower(Item => State_Type'Image(Value)));
-      end if;
+      Append
+        (Source => Options_String,
+         New_Item =>
+           " -" & Name & " " & To_Lower(Item => State_Type'Image(Value)));
    end Option_Image;
 
    procedure Option_Image
      (Name: Variable_Name; Value: Directions_Type;
       Options_String: in out Unbounded_String) is
    begin
+      if Value = NONE then
+         return;
+      end if;
       if not Name_Is_Valid(Name => Name) then
          return;
       end if;
@@ -235,13 +240,10 @@ package body Tk.Widget is
         Long_Long_Integer(Positive'Last) then
          return;
       end if;
-      if Value /= NONE then
-         Append
-           (Source => Options_String,
-            New_Item =>
-              " -" & Name & " " &
-              To_Lower(Item => Directions_Type'Image(Value)));
-      end if;
+      Append
+        (Source => Options_String,
+         New_Item =>
+           " -" & Name & " " & To_Lower(Item => Directions_Type'Image(Value)));
    end Option_Image;
 
    procedure Option_Image
