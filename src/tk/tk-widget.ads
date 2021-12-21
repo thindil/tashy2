@@ -719,6 +719,7 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Tcl_String;
       Options_String: in out Unbounded_String) with
+      Global => null,
       Pre => Name_Is_Valid(Name => Name)
       and then
         Long_Long_Integer(Length(Source => Options_String)) +
@@ -729,6 +730,7 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Extended_Natural;
       Options_String: in out Unbounded_String) with
+      Global => null,
       Pre => Name_Is_Valid(Name => Name)
       and then
         Long_Long_Integer(Length(Source => Options_String)) +
@@ -740,6 +742,7 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Pixel_Data;
       Options_String: in out Unbounded_String) with
+      Global => null,
       Pre => Name_Is_Valid(Name => Name)
       and then
         Long_Long_Integer(Length(Source => Options_String)) +
@@ -750,6 +753,7 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Relief_Type;
       Options_String: in out Unbounded_String) with
+      Global => null,
       Pre => Name_Is_Valid(Name => Name)
       and then
         Long_Long_Integer(Length(Source => Options_String)) +
@@ -760,6 +764,7 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: State_Type;
       Options_String: in out Unbounded_String) with
+      Global => null,
       Pre => Name_Is_Valid(Name => Name)
       and then
         Long_Long_Integer(Length(Source => Options_String)) +
@@ -770,6 +775,7 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Directions_Type;
       Options_String: in out Unbounded_String) with
+      Global => null,
       Pre => Name_Is_Valid(Name => Name)
       and then
         Long_Long_Integer(Length(Source => Options_String)) +
