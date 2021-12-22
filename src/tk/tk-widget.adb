@@ -177,6 +177,9 @@ package body Tk.Widget is
         Long_Long_Integer(Positive'Last) then
          return;
       end if;
+      Append
+        (Source => Options_String,
+         New_Item => " -" & Name & " " & Pixel_Data_Image(Value => Value));
    end Option_Image;
 
    procedure Option_Image
