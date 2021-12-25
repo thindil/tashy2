@@ -328,18 +328,31 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Vertical_Pad_Data;
       Options_String: in out Unbounded_String) is
    begin
-      if Value.Top.Value > -1.0 then
+      if Value.Top.Value = -1.0 then
+         return;
+      end if;
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer
+          (To_Lower(Item => Pixel_Data_Image(Value.Top))'Length) +
+        Long_Long_Integer
+          (To_Lower(Item => Pixel_Data_Image(Value.Bottom))'Length) +
+        Long_Long_Integer(Name'Length) + 6 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
+      Append
+        (Source => Options_String,
+         New_Item =>
+           " -" & Name & " {" & Pixel_Data_Image(Value => Value.Top));
+      if Value.Bottom.Value > -1.0 then
          Append
            (Source => Options_String,
-            New_Item =>
-              " -" & Name & " {" & Pixel_Data_Image(Value => Value.Top));
-         if Value.Bottom.Value > -1.0 then
-            Append
-              (Source => Options_String,
-               New_Item => " " & Pixel_Data_Image(Value => Value.Bottom));
-         end if;
-         Append(Source => Options_String, New_Item => "}");
+            New_Item => " " & Pixel_Data_Image(Value => Value.Bottom));
       end if;
+      Append(Source => Options_String, New_Item => "}");
    end Option_Image;
 
    procedure Option_Image
