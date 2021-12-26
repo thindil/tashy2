@@ -359,11 +359,21 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Tk_Widget;
       Options_String: in out Unbounded_String) is
    begin
-      if Value /= Null_Widget then
-         Append
-           (Source => Options_String,
-            New_Item => " -" & Name & " " & Tk_Path_Name(Widgt => Value));
+      if Value = Null_Widget then
+         return;
       end if;
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer(Tk_Path_Name(Widgt => Value)'Length) +
+        Long_Long_Integer(Name'Length) + 3 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
+      Append
+        (Source => Options_String,
+         New_Item => " -" & Name & " " & Tk_Path_Name(Widgt => Value));
    end Option_Image;
 
    procedure Option_Image
