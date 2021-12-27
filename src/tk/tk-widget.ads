@@ -845,7 +845,12 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Extended_Boolean;
       Options_String: in out Unbounded_String) with
-      Pre => Name_Is_Valid(Name => Name),
+      Global => null,
+      Pre => Name_Is_Valid(Name => Name)
+      and then
+        Long_Long_Integer(Length(Source => Options_String)) +
+          Long_Long_Integer(Name'Length) + 4 <=
+        Long_Long_Integer(Positive'Last),
       Test_Case => (Name => "Test_Option_Image_Extended_Boolean",
        Mode => Nominal);
    procedure Option_Image
