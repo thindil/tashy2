@@ -380,14 +380,22 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Extended_Boolean;
       Options_String: in out Unbounded_String) is
    begin
-      case Value is
-         when FALSE =>
-            Append(Source => Options_String, New_Item => " -" & Name & " 0");
-         when TRUE =>
-            Append(Source => Options_String, New_Item => " -" & Name & " 1");
-         when NONE =>
-            null;
-      end case;
+      if Value = NONE then
+         return;
+      end if;
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer(Name'Length) + 4 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
+      if Value = FALSE then
+         Append(Source => Options_String, New_Item => " -" & Name & " 0");
+      else
+         Append(Source => Options_String, New_Item => " -" & Name & " 1");
+      end if;
    end Option_Image;
 
    procedure Option_Image
