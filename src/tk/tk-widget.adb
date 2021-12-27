@@ -110,13 +110,20 @@ package body Tk.Widget is
          Import,
          Convention => C,
          External_Name => "Get_PathName";
-      Result: constant String :=
-        From_C_String(Item => Get_Path_Name(Tk_Win => Widgt));
    begin
-      if Result'Length > Max_Length_Type'Last then
-         return Result(Result'First .. Max_Length_Type'Last);
+      if Widgt = Null_Widget then
+         return "";
       end if;
-      return Result;
+      Result_Block :
+      declare
+         Result: constant String :=
+           From_C_String(Item => Get_Path_Name(Tk_Win => Widgt));
+      begin
+         if Result'Length > Max_Length_Type'Last then
+            return Result(Result'First .. Max_Length_Type'Last);
+         end if;
+         return Result;
+      end Result_Block;
    end Tk_Path_Name;
 
    procedure Option_Image
