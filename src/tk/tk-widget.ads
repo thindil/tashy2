@@ -13,8 +13,12 @@
 -- limitations under the License.
 
 with Ada.Characters.Handling; use Ada.Characters.Handling;
+with Ada.Strings; use Ada.Strings;
+with Ada.Strings.Fixed; use Ada.Strings.Fixed;
+with Ada.Strings.Maps; use Ada.Strings.Maps;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with System;
+with System.Address_Image;
 with Tcl.Strings; use Tcl.Strings;
 with Tcl.Variables; use Tcl.Variables;
 with Tk.Colors; use Tk.Colors;
@@ -856,7 +860,19 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Tk_Window;
       Options_String: in out Unbounded_String) with
-      Pre => Name_Is_Valid(Name => Name),
+      Global => null,
+      Pre => Name_Is_Valid(Name => Name)
+      and then
+        Long_Long_Integer(Length(Source => Options_String)) +
+          Long_Long_Integer(Name'Length) + 5 +
+          Long_Long_Integer
+            (Trim
+               (Source =>
+                  To_Lower
+                    (Item => System.Address_Image(A => System.Address(Value))),
+                Left => To_Set(Singleton => '0'), Right => Null_Set)'
+               Length) <=
+        Long_Long_Integer(Positive'Last),
       Test_Case => (Name => "Test_Option_Image_Tk_Window", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Anchor_Directions;
