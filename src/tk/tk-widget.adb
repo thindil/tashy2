@@ -14,12 +14,8 @@
 
 with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 with Ada.Integer_Text_IO;
-with Ada.Strings; use Ada.Strings;
-with Ada.Strings.Maps;
-with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Interfaces.C;
 with Interfaces.C.Strings; use Interfaces.C.Strings;
-with System.Address_Image;
 with Tashy2; use Tashy2;
 with Tk.MainWindow;
 with Tk.Winfo;
@@ -408,10 +404,6 @@ package body Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Tk_Window;
       Options_String: in out Unbounded_String) is
-      use Ada.Strings.Maps;
-
-      New_Value: constant String :=
-        System.Address_Image(A => System.Address(Value));
    begin
       if Value /= Null_Window then
          Append
@@ -419,7 +411,10 @@ package body Tk.Widget is
             New_Item =>
               " -" & Name & " 0x" &
               Trim
-                (Source => To_Lower(Item => New_Value),
+                (Source =>
+                   To_Lower
+                     (Item =>
+                        System.Address_Image(A => System.Address(Value))),
                  Left => To_Set(Singleton => '0'), Right => Null_Set));
       end if;
    end Option_Image;
