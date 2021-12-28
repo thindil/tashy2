@@ -405,18 +405,33 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Tk_Window;
       Options_String: in out Unbounded_String) is
    begin
-      if Value /= Null_Window then
-         Append
-           (Source => Options_String,
-            New_Item =>
-              " -" & Name & " 0x" &
-              Trim
-                (Source =>
-                   To_Lower
-                     (Item =>
-                        System.Address_Image(A => System.Address(Value))),
-                 Left => To_Set(Singleton => '0'), Right => Null_Set));
+      if Value = Null_Window then
+         return;
       end if;
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer(Name'Length) + 5 +
+        Long_Long_Integer
+          (Trim
+             (Source =>
+                To_Lower
+                  (Item => System.Address_Image(A => System.Address(Value))),
+              Left => To_Set(Singleton => '0'), Right => Null_Set)'
+             Length) >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
+      Append
+        (Source => Options_String,
+         New_Item =>
+           " -" & Name & " 0x" &
+           Trim
+             (Source =>
+                To_Lower
+                  (Item => System.Address_Image(A => System.Address(Value))),
+              Left => To_Set(Singleton => '0'), Right => Null_Set));
    end Option_Image;
 
    procedure Option_Image
