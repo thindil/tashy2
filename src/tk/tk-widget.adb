@@ -438,13 +438,24 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Anchor_Directions;
       Options_String: in out Unbounded_String) is
    begin
-      if Value /= NONE then
-         Append
-           (Source => Options_String,
-            New_Item =>
-              " -" & Name & " " &
-              To_Lower(Item => Anchor_Directions'Image(Value)));
+      if Value = NONE then
+         return;
       end if;
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer
+          (To_Lower(Item => Anchor_Directions'Image(Value))'Length) +
+        Long_Long_Integer(Name'Length) + 3 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
+      Append
+        (Source => Options_String,
+         New_Item =>
+           " -" & Name & " " &
+           To_Lower(Item => Anchor_Directions'Image(Value)));
    end Option_Image;
 
    procedure Option_Image
