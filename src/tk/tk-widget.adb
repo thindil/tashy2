@@ -435,41 +435,6 @@ package body Tk.Widget is
    end Option_Image;
 
    procedure Option_Image
-     (Name: Variable_Name; Value: Integer;
-      Options_String: in out Unbounded_String; Base: Positive := 10) is
-      use Ada.Integer_Text_IO;
-
-      Hex_Value: String(1 .. 32) := (others => ' ');
-      New_Value: Unbounded_String := Null_Unbounded_String;
-   begin
-      if Value /= 0 then
-         Append(Source => Options_String, New_Item => " -" & Name);
-         if Value < 0 then
-            Append(Source => Options_String, New_Item => " ");
-         end if;
-         case Base is
-            when 10 =>
-               Append
-                 (Source => Options_String, New_Item => Integer'Image(Value));
-            when 16 =>
-               Put(To => Hex_Value, Item => Value, Base => 16);
-               New_Value :=
-                 To_Unbounded_String
-                   (Source => Trim(Source => Hex_Value, Side => Both));
-               Append
-                 (Source => Options_String,
-                  New_Item =>
-                    " 0x" &
-                    Slice
-                      (Source => New_Value, Low => 4,
-                       High => Length(Source => New_Value) - 1));
-            when others =>
-               null;
-         end case;
-      end if;
-   end Option_Image;
-
-   procedure Option_Image
      (Name: Variable_Name; Value: Anchor_Directions;
       Options_String: in out Unbounded_String) is
    begin
@@ -558,6 +523,41 @@ package body Tk.Widget is
          Append
            (Source => Options_String,
             New_Item => " -" & Name & " " & To_String(Source => Value));
+      end if;
+   end Option_Image;
+
+   procedure Option_Image
+     (Name: Variable_Name; Value: Integer;
+      Options_String: in out Unbounded_String; Base: Positive := 10) is
+      use Ada.Integer_Text_IO;
+
+      Hex_Value: String(1 .. 32) := (others => ' ');
+      New_Value: Unbounded_String := Null_Unbounded_String;
+   begin
+      if Value /= 0 then
+         Append(Source => Options_String, New_Item => " -" & Name);
+         if Value < 0 then
+            Append(Source => Options_String, New_Item => " ");
+         end if;
+         case Base is
+            when 10 =>
+               Append
+                 (Source => Options_String, New_Item => Integer'Image(Value));
+            when 16 =>
+               Put(To => Hex_Value, Item => Value, Base => 16);
+               New_Value :=
+                 To_Unbounded_String
+                   (Source => Trim(Source => Hex_Value, Side => Both));
+               Append
+                 (Source => Options_String,
+                  New_Item =>
+                    " 0x" &
+                    Slice
+                      (Source => New_Value, Low => 4,
+                       High => Length(Source => New_Value) - 1));
+            when others =>
+               null;
+         end case;
       end if;
    end Option_Image;
 
