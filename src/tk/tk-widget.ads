@@ -889,7 +889,14 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Positive_Float;
       Options_String: in out Unbounded_String) with
-      Pre => Name_Is_Valid(Name => Name),
+      Global => null,
+      Pre => Name_Is_Valid(Name => Name)
+      and then
+      (Positive_Float'Image(Value)'Length < 255 or
+       Long_Long_Integer(Length(Source => Options_String)) +
+           Long_Long_Integer(Positive_Float'Image(Value)'Length) +
+           Long_Long_Integer(Name'Length) + 3 <=
+         Long_Long_Integer(Positive'Last)),
       Test_Case => (Name => "Test_Option_Image_Positive_Float",
        Mode => Nominal);
    procedure Option_Image
