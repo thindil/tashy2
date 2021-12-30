@@ -463,15 +463,28 @@ package body Tk.Widget is
       Options_String: in out Unbounded_String) is
       Value_String: String(1 .. 255) := (others => ' ');
    begin
-      if Value >= 0.0 then
-         Put
-           (To => Value_String, Item => Float(Value),
-            Aft => Positive_Float'Digits, Exp => 0);
-         Append
-           (Source => Options_String,
-            New_Item =>
-              " -" & Name & " " & Trim(Source => Value_String, Side => Both));
+      if Value < 0.0 then
+         return;
       end if;
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Positive_Float'Image(Value)'Length > 254 then
+         return;
+      end if;
+      Put
+        (To => Value_String, Item => Float(Value),
+         Aft => Positive_Float'Digits, Exp => 0);
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer(Trim(Source => Value_String, Side => Both)'Length) +
+        Long_Long_Integer(Name'Length) + 3 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
+      Append
+        (Source => Options_String,
+         New_Item =>
+           " -" & Name & " " & Trim(Source => Value_String, Side => Both));
    end Option_Image;
 
    procedure Option_Image
