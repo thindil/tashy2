@@ -515,9 +515,18 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Boolean;
       Options_String: in out Unbounded_String) is
    begin
-      if Value then
-         Append(Source => Options_String, New_Item => " -" & Name);
+      if not Value then
+         return;
       end if;
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer(Name'Length) + 2 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
+      Append(Source => Options_String, New_Item => " -" & Name);
    end Option_Image;
 
    procedure Option_Image
