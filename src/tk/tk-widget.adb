@@ -1,4 +1,4 @@
--- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2022 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -550,13 +550,25 @@ package body Tk.Widget is
          end case;
       end Color_To_String;
    begin
-      if Value /= Empty_Color then
-         Append
-           (Source => Options_String,
-            New_Item =>
-              " -" & Name & " #" & Color_To_String(Value.Red) &
-              Color_To_String(Value.Green) & Color_To_String(Value.Blue));
+      if Value = Empty_Color then
+         return;
       end if;
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer(Color_Range'Image(Value.Red)'Length) +
+        Long_Long_Integer(Color_Range'Image(Value.Green)'Length) +
+        Long_Long_Integer(Color_Range'Image(Value.Blue)'Length) +
+        Long_Long_Integer(Name'Length) + 12 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
+      Append
+        (Source => Options_String,
+         New_Item =>
+           " -" & Name & " #" & Color_To_String(Value.Red) &
+           Color_To_String(Value.Green) & Color_To_String(Value.Blue));
    end Option_Image;
 
    procedure Option_Image
