@@ -1,4 +1,4 @@
--- Copyright (c) 2020-2021 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2020-2022 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -925,7 +925,15 @@ package Tk.Widget is
    procedure Option_Image
      (Name: Variable_Name; Value: Color_Type;
       Options_String: in out Unbounded_String) with
-      Pre => Name_Is_Valid(Name => Name),
+      Global => null,
+      Pre => Name_Is_Valid(Name => Name)
+      and then
+        Long_Long_Integer(Length(Source => Options_String)) +
+          Long_Long_Integer(Color_Range'Image(Value.Red)'Length) +
+          Long_Long_Integer(Color_Range'Image(Value.Green)'Length) +
+          Long_Long_Integer(Color_Range'Image(Value.Blue)'Length) +
+          Long_Long_Integer(Name'Length) + 12 <=
+        Long_Long_Integer(Positive'Last),
       Test_Case => (Name => "Test_Option_Image_Color_Type", Mode => Nominal);
    procedure Option_Image
      (Name: Variable_Name; Value: Unbounded_Variable_Name;
