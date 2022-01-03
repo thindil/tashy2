@@ -557,10 +557,10 @@ package body Tk.Widget is
          return;
       end if;
       if Long_Long_Integer(Length(Source => Options_String)) +
-        Long_Long_Integer(Color_Range'Image(Value.Red)'Length) +
-        Long_Long_Integer(Color_Range'Image(Value.Green)'Length) +
-        Long_Long_Integer(Color_Range'Image(Value.Blue)'Length) +
-        Long_Long_Integer(Name'Length) + 12 >
+        Long_Long_Integer(Color_To_String(Value.Red)'Length) +
+        Long_Long_Integer(Color_To_String(Value.Green)'Length) +
+        Long_Long_Integer(Color_To_String(Value.Blue)'Length) +
+        Long_Long_Integer(Name'Length) + 4 >
         Long_Long_Integer(Positive'Last) then
          return;
       end if;
