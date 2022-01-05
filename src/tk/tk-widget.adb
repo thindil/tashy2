@@ -600,31 +600,39 @@ package body Tk.Widget is
       Hex_Value: String(1 .. 32) := (others => ' ');
       New_Value: Unbounded_String := Null_Unbounded_String;
    begin
-      if Value /= 0 then
-         Append(Source => Options_String, New_Item => " -" & Name);
-         if Value < 0 then
-            Append(Source => Options_String, New_Item => " ");
-         end if;
-         case Base is
-            when 10 =>
-               Append
-                 (Source => Options_String, New_Item => Integer'Image(Value));
-            when 16 =>
-               Put(To => Hex_Value, Item => Value, Base => 16);
-               New_Value :=
-                 To_Unbounded_String
-                   (Source => Trim(Source => Hex_Value, Side => Both));
-               Append
-                 (Source => Options_String,
-                  New_Item =>
-                    " 0x" &
-                    Slice
-                      (Source => New_Value, Low => 4,
-                       High => Length(Source => New_Value) - 1));
-            when others =>
-               null;
-         end case;
+      if Value = 0 then
+         return;
       end if;
+      if not Name_Is_Valid(Name => Name) then
+         return;
+      end if;
+      if Long_Long_Integer(Length(Source => Options_String)) +
+        Long_Long_Integer(Name'Length) + 38 >
+        Long_Long_Integer(Positive'Last) then
+         return;
+      end if;
+      Append(Source => Options_String, New_Item => " -" & Name);
+      if Value < 0 then
+         Append(Source => Options_String, New_Item => " ");
+      end if;
+      case Base is
+         when 10 =>
+            Append(Source => Options_String, New_Item => Integer'Image(Value));
+         when 16 =>
+            Put(To => Hex_Value, Item => Value, Base => 16);
+            New_Value :=
+              To_Unbounded_String
+                (Source => Trim(Source => Hex_Value, Side => Both));
+            Append
+              (Source => Options_String,
+               New_Item =>
+                 " 0x" &
+                 Slice
+                   (Source => New_Value, Low => 4,
+                    High => Length(Source => New_Value) - 1));
+         when others =>
+            null;
+      end case;
    end Option_Image;
 
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tcl_String is
