@@ -623,6 +623,12 @@ package body Tk.Widget is
             New_Value :=
               To_Unbounded_String
                 (Source => Trim(Source => Hex_Value, Side => Both));
+            if Long_Long_Integer(Length(Source => New_Value)) +
+              Long_Long_Integer(Length(Source => Options_String)) >
+              Long_Long_Integer(Positive'Last) or
+              Length(Source => New_Value) < 5 then
+               return;
+            end if;
             Append
               (Source => Options_String,
                New_Item =>
