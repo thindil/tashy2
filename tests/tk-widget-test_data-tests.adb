@@ -1586,12 +1586,18 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Option_Image_60eae0_ff7cdc
+   procedure Wrap_Test_Option_Image_60eae0_c60e54
      (Name: Variable_Name; Value: Unbounded_Variable_Name;
       Options_String: in out Unbounded_String) is
    begin
       begin
-         pragma Assert(Name_Is_Valid(Name => Name));
+         pragma Assert
+           (Name_Is_Valid(Name => Name)
+            and then
+              Long_Long_Integer(Length(Source => Options_String)) +
+                Long_Long_Integer(Name'Length) + 3 +
+                Long_Long_Integer(Length(Source => Value)) <=
+              Long_Long_Integer(Positive'Last));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1610,13 +1616,13 @@ package body Tk.Widget.Test_Data.Tests is
               (False,
                "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Unbounded_Variable_Name test commitment violated");
       end;
-   end Wrap_Test_Option_Image_60eae0_ff7cdc;
+   end Wrap_Test_Option_Image_60eae0_c60e54;
 --  end read only
 
 --  begin read only
    procedure Test_19_Option_Image_test_option_image_unbounded_variable_name
      (Gnattest_T: in out Test);
-   procedure Test_Option_Image_60eae0_ff7cdc(Gnattest_T: in out Test) renames
+   procedure Test_Option_Image_60eae0_c60e54(Gnattest_T: in out Test) renames
      Test_19_Option_Image_test_option_image_unbounded_variable_name;
 --  id:2.2/60eae0fb13c41e7f/Option_Image/0/0/test_option_image_unbounded_variable_name/
    procedure Test_19_Option_Image_test_option_image_unbounded_variable_name
@@ -1624,7 +1630,7 @@ package body Tk.Widget.Test_Data.Tests is
       procedure Option_Image
         (Name: Variable_Name; Value: Unbounded_Variable_Name;
          Options_String: in out Unbounded_String) renames
-        Wrap_Test_Option_Image_60eae0_ff7cdc;
+        Wrap_Test_Option_Image_60eae0_c60e54;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1645,12 +1651,17 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   procedure Wrap_Test_Option_Image_e5f273_b63b1f
+   procedure Wrap_Test_Option_Image_e5f273_8cdc6a
      (Name: Variable_Name; Value: Integer;
       Options_String: in out Unbounded_String; Base: Positive := 10) is
    begin
       begin
-         pragma Assert(Name_Is_Valid(Name => Name) and Base in 10 | 16);
+         pragma Assert
+           ((Name_Is_Valid(Name => Name) and Base in 10 | 16)
+            and then
+              Long_Long_Integer(Length(Source => Options_String)) +
+                Long_Long_Integer(Name'Length) + 38 <=
+              Long_Long_Integer(Positive'Last));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1669,13 +1680,13 @@ package body Tk.Widget.Test_Data.Tests is
               (False,
                "ens_sloc(tk-widget.ads:0:):Test_Option_Image_Integer test commitment violated");
       end;
-   end Wrap_Test_Option_Image_e5f273_b63b1f;
+   end Wrap_Test_Option_Image_e5f273_8cdc6a;
 --  end read only
 
 --  begin read only
    procedure Test_20_Option_Image_test_option_image_integer
      (Gnattest_T: in out Test);
-   procedure Test_Option_Image_e5f273_b63b1f(Gnattest_T: in out Test) renames
+   procedure Test_Option_Image_e5f273_8cdc6a(Gnattest_T: in out Test) renames
      Test_20_Option_Image_test_option_image_integer;
 --  id:2.2/e5f273869df45ad5/Option_Image/0/0/test_option_image_integer/
    procedure Test_20_Option_Image_test_option_image_integer
@@ -1683,7 +1694,7 @@ package body Tk.Widget.Test_Data.Tests is
       procedure Option_Image
         (Name: Variable_Name; Value: Integer;
          Options_String: in out Unbounded_String; Base: Positive := 10) renames
-        Wrap_Test_Option_Image_e5f273_b63b1f;
+        Wrap_Test_Option_Image_e5f273_8cdc6a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
