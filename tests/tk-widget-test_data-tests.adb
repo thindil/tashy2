@@ -1712,11 +1712,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_7653ac_8290b8
-     (Widgt: Tk_Widget; Name: String) return Tcl_String is
+   function Wrap_Test_Option_Value_7653ac_74b91f
+     (Widgt: Tk_Widget; Name: Variable_Name) return Tcl_String is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1725,7 +1725,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Tcl_String test requirement violated");
       end;
       declare
-         Test_Option_Value_7653ac_8290b8_Result: constant Tcl_String :=
+         Test_Option_Value_7653ac_74b91f_Result: constant Tcl_String :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -1738,22 +1738,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Tcl_String test commitment violated");
          end;
-         return Test_Option_Value_7653ac_8290b8_Result;
+         return Test_Option_Value_7653ac_74b91f_Result;
       end;
-   end Wrap_Test_Option_Value_7653ac_8290b8;
+   end Wrap_Test_Option_Value_7653ac_74b91f;
 --  end read only
 
 --  begin read only
    procedure Test_1_Option_Value_test_option_value_tcl_string
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_7653ac_8290b8(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_7653ac_74b91f(Gnattest_T: in out Test) renames
      Test_1_Option_Value_test_option_value_tcl_string;
 --  id:2.2/7653ac7cbd9fae0e/Option_Value/1/0/test_option_value_tcl_string/
    procedure Test_1_Option_Value_test_option_value_tcl_string
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return Tcl_String renames
-        Wrap_Test_Option_Value_7653ac_8290b8;
+        (Widgt: Tk_Widget; Name: Variable_Name) return Tcl_String renames
+        Wrap_Test_Option_Value_7653ac_74b91f;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
