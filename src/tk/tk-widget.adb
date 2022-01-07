@@ -641,7 +641,8 @@ package body Tk.Widget is
       end case;
    end Option_Image;
 
-   function Option_Value(Widgt: Tk_Widget; Name: String) return Tcl_String is
+   function Option_Value
+     (Widgt: Tk_Widget; Name: Variable_Name) return Tcl_String is
    begin
       return
         To_Tcl_String

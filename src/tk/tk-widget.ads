@@ -1003,8 +1003,10 @@ package Tk.Widget is
    -- -- Get the value of option text in My_Button widget
    -- Text: constant Tcl_String := Option_Value(My_Button, "text");
    -- SOURCE
-   function Option_Value(Widgt: Tk_Widget; Name: String) return Tcl_String with
-      Pre => Widgt /= Null_Widget and Name'Length > 0,
+   function Option_Value
+     (Widgt: Tk_Widget; Name: Variable_Name) return Tcl_String with
+      Global => null,
+      Pre => Widgt /= Null_Widget and Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Value_Tcl_String", Mode => Nominal);
    function Option_Value
      (Widgt: Tk_Widget; Name: String) return Directions_Type with
