@@ -644,12 +644,20 @@ package body Tk.Widget is
    function Option_Value
      (Widgt: Tk_Widget; Name: Variable_Name) return Tcl_String is
    begin
-      return
-        To_Tcl_String
-          (Source =>
-             Execute_Widget_Command
-               (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
-               .Result);
+      if Widgt = Null_Widget then
+         return Null_Tcl_String;
+      end if;
+      if not Name_Is_Valid(Name => Name) then
+         return Null_Tcl_String;
+      end if;
+      Convert_Value_Block :
+      declare
+         Result: constant Tcl_String_Result :=
+           Execute_Widget_Command
+             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+      begin
+         return To_Tcl_String(Source => Result.Result);
+      end Convert_Value_Block;
    end Option_Value;
 
    function Option_Value
