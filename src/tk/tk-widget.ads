@@ -1116,8 +1116,7 @@ package Tk.Widget is
      (Widgt: Tk_Widget; Command_Name: Variable_Name;
       Options: String := "") with
       Global => null,
-      Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)
-      and then Name_Is_Valid(Command_Name)
+      Pre => Widgt /= Null_Widget and then Name_Is_Valid(Command_Name)
       and then
         Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
           Long_Long_Integer(Command_Name'Length) +
@@ -1150,8 +1149,7 @@ package Tk.Widget is
      (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
       return Tcl_String_Result with
       Global => null,
-      Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)
-      and then Name_Is_Valid(Command_Name)
+      Pre => Widgt /= Null_Widget and then Name_Is_Valid(Command_Name)
       and then
         Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
           Long_Long_Integer(Command_Name'Length) +
@@ -1184,8 +1182,7 @@ package Tk.Widget is
      (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
       return Tcl_Boolean_Result with
       Global => null,
-      Pre => (Widgt /= Null_Widget and Command_Name'Length > 0)
-      and then Name_Is_Valid(Command_Name)
+      Pre => Widgt /= Null_Widget and then Name_Is_Valid(Command_Name)
       and then
         Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
           Long_Long_Integer(Command_Name'Length) +
