@@ -1009,7 +1009,7 @@ package Tk.Widget is
       Pre => Widgt /= Null_Widget and Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Value_Tcl_String", Mode => Nominal);
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Directions_Type with
+     (Widgt: Tk_Widget; Name: Variable_Name) return Directions_Type with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
       Test_Case => (Name => "Test_Option_Value_Direction_Type",
        Mode => Nominal);
