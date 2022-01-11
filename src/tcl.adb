@@ -89,29 +89,44 @@ package body Tcl is
    function Tcl_Eval
      (Tcl_Script: String; Interpreter: Tcl_Interpreter := Get_Interpreter)
       return Tcl_String_Result is
-      Message: Unbounded_String := Null_Unbounded_String;
-      Result_Code: constant Tcl_Results :=
-        Native_Tcl_Eval
-          (Interp => Interpreter, Script => To_C_String(Str => Tcl_Script));
-      Result_String: constant String :=
-        Tcl_Get_Result(Interpreter => Interpreter);
+      Message, Result_String: Unbounded_String := Null_Unbounded_String;
+      Result_Code: Tcl_Results;
    begin
-      if Result_Code = TCL_ERROR then
+      if Interpreter = Null_Interpreter then
+         Result_Code := TCL_ERROR;
          Message :=
-           To_Unbounded_String
-             (Source =>
-                Tcl_Get_Var
-                  (Var_Name => "errorInfo", Interpreter => Interpreter));
+           To_Unbounded_String(Source => "Tcl interpreter not initialized.");
+      elsif Tcl_Script'Length = 0 then
+         Result_Code := TCL_ERROR;
+         Message :=
+           To_Unbounded_String(Source => "Empty Tcl script to evaluate.");
+      else
+         Result_Code :=
+           Native_Tcl_Eval
+             (Interp => Interpreter, Script => To_C_String(Str => Tcl_Script));
+         if Result_Code = TCL_ERROR then
+            Message :=
+              To_Unbounded_String
+                (Source =>
+                   Tcl_Get_Var
+                     (Var_Name => "errorInfo", Interpreter => Interpreter));
+         else
+            Result_String :=
+              To_Unbounded_String
+                (Source => Tcl_Get_Result(Interpreter => Interpreter));
+         end if;
       end if;
       Return_Result_Block :
       declare
          Message_Length: constant Natural := Length(Source => Message);
+         Result_Length: constant Natural := Length(Source => Result_String);
          Result: constant Tcl_String_Result
            (Message_Length => Message_Length,
-            Result_Length => Result_String'Length) :=
-           (Message_Length => Message_Length,
-            Result_Length => Result_String'Length, Return_Code => Result_Code,
-            Result => Result_String, Message => To_String(Source => Message));
+            Result_Length => Result_Length) :=
+           (Message_Length => Message_Length, Result_Length => Result_Length,
+            Return_Code => Result_Code,
+            Result => To_String(Source => Result_String),
+            Message => To_String(Source => Message));
       begin
          return Result;
       end Return_Result_Block;
