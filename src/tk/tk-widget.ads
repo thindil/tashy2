@@ -1014,8 +1014,9 @@ package Tk.Widget is
       Pre => Widgt /= Null_Widget and Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Value_Direction_Type",
        Mode => Nominal);
-   function Option_Value(Widgt: Tk_Widget; Name: String) return Pixel_Data with
-      Pre => Widgt /= Null_Widget and Name'Length > 0,
+   function Option_Value(Widgt: Tk_Widget; Name: Variable_Name) return Pixel_Data with
+      Global => null,
+      Pre => Widgt /= Null_Widget and Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Value_Pixel_Data", Mode => Nominal);
    function Option_Value(Widgt: Tk_Widget; Name: String) return Place_Type with
       Pre => Widgt /= Null_Widget and Name'Length > 0,
