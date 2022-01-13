@@ -1782,11 +1782,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_233bf0_aec4d0
+   function Wrap_Test_Option_Value_233bf0_4f2655
      (Widgt: Tk_Widget; Name: Variable_Name) return Directions_Type is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1795,7 +1795,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Direction_Type test requirement violated");
       end;
       declare
-         Test_Option_Value_233bf0_aec4d0_Result: constant Directions_Type :=
+         Test_Option_Value_233bf0_4f2655_Result: constant Directions_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -1808,22 +1808,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Direction_Type test commitment violated");
          end;
-         return Test_Option_Value_233bf0_aec4d0_Result;
+         return Test_Option_Value_233bf0_4f2655_Result;
       end;
-   end Wrap_Test_Option_Value_233bf0_aec4d0;
+   end Wrap_Test_Option_Value_233bf0_4f2655;
 --  end read only
 
 --  begin read only
    procedure Test_2_Option_Value_test_option_value_direction_type
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_233bf0_aec4d0(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_233bf0_4f2655(Gnattest_T: in out Test) renames
      Test_2_Option_Value_test_option_value_direction_type;
 --  id:2.2/233bf0449cc91e05/Option_Value/0/0/test_option_value_direction_type/
    procedure Test_2_Option_Value_test_option_value_direction_type
      (Gnattest_T: in out Test) is
       function Option_Value
         (Widgt: Tk_Widget; Name: Variable_Name) return Directions_Type renames
-        Wrap_Test_Option_Value_233bf0_aec4d0;
+        Wrap_Test_Option_Value_233bf0_4f2655;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
@@ -1856,11 +1856,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_5928a5_91f6f6
-     (Widgt: Tk_Widget; Name: String) return Pixel_Data is
+   function Wrap_Test_Option_Value_5928a5_a9cfe3
+     (Widgt: Tk_Widget; Name: Variable_Name) return Pixel_Data is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1869,7 +1869,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Pixel_Data test requirement violated");
       end;
       declare
-         Test_Option_Value_5928a5_91f6f6_Result: constant Pixel_Data :=
+         Test_Option_Value_5928a5_a9cfe3_Result: constant Pixel_Data :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -1882,22 +1882,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Pixel_Data test commitment violated");
          end;
-         return Test_Option_Value_5928a5_91f6f6_Result;
+         return Test_Option_Value_5928a5_a9cfe3_Result;
       end;
-   end Wrap_Test_Option_Value_5928a5_91f6f6;
+   end Wrap_Test_Option_Value_5928a5_a9cfe3;
 --  end read only
 
 --  begin read only
    procedure Test_3_Option_Value_test_option_value_pixel_data
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_5928a5_91f6f6(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_5928a5_a9cfe3(Gnattest_T: in out Test) renames
      Test_3_Option_Value_test_option_value_pixel_data;
 --  id:2.2/5928a584ab6c8004/Option_Value/0/0/test_option_value_pixel_data/
    procedure Test_3_Option_Value_test_option_value_pixel_data
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return Pixel_Data renames
-        Wrap_Test_Option_Value_5928a5_91f6f6;
+        (Widgt: Tk_Widget; Name: Variable_Name) return Pixel_Data renames
+        Wrap_Test_Option_Value_5928a5_a9cfe3;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
