@@ -673,7 +673,8 @@ package body Tk.Widget is
       return Directions_Type'Value(Result);
    end Option_Value;
 
-   function Option_Value(Widgt: Tk_Widget; Name: Variable_Name) return Pixel_Data is
+   function Option_Value
+     (Widgt: Tk_Widget; Name: Variable_Name) return Pixel_Data is
    begin
       return
         Pixel_Data_Value
@@ -683,7 +684,8 @@ package body Tk.Widget is
                .Result);
    end Option_Value;
 
-   function Option_Value(Widgt: Tk_Widget; Name: String) return Place_Type is
+   function Option_Value
+     (Widgt: Tk_Widget; Name: Variable_Name) return Place_Type is
    begin
       return
         Place_Type'Value
