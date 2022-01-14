@@ -1924,11 +1924,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_28b181_505a65
-     (Widgt: Tk_Widget; Name: String) return Place_Type is
+   function Wrap_Test_Option_Value_28b181_1e577e
+     (Widgt: Tk_Widget; Name: Variable_Name) return Place_Type is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -1937,7 +1937,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Place_Type test requirement violated");
       end;
       declare
-         Test_Option_Value_28b181_505a65_Result: constant Place_Type :=
+         Test_Option_Value_28b181_1e577e_Result: constant Place_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -1950,22 +1950,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Place_Type test commitment violated");
          end;
-         return Test_Option_Value_28b181_505a65_Result;
+         return Test_Option_Value_28b181_1e577e_Result;
       end;
-   end Wrap_Test_Option_Value_28b181_505a65;
+   end Wrap_Test_Option_Value_28b181_1e577e;
 --  end read only
 
 --  begin read only
    procedure Test_4_Option_Value_test_option_value_place_type
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_28b181_505a65(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_28b181_1e577e(Gnattest_T: in out Test) renames
      Test_4_Option_Value_test_option_value_place_type;
 --  id:2.2/28b1817b22e294d8/Option_Value/0/0/test_option_value_place_type/
    procedure Test_4_Option_Value_test_option_value_place_type
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return Place_Type renames
-        Wrap_Test_Option_Value_28b181_505a65;
+        (Widgt: Tk_Widget; Name: Variable_Name) return Place_Type renames
+        Wrap_Test_Option_Value_28b181_1e577e;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
