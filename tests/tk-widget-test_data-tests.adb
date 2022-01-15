@@ -1993,11 +1993,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_f5b002_a22b94
-     (Widgt: Tk_Widget; Name: String) return State_Type is
+   function Wrap_Test_Option_Value_f5b002_f0495d
+     (Widgt: Tk_Widget; Name: Variable_Name) return State_Type is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2006,7 +2006,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_State_Type test requirement violated");
       end;
       declare
-         Test_Option_Value_f5b002_a22b94_Result: constant State_Type :=
+         Test_Option_Value_f5b002_f0495d_Result: constant State_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -2019,22 +2019,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_State_Type test commitment violated");
          end;
-         return Test_Option_Value_f5b002_a22b94_Result;
+         return Test_Option_Value_f5b002_f0495d_Result;
       end;
-   end Wrap_Test_Option_Value_f5b002_a22b94;
+   end Wrap_Test_Option_Value_f5b002_f0495d;
 --  end read only
 
 --  begin read only
    procedure Test_5_Option_Value_test_option_value_state_type
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_f5b002_a22b94(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_f5b002_f0495d(Gnattest_T: in out Test) renames
      Test_5_Option_Value_test_option_value_state_type;
 --  id:2.2/f5b002d7d9b49b26/Option_Value/0/0/test_option_value_state_type/
    procedure Test_5_Option_Value_test_option_value_state_type
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return State_Type renames
-        Wrap_Test_Option_Value_f5b002_a22b94;
+        (Widgt: Tk_Widget; Name: Variable_Name) return State_Type renames
+        Wrap_Test_Option_Value_f5b002_f0495d;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);

@@ -625,7 +625,7 @@ package body Tk.Winfo.Test_Data.Tests is
       end if;
       Assert
         (Floating_Point_Pixels
-           (Get_Main_Window, Pixel_Data'(Value => 2.0, Value_Unit => PIXEL)) =
+           (Get_Main_Window, Pixel_Data'(Value => 2.0, Value_Unit => PIXEL)) <=
          2.0,
          "Failed to get floating point distance in Tk main window.");
 

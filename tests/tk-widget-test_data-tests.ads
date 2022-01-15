@@ -100,53 +100,53 @@ package Tk.Widget.Test_Data.Tests is
    procedure Test_Option_Value_28b181_1e577e(Gnattest_T: in out Test);
    --  tk-widget.ads:1022:4:Option_Value:Test_Option_Value_Place_Type
 
-   procedure Test_Option_Value_f5b002_a22b94(Gnattest_T: in out Test);
+   procedure Test_Option_Value_f5b002_f0495d(Gnattest_T: in out Test);
    --  tk-widget.ads:1027:4:Option_Value:Test_Option_Value_State_Type
 
    procedure Test_Option_Value_0d429d_011a37(Gnattest_T: in out Test);
-   --  tk-widget.ads:1030:4:Option_Value:Test_Option_Value_Justify_Type
+   --  tk-widget.ads:1032:4:Option_Value:Test_Option_Value_Justify_Type
 
    procedure Test_Option_Value_433a71_606e95(Gnattest_T: in out Test);
-   --  tk-widget.ads:1034:4:Option_Value:Test_Option_Value_Relief_Type
+   --  tk-widget.ads:1036:4:Option_Value:Test_Option_Value_Relief_Type
 
    procedure Test_Option_Value_c23604_f3a6bc(Gnattest_T: in out Test);
-   --  tk-widget.ads:1038:4:Option_Value:Test_Option_Value_Extended_Natural
+   --  tk-widget.ads:1040:4:Option_Value:Test_Option_Value_Extended_Natural
 
    procedure Test_Option_Value_4261cf_d0c79a(Gnattest_T: in out Test);
-   --  tk-widget.ads:1043:4:Option_Value:Test_Option_Value_Extended_Boolean
+   --  tk-widget.ads:1045:4:Option_Value:Test_Option_Value_Extended_Boolean
 
    procedure Test_Option_Value_6c79cd_4a4c5a(Gnattest_T: in out Test);
-   --  tk-widget.ads:1048:4:Option_Value:Test_Option_Value_Tk_Widget
+   --  tk-widget.ads:1050:4:Option_Value:Test_Option_Value_Tk_Widget
 
    procedure Test_Option_Value_eba58c_c374e8(Gnattest_T: in out Test);
-   --  tk-widget.ads:1051:4:Option_Value:Test_Option_Value_Tk_Window
+   --  tk-widget.ads:1053:4:Option_Value:Test_Option_Value_Tk_Window
 
    procedure Test_Option_Value_f2311c_69e413(Gnattest_T: in out Test);
-   --  tk-widget.ads:1054:4:Option_Value:Test_Option_Value_Integer
+   --  tk-widget.ads:1056:4:Option_Value:Test_Option_Value_Integer
 
    procedure Test_Option_Value_54a47c_6cc903(Gnattest_T: in out Test);
-   --  tk-widget.ads:1057:4:Option_Value:Test_Option_Value_Anchor_Directions
+   --  tk-widget.ads:1059:4:Option_Value:Test_Option_Value_Anchor_Directions
 
    procedure Test_Option_Value_d50e55_5666b2(Gnattest_T: in out Test);
-   --  tk-widget.ads:1062:4:Option_Value:Test_Option_Value_Color_Type
+   --  tk-widget.ads:1064:4:Option_Value:Test_Option_Value_Color_Type
 
    procedure Test_Option_Value_4a4fd9_d2c911(Gnattest_T: in out Test);
-   --  tk-widget.ads:1065:4:Option_Value:Test_Option_Value_Unbounded_Variable_Name
+   --  tk-widget.ads:1067:4:Option_Value:Test_Option_Value_Unbounded_Variable_Name
 
    procedure Test_Destroy_568000_03a39f(Gnattest_T: in out Test);
-   --  tk-widget.ads:1091:4:Destroy:Test_Destroy
+   --  tk-widget.ads:1093:4:Destroy:Test_Destroy
 
    procedure Test_Execute_Widget_Command_7643c6_9f7f4c
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1120:4:Execute_Widget_Command:Test_Execute_Widget_Command
+   --  tk-widget.ads:1122:4:Execute_Widget_Command:Test_Execute_Widget_Command
 
    procedure Test_Execute_Widget_Command_6ed39c_1b2064
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1153:4:Execute_Widget_Command:Test_Execute_Widget_Command2
+   --  tk-widget.ads:1155:4:Execute_Widget_Command:Test_Execute_Widget_Command2
 
    procedure Test_Execute_Widget_Command_7bae5e_a22773
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1186:4:Execute_Widget_Command:Test_Execute_Widget_Command3
+   --  tk-widget.ads:1188:4:Execute_Widget_Command:Test_Execute_Widget_Command3
 
 end Tk.Widget.Test_Data.Tests;
 --  end read only
