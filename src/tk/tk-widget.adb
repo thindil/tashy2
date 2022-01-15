@@ -694,7 +694,8 @@ package body Tk.Widget is
              .Result);
    end Option_Value;
 
-   function Option_Value(Widgt: Tk_Widget; Name: String) return State_Type is
+   function Option_Value
+     (Widgt: Tk_Widget; Name: Variable_Name) return State_Type is
    begin
       return
         State_Type'Value

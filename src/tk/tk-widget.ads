@@ -1024,8 +1024,10 @@ package Tk.Widget is
       Global => null,
       Pre => Widgt /= Null_Widget and Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Value_Place_Type", Mode => Nominal);
-   function Option_Value(Widgt: Tk_Widget; Name: String) return State_Type with
-      Pre => Widgt /= Null_Widget and Name'Length > 0,
+   function Option_Value
+     (Widgt: Tk_Widget; Name: Variable_Name) return State_Type with
+      Global => null,
+      Pre => Widgt /= Null_Widget and Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Value_State_Type", Mode => Nominal);
    function Option_Value
      (Widgt: Tk_Widget; Name: String) return Justify_Type with
