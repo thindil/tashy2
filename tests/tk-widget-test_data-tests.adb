@@ -2062,11 +2062,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_0d429d_011a37
-     (Widgt: Tk_Widget; Name: String) return Justify_Type is
+   function Wrap_Test_Option_Value_0d429d_19b571
+     (Widgt: Tk_Widget; Name: Variable_Name) return Justify_Type is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2075,7 +2075,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Justify_Type test requirement violated");
       end;
       declare
-         Test_Option_Value_0d429d_011a37_Result: constant Justify_Type :=
+         Test_Option_Value_0d429d_19b571_Result: constant Justify_Type :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -2088,22 +2088,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Justify_Type test commitment violated");
          end;
-         return Test_Option_Value_0d429d_011a37_Result;
+         return Test_Option_Value_0d429d_19b571_Result;
       end;
-   end Wrap_Test_Option_Value_0d429d_011a37;
+   end Wrap_Test_Option_Value_0d429d_19b571;
 --  end read only
 
 --  begin read only
    procedure Test_6_Option_Value_test_option_value_justify_type
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_0d429d_011a37(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_0d429d_19b571(Gnattest_T: in out Test) renames
      Test_6_Option_Value_test_option_value_justify_type;
 --  id:2.2/0d429d825d130717/Option_Value/0/0/test_option_value_justify_type/
    procedure Test_6_Option_Value_test_option_value_justify_type
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return Justify_Type renames
-        Wrap_Test_Option_Value_0d429d_011a37;
+        (Widgt: Tk_Widget; Name: Variable_Name) return Justify_Type renames
+        Wrap_Test_Option_Value_0d429d_19b571;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
