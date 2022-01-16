@@ -704,7 +704,8 @@ package body Tk.Widget is
              .Result);
    end Option_Value;
 
-   function Option_Value(Widgt: Tk_Widget; Name: String) return Justify_Type is
+   function Option_Value
+     (Widgt: Tk_Widget; Name: Variable_Name) return Justify_Type is
       Result: constant String :=
         Execute_Widget_Command
           (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
