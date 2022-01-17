@@ -1035,8 +1035,9 @@ package Tk.Widget is
       Pre => Widgt /= Null_Widget and Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Value_Justify_Type", Mode => Nominal);
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Relief_Type with
-      Pre => Widgt /= Null_Widget and Name'Length > 0,
+     (Widgt: Tk_Widget; Name: Variable_Name) return Relief_Type with
+      Global => null,
+      Pre => Widgt /= Null_Widget and Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Value_Relief_Type", Mode => Nominal);
    function Option_Value
      (Widgt: Tk_Widget; Name: String) return Extended_Natural with
