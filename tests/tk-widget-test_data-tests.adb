@@ -2210,11 +2210,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_c23604_f3a6bc
-     (Widgt: Tk_Widget; Name: String) return Extended_Natural is
+   function Wrap_Test_Option_Value_c23604_67f567
+     (Widgt: Tk_Widget; Name: Variable_Name) return Extended_Natural is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2223,7 +2223,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Extended_Natural test requirement violated");
       end;
       declare
-         Test_Option_Value_c23604_f3a6bc_Result: constant Extended_Natural :=
+         Test_Option_Value_c23604_67f567_Result: constant Extended_Natural :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -2236,22 +2236,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Extended_Natural test commitment violated");
          end;
-         return Test_Option_Value_c23604_f3a6bc_Result;
+         return Test_Option_Value_c23604_67f567_Result;
       end;
-   end Wrap_Test_Option_Value_c23604_f3a6bc;
+   end Wrap_Test_Option_Value_c23604_67f567;
 --  end read only
 
 --  begin read only
    procedure Test_8_Option_Value_test_option_value_extended_natural
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_c23604_f3a6bc(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_c23604_67f567(Gnattest_T: in out Test) renames
      Test_8_Option_Value_test_option_value_extended_natural;
 --  id:2.2/c2360441dc017b3b/Option_Value/0/0/test_option_value_extended_natural/
    procedure Test_8_Option_Value_test_option_value_extended_natural
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return Extended_Natural renames
-        Wrap_Test_Option_Value_c23604_f3a6bc;
+        (Widgt: Tk_Widget; Name: Variable_Name) return Extended_Natural renames
+        Wrap_Test_Option_Value_c23604_67f567;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
