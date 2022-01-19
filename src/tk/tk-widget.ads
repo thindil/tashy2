@@ -1046,8 +1046,9 @@ package Tk.Widget is
       Test_Case => (Name => "Test_Option_Value_Extended_Natural",
        Mode => Nominal);
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Extended_Boolean with
-      Pre => Widgt /= Null_Widget and Name'Length > 0,
+     (Widgt: Tk_Widget; Name: Variable_Name) return Extended_Boolean with
+      Global => null,
+      Pre => Widgt /= Null_Widget and Name_Is_Valid(Name => Name),
       Test_Case => (Name => "Test_Option_Value_Extended_Boolean",
        Mode => Nominal);
    function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Widget with

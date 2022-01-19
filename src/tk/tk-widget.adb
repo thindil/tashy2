@@ -744,7 +744,7 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Extended_Boolean is
+     (Widgt: Tk_Widget; Name: Variable_Name) return Extended_Boolean is
    begin
       Execute_Widget_Command
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
