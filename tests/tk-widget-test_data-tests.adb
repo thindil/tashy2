@@ -2287,11 +2287,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_4261cf_d0c79a
-     (Widgt: Tk_Widget; Name: String) return Extended_Boolean is
+   function Wrap_Test_Option_Value_4261cf_427367
+     (Widgt: Tk_Widget; Name: Variable_Name) return Extended_Boolean is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2300,7 +2300,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Extended_Boolean test requirement violated");
       end;
       declare
-         Test_Option_Value_4261cf_d0c79a_Result: constant Extended_Boolean :=
+         Test_Option_Value_4261cf_427367_Result: constant Extended_Boolean :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -2313,22 +2313,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Extended_Boolean test commitment violated");
          end;
-         return Test_Option_Value_4261cf_d0c79a_Result;
+         return Test_Option_Value_4261cf_427367_Result;
       end;
-   end Wrap_Test_Option_Value_4261cf_d0c79a;
+   end Wrap_Test_Option_Value_4261cf_427367;
 --  end read only
 
 --  begin read only
    procedure Test_9_Option_Value_test_option_value_extended_boolean
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_4261cf_d0c79a(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_4261cf_427367(Gnattest_T: in out Test) renames
      Test_9_Option_Value_test_option_value_extended_boolean;
 --  id:2.2/4261cff0a1c9a280/Option_Value/0/0/test_option_value_extended_boolean/
    procedure Test_9_Option_Value_test_option_value_extended_boolean
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return Extended_Boolean renames
-        Wrap_Test_Option_Value_4261cf_d0c79a;
+        (Widgt: Tk_Widget; Name: Variable_Name) return Extended_Boolean renames
+        Wrap_Test_Option_Value_4261cf_427367;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
