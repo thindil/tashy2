@@ -755,7 +755,8 @@ package body Tk.Widget is
       end if;
    end Option_Value;
 
-   function Option_Value(Widgt: Tk_Widget; Name: String) return Tk_Widget is
+   function Option_Value
+     (Widgt: Tk_Widget; Name: Variable_Name) return Tk_Widget is
       Result: constant String :=
         Execute_Widget_Command
           (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
