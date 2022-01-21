@@ -2426,11 +2426,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_eba58c_c374e8
-     (Widgt: Tk_Widget; Name: String) return Tk_Window is
+   function Wrap_Test_Option_Value_eba58c_921af3
+     (Widgt: Tk_Widget; Name: Variable_Name) return Tk_Window is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2439,7 +2439,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Tk_Window test requirement violated");
       end;
       declare
-         Test_Option_Value_eba58c_c374e8_Result: constant Tk_Window :=
+         Test_Option_Value_eba58c_921af3_Result: constant Tk_Window :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -2452,22 +2452,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Tk_Window test commitment violated");
          end;
-         return Test_Option_Value_eba58c_c374e8_Result;
+         return Test_Option_Value_eba58c_921af3_Result;
       end;
-   end Wrap_Test_Option_Value_eba58c_c374e8;
+   end Wrap_Test_Option_Value_eba58c_921af3;
 --  end read only
 
 --  begin read only
    procedure Test_11_Option_Value_test_option_value_tk_window
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_eba58c_c374e8(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_eba58c_921af3(Gnattest_T: in out Test) renames
      Test_11_Option_Value_test_option_value_tk_window;
 --  id:2.2/eba58cc5c22700dd/Option_Value/0/0/test_option_value_tk_window/
    procedure Test_11_Option_Value_test_option_value_tk_window
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return Tk_Window renames
-        Wrap_Test_Option_Value_eba58c_c374e8;
+        (Widgt: Tk_Widget; Name: Variable_Name) return Tk_Window renames
+        Wrap_Test_Option_Value_eba58c_921af3;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
