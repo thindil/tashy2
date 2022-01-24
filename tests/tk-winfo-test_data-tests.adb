@@ -1664,7 +1664,7 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Root_Y(Get_Main_Window) = 0,
+        (Root_Y(Get_Main_Window) = 30,
          "Failed to get Y root coordinate for Tk main window.");
 
 --  begin read only
