@@ -439,7 +439,7 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Containing((0.0, PIXEL), (0.0, PIXEL)) = Get_Main_Window,
+        (Containing((0.0, PIXEL), (30.0, PIXEL)) = Get_Main_Window,
          "Failed to get window at 0,0 coordinates.");
 
 --  begin read only
