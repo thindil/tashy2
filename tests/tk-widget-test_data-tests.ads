@@ -121,32 +121,32 @@ package Tk.Widget.Test_Data.Tests is
    procedure Test_Option_Value_eba58c_921af3(Gnattest_T: in out Test);
    --  tk-widget.ads:1059:4:Option_Value:Test_Option_Value_Tk_Window
 
-   procedure Test_Option_Value_f2311c_69e413(Gnattest_T: in out Test);
+   procedure Test_Option_Value_f2311c_4718d4(Gnattest_T: in out Test);
    --  tk-widget.ads:1064:4:Option_Value:Test_Option_Value_Integer
 
    procedure Test_Option_Value_54a47c_6cc903(Gnattest_T: in out Test);
-   --  tk-widget.ads:1067:4:Option_Value:Test_Option_Value_Anchor_Directions
+   --  tk-widget.ads:1069:4:Option_Value:Test_Option_Value_Anchor_Directions
 
    procedure Test_Option_Value_d50e55_5666b2(Gnattest_T: in out Test);
-   --  tk-widget.ads:1072:4:Option_Value:Test_Option_Value_Color_Type
+   --  tk-widget.ads:1074:4:Option_Value:Test_Option_Value_Color_Type
 
    procedure Test_Option_Value_4a4fd9_d2c911(Gnattest_T: in out Test);
-   --  tk-widget.ads:1075:4:Option_Value:Test_Option_Value_Unbounded_Variable_Name
+   --  tk-widget.ads:1077:4:Option_Value:Test_Option_Value_Unbounded_Variable_Name
 
    procedure Test_Destroy_568000_03a39f(Gnattest_T: in out Test);
-   --  tk-widget.ads:1101:4:Destroy:Test_Destroy
+   --  tk-widget.ads:1103:4:Destroy:Test_Destroy
 
    procedure Test_Execute_Widget_Command_7643c6_9f7f4c
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1130:4:Execute_Widget_Command:Test_Execute_Widget_Command
+   --  tk-widget.ads:1132:4:Execute_Widget_Command:Test_Execute_Widget_Command
 
    procedure Test_Execute_Widget_Command_6ed39c_1b2064
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1163:4:Execute_Widget_Command:Test_Execute_Widget_Command2
+   --  tk-widget.ads:1165:4:Execute_Widget_Command:Test_Execute_Widget_Command2
 
    procedure Test_Execute_Widget_Command_7bae5e_a22773
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1196:4:Execute_Widget_Command:Test_Execute_Widget_Command3
+   --  tk-widget.ads:1198:4:Execute_Widget_Command:Test_Execute_Widget_Command3
 
 end Tk.Widget.Test_Data.Tests;
 --  end read only

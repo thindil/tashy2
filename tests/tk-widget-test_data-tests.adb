@@ -2505,11 +2505,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_f2311c_69e413
-     (Widgt: Tk_Widget; Name: String) return Integer is
+   function Wrap_Test_Option_Value_f2311c_4718d4
+     (Widgt: Tk_Widget; Name: Variable_Name) return Integer is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2518,7 +2518,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Integer test requirement violated");
       end;
       declare
-         Test_Option_Value_f2311c_69e413_Result: constant Integer :=
+         Test_Option_Value_f2311c_4718d4_Result: constant Integer :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -2531,22 +2531,22 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Integer test commitment violated");
          end;
-         return Test_Option_Value_f2311c_69e413_Result;
+         return Test_Option_Value_f2311c_4718d4_Result;
       end;
-   end Wrap_Test_Option_Value_f2311c_69e413;
+   end Wrap_Test_Option_Value_f2311c_4718d4;
 --  end read only
 
 --  begin read only
    procedure Test_12_Option_Value_test_option_value_integer
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_f2311c_69e413(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_f2311c_4718d4(Gnattest_T: in out Test) renames
      Test_12_Option_Value_test_option_value_integer;
 --  id:2.2/f2311c8d530f5ad5/Option_Value/0/0/test_option_value_integer/
    procedure Test_12_Option_Value_test_option_value_integer
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return Integer renames
-        Wrap_Test_Option_Value_f2311c_69e413;
+        (Widgt: Tk_Widget; Name: Variable_Name) return Integer renames
+        Wrap_Test_Option_Value_f2311c_4718d4;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
