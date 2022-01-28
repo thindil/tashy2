@@ -800,7 +800,7 @@ package body Tk.Widget is
    end Option_Value;
 
    function Option_Value
-     (Widgt: Tk_Widget; Name: String) return Anchor_Directions is
+     (Widgt: Tk_Widget; Name: Variable_Name) return Anchor_Directions is
    begin
       return
         Anchor_Directions'Value
