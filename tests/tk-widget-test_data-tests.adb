@@ -2573,11 +2573,11 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
-   function Wrap_Test_Option_Value_54a47c_6cc903
-     (Widgt: Tk_Widget; Name: String) return Anchor_Directions is
+   function Wrap_Test_Option_Value_54a47c_508b2a
+     (Widgt: Tk_Widget; Name: Variable_Name) return Anchor_Directions is
    begin
       begin
-         pragma Assert(Widgt /= Null_Widget and Name'Length > 0);
+         pragma Assert(Widgt /= Null_Widget and Name_Is_Valid(Name => Name));
          null;
       exception
          when System.Assertions.Assert_Failure =>
@@ -2586,7 +2586,7 @@ package body Tk.Widget.Test_Data.Tests is
                "req_sloc(tk-widget.ads:0):Test_Option_Value_Anchor_Directions test requirement violated");
       end;
       declare
-         Test_Option_Value_54a47c_6cc903_Result: constant Anchor_Directions :=
+         Test_Option_Value_54a47c_508b2a_Result: constant Anchor_Directions :=
            GNATtest_Generated.GNATtest_Standard.Tk.Widget.Option_Value
              (Widgt, Name);
       begin
@@ -2599,22 +2599,23 @@ package body Tk.Widget.Test_Data.Tests is
                  (False,
                   "ens_sloc(tk-widget.ads:0:):Test_Option_Value_Anchor_Directions test commitment violated");
          end;
-         return Test_Option_Value_54a47c_6cc903_Result;
+         return Test_Option_Value_54a47c_508b2a_Result;
       end;
-   end Wrap_Test_Option_Value_54a47c_6cc903;
+   end Wrap_Test_Option_Value_54a47c_508b2a;
 --  end read only
 
 --  begin read only
    procedure Test_13_Option_Value_test_option_value_anchor_directions
      (Gnattest_T: in out Test);
-   procedure Test_Option_Value_54a47c_6cc903(Gnattest_T: in out Test) renames
+   procedure Test_Option_Value_54a47c_508b2a(Gnattest_T: in out Test) renames
      Test_13_Option_Value_test_option_value_anchor_directions;
 --  id:2.2/54a47c075654f531/Option_Value/0/0/test_option_value_anchor_directions/
    procedure Test_13_Option_Value_test_option_value_anchor_directions
      (Gnattest_T: in out Test) is
       function Option_Value
-        (Widgt: Tk_Widget; Name: String) return Anchor_Directions renames
-        Wrap_Test_Option_Value_54a47c_6cc903;
+        (Widgt: Tk_Widget; Name: Variable_Name)
+         return Anchor_Directions renames
+        Wrap_Test_Option_Value_54a47c_508b2a;
 --  end read only
 
       pragma Unreferenced(Gnattest_T);
