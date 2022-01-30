@@ -809,7 +809,8 @@ package body Tk.Widget is
              .Result);
    end Option_Value;
 
-   function Option_Value(Widgt: Tk_Widget; Name: String) return Color_Type is
+   function Option_Value
+     (Widgt: Tk_Widget; Name: Variable_Name) return Color_Type is
       use Tk.Winfo;
 
       Result: constant Tcl_String_Result :=
