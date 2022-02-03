@@ -662,15 +662,25 @@ package body Tk.Widget is
 
    function Option_Value
      (Widgt: Tk_Widget; Name: Variable_Name) return Directions_Type is
-      Result: constant String :=
-        Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
-          .Result;
    begin
-      if Result'Length = 0 then
+      if Widgt = Null_Widget then
          return NONE;
       end if;
-      return Directions_Type'Value(Result);
+      if not Name_Is_Valid(Name => Name) then
+         return NONE;
+      end if;
+      Convert_Value_Block :
+      declare
+         Result: constant String :=
+           Execute_Widget_Command
+             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
+             .Result;
+      begin
+         if Result'Length = 0 then
+            return NONE;
+         end if;
+         return Directions_Type'Value(Result);
+      end Convert_Value_Block;
    end Option_Value;
 
    function Option_Value
