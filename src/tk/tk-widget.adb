@@ -686,6 +686,12 @@ package body Tk.Widget is
    function Option_Value
      (Widgt: Tk_Widget; Name: Variable_Name) return Pixel_Data is
    begin
+      if Widgt = Null_Widget then
+         return Empty_Pixel_Data;
+      end if;
+      if not Name_Is_Valid(Name => Name) then
+         return Empty_Pixel_Data;
+      end if;
       return
         Pixel_Data_Value
           (Value =>
