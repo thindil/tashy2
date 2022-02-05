@@ -703,6 +703,12 @@ package body Tk.Widget is
    function Option_Value
      (Widgt: Tk_Widget; Name: Variable_Name) return Place_Type is
    begin
+      if Widgt = Null_Widget then
+         return EMPTY;
+      end if;
+      if not Name_Is_Valid(Name => Name) then
+         return EMPTY;
+      end if;
       return
         Place_Type'Value
           (Execute_Widget_Command
