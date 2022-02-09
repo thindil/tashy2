@@ -777,6 +777,12 @@ package body Tk.Widget is
           (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
           .Result;
    begin
+      if Widgt = Null_Widget then
+         return -1;
+      end if;
+      if not Name_Is_Valid(Name => Name) then
+         return -1;
+      end if;
       if Result'Length > 0 then
          return Extended_Natural'Value(Result);
       end if;
