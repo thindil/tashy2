@@ -792,13 +792,18 @@ package body Tk.Widget is
    function Option_Value
      (Widgt: Tk_Widget; Name: Variable_Name) return Extended_Boolean is
    begin
+      if Widgt = Null_Widget then
+         return NONE;
+      end if;
+      if not Name_Is_Valid(Name => Name) then
+         return NONE;
+      end if;
       Execute_Widget_Command
         (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
       if Tcl_Get_Result(Interpreter => Tk_Interp(Widgt => Widgt)) = "1" then
          return TRUE;
-      else
-         return FALSE;
       end if;
+      return FALSE;
    end Option_Value;
 
    function Option_Value
