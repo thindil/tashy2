@@ -833,18 +833,28 @@ package body Tk.Widget is
 
    function Option_Value
      (Widgt: Tk_Widget; Name: Variable_Name) return Tk_Window is
-      Result: constant String :=
-        Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
-          .Result;
    begin
-      if Result'Length > 0 then
+      if Widgt = Null_Widget then
+         return Null_Window;
+      end if;
+      if not Name_Is_Valid(Name => Name) then
+         return Null_Window;
+      end if;
+      Return_Value_Block :
+      declare
+         Result: constant String :=
+           Execute_Widget_Command
+             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name)
+             .Result;
+      begin
+         if Result'Length = 0 then
+            return Null_Window;
+         end if;
          return
            Tk_Window
              (System'To_Address
                 (Integer'Value("16#" & Result(3 .. Result'Last) & "#")));
-      end if;
-      return Null_Window;
+      end Return_Value_Block;
    end Option_Value;
 
    function Option_Value
