@@ -911,27 +911,37 @@ package body Tk.Widget is
      (Widgt: Tk_Widget; Name: Variable_Name) return Color_Type is
       use Tk.Winfo;
 
-      Result: constant Tcl_String_Result :=
-        Execute_Widget_Command
-          (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
    begin
-      if Result.Return_Code = TCL_ERROR or Result.Result_Length = 0 then
+      if Widgt = Null_Widget then
          return Empty_Color;
       end if;
-      if Result.Result(Result.Result'First) /= '#' then
-         return
-           Rgb
-             (Color_Name => Colors_Names_Value(Image => Result.Result),
-              Window => Widgt);
+      if not Name_Is_Valid(Name => Name) then
+         return Empty_Color;
       end if;
-      if Result.Result_Length = 10 then
-         return Color: Color_Type := Empty_Color do
-            Color.Red := Color_Range'Value(Result.Result(2 .. 4)) * 257;
-            Color.Green := Color_Range'Value(Result.Result(5 .. 7)) * 257;
-            Color.Blue := Color_Range'Value(Result.Result(8 .. 10)) * 257;
-         end return;
-      end if;
-      return Empty_Color;
+      Return_Value_Block :
+      declare
+         Result: constant Tcl_String_Result :=
+           Execute_Widget_Command
+             (Widgt => Widgt, Command_Name => "cget", Options => "-" & Name);
+      begin
+         if Result.Return_Code = TCL_ERROR or Result.Result_Length = 0 then
+            return Empty_Color;
+         end if;
+         if Result.Result(Result.Result'First) /= '#' then
+            return
+              Rgb
+                (Color_Name => Colors_Names_Value(Image => Result.Result),
+                 Window => Widgt);
+         end if;
+         if Result.Result_Length = 10 then
+            return Color: Color_Type := Empty_Color do
+               Color.Red := Color_Range'Value(Result.Result(2 .. 4)) * 257;
+               Color.Green := Color_Range'Value(Result.Result(5 .. 7)) * 257;
+               Color.Blue := Color_Range'Value(Result.Result(8 .. 10)) * 257;
+            end return;
+         end if;
+         return Empty_Color;
+      end Return_Value_Block;
    end Option_Value;
 
    function Option_Value
