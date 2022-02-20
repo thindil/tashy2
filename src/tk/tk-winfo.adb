@@ -94,21 +94,25 @@ package body Tk.Winfo is
      (Root_Window_X, Root_Window_Y: Pixel_Data;
       Window: Tk_Widget := Null_Widget;
       Interpreter: Tcl_Interpreter := Get_Interpreter) return Tk_Widget is
+      Child_Name: constant String :=
+        Tcl_Eval
+          (Tcl_Script =>
+             "winfo containing" &
+             (if Window = Null_Widget then ""
+              else " -displayof " & Tk_Path_Name(Widgt => Window) & "") &
+             " " & Pixel_Data_Image(Value => Root_Window_X) & " " &
+             Pixel_Data_Image(Value => Root_Window_Y),
+           Interpreter =>
+             (if Window = Null_Widget then Interpreter
+              else Tk_Interp(Widgt => Window)))
+          .Result;
    begin
+      if Child_Name'Length = 0 then
+         return Null_Widget;
+      end if;
       return
         Get_Widget
-          (Path_Name =>
-             Tcl_Eval
-               (Tcl_Script =>
-                  "winfo containing" &
-                  (if Window = Null_Widget then ""
-                   else " -displayof " & Tk_Path_Name(Widgt => Window) & "") &
-                  " " & Pixel_Data_Image(Value => Root_Window_X) & " " &
-                  Pixel_Data_Image(Value => Root_Window_Y),
-                Interpreter =>
-                  (if Window = Null_Widget then Interpreter
-                   else Tk_Interp(Widgt => Window)))
-               .Result,
+          (Path_Name => Child_Name,
            Interpreter =>
              (if Window = Null_Widget then Interpreter
               else Tk_Interp(Widgt => Window)));
