@@ -439,8 +439,8 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Containing((0.0, PIXEL), (30.0, PIXEL)) = Get_Main_Window,
-         "Failed to get window at 0,0 coordinates.");
+        (Containing((1.0, PIXEL), (1.0, PIXEL)) = Get_Main_Window,
+         "Failed to get window at 1,1 coordinates.");
 
 --  begin read only
    end Test_Containing_test_winfo_containing;
@@ -684,7 +684,7 @@ package body Tk.Winfo.Test_Data.Tests is
          return;
       end if;
       Assert
-        (Geometry(Get_Main_Window) = Get_Geometry(Get_Main_Window),
+        (Geometry(Get_Main_Window) = (28, 33, 1, 1),
          "Failed to get geometry of the Tk main window");
 
 --  begin read only
