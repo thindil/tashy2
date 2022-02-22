@@ -157,10 +157,10 @@ package body Tk.Widget is
       if not Name_Is_Valid(Name => Name) then
          return;
       end if;
-      if Long_Long_Integer(Length(Source => Options_String)) +
-        Long_Long_Integer(Extended_Natural'Image(Value)'Length) +
-        Long_Long_Integer(Name'Length) + 2 >
-        Long_Long_Integer(Positive'Last) then
+      if Long_Long_Integer(Length(Source => Options_String)) >
+        (Long_Long_Integer(Positive'Last) -
+         (Long_Long_Integer(Name'Length) + 2 +
+          Long_Long_Integer(Extended_Natural'Image(Value)'Length))) then
          return;
       end if;
       Append
