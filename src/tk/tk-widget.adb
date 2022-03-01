@@ -312,13 +312,13 @@ package body Tk.Widget is
       if not Name_Is_Valid(Name => Name) then
          return;
       end if;
-      if Long_Long_Integer(Length(Source => Options_String)) +
-        Long_Long_Integer
-          (To_Lower(Item => Pixel_Data_Image(Value.Left))'Length) +
-        Long_Long_Integer
-          (To_Lower(Item => Pixel_Data_Image(Value.Right))'Length) +
-        Long_Long_Integer(Name'Length) + 6 >
-        Long_Long_Integer(Positive'Last) then
+      if Long_Long_Integer(Length(Source => Options_String)) >
+        Long_Long_Integer(Positive'Last) -
+          (Long_Long_Integer
+             (To_Lower(Item => Pixel_Data_Image(Value.Left))'Length) +
+           Long_Long_Integer
+             (To_Lower(Item => Pixel_Data_Image(Value.Right))'Length) +
+           Long_Long_Integer(Name'Length) + 6) then
          return;
       end if;
       Append
