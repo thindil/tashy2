@@ -482,10 +482,11 @@ package body Tk.Widget is
       Put
         (To => Value_String, Item => Float(Value),
          Aft => Positive_Float'Digits, Exp => 0);
-      if Long_Long_Integer(Length(Source => Options_String)) +
-        Long_Long_Integer(Trim(Source => Value_String, Side => Both)'Length) +
-        Long_Long_Integer(Name'Length) + 3 >
-        Long_Long_Integer(Positive'Last) then
+      if Long_Long_Integer(Length(Source => Options_String)) >
+        Long_Long_Integer(Positive'Last) -
+          (Long_Long_Integer
+             (Trim(Source => Value_String, Side => Both)'Length) +
+           Long_Long_Integer(Name'Length) + 3) then
          return;
       end if;
       Append
