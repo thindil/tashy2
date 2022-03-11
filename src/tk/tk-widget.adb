@@ -583,16 +583,17 @@ package body Tk.Widget is
      (Name: Variable_Name; Value: Unbounded_Variable_Name;
       Options_String: in out Unbounded_String) is
    begin
-      if Length(Source => Value) = 0 then
+      if Length(Source => Value) = 0 or
+        Length(Source => Value) > (Positive'Last - Name'Length + 3) then
          return;
       end if;
       if not Name_Is_Valid(Name => Name) then
          return;
       end if;
-      if Long_Long_Integer(Length(Source => Options_String)) +
-        Long_Long_Integer(Name'Length) + 3 +
-        Long_Long_Integer(Length(Source => Value)) >
-        Long_Long_Integer(Positive'Last) then
+      if Long_Long_Integer(Length(Source => Options_String)) >
+        Long_Long_Integer(Positive'Last) -
+          (Long_Long_Integer(Name'Length) + 3 +
+           Long_Long_Integer(Length(Source => Value))) then
          return;
       end if;
       Append
