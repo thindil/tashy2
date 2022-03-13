@@ -107,6 +107,9 @@ package body Tk.Labelframe is
    function Get_Options
      (Frame_Widget: Tk_Label_Frame) return Label_Frame_Create_Options is
    begin
+      if Frame_Widget = Null_Widget then
+         return Default_Frame_Create_Options;
+      end if;
       return
         Options: Label_Frame_Create_Options :=
           Label_Frame_Create_Options'
