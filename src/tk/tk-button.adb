@@ -146,6 +146,9 @@ package body Tk.Button is
 
    function Get_Options(Button_Widget: Tk_Button) return Button_Options is
    begin
+      if Button_Widget = Null_Widget then
+         return Default_Button_Options;
+      end if;
       return Options: Button_Options := Default_Button_Options do
          Options.Active_Background :=
            Option_Value(Widgt => Button_Widget, Name => "activebackground");
