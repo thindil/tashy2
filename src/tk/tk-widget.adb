@@ -995,10 +995,10 @@ package body Tk.Widget is
       if Command_Name'Length = 0 then
          return;
       end if;
-      if Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
-        Long_Long_Integer(Command_Name'Length) +
-        Long_Long_Integer(Options'Length) + 2 >
-        Long_Long_Integer(Natural'Last) then
+      if Long_Long_Integer(Options'Length) >
+        Long_Long_Integer(Natural'Last) -
+          (Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+           Long_Long_Integer(Command_Name'Length) + 3) then
          return;
       end if;
       Tcl_Eval
