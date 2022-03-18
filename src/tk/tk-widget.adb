@@ -1029,10 +1029,10 @@ package body Tk.Widget is
            (Message_Length => 25, Result_Length => 0, Return_Code => TCL_ERROR,
             Message => "Invalid the command name.", Result => "");
       end if;
-      if Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
-        Long_Long_Integer(Command_Name'Length) +
-        Long_Long_Integer(Options'Length) + 2 >
-        Long_Long_Integer(Natural'Last) then
+      if Long_Long_Integer(Options'Length) >
+        Long_Long_Integer(Natural'Last) -
+          (Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+           Long_Long_Integer(Command_Name'Length) + 3) then
          return
            (Message_Length => 17, Result_Length => 0, Return_Code => TCL_ERROR,
             Message => "Command too long.", Result => "");
