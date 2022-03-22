@@ -1078,6 +1078,40 @@ package body Tk.Widget is
            Interpreter => Tk_Interp(Widgt => Widgt));
    end Execute_Widget_Command;
 
+   function Execute_Widget_Command
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
+      return Tcl_Float_Result is
+   begin
+      if Widgt = Null_Widget then
+         return
+           (Message_Length => 35, Return_Code => TCL_ERROR,
+            Message => "The selected widget is Null_Widget.", Result => 0.0);
+      end if;
+      if Command_Name'Length = 0 then
+         return
+           (Message_Length => 23, Return_Code => TCL_ERROR,
+            Message => "Empty the command name.", Result => 0.0);
+      end if;
+      if not Name_Is_Valid(Command_Name) then
+         return
+           (Message_Length => 25, Return_Code => TCL_ERROR,
+            Message => "Invalid the command name.", Result => 0.0);
+      end if;
+      if Long_Long_Integer(Options'Length) >
+        Long_Long_Integer(Natural'Last) -
+          (Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+           Long_Long_Integer(Command_Name'Length) + 3) then
+         return
+           (Message_Length => 17, Return_Code => TCL_ERROR,
+            Message => "Command too long.", Result => 0.0);
+      end if;
+      return
+        Tcl_Eval
+          (Tcl_Script =>
+             Tk_Path_Name(Widgt => Widgt) & " " & Command_Name & " " & Options,
+           Interpreter => Tk_Interp(Widgt => Widgt));
+   end Execute_Widget_Command;
+
    function Generic_Scalar_Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
       return Result_Type is
