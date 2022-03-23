@@ -3056,6 +3056,81 @@ package body Tk.Widget.Test_Data.Tests is
 --  end read only
 
 --  begin read only
+   function Wrap_Test_Execute_Widget_Command_7dcb72_5a32ff
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
+      return Tcl_Float_Result is
+   begin
+      begin
+         pragma Assert
+           (Widgt /= Null_Widget and then Name_Is_Valid(Command_Name)
+            and then
+              Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+                Long_Long_Integer(Command_Name'Length) +
+                Long_Long_Integer(Options'Length) + 2 <=
+              Long_Long_Integer(Natural'Last));
+         null;
+      exception
+         when System.Assertions.Assert_Failure =>
+            AUnit.Assertions.Assert
+              (False,
+               "req_sloc(tk-widget.ads:0):Test_Execute_Widget_Command4 test requirement violated");
+      end;
+      declare
+         Test_Execute_Widget_Command_7dcb72_5a32ff_Result: constant Tcl_Float_Result :=
+           GNATtest_Generated.GNATtest_Standard.Tk.Widget
+             .Execute_Widget_Command
+             (Widgt, Command_Name, Options);
+      begin
+         begin
+            pragma Assert(True);
+            null;
+         exception
+            when System.Assertions.Assert_Failure =>
+               AUnit.Assertions.Assert
+                 (False,
+                  "ens_sloc(tk-widget.ads:0:):Test_Execute_Widget_Command4 test commitment violated");
+         end;
+         return Test_Execute_Widget_Command_7dcb72_5a32ff_Result;
+      end;
+   end Wrap_Test_Execute_Widget_Command_7dcb72_5a32ff;
+--  end read only
+
+--  begin read only
+   procedure Test_4_Execute_Widget_Command_test_execute_widget_command4
+     (Gnattest_T: in out Test);
+   procedure Test_Execute_Widget_Command_7dcb72_5a32ff
+     (Gnattest_T: in out Test) renames
+     Test_4_Execute_Widget_Command_test_execute_widget_command4;
+--  id:2.2/7dcb72003ba4c9d2/Execute_Widget_Command/0/0/test_execute_widget_command4/
+   procedure Test_4_Execute_Widget_Command_test_execute_widget_command4
+     (Gnattest_T: in out Test) is
+      function Execute_Widget_Command
+        (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
+         return Tcl_Float_Result renames
+        Wrap_Test_Execute_Widget_Command_7dcb72_5a32ff;
+--  end read only
+
+      pragma Unreferenced(Gnattest_T);
+      Button: Tk_Button;
+
+   begin
+
+      if Value("DISPLAY", "")'Length = 0 then
+         Assert(True, "No display, can't test");
+         return;
+      end if;
+      Tcl_Eval("pack [spinbox .test]");
+      Button := Get_Widget(".test");
+      Assert
+        (Execute_Widget_Command(Button, "cget", "-to").Result = 0.0,
+         "Failed to get float result  of Tcl command on the selected Tk_Widget.");
+      Destroy(Button);
+
+--  begin read only
+   end Test_4_Execute_Widget_Command_test_execute_widget_command4;
+--  end read only
+
+--  begin read only
 --  id:2.2/02/
 --
 --  This section can be used to add elaboration code for the global state.
