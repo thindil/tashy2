@@ -1112,15 +1112,4 @@ package body Tk.Widget is
            Interpreter => Tk_Interp(Widgt => Widgt));
    end Execute_Widget_Command;
 
-   function Generic_Scalar_Execute_Widget_Command
-     (Widgt: Tk_Widget; Command_Name: String; Options: String := "")
-      return Result_Type is
-   begin
-      return
-        Result_Type'Value
-          (Execute_Widget_Command
-             (Widgt => Widgt, Command_Name => Command_Name, Options => Options)
-             .Result);
-   end Generic_Scalar_Execute_Widget_Command;
-
 end Tk.Widget;
