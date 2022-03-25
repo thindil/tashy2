@@ -1129,7 +1129,9 @@ package Tk.Widget is
       -- Execute_Widget_Command(My_Button, "text", "{click me}");
       -- SEE ALSO
       -- Widget.Execute_Widget_Command_(function_boolean_result),
-      -- Widget.Execute_Widget_Command_(function_string_result)
+      -- Widget.Execute_Widget_Command_(function_string_result),
+      -- Widget.Execute_Widget_Command_(function_float_result),
+      -- Widget.Execute_Widget_Command_(function_integer_result)
       -- SOURCE
    procedure Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: Variable_Name;
@@ -1163,7 +1165,8 @@ package Tk.Widget is
       -- SEE ALSO
       -- Widget.Execute_Widget_Command_(procedure),
       -- Widget.Execute_Widget_Command_(function_boolean_result),
-      -- Widget.Execute_Widget_Command_(function_float_result)
+      -- Widget.Execute_Widget_Command_(function_float_result),
+      -- Widget.Execute_Widget_Command_(function_integer_result)
       -- SOURCE
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
@@ -1197,7 +1200,8 @@ package Tk.Widget is
       -- SEE ALSO
       -- Widget.Execute_Widget_Command_(procedure),
       -- Widget.Execute_Widget_Command_(function_string_result),
-      -- Widget.Execute_Widget_Command_(function_float_result)
+      -- Widget.Execute_Widget_Command_(function_float_result),
+      -- Widget.Execute_Widget_Command_(function_integer_result)
       -- SOURCE
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
@@ -1231,7 +1235,8 @@ package Tk.Widget is
       -- SEE ALSO
       -- Widget.Execute_Widget_Command_(procedure),
       -- Widget.Execute_Widget_Command_(function_string_result),
-      -- Widget.Execute_Widget_Command_(function_boolean_result)
+      -- Widget.Execute_Widget_Command_(function_boolean_result),
+      -- Widget.Execute_Widget_Command_(function_integer_result)
       -- SOURCE
    function Execute_Widget_Command
      (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
@@ -1244,6 +1249,41 @@ package Tk.Widget is
           Long_Long_Integer(Options'Length) + 2 <=
         Long_Long_Integer(Natural'Last),
       Test_Case => (Name => "Test_Execute_Widget_Command4", Mode => Nominal);
+      -- ****
+
+      -- ****f* Widget/Widget.Execute_Widget_Command_(function_integer_result)
+      -- FUNCTION
+      -- Execute the selected command on the selected widget and returns its
+      -- result as Ada Integer. Generally the function shouldn't be used,
+      -- use it only when the selected Tk widget command isn't implemented.
+      -- PARAMETERS
+      -- Widgt        - Tk widget on which the command will be executed
+      -- Command_Name - Tk command which will be executed
+      -- Options      - Option for the selected Tk command
+      -- RESULT
+      -- Ada Integer with result of the executed Tk widget command
+      -- HISTORY
+      -- 8.6.0 - Added
+      -- EXAMPLE
+      -- -- Check if selection is present in My_Entry widget
+      -- Has_Selection: constant Tcl_Float_Result := Execute_Widget_Command(My_Entry, "selection", "present");
+      -- SEE ALSO
+      -- Widget.Execute_Widget_Command_(procedure),
+      -- Widget.Execute_Widget_Command_(function_string_result),
+      -- Widget.Execute_Widget_Command_(function_boolean_result),
+      -- Widget.Execute_Widget_Command_(function_float_result)
+      -- SOURCE
+   function Execute_Widget_Command
+     (Widgt: Tk_Widget; Command_Name: Variable_Name; Options: String := "")
+      return Tcl_Integer_Result with
+      Global => null,
+      Pre => Widgt /= Null_Widget and then Name_Is_Valid(Command_Name)
+      and then
+        Long_Long_Integer(Tk_Path_Name(Widgt => Widgt)'Length) +
+          Long_Long_Integer(Command_Name'Length) +
+          Long_Long_Integer(Options'Length) + 2 <=
+        Long_Long_Integer(Natural'Last),
+      Test_Case => (Name => "Test_Execute_Widget_Command5", Mode => Nominal);
       -- ****
 
       --## rule off REDUCEABLE_SCOPE
