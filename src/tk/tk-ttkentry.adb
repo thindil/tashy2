@@ -20,22 +20,6 @@ with Ada.Strings.Unbounded;
 
 package body Tk.TtkEntry is
 
-   -- ****if* TtkEntry/TtkEntry.Widget_Command
-   -- FUNCTION
-   -- Used to get Natural result from the selected Tcl widget command
-   -- PARAMETERS
-   -- Widgt        - Tk widget on which the command will be executed
-   -- Command_Name - Tk command which will be executed
-   -- Options      - Option for the selected Tk command
-   -- RESULT
-   -- Natural type with the result of the Tk widget command
-   -- HISTORY
-   -- 8.6.0 - Added
-   -- SOURCE
-   function Widget_Command is new Generic_Scalar_Execute_Widget_Command
-     (Result_Type => Natural);
-   -- ****
-
    function Options_To_String(Options: Ttk_Entry_Options) return String is
       use Ada.Strings.Unbounded;
 
@@ -342,18 +326,18 @@ package body Tk.TtkEntry is
    function Get_Index(Entry_Widget: Ttk_Entry; X: Natural) return Natural is
    begin
       return
-        Widget_Command
+        Execute_Widget_Command
           (Widgt => Entry_Widget, Command_Name => "index",
-           Options => Index_To_String(Index => X, Is_Index => False));
+           Options => Index_To_String(Index => X, Is_Index => False)).Result;
    end Get_Index;
 
    function Get_Index
      (Entry_Widget: Ttk_Entry; Index: Entry_Index_Type) return Natural is
    begin
       return
-        Widget_Command
+        Execute_Widget_Command
           (Widgt => Entry_Widget, Command_Name => "index",
-           Options => Index_To_String(Index => Index));
+           Options => Index_To_String(Index => Index)).Result;
    end Get_Index;
 
    procedure Insert_Text
