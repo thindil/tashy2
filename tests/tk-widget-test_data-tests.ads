@@ -138,19 +138,23 @@ package Tk.Widget.Test_Data.Tests is
 
    procedure Test_Execute_Widget_Command_7643c6_9f7f4c
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1134:4:Execute_Widget_Command:Test_Execute_Widget_Command
+   --  tk-widget.ads:1136:4:Execute_Widget_Command:Test_Execute_Widget_Command
 
    procedure Test_Execute_Widget_Command_6ed39c_1b2064
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1168:4:Execute_Widget_Command:Test_Execute_Widget_Command2
+   --  tk-widget.ads:1171:4:Execute_Widget_Command:Test_Execute_Widget_Command2
 
    procedure Test_Execute_Widget_Command_7bae5e_a22773
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1202:4:Execute_Widget_Command:Test_Execute_Widget_Command3
+   --  tk-widget.ads:1206:4:Execute_Widget_Command:Test_Execute_Widget_Command3
 
    procedure Test_Execute_Widget_Command_7dcb72_5a32ff
      (Gnattest_T: in out Test);
-   --  tk-widget.ads:1236:4:Execute_Widget_Command:Test_Execute_Widget_Command4
+   --  tk-widget.ads:1241:4:Execute_Widget_Command:Test_Execute_Widget_Command4
+
+   procedure Test_Execute_Widget_Command_bb58a3_f993a1
+     (Gnattest_T: in out Test);
+   --  tk-widget.ads:1276:4:Execute_Widget_Command:Test_Execute_Widget_Command5
 
 end Tk.Widget.Test_Data.Tests;
 --  end read only
