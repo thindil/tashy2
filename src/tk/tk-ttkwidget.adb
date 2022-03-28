@@ -51,6 +51,10 @@ package body Tk.TtkWidget is
       if Value = Default_Ttk_Image_Option then
          return;
       end if;
+      if Length(Options_String) >
+        Natural'Last - Name'Length - Length(Value.Default) - 4 then
+         return;
+      end if;
       Append
         (Source => Options_String,
          New_Item => " -" & Name & " {" & To_String(Source => Value.Default));
