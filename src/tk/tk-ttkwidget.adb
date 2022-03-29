@@ -59,6 +59,11 @@ package body Tk.TtkWidget is
         (Source => Options_String,
          New_Item => " -" & Name & " {" & To_String(Source => Value.Default));
       if Value.Active /= Empty_Unbounded_Variable_Name then
+         if Length(Options_String) >
+           Natural'Last - Length(Value.Active) - 9 then
+            Append(Source => Options_String, New_Item => "}");
+            return;
+         end if;
          Append
            (Source => Options_String,
             New_Item => " active " & To_String(Source => Value.Active));
