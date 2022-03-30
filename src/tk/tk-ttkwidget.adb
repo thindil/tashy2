@@ -69,6 +69,11 @@ package body Tk.TtkWidget is
             New_Item => " active " & To_String(Source => Value.Active));
       end if;
       if Value.Disabled /= Empty_Unbounded_Variable_Name then
+         if Length(Options_String) >
+           Natural'Last - Length(Value.Active) - 11 then
+            Append(Source => Options_String, New_Item => "}");
+            return;
+         end if;
          Append
            (Source => Options_String,
             New_Item => " disabled " & To_String(Source => Value.Disabled));
