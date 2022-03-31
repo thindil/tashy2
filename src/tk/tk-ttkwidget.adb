@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Bartek thindil Jasicki <thindil@laeran.pl>
+-- Copyright (c) 2021-2022 Bartek thindil Jasicki <thindil@laeran.pl>
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -79,6 +79,11 @@ package body Tk.TtkWidget is
             New_Item => " disabled " & To_String(Source => Value.Disabled));
       end if;
       if Value.Focus /= Empty_Unbounded_Variable_Name then
+         if Length(Options_String) >
+           Natural'Last - Length(Value.Active) - 8 then
+            Append(Source => Options_String, New_Item => "}");
+            return;
+         end if;
          Append
            (Source => Options_String,
             New_Item => " focus " & To_String(Source => Value.Focus));
